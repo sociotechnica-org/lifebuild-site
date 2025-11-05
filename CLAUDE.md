@@ -5,6 +5,7 @@ This document contains notes and guidelines for Claude when working on this proj
 ## Project Overview
 
 LifeBuild.me is a simple landing page built with Astro, similar to WorkSquared.ai. The site features:
+
 - Clean, centered layout
 - Newsletter subscription via Buttondown
 - Links to GitHub and SocioTechnica
@@ -36,6 +37,7 @@ LifeBuild.me is a simple landing page built with Astro, similar to WorkSquared.a
 ## Development Guidelines
 
 ### Code Style
+
 - Use TypeScript strict mode
 - Follow ESLint rules configured in eslint.config.js
 - Format with Prettier (configured in .prettierrc)
@@ -43,18 +45,22 @@ LifeBuild.me is a simple landing page built with Astro, similar to WorkSquared.a
 - Prefer Astro components for static content
 
 ### Component Guidelines
+
 - Keep components focused and single-purpose
 - Use scoped styles within components
 - Follow responsive design patterns (mobile-first)
 - Ensure accessibility (semantic HTML, ARIA labels)
 
 ### Newsletter Integration
+
 The site uses Buttondown for email subscriptions. The form is configured in:
+
 - `src/components/LifeBuild.astro`
 - Form action points to Buttondown API
 - Success message displays after submission
 
 ### Deployment
+
 - Automatic deployments via Cloudflare Pages
 - Triggered by pushes to main branch
 - Build command: `npm run build`
@@ -63,22 +69,26 @@ The site uses Buttondown for email subscriptions. The form is configured in:
 ## Common Tasks
 
 ### Adding New Pages
+
 1. Create new `.astro` file in `src/pages/`
 2. Import and use the Layout component
 3. Add your content
 
 ### Updating Styles
+
 - Global styles: `src/layouts/Layout.astro`
 - Component styles: Within each component's `<style>` block
 - Use CSS custom properties for theme values
 
 ### Testing Locally
+
 ```bash
 npm install
 npm run dev
 ```
 
 ### Building for Production
+
 ```bash
 npm run build
 npm run preview
