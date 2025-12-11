@@ -5,17 +5,13 @@
 <div class="container">
   <div class="content">
     <div class="logo-container">
-      <div class="logo-placeholder">LifeBuild.me</div>
+      <img src="/lifebuild-logo.png" alt="LifeBuild.me" class="logo" />
     </div>
 
-    <h1>LifeBuild.me</h1>
-
-    <p class="tagline">Build your life, one step at a time</p>
-
     <form
-      action="https://buttondown.com/api/emails/embed-subscribe/lifebuild"
+      action="https://buttondown.com/api/emails/embed-subscribe/sociotechnica"
       method="post"
-      target="_blank"
+      target="popupwindow"
       class="subscribe-form"
       id="subscribe-form"
       onsubmit="handleFormSubmit(event)"
@@ -28,16 +24,16 @@
         required
         class="email-input"
       />
-      <input type="hidden" name="tag" value="landing" />
+      <input type="hidden" name="tag" value="lifebuild" />
       <button type="submit" id="submit-btn" class="submit-btn">Subscribe</button>
       <p id="success-message" class="success-message" style="display: none;">
-        Thank you for subscribing!
+        Thanks! Check your email.
       </p>
     </form>
 
     <footer class="footer">
       <a
-        href="https://github.com/sociotechnica-org/life-build-site"
+        href="https://github.com/sociotechnica-org/lifebuild"
         target="_blank"
         rel="noopener noreferrer"
         class="github-link"
@@ -97,29 +93,10 @@
     margin-bottom: 2rem;
   }
 
-  .logo-placeholder {
-    display: inline-block;
-    padding: 2rem 3rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  h1 {
-    font-size: 4rem;
-    margin: 1rem 0;
-    font-weight: 700;
-    color: #333;
-    line-height: 1.2;
-  }
-
-  .tagline {
-    font-size: 1.25rem;
-    color: #666;
-    margin: 1rem 0 2rem;
+  .logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
   }
 
   .subscribe-form {
@@ -150,7 +127,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #333;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -161,7 +138,7 @@
 
   .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   .success-message {
@@ -200,17 +177,8 @@
   }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 3rem;
-    }
-
-    .logo-placeholder {
-      font-size: 1.25rem;
-      padding: 1.5rem 2rem;
-    }
-
-    .tagline {
-      font-size: 1.1rem;
+    .logo {
+      max-width: 200px;
     }
 
     .footer {
