@@ -48,6 +48,8 @@
     }
   },
   "initialization": {
-    "commands": ["npm install"]
+    "commands": [
+      "npm install"
+    ]
   }
 }
