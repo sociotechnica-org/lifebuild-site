@@ -36,6 +36,16 @@ LifeBuild.me is a simple landing page built with Astro, similar to WorkSquared.a
 
 ## Development Guidelines
 
+### IMPORTANT: Always Run Linting Before Commits
+
+**Before pushing any commit, you MUST run:**
+
+```bash
+npm run lint-all
+```
+
+This command runs both Prettier formatting and ESLint fixes. CI will fail if code is not properly formatted or has linting errors. Always run this after making changes to validate they were made correctly.
+
 ### Code Style
 
 - Use TypeScript strict mode
