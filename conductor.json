@@ -1,53 +1,6 @@
 {
-  "version": "1.0",
-  "name": "LifeBuild.me Landing Page",
-  "description": "Astro-based landing page with newsletter subscription",
-  "worktree": {
-    "enabled": true,
-    "branch": "add-conductor-config",
-    "baseBranch": "main"
-  },
-  "commands": {
-    "dev": {
-      "description": "Start Astro development server",
-      "command": "npm run dev",
-      "background": true
-    },
-    "build": {
-      "description": "Build site for production",
-      "command": "npm run build"
-    },
-    "preview": {
-      "description": "Preview production build locally",
-      "command": "npm run preview",
-      "background": true
-    },
-    "lint": {
-      "description": "Lint code with ESLint",
-      "command": "npm run lint"
-    },
-    "lint:fix": {
-      "description": "Lint and auto-fix issues",
-      "command": "npm run lint:fix"
-    },
-    "format": {
-      "description": "Format code with Prettier",
-      "command": "npm run format"
-    },
-    "format:check": {
-      "description": "Check code formatting",
-      "command": "npm run format:check"
-    },
-    "install": {
-      "description": "Install dependencies",
-      "command": "npm install"
-    },
-    "check": {
-      "description": "Run all checks (lint + format)",
-      "command": "npm run lint && npm run format:check"
-    }
-  },
-  "initialization": {
-    "commands": ["npm install"]
+  "scripts": {
+    "setup": "npm install",
+    "run": "npm run dev"
   }
 }
