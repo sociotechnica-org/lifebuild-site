@@ -7,6 +7,10 @@
     "branch": "add-conductor-config",
     "baseBranch": "main"
   },
+  "scripts": {
+    "run": "npm run dev",
+    "setup": "npm install"
+  },
   "commands": {
     "dev": {
       "description": "Start Astro development server",
