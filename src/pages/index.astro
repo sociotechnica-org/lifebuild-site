@@ -1,8 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
 import LifeBuild from '../components/LifeBuild.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
+  <TopNav slot="nav" />
   <LifeBuild />
+  <Footer />
 </Layout>

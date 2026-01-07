@@ -1,0 +1,88 @@
+---
+// TopNav - Sticky navigation with logo and section links
+---
+
+<nav class="top-nav" aria-label="Primary">
+  <div class="top-nav-inner">
+    <a class="site-logo" href="#hero" aria-label="LifeBuild home">
+      <img src="/lifebuild-logo.webp" alt="LifeBuild logo" />
+    </a>
+    <div class="nav-links">
+      <a href="#hero">Intro</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#honest-alpha">Honest Alpha</a>
+      <a href="#about">About</a>
+      <a href="#updates">Updates</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(244, 236, 224, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(44, 36, 22, 0.15);
+  }
+
+  .top-nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: min(180px, 40vw);
+    max-width: 100%;
+  }
+
+  .site-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    font-family: var(--font-hand);
+    font-size: 1.1rem;
+  }
+
+  .nav-links a {
+    color: var(--color-ink);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-amber-deep);
+    border-bottom-color: var(--color-amber);
+  }
+
+  @media (max-width: 768px) {
+    .site-logo {
+      width: min(140px, 45vw);
+    }
+
+    .nav-links {
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+  }
+</style>
