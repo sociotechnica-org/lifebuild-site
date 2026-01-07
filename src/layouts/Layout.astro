@@ -3,7 +3,7 @@ interface Props {
   title?: string;
 }
 
-const { title = 'LifeBuild.me' } = Astro.props;
+const { title = 'LifeBuild — Reclaim Your Sovereignty' } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,31 +13,274 @@ const { title = 'LifeBuild.me' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <slot name="nav" />
+    <div class="page-wrapper">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
+  :root {
+    --color-bg: #f4ece0;
+    --color-bg-warm: rgba(244, 236, 224, 0.9);
+    --color-bg-card: rgba(255, 249, 240, 0.95);
+    --color-paper: #f4ece0;
+    --color-paper-dark: #e8dcc8;
+    --color-ink: #2c2416;
+    --color-ink-light: #4a3f2f;
+    --color-cream: #2c2416;
+    --color-cream-muted: #5b5143;
+    --color-amber: #d4a052;
+    --color-amber-glow: #e8b86d;
+    --color-amber-deep: #b8863a;
+    --color-red-deep: #8b3a3a;
+    --color-gold: #c9a227;
+    --color-teal: #4a7c7c;
+    --font-hand: 'Special Elite', monospace;
+    --font-typewriter: 'Special Elite', monospace;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+  }
+
   *,
   *::before,
   *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 
-  html,
+  html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+  }
+
   body {
-    margin: 0;
-    padding: 0;
+    font-family: var(--font-serif);
+    background-color: #f1e6d3;
+    color: var(--color-cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Paper texture noise overlay - layered radial gradients for organic noise */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    font-family:
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-      'Helvetica Neue', sans-serif;
-    color: #333;
-    background-color: #f9f9f9;
-    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(44, 36, 22, 0.03) 0%, transparent 1%),
+      radial-gradient(circle at 80% 70%, rgba(44, 36, 22, 0.025) 0%, transparent 1%),
+      radial-gradient(circle at 40% 80%, rgba(44, 36, 22, 0.02) 0%, transparent 1%),
+      radial-gradient(circle at 60% 20%, rgba(44, 36, 22, 0.03) 0%, transparent 1%),
+      radial-gradient(circle at 10% 60%, rgba(44, 36, 22, 0.02) 0%, transparent 1%),
+      radial-gradient(circle at 90% 40%, rgba(44, 36, 22, 0.025) 0%, transparent 1%),
+      radial-gradient(circle at 30% 10%, rgba(44, 36, 22, 0.02) 0%, transparent 1%),
+      radial-gradient(circle at 70% 90%, rgba(44, 36, 22, 0.03) 0%, transparent 1%);
+    background-size:
+      7px 7px,
+      11px 11px,
+      5px 5px,
+      9px 9px,
+      6px 6px,
+      8px 8px,
+      10px 10px,
+      4px 4px;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Ambient glow effects */
+  .ambient-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .glow-1 {
+    top: -200px;
+    right: -100px;
+    background: var(--color-amber);
+  }
+
+  .glow-2 {
+    bottom: 20%;
+    left: -200px;
+    background: var(--color-amber-deep);
+    opacity: 0.06;
+  }
+
+  /* Typography */
+  h1 {
+    font-family: var(--font-hand);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  h2 {
+    font-family: var(--font-hand);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--color-cream);
+  }
+
+  h3 {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-amber);
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-cream-muted);
+  }
+
+  /* Page wrapper for max-width constraint */
+  .page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Layout utilities */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 5rem 0;
+    scroll-margin-top: 120px;
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' viewBox='0 0 200 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q50,5 100,10 T200,10' stroke='%23d4a052' stroke-width='1' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.5;
+  }
+
+  /* Button styles */
+  .btn {
+    font-family: var(--font-hand);
+    font-size: 1.3rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .btn-primary {
+    background: var(--color-amber);
+    color: var(--color-ink);
+    box-shadow:
+      3px 3px 0 var(--color-amber-deep),
+      0 4px 15px rgba(212, 160, 82, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow:
+      5px 5px 0 var(--color-amber-deep),
+      0 6px 20px rgba(212, 160, 82, 0.4);
+  }
+
+  .btn-sketch {
+    font-family: var(--font-hand);
+    font-size: 0.9rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 3px;
+    border: 2px solid var(--color-ink);
+    background: transparent;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    transform: rotate(-1deg);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+  }
+
+  .btn-sketch:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: rotate(0deg);
+  }
+
+  /* Hand underline effect */
+  .hand-underline {
+    position: relative;
+    display: inline;
+  }
+
+  .hand-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-amber);
+    transform: rotate(-0.5deg) scaleX(1.02);
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gentleFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    section {
+      padding: 3.5rem 0;
+    }
   }
 </style>
