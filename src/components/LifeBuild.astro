@@ -5,39 +5,37 @@
 
 <!-- ==================== HERO SECTION ==================== -->
 <section class="hero" id="hero">
-  <div class="container">
-    <h2>You Used to Command Realms</h2>
-    <div class="hero-video-container">
-      <div class="hero-video-frame">
-        <div class="hero-story">
-          <img
-            id="heroStoryFrame"
-            src="/header-story/hero-story-1.webp"
-            alt="Saturday morning at the desk, building a kingdom"
-            class="hero-story-frame"
-          />
-          <img
-            id="heroStoryOverlayFrame"
-            src="/header-story/hero-story-1.webp"
-            alt=""
-            class="hero-story-frame is-overlay"
-            aria-hidden="true"
-          />
-          <div class="hero-story-overlay">
-            <button class="story-btn story-replay" id="heroStoryReplay" type="button">Replay</button
-            >
-          </div>
+  <div class="hero-video-container">
+    <div class="hero-video-frame">
+      <div class="hero-story">
+        <img
+          id="heroStoryFrame"
+          src="/header-story/hero-story-1.webp"
+          alt="Saturday morning at the desk, building a kingdom"
+          class="hero-story-frame"
+        />
+        <img
+          id="heroStoryOverlayFrame"
+          src="/header-story/hero-story-1.webp"
+          alt=""
+          class="hero-story-frame is-overlay"
+          aria-hidden="true"
+        />
+        <div class="hero-story-overlay">
+          <button class="story-btn story-replay" id="heroStoryReplay" type="button">Replay</button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container hero-text-container">
+    <h2 class="hero-headline" id="heroHeadline">You Used to Command Realms</h2>
+    <p class="hero-subtitle" id="heroSubtitle"></p>
   </div>
 </section>
 
 <!-- ==================== HOW IT WORKS SECTION ==================== -->
 <section class="how-it-works" id="how-it-works">
   <div class="container">
-    <h2>Reclaim Your Sovereignty</h2>
-    <p class="how-subtitle">a living map of your world, an AI corps at your command.</p>
     <div class="how-it-works-grid">
       <div class="how-card">
         <img class="how-icon" src="/how-it-works/map.webp" alt="Map icon" />
@@ -304,50 +302,18 @@
   .hero {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: relative;
-    padding: 6rem 0 2rem;
+    padding: 0;
   }
 
   .hero-video-container {
     width: 100%;
-    max-width: 1180px;
-    margin: 0 auto 2.5rem;
     position: relative;
-    animation: fadeInUp 0.8s ease-out;
   }
 
   .hero-video-frame {
     position: relative;
-    border-radius: 8px;
     overflow: hidden;
-    box-shadow:
-      0 4px 20px rgba(0, 0, 0, 0.4),
-      0 0 60px rgba(212, 160, 82, 0.1);
-  }
-
-  .hero-video-frame::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border: 3px solid var(--color-amber);
-    border-radius: 12px;
-    opacity: 0.3;
-    transform: rotate(-0.3deg);
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .hero-video-frame::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border: 2px solid var(--color-amber);
-    border-radius: 14px;
-    opacity: 0.15;
-    transform: rotate(0.5deg);
-    pointer-events: none;
-    z-index: 10;
   }
 
   .hero-story {
@@ -432,35 +398,42 @@
     animation: fadeInUp 0.8s ease-out 0.2s both;
   }
 
-  /* ==================== HOW IT WORKS SECTION ==================== */
-  .how-it-works {
-    background: transparent;
-    position: relative;
+  .hero-text-container {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
   }
 
-  .how-it-works::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: rgba(44, 36, 22, 0.08);
-  }
-
-  .how-it-works h2 {
+  .hero-headline {
     text-align: left;
     margin-bottom: 0.5rem;
+    transition: opacity 0.5s ease;
   }
 
-  .how-subtitle {
+  .hero-headline.is-transitioning {
+    opacity: 0;
+  }
+
+  .hero-subtitle {
     text-align: left;
     font-family: var(--font-serif);
     font-size: 1.1rem;
     color: var(--color-cream-muted);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     letter-spacing: 0.05em;
+    min-height: 1.6em;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.2s;
+  }
+
+  .hero-subtitle.is-visible {
+    opacity: 1;
+  }
+
+  /* ==================== HOW IT WORKS SECTION ==================== */
+  .how-it-works {
+    background: transparent;
+    position: relative;
+    padding-top: 2rem;
   }
 
   .how-it-works-grid {
@@ -923,24 +896,16 @@
 
   /* ==================== MOBILE STYLES ==================== */
   @media (max-width: 768px) {
-    .hero-video-container {
-      width: 100vw;
-      margin: 0 calc(50% - 50vw) 2rem;
-      max-width: none;
-    }
-
-    .hero-video-frame {
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .hero-video-frame::before,
-    .hero-video-frame::after {
-      display: none;
+    .hero-text-container {
+      padding-top: 2rem;
     }
 
     .hero-story-overlay {
       padding: 1rem;
+    }
+
+    .how-it-works {
+      padding-top: 1rem;
     }
 
     .alpha-table-wrapper {
@@ -1124,12 +1089,30 @@
   const frameImage = document.getElementById('heroStoryFrame') as HTMLImageElement | null;
   const overlayImage = document.getElementById('heroStoryOverlayFrame') as HTMLImageElement | null;
   const replayButton = document.getElementById('heroStoryReplay');
+  const heroHeadline = document.getElementById('heroHeadline');
+  const heroSubtitle = document.getElementById('heroSubtitle');
 
   let currentIndex = 0;
   let _isPlaying = false;
+  let _headlineTransitioned = false;
   let timer: number | null = null;
   const frameDuration = 1100;
   const autoStartDelay = 900;
+
+  // Transition headline from "You Used to Command Realms" to "Reclaim Your Sovereignty"
+  const transitionHeadline = () => {
+    if (_headlineTransitioned || !heroHeadline || !heroSubtitle) return;
+    _headlineTransitioned = true;
+
+    heroHeadline.classList.add('is-transitioning');
+
+    setTimeout(() => {
+      heroHeadline.textContent = 'Reclaim Your Sovereignty';
+      heroHeadline.classList.remove('is-transitioning');
+      heroSubtitle.textContent = 'a living map of your world, an AI corps at your command.';
+      heroSubtitle.classList.add('is-visible');
+    }, 500);
+  };
 
   const updateFrame = (index: number) => {
     const safeIndex = (index + frames.length) % frames.length;
@@ -1187,6 +1170,8 @@
     if (replayButton) {
       replayButton.classList.add('is-visible');
     }
+    // Trigger headline transition when animation ends
+    transitionHeadline();
   };
 
   const startPlayback = () => {
@@ -1210,6 +1195,7 @@
     replayButton.addEventListener('click', () => {
       currentIndex = 0;
       updateFrame(0);
+      // Only replay the image animation, not the headline transition
       startPlayback();
     });
   }
@@ -1221,6 +1207,8 @@
       startPlayback();
     }, autoStartDelay);
   } else {
+    // Show final state immediately for users who prefer reduced motion
+    updateFrame(frames.length - 1);
     stopPlayback();
   }
 
