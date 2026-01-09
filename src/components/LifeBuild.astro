@@ -418,15 +418,8 @@
     font-family: var(--font-serif);
     font-size: 1.1rem;
     color: var(--color-cream-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.05em;
-    min-height: 1.6em;
-    opacity: 0;
-    transition: opacity 0.5s ease 0.2s;
-  }
-
-  .hero-subtitle.is-visible {
-    opacity: 1;
   }
 
   /* ==================== HOW IT WORKS SECTION ==================== */
@@ -1110,7 +1103,6 @@
       heroHeadline.textContent = 'Reclaim Your Sovereignty';
       heroHeadline.classList.remove('is-transitioning');
       heroSubtitle.textContent = 'a living map of your world, an AI corps at your command.';
-      heroSubtitle.classList.add('is-visible');
     }, 500);
   };
 
