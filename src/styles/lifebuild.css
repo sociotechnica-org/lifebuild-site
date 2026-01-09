@@ -709,13 +709,13 @@
   .stage-header {
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 0.75rem;
   }
 
   .stage-name {
     font-size: 1.1rem;
-    order: -1; /* Name first, button to the right on mobile */
+    order: -1; /* Name on left, button on right */
   }
 
   .just-watching-fallback {
