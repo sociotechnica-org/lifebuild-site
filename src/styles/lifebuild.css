@@ -119,7 +119,6 @@
   font-size: 1.1rem;
   color: var(--color-cream-muted);
   margin-bottom: 1rem;
-  letter-spacing: 0.05em;
 }
 
 /* ==================== HOW IT WORKS SECTION ==================== */
@@ -452,8 +451,8 @@
 .about-grid {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .about-panel {
@@ -548,7 +547,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
 }
