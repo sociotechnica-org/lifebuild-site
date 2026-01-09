@@ -952,13 +952,134 @@
       display: none;
     }
 
-    .alpha-table {
+    .how-card.how-card {
+      transform: none;
+      padding: 1.2rem;
+    }
+
+    .how-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    .about-panel {
+      padding: 1.25rem;
+    }
+
+    .update-card {
+      padding: 1.25rem;
+    }
+
+    .security-note {
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Table to cards transformation */
+    .alpha-table,
+    .alpha-table thead,
+    .alpha-table tbody,
+    .alpha-table tr,
+    .alpha-table th,
+    .alpha-table td {
       display: block;
-      overflow-x: auto;
+    }
+
+    .alpha-table thead {
+      display: none;
+    }
+
+    .alpha-table tr {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(44, 36, 22, 0.1);
+    }
+
+    .alpha-table tr:last-child {
+      margin-bottom: 0;
+    }
+
+    .alpha-table td {
+      padding: 0.5rem 0;
+      border-bottom: none;
+    }
+
+    .alpha-table td:first-child {
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px dashed rgba(44, 36, 22, 0.15);
+    }
+
+    /* Add labels before each cell */
+    .alpha-table td:nth-child(2)::before {
+      content: 'What You Get';
+      display: block;
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-amber-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .alpha-table td:nth-child(3)::before {
+      content: "What's Rough";
+      display: block;
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-red-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .alpha-table td:nth-child(4)::before {
+      content: "What We're Proving";
+      display: block;
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-teal);
+      margin-bottom: 0.25rem;
+    }
+
+    .stage-name {
+      font-size: 1.1rem;
+    }
+
+    .just-watching-fallback {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Small mobile: further reductions */
+  @media (max-width: 480px) {
+    .how-it-works-grid {
+      gap: 1rem;
     }
 
     .how-card.how-card {
-      transform: none;
+      padding: 1rem;
+    }
+
+    .how-card h3 {
+      font-size: 1.2rem;
+    }
+
+    .how-card p {
+      font-size: 0.9rem;
+    }
+
+    .alpha-table-wrapper {
+      padding: 0.75rem;
+    }
+
+    .alpha-table tr {
+      padding: 0.75rem;
+    }
+
+    .alpha-signup-form {
+      padding: 1rem;
     }
   }
 </style>

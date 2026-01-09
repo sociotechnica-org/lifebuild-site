@@ -282,5 +282,65 @@ const { title = 'LifeBuild — Reclaim Your Sovereignty' } = Astro.props;
     section {
       padding: 3.5rem 0;
     }
+
+    .container {
+      padding: 0 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 16px;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    /* Ensure touch targets are at least 44px */
+    .btn,
+    .btn-sketch,
+    .btn-primary {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Improve tap target size for links */
+    a {
+      padding: 0.25rem 0;
+    }
+  }
+
+  /* Prevent horizontal overflow */
+  .page-wrapper {
+    overflow-x: hidden;
+  }
+
+  /* Better text rendering on mobile */
+  @media (max-width: 768px) {
+    body {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* Prevent text from being too small */
+    p,
+    li,
+    td {
+      font-size: max(0.9rem, 16px);
+      line-height: 1.6;
+    }
+  }
+
+  /* Safe area insets for notched devices */
+  @supports (padding: env(safe-area-inset-left)) {
+    .container {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
   }
 </style>

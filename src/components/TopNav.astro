@@ -85,4 +85,23 @@
       font-size: 0.95rem;
     }
   }
+
+  /* Small mobile: stack logo above links */
+  @media (max-width: 480px) {
+    .top-nav-inner {
+      flex-direction: column;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+
+    .site-logo {
+      width: 120px;
+    }
+
+    .nav-links {
+      justify-content: center;
+      gap: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+  }
 </style>
