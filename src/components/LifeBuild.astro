@@ -1,43 +1,42 @@
 ---
 // LifeBuild.astro - Main page sections
 // Sections: Hero, How It Works, Honest Alpha, About, Updates
+import '../styles/lifebuild.css';
 ---
 
 <!-- ==================== HERO SECTION ==================== -->
 <section class="hero" id="hero">
-  <div class="container">
-    <h2>You Used to Command Realms</h2>
-    <div class="hero-video-container">
-      <div class="hero-video-frame">
-        <div class="hero-story">
-          <img
-            id="heroStoryFrame"
-            src="/header-story/hero-story-1.webp"
-            alt="Saturday morning at the desk, building a kingdom"
-            class="hero-story-frame"
-          />
-          <img
-            id="heroStoryOverlayFrame"
-            src="/header-story/hero-story-1.webp"
-            alt=""
-            class="hero-story-frame is-overlay"
-            aria-hidden="true"
-          />
-          <div class="hero-story-overlay">
-            <button class="story-btn story-replay" id="heroStoryReplay" type="button">Replay</button
-            >
-          </div>
+  <div class="hero-video-container">
+    <div class="hero-video-frame">
+      <div class="hero-story">
+        <img
+          id="heroStoryFrame"
+          src="/header-story/hero-story-1.webp"
+          alt="Saturday morning at the desk, building a kingdom"
+          class="hero-story-frame"
+        />
+        <img
+          id="heroStoryOverlayFrame"
+          src="/header-story/hero-story-1.webp"
+          alt=""
+          class="hero-story-frame is-overlay"
+          aria-hidden="true"
+        />
+        <div class="hero-story-overlay">
+          <button class="story-btn story-replay" id="heroStoryReplay" type="button">Replay</button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container hero-text-container">
+    <h2 class="hero-headline" id="heroHeadline">You Used to Command Realms</h2>
+    <p class="hero-subtitle" id="heroSubtitle"></p>
   </div>
 </section>
 
 <!-- ==================== HOW IT WORKS SECTION ==================== -->
 <section class="how-it-works" id="how-it-works">
   <div class="container">
-    <h2>Reclaim Your Sovereignty</h2>
-    <p class="how-subtitle">a living map of your world, an AI corps at your command.</p>
     <div class="how-it-works-grid">
       <div class="how-card">
         <img class="how-icon" src="/how-it-works/map.webp" alt="Map icon" />
@@ -98,14 +97,16 @@
         <tbody>
           <tr>
             <td>
-              <span class="stage-name">Founding Alpha</span>
-              <button
-                class="btn-sketch stage-select"
-                type="button"
-                data-tag="founding-alpha"
-                data-requires-name="true"
-                aria-pressed="false">I'm in now</button
-              >
+              <div class="stage-header">
+                <button
+                  class="btn-sketch stage-select"
+                  type="button"
+                  data-tag="founding-alpha"
+                  data-requires-name="true"
+                  aria-pressed="false">I'm in now</button
+                >
+                <span class="stage-name">Founding Alpha</span>
+              </div>
             </td>
             <td
               >AI team for capturing and managing personal projects. Advisors in your areas of
@@ -116,14 +117,16 @@
           </tr>
           <tr>
             <td>
-              <span class="stage-name">Builder Alpha</span>
-              <button
-                class="btn-sketch stage-select"
-                type="button"
-                data-tag="builder-alpha"
-                data-requires-name="true"
-                aria-pressed="false">Notify me</button
-              >
+              <div class="stage-header">
+                <button
+                  class="btn-sketch stage-select"
+                  type="button"
+                  data-tag="builder-alpha"
+                  data-requires-name="true"
+                  aria-pressed="false">Notify me</button
+                >
+                <span class="stage-name">Builder Alpha</span>
+              </div>
             </td>
             <td
               >Visual map. Worker AI that tasks at your command. On-brand interface. Agents with
@@ -137,14 +140,16 @@
           </tr>
           <tr>
             <td>
-              <span class="stage-name">Public Beta</span>
-              <button
-                class="btn-sketch stage-select"
-                type="button"
-                data-tag="public-beta"
-                data-requires-name="true"
-                aria-pressed="false">Notify me</button
-              >
+              <div class="stage-header">
+                <button
+                  class="btn-sketch stage-select"
+                  type="button"
+                  data-tag="public-beta"
+                  data-requires-name="true"
+                  aria-pressed="false">Notify me</button
+                >
+                <span class="stage-name">Public Beta</span>
+              </div>
             </td>
             <td>Stable. Secure. Full functionality. Real onboarding.</td>
             <td>Less to shape—foundation is set.</td>
@@ -152,14 +157,16 @@
           </tr>
           <tr>
             <td>
-              <span class="stage-name">Post-Beta</span>
-              <button
-                class="btn-sketch stage-select"
-                type="button"
-                data-tag="post-beta"
-                data-requires-name="true"
-                aria-pressed="false">Notify me</button
-              >
+              <div class="stage-header">
+                <button
+                  class="btn-sketch stage-select"
+                  type="button"
+                  data-tag="post-beta"
+                  data-requires-name="true"
+                  aria-pressed="false">Notify me</button
+                >
+                <span class="stage-name">Post-Beta</span>
+              </div>
             </td>
             <td>The real thing, if it proves out.</td>
             <td>You missed the messy years.</td>
@@ -177,7 +184,7 @@
         data-tag="updates-only"
         data-requires-name="false"
         aria-pressed="false">Just watching</button
-      > — we'll send occasional updates only.
+      >
     </p>
 
     <div class="alpha-signup is-collapsed" id="alpha-signup">
@@ -299,670 +306,6 @@
   </div>
 </section>
 
-<style>
-  /* ==================== HERO SECTION ==================== */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    padding: 6rem 0 2rem;
-  }
-
-  .hero-video-container {
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto 2.5rem;
-    position: relative;
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  .hero-video-frame {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow:
-      0 4px 20px rgba(0, 0, 0, 0.4),
-      0 0 60px rgba(212, 160, 82, 0.1);
-  }
-
-  .hero-video-frame::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border: 3px solid var(--color-amber);
-    border-radius: 12px;
-    opacity: 0.3;
-    transform: rotate(-0.3deg);
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .hero-video-frame::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border: 2px solid var(--color-amber);
-    border-radius: 14px;
-    opacity: 0.15;
-    transform: rotate(0.5deg);
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .hero-story {
-    position: relative;
-    background: #f4ece0;
-  }
-
-  .hero-story-frame {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 300ms ease;
-  }
-
-  .hero-story-frame.is-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .hero-story-frame.is-overlay.is-active {
-    opacity: 1;
-  }
-
-  .hero-story-frame.is-overlay.is-resetting {
-    transition: none;
-  }
-
-  .hero-story-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 1.5rem 1.75rem;
-    background: linear-gradient(180deg, rgba(244, 236, 224, 0) 0%, rgba(244, 236, 224, 0.92) 100%);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .story-replay {
-    align-self: flex-end;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(6px);
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .story-replay.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .story-btn {
-    font-family: var(--font-hand);
-    font-size: 1.05rem;
-    padding: 0.5rem 1.2rem;
-    border-radius: 6px;
-    border: 2px solid rgba(44, 36, 22, 0.3);
-    background: rgba(255, 249, 240, 0.85);
-    color: var(--color-ink);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .story-btn:hover {
-    border-color: var(--color-amber);
-    color: var(--color-amber);
-    transform: translateY(-1px);
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
-  }
-
-  /* ==================== HOW IT WORKS SECTION ==================== */
-  .how-it-works {
-    background: transparent;
-    position: relative;
-  }
-
-  .how-it-works::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: rgba(44, 36, 22, 0.08);
-  }
-
-  .how-it-works h2 {
-    text-align: left;
-    margin-bottom: 0.5rem;
-  }
-
-  .how-subtitle {
-    text-align: left;
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    color: var(--color-cream-muted);
-    margin-bottom: 3rem;
-    letter-spacing: 0.05em;
-  }
-
-  .how-it-works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .how-card {
-    background: var(--color-bg-card);
-    border: 2px solid rgba(44, 36, 22, 0.12);
-    border-radius: 6px;
-    padding: 1.8rem;
-    position: relative;
-    transition: all 0.3s ease;
-    transform: rotate(var(--rotation, 0deg));
-  }
-
-  .how-card:nth-child(1) {
-    --rotation: -0.5deg;
-  }
-  .how-card:nth-child(2) {
-    --rotation: 0.3deg;
-  }
-  .how-card:nth-child(3) {
-    --rotation: -0.3deg;
-  }
-
-  .how-card:hover {
-    border-color: rgba(212, 160, 82, 0.4);
-    transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  }
-
-  .how-card h3 {
-    margin-bottom: 0.8rem;
-    font-size: 1.4rem;
-  }
-
-  .how-card p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .how-icon {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1rem;
-    display: block;
-    object-fit: contain;
-    opacity: 0.82;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
-  }
-
-  /* ==================== HONEST ALPHA SECTION ==================== */
-  .honest-alpha {
-    background: transparent;
-    position: relative;
-  }
-
-  .honest-alpha::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: rgba(44, 36, 22, 0.08);
-  }
-
-  .honest-alpha h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .honest-intro {
-    max-width: 700px;
-    margin-bottom: 2.5rem;
-  }
-
-  .honest-intro > p {
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  .security-note {
-    background: rgba(139, 58, 58, 0.08);
-    border-left: 4px solid var(--color-red-deep);
-    padding: 1rem 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 4px 4px 0;
-    transform: rotate(-0.3deg);
-  }
-
-  .security-note p {
-    font-family: var(--font-serif);
-    font-size: 0.9rem;
-  }
-
-  .security-note strong {
-    color: var(--color-cream);
-  }
-
-  .alpha-table-wrapper {
-    background: rgba(255, 249, 240, 0.95);
-    border-radius: 4px;
-    padding: 2rem;
-    transform: rotate(-0.3deg);
-    box-shadow:
-      4px 4px 0 var(--color-paper-dark),
-      8px 8px 20px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .alpha-table-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: repeating-linear-gradient(
-      transparent,
-      transparent 31px,
-      rgba(44, 36, 22, 0.08) 31px,
-      rgba(44, 36, 22, 0.08) 32px
-    );
-    pointer-events: none;
-  }
-
-  .alpha-table-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 60px;
-    width: 2px;
-    background: rgba(139, 58, 58, 0.2);
-    pointer-events: none;
-  }
-
-  .alpha-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .alpha-table th {
-    font-family: var(--font-hand);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    text-align: left;
-    padding: 0.8rem 0.6rem;
-    border-bottom: 2px solid var(--color-ink-light);
-  }
-
-  .alpha-table td {
-    font-family: var(--font-serif);
-    font-size: 0.9rem;
-    padding: 1rem 0.6rem;
-    border-bottom: 1px dashed rgba(44, 36, 22, 0.2);
-    vertical-align: top;
-    color: var(--color-ink);
-    line-height: 1.6;
-  }
-
-  .alpha-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .stage-name {
-    font-family: var(--font-hand);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-ink);
-    white-space: nowrap;
-    display: block;
-    margin-bottom: 0.35rem;
-  }
-
-  .stage-select {
-    margin-top: 0.35rem;
-  }
-
-  .stage-select.is-selected {
-    background: var(--color-ink);
-    color: var(--color-paper);
-    transform: rotate(0deg);
-  }
-
-  .just-watching-fallback {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    color: var(--color-cream-muted);
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .just-watching-fallback .btn-sketch {
-    margin: 0 0.25rem;
-  }
-
-  /* ==================== ALPHA SIGNUP FORM ==================== */
-  .alpha-signup {
-    margin-top: 2.5rem;
-    scroll-margin-top: 140px;
-  }
-
-  .alpha-signup.is-collapsed {
-    margin-top: 1rem;
-  }
-
-  .alpha-signup-form {
-    display: grid;
-    gap: 1.1rem;
-    background: rgba(255, 249, 240, 0.9);
-    border: 2px solid rgba(44, 36, 22, 0.12);
-    border-radius: 8px;
-    padding: 1.75rem;
-    box-shadow: 3px 3px 0 var(--color-paper-dark);
-    max-height: 1200px;
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-      max-height 0.3s ease,
-      opacity 0.25s ease,
-      transform 0.25s ease;
-    overflow: hidden;
-  }
-
-  .alpha-signup.is-collapsed .alpha-signup-form {
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(-6px);
-    padding-top: 0;
-    padding-bottom: 0;
-    border-width: 0;
-    box-shadow: none;
-  }
-
-  .alpha-signup-form .form-group {
-    display: grid;
-    gap: 0.4rem;
-  }
-
-  .alpha-signup-form label {
-    font-family: var(--font-hand);
-    font-size: 0.85rem;
-    color: var(--color-ink-light);
-  }
-
-  .alpha-signup-form input[type='text'],
-  .alpha-signup-form input[type='email'],
-  .alpha-signup-form textarea {
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    padding: 0.7rem 0.8rem;
-    border-radius: 6px;
-    border: 2px solid rgba(44, 36, 22, 0.2);
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--color-ink);
-    transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
-  }
-
-  .alpha-signup-form textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-
-  .alpha-signup-form input:focus,
-  .alpha-signup-form textarea:focus {
-    outline: none;
-    border-color: var(--color-amber);
-    box-shadow: 0 0 0 3px rgba(212, 160, 82, 0.25);
-  }
-
-  .alpha-signup-form .optional {
-    font-weight: 400;
-    opacity: 0.7;
-    font-size: 0.8rem;
-  }
-
-  .alpha-signup-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .alpha-signup-error {
-    color: var(--color-red-deep);
-    font-size: 0.9rem;
-    font-family: var(--font-hand);
-  }
-
-  /* ==================== ABOUT SECTION ==================== */
-  .about {
-    background: transparent;
-    position: relative;
-  }
-
-  .about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: rgba(44, 36, 22, 0.08);
-  }
-
-  .about-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .about-panel {
-    background: rgba(255, 249, 240, 0.75);
-    border: 2px solid rgba(44, 36, 22, 0.12);
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .about h3 {
-    color: var(--color-ink);
-  }
-
-  .about p,
-  .about .about-note,
-  .about .about-sidebar p,
-  .about .bets-list span {
-    font-family: var(--font-serif);
-    color: var(--color-ink-light);
-  }
-
-  .bets-list {
-    list-style: none;
-    margin: 1.5rem 0;
-  }
-
-  .bets-list li {
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-    position: relative;
-  }
-
-  .bets-list li::before {
-    content: '→';
-    font-family: var(--font-hand);
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--color-amber);
-    font-size: 1.2rem;
-  }
-
-  .bets-list strong {
-    font-family: var(--font-hand);
-    font-size: 1.2rem;
-    color: var(--color-cream);
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-
-  .bets-list span {
-    font-family: var(--font-serif);
-    font-size: 0.9rem;
-    color: var(--color-cream-muted);
-  }
-
-  .about-sidebar {
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .about-sidebar a {
-    font-family: var(--font-hand);
-    font-size: 1.1rem;
-    color: var(--color-amber-deep);
-    text-decoration: none;
-  }
-
-  .about-sidebar a:hover {
-    text-decoration: underline;
-  }
-
-  /* ==================== UPDATES SECTION ==================== */
-  .updates {
-    background: transparent;
-    position: relative;
-  }
-
-  .updates::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: rgba(44, 36, 22, 0.08);
-  }
-
-  .updates-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .updates-header a {
-    font-family: var(--font-hand);
-    font-size: 1.1rem;
-    color: var(--color-amber);
-    text-decoration: none;
-  }
-
-  .updates-header a:hover {
-    text-decoration: underline;
-  }
-
-  .update-card {
-    background: var(--color-bg-card);
-    border: 2px solid rgba(44, 36, 22, 0.12);
-    border-radius: 6px;
-    padding: 2rem;
-    transform: rotate(0.2deg);
-  }
-
-  .update-date {
-    font-family: var(--font-typewriter);
-    font-size: 0.95rem;
-    color: var(--color-cream-muted);
-    margin-bottom: 1rem;
-  }
-
-  .update-content {
-    font-family: var(--font-serif);
-    color: var(--color-cream-muted);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    font-style: italic;
-  }
-
-  /* ==================== MOBILE STYLES ==================== */
-  @media (max-width: 768px) {
-    .hero-video-container {
-      width: 100vw;
-      margin: 0 calc(50% - 50vw) 2rem;
-      max-width: none;
-    }
-
-    .hero-video-frame {
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .hero-video-frame::before,
-    .hero-video-frame::after {
-      display: none;
-    }
-
-    .hero-story-overlay {
-      padding: 1rem;
-    }
-
-    .alpha-table-wrapper {
-      padding: 1rem;
-      transform: none;
-    }
-
-    .alpha-table-wrapper::after {
-      display: none;
-    }
-
-    .alpha-table {
-      display: block;
-      overflow-x: auto;
-    }
-
-    .how-card.how-card {
-      transform: none;
-    }
-  }
-</style>
-
 <script>
   // Hero Story Animation
   const frames = [
@@ -1003,12 +346,29 @@
   const frameImage = document.getElementById('heroStoryFrame') as HTMLImageElement | null;
   const overlayImage = document.getElementById('heroStoryOverlayFrame') as HTMLImageElement | null;
   const replayButton = document.getElementById('heroStoryReplay');
+  const heroHeadline = document.getElementById('heroHeadline');
+  const heroSubtitle = document.getElementById('heroSubtitle');
 
   let currentIndex = 0;
   let _isPlaying = false;
+  let _headlineTransitioned = false;
   let timer: number | null = null;
   const frameDuration = 1100;
   const autoStartDelay = 900;
+
+  // Transition headline from "You Used to Command Realms" to "Reclaim Your Sovereignty"
+  const transitionHeadline = () => {
+    if (_headlineTransitioned || !heroHeadline || !heroSubtitle) return;
+    _headlineTransitioned = true;
+
+    heroHeadline.classList.add('is-transitioning');
+
+    setTimeout(() => {
+      heroHeadline.textContent = 'Reclaim Your Sovereignty';
+      heroHeadline.classList.remove('is-transitioning');
+      heroSubtitle.textContent = 'A living map of your world, an AI corps at your command.';
+    }, 500);
+  };
 
   const updateFrame = (index: number) => {
     const safeIndex = (index + frames.length) % frames.length;
@@ -1066,6 +426,8 @@
     if (replayButton) {
       replayButton.classList.add('is-visible');
     }
+    // Trigger headline transition when animation ends
+    transitionHeadline();
   };
 
   const startPlayback = () => {
@@ -1089,6 +451,7 @@
     replayButton.addEventListener('click', () => {
       currentIndex = 0;
       updateFrame(0);
+      // Only replay the image animation, not the headline transition
       startPlayback();
     });
   }
@@ -1100,6 +463,8 @@
       startPlayback();
     }, autoStartDelay);
   } else {
+    // Show final state immediately for users who prefer reduced motion
+    updateFrame(frames.length - 1);
     stopPlayback();
   }
 
