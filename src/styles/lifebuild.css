@@ -714,7 +714,7 @@
 
   .stage-name {
     font-size: 1.1rem;
-    order: 0; /* Reset order so button comes first on mobile */
+    order: -1; /* Name first, button to the right on mobile */
   }
 
   .just-watching-fallback {
