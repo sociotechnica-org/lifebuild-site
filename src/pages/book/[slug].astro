@@ -1,0 +1,118 @@
+---
+import BookHomeLink from '../../components/BookHomeLink.astro';
+import Layout from '../../layouts/Layout.astro';
+import { chapters, getChapterBySlug, getPrevNextChapters } from '../../lib/book';
+import '../../styles/book.css';
+
+export async function getStaticPaths() {
+  return chapters.map((chapter) => ({
+    params: { slug: chapter.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const chapter = getChapterBySlug(slug);
+
+if (!chapter) {
+  throw new Error(`Unknown chapter slug: ${slug}`);
+}
+
+const { prevChapter, nextChapter } = getPrevNextChapters(slug);
+const statusLabel = (status: string) => (status === 'published' ? 'Published' : 'Coming soon');
+
+const chapterModules = import.meta.glob('../../content/book/*.md');
+const loadChapter = chapterModules[`../../content/book/${slug}.md`];
+let Content;
+
+if (chapter.status === 'published') {
+  if (!loadChapter) {
+    throw new Error(`Missing content for ${slug}`);
+  }
+  const mod = await loadChapter();
+  Content = mod.Content;
+}
+---
+
+<Layout title={`LifeBuild — ${chapter.title}`}>
+  <BookHomeLink slot="nav" />
+  <main class="container book-page">
+    <details class="toc-drawer">
+      <summary aria-label="Toggle table of contents">☰</summary>
+      <div class="toc-drawer-panel">
+        <div class="toc-drawer-title">Table of Contents</div>
+        <ul>
+          {
+            chapters.map((item) => (
+              <li>
+                <span class="toc-item-number">Chapter {item.number}</span>
+                {item.slug === chapter.slug ? (
+                  <span class="toc-item-title" aria-current="page">
+                    {item.title}
+                  </span>
+                ) : item.status === 'published' ? (
+                  <a class="toc-item-title" href={`/book/${item.slug}`}>
+                    {item.title}
+                  </a>
+                ) : (
+                  <span class="toc-item-title">{item.title}</span>
+                )}
+                <span class="toc-item-status">
+                  {statusLabel(item.status)}
+                  {item.slug === chapter.slug ? ' (current)' : ''}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </details>
+    <header class="chapter-header">
+      <p>Chapter {chapter.number}</p>
+      <h1>{chapter.title}</h1>
+    </header>
+
+    {
+      chapter.status === 'published' && Content ? (
+        <article class="chapter-body">
+          <Content />
+        </article>
+      ) : (
+        <section class="chapter-coming-soon">
+          <p>This chapter is coming soon.</p>
+          <p>{chapter.teaser}</p>
+          <p>
+            <a href="/book">Back to contents</a>
+          </p>
+        </section>
+      )
+    }
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <div>
+        {
+          prevChapter ? (
+            prevChapter.status === 'published' ? (
+              <a href={`/book/${prevChapter.slug}`}>Prev: {prevChapter.title}</a>
+            ) : (
+              <span>Prev: {prevChapter.title} (Coming soon)</span>
+            )
+          ) : null
+        }
+      </div>
+      <div>
+        {
+          nextChapter ? (
+            nextChapter.status === 'published' ? (
+              <a href={`/book/${nextChapter.slug}`}>Next: {nextChapter.title}</a>
+            ) : (
+              <span>Next: {nextChapter.title} (Coming soon)</span>
+            )
+          ) : (
+            <span>End of available chapters</span>
+          )
+        }
+        {nextChapter?.status === 'coming_soon' ? <p>{nextChapter.teaser}</p> : null}
+      </div>
+    </nav>
+  </main>
+</Layout>
