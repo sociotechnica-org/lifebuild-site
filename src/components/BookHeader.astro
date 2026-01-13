@@ -124,17 +124,20 @@ const statusLabel = (status: string) => (status === 'published' ? 'Published' : 
     }
 
     // Reading progress indicator
-    const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
-    const progressContainer = document.querySelector('.reading-progress');
+    const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement | null;
+    const progressContainer = document.querySelector('.reading-progress') as HTMLElement | null;
 
     if (progressBar && progressContainer) {
+      const bar = progressBar;
+      const container = progressContainer;
+
       function updateProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
 
-        progressBar.style.width = `${progress}%`;
-        progressContainer.setAttribute('aria-valuenow', String(Math.round(progress)));
+        bar.style.width = `${progress}%`;
+        container.setAttribute('aria-valuenow', String(Math.round(progress)));
       }
 
       window.addEventListener('scroll', updateProgress, { passive: true });

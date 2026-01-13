@@ -26,14 +26,14 @@ const chapterModules = import.meta.glob('../../content/book/*.md', {
 const chapterModulesCompiled = import.meta.glob('../../content/book/*.md');
 const loadChapterRaw = chapterModules[`../../content/book/${slug}.md`];
 const loadChapter = chapterModulesCompiled[`../../content/book/${slug}.md`];
-let Content;
+let Content: astroHTML.JSX.Element | null = null;
 let readingTime = '';
 
 if (chapter.status === 'published') {
   if (!loadChapter) {
     throw new Error(`Missing content for ${slug}`);
   }
-  const mod = await loadChapter();
+  const mod = (await loadChapter()) as { Content: astroHTML.JSX.Element };
   Content = mod.Content;
 
   // Calculate reading time
