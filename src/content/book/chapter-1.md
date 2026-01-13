@@ -104,9 +104,9 @@ I feel stuck when I should feel engaged.
 
 ### The Pattern: Avoidance
 
-You dread a task. You avoid it. Avoiding provides temporary relief—the dread lifts momentarily. But the task grows harder the longer it sits. The dread intensifies. You avoid more.
+You dread a task. You avoid it. Avoiding provides temporary relief—the dread lifts momentarily. But the task grows in difficulty the longer it sits. The dread intensifies. You avoid more.
 
-_Dread → Avoid → Relief → Task grows harder → Dread intensifies → Avoid more_
+_Dread → Avoid → Relief → Task grows more difficult → Dread intensifies → Avoid more_
 
 The relief step is crucial. Avoidance provides a small emotional reward—the discomfort goes away, briefly. This reinforces the avoidance behavior through basic learning mechanisms. You accidentally train yourself to avoid.
 
@@ -134,7 +134,7 @@ And the hard things keep getting more complex. Knowledge work involves ambiguous
 
 _Dread + relief one tap away + believing willpower is the answer = escape becomes the default response_
 
-You feel resistance toward something hard. The environment offers infinite easy alternatives with no friction. The belief says your problem is insufficient willpower, so you don't address the underlying dread. The collision trains you to flinch away from difficulty.
+You feel resistance toward something difficult. The environment offers infinite easy alternatives with no friction. The belief says your problem is insufficient willpower, so you don't address the underlying dread. The collision trains you to flinch away from difficulty.
 
 You should feel engaged—moving toward what matters, making progress, in motion. Instead you feel stuck—paralyzed, circling, watching important things gather dust while you stay busy with everything else.
 
@@ -166,7 +166,7 @@ And here's the twist: asking for help actually increases perceived competence. A
 
 ### The Environment
 
-Community infrastructure has eroded. Time spent socializing has dropped 21% in a decade.[^13] The percentage of people reporting no close friends has jumped from 3% to 17%.[^14] The systems that used to distribute the load—neighbors helping neighbors, extended family, civic organizations—have atrophied.
+Community infrastructure has eroded. Time spent socializing has dropped 21% in a decade.[^13] The percentage of people reporting no close friends has jumped from 3% to 17%.[^14] The systems that used to distribute the load—neighbors helping neighbors, extended family, civic and religious organizations—have atrophied.
 
 Delegation has friction. Finding the right person, explaining the context, managing the handoff, accepting they'll do it differently—all require effort. When you're already overwhelmed, setting up help feels like another task on the pile.
 
@@ -212,7 +212,7 @@ If you're reading this, it is highly likely you're caught in at least one of the
 
 ## What’s Actually Happening
 
-There's a word for what these gaps represent: lost sovereignty.
+There's a word for what these gaps represent: **lost sovereignty.**
 
 Sovereignty is your capacity for intentional, self-directed living. It's the difference between choosing your day and being herded through it. Between building a life and just maintaining one. Between directing your resources and watching them drain away.
 
@@ -244,7 +244,7 @@ This is what the philosophical tradition missed. They defined sovereignty and de
 
 ## The Sovereignty Gap
 
-The Sovereignty Gap is the sum of the four gaps—the total distance between where you are (overwhelmed, depleted, avoiding, burdened) and where capacity builds (balanced, restored, engaged, supported).
+**The Sovereignty Gap** is the sum of the four gaps—the total distance between where you are (overwhelmed, depleted, avoiding, burdened) and where capacity builds (balanced, restored, engaged, supported).
 
 It's not a gap between where you are and some future ideal. It's the distance between the life you're living right now and the life you could be living right now—if the gaps weren't open.
 
@@ -268,36 +268,36 @@ The rest of this book shows you how.
 
 ## References
 
-[^1]: Pronin, E., Olivola, C. Y., & Kennedy, K. A. (2008). Doing unto future selves as you would do unto others: Psychological distance and decision making. Personality and Social Psychology Bulletin, 34(2), 224-236.
+[^1]: Pronin, E., Olivola, C. Y., & Kennedy, K. A. (2008). [Doing unto future selves as you would do unto others: Psychological distance and decision making](https://doi.org/10.1177/0146167207310023). Personality and Social Psychology Bulletin, 34(2), 224-236.
 
-[^2]: Buehler, R., Griffin, D., & Ross, M. (1994). Exploring the "planning fallacy": Why people underestimate their task completion times. Journal of Personality and Social Psychology, 67(3), 366-381.
+[^2]: Buehler, R., Griffin, D., & Ross, M. (1994). [Exploring the "planning fallacy": Why people underestimate their task completion times](https://doi.org/10.1037/0022-3514.67.3.366). Journal of Personality and Social Psychology, 67(3), 366-381.
 
-[^3]: Cowan, N. (2001). The magical number 4 in short-term memory: A reconsideration of mental storage capacity. Behavioral and Brain Sciences, 24(1), 87-114.
+[^3]: Cowan, N. (2001). [The magical number 4 in short-term memory: A reconsideration of mental storage capacity](https://doi.org/10.1017/S0140525X01003922). Behavioral and Brain Sciences, 24(1), 87-114.
 
-[^4]: Deloitte. (2023). Workplace Burnout Survey.
+[^4]: Deloitte. (2023). [Workplace Burnout Survey](https://www2.deloitte.com/us/en/pages/about-deloitte/articles/burnout-survey.html).
 
-[^5]: U.S. Bureau of Labor Statistics. American Time Use Survey 2024.
+[^5]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Television, capturing America's attention](https://www.bls.gov/opub/btn/volume-7/television-capturing-americas-attention.htm).
 
-[^6]: U.S. Bureau of Labor Statistics. American Time Use Survey 2024.
+[^6]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Leisure and sports activities](https://www.bls.gov/opub/ted/2023/time-spent-in-leisure-and-sports-activities-2022.htm).
 
-[^7]: U.S. Bureau of Labor Statistics. American Time Use Survey 2024.
+[^7]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Sports and Exercise](https://www.bls.gov/spotlight/2017/sports-and-exercise/home.htm).
 
-[^8]: Pychyl, T. A. (2013). Solving the Procrastination Puzzle. Tarcher/Penguin.
+[^8]: Pychyl, T. A. (2013). [Solving the Procrastination Puzzle](https://www.penguinrandomhouse.com/books/315695/solving-the-procrastination-puzzle-by-timothy-a-pychyl/). Tarcher/Penguin.
 
-[^9]: Steel, P. (2007). The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure. Psychological Bulletin, 133(1), 65-94.
+[^9]: Steel, P. (2007). [The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure](https://doi.org/10.1037/0033-2909.133.1.65). Psychological Bulletin, 133(1), 65-94.
 
-[^10]: Bazzi, S., Fiszbein, M., & Gebresilasse, M. (2020). Frontier culture: The roots and persistence of "rugged individualism" in the United States. Econometrica, 88(6), 2329-2368.
+[^10]: Bazzi, S., Fiszbein, M., & Gebresilasse, M. (2020). [Frontier culture: The roots and persistence of "rugged individualism" in the United States](https://doi.org/10.3982/ECTA16484). Econometrica, 88(6), 2329-2368.
 
-[^11]: Flynn, F. J., & Lake, V. K. B. (2008). If you need help, just ask: Underestimating compliance with direct requests for help. Journal of Personality and Social Psychology, 95(1), 128-143.
+[^11]: Flynn, F. J., & Lake, V. K. B. (2008). [If you need help, just ask: Underestimating compliance with direct requests for help](https://doi.org/10.1037/0022-3514.95.1.128). Journal of Personality and Social Psychology, 95(1), 128-143.
 
-[^12]: Brooks, A. W., Gino, F., & Schweitzer, M. E. (2015). Smart people ask for (my) advice: Seeking advice boosts perceptions of competence. Management Science, 61(6), 1421-1435.
+[^12]: Brooks, A. W., Gino, F., & Schweitzer, M. E. (2015). [Smart people ask for (my) advice: Seeking advice boosts perceptions of competence](https://doi.org/10.1287/mnsc.2014.2054). Management Science, 61(6), 1421-1435.
 
-[^13]: U.S. Bureau of Labor Statistics. American Time Use Survey.
+[^13]: Kannan, V. D., & Veazie, P. J. (2023). [US trends in social isolation, social engagement, and companionship, 2003–2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC9811250/). SSM - Population Health.
 
-[^14]: Cox, D. A. (2021). The State of American Friendship. Survey Center on American Life.
+[^14]: Cox, D. A. (2021). [The State of American Friendship](https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/). Survey Center on American Life.
 
-[^15]: Whillans, A. V., et al. (2017). Buying time promotes happiness. Proceedings of the National Academy of Sciences, 114(32), 8523-8527.
+[^15]: Whillans, A. V., et al. (2017). [Buying time promotes happiness](https://doi.org/10.1073/pnas.1706541114). Proceedings of the National Academy of Sciences, 114(32), 8523-8527.
 
 [^16]: Probability calculations based on gap prevalence data.
 
-[^17]: Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68-78.
+[^17]: Ryan, R. M., & Deci, E. L. (2000). [Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being](https://doi.org/10.1037/0003-066x.55.1.68). American Psychologist, 55(1), 68-78.
