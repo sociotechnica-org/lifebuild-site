@@ -14,6 +14,8 @@ Marcus isn’t failing. By most measures, he’s succeeding. The house, the care
 
 There’s a pattern underneath days like this. Not a personal failing, but a system—a set of gaps between how life should feel and how it actually feels. The gaps aren’t random. They emerge at predictable collision points: where the way modern life is designed meets the false beliefs we carry about how things work. Once you see these collisions, you can’t unsee them.
 
+# The Four Gaps
+
 ## The Balance Gap
 
 I feel overwhelmed when I should feel balanced.
@@ -184,17 +186,19 @@ You should feel supported—backed up, able to ask, confident that help is avail
 
 The statistics paint a clear picture. We underestimate help by 48%. Half of wealthy people won’t outsource. Socializing has collapsed. The gap is so normalized we don’t even see it as a gap—we see it as adulthood.
 
-## How the Gaps Reinforce Each Other?
+# The System
+
+## How the Gaps Reinforce Each Other
 
 These gaps don't operate in isolation. They form a system—each one widening the others, creating a stable negative state that's hard to escape.
 
-The Balance Gap starts the cascade. When you're overwhelmed by volume, you have nothing left for intentional recovery (widening the Restoration Gap), nothing left to face hard things (widening the Engagement Gap), and no bandwidth to set up help (widening the Support Gap).
+**The Balance Gap starts the cascade.** When you're overwhelmed by volume, you have nothing left for intentional recovery (widening the Restoration Gap), nothing left to face hard things (widening the Engagement Gap), and no bandwidth to set up help (widening the Support Gap).
 
-The Restoration Gap compromises recovery. When you don't restore properly, your willpower doesn't replenish (widening the Balance Gap). Your capacity to face hard things diminishes (widening the Engagement Gap). The effort required to seek help feels insurmountable (widening the Support Gap).
+**The Restoration Gap compromises recovery.** When you don't restore properly, your willpower doesn't replenish (widening the Balance Gap). Your capacity to face hard things diminishes (widening the Engagement Gap). The effort required to seek help feels insurmountable (widening the Support Gap).
 
-The Engagement Gap lets things pile up. When you avoid, tasks accumulate—adding to your volume (widening the Balance Gap). The growing pile depletes you further (widening the Restoration Gap). Asking for help on avoided tasks feels especially shameful (widening the Support Gap).
+**The Engagement Gap lets things pile up.** When you avoid, tasks accumulate—adding to your volume (widening the Balance Gap). The growing pile depletes you further (widening the Restoration Gap). Asking for help on avoided tasks feels especially shameful (widening the Support Gap).
 
-The Support Gap amplifies everything. When you won't ask for help, you carry more alone—which increases volume (widening the Balance Gap). You have no one to activate you toward better choices (widening the Restoration Gap). You have no accountability partner to help you face what you're avoiding (widening the Engagement Gap).
+**The Support Gap amplifies everything.** When you won't ask for help, you carry more alone—which increases volume (widening the Balance Gap). You have no one to activate you toward better choices (widening the Restoration Gap). You have no accountability partner to help you face what you're avoiding (widening the Engagement Gap).
 
 The system is self-reinforcing. Each gap makes the others wider.
 
@@ -209,6 +213,8 @@ This is why the gaps persist despite good intentions. The obvious solutions—tr
 ## The Odds
 
 If you're reading this, it is highly likely you're caught in at least one of these gaps. There's roughly a 90% chance you're in two or more. And there's close to a 50% chance that all four are operating simultaneously in your life right now.[^16]
+
+# The Diagnosis
 
 ## What’s Actually Happening
 
@@ -265,8 +271,6 @@ He didn't find more time. He didn't try harder. He didn't become a different per
 He built different architecture.
 
 The rest of this book shows you how.
-
-## References
 
 [^1]: Pronin, E., Olivola, C. Y., & Kennedy, K. A. (2008). <a href="https://doi.org/10.1177/0146167207310023" target="_blank">Doing unto future selves as you would do unto others: Psychological distance and decision making</a>. Personality and Social Psychology Bulletin, 34(2), 224-236.
 

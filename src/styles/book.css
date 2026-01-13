@@ -263,7 +263,7 @@ body:has(.book-page) .ambient-glow {
 }
 
 .chapter-header .reading-time {
-  text-transform: none;
+  text-transform: uppercase;
   letter-spacing: 0.02em;
   font-size: 0.9rem;
 }
