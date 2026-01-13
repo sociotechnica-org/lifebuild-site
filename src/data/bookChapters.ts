@@ -34,7 +34,7 @@ export const bookChapters: BookChapter[] = [
     slug: 'chapter-2',
     title: 'The Taxonomy',
     part: 'The Lens',
-    status: 'published',
+    status: 'coming_soon',
     teaser:
       'A new way to see your life clearly. Two simple frameworks—Bronze/Silver/Gold and Red/Gray/Blue—that reveal why what matters keeps getting deferred.',
   },
