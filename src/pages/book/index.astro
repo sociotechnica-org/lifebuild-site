@@ -1,5 +1,5 @@
 ---
-import BookHomeLink from '../../components/BookHomeLink.astro';
+import BookHeader from '../../components/BookHeader.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getFirstPublishedChapter, groupChaptersByPart } from '../../lib/book';
 import '../../styles/book.css';
@@ -11,7 +11,7 @@ const statusLabel = (status: string) => (status === 'published' ? 'Published' : 
 ---
 
 <Layout title="The Sovereignty Gap">
-  <BookHomeLink slot="nav" />
+  <BookHeader slot="nav" />
   <main class="container book-page book-landing">
     <h1>The Sovereignty Gap</h1>
     <p>
