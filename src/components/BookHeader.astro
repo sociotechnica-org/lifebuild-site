@@ -401,6 +401,64 @@ const statusLabel = (status: string) => (status === 'published' ? 'Published' : 
     transition: width 0.1s ease-out;
   }
 
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .book-header {
+      background: #1a1a1a;
+    }
+
+    .book-header-logo img {
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    .chapter-selector-toggle {
+      color: #e8e8e0;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .chapter-selector-toggle:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .chapter-num {
+      color: #999;
+    }
+
+    .chapter-selector-dropdown {
+      background: #1a1a1a;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .chapter-selector-item {
+      color: #e8e8e0;
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .chapter-selector-item:hover:not(.is-disabled) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .chapter-selector-item.is-current {
+      background: rgba(212, 160, 82, 0.15);
+    }
+
+    .chapter-selector-item-num {
+      color: #999;
+    }
+
+    .chapter-selector-item-status {
+      color: #88a;
+    }
+
+    .reading-progress {
+      background: #e8e8e0;
+    }
+
+    .reading-progress-bar {
+      background: linear-gradient(to right, #ccc, #d4a052);
+    }
+  }
+
   @media (max-width: 720px) {
     .book-header-content {
       padding: 0 1rem;

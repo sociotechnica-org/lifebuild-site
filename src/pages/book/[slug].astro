@@ -26,14 +26,16 @@ const chapterModules = import.meta.glob('../../content/book/*.md', {
 const chapterModulesCompiled = import.meta.glob('../../content/book/*.md');
 const loadChapterRaw = chapterModules[`../../content/book/${slug}.md`];
 const loadChapter = chapterModulesCompiled[`../../content/book/${slug}.md`];
-let Content: astroHTML.JSX.Element | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let Content: any = null;
 let readingTime = '';
 
 if (chapter.status === 'published') {
   if (!loadChapter) {
     throw new Error(`Missing content for ${slug}`);
   }
-  const mod = (await loadChapter()) as { Content: astroHTML.JSX.Element };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mod = (await loadChapter()) as { Content: any };
   Content = mod.Content;
 
   // Calculate reading time

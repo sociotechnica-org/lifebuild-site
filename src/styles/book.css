@@ -423,3 +423,25 @@ body:has(.book-page) .ambient-glow {
     text-decoration: none;
   }
 }
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body:has(.book-page) {
+    background: #151515;
+  }
+
+  .book-page {
+    --book-ink: #e8e8e0;
+    --book-ink-muted: rgba(232, 232, 224, 0.6);
+    --book-rule: rgba(232, 232, 224, 0.15);
+    --book-link: #e8e8e0;
+  }
+
+  .book-page.container {
+    background: #151515;
+  }
+
+  .book-page a:hover {
+    text-decoration-color: var(--book-ink-muted);
+  }
+}
