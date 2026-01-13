@@ -23,23 +23,22 @@ const statusLabel = (status: string) => (status === 'published' ? 'Published' : 
     </p>
 
     <div class="book-landing-contents">
-      <h2>Contents</h2>
       {
         groupedChapters.map((group) => (
           <section>
-            <h3>{group.part}</h3>
+            <h2>{group.part}</h2>
             <ul>
               {group.chapters.map((chapter) => (
                 <li>
-                  <div>
-                    <span>Chapter {chapter.number}: </span>
+                  <h3>
+                    Chapter {chapter.number}:
                     {chapter.status === 'published' ? (
                       <a href={`/book/${chapter.slug}`}>{chapter.title}</a>
                     ) : (
                       <span>{chapter.title}</span>
                     )}
                     <span> — {statusLabel(chapter.status)}</span>
-                  </div>
+                  </h3>
                   <p>{chapter.teaser}</p>
                 </li>
               ))}

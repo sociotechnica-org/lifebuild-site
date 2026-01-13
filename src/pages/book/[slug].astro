@@ -78,9 +78,9 @@ if (chapter.status === 'published') {
         {
           prevChapter ? (
             prevChapter.status === 'published' ? (
-              <a href={`/book/${prevChapter.slug}`}>Prev: {prevChapter.title}</a>
+              <a href={`/book/${prevChapter.slug}`}>&larr; Prev: {prevChapter.title}</a>
             ) : (
-              <span>Prev: {prevChapter.title} (Coming soon)</span>
+              <span>&larr; Prev: {prevChapter.title} (Coming soon)</span>
             )
           ) : null
         }
@@ -89,9 +89,9 @@ if (chapter.status === 'published') {
         {
           nextChapter ? (
             nextChapter.status === 'published' ? (
-              <a href={`/book/${nextChapter.slug}`}>Next: {nextChapter.title}</a>
+              <a href={`/book/${nextChapter.slug}`}>&rarr; Next: {nextChapter.title}</a>
             ) : (
-              <span>Next: {nextChapter.title} (Coming soon)</span>
+              <span>&rarr; Next: {nextChapter.title} (Coming soon)</span>
             )
           ) : (
             <span>End of available chapters</span>

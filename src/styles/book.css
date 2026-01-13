@@ -105,9 +105,9 @@ body:has(.book-page) .ambient-glow {
 .book-page h3.heading-anchor::before {
   content: '#';
   position: absolute;
-  left: -1.2em;
+  left: -1em;
   opacity: 0;
-  color: var(--book-ink-muted);
+  color: var(--book-rule);
   transition: opacity 0.15s ease;
 }
 
@@ -283,7 +283,6 @@ body:has(.book-page) .ambient-glow {
   margin: 3rem 0 2.5rem;
   padding: 1.5rem 0;
   border-top: 1px solid var(--book-rule);
-  border-bottom: 1px solid var(--book-rule);
   display: grid;
   gap: 1.25rem;
   font-size: 1.1rem;

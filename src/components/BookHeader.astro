@@ -180,8 +180,12 @@ const statusLabel = (status: string) => (status === 'published' ? 'Published' : 
       });
     });
 
-    // Make h2/h3 headings clickable anchor links
+    // Make h2/h3 headings clickable anchor links (exclude book landing/TOC page)
     document.querySelectorAll('.book-page h2, .book-page h3').forEach((heading) => {
+      // Skip headings in the book landing contents (table of contents)
+      if (heading.closest('.book-landing-contents') || heading.closest('.book-landing')) {
+        return;
+      }
       // Ensure heading has an id (generate from text if not)
       if (!heading.id) {
         heading.id =
