@@ -567,9 +567,10 @@
 }
 
 .about-method-visual {
-  display: grid;
-  gap: 0.75rem;
-  justify-items: start;
+  float: right;
+  width: 40%;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
 }
 
 .about-book-visual img {
@@ -578,6 +579,16 @@
   display: block;
   border-radius: 0;
   box-shadow: none;
+}
+
+.about-method p {
+  margin-bottom: 1rem;
+}
+
+.about-method::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .about-book-visual:focus-visible img {
@@ -698,8 +709,10 @@
   }
 
   .about-method-visual {
-    justify-self: center;
-    max-width: 240px;
+    float: none;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 1.5rem;
   }
 
   .about-method-intro,
