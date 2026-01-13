@@ -70,7 +70,7 @@ The pattern compromises the very activity that would end it.
 
 ### The Belief
 
-_“I just need to relax.”_
+“I just need to relax.”
 
 We conflate passive with restorative. Scrolling feels like rest. Television feels like recovery. Collapsing on the couch feels like what we’ve earned after a hard day.
 
@@ -112,7 +112,7 @@ The relief step is crucial. Avoidance provides a small emotional reward—the di
 
 ### The Belief
 
-_“I'll feel like it later.”_
+“I'll feel like it later.”
 
 The assumption that motivation precedes action. That you need to feel ready, inspired, or at least not-dreading before you can begin.
 
@@ -156,7 +156,7 @@ The state that most needs help is the state least able to seek it.
 
 ### The Belief
 
-_"I should be able to handle this myself."_
+"I should be able to handle this myself."
 
 The messages run deep: needing help equals weakness, asking equals burdening others, self-sufficiency equals virtue. American "rugged individualism" isn't just a phrase—research traces these values to frontier history, showing areas with longer American frontier presence exhibit stronger self-reliance values that persist today.[^10]
 
