@@ -268,36 +268,36 @@ The rest of this book shows you how.
 
 ## References
 
-[^1]: Pronin, E., Olivola, C. Y., & Kennedy, K. A. (2008). [Doing unto future selves as you would do unto others: Psychological distance and decision making](https://doi.org/10.1177/0146167207310023). Personality and Social Psychology Bulletin, 34(2), 224-236.
+[^1]: Pronin, E., Olivola, C. Y., & Kennedy, K. A. (2008). <a href="https://doi.org/10.1177/0146167207310023" target="_blank">Doing unto future selves as you would do unto others: Psychological distance and decision making</a>. Personality and Social Psychology Bulletin, 34(2), 224-236.
 
-[^2]: Buehler, R., Griffin, D., & Ross, M. (1994). [Exploring the "planning fallacy": Why people underestimate their task completion times](https://doi.org/10.1037/0022-3514.67.3.366). Journal of Personality and Social Psychology, 67(3), 366-381.
+[^2]: Buehler, R., Griffin, D., & Ross, M. (1994). <a href="https://doi.org/10.1037/0022-3514.67.3.366" target="_blank">Exploring the "planning fallacy": Why people underestimate their task completion times</a>. Journal of Personality and Social Psychology, 67(3), 366-381.
 
-[^3]: Cowan, N. (2001). [The magical number 4 in short-term memory: A reconsideration of mental storage capacity](https://doi.org/10.1017/S0140525X01003922). Behavioral and Brain Sciences, 24(1), 87-114.
+[^3]: Cowan, N. (2001). <a href="https://doi.org/10.1017/S0140525X01003922" target="_blank">The magical number 4 in short-term memory: A reconsideration of mental storage capacity</a>. Behavioral and Brain Sciences, 24(1), 87-114.
 
-[^4]: Deloitte. (2023). [Workplace Burnout Survey](https://www2.deloitte.com/us/en/pages/about-deloitte/articles/burnout-survey.html).
+[^4]: Deloitte. (2023). <a href="https://www2.deloitte.com/us/en/pages/about-deloitte/articles/burnout-survey.html" target="_blank">Workplace Burnout Survey</a>.
 
-[^5]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Television, capturing America's attention](https://www.bls.gov/opub/btn/volume-7/television-capturing-americas-attention.htm).
+[^5]: U.S. Bureau of Labor Statistics. <a href="https://www.bls.gov/opub/btn/volume-7/television-capturing-americas-attention.htm" target="_blank">American Time Use Survey: Television, capturing America's attention</a>.
 
-[^6]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Leisure and sports activities](https://www.bls.gov/opub/ted/2023/time-spent-in-leisure-and-sports-activities-2022.htm).
+[^6]: U.S. Bureau of Labor Statistics. <a href="https://www.bls.gov/opub/ted/2023/time-spent-in-leisure-and-sports-activities-2022.htm" target="_blank">American Time Use Survey: Leisure and sports activities</a>.
 
-[^7]: U.S. Bureau of Labor Statistics. [American Time Use Survey: Sports and Exercise](https://www.bls.gov/spotlight/2017/sports-and-exercise/home.htm).
+[^7]: U.S. Bureau of Labor Statistics. <a href="https://www.bls.gov/spotlight/2017/sports-and-exercise/home.htm" target="_blank">American Time Use Survey: Sports and Exercise</a>.
 
-[^8]: Pychyl, T. A. (2013). [Solving the Procrastination Puzzle](https://www.penguinrandomhouse.com/books/315695/solving-the-procrastination-puzzle-by-timothy-a-pychyl/). Tarcher/Penguin.
+[^8]: Pychyl, T. A. (2013). <a href="https://www.penguinrandomhouse.com/books/315695/solving-the-procrastination-puzzle-by-timothy-a-pychyl/" target="_blank">Solving the Procrastination Puzzle</a>. Tarcher/Penguin.
 
-[^9]: Steel, P. (2007). [The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure](https://doi.org/10.1037/0033-2909.133.1.65). Psychological Bulletin, 133(1), 65-94.
+[^9]: Steel, P. (2007). <a href="https://doi.org/10.1037/0033-2909.133.1.65" target="_blank">The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure</a>. Psychological Bulletin, 133(1), 65-94.
 
-[^10]: Bazzi, S., Fiszbein, M., & Gebresilasse, M. (2020). [Frontier culture: The roots and persistence of "rugged individualism" in the United States](https://doi.org/10.3982/ECTA16484). Econometrica, 88(6), 2329-2368.
+[^10]: Bazzi, S., Fiszbein, M., & Gebresilasse, M. (2020). <a href="https://doi.org/10.3982/ECTA16484" target="_blank">Frontier culture: The roots and persistence of "rugged individualism" in the United States</a>. Econometrica, 88(6), 2329-2368.
 
-[^11]: Flynn, F. J., & Lake, V. K. B. (2008). [If you need help, just ask: Underestimating compliance with direct requests for help](https://doi.org/10.1037/0022-3514.95.1.128). Journal of Personality and Social Psychology, 95(1), 128-143.
+[^11]: Flynn, F. J., & Lake, V. K. B. (2008). <a href="https://doi.org/10.1037/0022-3514.95.1.128" target="_blank">If you need help, just ask: Underestimating compliance with direct requests for help</a>. Journal of Personality and Social Psychology, 95(1), 128-143.
 
-[^12]: Brooks, A. W., Gino, F., & Schweitzer, M. E. (2015). [Smart people ask for (my) advice: Seeking advice boosts perceptions of competence](https://doi.org/10.1287/mnsc.2014.2054). Management Science, 61(6), 1421-1435.
+[^12]: Brooks, A. W., Gino, F., & Schweitzer, M. E. (2015). <a href="https://doi.org/10.1287/mnsc.2014.2054" target="_blank">Smart people ask for (my) advice: Seeking advice boosts perceptions of competence</a>. Management Science, 61(6), 1421-1435.
 
-[^13]: Kannan, V. D., & Veazie, P. J. (2023). [US trends in social isolation, social engagement, and companionship, 2003–2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC9811250/). SSM - Population Health.
+[^13]: Kannan, V. D., & Veazie, P. J. (2023). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9811250/" target="_blank">US trends in social isolation, social engagement, and companionship, 2003–2020</a>. SSM - Population Health.
 
-[^14]: Cox, D. A. (2021). [The State of American Friendship](https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/). Survey Center on American Life.
+[^14]: Cox, D. A. (2021). <a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank">The State of American Friendship</a>. Survey Center on American Life.
 
-[^15]: Whillans, A. V., et al. (2017). [Buying time promotes happiness](https://doi.org/10.1073/pnas.1706541114). Proceedings of the National Academy of Sciences, 114(32), 8523-8527.
+[^15]: Whillans, A. V., et al. (2017). <a href="https://doi.org/10.1073/pnas.1706541114" target="_blank">Buying time promotes happiness</a>. Proceedings of the National Academy of Sciences, 114(32), 8523-8527.
 
 [^16]: Probability calculations based on gap prevalence data.
 
-[^17]: Ryan, R. M., & Deci, E. L. (2000). [Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being](https://doi.org/10.1037/0003-066x.55.1.68). American Psychologist, 55(1), 68-78.
+[^17]: Ryan, R. M., & Deci, E. L. (2000). <a href="https://doi.org/10.1037/0003-066x.55.1.68" target="_blank">Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being</a>. American Psychologist, 55(1), 68-78.
