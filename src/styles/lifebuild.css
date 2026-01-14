@@ -521,6 +521,80 @@
   gap: 0.75rem;
 }
 
+.about-method-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.about-method-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-ink-light);
+  margin-top: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-method-intro {
+  grid-column: 2;
+}
+
+.about-method-body {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+}
+
+.about-method-intro p,
+.about-method-body p {
+  margin-bottom: 1rem;
+}
+
+.about-book-link {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: var(--color-amber-deep);
+  text-decoration: none;
+}
+
+.about-book-link:hover {
+  text-decoration: underline;
+}
+
+.about-book-visual {
+  display: block;
+  text-decoration: none;
+}
+
+.about-method-visual {
+  float: right;
+  width: 30%;
+  margin-left: 1rem;
+}
+
+.about-book-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.about-method p {
+  margin-bottom: 1rem;
+}
+
+.about-method::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.about-book-visual:focus-visible img {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 4px;
+}
+
 .about-sidebar a {
   font-family: var(--font-hand);
   font-size: 1.1rem;
@@ -627,6 +701,23 @@
 
   .about-panel {
     padding: 1.25rem;
+  }
+
+  .about-method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-method-visual {
+    float: none;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .about-method-intro,
+  .about-method-body {
+    grid-column: auto;
+    margin-top: 0;
   }
 
   .update-card {

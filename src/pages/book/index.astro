@@ -1,0 +1,51 @@
+---
+import BookHeader from '../../components/BookHeader.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getFirstPublishedChapter, groupChaptersByPart } from '../../lib/book';
+import '../../styles/book.css';
+
+const firstPublished = getFirstPublishedChapter();
+const startLink = firstPublished ? `/book/${firstPublished.slug}` : '/book';
+const groupedChapters = groupChaptersByPart();
+const statusLabel = (status: string) => (status === 'published' ? 'Published' : 'Coming soon');
+---
+
+<Layout title="The Sovereignty Gap">
+  <BookHeader slot="nav" showProgress={false} />
+  <main class="container book-page book-landing">
+    <h1>The Sovereignty Gap</h1>
+    <p>
+      A serialized guide to reclaiming sovereignty in your personal life, with chapters released at
+      least bi-weekly in reading order.
+    </p>
+    <p>
+      <a href={startLink}>Start Reading</a>
+    </p>
+
+    <div class="book-landing-contents">
+      {
+        groupedChapters.map((group) => (
+          <section>
+            <h2>{group.part}</h2>
+            <ul>
+              {group.chapters.map((chapter) => (
+                <li>
+                  <h3>
+                    Chapter {chapter.number}:
+                    {chapter.status === 'published' ? (
+                      <a href={`/book/${chapter.slug}`}>{chapter.title}</a>
+                    ) : (
+                      <span>{chapter.title}</span>
+                    )}
+                    <span> — {statusLabel(chapter.status)}</span>
+                  </h3>
+                  <p>{chapter.teaser}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</Layout>
