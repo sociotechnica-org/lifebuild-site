@@ -46,6 +46,10 @@ npm run lint-all
 
 This command runs both Prettier formatting and ESLint fixes. CI will fail if code is not properly formatted or has linting errors. Always run this after making changes to validate they were made correctly.
 
+### Pull Request Guidelines
+
+When creating a PR that fixes a GitHub issue, include `Closes #xxx` in the PR description (where `xxx` is the issue number). This automatically closes the issue when the PR is merged.
+
 ### Code Style
 
 - Use TypeScript strict mode
