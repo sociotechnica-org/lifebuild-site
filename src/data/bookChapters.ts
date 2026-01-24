@@ -32,11 +32,11 @@ export const bookChapters: BookChapter[] = [
   {
     number: 2,
     slug: 'chapter-2',
-    title: 'The Taxonomy',
+    title: 'Seeing the Balance Gap',
     part: 'The Lens',
-    status: 'coming_soon',
+    status: 'published',
     teaser:
-      'A new way to see your life clearly. Two simple frameworks—Bronze/Silver/Gold and Red/Gray/Blue—that reveal why what matters keeps getting deferred.',
+      "A lens for understanding why you're overwhelmed—and why what matters keeps getting deferred. You'll see the hidden structure of how your time gets spent, and where investing differently would create room.",
   },
   {
     number: 3,
