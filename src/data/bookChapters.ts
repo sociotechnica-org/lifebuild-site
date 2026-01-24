@@ -43,7 +43,7 @@ export const bookChapters: BookChapter[] = [
     slug: 'chapter-3',
     title: 'Seeing the Restoration Gap',
     part: 'The Lens',
-    status: 'coming_soon',
+    status: 'published',
     teaser:
       "A lens for understanding why you're depleted—and why a lot of \"rest\" doesn't seem to restore you. You'll learn to tell the difference between time that rebuilds your capacity and time that just feels like it should.",
   },
