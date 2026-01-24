@@ -1,62 +1,162 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '../styles/book.css';
+import TopNav from '../components/TopNav.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Honest Alpha Social Contract — LifeBuild">
-  <main class="container book-page">
+  <TopNav slot="nav" />
+  <main class="container socialcontract-page">
     <h1>The Honest Alpha Social Contract</h1>
-    <p><em>This isn't fine print. It's a handshake.</em></p>
+    <p class="socialcontract-intro"><em>This isn't fine print. It's a handshake.</em></p>
 
-    <h2>What We're Asking of You</h2>
-    <ul>
-      <li>
-        <strong>Break things.</strong> Push buttons, try weird workflows, find bugs before anyone else
-        does.
-      </li>
-      <li>
-        <strong>Report problems.</strong> When something doesn't work or feels awkward, tell us.
-      </li>
-      <li>
-        <strong>Be patient.</strong> Features will be incomplete and things will change between sessions.
-      </li>
-      <li>
-        <strong>Give honest feedback.</strong> Polite lies don't help us build something worth using.
-      </li>
-      <li>
-        <strong>Don't expect polish.</strong> You're seeing rough cuts, not the finished film.
-      </li>
-    </ul>
+    <div class="socialcontract-sections">
+      <article class="socialcontract-entry">
+        <header class="socialcontract-header">
+          <h2>What We're Asking of You</h2>
+        </header>
+        <div class="socialcontract-content">
+          <ul>
+            <li>
+              <strong>Break things.</strong> Push buttons, try weird workflows, find bugs before anyone
+              else does.
+            </li>
+            <li>
+              <strong>Report problems.</strong> When something doesn't work or feels awkward, tell us.
+            </li>
+            <li>
+              <strong>Be patient.</strong> Features will be incomplete and things will change between
+              sessions.
+            </li>
+            <li>
+              <strong>Give honest feedback.</strong> Polite lies don't help us build something worth using.
+            </li>
+            <li>
+              <strong>Don't expect polish.</strong> You're seeing rough cuts, not the finished film.
+            </li>
+          </ul>
+        </div>
+      </article>
 
-    <h2>What You're Getting in Return</h2>
-    <ul>
-      <li>
-        <strong>Early access.</strong> You're among fewer than 20 people in the world using this. You'll
-        join the alpha-only Discord and swap LifeBuilds, strategies, and get to know the founders better.
-      </li>
-      <li>
-        <strong>Direct influence.</strong> Your feedback goes directly to the people making decisions.
-      </li>
-      <li>
-        <strong>Founder pricing for life.</strong> A permanent discount when we eventually charge.
-      </li>
-    </ul>
+      <article class="socialcontract-entry">
+        <header class="socialcontract-header">
+          <h2>What You're Getting in Return</h2>
+        </header>
+        <div class="socialcontract-content">
+          <ul>
+            <li>
+              <strong>Early access.</strong> You're among fewer than 20 people in the world using this.
+              You'll join the alpha-only Discord and swap LifeBuilds, strategies, and get to know the
+              founders better.
+            </li>
+            <li>
+              <strong>Direct influence.</strong> Your feedback goes directly to the people making decisions.
+            </li>
+            <li>
+              <strong>Founder pricing for life.</strong> A permanent discount when we eventually charge.
+            </li>
+          </ul>
+        </div>
+      </article>
 
-    <h2>Duration & What Happens Next</h2>
-    <p>Alpha ends April 30, 2026.</p>
-    <ul>
-      <li>
-        <strong>Your account stays.</strong> Everything you've built carries over.
-      </li>
-      <li>
-        <strong>You automatically move to beta.</strong> No action required; beta stays free.
-      </li>
-      <li>
-        <strong>Two-month grace period.</strong> When we start charging, you get two extra months before
-        deciding.
-      </li>
-    </ul>
+      <article class="socialcontract-entry">
+        <header class="socialcontract-header">
+          <h2>Duration & What Happens Next</h2>
+        </header>
+        <div class="socialcontract-content">
+          <p>Alpha ends April 30, 2026.</p>
+          <ul>
+            <li>
+              <strong>Your account stays.</strong> Everything you've built carries over.
+            </li>
+            <li>
+              <strong>You automatically move to beta.</strong> No action required; beta stays free.
+            </li>
+            <li>
+              <strong>Two-month grace period.</strong> When we start charging, you get two extra months
+              before deciding.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
 
-    <p>Sign if that sounds like a plan — drop us a line if it doesn't.</p>
+    <p class="socialcontract-closing">
+      Sign if that sounds like a plan — drop us a line if it doesn't.
+    </p>
   </main>
+  <Footer />
 </Layout>
+
+<style>
+  .socialcontract-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .socialcontract-page h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .socialcontract-intro {
+    font-family: var(--font-serif);
+    color: var(--color-cream-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .socialcontract-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .socialcontract-entry {
+    background: var(--color-bg-card);
+    border: 2px solid rgba(44, 36, 22, 0.12);
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+  }
+
+  .socialcontract-header {
+    margin-bottom: 1rem;
+  }
+
+  .socialcontract-header h2 {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .socialcontract-content {
+    font-family: var(--font-serif);
+    color: var(--color-ink-light);
+    line-height: 1.7;
+  }
+
+  .socialcontract-content p {
+    margin-bottom: 0.75rem;
+    color: var(--color-ink-light);
+  }
+
+  .socialcontract-content ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .socialcontract-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .socialcontract-closing {
+    margin-top: 2.5rem;
+    font-family: var(--font-hand);
+    font-size: 1.1rem;
+    color: var(--color-amber-deep);
+  }
+
+  @media (max-width: 768px) {
+    .socialcontract-entry {
+      padding: 1.25rem;
+    }
+  }
+</style>
