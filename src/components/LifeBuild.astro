@@ -2,6 +2,9 @@
 // LifeBuild.astro - Main page sections
 // Sections: Hero, How It Works, Honest Alpha, About, Updates
 import '../styles/lifebuild.css';
+import { getRecentArticles } from '../data/workshopArticles';
+
+const recentArticles = getRecentArticles(3);
 ---
 
 <!-- ==================== HERO SECTION ==================== -->
@@ -331,8 +334,21 @@ import '../styles/lifebuild.css';
         >Full labnotes →</a
       >
     </div>
-    <div class="update-card">
-      <div class="update-content">Coming soon...</div>
+    <div class="workshop-articles">
+      {
+        recentArticles.map((article) => (
+          <a class="workshop-article" href={article.url} target="_blank" rel="noopener noreferrer">
+            <span class="article-number">{article.number}</span>
+            <span class="article-title">{article.title}</span>
+            <time datetime={article.date}>
+              {new Date(article.date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>
