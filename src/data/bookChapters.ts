@@ -41,11 +41,11 @@ export const bookChapters: BookChapter[] = [
   {
     number: 3,
     slug: 'chapter-3',
-    title: 'Find Your Thorn',
+    title: 'Seeing the Restoration Gap',
     part: 'The First Win',
     status: 'coming_soon',
     teaser:
-      'How to identify the small, recurring drain that’s quietly costing you energy every day—and why removing one thorn matters more than fixing everything.',
+      "A lens for understanding why you're depleted—and why a lot of \"rest\" doesn't seem to restore you. You'll learn to tell the difference between time that rebuilds your capacity and time that just feels like it should.",
   },
   {
     number: 4,
