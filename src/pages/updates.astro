@@ -1,0 +1,166 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Footer from '../components/Footer.astro';
+
+interface ChangelogFrontmatter {
+  version: string;
+  date: string;
+  prNumber: number;
+  prUrl: string;
+}
+
+interface ChangelogModule {
+  frontmatter: ChangelogFrontmatter;
+  Content: AstroComponentFactory;
+}
+
+// Dynamically load all changelog markdown files
+const changelogModules = import.meta.glob<ChangelogModule>('../content/changelog/*.md', {
+  eager: true,
+});
+
+// Extract frontmatter and content, sort by date descending
+const entries = Object.entries(changelogModules)
+  .map(([path, mod]) => ({
+    slug: path.split('/').pop()?.replace('.md', '') || '',
+    frontmatter: mod.frontmatter,
+    Content: mod.Content,
+  }))
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<Layout title="Updates — LifeBuild">
+  <TopNav slot="nav" />
+  <main class="container updates-page">
+    <h1>Updates</h1>
+    <p class="updates-intro">Product changelog and release notes.</p>
+
+    <div class="changelog-list">
+      {
+        entries.map(({ frontmatter, Content }) => (
+          <article class="changelog-entry">
+            <header class="changelog-header">
+              <h2>v{frontmatter.version}</h2>
+              <time datetime={frontmatter.date}>
+                {new Date(frontmatter.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                  timeZone: 'UTC',
+                })}
+              </time>
+            </header>
+            <div class="changelog-content">
+              <Content />
+            </div>
+            {frontmatter.prUrl && (
+              <a
+                class="changelog-pr-link"
+                href={frontmatter.prUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View PR #{frontmatter.prNumber} →
+              </a>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .updates-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .updates-page h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .updates-intro {
+    font-family: var(--font-serif);
+    color: var(--color-cream-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .changelog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .changelog-entry {
+    background: var(--color-bg-card);
+    border: 2px solid rgba(44, 36, 22, 0.12);
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+  }
+
+  .changelog-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .changelog-header h2 {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .changelog-header time {
+    font-family: var(--font-typewriter);
+    font-size: 0.9rem;
+    color: var(--color-cream-muted);
+  }
+
+  .changelog-content {
+    font-family: var(--font-serif);
+    color: var(--color-ink-light);
+    line-height: 1.7;
+  }
+
+  .changelog-content :global(h1) {
+    display: none; /* Hide the h1 from markdown since we show version in header */
+  }
+
+  .changelog-content :global(ul) {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .changelog-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .changelog-content :global(a) {
+    display: none; /* Hide the "View PR" link from markdown content since we show it separately */
+  }
+
+  .changelog-pr-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-hand);
+    font-size: 0.95rem;
+    color: var(--color-amber-deep);
+    text-decoration: none;
+  }
+
+  .changelog-pr-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .changelog-entry {
+      padding: 1.25rem;
+    }
+  }
+</style>
