@@ -344,6 +344,7 @@ const recentArticles = getRecentArticles(3);
               {new Date(article.date).toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric',
+                timeZone: 'UTC',
               })}
             </time>
           </a>
