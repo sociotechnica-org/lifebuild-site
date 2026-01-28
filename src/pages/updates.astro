@@ -31,7 +31,10 @@ const entries = Object.entries(changelogModules)
   .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 ---
 
-<Layout title="Updates — LifeBuild">
+<Layout
+  title="Updates — LifeBuild"
+  description="Product changelog and release notes for LifeBuild. See what's new and what's coming next."
+>
   <TopNav slot="nav" />
   <main class="container updates-page">
     <h1>Updates</h1>
