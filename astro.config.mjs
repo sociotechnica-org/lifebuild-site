@@ -23,6 +23,7 @@ function rehypeRenameFootnotes() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://lifebuild.me',
   integrations: [react()],
   output: 'static',
   build: {

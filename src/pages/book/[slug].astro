@@ -48,7 +48,12 @@ if (chapter.status === 'published') {
 }
 ---
 
-<Layout title={`LifeBuild — ${chapter.title}`}>
+<Layout
+  title={`${chapter.title} — The Sovereignty Gap`}
+  description={chapter.teaser}
+  image="/lifebuild-book.png"
+  imageAlt="The Sovereignty Gap book cover - a leather-bound tome with golden text"
+>
   <BookHeader currentChapter={chapter} slot="nav" />
   <main class="container book-page">
     <header class="chapter-header">
