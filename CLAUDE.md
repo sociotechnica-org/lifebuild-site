@@ -27,6 +27,10 @@ LifeBuild.me is a simple landing page built with Astro, similar to WorkSquared.a
 ├── public/             # Static assets
 ├── src/
 │   ├── components/     # Astro/React components
+│   ├── content/
+│   │   └── changelog/  # Changelog entries (Markdown with frontmatter)
+│   ├── data/
+│   │   └── version.json # Current version and lastUpdated date
 │   ├── layouts/        # Page layouts
 │   └── pages/          # Route pages
 ├── astro.config.mjs    # Astro configuration
@@ -48,7 +52,9 @@ This command runs both Prettier formatting and ESLint fixes. CI will fail if cod
 
 ### Pull Request Guidelines
 
-When creating a PR that fixes a GitHub issue, include `Closes #xxx` in the PR description (where `xxx` is the issue number). This automatically closes the issue when the PR is merged.
+- When creating a PR that fixes a GitHub issue, include `Closes #xxx` in the PR description (where `xxx` is the issue number). This automatically closes the issue when the PR is merged.
+- Consolidate related small PRs into a single PR when possible to simplify review.
+- Avoid creating multiple PRs that all modify `src/data/version.json` simultaneously; coordinate version bumps to prevent merge conflicts.
 
 ### Code Style
 
@@ -64,6 +70,16 @@ When creating a PR that fixes a GitHub issue, include `Closes #xxx` in the PR de
 - Use scoped styles within components
 - Follow responsive design patterns (mobile-first)
 - Ensure accessibility (semantic HTML, ARIA labels)
+
+### Changelog & Versioning
+
+- Changelog entries are Markdown files in `src/content/changelog/`, named `YYYY-MM-DD-vX-Y-Z.md`
+- Each file has frontmatter: `version`, `date`, `prNumber`, `prUrl`
+- `src/data/version.json` tracks the current `version` and `lastUpdated` date; update it with each release
+- On the Updates page, changelog entries are grouped by day, showing the highest version number for that day
+- When multiple entries share a day, each gets a subheading (e.g., "v0.1.10"); single-entry days use only the main header
+- PR references within grouped entries display as a concise, comma-separated list
+- Use `import.meta.glob` with `eager: true` to load changelog files for display
 
 ### Newsletter Integration
 
