@@ -76,8 +76,7 @@ This command runs both Prettier formatting and ESLint fixes. CI will fail if cod
 - Changelog entries are Markdown files in `src/content/changelog/`, named `YYYY-MM-DD-vX-Y-Z.md`
 - Each file has frontmatter: `version`, `date`, `prNumber`, `prUrl`
 - `src/data/version.json` tracks the current `version` and `lastUpdated` date; update it with each release
-- On the Updates page, changelog entries are grouped by day, showing the highest version number for that day
-- When multiple entries share a day, each gets a subheading (e.g., "v0.1.10"); single-entry days use only the main header
+- On the Updates page, changelog entries are grouped by day, showing the highest version number for that day as the header with all bullet points combined
 - PR references within grouped entries display as a concise, comma-separated list
 - Use `import.meta.glob` with `eager: true` to load changelog files for display
 

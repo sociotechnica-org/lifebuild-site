@@ -84,13 +84,8 @@ const dayGroups = Object.entries(groupedByDate).sort(
               </time>
             </header>
             <div class="changelog-content">
-              {entries.map(({ frontmatter, Content }) => (
-                <>
-                  {entries.length > 1 && (
-                    <h3 class="changelog-version-label">v{frontmatter.version}</h3>
-                  )}
-                  <Content />
-                </>
+              {entries.map(({ Content }) => (
+                <Content />
               ))}
             </div>
             <p class="changelog-pr-links">
@@ -176,16 +171,6 @@ const dayGroups = Object.entries(groupedByDate).sort(
 
   .changelog-content :global(h1) {
     display: none; /* Hide the h1 from markdown since we show version in header or subheading */
-  }
-
-  .changelog-content :global(.changelog-version-label) {
-    font-family: var(--font-hand);
-    font-size: 1.15rem;
-    margin: 1rem 0 0.25rem;
-  }
-
-  .changelog-content :global(.changelog-version-label:first-child) {
-    margin-top: 0;
   }
 
   .changelog-content :global(ul) {
