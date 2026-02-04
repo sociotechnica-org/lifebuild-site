@@ -21,14 +21,42 @@ const changelogModules = import.meta.glob<ChangelogModule>('../content/changelog
   eager: true,
 });
 
-// Extract frontmatter and content, sort by date descending
-const entries = Object.entries(changelogModules)
+// Extract frontmatter and content, sort by version descending
+const allEntries = Object.entries(changelogModules)
   .map(([path, mod]) => ({
     slug: path.split('/').pop()?.replace('.md', '') || '',
     frontmatter: mod.frontmatter,
     Content: mod.Content,
   }))
-  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+  .sort((a, b) => {
+    // Sort by date descending, then by version descending within same date
+    const dateDiff =
+      new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+    if (dateDiff !== 0) return dateDiff;
+    // Compare version strings numerically (e.g. 0.1.10 > 0.1.9)
+    const aParts = a.frontmatter.version.split('.').map(Number);
+    const bParts = b.frontmatter.version.split('.').map(Number);
+    for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+      const diff = (bParts[i] || 0) - (aParts[i] || 0);
+      if (diff !== 0) return diff;
+    }
+    return 0;
+  });
+
+// Group entries by date — first entry in each group has the highest version
+const groupedByDate = allEntries.reduce(
+  (groups, entry) => {
+    const date = entry.frontmatter.date;
+    if (!groups[date]) groups[date] = [];
+    groups[date].push(entry);
+    return groups;
+  },
+  {} as Record<string, typeof allEntries>
+);
+
+const dayGroups = Object.entries(groupedByDate).sort(
+  ([a], [b]) => new Date(b).getTime() - new Date(a).getTime()
+);
 ---
 
 <Layout
@@ -42,12 +70,12 @@ const entries = Object.entries(changelogModules)
 
     <div class="changelog-list">
       {
-        entries.map(({ frontmatter, Content }) => (
+        dayGroups.map(([date, entries]) => (
           <article class="changelog-entry">
             <header class="changelog-header">
-              <h2>v{frontmatter.version}</h2>
-              <time datetime={frontmatter.date}>
-                {new Date(frontmatter.date).toLocaleDateString('en-US', {
+              <h2>v{entries[0].frontmatter.version}</h2>
+              <time datetime={date}>
+                {new Date(date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
@@ -56,18 +84,33 @@ const entries = Object.entries(changelogModules)
               </time>
             </header>
             <div class="changelog-content">
-              <Content />
+              {entries.map(({ frontmatter, Content }) => (
+                <>
+                  {entries.length > 1 && (
+                    <h3 class="changelog-version-label">v{frontmatter.version}</h3>
+                  )}
+                  <Content />
+                </>
+              ))}
             </div>
-            {frontmatter.prUrl && (
-              <a
-                class="changelog-pr-link"
-                href={frontmatter.prUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View PR #{frontmatter.prNumber} →
-              </a>
-            )}
+            <p class="changelog-pr-links">
+              PRs:{' '}
+              {entries
+                .filter(({ frontmatter }) => frontmatter.prUrl)
+                .map(({ frontmatter }, i, arr) => (
+                  <>
+                    <a
+                      class="changelog-pr-link"
+                      href={frontmatter.prUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      #{frontmatter.prNumber}
+                    </a>
+                    {i < arr.length - 1 ? ', ' : ''}
+                  </>
+                ))}
+            </p>
           </article>
         ))
       }
@@ -132,7 +175,17 @@ const entries = Object.entries(changelogModules)
   }
 
   .changelog-content :global(h1) {
-    display: none; /* Hide the h1 from markdown since we show version in header */
+    display: none; /* Hide the h1 from markdown since we show version in header or subheading */
+  }
+
+  .changelog-content :global(.changelog-version-label) {
+    font-family: var(--font-hand);
+    font-size: 1.15rem;
+    margin: 1rem 0 0.25rem;
+  }
+
+  .changelog-content :global(.changelog-version-label:first-child) {
+    margin-top: 0;
   }
 
   .changelog-content :global(ul) {
@@ -148,11 +201,14 @@ const entries = Object.entries(changelogModules)
     display: none; /* Hide the "View PR" link from markdown content since we show it separately */
   }
 
-  .changelog-pr-link {
-    display: inline-block;
+  .changelog-pr-links {
     margin-top: 1rem;
     font-family: var(--font-hand);
     font-size: 0.95rem;
+    color: var(--color-cream-muted);
+  }
+
+  .changelog-pr-link {
     color: var(--color-amber-deep);
     text-decoration: none;
   }
