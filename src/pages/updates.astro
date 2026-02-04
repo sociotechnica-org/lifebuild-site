@@ -88,21 +88,24 @@ const dayGroups = Object.entries(groupedByDate).sort(
                 <Content />
               ))}
             </div>
-            <div class="changelog-pr-links">
-              {entries.map(
-                ({ frontmatter }) =>
-                  frontmatter.prUrl && (
+            <p class="changelog-pr-links">
+              PRs:{' '}
+              {entries
+                .filter(({ frontmatter }) => frontmatter.prUrl)
+                .map(({ frontmatter }, i, arr) => (
+                  <>
                     <a
                       class="changelog-pr-link"
                       href={frontmatter.prUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View PR #{frontmatter.prNumber} →
+                      #{frontmatter.prNumber}
                     </a>
-                  )
-              )}
-            </div>
+                    {i < arr.length - 1 ? ', ' : ''}
+                  </>
+                ))}
+            </p>
           </article>
         ))
       }
@@ -184,16 +187,13 @@ const dayGroups = Object.entries(groupedByDate).sort(
   }
 
   .changelog-pr-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .changelog-pr-link {
-    display: inline-block;
     margin-top: 1rem;
     font-family: var(--font-hand);
     font-size: 0.95rem;
+    color: var(--color-cream-muted);
+  }
+
+  .changelog-pr-link {
     color: var(--color-amber-deep);
     text-decoration: none;
   }
