@@ -107,7 +107,8 @@ Update `src/data/version.json` with the highest version number from the kept ent
 3. Commit with message: `Changelogs: vX.Y.Z through vX.Y.Z`
 4. Push and create a PR with:
    - Title: `Changelogs: vX.Y.Z through vX.Y.Z`
-   - Body listing all included entries and `Closes #N` for each original PR
+   - Body listing all included entries
+   - **Important:** Include `Closes #N` for every original changelog PR in the body. This ensures merging the combined PR auto-closes and links all the individual PRs it supersedes. Use the format `Closes #75, #76, #77, ...` in the body.
 5. Report what was included and what was filtered out
 
 ## Changelog file format reference
