@@ -30,6 +30,7 @@ The changelog files live at `src/content/changelog/` and are named `YYYY-MM-DD-v
 ## Step 3: Filter out non-user-facing entries
 
 **Remove entries that are purely backend/infrastructure with no user-visible impact:**
+
 - Test coverage changes (regression tests, unit tests, CI fixes)
 - Internal refactors that don't change behavior
 - Asset/dependency swaps that don't affect what users see (e.g. switching to local fonts for CSP compliance)
@@ -37,11 +38,13 @@ The changelog files live at `src/content/changelog/` and are named `YYYY-MM-DD-v
 - Build system or tooling changes
 
 **Remove entries that describe implementation plumbing rather than user outcomes:**
+
 - Adding internal components (e.g. "Added BuildingOverlay component") when later entries describe what users actually see
 - API or data model changes with no UI impact
 - Internal architecture changes
 
 **Keep entries that describe things users can see, do, or experience:**
+
 - New features and capabilities
 - UI changes (new screens, layouts, navigation)
 - Removed features or UI elements
@@ -57,10 +60,10 @@ For each kept entry, create a markdown file in `src/content/changelog/` followin
 
 ```markdown
 ---
-version: "X.Y.Z"
-date: "YYYY-MM-DD"
+version: 'X.Y.Z'
+date: 'YYYY-MM-DD'
 prNumber: NNN
-prUrl: "https://github.com/sociotechnica-org/lifebuild/pull/NNN"
+prUrl: 'https://github.com/sociotechnica-org/lifebuild/pull/NNN'
 ---
 
 # vX.Y.Z
@@ -82,6 +85,7 @@ Write entries from the user's perspective. Describe what changed for them, not w
 - Bad: "Integrated LLM streaming into CampfireScene component"
 
 Entries can include:
+
 - Bullet points for multiple related changes
 - Narrative descriptions for major features
 - Screenshots or GIFs (as markdown images) when they help illustrate the change
