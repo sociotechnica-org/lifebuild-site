@@ -69,9 +69,9 @@ prUrl: 'https://github.com/sociotechnica-org/lifebuild/pull/NNN'
 # vX.Y.Z
 
 - User-facing description of the change
-
-[View PR #NNN](https://github.com/sociotechnica-org/lifebuild/pull/NNN)
 ```
+
+Do NOT include "View PR" links in the markdown content — PR links are rendered separately by the updates page using the frontmatter `prNumber` and `prUrl` fields.
 
 File naming: `YYYY-MM-DD-vX-Y-Z.md` (use the date from the original entry, dashes instead of dots in version).
 
@@ -119,5 +119,6 @@ Update `src/data/version.json` with the highest version number from the kept ent
 
 - Frontmatter fields: `version`, `date`, `prNumber`, `prUrl`
 - The `# vX.Y.Z` heading is hidden on the updates page (CSS `display: none`)
-- The `[View PR #NNN]` link is also hidden on the updates page (shown separately)
+- Do NOT include `[View PR]` links in markdown — PR links are rendered from frontmatter
 - Entries are grouped by date on the updates page, with the highest version as the group header
+- Inline links in changelog content (e.g. linking to a URL like playground.lifebuild.me) are supported and styled
