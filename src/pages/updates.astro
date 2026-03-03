@@ -186,6 +186,12 @@ const dayGroups = Object.entries(groupedByDate).sort(
     display: none; /* Hide the "View PR" link from markdown content since we show it separately */
   }
 
+  .changelog-content :global(img) {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 0.5rem 0 1rem;
+  }
+
   .changelog-pr-links {
     margin-top: 1rem;
     font-family: var(--font-hand);
