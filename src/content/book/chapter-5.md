@@ -60,7 +60,7 @@ A week later, he cleared another one: the conversation with his oldest about the
 
 Now he's on the train, and he's doing something he hasn't done in months: nothing. Not scrolling, not catching up on email, not mentally triaging tomorrow's problems. Just sitting, watching the suburbs slide past, letting his mind wander without the background hum of things-he-should-be-doing.
 
-He has a thought he's never had on this commute before: *this is nice.*
+He has a thought he's never had on this commute before: _this is nice._
 
 He's not transformed. He's still overwhelmed at work, still not training for the half-marathon, still spending too many evenings scrolling when he could be connecting. But something is different. The pressure feels slightly less constant. There's a little more space in his head. And for the first time in years, he believes---not hopes, believes---that more space is possible.
 
@@ -144,4 +144,4 @@ The next four chapters show how to make that feeling something you can return to
 
 ---
 
-*Hold onto what you felt when the thorn came out. That's not a preview of a different life. It's a glimpse of the one that's already possible, once the architecture is in place to support it.*
+_Hold onto what you felt when the thorn came out. That's not a preview of a different life. It's a glimpse of the one that's already possible, once the architecture is in place to support it._

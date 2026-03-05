@@ -254,7 +254,7 @@ Then, if you want more, build more. The spectrum is available. Move toward spati
 
 The goal isn't a perfect system. The goal is to stop operating in the dark.
 
-*You can't manage what you can't see.*
+_You can't manage what you can't see._
 
 ---
 
