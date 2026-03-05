@@ -50,11 +50,12 @@ export const bookChapters: BookChapter[] = [
   {
     number: 4,
     slug: 'chapter-4',
-    title: 'Find Your Thorn',
+    title: 'The 72-Hour Reset',
     part: 'The First Win',
-    status: 'coming_soon',
+    status: 'published',
+    publish_date: '2026-03-05',
     teaser:
-      "How to identify the small, recurring drain that's quietly costing you energy every day—and why removing one thorn matters more than fixing everything.",
+      "One red-feeling task, identified and resolved in 72 hours. A practical method for pulling a thorn—eliminate, delegate, automate, or reconstruct—and your first taste of what sovereignty actually feels like.",
   },
   {
     number: 5,
