@@ -30,7 +30,7 @@ When you make your life visible---when you can see what you're carrying---three 
 
 **Balance.** You can see the distribution. Health, relationships, finances, career, home---these domains compete for the same finite resource: you. When your commitments are invisible, you can't see how they're distributed. You might be drowning in career projects while your health domain sits neglected. Making your life visible reveals these imbalances while you can still do something about them.
 
-Visibility also supports the Action Gap. When you can see the thing you're avoiding---when it has a place in a system rather than lurking in the back of your mind---the avoidance becomes harder to sustain. The thorn from Chapter 3? You found it by looking. Visibility is what makes looking possible.
+Visibility also supports the Action Gap. When you can see the thing you're avoiding---when it has a place in a system rather than lurking in the back of your mind---the avoidance becomes harder to sustain. The thorn from Chapter 4? You found it by looking. Visibility is what makes looking possible.
 
 ---
 
