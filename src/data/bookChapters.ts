@@ -60,24 +60,16 @@ export const bookChapters: BookChapter[] = [
   {
     number: 5,
     slug: 'chapter-5',
-    title: 'The 72-Hour Hunt',
+    title: 'What You Just Built',
     part: 'The First Win',
-    status: 'coming_soon',
+    status: 'published',
+    publish_date: '2026-03-05',
     teaser:
-      'Your first act of sovereignty. A practical, time-boxed method for eliminating, delegating, automating, or reframing a single red drain.',
+      'Why that small win matters more than it seems. The four micro-skills of sovereignty, the case for architecture over willpower, and the four bridges that turn a single reset into lasting change.',
   },
   {
     number: 6,
     slug: 'chapter-6',
-    title: 'What You Just Built',
-    part: 'The First Win',
-    status: 'coming_soon',
-    teaser:
-      'Why that small win matters. The hidden skills you just practiced—and how they become the foundation for lasting change.',
-  },
-  {
-    number: 7,
-    slug: 'chapter-7',
     title: 'Making Your Life Visible',
     part: 'The Four Levers',
     status: 'coming_soon',
@@ -85,8 +77,8 @@ export const bookChapters: BookChapter[] = [
       "When you can see what you're carrying, you can choose what to put down. How visibility closes the Balance gap.",
   },
   {
-    number: 8,
-    slug: 'chapter-8',
+    number: 7,
+    slug: 'chapter-7',
     title: 'Building Your Support Team',
     part: 'The Four Levers',
     status: 'coming_soon',
@@ -94,8 +86,8 @@ export const bookChapters: BookChapter[] = [
       'Why carrying everything alone is optional—and how to distribute the load without guilt or friction.',
   },
   {
-    number: 9,
-    slug: 'chapter-9',
+    number: 8,
+    slug: 'chapter-8',
     title: 'Protecting Your Capacity',
     part: 'The Four Levers',
     status: 'coming_soon',
@@ -103,8 +95,8 @@ export const bookChapters: BookChapter[] = [
       'How to stop depletion from being the default. Managing energy as a resource, not a mystery.',
   },
   {
-    number: 10,
-    slug: 'chapter-10',
+    number: 9,
+    slug: 'chapter-9',
     title: 'Working Your System',
     part: 'The Four Levers',
     status: 'coming_soon',
@@ -112,8 +104,8 @@ export const bookChapters: BookChapter[] = [
       'Turning effort into momentum. How rhythms, limits, and reviews close the Action gap and make progress compound.',
   },
   {
-    number: 11,
-    slug: 'chapter-11',
+    number: 10,
+    slug: 'chapter-10',
     title: 'What Sovereignty Looks Like',
     part: 'The Long Game',
     status: 'coming_soon',
@@ -121,8 +113,8 @@ export const bookChapters: BookChapter[] = [
       'The integrated picture. What changes when visibility, support, capacity, and systems work together.',
   },
   {
-    number: 12,
-    slug: 'chapter-12',
+    number: 11,
+    slug: 'chapter-11',
     title: 'Where to Go From Here',
     part: 'The Long Game',
     status: 'coming_soon',
