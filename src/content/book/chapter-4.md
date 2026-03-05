@@ -152,7 +152,7 @@ In doing this, you moved through a few things that are easy to underestimate:
 
 **Externalization.** Getting the problem out of your head and into words. Naming the thorn. That alone is more than most people do---carrying vague dissatisfactions without ever making them concrete enough to address.
 
-**Decision.** Choosing an approach. Eliminate, delegate, automate, or reframe. Not just reacting to what felt urgent, but making a strategic choice about how to handle a problem.
+**Decision.** Choosing an approach. Eliminate, delegate, automate, or reconstruct. Not just reacting to what felt urgent, but making a strategic choice about how to handle a problem.
 
 **Action.** Doing the thing. Or handing it off. Or setting up the system. The loop closed. The item moved from "draining you" to "done."
 
