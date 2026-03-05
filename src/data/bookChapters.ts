@@ -55,7 +55,7 @@ export const bookChapters: BookChapter[] = [
     status: 'published',
     publish_date: '2026-03-05',
     teaser:
-      "One red-feeling task, identified and resolved in 72 hours. A practical method for pulling a thorn—eliminate, delegate, automate, or reconstruct—and your first taste of what sovereignty actually feels like.",
+      'One red-feeling task, identified and resolved in 72 hours. A practical method for pulling a thorn—eliminate, delegate, automate, or reconstruct—and your first taste of what sovereignty actually feels like.',
   },
   {
     number: 5,
