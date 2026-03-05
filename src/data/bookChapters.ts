@@ -60,11 +60,12 @@ export const bookChapters: BookChapter[] = [
   {
     number: 5,
     slug: 'chapter-5',
-    title: 'The 72-Hour Hunt',
+    title: 'What You Just Built',
     part: 'The First Win',
-    status: 'coming_soon',
+    status: 'published',
+    publish_date: '2026-03-05',
     teaser:
-      'Your first act of sovereignty. A practical, time-boxed method for eliminating, delegating, automating, or reframing a single red drain.',
+      'Why that small win matters more than it seems. The four micro-skills of sovereignty, the case for architecture over willpower, and the four bridges that turn a single reset into lasting change.',
   },
   {
     number: 6,
