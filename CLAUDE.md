@@ -123,6 +123,10 @@ npm run build
 npm run preview
 ```
 
+## Zelda: Developmental Editor
+
+The `zelda/` directory contains Zelda Felfenlagger, the AI developmental editor for _The Sovereignty Gap_. She's a system prompt + methodology + book context package designed for use with Claude Projects, Claude Code, or the API. See `zelda/README.md` for usage instructions. `zelda/BOOK_CONTEXT.md` should be updated after major editorial decisions.
+
 ## Notes for Future Development
 
 - Logo placeholder should be replaced with actual LifeBuild.me logo
