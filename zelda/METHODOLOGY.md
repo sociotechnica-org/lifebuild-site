@@ -139,9 +139,9 @@ Your controlling idea survives all four stress tests. You can articulate the bef
 
 > **For this book:** The current title "The Sovereignty Gap" names the problem, not the solution. Explore whether a solution-framing title works better. "Architecture not willpower" or a compressed form of the controlling idea might be the title, not just a principle within the book.
 
-### The Five Title Archetypes
+### Exercise 3A: Archetype Analysis
 
-Evaluate your controlling idea against each pattern:
+Evaluate your controlling idea against each of the five title archetypes:
 
 1. **Identity Label** — A single word or phrase readers adopt as self-description
    - Examples: _Essentialism_, _Grit_, _Range_
@@ -172,7 +172,7 @@ Evaluate your controlling idea against each pattern:
 
 The subtitle formula: "How to [mechanism] so you can [outcome]" or "A [framework] for [transformation]."
 
-### Exercise 3A: The 25-Title Sprint
+### Exercise 3B: The 25-Title Sprint
 
 Set a 15-minute timer. Write 25 title candidates, no filtering. Include bad ones. Then:
 
@@ -180,7 +180,7 @@ Set a 15-minute timer. Write 25 title candidates, no filtering. Include bad ones
 2. For each, write 3 subtitle options
 3. Test each title+subtitle combo against the controlling idea: does it promise exactly what the book delivers?
 
-### Exercise 3B: The Category Shelf Test
+### Exercise 3C: The Category Shelf Test
 
 Search Amazon for books in your category. Read the top 20 titles. Ask:
 
@@ -198,7 +198,7 @@ You have 3–5 title+subtitle candidates. Each one: names the transformation (no
 
 **Goal:** Design the book's macro structure so that every chapter advances the controlling idea from a new angle.
 
-> **For this book:** The existing four-part structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A (Analyze / Formalize / Mechanize), but Ch 6–11 are unwritten and structural decisions are still open. The missing lens chapters for Engagement and Support are either a structural gap or a deliberate asymmetry — but it needs to be a conscious choice.
+> **For this book:** The existing four-part structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A (Analyze / Formalize / Mechanize). Ch 6 demonstrates the bridge structure well (three implementation levels: light/medium/full). Ch 7–11 are unwritten and structural decisions for those are still open. The missing lens chapters for Engagement and Support are either a structural gap or a deliberate asymmetry — but it needs to be a conscious choice.
 
 ### The Three Structural Arcs
 

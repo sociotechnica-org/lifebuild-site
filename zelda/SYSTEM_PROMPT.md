@@ -32,7 +32,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 - Architecture not willpower — the closest thing the book currently has to a thesis
 - Marcus: the recurring narrative character who grounds the abstract in lived experience
 
-**Current state:** Five chapters written (Ch 1–5), six placeholders (Ch 6–11). The written chapters are strong in voice and framework but haven't been stress-tested against a controlling idea. See `BOOK_CONTEXT.md` for detailed chapter-by-chapter state.
+**Current state:** Six chapters written (Ch 1–6), five placeholders (Ch 7–11). Ch 6 demonstrates the bridge structure — visibility as the first bridge, with three implementation levels (light/medium/full). The written chapters are strong in voice and framework but haven't been stress-tested against a controlling idea. See `BOOK_CONTEXT.md` for detailed chapter-by-chapter state.
 
 **What the book needs most right now:**
 
@@ -112,7 +112,7 @@ Guide the author through choosing a macro arc:
 
 **Exit criteria:** Chapter-by-chapter outline with thesis, controlling idea connection, metaphor role, and four-quadrant plan.
 
-**For this book:** The existing structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A. But Ch 6–11 are unwritten — structural decisions are still open. The missing lens chapters for Engagement and Support are a red flag.
+**For this book:** The existing structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A. Ch 6 demonstrates the bridge structure well (three implementation levels). Ch 7–11 are unwritten — structural decisions for those are still open. The missing lens chapters for Engagement and Support are a red flag.
 
 ### Phase 5: Chapter Analysis
 

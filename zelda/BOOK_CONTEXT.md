@@ -18,21 +18,21 @@
 
 ## Structure
 
-Four parts, eleven chapters. Chapters 1–5 are written; 6–11 are placeholders.
+Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders.
 
-| Ch  | Title                       | Part                 | Status      | One-Line Thesis                                                                                                                                                |
-| --- | --------------------------- | -------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The Sovereignty Gap         | I: The Lens          | Written     | Four gaps (Balance, Restoration, Engagement, Support) form a self-reinforcing system that drains capacity for intentional living.                              |
-| 2   | Seeing the Balance Gap      | I: The Lens          | Written     | Bronze/silver/gold: a strategic lens for how your time gets spent — most people drown in maintenance, starve their future selves, and never invest in systems. |
-| 3   | Seeing the Restoration Gap  | I: The Lens          | Written     | Red/gray/blue: a tactical lens for what time does to your capacity — dopamine lies about what restores you, and the morning-after test reveals the truth.      |
-| 4   | The 72-Hour Reset           | II: The First Win    | Written     | Find one thorn (persistent red), pull it out in 72 hours using four moves (eliminate/delegate/automate/reconstruct), and taste what sovereignty feels like.    |
-| 5   | What You Just Built         | II: The First Win    | Written     | The reset exercised four micro-skills (externalize/decide/act/complete); sovereignty is architecture not willpower; previews four bridges.                     |
-| 6   | Making Your Life Visible    | III: The Four Levers | Placeholder | Visibility closes the Balance Gap.                                                                                                                             |
-| 7   | Building Your Support Team  | III: The Four Levers | Placeholder | Support closes the Support Gap.                                                                                                                                |
-| 8   | Protecting Your Capacity    | III: The Four Levers | Placeholder | Capacity management closes the Restoration Gap.                                                                                                                |
-| 9   | Working Your System         | III: The Four Levers | Placeholder | Systems close the Engagement/Action Gap.                                                                                                                       |
-| 10  | What Sovereignty Looks Like | IV: The Long Game    | Placeholder | The integrated picture when all four bridges work together.                                                                                                    |
-| 11  | Where to Go From Here       | IV: The Long Game    | Placeholder | Three paths: stop here, build light systems, or go deeper.                                                                                                     |
+| Ch  | Title                       | Part                 | Status      | One-Line Thesis                                                                                                                                                                                                    |
+| --- | --------------------------- | -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The Sovereignty Gap         | I: The Lens          | Written     | Four gaps (Balance, Restoration, Engagement, Support) form a self-reinforcing system that drains capacity for intentional living.                                                                                  |
+| 2   | Seeing the Balance Gap      | I: The Lens          | Written     | Bronze/silver/gold: a strategic lens for how your time gets spent — most people drown in maintenance, starve their future selves, and never invest in systems.                                                     |
+| 3   | Seeing the Restoration Gap  | I: The Lens          | Written     | Red/gray/blue: a tactical lens for what time does to your capacity — dopamine lies about what restores you, and the morning-after test reveals the truth.                                                          |
+| 4   | The 72-Hour Reset           | II: The First Win    | Written     | Find one thorn (persistent red), pull it out in 72 hours using four moves (eliminate/delegate/automate/reconstruct), and taste what sovereignty feels like.                                                        |
+| 5   | What You Just Built         | II: The First Win    | Written     | The reset exercised four micro-skills (externalize/decide/act/complete); sovereignty is architecture not willpower; previews four bridges.                                                                         |
+| 6   | Making Your Life Visible    | III: The Four Levers | Written     | Visibility — from lists to spatial cognition to navigable environments — closes the Balance Gap by making load, distribution, and imbalances concrete. Introduces three implementation levels (light/medium/full). |
+| 7   | Building Your Support Team  | III: The Four Levers | Placeholder | Support closes the Support Gap.                                                                                                                                                                                    |
+| 8   | Protecting Your Capacity    | III: The Four Levers | Placeholder | Capacity management closes the Restoration Gap.                                                                                                                                                                    |
+| 9   | Working Your System         | III: The Four Levers | Placeholder | Systems close the Engagement/Action Gap.                                                                                                                                                                           |
+| 10  | What Sovereignty Looks Like | IV: The Long Game    | Placeholder | The integrated picture when all four bridges work together.                                                                                                                                                        |
+| 11  | Where to Go From Here       | IV: The Long Game    | Placeholder | Three paths: stop here, build light systems, or go deeper.                                                                                                                                                         |
 
 **Note on gap naming:** Chapter 1 calls the third gap "Engagement" (stuck vs. engaged). Chapter 5 and the chapter metadata call it the "Action" gap. This inconsistency needs resolution.
 
@@ -49,8 +49,10 @@ Four parts, eleven chapters. Chapters 1–5 are written; 6–11 are placeholders
 - **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of sovereignty
 - **Architecture not willpower:** The core thesis of Ch 5 and arguably the whole book
 - **Four bridges:** Visibility, Support, Capacity, Systems — each closes one gap (previewed in Ch 5, unwritten)
-- **Three tiers:** Light, medium, full implementation — meet the reader where they are
-- **Marcus:** Recurring narrative character. Opens Ch 1 (the paradox), closes Ch 1 (self-liberation flash-forward), appears at Ch 5 (three weeks later, two thorns cleared)
+- **Three implementation levels:** Light, medium, full — meet the reader where they are. Introduced in Ch 5, first demonstrated in Ch 6 (visibility bridge).
+- **Spectrum of visibility:** Head → lists → spatial organization → navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 6)
+- **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 6)
+- **Marcus:** Recurring narrative character. Opens Ch 1 (the paradox), closes Ch 1 (self-liberation flash-forward), appears at Ch 5 (three weeks later, two thorns cleared), appears at Ch 6 (six weeks in, builds a visual life map, discovers career/health imbalance)
 - **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion
 
 ---
@@ -75,5 +77,6 @@ Four parts, eleven chapters. Chapters 1–5 are written; 6–11 are placeholders
 3. **What's the controlling idea?** "Architecture not willpower" is the closest candidate but hasn't been formally tested through the Throughline phases.
 4. **The title names the problem, not the solution.** Self-help convention says to name the solution. Does this book follow that convention or deliberately break it?
 5. **Missing lens chapters:** Balance and Restoration each get a lens chapter (Ch 2, 3). Engagement and Support do not. Is this intentional? The four-gap symmetry suggests they should.
-6. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Needs a decision.
-7. **Are Ch 6–11 the right chapters?** The four bridges were previewed in Ch 5 but the actual content is unwritten. Structural decisions are still open.
+6. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Ch 1 says "Engagement," Ch 5 and Ch 6 say "Action." Needs a decision.
+7. **Are Ch 7–11 the right chapters?** Ch 6 demonstrates the bridge structure (three implementation levels) well. Do the remaining bridges (Support, Capacity, Systems) follow the same pattern? Structural decisions for Ch 7–11 are still open.
+8. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content (285 lines, 13 footnotes). Should be updated to `published` when ready to ship.
