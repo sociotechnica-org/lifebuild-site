@@ -1,14 +1,15 @@
 # The Sovereignty Gap — Book Context
 
 **Last updated:** 2026-03-16
-**Editorial phase:** Phase 1 complete. Phase 2 (Stress Test) next.
+**Editorial phase:** Phase 1 and Phase 2 complete. Phase 3 (Title Development) next.
 
 ---
 
 ## Overview
 
-**Working title:** The Sovereignty Gap — How We Lose Control of Our Own Lives & How to Take It Back
-**Title status:** Likely wrong. "Sovereignty gap" names a hidden root cause, not the pain readers feel. "Promote yourself" emerged as a potential title-level phrase. Phase 3 will address title formally.
+**Working title:** Promote Yourself (leading candidate, emerged organically during Phase 2 back-cover test)
+**Previous title:** The Sovereignty Gap — How We Lose Control of Our Own Lives & How to Take It Back
+**Title status:** "Promote Yourself" survived four contexts (back cover, antagonist interrogation, transformation map, dinner party). Formal title development in Phase 3. Subtitle territory: "systems director," "life portfolio director," "a life that manages itself, by design."
 
 **Author's assessment:** "Vibe written." Strong frameworks, strong voice. Phase 1 has now established a working controlling idea, target reader, and theme.
 
@@ -74,6 +75,63 @@ Tackling this industrial revolution with last year's playbook. The villain isn't
 
 ---
 
+## Phase 2 Findings (Stress Test)
+
+### 2A: Back-Cover Test — PASSED
+
+**Paragraph 1 (problem, in reader language):**
+In a world where new AI models launch weekly, organizations can't keep up and headlines scream at you about your future joblessness — it's easy to feel inadequate, even at the bleeding edge. Even elite performers are coming home feeling like dishrags, with nothing left to give, yet still feeling like they lost ground. Who will escape the cycle of busyness and fear? Those who promote themselves from life front line managers to life portfolio directors.
+
+**Paragraph 2 (promise — Option D, selected):**
+It's time to promote yourself. Not at work — in your life. You've been operating as the front-line manager of your own existence: handling every task, carrying every context, running on fumes and calling it discipline. _Promote Yourself_ gives you the practical path to a different operating level. You'll rebuild your capacity, architect systems that hold without your constant attention, and step into the role of director — the person who designs how their life works instead of just working their life. The old playbook got you here. This book gets you out.
+
+### 2B: Antagonist Interrogation — PASSED
+
+**Worldview the book fights:** Success in the AI revolution is about technical upskilling or surrendering knowledge work. The book argues a third path: evolve how you operate as a human, not just what tools you use.
+
+**False belief the reader holds:** That personal and professional lives are separate domains. That managing personal life with a to-do app is sufficient. The book argues your life is one integrated system and must be architected as such.
+
+**Steelman against the thesis:** Don't battle complexity with more complexity. Shrink your footprint rather than building capacity to match it. (The essentialist critique.)
+
+**The book's answer:** The book does NOT argue "do more." It argues "build differently." Architecture, not addition. A simpler system that handles complexity — like an OS makes billions of electrical signals usable. The essentialists see two options: carry the weight or drop it. The book offers a third: build something that carries the weight for you.
+
+### 2C: Transformation Map — PASSED
+
+| Dimension    | Before reading                                                                                                                                                                      | After reading                                                                                                                                                                                          |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Believes** | Me + more AI skills + more AI compute = my optimal performance.                                                                                                                     | Me shifting into the role of portfolio architect and systems director = my optimal performance.                                                                                                        |
+| **Feels**    | A low-grade hum of anxiety that never fully stops — always behind, always dropping something, always performing competence while privately wondering how long you can keep this up. | Breathing room. Your personal life feels like it should — not triumphant, not optimized, just right. The background anxiety is gone because the system is holding what you used to carry in your head. |
+| **Does**     | Treats their personal life as a half-forgotten checklist. Shows up exhausted and defaults to whatever is in front of them. Every action sets their future self up for failure.      | Treats their personal life as a system they designed and direct. Takes time to build capacity. Every action is a love letter to their future self rather than a debt against them.                     |
+
+**Key insight on the "feels" destination:** Not transcendence or mastery. Normalization. "Your personal life feels like it should." The reader didn't evolve for this level of complexity — so the book builds a system (an OS) to handle it, returning them to the baseline that complexity stole.
+
+### 2D: Dinner Party Test — PASSED
+
+"Most people think the way to thrive in the AI economy is to get better at using agents at work. I think it's to promote yourself to systems director at home."
+
+Note: "at home" creates maximum provocation in conversation. May need calibration in actual copy so the book doesn't read as domestic organization.
+
+### Phase 2 Key Decisions
+
+- **The essentialist answer must be explicit in the manuscript:** Architecture, not addition. "Build differently" not "do more."
+- **The false binary must be named and broken:** Upskill technically or surrender. The book's third path is evolving how you operate as a human.
+- **The personal/professional split is a false dichotomy** the book must explicitly challenge. Your life is one system.
+- **The "feels" destination is normalization, not elevation.** Breathing room. Background anxiety gone. Life feels like it should.
+- **OS as complexity interface** is a strong metaphor: you didn't evolve for this complexity, so build an operating system for your life, just like a computer OS makes silicon usable.
+
+### Additional Language to Preserve (Phase 2)
+
+- **"Life portfolio director" / "front-line manager to portfolio director"** — the full promotion metaphor in exec-native vocabulary
+- **"Love letters to your future self"** — the temporal architecture of the book in one phrase
+- **"Half-forgotten checklist"** — the mundane, devastating truth of most people's personal lives
+- **"A life that manages itself, by design"** — the promise in six words. Potential subtitle.
+- **"The old playbook got you here. This book gets you out."** — closing line of back cover
+- **"Running on fumes and calling it discipline"** — the reader's current self-narrative
+- **"Even at the bleeding edge"** — signals the book knows the reader isn't behind
+- **OS metaphor** — you didn't evolve for this complexity; build an interface layer
+
+---
+
 ## Structure
 
 Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders.
@@ -134,7 +192,7 @@ Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders
 
 1. ~~**Is "sovereignty" the right word?**~~ Likely not. "Promote yourself" and "architect/direct" emerged as stronger framing. Title work deferred to Phase 3.
 2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load. Marcus needs rewriting to reflect this.
-3. ~~**What's the controlling idea?**~~ Working version established (see Phase 1 Findings above). Will be stress-tested in Phase 2.
+3. ~~**What's the controlling idea?**~~ Working version established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
 4. ~~**The title names the problem, not the solution.**~~ Phase 1 surfaced solution-oriented language ("promote yourself," "architect then direct"). Title decisions in Phase 3.
 
 ### Still Open
@@ -145,3 +203,5 @@ Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders
 8. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content (285 lines, 13 footnotes). Should be updated to `published` when ready to ship.
 9. **Marcus rewrite scope:** Marcus needs to speak to the direct pain of the AI era — carrying context for agent orgs, decision fatigue, weekly obsolescence dread — not generic overwhelm. How extensive is the rewrite across Ch 1, 5, and 6?
 10. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon? Potentially a key passage in Ch 1 or a new framing chapter.
+11. **OS metaphor scope:** The OS as interface layer for human complexity emerged strongly in Phase 2. Is this the central metaphor for the book or just one illustration? Needs a decision.
+12. **"At home" calibration:** The dinner party pitch's "at home" creates great provocation but risks reading as domestic organization. The book is about your whole life as one system, not just home life.
