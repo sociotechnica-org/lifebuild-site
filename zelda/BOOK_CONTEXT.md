@@ -1,18 +1,76 @@
 # The Sovereignty Gap — Book Context
 
 **Last updated:** 2026-03-16
-**Editorial phase:** 1–2 (Theme Discovery / Stress Test — not yet formally completed)
+**Editorial phase:** Phase 1 complete. Phase 2 (Stress Test) next.
 
 ---
 
 ## Overview
 
 **Working title:** The Sovereignty Gap — How We Lose Control of Our Own Lives & How to Take It Back
-**Author's assessment:** "Vibe written." Strong frameworks, strong voice, but no formally tested controlling idea, the title is likely wrong, the audience needs sharpening, and no single theme is being pulled through consistently.
+**Title status:** Likely wrong. "Sovereignty gap" names a hidden root cause, not the pain readers feel. "Promote yourself" emerged as a potential title-level phrase. Phase 3 will address title formally.
 
-**What the book is about (draft):** Competent people who built good lives on paper but feel like they're just maintaining, not living. The book diagnoses why (four gaps that drain capacity for intentional living) and prescribes how to close them (architecture, not willpower).
+**Author's assessment:** "Vibe written." Strong frameworks, strong voice. Phase 1 has now established a working controlling idea, target reader, and theme.
 
-**Target reader (undefined — this is a key open question):** Currently reads as broadly applicable. Needs a laser-focused "who is this for" even if the content serves a wider audience.
+**What the book is about:** The AI economy has transformed your life into a complex adaptive system, but every existing productivity framework treats it like a machine to optimize. This book shows you how to stop executing and start architecting — building a personal operating system that's flexible, resilient, and self-sustaining, starting with your own capacity.
+
+**Target reader:** Senior leaders and knowledge workers drowning in AI-era cognitive load — objectively successful, subjectively overwhelmed. Today it's tech executives; every day it's increasingly every executive. The bleeding edge becomes mainstream within 18 months. Marcus needs a major rewrite to speak to the direct pain of this era rather than the general pain of the unmanaged life.
+
+---
+
+## Phase 1 Findings (Theme Discovery)
+
+### Controlling Idea (author-facing, precise)
+
+The AI economy has transformed your life into a complex adaptive system, but every existing framework treats it like a machine. Sustainable performance and fulfillment are gained when you stop optimizing and start architecting — building a capacity-first personal system that's flexible, scalable, and self-sustaining.
+
+### Coyne Controlling Idea
+
+Freedom from busyness and overwhelm is gained when you promote yourself from executor to system director of your own life.
+
+### Zinsser Reduction (one thought the reader carries away)
+
+The ability to architect, then direct, is the defining superskill of the AI industrial revolution.
+
+### Theme (reader-facing, portable)
+
+Stop optimizing. Start architecting. Capacity first, everything else follows.
+
+### Key Insight: Capacity vs. Transformation
+
+Capacity is the **method** — how you get there, the first stage of the path. The architect/director shift is the **thought** — the reframe the reader carries away. The book teaches capacity-first as the method. The book argues that architecting and directing is the new essential mode of operating.
+
+### Competitive Positioning
+
+Every major productivity framework assumes a baseline of capacity the AI-era reader doesn't have:
+
+- GTD treats life like a machine (inputs → outputs)
+- Atomic Habits treats life like a factory (repeat and optimize)
+- Deep Work treats attention as a scarce resource to hoard
+- Essentialism treats life like a cluttered room to empty
+- None of them treat life like a complex adaptive system that needs to be architected for resilience and growth
+
+The "complicated vs. complex" distinction is the intellectual engine: complicated systems can be managed with better processes; complex adaptive systems can only be architected. The reader doesn't need this vocabulary — they need to feel the difference.
+
+### Language to Preserve
+
+- **"Promote yourself"** — implies you've been operating at the wrong level; borrows org-chart language the reader already thinks in; carries agency. Potential title-level phrase.
+- **"Architect, then direct"** — the comma encodes the sequencing argument (build first, then operate). The whole book in a comma.
+- **"Old playbook / last year's playbook"** — the villain. What worked then doesn't just not work now, it abuses you.
+- **"Strategy game vs. orc chopping wood"** — the before/after image. The orc grinding and getting mowed down vs. the player directing the game. Visceral for the target audience.
+- **"Objectively successful, subjectively drowning"** — the reader's paradox.
+- **"Coming home like a dishrag"** — the felt experience of the reader's current state.
+
+### The Villain
+
+Tackling this industrial revolution with last year's playbook. The villain isn't a person or organization — it's the assumptions embedded in existing frameworks that were built for a world that no longer exists. The old playbook isn't just ineffective in the new context; it's actively harmful.
+
+### Battling Sentences (strongest versions)
+
+- **v3 (Essentialism):** "Subtraction gets you to zero, not forward — once you have space, the point is to build capacity, not just keep saying no." _(Does something different from others: argues wrong direction, not just wrong precondition.)_
+- **v8 (Worldview):** Organizations think AI integration into workflows is the key to productivity — the author thinks it will be integrating nap pods into workplaces.
+- **v9 (AI-specific):** At current rates with current UIs and structures, we'll see a productivity bust blamed on AI but actually caused by not giving human workers an evolutionary path to adapt.
+- **v10 (Architect):** Assuming AI continues to evolve, the new knowledge workforce will mostly need to be directors and systems architects — start living that way now.
 
 ---
 
@@ -72,11 +130,18 @@ Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders
 
 ## Open Editorial Questions
 
-1. **Is "sovereignty" the right word?** Potentially too political/loaded. The book defines it precisely (capacity for intentional self-directed living) but readers bring baggage.
-2. **Who exactly is the reader?** Marcus is a mid-career professional with a family. Is that the target? What about single people, younger people, people without kids?
-3. **What's the controlling idea?** "Architecture not willpower" is the closest candidate but hasn't been formally tested through the Throughline phases.
-4. **The title names the problem, not the solution.** Self-help convention says to name the solution. Does this book follow that convention or deliberately break it?
+### Resolved by Phase 1
+
+1. ~~**Is "sovereignty" the right word?**~~ Likely not. "Promote yourself" and "architect/direct" emerged as stronger framing. Title work deferred to Phase 3.
+2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load. Marcus needs rewriting to reflect this.
+3. ~~**What's the controlling idea?**~~ Working version established (see Phase 1 Findings above). Will be stress-tested in Phase 2.
+4. ~~**The title names the problem, not the solution.**~~ Phase 1 surfaced solution-oriented language ("promote yourself," "architect then direct"). Title decisions in Phase 3.
+
+### Still Open
+
 5. **Missing lens chapters:** Balance and Restoration each get a lens chapter (Ch 2, 3). Engagement and Support do not. Is this intentional? The four-gap symmetry suggests they should.
 6. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Ch 1 says "Engagement," Ch 5 and Ch 6 say "Action." Needs a decision.
 7. **Are Ch 7–11 the right chapters?** Ch 6 demonstrates the bridge structure (three implementation levels) well. Do the remaining bridges (Support, Capacity, Systems) follow the same pattern? Structural decisions for Ch 7–11 are still open.
 8. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content (285 lines, 13 footnotes). Should be updated to `published` when ready to ship.
+9. **Marcus rewrite scope:** Marcus needs to speak to the direct pain of the AI era — carrying context for agent orgs, decision fatigue, weekly obsolescence dread — not generic overwhelm. How extensive is the rewrite across Ch 1, 5, and 6?
+10. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon? Potentially a key passage in Ch 1 or a new framing chapter.
