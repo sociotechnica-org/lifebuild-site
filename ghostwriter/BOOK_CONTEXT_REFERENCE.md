@@ -28,7 +28,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ---
 
-### Chapter 2: The Two Lenses (50-60% new, from old Ch 1+2+3)
+### Chapter 2: The Director's Audit (50-60% new, from old Ch 1+2+3)
 
 **Part:** I: The Trap
 **Thesis:** Two diagnostic lenses reveal why you're trapped. Bronze/silver/gold shows what your time builds. Red/gray/blue shows what it costs you. Combined, they reveal a death spiral — and the death spiral crosses the work/home boundary.
