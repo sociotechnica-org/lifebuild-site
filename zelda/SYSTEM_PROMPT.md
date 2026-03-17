@@ -47,6 +47,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 - Stable ground / unstable ground: build at home (stable), deploy to work (unstable)
 
 **Eliminated:**
+
 - Marcus (composite character) — replaced by author as protagonist
 - The four gaps (Balance, Restoration, Engagement, Support) — scaffolding for the old title, not organic to the methodology
 - "Sovereignty" as a framing concept
@@ -54,6 +55,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 **Current state:** Phases 1-4 complete. Nine-chapter structure locked with thread assignments (see BOOK_CONTEXT.md for full detail). Three existing chapters carry forward with revision (old Ch 2+3 distilled into new Ch 2, old Ch 4 becomes Ch 3, old Ch 6 becomes Ch 4). Six chapters are entirely new. Phase 5 (Chapter Analysis) is next.
 
 **Banked title candidates:**
+
 - Humaning: Outgrow the Economy That's Trying to Replace You (potential second book)
 - Earn Back Boring: Build a Life That Runs Itself (Ch 8 title; captures normalization destination)
 
@@ -61,19 +63,20 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 
 ## The Nine-Chapter Structure
 
-| Ch | Title | Part | Source | Revision |
-|----|-------|------|--------|----------|
-| 1 | The Trap | I: The Trap | New | 100% new |
-| 2 | The Two Lenses | I: The Trap | Distilled from old Ch 1+2+3 | 50-60% new |
-| 3 | Pull the Thorn | II: The First Win | Old Ch 4 + compressed Ch 5 | 15-20% |
-| 4 | See the Board | III: The Promotion | Old Ch 6 | 15-20% |
-| 5 | Build the Team | III: The Promotion | New | 100% new |
-| 6 | Protect the Asset | III: The Promotion | New | 100% new |
-| 7 | Work the System | III: The Promotion | New | 100% new |
-| 8 | Earn Back Boring | IV: The Director's Life | New | 100% new |
-| 9 | The Promotion Is Yours | IV: The Director's Life | New | 100% new |
+| Ch  | Title                  | Part                    | Source                      | Revision   |
+| --- | ---------------------- | ----------------------- | --------------------------- | ---------- |
+| 1   | The Trap               | I: The Trap             | New                         | 100% new   |
+| 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 15-20%     |
+| 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     |
+| 5   | Build the Team         | III: The Promotion      | New                         | 100% new   |
+| 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   |
+| 7   | Work the System        | III: The Promotion      | New                         | 100% new   |
+| 8   | Earn Back Boring       | IV: The Director's Life | New                         | 100% new   |
+| 9   | The Promotion Is Yours | IV: The Director's Life | New                         | 100% new   |
 
 **Part names:**
+
 - Part I: The Trap — You're operating below your level
 - Part II: The First Win — Taste the fix
 - Part III: The Promotion — Build the four capabilities that let your life run itself
@@ -103,7 +106,7 @@ Title locked: "Promote Yourself: For Directors at Work / Disasters at Home." Two
 
 ### Phase 4: Structural Architecture — COMPLETE
 
-Nine chapters, four parts. Structure designed backwards from end state. Thread audit completed — 12 key ideas assigned as hypotheses across all chapters. See BOOK_CONTEXT.md Phase 4 Findings.
+Nine chapters, four parts. Structure designed backwards from end state. Thread audit completed — 9 key threads assigned as hypotheses across all chapters. See BOOK_CONTEXT.md Phase 4 Findings.
 
 ### Phase 5: Chapter Analysis — NEXT
 
