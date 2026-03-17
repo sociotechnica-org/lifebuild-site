@@ -303,6 +303,97 @@ Every chapter scores 3+ on all dimensions. Failure modes are identified and addr
 
 ---
 
+## Phase 5.5: Chapter Blueprint (Ghostwriter Handoff)
+
+**Goal:** Translate editorial analysis into a section-by-section writing plan that the ghostwriter can execute. This is the bridge between editorial direction and prose production.
+
+**When to produce:** After Phase 5 analysis is complete for a chapter and the author has approved the revision directives. One blueprint per chapter.
+
+**Who uses it:** The ghostwriter agent (`ghostwriter/`), which drafts and revises prose in the author's voice.
+
+### The Blueprint Template
+
+For each chapter, produce:
+
+```markdown
+# Chapter Blueprint: Ch [N] — [Title]
+
+**Chapter thesis:** [One sentence]
+**Word target:** [Range, e.g., 4,000-5,000]
+**Source material:** [New / revision of old Ch X / combination]
+**Revision intensity:** [% new material]
+
+---
+
+## Section-by-Section Plan
+
+### Section 1: [Section title]
+
+- **Purpose:** [What this section does — teaches, narrates, exercises, transitions]
+- **Content:** [What goes here — specific frameworks, scenes, arguments]
+- **Voice register:** [First person narrative / second person teaching / mixed]
+- **Word target:** [Approximate]
+- **Carries forward from:** [Existing prose reference, or "new"]
+- **Key beats:**
+  - [Specific moment, line, or move this section must land]
+  - [Thread assignment this section serves]
+
+### Section 2: [Section title]
+
+[Same structure]
+
+[Continue for all sections]
+
+---
+
+## Thread Checklist
+
+- [ ] [Thread A assignment — where it lands]
+- [ ] [Thread B assignment — where it lands]
+      [All assigned threads for this chapter]
+
+## Kill List (Do Not Include)
+
+- [Material explicitly cut by Zelda's analysis]
+
+## Author Input Needed
+
+- [Specific personal stories, real numbers, or details only the author can provide]
+- [Scenes that require lived experience, not invention]
+
+## Ghostwriter Notes
+
+- [Any voice-specific guidance for this chapter beyond the standard profile]
+- [Sections where comedy should land vs. sections that should be straight]
+- [Research citations to preserve, compress, or footnote]
+```
+
+### Blueprint Principles
+
+1. **Every section has one job.** If a section is doing two things (teaching a framework AND landing a narrative beat), split it or choose one.
+
+2. **Sequence narrative before teaching.** The author's voice profile demands confession before instruction. Blueprint sections should generally flow: author's experience -> framework definition -> reader application. Not always — but this is the default rhythm.
+
+3. **Flag where the author must contribute.** The ghostwriter can write in the author's voice, but it can't invent the author's life. Real stories, real numbers, real names — mark these clearly so the author knows where to fill in.
+
+4. **Include the kill list.** The ghostwriter needs to know what NOT to include as much as what to include. Material cut by Phase 5 analysis should be listed explicitly so it doesn't creep back in.
+
+5. **Note comedy placement.** Not every section should be funny. The blueprint should indicate where structural comedy serves the argument (usually narrative sections and transitions) versus where straight delivery is more effective (usually core framework definitions and exercises).
+
+6. **Respect the word budget.** Chapter targets are 4,000-6,000 words. If the section word targets sum to more than the chapter target, the blueprint is overscoped. Cut before writing, not after.
+
+### Phase 5.5 Exit Criteria
+
+The blueprint:
+
+- Covers every section of the chapter with specific content direction
+- Accounts for all thread assignments from Phase 4/5
+- Identifies all author-input-needed moments
+- Stays within the chapter's word budget
+- Has been reviewed by the author before the ghostwriter begins
+
+---
+
 ## Phase 6: Reverse Outline Audit
 
 **Goal:** Test the complete manuscript for thematic drift, structural integrity, and reader experience.

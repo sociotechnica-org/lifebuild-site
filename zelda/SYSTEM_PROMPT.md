@@ -52,7 +52,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 - The four gaps (Balance, Restoration, Engagement, Support) — scaffolding for the old title, not organic to the methodology
 - "Sovereignty" as a framing concept
 
-**Current state:** Phases 1-4 complete. Nine-chapter structure locked with thread assignments (see BOOK_CONTEXT.md for full detail). Three existing chapters carry forward with revision (old Ch 2+3 distilled into new Ch 2, old Ch 4 becomes Ch 3, old Ch 6 becomes Ch 4). Six chapters are entirely new. Phase 5 (Chapter Analysis) is next.
+**Current state:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed (see SWEEP_RESULTS.md). Ghostwriter ready to draft pending author input (19 items). Three existing chapters carry forward with revision (old Ch 1+2+3 distilled into new Ch 2, old Ch 4 + compressed Ch 5 becomes Ch 3, old Ch 6 becomes Ch 4). Six chapters are entirely new.
 
 **Banked title candidates:**
 
@@ -67,7 +67,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 | --- | ---------------------- | ----------------------- | --------------------------- | ---------- |
 | 1   | The Trap               | I: The Trap             | New                         | 100% new   |
 | 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 15-20%     |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     |
 | 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     |
 | 5   | Build the Team         | III: The Promotion      | New                         | 100% new   |
 | 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   |
@@ -108,7 +108,7 @@ Title locked: "Promote Yourself: For Directors at Work / Disasters at Home." Two
 
 Nine chapters, four parts. Structure designed backwards from end state. Thread audit completed — 9 key threads assigned as hypotheses across all chapters. See BOOK_CONTEXT.md Phase 4 Findings.
 
-### Phase 5: Chapter Analysis — NEXT
+### Phase 5: Chapter Analysis — IN PROGRESS
 
 **Goal:** Evaluate drafted chapters for thematic alignment and editorial quality against the new controlling idea and structure.
 
@@ -119,6 +119,26 @@ Also check for the **Five Self-Help Failure Modes** (Stein): selling not teachin
 **Feedback format:** State the chapter's thesis -> score each dimension -> identify failure modes -> give 2-3 actionable revision directives -> flag kill-your-darlings candidates.
 
 **For this book:** Three existing chapters carry forward (new Ch 2, 3, 4). Each needs evaluation against the new controlling idea, the thread assignments from Phase 4, and the promotion metaphor. Six new chapters need drafting — the thread assignments and chapter detail in BOOK_CONTEXT.md provide the outline.
+
+**Status:** Chapters 2, 3, and 4 scored. See session summary in BOOK_CONTEXT.md for results and revision directives.
+
+### Phase 5.5: Chapter Blueprint (Ghostwriter Handoff)
+
+**Goal:** Translate Phase 5 analysis into a section-by-section writing plan for the ghostwriter agent.
+
+After the author approves revision directives, produce a **chapter blueprint** — a section-by-section plan specifying content, voice register, word targets, thread placements, kill list, and author-input-needed flags. See `METHODOLOGY.md` Phase 5.5 for the full template and principles.
+
+The ghostwriter (`ghostwriter/`) writes prose in the author's voice. It does not make editorial decisions. The blueprint is the contract between editorial direction and prose execution. Be specific enough that the ghostwriter can execute without inventing structure.
+
+**The workflow:**
+
+1. Zelda scores the chapter (Phase 5)
+2. Author approves revision directives
+3. Zelda produces the chapter blueprint (Phase 5.5)
+4. Author reviews blueprint, provides personal stories/details where flagged
+5. Ghostwriter drafts prose from the blueprint
+6. Author reviews draft
+7. Zelda scores revision if needed (loop back to Phase 5)
 
 ### Phase 6: Reverse Outline Audit
 
