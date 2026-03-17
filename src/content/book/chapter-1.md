@@ -1,4 +1,4 @@
-# Chapter 1: The Trap
+## Chapter 1: The Trap
 
 ## [WORKING TITLE] {Beat 1: The Factory Floor}
 

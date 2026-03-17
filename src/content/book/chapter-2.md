@@ -1,4 +1,4 @@
-# Chapter 2: The Director's Audit
+## Chapter 2: The Director's Audit
 
 ## The Audit
 

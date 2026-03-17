@@ -4,7 +4,7 @@
 
 Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process. These are the architectural specifications for the ghostwriter -- each blueprint specifies what every beat must accomplish, what voice register to use, which threads to carry, and what existing prose survives.
 
-**Note:** Chapter 1 and Chapters 7-9 contain full beat-by-beat blueprints. Chapters 2-6 contain summary-level blueprints (thesis, word count, author input items). For Ch 2-6 drafting detail, the ghostwriter should also consult `ghostwriter/BOOK_CONTEXT_REFERENCE.md` (chapter briefs, revision directives, kill lists) and `zelda/SWEEP_RESULTS.md` (cross-chapter fixes). Full beat-by-beat blueprints for Ch 2-6 will be produced as those chapters enter the drafting queue.
+**Note:** Chapters 1-2 and Chapters 7-9 contain full beat-by-beat blueprints. Chapters 3-6 contain summary-level blueprints (thesis, word count, author input items). For Ch 3-6 drafting detail, the ghostwriter should also consult `ghostwriter/BOOK_CONTEXT_REFERENCE.md` (chapter briefs, revision directives, kill lists) and `zelda/SWEEP_RESULTS.md` (cross-chapter fixes). Full beat-by-beat blueprints for Ch 3-6 will be produced as those chapters enter the drafting queue.
 
 ### Book Structure
 
@@ -1471,8 +1471,8 @@ One item.
 
 | Ch  | Title                  | Part                    | Blueprint Status                                               |
 | --- | ---------------------- | ----------------------- | -------------------------------------------------------------- |
-| 1   | The Trap               | I: The Trap             | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
-| 2   | The Two Lenses         | I: The Trap             | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 1   | The Trap               | I: The Trap             | Full beat-by-beat blueprint                                    |
+| 2   | The Director's Audit   | I: The Trap             | Full beat-by-beat blueprint                                    |
 | 3   | Pull the Thorn         | II: The First Win       | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
 | 4   | See the Board          | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
 | 5   | Build the Team         | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
