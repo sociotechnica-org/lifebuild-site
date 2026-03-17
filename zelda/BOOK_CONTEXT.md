@@ -1,15 +1,15 @@
-# Promote Yourself — Book Context
+# Boss at Work | Intern at Home — Book Context
 
-**Last updated:** 2026-03-16
+**Last updated:** 2026-03-17
 **Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ghostwriter ready to draft pending author input (19 items — see SWEEP_RESULTS.md).
 
 ---
 
 ## Overview
 
-**Title:** Promote Yourself: For Directors at Work / Disasters at Home
-**Previous titles:** The Sovereignty Gap (original), Promote Yourself (working title during Phase 2)
-**Title status:** Locked as primary candidate. Subtitle emerged from author's own revision during Phase 3 shelf testing. Three finalists banked (see Title Candidates below).
+**Title:** Boss at Work | Intern at Home: Port Yourself (working title — pending market testing)
+**Previous titles:** The Sovereignty Gap (original), Promote Yourself: For Directors at Work / Disasters at Home (working title through Phase 5.5, replaced due to genre-signal misdirection — readers assumed career/LinkedIn advice)
+**Title status:** Working title. Solves the genre-signal problem of "Promote Yourself" (which coded as career advice). "Boss at Work | Intern at Home" is a diagnostic title — the gap statement IS the title. "Port Yourself" is a tech-exec-native subtitle meaning "take your professional OS and run it in a new environment." Still needs market testing and workshopping.
 
 **Author's positioning:** "I work in a semi-autonomous AI-powered software factory. My job is to make as many strategy, creative, and judgment-based calls as I can in an eight-hour period. After three weeks, I came home so depleted I realized I'd landed in a trap. So I built my way out. This book is the field report."
 
@@ -118,13 +118,17 @@ Note: "at home" creates maximum provocation in conversation. May need calibratio
 
 ### Title Candidates (Final Three)
 
-**1. Promote Yourself: For Directors at Work / Disasters at Home** — PRIMARY
+**1. Boss at Work | Intern at Home: Port Yourself** — PRIMARY (working title)
 
-Strongest commercial package. Broadest pickup appeal. Clearest audience signal. The subtitle solves the misdirection problem (readers might assume career/entrepreneurship book) by immediately naming who it's for. The "For [audience]" framing is unconventional on nonfiction covers — reads more like a tagline, which is a deliberate advantage on the shelf. Directors/Disasters alliteration gives rhythm. At Work / at Home parallelism gives structure. The comic book dual-identity energy (reporter by day, superhero by night) is exactly right for the audience — competent people with a secret identity problem.
+Diagnostic title — the gap statement IS the title. The reader sees it and either thinks "that's me" or "that's not me" in under two seconds. No genre misdirection — nobody reads "Intern at Home" and thinks LinkedIn optimization. The title IS the confession. "Intern at Home" is structurally funny — the absurdity of a competent professional being an intern in their own life. The promotion metaphor is encoded without using the word "promote": the reader understands they're operating at the wrong level at home. The pipe separator reads as parallel but separate — two states, one person. Visually distinctive on a cover.
 
-Post-pivot, this is the clear winner: the author's story IS the subtitle. Director at work (AI-powered software factory), disaster at home (depleted, checked out, coming home like a dishrag). The promotion metaphor maps to what the author actually did.
+"Boss" in the title, "Director" in the book. "Boss" is punchier, more universal, better shelf word. Chapter 1 then upgrades the word: "You think of yourself as a boss. But there's a difference between a boss and a director." The title sets up a word the book upgrades.
 
-Shelf test: browser knows in three seconds if the book is for them. Positioned as "if Deep Work made you better at your job but your personal life is still chaos, this is the sequel nobody wrote."
+"Port Yourself" is a tech-exec-native subtitle. "Porting" means taking software built for one platform and making it run on another — same architecture, new environment, some adaptation required but the core logic transfers. It names the book's method in two words using the reader's professional vocabulary: take your professional OS and run it at home.
+
+Replaces "Promote Yourself: For Directors at Work / Disasters at Home" which was misfiring as a genre signal — readers assumed career/LinkedIn advice book. The old subtitle's gap statement ("Directors at Work / Disasters at Home") was always the strongest copy; it's now the title where it belonged.
+
+Shelf test: browser knows the problem, audience, and tone in four seconds. "Port Yourself" creates a pickup moment — nobody has been told to "port yourself" before. The strangeness is a feature.
 
 **2. Humaning: Outgrow the Economy That's Trying to Replace You** — SECONDARY
 
@@ -147,30 +151,32 @@ Shelf test: the disillusioned productivity reader picks it up immediately. "If y
 Key principles established during Phase 3 subtitle work:
 
 - The subtitle does whatever the title doesn't. If the title is provocative, the subtitle grounds. If the title is clean, the subtitle adds edge.
-- For "Promote Yourself" specifically: the subtitle must solve the misdirection problem (sounds like career/entrepreneurship). The formula that works: contrast professional competence with personal incompetence.
-- For "Humaning" specifically: the title is SO big (could be anything about being human) that the subtitle carries almost all the meaning. The evolutionary mismatch angle ("you didn't evolve for this") was the strongest narrowing lens.
-- For "Earn Back Boring": title grabs, subtitle promises. The bridge between them should have no filler words.
+- For "Boss at Work | Intern at Home": the title IS the diagnostic — it names the gap. The subtitle's job is to signal the method. "Port Yourself" uses the reader's professional vocabulary (porting = same architecture, new environment) to name the move: take what works at work and deploy it at home.
+- The old subtitle "For Directors at Work / Disasters at Home" was always the strongest copy — it was doing the title's job. The new title promotes it.
 
-### Shelf Test Results
+### Title Evolution: Why "Promote Yourself" Was Replaced
 
-Tested against: Atomic Habits, Deep Work, The 4-Hour Workweek, Essentialism, Four Thousand Weeks, Build the Life You Want, Feel-Good Productivity, Same as Ever, $100M Offers, 10x Is Easier Than 2x, The Subtle Art of Not Giving a F\*ck, Die With Zero, Co-Intelligence.
+"Promote Yourself" had a reflexive verb problem — it pattern-matched to imperative-verb self-help titles (Brand Yourself, Market Yourself, Position Yourself). Readers assumed career/LinkedIn advice. Market testing confirmed the genre signal was wrong: people thought it was about getting a promotion at work or doing better on LinkedIn — two things the target audience rarely thinks about.
 
-- Strongest shelf performer: Promote Yourself (broadest, clearest, most legible)
-- Most distinctive: Humaning (category of one)
-- Highest ceiling: Earn Back Boring (most emotional force if it connects)
-- Safest bet: Promote Yourself
+The spirit of "promote yourself" remains the book's central metaphor and instruction. It lives inside the book (the promotion ladder: intern → manager → director). It just can't be the title because the genre misdirection was fatal on the shelf.
+
+"Boss at Work | Intern at Home" solves this by making the gap statement the title — diagnostic, confessional, structurally funny. "Port Yourself" solves the subtitle by naming the method in tech-native vocabulary.
+
+### Scope Clarification (Phase 3 Revisit, 2026-03-17)
+
+The book holds two ideas: (A) fix your personal life, and (B) this is training for the future AI-era workforce. These are Configuration 1 — Book A is the thesis, Book B is the surprise dividend. The reader arrives in pain, builds at home, experiences relief. Then Chapter 8 delivers the turn: "the skills you just built? That's what your job is about to demand." The surprise must land as a narrative turn, not just a thread payoff — it's the heist-movie moment when you realize the con was bigger than you thought.
+
+The title doesn't need to signal the future-of-work angle. That lies in wait as the Chapter 8 surprise.
 
 ### Manuscript Fit Assessment
 
-- **Earn Back Boring** fits the manuscript as written (pre-pivot) most closely. The destination is already normalization. Minor changes needed.
-- **Promote Yourself** fits the book the author described during Phase 3 (post-pivot). Significant revision needed: author as protagonist, AI-era framing, promotion metaphor threaded throughout, executive-register tone shift.
-- **Humaning** fits the biggest, most ambitious version. Most revision needed: philosophical layer, evolutionary mismatch as core theme, tonal shift toward expansive.
-
-The title decision and the revision decision are the same decision. The author chose Promote Yourself, which means choosing the post-pivot book.
+- **Boss at Work | Intern at Home: Port Yourself** fits the post-pivot book. Diagnostic title matches the confessional opening. "Port" signals the transfer-of-competence method. The promotion metaphor runs through the book without needing to be in the title.
+- **Earn Back Boring** banked for Chapter 8 title. Captures the normalization destination.
+- **Humaning** banked as potential second book. Captures the bigger philosophical argument.
 
 ### Phase 3 Key Decisions
 
-- **"Promote Yourself: For Directors at Work / Disasters at Home" is the title.**
+- **"Boss at Work | Intern at Home: Port Yourself" is the working title** (pending market testing). Replaces "Promote Yourself: For Directors at Work / Disasters at Home" which misfired on genre signal.
 - **Marcus is eliminated.** The author becomes the protagonist, opening with their lived experience in an AI-native software factory.
 - **The book's job-to-be-done has pivoted.** Original: AI-free toolkit for people afraid of technology. New: transformation guide for people landing in AI-native work and getting crushed by the cognitive load.
 - **Home as stable ground is the core strategic argument.** Work in the AI economy changes every few weeks — wrong place for permanent systems. Home challenges are standard, stable, not being disrupted. You build the capacity platform on stable ground (personal life), then deploy to unstable ground (work). This is the answer to "why at home?"
@@ -178,7 +184,8 @@ The title decision and the revision decision are the same decision. The author c
 - **The author is ahead of millions in lived experience** — working in an AI-native setup today that will become mainstream. The book is a field report from the future, not theory.
 - **"Earn Back Boring" banked for chapter/section use.** Captures the normalization destination.
 - **"Humaning" banked as potential second book.** Captures the bigger philosophical argument.
-- **Naming anxiety vs. exploiting it:** The subtitle ("trying to replace you") names a shared experience rather than amplifying a threat. Naming is generous — it says "I see you, you're not alone." The warm title earns the right for the subtitle to be direct.
+- **"Promote Yourself" lives inside the book** as the central metaphor and instruction — the promotion ladder (intern → manager → director). It just doesn't work as a title due to genre misdirection.
+- **The future-of-work payoff is the surprise dividend.** Configuration 1: fix your personal life is the thesis, accidentally training for the AI-era workforce is the Chapter 8 turn. The title doesn't need to signal this.
 
 ---
 
@@ -215,7 +222,7 @@ The structure was designed by working backwards from the end state (reader has p
 | Ch  | Title                  | Part                    | Source                      | Revision   | One-Line Thesis                                                                                                                                                                                  |
 | --- | ---------------------- | ----------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | The Trap               | I: The Trap             | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
-| 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
+| 2   | The Director's Audit   | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
 | 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.                                                       |
 | 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     | A director doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                |
 | 5   | Build the Team         | III: The Promotion      | New                         | 100% new   | A director doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                              |
@@ -246,7 +253,7 @@ Author's story: AI-native software factory, three weeks in, the dishrag realizat
 - _Transformation map "before" [LOW]:_ Name the reader's starting belief.
 - **Director moment:** "You're a director at work. What are you at home?"
 
-**Ch 2: The Two Lenses** (50-60% new, distilled from old Ch 1+2+3)
+**Ch 2: The Director's Audit** (50-60% new, distilled from old Ch 1+2+3)
 No four gaps. Two diagnostic tools: the strategic lens (bronze/silver/gold — what is your time building?) and the tactical lens (red/gray/blue — what is your time costing you?). The death spiral: bronze-heavy plus red-dominant equals a system that consumes all capacity. The morning-after test. AI-era angle: "Your job is pure bright red. Eight hours of judgment calls. It feels like your best work. And it's emptying the tank every day." Dense, rewarding — a senior leader getting a brilliant briefing. The reader walks out with two tools they can use today.
 
 - _OS metaphor [MED]:_ Framing — "These lenses are the diagnostic readout for your personal operating system. Right now, your OS is crashing."
@@ -262,7 +269,7 @@ Thorn metaphor, target selection, four moves (eliminate/delegate/automate/recons
 - **Director moment:** "This is your first executive decision about your own life."
 
 **Ch 4: See the Board — Visibility** (15-20% revision of old Ch 6)
-The professional/personal contrast (already in the text — strongest "Promote Yourself" moment in existing manuscript). Spectrum of visibility, neuroscience, bidirectional loop, three implementation levels, failure modes. Author's life map. "You'd never manage a department without a dashboard. Why are you managing your life without one?"
+The professional/personal contrast (already in the text — strongest "port yourself" moment in existing manuscript — the work-to-home transfer of professional competence). Spectrum of visibility, neuroscience, bidirectional loop, three implementation levels, failure modes. Author's life map. "You'd never manage a department without a dashboard. Why are you managing your life without one?"
 
 - _Work-to-home transfer [HIGH]:_ "You already know how to build dashboards. Apply that same thinking here." Professional competence deployed to personal life — make explicit.
 - _Villain callback [MED]:_ "The old playbook says keep it all in your head."
@@ -385,7 +392,7 @@ Each capability enables the next:
 
 ### Phase 1
 
-- **"Promote yourself"** — the title, the central metaphor, the literal instruction
+- **"Promote yourself"** — the central metaphor and literal instruction (no longer the title, but still the book's core move)
 - **"Architect, then direct"** — the comma encodes the sequencing argument (build first, then operate). The whole book in a comma.
 - **"Old playbook / last year's playbook"** — the villain. What worked then doesn't just not work now, it abuses you.
 - **"Strategy game vs. orc chopping wood"** — the before/after image. The orc grinding and getting mowed down vs. the player directing the game. Visceral for the target audience.
@@ -405,7 +412,7 @@ Each capability enables the next:
 
 ### Phase 3
 
-- **"For Directors at Work / Disasters at Home"** — the subtitle. The slash creates visual contrast. Alliteration + parallelism.
+- **"Boss at Work | Intern at Home"** — the title. The pipe creates visual parallel. The gap statement as diagnostic.
 - **"Build a Life That Runs Itself"** — the promise (banked from Earn Back Boring subtitle)
 - **"Earn back boring"** — the normalization destination as a phrase (chapter 8 title)
 - **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
@@ -433,7 +440,7 @@ Each capability enables the next:
 1. ~~**Is "sovereignty" the right word?**~~ No. "Promote yourself" is the title. "Architect/direct" is the thesis language.
 2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load.
 3. ~~**What's the controlling idea?**~~ Established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
-4. ~~**The title names the problem, not the solution.**~~ Title now names the solution: Promote Yourself.
+4. ~~**The title names the problem, not the solution.**~~ Title now names the problem diagnostically ("Boss at Work | Intern at Home") and the subtitle names the method ("Port Yourself"). "Promote yourself" remains the central metaphor inside the book.
 5. ~~**Marcus rewrite scope?**~~ Marcus eliminated entirely. Author becomes protagonist.
 6. ~~**Missing lens chapters for Engagement and Support?**~~ No longer relevant — four gaps eliminated.
 7. ~~**Engagement vs. Action gap naming?**~~ No longer relevant — four gaps eliminated.
