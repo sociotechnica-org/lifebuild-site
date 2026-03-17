@@ -153,7 +153,7 @@ Key principles established during Phase 3 subtitle work:
 
 ### Shelf Test Results
 
-Tested against: Atomic Habits, Deep Work, The 4-Hour Workweek, Essentialism, Four Thousand Weeks, Build the Life You Want, Feel-Good Productivity, Same as Ever, $100M Offers, 10x Is Easier Than 2x, The Subtle Art of Not Giving a F*ck, Die With Zero, Co-Intelligence.
+Tested against: Atomic Habits, Deep Work, The 4-Hour Workweek, Essentialism, Four Thousand Weeks, Build the Life You Want, Feel-Good Productivity, Same as Ever, $100M Offers, 10x Is Easier Than 2x, The Subtle Art of Not Giving a F\*ck, Die With Zero, Co-Intelligence.
 
 - Strongest shelf performer: Promote Yourself (broadest, clearest, most legible)
 - Most distinctive: Humaning (category of one)
