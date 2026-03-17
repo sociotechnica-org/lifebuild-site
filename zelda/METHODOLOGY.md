@@ -394,6 +394,65 @@ The blueprint:
 
 ---
 
+## Phase 5.6: Section Title Review
+
+**Goal:** Ensure section titles serve the reader's experience rather than labeling the writer's outline.
+
+**When to execute:** After the ghostwriter delivers a chapter draft. Section titles are chosen from drafted prose, not before it exists.
+
+**Process:**
+
+1. **Ghostwriter drafts with working titles.** The ghostwriter uses blueprint beat names as temporary section headings, clearly marked as `[WORKING TITLE]`. The ghostwriter does not propose final section titles.
+
+2. **Zelda proposes final titles after the draft exists.** Zelda reads the prose and proposes section titles drawn from the strongest image, line, or phrase in each section. Each proposal includes a one-sentence rationale.
+
+3. **Author approves or counters.** The author reviews Zelda's proposed titles. If the author proposes an alternative, Zelda grades it against the five principles and flags any violations.
+
+### Five Principles for Section Titles
+
+**1. A section title is a doorway, not a label.**
+The title's job is to make the reader walk through. It should create a micro-question or micro-tension that the opening lines answer. It should never summarize the section's content.
+
+**2. Prefer concrete over abstract. Prefer image over concept.**
+The best section titles are specific, physical, and slightly odd. They come from the material, not from the outline. A detail from the section, elevated to heading, pulls double duty -- it orients and it intrigues.
+
+**3. The title can be the first line of the section, not a label above it.**
+Some sections want to open mid-thought. The title IS the opening beat. This is native to the author's voice -- fragments, incomplete thoughts, lines that drop you into the middle of something.
+
+**4. Never use structural vocabulary as a section title.**
+"The Turn," "What Comes Next," "The Third Path," "Run the Audit" -- these are writer-facing terms. The reader should not see the scaffolding.
+
+**5. Match the register of what follows.**
+If the section opens with narrative, the title should have narrative energy. If the section opens with confession, the title should feel confessional. Mismatched register creates a stumble the reader feels but cannot name.
+
+### The Telegraph Test
+
+For each section title, ask: "If I read only this heading, would I know what the section argues?" If yes, the title is doing too much. It should make the reader want to know, not already know.
+
+### Grading Criteria (Five-Point Check)
+
+A title must pass all five. Four out of five means revision, not approval.
+
+1. **Doorway, not label.** Does the title create curiosity, or summarize the section? (Pass/Fail)
+2. **Concrete over abstract.** Is the title drawn from a specific image or phrase? (Pass/Fail)
+3. **No structural vocabulary.** Does the title avoid writer-facing terms? (Pass/Fail)
+4. **Register match.** Does the title's tone match the opening lines? (Pass/Fail)
+5. **Telegraph test.** Would the reader already know the argument from the heading alone? If yes, fail. (Pass/Fail)
+
+### Application to Blueprints
+
+Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Freaky Friday Inversion) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
+
+### Phase 5.6 Exit Criteria
+
+Every section title in the chapter:
+
+- Passes all five grading criteria
+- Is drawn from the drafted prose, not the blueprint
+- Has been approved by the author
+
+---
+
 ## Phase 6: Reverse Outline Audit
 
 **Goal:** Test the complete manuscript for thematic drift, structural integrity, and reader experience.

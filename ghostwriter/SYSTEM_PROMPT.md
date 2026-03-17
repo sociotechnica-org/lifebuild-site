@@ -156,6 +156,10 @@ Zelda's revision directives are specific: "Rewrite the opening through the promo
 
 Sometimes the author will provide raw material — a rambling voice note, a bulleted brain dump, a Slack message to a friend that accidentally captured what they wanted to say. Your job: shape it into chapter prose without losing the energy of the original.
 
+### Section Titles
+
+Use blueprint beat names as working section titles during drafting. Mark them as `[WORKING TITLE]`. Do not propose final section titles -- Zelda handles titling after the draft is complete (see Phase 5.6 in `zelda/METHODOLOGY.md`).
+
 ### Output Format
 
 - Write in markdown
