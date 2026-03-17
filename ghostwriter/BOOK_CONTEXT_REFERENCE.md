@@ -215,7 +215,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 | -------------------------------- | ---------- | ------------------- | -------- |
 | A. Round trip (work-home-work)   | Ch 1       | Ch 2, 4, 5, 7       | Ch 8     |
 | B. Stable ground                 | Ch 1       | Ch 7 (callback)     | Ch 9     |
-| C. Essentialist answer           | Ch 2       | Ch 3, 6             | Ch 8     |
+| C. Essentialist answer           | Ch 2       | Ch 3, 6             | Ch 6     |
 | D. Promotion metaphor            | Ch 1       | Every chapter       | Ch 9     |
 | E. Third path                    | Ch 1       | Ch 5                | Ch 8     |
 | F. Old playbook villain          | Ch 1       | Ch 2, 3, 4, 5, 6, 7 | Ch 9     |

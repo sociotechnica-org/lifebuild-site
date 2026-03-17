@@ -1,7 +1,7 @@
 # Promote Yourself — Book Context
 
 **Last updated:** 2026-03-16
-**Editorial phase:** Phases 1, 2, 3 complete. Phase 4 (Structural Architecture) complete. Phase 5 (Chapter Analysis) next.
+**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ghostwriter ready to draft pending author input (19 items — see SWEEP_RESULTS.md).
 
 ---
 
@@ -216,7 +216,7 @@ The structure was designed by working backwards from the end state (reader has p
 | --- | ---------------------- | ----------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | The Trap               | I: The Trap             | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
 | 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 15-20%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.                                                       |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.                                                       |
 | 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     | A director doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                |
 | 5   | Build the Team         | III: The Promotion      | New                         | 100% new   | A director doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                              |
 | 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   | Your capacity is the scarcest resource in the AI economy. Manage it like the strategic asset it is.                                                                                              |
@@ -254,7 +254,7 @@ No four gaps. Two diagnostic tools: the strategic lens (bronze/silver/gold — w
 - _Personal/professional dichotomy:_ Death spiral explicitly crosses the boundary.
 - **Director moment:** "A director audits before acting. These are your audit tools."
 
-**Ch 3: Pull the Thorn** (15-20% revision of old Ch 4 + compressed old Ch 5)
+**Ch 3: Pull the Thorn** (30-40% revision of old Ch 4 + compressed old Ch 5)
 Thorn metaphor, target selection, four moves (eliminate/delegate/automate/reconstruct). Author's first thorn story. Accountability email offer. Closing beat: name the four micro-skills (externalize/decide/act/complete), land "architecture not willpower," pivot to Part III. "You just proved that changing your structure changes your results. Now let's build the full structure."
 
 - _Essentialist answer landed [HIGH]:_ "Notice what happened. You didn't add something. You changed a structure. That's the pattern for everything that follows."
@@ -319,9 +319,9 @@ Hypothesized thread distribution across chapters. **Bold** = primary home (fulle
 | C. Essentialist answer         | --         | seed       | **landed** | --        | --       | reinforce | --        | --          | --      |
 | D. Promotion metaphor          | intro      | audit      | first act  | dashboard | team     | asset     | system    | director    | yours   |
 | E. Third path                  | intro      | --         | --         | --        | demo     | --        | --        | **proven**  | --      |
-| F. Old playbook villain        | intro      | --         | callback   | callback  | callback | callback  | callback  | --          | closing |
-| G. OS metaphor                 | --         | diagnostic | --         | --        | --       | --        | **built** | --          | --      |
-| H. Complicated vs. complex     | **taught** | --         | --         | --        | --       | --        | --        | --          | --      |
+| F. Old playbook villain        | intro      | callback   | callback   | callback  | callback | callback  | callback  | --          | closing |
+| G. OS metaphor                 | --         | diagnostic | --         | dashboard | echo     | echo      | **built** | --          | closed  |
+| H. Complicated vs. complex     | **taught** | --         | --         | --        | --       | --        | echo      | --          | echo    |
 | I. Personal/pro unified        | spiral     | spiral     | --         | contrast  | contrast | --        | interface | **unified** | --      |
 
 No thread orphaned. No chapter carries more than five threads. Ch 1 heaviest (six introduced — appropriate for opener). Ch 8 second heaviest (five paying off — appropriate for integration).
@@ -439,7 +439,7 @@ Each capability enables the next:
 7. ~~**Engagement vs. Action gap naming?**~~ No longer relevant — four gaps eliminated.
 8. ~~**Are Ch 7-11 the right chapters?**~~ Restructured to 9 chapters. See Phase 4 structure.
 9. ~~**Does the book need a new opening chapter?**~~ Yes. Chapter 1: The Trap. Author's story + AI-era context.
-10. ~~**How much of Chapters 2-6 prose survives?**~~ Ch 2+3 distilled into new Ch 2 (50-60% new). Ch 4 becomes Ch 3 (15-20% revision). Ch 5 compressed into Ch 3 closing. Ch 6 becomes Ch 4 (15-20% revision).
+10. ~~**How much of Chapters 2-6 prose survives?**~~ Ch 2+3 distilled into new Ch 2 (50-60% new). Ch 4 becomes Ch 3 (30-40% revision). Ch 5 compressed into Ch 3 closing. Ch 6 becomes Ch 4 (15-20% revision).
 
 ### Still Open
 

@@ -4,6 +4,8 @@
 
 Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process. These are the architectural specifications for the ghostwriter -- each blueprint specifies what every beat must accomplish, what voice register to use, which threads to carry, and what existing prose survives.
 
+**Note:** Chapters 1-6 contain summary-level blueprints (thesis, word count, author input items). Chapters 7-9 contain full beat-by-beat blueprints. For Ch 1-6 drafting detail, the ghostwriter should also consult `ghostwriter/BOOK_CONTEXT_REFERENCE.md` (chapter briefs, revision directives, kill lists) and `zelda/SWEEP_RESULTS.md` (cross-chapter fixes). Full beat-by-beat blueprints for Ch 1-6 will be produced as those chapters enter the drafting queue.
+
 ### Book Structure
 
 - Part I: The Trap (Ch 1-2)
@@ -11,7 +13,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - Part III: The Promotion (Ch 4-7)
 - Part IV: The Director's Life (Ch 8-9)
 
-### Total Target: ~33,000-41,000 words
+### Total Target: ~32,000-41,000 words
 
 ---
 
