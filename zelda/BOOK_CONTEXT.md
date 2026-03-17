@@ -399,7 +399,7 @@ Each capability enables the next:
 - **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
 - **"You weren't built for this economy"** — evolutionary mismatch in seven words
 - **Build on stable ground (home), deploy to unstable ground (work)** — the core strategic argument for "why at home"
-- **Grunt / manager / director** — the promotion ladder
+- **Intern / manager / director** — the promotion ladder (updated from "grunt" in Phase 4)
 - **"I'm a human systems inventor"** — the author's self-description and credibility claim
 
 ### Phase 4
@@ -431,7 +431,7 @@ Each capability enables the next:
 
 ### Still Open
 
-11. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content. Should be updated to `published` when ready to ship.
+11. **bookChapters.ts is out of sync with the new structure.** The site metadata still defines 11 chapters with old titles, old part names, and eliminated concepts (four gaps, Marcus). Needs updating to reflect the nine-chapter structure when the site catches up to editorial decisions. Old Ch 6 (now Ch 4: See the Board) is marked `coming_soon` but has full written content.
 12. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon? Likely lives in Ch 1 or Ch 2.
 13. **OS metaphor scope:** Central metaphor or supporting illustration? The promotion ladder is now the central metaphor. OS likely becomes a supporting illustration in Ch 2 or Ch 7.
 14. **"At home" calibration:** "At home" creates great provocation but risks reading as domestic organization. The stable-ground argument helps but needs careful handling in the prose.

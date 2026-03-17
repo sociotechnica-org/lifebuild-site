@@ -198,7 +198,7 @@ You have 3–5 title+subtitle candidates. Each one: names the transformation (no
 
 **Goal:** Design the book's macro structure so that every chapter advances the controlling idea from a new angle.
 
-> **For this book:** The existing four-part structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A (Analyze / Formalize / Mechanize). Ch 6 demonstrates the bridge structure well (three implementation levels: light/medium/full). Ch 7–11 are unwritten and structural decisions for those are still open. The missing lens chapters for Engagement and Support are either a structural gap or a deliberate asymmetry — but it needs to be a conscious choice.
+> **For this book (resolved):** Arc A modified was chosen. The book uses four parts organized by the promotion ladder (The Trap / The First Win / The Promotion / The Director's Life). Nine chapters, designed backwards from the end state. Four gaps eliminated as scaffolding. See BOOK_CONTEXT.md Phase 4 Findings for the definitive structural outline with thread assignments.
 
 ### The Three Structural Arcs
 
