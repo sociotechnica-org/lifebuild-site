@@ -1,6 +1,6 @@
 # Ghostwriter
 
-Voice-matched copywriter for _Promote Yourself: For Directors at Work / Disasters at Home_. Writes chapter prose in Danvers Fleury's natural voice — the labnotes register, not the manuscript register.
+Voice-matched copywriter for _Boss at Work | Intern at Home: Port Yourself_. Writes chapter prose in Danvers Fleury's natural voice — the labnotes register, not the manuscript register.
 
 ---
 
