@@ -1,6 +1,6 @@
 # Zelda's Editorial Methodology
 
-**A structured process for discovering, developing, and auditing the thematic core of The Sovereignty Gap.**
+**A structured process for discovering, developing, and auditing the thematic core of _Promote Yourself: For Directors at Work / Disasters at Home_.**
 
 Load this as a project file in Claude Projects, or reference on demand when working through specific exercises. The companion `SYSTEM_PROMPT.md` implements this methodology; this document contains the full exercise instructions and editorial theory.
 
@@ -22,7 +22,7 @@ The phases are sequential but not strictly linear — you'll often loop back fro
 
 **The problem this solves:** Authors usually start with a topic ("personal sovereignty"), not a thesis. A topic is a territory; a thesis is an argument about that territory. You can't build a book on a topic — you need a claim that can be proved, challenged, and defended.
 
-> **For this book:** The tension to explore is whether the villain is maintenance itself, or the invisible systems that make maintenance consume everything. "Architecture not willpower" is the strongest candidate for a controlling idea, but it hasn't been stress-tested. The four gaps are a diagnostic lens — they explain what's happening, but the controlling idea needs to argue _why_ it happens and _what to do about it_.
+> **For this book (resolved):** Controlling idea established and stress-tested through all four Phase 2 tests. See BOOK_CONTEXT.md Phase 1 and Phase 2 Findings.
 
 ### Exercise 1A: The "They Say / But I Say" Generator
 
@@ -137,7 +137,7 @@ Your controlling idea survives all four stress tests. You can articulate the bef
 
 **Core principle:** Self-help titles should name the solution, not emphasize the problem. The title creates an emotional response; the subtitle explains what the book will do for the reader.
 
-> **For this book:** The current title "The Sovereignty Gap" names the problem, not the solution. Explore whether a solution-framing title works better. "Architecture not willpower" or a compressed form of the controlling idea might be the title, not just a principle within the book.
+> **For this book (resolved):** Title locked as "Promote Yourself: For Directors at Work / Disasters at Home." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
 
 ### Exercise 3A: Archetype Analysis
 
@@ -198,7 +198,7 @@ You have 3–5 title+subtitle candidates. Each one: names the transformation (no
 
 **Goal:** Design the book's macro structure so that every chapter advances the controlling idea from a new angle.
 
-> **For this book:** The existing four-part structure (Lens / First Win / Four Levers / Long Game) maps loosely to Arc A (Analyze / Formalize / Mechanize). Ch 6 demonstrates the bridge structure well (three implementation levels: light/medium/full). Ch 7–11 are unwritten and structural decisions for those are still open. The missing lens chapters for Engagement and Support are either a structural gap or a deliberate asymmetry — but it needs to be a conscious choice.
+> **For this book (resolved):** Arc A modified was chosen. The book uses four parts organized by the promotion ladder (The Trap / The First Win / The Promotion / The Director's Life). Nine chapters, designed backwards from the end state. Four gaps eliminated as scaffolding. See BOOK_CONTEXT.md Phase 4 Findings for the definitive structural outline with thread assignments.
 
 ### The Three Structural Arcs
 

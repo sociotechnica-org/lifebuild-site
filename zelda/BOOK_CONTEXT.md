@@ -1,7 +1,7 @@
 # Promote Yourself — Book Context
 
 **Last updated:** 2026-03-16
-**Editorial phase:** Phase 1, 2, and 3 complete. Phase 4 (Structural Architecture) next.
+**Editorial phase:** Phases 1, 2, 3 complete. Phase 4 (Structural Architecture) complete. Phase 5 (Chapter Analysis) next.
 
 ---
 
@@ -182,49 +182,190 @@ The title decision and the revision decision are the same decision. The author c
 
 ---
 
-## Structure
+## Phase 4 Findings (Structural Architecture)
 
-Four parts, eleven chapters. Chapters 1-6 are written (pre-pivot); 7-11 are placeholders.
+### Macro Arc
 
-| Ch  | Title                       | Part                 | Status      | One-Line Thesis                                                                                                                                                                                                    |
-| --- | --------------------------- | -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | The Sovereignty Gap         | I: The Lens          | Written     | Four gaps (Balance, Restoration, Engagement, Support) form a self-reinforcing system that drains capacity for intentional living.                                                                                  |
-| 2   | Seeing the Balance Gap      | I: The Lens          | Written     | Bronze/silver/gold: a strategic lens for how your time gets spent — most people drown in maintenance, starve their future selves, and never invest in systems.                                                     |
-| 3   | Seeing the Restoration Gap  | I: The Lens          | Written     | Red/gray/blue: a tactical lens for what time does to your capacity — dopamine lies about what restores you, and the morning-after test reveals the truth.                                                          |
-| 4   | The 72-Hour Reset           | II: The First Win    | Written     | Find one thorn (persistent red), pull it out in 72 hours using four moves (eliminate/delegate/automate/reconstruct), and taste what sovereignty feels like.                                                        |
-| 5   | What You Just Built         | II: The First Win    | Written     | The reset exercised four micro-skills (externalize/decide/act/complete); sovereignty is architecture not willpower; previews four bridges.                                                                         |
-| 6   | Making Your Life Visible    | III: The Four Levers | Written     | Visibility — from lists to spatial cognition to navigable environments — closes the Balance Gap by making load, distribution, and imbalances concrete. Introduces three implementation levels (light/medium/full). |
-| 7   | Building Your Support Team  | III: The Four Levers | Placeholder | Support closes the Support Gap.                                                                                                                                                                                    |
-| 8   | Protecting Your Capacity    | III: The Four Levers | Placeholder | Capacity management closes the Restoration Gap.                                                                                                                                                                    |
-| 9   | Working Your System         | III: The Four Levers | Placeholder | Systems close the Engagement/Action Gap.                                                                                                                                                                           |
-| 10  | What Sovereignty Looks Like | IV: The Long Game    | Placeholder | The integrated picture when all four bridges work together.                                                                                                                                                        |
-| 11  | Where to Go From Here       | IV: The Long Game    | Placeholder | Three paths: stop here, build light systems, or go deeper.                                                                                                                                                         |
+**Arc A, modified.** Analyze / Formalize / Mechanize / Integrate — wearing the book's own language through the promotion ladder.
 
-**Note on gap naming:** Chapter 1 calls the third gap "Engagement" (stuck vs. engaged). Chapter 5 and the chapter metadata call it the "Action" gap. This inconsistency needs resolution.
+### The Four Gaps: Eliminated
 
-**Note on structure post-pivot:** The four-part structure and chapter outlines were designed for the pre-pivot book. Phase 4 needs to reassess whether these hold given the new protagonist (author), new framing (AI-era), and new argument (build on stable ground, deploy to unstable ground). Key question: does the book need a new opening chapter establishing the AI-era context before the lenses?
+The four gaps (Balance, Restoration, Engagement, Support) were reverse-engineered from the original title "The Sovereignty Gap" — scaffolding built to justify a title that no longer exists. The author confirmed they were artificially jammed into the methodology, which originally centered on the two color systems and the framework for applying them.
+
+**What the gaps were doing and what replaces each function:**
+
+1. **Diagnostic labels** ("you have a Balance Gap") → The two lenses are more specific and actionable: "you're drowning in bronze and running on bright red"
+2. **Four-bridge structure** (each bridge closes a gap) → The four capabilities stand on their own as "what a director builds," organized by the promotion metaphor
+3. **Reinforcing loop** (gaps feed each other) → Expressed through the lenses: "Bronze-heavy plus red-dominant equals a death spiral that consumes all your capacity"
+4. **Engagement/Action gap** → The naming was never resolved because it was never a natural category
+
+**What survives from the gap chapters:** The research on each dimension of overwhelm, the reinforcing-loop insight (reframed through the lenses), and any examples that illustrate the two color systems.
+
+### Structure: 9 Chapters, 4 Parts
+
+The structure was designed by working backwards from the end state (reader has promoted themselves, life runs itself) and asking at each step: what does the reader need immediately before this?
+
+**Key structural principles:**
+
+- The reader gets promoted as they move through the book — the structure IS the metaphor
+- First win lands by Ch 3 (faster path to action than the 12- or 10-chapter versions)
+- The four capabilities in Part III are layered, not parallel — each enables the next
+- No chapter exists because a previous draft had it; every chapter earns its place in the reader's journey
+
+| Ch  | Title                  | Part                    | Source                      | Revision   | One-Line Thesis                                                                                                                                                                                  |
+| --- | ---------------------- | ----------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The Trap               | I: The Trap             | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
+| 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 15-20%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.                                                       |
+| 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     | A director doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                |
+| 5   | Build the Team         | III: The Promotion      | New                         | 100% new   | A director doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                              |
+| 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   | Your capacity is the scarcest resource in the AI economy. Manage it like the strategic asset it is.                                                                                              |
+| 7   | Work the System        | III: The Promotion      | New                         | 100% new   | A director builds systems that run without constant intervention. The operating rhythm that makes the other three capabilities self-sustaining.                                                  |
+| 8   | Earn Back Boring       | IV: The Director's Life | New                         | 100% new   | When all four capabilities are operating, your life feels like it should. The normalization promise delivered.                                                                                   |
+| 9   | The Promotion Is Yours | IV: The Director's Life | New                         | 100% new   | Three paths forward. The promotion is permanent — how far you take it is your call.                                                                                                              |
+
+### Part Names
+
+- **Part I: The Trap** — You're operating below your level
+- **Part II: The First Win** — Taste the fix
+- **Part III: The Promotion** — Build the four capabilities that let your life run itself
+- **Part IV: The Director's Life** — What it looks like when it's working
+
+### Chapter-by-Chapter Detail (with Thread Assignments)
+
+Thread assignments are hypotheses for where ideas MIGHT live — tested during actual writing, not mandates.
+
+**Ch 1: The Trap** (100% new)
+Author's story: AI-native software factory, three weeks in, the dishrag realization. The confession: "I was an intern at home long before AI — the revolution just made it impossible to fake." The bandaid on a severed limb (AI agent coach, inbox automation — tools that optimize a broken system are still a broken system). Brief historical framing of industrial revolutions. The false binary (upskill or surrender) and the third path. The promotion metaphor introduced: "You're a director at work. What are you at home?"
+
+- _Stable ground argument [HIGH]:_ Explicit — "I tried to fix work first. The ground kept shifting. Home is where the foundation goes."
+- _Complicated vs. complex [MED]:_ In reader language — "Every system I tried treated my life like a machine. But my life isn't a machine. It's a living system."
+- _Personal/professional dichotomy [HIGH]:_ Introduce the cross-boundary death spiral.
+- _Third path [MED]:_ First of three touches.
+- _Villain [MED]:_ First appearance.
+- _Transformation map "before" [LOW]:_ Name the reader's starting belief.
+- **Director moment:** "You're a director at work. What are you at home?"
+
+**Ch 2: The Two Lenses** (50-60% new, distilled from old Ch 1+2+3)
+No four gaps. Two diagnostic tools: the strategic lens (bronze/silver/gold — what is your time building?) and the tactical lens (red/gray/blue — what is your time costing you?). The death spiral: bronze-heavy plus red-dominant equals a system that consumes all capacity. The morning-after test. AI-era angle: "Your job is pure bright red. Eight hours of judgment calls. It feels like your best work. And it's emptying the tank every day." Dense, rewarding — a senior leader getting a brilliant briefing. The reader walks out with two tools they can use today.
+
+- _OS metaphor [MED]:_ Framing — "These lenses are the diagnostic readout for your personal operating system. Right now, your OS is crashing."
+- _Essentialist answer seeded [HIGH]:_ "The answer isn't to do more. It's not even to do less. It's to build differently."
+- _Personal/professional dichotomy:_ Death spiral explicitly crosses the boundary.
+- **Director moment:** "A director audits before acting. These are your audit tools."
+
+**Ch 3: Pull the Thorn** (15-20% revision of old Ch 4 + compressed old Ch 5)
+Thorn metaphor, target selection, four moves (eliminate/delegate/automate/reconstruct). Author's first thorn story. Accountability email offer. Closing beat: name the four micro-skills (externalize/decide/act/complete), land "architecture not willpower," pivot to Part III. "You just proved that changing your structure changes your results. Now let's build the full structure."
+
+- _Essentialist answer landed [HIGH]:_ "Notice what happened. You didn't add something. You changed a structure. That's the pattern for everything that follows."
+- _Villain callback [MED]:_ "The old playbook would have you white-knuckle through this."
+- **Director moment:** "This is your first executive decision about your own life."
+
+**Ch 4: See the Board — Visibility** (15-20% revision of old Ch 6)
+The professional/personal contrast (already in the text — strongest "Promote Yourself" moment in existing manuscript). Spectrum of visibility, neuroscience, bidirectional loop, three implementation levels, failure modes. Author's life map. "You'd never manage a department without a dashboard. Why are you managing your life without one?"
+
+- _Work-to-home transfer [HIGH]:_ "You already know how to build dashboards. Apply that same thinking here." Professional competence deployed to personal life — make explicit.
+- _Villain callback [MED]:_ "The old playbook says keep it all in your head."
+- **Director moment:** "You'd never manage a department without a dashboard."
+
+**Ch 5: Build the Team — Support** (100% new)
+"You have a team of 50 at work. What's your team at home?" Types of support: operational (delegation), emotional (connection), cognitive (thinking partners), automated (AI and systems). Embodied/unembodied distinction expanded. AI as a specific kind of leverage. Three implementation levels. Author's story of building their own support architecture.
+
+- _Third path demonstrated [MED]:_ Second of three touches. AI as team member IS the synthesis — the third path in action.
+- _Work-to-home transfer:_ "Your first move as a new director is to assess your team. Do the same thing here."
+- _Villain callback [MED]:_ "The old playbook says carry it all yourself."
+- **Director moment:** "First thing a new director does is assess their team."
+
+**Ch 6: Protect the Asset — Capacity** (100% new)
+Capacity as the scarcest, most valuable resource in the AI economy. The bright red trap at scale. Practical capacity protection: blue scheduling, bright red dosing, dark red clearing. Three energy dimensions expanded. Morning-after test as ongoing practice. Three implementation levels.
+
+- _Essentialist answer reinforced:_ "Protecting capacity isn't doing less. It's investing in the resource that makes everything else possible."
+- _Villain callback [MED]:_ "The old playbook calls pushing through depletion 'discipline.' This chapter calls it sabotage."
+- **Director moment:** "Running yourself into the ground isn't dedication. It's mismanagement."
+
+**Ch 7: Work the System — Systems** (100% new)
+The operating rhythm that ties the other three capabilities together. Weekly reviews using visibility. Delegation rhythms leveraging the team. Capacity check-ins. Quarterly recalibration. How the four capabilities reinforce each other when all operating. Three implementation levels.
+
+- _OS metaphor payoff [MED]:_ "Chapter 2 showed you the diagnostics. This chapter installs the operating system."
+- _Home-to-work deployment [HIGH]:_ The rhythm explicitly manages the personal/professional interface. Not just personal maintenance — includes: how does capacity built this week deploy to work next week?
+- _"Runs without you" promise [MED]:_ "The system runs on 20 minutes a week and an hour a quarter."
+- _Villain callback [MED]:_ "The old playbook says stay on top of everything through constant vigilance."
+- **Director moment:** "A manager stays on top of everything personally. A director builds a system and trusts it."
+
+**Ch 8: Earn Back Boring** (100% new)
+Integration. What it looks like when all four capabilities are operating. Author's current life — not perfect, not optimized, just right. The normalization promise delivered. "Love letters to your future self." The orc becoming the strategy game player, shown rather than promised.
+
+- _Round trip completed [HIGH]:_ Major section, not a mention. "Here's what happened at work when I started living this way at home." Decision quality, creative output, the dishrag became a director in both domains.
+- _Third path proven [MED]:_ Third of three touches. "I didn't upskill technically. I evolved how I operate. Here's what that produced."
+- _Personal/professional dichotomy fully broken:_ Demonstrated as one system. The improvement isn't two stories — it's one.
+- _Transformation map "after" crystallized._
+- **Director moment:** "A life that feels like it should, run by someone who designed it that way."
+
+**Ch 9: The Promotion Is Yours** (100% new)
+Three paths forward (mirrors three implementation levels). What maintenance looks like. Where LifeBuild.me fits (if included). The closing argument: "You didn't just learn a system. You promoted yourself." Forward look: more people landing where you were every month.
+
+- _Villain closing:_ "The old playbook got you here. You built something different."
+- _Stable ground echoed:_ "The world will keep changing. You've built on stable ground. That foundation holds."
+- **Director moment:** "The question isn't how to survive anymore. It's what to build next."
+
+### Thread Map
+
+Hypothesized thread distribution across chapters. **Bold** = primary home (fullest treatment). Regular = supporting appearance. -- = not present.
+
+| Thread                         | Ch1        | Ch2        | Ch3        | Ch4       | Ch5      | Ch6       | Ch7       | Ch8         | Ch9     |
+| ------------------------------ | ---------- | ---------- | ---------- | --------- | -------- | --------- | --------- | ----------- | ------- |
+| A. Round trip (work-home-work) | intro      | spiral     | --         | transfer  | transfer | --        | interface | **payoff**  | echo    |
+| B. Stable ground argument      | **stated** | --         | --         | --        | --       | --        | --        | --          | echo    |
+| C. Essentialist answer         | --         | seed       | **landed** | --        | --       | reinforce | --        | --          | --      |
+| D. Promotion metaphor          | intro      | audit      | first act  | dashboard | team     | asset     | system    | director    | yours   |
+| E. Third path                  | intro      | --         | --         | --        | demo     | --        | --        | **proven**  | --      |
+| F. Old playbook villain        | intro      | --         | callback   | callback  | callback | callback  | callback  | --          | closing |
+| G. OS metaphor                 | --         | diagnostic | --         | --        | --       | --        | **built** | --          | --      |
+| H. Complicated vs. complex     | **taught** | --         | --         | --        | --       | --        | --        | --          | --      |
+| I. Personal/pro unified        | spiral     | spiral     | --         | contrast  | contrast | --        | interface | **unified** | --      |
+
+No thread orphaned. No chapter carries more than five threads. Ch 1 heaviest (six introduced — appropriate for opener). Ch 8 second heaviest (five paying off — appropriate for integration).
+
+### Why the Bridges Are Layered (Not Parallel)
+
+Each capability enables the next:
+
+1. **Visibility** first — you can't build anything else without seeing what you're carrying
+2. **Support** second — once you see the board, you realize you can't do it alone
+3. **Capacity** third — support without capacity protection still leads to burnout
+4. **Systems** last — the operating rhythm that makes the other three self-sustaining
+
+### Revision Scope Summary
+
+- 3 chapters build substantially on existing material (Ch 2, 3, 4) — 15-60% revision
+- 6 chapters are entirely new (Ch 1, 5, 6, 7, 8, 9)
+- Total: 9 chapters, down from original 11
+- The book is tighter, faster, and no longer bending itself around scaffolding built for a dead title
 
 ---
 
 ## Key Frameworks
 
-- **Four gaps:** Balance, Restoration, Engagement/Action, Support — each is a collision of environment + false belief producing a self-reinforcing pattern
-- **Bronze/silver/gold:** Strategic time lens. Bronze = maintenance, silver = capacity-building, gold = future-building
-- **Red/gray/blue:** Tactical capacity lens. Dark red = felt drain, bright red = masked drain, gray = neutral, blue = genuinely restorative
+- **Bronze/silver/gold:** Strategic time lens. Bronze = maintenance, silver = capacity-building, gold = future-building. The primary diagnostic for time allocation.
+- **Red/gray/blue:** Tactical capacity lens. Dark red = felt drain, bright red = masked drain, gray = neutral, blue = genuinely restorative. The primary diagnostic for energy/capacity.
+- **The death spiral:** Bronze-heavy plus red-dominant creates a self-reinforcing system that consumes all capacity and produces nothing but maintenance. (Replaces the four-gap reinforcing loop — same insight, expressed through the lenses.)
 - **The thorn:** Metaphor for a persistent red — small, sharp, hurts with every step. Pull one out as a first win.
 - **Four moves:** Eliminate, delegate, automate, reconstruct — resolution options for thorns
 - **Embodied vs. unembodied work:** Physical tasks (delegate to humans) vs. information tasks (delegate to humans or AI)
-- **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of sovereignty
-- **Architecture not willpower:** The core thesis of Ch 5 and arguably the whole book
-- **Four bridges:** Visibility, Support, Capacity, Systems — each closes one gap (previewed in Ch 5, unwritten)
-- **Three implementation levels:** Light, medium, full — meet the reader where they are. Introduced in Ch 5, first demonstrated in Ch 6 (visibility bridge).
-- **Spectrum of visibility:** Head -> lists -> spatial organization -> navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 6)
-- **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 6)
-- **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion
-- **Stable ground / unstable ground:** Home challenges are standard and stable; work in the AI economy shifts every few weeks. Build the capacity platform on stable ground, deploy to unstable ground. (New, Phase 3)
-- **The promotion ladder:** Grunt -> manager -> director. The reader is operating as a grunt or front-line manager of their personal life while being a director at work. The book teaches them to promote themselves. (New, Phase 3)
+- **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of directing
+- **Architecture not willpower:** The core thesis of the whole book
+- **Four capabilities:** Visibility, Support, Capacity, Systems — what a director builds. Layered, not parallel.
+- **Three implementation levels:** Light, medium, full — meet the reader where they are. Used in every capability chapter and in the final "three paths" closing.
+- **Spectrum of visibility:** Head -> lists -> spatial organization -> navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 4)
+- **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 4)
+- **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion. Introduced in Ch 2, operationalized in Ch 6.
+- **Stable ground / unstable ground:** Home challenges are standard and stable; work in the AI economy shifts every few weeks. Build the capacity platform on stable ground, deploy to unstable ground.
+- **The promotion ladder:** Intern -> manager -> director. The reader is operating as an intern or front-line manager of their personal life while being a director at work. The book teaches them to promote themselves. The structure IS the metaphor — Part I is The Trap, Part III is The Promotion, Part IV is The Director's Life.
 
-**Eliminated:** Marcus (composite character). Replaced by author as protagonist.
+**Eliminated:**
+
+- Marcus (composite character) — replaced by author as protagonist
+- The four gaps (Balance, Restoration, Engagement, Support) — scaffolding for a dead title, replaced by the two color systems as primary diagnostics and the promotion metaphor as organizing principle
 
 ---
 
@@ -235,7 +376,7 @@ Four parts, eleven chapters. Chapters 1-6 are written (pre-pivot); 7-11 are plac
 - Frameworks named and reused across chapters (bronze/silver/gold, red/gray/blue)
 - Each chapter builds on previous lenses — cumulative, not standalone
 - Ends chapters with forward momentum ("the next chapter...")
-- Includes an accountability email offer in Ch 4
+- Includes an accountability email offer in Ch 3
 - Author voice is funnier and more irreverent than current manuscript shows — Phase 3 sprint surfaced this ("I Survived the AI Revolution and All I Got Was This Shitty Life"). Tone decisions for the rewrite should consider how much of this voice gets into the prose.
 
 ---
@@ -266,12 +407,22 @@ Four parts, eleven chapters. Chapters 1-6 are written (pre-pivot); 7-11 are plac
 
 - **"For Directors at Work / Disasters at Home"** — the subtitle. The slash creates visual contrast. Alliteration + parallelism.
 - **"Build a Life That Runs Itself"** — the promise (banked from Earn Back Boring subtitle)
-- **"Earn back boring"** — the normalization destination as a phrase (banked for chapter/section use)
+- **"Earn back boring"** — the normalization destination as a phrase (chapter 8 title)
 - **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
 - **"You weren't built for this economy"** — evolutionary mismatch in seven words
 - **Build on stable ground (home), deploy to unstable ground (work)** — the core strategic argument for "why at home"
-- **Grunt / manager / director** — the promotion ladder
+- **Intern / manager / director** — the promotion ladder (updated from "grunt" in Phase 4)
 - **"I'm a human systems inventor"** — the author's self-description and credibility claim
+
+### Phase 4
+
+- **"A bandaid on a severed limb"** — AI tools optimizing a broken system (Ch 1 material)
+- **"I was an intern at home long before AI — the revolution just made it impossible to fake"** — the confession that grounds the author's credibility (Ch 1)
+- **"Your job is pure bright red"** — the AI-era reframe for the tactical lens (Ch 2)
+- **"You'd never manage a department without a dashboard"** — the professional/personal contrast for visibility (Ch 4)
+- **"You have a team of 50 at work. What's your team at home?"** — the support chapter hook (Ch 5)
+- **"You just proved that changing your structure changes your results"** — the pivot from first win to building (Ch 3)
+- **"The death spiral"** — bronze-heavy + red-dominant, replacing the four-gap reinforcing loop
 
 ---
 
@@ -284,18 +435,18 @@ Four parts, eleven chapters. Chapters 1-6 are written (pre-pivot); 7-11 are plac
 3. ~~**What's the controlling idea?**~~ Established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
 4. ~~**The title names the problem, not the solution.**~~ Title now names the solution: Promote Yourself.
 5. ~~**Marcus rewrite scope?**~~ Marcus eliminated entirely. Author becomes protagonist.
+6. ~~**Missing lens chapters for Engagement and Support?**~~ No longer relevant — four gaps eliminated.
+7. ~~**Engagement vs. Action gap naming?**~~ No longer relevant — four gaps eliminated.
+8. ~~**Are Ch 7-11 the right chapters?**~~ Restructured to 9 chapters. See Phase 4 structure.
+9. ~~**Does the book need a new opening chapter?**~~ Yes. Chapter 1: The Trap. Author's story + AI-era context.
+10. ~~**How much of Chapters 2-6 prose survives?**~~ Ch 2+3 distilled into new Ch 2 (50-60% new). Ch 4 becomes Ch 3 (15-20% revision). Ch 5 compressed into Ch 3 closing. Ch 6 becomes Ch 4 (15-20% revision).
 
 ### Still Open
 
-6. **Missing lens chapters:** Balance and Restoration each get a lens chapter (Ch 2, 3). Engagement and Support do not. Is this intentional? The four-gap symmetry suggests they should.
-7. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Ch 1 says "Engagement," Ch 5 and Ch 6 say "Action." Needs a decision.
-8. **Are Ch 7-11 the right chapters?** Structural decisions for Ch 7-11 are still open. Phase 4 work.
-9. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content. Should be updated to `published` when ready to ship.
-10. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon?
-11. **OS metaphor scope:** Central metaphor or supporting illustration? Needs a decision.
-12. **"At home" calibration:** "At home" creates great provocation but risks reading as domestic organization. The book is about your whole life as one system. The stable-ground argument helps but needs careful handling.
-13. **How much of Chapters 2-6 prose survives the reframe?** The frameworks hold. The framing above them is new. How extensive is the rewrite?
-14. **Does the book need a new opening chapter?** Establishing the AI-era context before the lenses — the author's story, the trap, why this moment is different.
+11. **bookChapters.ts is out of sync with the new structure.** The site metadata still defines 11 chapters with old titles, old part names, and eliminated concepts (four gaps, Marcus). Needs updating to reflect the nine-chapter structure when the site catches up to editorial decisions. Old Ch 6 (now Ch 4: See the Board) is marked `coming_soon` but has full written content.
+12. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon? Likely lives in Ch 1 or Ch 2.
+13. **OS metaphor scope:** Central metaphor or supporting illustration? The promotion ladder is now the central metaphor. OS likely becomes a supporting illustration in Ch 2 or Ch 7.
+14. **"At home" calibration:** "At home" creates great provocation but risks reading as domestic organization. The stable-ground argument helps but needs careful handling in the prose.
 15. **What's the right balance of author's personal story vs. frameworks/research?** The author-as-protagonist is new. How much narrative thread vs. how much instruction?
-16. **Does LifeBuild.me (the product) get mentioned, and if so, how?**
+16. **Does LifeBuild.me (the product) get mentioned, and if so, how?** Potential home in Ch 9 (The Promotion Is Yours).
 17. **How much of the author's irreverent voice gets into the prose?** The current manuscript is warm but relatively measured. The author's natural voice (surfaced in title sprint) is funnier and sharper.
