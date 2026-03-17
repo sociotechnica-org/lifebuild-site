@@ -1,21 +1,23 @@
-# The Sovereignty Gap — Book Context
+# Promote Yourself — Book Context
 
 **Last updated:** 2026-03-16
-**Editorial phase:** Phase 1 and Phase 2 complete. Phase 3 (Title Development) next.
+**Editorial phase:** Phase 1, 2, and 3 complete. Phase 4 (Structural Architecture) next.
 
 ---
 
 ## Overview
 
-**Working title:** Promote Yourself (leading candidate, emerged organically during Phase 2 back-cover test)
-**Previous title:** The Sovereignty Gap — How We Lose Control of Our Own Lives & How to Take It Back
-**Title status:** "Promote Yourself" survived four contexts (back cover, antagonist interrogation, transformation map, dinner party). Formal title development in Phase 3. Subtitle territory: "systems director," "life portfolio director," "a life that manages itself, by design."
+**Title:** Promote Yourself: For Directors at Work / Disasters at Home
+**Previous titles:** The Sovereignty Gap (original), Promote Yourself (working title during Phase 2)
+**Title status:** Locked as primary candidate. Subtitle emerged from author's own revision during Phase 3 shelf testing. Three finalists banked (see Title Candidates below).
 
-**Author's assessment:** "Vibe written." Strong frameworks, strong voice. Phase 1 has now established a working controlling idea, target reader, and theme.
+**Author's positioning:** "I work in a semi-autonomous AI-powered software factory. My job is to make as many strategy, creative, and judgment-based calls as I can in an eight-hour period. After three weeks, I came home so depleted I realized I'd landed in a trap. So I built my way out. This book is the field report."
 
-**What the book is about:** The AI economy has transformed your life into a complex adaptive system, but every existing productivity framework treats it like a machine to optimize. This book shows you how to stop executing and start architecting — building a personal operating system that's flexible, resilient, and self-sustaining, starting with your own capacity.
+**What the book is about:** The AI economy has transformed your life into a complex adaptive system, but every existing productivity framework treats it like a machine to optimize. This book shows you how to stop executing and start architecting — building a capacity-first personal system on the stable ground of your home life, then deploying that capacity to the unstable ground of AI-era work.
 
-**Target reader:** Senior leaders and knowledge workers drowning in AI-era cognitive load — objectively successful, subjectively overwhelmed. Today it's tech executives; every day it's increasingly every executive. The bleeding edge becomes mainstream within 18 months. Marcus needs a major rewrite to speak to the direct pain of this era rather than the general pain of the unmanaged life.
+**Target reader:** Senior leaders and knowledge workers drowning in AI-era cognitive load — objectively successful, subjectively overwhelmed. Today it's tech executives; every day it's increasingly every executive. The bleeding edge becomes mainstream within 18 months.
+
+**The pivot (Phase 3):** The manuscript was originally written as an AI-free toolkit for people afraid to use AI in their lives. Marcus was a composite character embodying generic overwhelm. The book's job-to-be-done has fundamentally changed: it is now a transformation guide for people landing in AI-native work and getting crushed by the cognitive load. Marcus is eliminated. The author becomes the protagonist, opening with their lived experience. This isn't a revision — it's a rebuild on existing foundations.
 
 ---
 
@@ -23,7 +25,7 @@
 
 ### Controlling Idea (author-facing, precise)
 
-The AI economy has transformed your life into a complex adaptive system, but every existing framework treats it like a machine. Sustainable performance and fulfillment are gained when you stop optimizing and start architecting — building a capacity-first personal system that's flexible, scalable, and self-sustaining.
+The AI economy has transformed your life into a complex adaptive system, but every existing framework treats it like a machine. Sustainable performance is gained when you stop optimizing and start architecting — building a capacity-first personal system on the stable ground of your home life, then deploying that capacity to the unstable ground of AI-era work.
 
 ### Coyne Controlling Idea
 
@@ -45,22 +47,13 @@ Capacity is the **method** — how you get there, the first stage of the path. T
 
 Every major productivity framework assumes a baseline of capacity the AI-era reader doesn't have:
 
-- GTD treats life like a machine (inputs → outputs)
+- GTD treats life like a machine (inputs -> outputs)
 - Atomic Habits treats life like a factory (repeat and optimize)
 - Deep Work treats attention as a scarce resource to hoard
 - Essentialism treats life like a cluttered room to empty
 - None of them treat life like a complex adaptive system that needs to be architected for resilience and growth
 
 The "complicated vs. complex" distinction is the intellectual engine: complicated systems can be managed with better processes; complex adaptive systems can only be architected. The reader doesn't need this vocabulary — they need to feel the difference.
-
-### Language to Preserve
-
-- **"Promote yourself"** — implies you've been operating at the wrong level; borrows org-chart language the reader already thinks in; carries agency. Potential title-level phrase.
-- **"Architect, then direct"** — the comma encodes the sequencing argument (build first, then operate). The whole book in a comma.
-- **"Old playbook / last year's playbook"** — the villain. What worked then doesn't just not work now, it abuses you.
-- **"Strategy game vs. orc chopping wood"** — the before/after image. The orc grinding and getting mowed down vs. the player directing the game. Visceral for the target audience.
-- **"Objectively successful, subjectively drowning"** — the reader's paradox.
-- **"Coming home like a dishrag"** — the felt experience of the reader's current state.
 
 ### The Villain
 
@@ -119,22 +112,79 @@ Note: "at home" creates maximum provocation in conversation. May need calibratio
 - **The "feels" destination is normalization, not elevation.** Breathing room. Background anxiety gone. Life feels like it should.
 - **OS as complexity interface** is a strong metaphor: you didn't evolve for this complexity, so build an operating system for your life, just like a computer OS makes silicon usable.
 
-### Additional Language to Preserve (Phase 2)
+---
 
-- **"Life portfolio director" / "front-line manager to portfolio director"** — the full promotion metaphor in exec-native vocabulary
-- **"Love letters to your future self"** — the temporal architecture of the book in one phrase
-- **"Half-forgotten checklist"** — the mundane, devastating truth of most people's personal lives
-- **"A life that manages itself, by design"** — the promise in six words. Potential subtitle.
-- **"The old playbook got you here. This book gets you out."** — closing line of back cover
-- **"Running on fumes and calling it discipline"** — the reader's current self-narrative
-- **"Even at the bleeding edge"** — signals the book knows the reader isn't behind
-- **OS metaphor** — you didn't evolve for this complexity; build an interface layer
+## Phase 3 Findings (Title & Subtitle Development)
+
+### Title Candidates (Final Three)
+
+**1. Promote Yourself: For Directors at Work / Disasters at Home** — PRIMARY
+
+Strongest commercial package. Broadest pickup appeal. Clearest audience signal. The subtitle solves the misdirection problem (readers might assume career/entrepreneurship book) by immediately naming who it's for. The "For [audience]" framing is unconventional on nonfiction covers — reads more like a tagline, which is a deliberate advantage on the shelf. Directors/Disasters alliteration gives rhythm. At Work / at Home parallelism gives structure. The comic book dual-identity energy (reporter by day, superhero by night) is exactly right for the audience — competent people with a secret identity problem.
+
+Post-pivot, this is the clear winner: the author's story IS the subtitle. Director at work (AI-powered software factory), disaster at home (depleted, checked out, coming home like a dishrag). The promotion metaphor maps to what the author actually did.
+
+Shelf test: browser knows in three seconds if the book is for them. Positioned as "if Deep Work made you better at your job but your personal life is still chaos, this is the sequel nobody wrote."
+
+**2. Humaning: Outgrow the Economy That's Trying to Replace You** — SECONDARY
+
+Most intellectually distinctive. Category of one on the shelf. "Humaning" as a made-up word demands investigation (Antifragile energy). "Outgrow" is the key verb — captures evolution without speed, becoming something larger than the threat rather than racing it. Names the AI displacement fear directly but through empowerment, not doom. Title is warm and playful; subtitle is sharp and urgent. The contrast is the calibration.
+
+Shelf test: curiosity-driven pickup. Back cover works harder. But readers who connect become evangelical — "humaning" is a word people repeat to friends.
+
+Potential second book title if the framework expands to the bigger philosophical argument about what it means to be human in this era.
+
+**3. Earn Back Boring: Build a Life That Runs Itself** — BANKED
+
+Highest ceiling, highest risk. Most polarizing. On a shelf of books promising optimization and 10x results, "boring" as an aspiration is genuinely subversive. "Build a Life That Runs Itself" is pure allure — six words, nothing wasted. Together they promise normalization through architecture.
+
+This was the best fit for the manuscript as originally written (pre-pivot). Post-pivot, it undersells the ambition of the new book. Strong candidate for a chapter title or section header. "Earn back boring" captures the normalization destination; "a life that runs itself" captures the architecture promise.
+
+Shelf test: the disillusioned productivity reader picks it up immediately. "If you read Four Thousand Weeks and wanted the practical version."
+
+### Subtitle Development Process
+
+Key principles established during Phase 3 subtitle work:
+
+- The subtitle does whatever the title doesn't. If the title is provocative, the subtitle grounds. If the title is clean, the subtitle adds edge.
+- For "Promote Yourself" specifically: the subtitle must solve the misdirection problem (sounds like career/entrepreneurship). The formula that works: contrast professional competence with personal incompetence.
+- For "Humaning" specifically: the title is SO big (could be anything about being human) that the subtitle carries almost all the meaning. The evolutionary mismatch angle ("you didn't evolve for this") was the strongest narrowing lens.
+- For "Earn Back Boring": title grabs, subtitle promises. The bridge between them should have no filler words.
+
+### Shelf Test Results
+
+Tested against: Atomic Habits, Deep Work, The 4-Hour Workweek, Essentialism, Four Thousand Weeks, Build the Life You Want, Feel-Good Productivity, Same as Ever, $100M Offers, 10x Is Easier Than 2x, The Subtle Art of Not Giving a F\*ck, Die With Zero, Co-Intelligence.
+
+- Strongest shelf performer: Promote Yourself (broadest, clearest, most legible)
+- Most distinctive: Humaning (category of one)
+- Highest ceiling: Earn Back Boring (most emotional force if it connects)
+- Safest bet: Promote Yourself
+
+### Manuscript Fit Assessment
+
+- **Earn Back Boring** fits the manuscript as written (pre-pivot) most closely. The destination is already normalization. Minor changes needed.
+- **Promote Yourself** fits the book the author described during Phase 3 (post-pivot). Significant revision needed: author as protagonist, AI-era framing, promotion metaphor threaded throughout, executive-register tone shift.
+- **Humaning** fits the biggest, most ambitious version. Most revision needed: philosophical layer, evolutionary mismatch as core theme, tonal shift toward expansive.
+
+The title decision and the revision decision are the same decision. The author chose Promote Yourself, which means choosing the post-pivot book.
+
+### Phase 3 Key Decisions
+
+- **"Promote Yourself: For Directors at Work / Disasters at Home" is the title.**
+- **Marcus is eliminated.** The author becomes the protagonist, opening with their lived experience in an AI-native software factory.
+- **The book's job-to-be-done has pivoted.** Original: AI-free toolkit for people afraid of technology. New: transformation guide for people landing in AI-native work and getting crushed by the cognitive load.
+- **Home as stable ground is the core strategic argument.** Work in the AI economy changes every few weeks — wrong place for permanent systems. Home challenges are standard, stable, not being disrupted. You build the capacity platform on stable ground (personal life), then deploy to unstable ground (work). This is the answer to "why at home?"
+- **One system, not two.** Personal/professional split is a false dichotomy. Capacity built at home deploys at work. It's one transformation, one pool of capacity, one human operating at one level.
+- **The author is ahead of millions in lived experience** — working in an AI-native setup today that will become mainstream. The book is a field report from the future, not theory.
+- **"Earn Back Boring" banked for chapter/section use.** Captures the normalization destination.
+- **"Humaning" banked as potential second book.** Captures the bigger philosophical argument.
+- **Naming anxiety vs. exploiting it:** The subtitle ("trying to replace you") names a shared experience rather than amplifying a threat. Naming is generous — it says "I see you, you're not alone." The warm title earns the right for the subtitle to be direct.
 
 ---
 
 ## Structure
 
-Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders.
+Four parts, eleven chapters. Chapters 1-6 are written (pre-pivot); 7-11 are placeholders.
 
 | Ch  | Title                       | Part                 | Status      | One-Line Thesis                                                                                                                                                                                                    |
 | --- | --------------------------- | -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -152,6 +202,8 @@ Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders
 
 **Note on gap naming:** Chapter 1 calls the third gap "Engagement" (stuck vs. engaged). Chapter 5 and the chapter metadata call it the "Action" gap. This inconsistency needs resolution.
 
+**Note on structure post-pivot:** The four-part structure and chapter outlines were designed for the pre-pivot book. Phase 4 needs to reassess whether these hold given the new protagonist (author), new framing (AI-era), and new argument (build on stable ground, deploy to unstable ground). Key question: does the book need a new opening chapter establishing the AI-era context before the lenses?
+
 ---
 
 ## Key Frameworks
@@ -166,42 +218,84 @@ Four parts, eleven chapters. Chapters 1–6 are written; 7–11 are placeholders
 - **Architecture not willpower:** The core thesis of Ch 5 and arguably the whole book
 - **Four bridges:** Visibility, Support, Capacity, Systems — each closes one gap (previewed in Ch 5, unwritten)
 - **Three implementation levels:** Light, medium, full — meet the reader where they are. Introduced in Ch 5, first demonstrated in Ch 6 (visibility bridge).
-- **Spectrum of visibility:** Head → lists → spatial organization → navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 6)
+- **Spectrum of visibility:** Head -> lists -> spatial organization -> navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 6)
 - **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 6)
-- **Marcus:** Recurring narrative character. Opens Ch 1 (the paradox), closes Ch 1 (self-liberation flash-forward), appears at Ch 5 (three weeks later, two thorns cleared), appears at Ch 6 (six weeks in, builds a visual life map, discovers career/health imbalance)
 - **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion
+- **Stable ground / unstable ground:** Home challenges are standard and stable; work in the AI economy shifts every few weeks. Build the capacity platform on stable ground, deploy to unstable ground. (New, Phase 3)
+- **The promotion ladder:** Grunt -> manager -> director. The reader is operating as a grunt or front-line manager of their personal life while being a director at work. The book teaches them to promote themselves. (New, Phase 3)
+
+**Eliminated:** Marcus (composite character). Replaced by author as protagonist.
 
 ---
 
 ## Writing Style
 
 - Conversational but research-backed — claims supported by specific studies with footnotes
-- Narrative openings (Marcus) that ground abstract ideas in lived experience
 - Direct address ("you") throughout
 - Frameworks named and reused across chapters (bronze/silver/gold, red/gray/blue)
 - Each chapter builds on previous lenses — cumulative, not standalone
 - Ends chapters with forward momentum ("the next chapter...")
-- Offers personal anecdotes sparingly (credit-building accounts story in Ch 4)
 - Includes an accountability email offer in Ch 4
+- Author voice is funnier and more irreverent than current manuscript shows — Phase 3 sprint surfaced this ("I Survived the AI Revolution and All I Got Was This Shitty Life"). Tone decisions for the rewrite should consider how much of this voice gets into the prose.
+
+---
+
+## Language to Preserve
+
+### Phase 1
+
+- **"Promote yourself"** — the title, the central metaphor, the literal instruction
+- **"Architect, then direct"** — the comma encodes the sequencing argument (build first, then operate). The whole book in a comma.
+- **"Old playbook / last year's playbook"** — the villain. What worked then doesn't just not work now, it abuses you.
+- **"Strategy game vs. orc chopping wood"** — the before/after image. The orc grinding and getting mowed down vs. the player directing the game. Visceral for the target audience.
+- **"Objectively successful, subjectively drowning"** — the reader's paradox.
+- **"Coming home like a dishrag"** — the felt experience of the reader's current state.
+
+### Phase 2
+
+- **"Life portfolio director" / "front-line manager to portfolio director"** — the full promotion metaphor in exec-native vocabulary
+- **"Love letters to your future self"** — the temporal architecture of the book in one phrase
+- **"Half-forgotten checklist"** — the mundane, devastating truth of most people's personal lives
+- **"A life that manages itself, by design"** — the promise in six words
+- **"The old playbook got you here. This book gets you out."** — closing line of back cover
+- **"Running on fumes and calling it discipline"** — the reader's current self-narrative
+- **"Even at the bleeding edge"** — signals the book knows the reader isn't behind
+- **OS metaphor** — you didn't evolve for this complexity; build an interface layer
+
+### Phase 3
+
+- **"For Directors at Work / Disasters at Home"** — the subtitle. The slash creates visual contrast. Alliteration + parallelism.
+- **"Build a Life That Runs Itself"** — the promise (banked from Earn Back Boring subtitle)
+- **"Earn back boring"** — the normalization destination as a phrase (banked for chapter/section use)
+- **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
+- **"You weren't built for this economy"** — evolutionary mismatch in seven words
+- **Build on stable ground (home), deploy to unstable ground (work)** — the core strategic argument for "why at home"
+- **Grunt / manager / director** — the promotion ladder
+- **"I'm a human systems inventor"** — the author's self-description and credibility claim
 
 ---
 
 ## Open Editorial Questions
 
-### Resolved by Phase 1
+### Resolved
 
-1. ~~**Is "sovereignty" the right word?**~~ Likely not. "Promote yourself" and "architect/direct" emerged as stronger framing. Title work deferred to Phase 3.
-2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load. Marcus needs rewriting to reflect this.
-3. ~~**What's the controlling idea?**~~ Working version established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
-4. ~~**The title names the problem, not the solution.**~~ Phase 1 surfaced solution-oriented language ("promote yourself," "architect then direct"). Title decisions in Phase 3.
+1. ~~**Is "sovereignty" the right word?**~~ No. "Promote yourself" is the title. "Architect/direct" is the thesis language.
+2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load.
+3. ~~**What's the controlling idea?**~~ Established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
+4. ~~**The title names the problem, not the solution.**~~ Title now names the solution: Promote Yourself.
+5. ~~**Marcus rewrite scope?**~~ Marcus eliminated entirely. Author becomes protagonist.
 
 ### Still Open
 
-5. **Missing lens chapters:** Balance and Restoration each get a lens chapter (Ch 2, 3). Engagement and Support do not. Is this intentional? The four-gap symmetry suggests they should.
-6. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Ch 1 says "Engagement," Ch 5 and Ch 6 say "Action." Needs a decision.
-7. **Are Ch 7–11 the right chapters?** Ch 6 demonstrates the bridge structure (three implementation levels) well. Do the remaining bridges (Support, Capacity, Systems) follow the same pattern? Structural decisions for Ch 7–11 are still open.
-8. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content (285 lines, 13 footnotes). Should be updated to `published` when ready to ship.
-9. **Marcus rewrite scope:** Marcus needs to speak to the direct pain of the AI era — carrying context for agent orgs, decision fatigue, weekly obsolescence dread — not generic overwhelm. How extensive is the rewrite across Ch 1, 5, and 6?
-10. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon? Potentially a key passage in Ch 1 or a new framing chapter.
-11. **OS metaphor scope:** The OS as interface layer for human complexity emerged strongly in Phase 2. Is this the central metaphor for the book or just one illustration? Needs a decision.
-12. **"At home" calibration:** The dinner party pitch's "at home" creates great provocation but risks reading as domestic organization. The book is about your whole life as one system, not just home life.
+6. **Missing lens chapters:** Balance and Restoration each get a lens chapter (Ch 2, 3). Engagement and Support do not. Is this intentional? The four-gap symmetry suggests they should.
+7. **Engagement vs. Action:** The gap naming is inconsistent between chapters. Ch 1 says "Engagement," Ch 5 and Ch 6 say "Action." Needs a decision.
+8. **Are Ch 7-11 the right chapters?** Structural decisions for Ch 7-11 are still open. Phase 4 work.
+9. **Ch 6 status in bookChapters.ts:** Ch 6 is marked `coming_soon` in the site metadata but has full written content. Should be updated to `published` when ready to ship.
+10. **"Complex adaptive system" teaching moment:** The complicated-vs-complex distinction is the intellectual engine. Where and how does the book teach this without jargon?
+11. **OS metaphor scope:** Central metaphor or supporting illustration? Needs a decision.
+12. **"At home" calibration:** "At home" creates great provocation but risks reading as domestic organization. The book is about your whole life as one system. The stable-ground argument helps but needs careful handling.
+13. **How much of Chapters 2-6 prose survives the reframe?** The frameworks hold. The framing above them is new. How extensive is the rewrite?
+14. **Does the book need a new opening chapter?** Establishing the AI-era context before the lenses — the author's story, the trap, why this moment is different.
+15. **What's the right balance of author's personal story vs. frameworks/research?** The author-as-protagonist is new. How much narrative thread vs. how much instruction?
+16. **Does LifeBuild.me (the product) get mentioned, and if so, how?**
+17. **How much of the author's irreverent voice gets into the prose?** The current manuscript is warm but relatively measured. The author's natural voice (surfaced in title sprint) is funnier and sharper.
