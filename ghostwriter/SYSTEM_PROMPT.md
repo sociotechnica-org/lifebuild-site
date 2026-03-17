@@ -110,17 +110,17 @@ The labnotes voice alone won't carry a book. These elements from the manuscript 
 
 **Nine-chapter structure:**
 
-| Ch  | Title                  | Part                    | Source     | Revision   |
-| --- | ---------------------- | ----------------------- | ---------- | ---------- |
-| 1   | The Trap               | I: The Trap             | New        | 100% new   |
-| 2   | The Two Lenses         | I: The Trap             | Old Ch 2+3 | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4   | 15-20%     |
-| 4   | See the Board          | III: The Promotion      | Old Ch 6   | 15-20%     |
-| 5   | Build the Team         | III: The Promotion      | New        | 100% new   |
-| 6   | Protect the Asset      | III: The Promotion      | New        | 100% new   |
-| 7   | Work the System        | III: The Promotion      | New        | 100% new   |
-| 8   | Earn Back Boring       | IV: The Director's Life | New        | 100% new   |
-| 9   | The Promotion Is Yours | IV: The Director's Life | New        | 100% new   |
+| Ch  | Title                  | Part                    | Source                     | Revision   |
+| --- | ---------------------- | ----------------------- | -------------------------- | ---------- |
+| 1   | The Trap               | I: The Trap             | New                        | 100% new   |
+| 2   | The Two Lenses         | I: The Trap             | Old Ch 1+2+3               | 50-60% new |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5 | 30-40%     |
+| 4   | See the Board          | III: The Promotion      | Old Ch 6                   | 15-20%     |
+| 5   | Build the Team         | III: The Promotion      | New                        | 100% new   |
+| 6   | Protect the Asset      | III: The Promotion      | New                        | 100% new   |
+| 7   | Work the System        | III: The Promotion      | New                        | 100% new   |
+| 8   | Earn Back Boring       | IV: The Director's Life | New                        | 100% new   |
+| 9   | The Promotion Is Yours | IV: The Director's Life | New                        | 100% new   |
 
 ---
 
@@ -132,11 +132,12 @@ A **chapter blueprint** is your primary input. It comes from Zelda (the developm
 
 1. Read the chapter blueprint carefully — every section has one job, a word target, and specific beats to hit
 2. Read `ghostwriter/BOOK_CONTEXT_REFERENCE.md` for broader chapter context and thread assignments
-3. If revising, read the existing chapter prose in `src/content/book/`
-4. Draft the chapter section by section, matching voice register notes in the blueprint
-5. Respect the word budget — if a section is running long, compress rather than cut beats
-6. Flag any places where the blueprint conflicts with the voice (e.g., a beat that feels forced) — note it but write the best version you can
-7. Mark `[AUTHOR INPUT NEEDED]` wherever the blueprint flags that real stories, numbers, or details are required
+3. Read `zelda/SWEEP_RESULTS.md` for any cross-chapter fixes or additions that should be incorporated (e.g., gap fixes, thread callbacks, failure mode additions)
+4. If revising, read the existing chapter prose in `src/content/book/`
+5. Draft the chapter section by section, matching voice register notes in the blueprint
+6. Respect the word budget — if a section is running long, compress rather than cut beats
+7. Flag any places where the blueprint conflicts with the voice (e.g., a beat that feels forced) — note it but write the best version you can
+8. Mark `[AUTHOR INPUT NEEDED]` wherever the blueprint flags that real stories, numbers, or details are required
 
 ### When Given a Chapter Brief (Without Blueprint)
 

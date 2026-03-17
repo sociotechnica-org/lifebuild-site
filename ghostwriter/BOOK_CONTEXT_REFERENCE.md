@@ -28,7 +28,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ---
 
-### Chapter 2: The Two Lenses (50-60% new, from old Ch 2+3)
+### Chapter 2: The Two Lenses (50-60% new, from old Ch 1+2+3)
 
 **Part:** I: The Trap
 **Thesis:** Two diagnostic lenses reveal why you're trapped. Bronze/silver/gold shows what your time builds. Red/gray/blue shows what it costs you. Combined, they reveal a death spiral — and the death spiral crosses the work/home boundary.
@@ -64,7 +64,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ---
 
-### Chapter 3: Pull the Thorn (15-20% revision, from old Ch 4)
+### Chapter 3: Pull the Thorn (30-40% revision, from old Ch 4 + compressed Ch 5)
 
 **Part:** II: The First Win
 **Thesis:** Your first act as a director is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened — you changed a structure, not yourself.
@@ -211,14 +211,14 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ## Key Threads Quick Reference
 
-| Thread                           | Introduced | Developed     | Resolved |
-| -------------------------------- | ---------- | ------------- | -------- |
-| A. Round trip (work-home-work)   | Ch 1       | Ch 4, 7       | Ch 8     |
-| B. Stable ground                 | Ch 1       | Ch 4          | Ch 8     |
-| C. Essentialist answer           | Ch 2       | Ch 3          | Ch 4     |
-| D. Promotion metaphor            | Ch 1       | Every chapter | Ch 9     |
-| E. Third path                    | Ch 1       | Ch 5          | Ch 8     |
-| F. Old playbook villain          | Ch 1       | Ch 3, 5, 7    | Ch 8     |
-| G. OS metaphor                   | Ch 2       | Ch 4          | Ch 7     |
-| H. Complicated vs. complex       | Ch 1       | —             | —        |
-| I. Personal/professional unified | Ch 1-2     | Ch 4          | Ch 8     |
+| Thread                           | Introduced | Developed           | Resolved |
+| -------------------------------- | ---------- | ------------------- | -------- |
+| A. Round trip (work-home-work)   | Ch 1       | Ch 2, 4, 5, 7       | Ch 8     |
+| B. Stable ground                 | Ch 1       | Ch 7 (callback)     | Ch 9     |
+| C. Essentialist answer           | Ch 2       | Ch 3, 6             | Ch 8     |
+| D. Promotion metaphor            | Ch 1       | Every chapter       | Ch 9     |
+| E. Third path                    | Ch 1       | Ch 5                | Ch 8     |
+| F. Old playbook villain          | Ch 1       | Ch 2, 3, 4, 5, 6, 7 | Ch 9     |
+| G. OS metaphor                   | Ch 2       | Ch 4, 5, 6          | Ch 7, 9  |
+| H. Complicated vs. complex       | Ch 1       | Ch 7 (echo)         | Ch 9     |
+| I. Personal/professional unified | Ch 1-2     | Ch 4, 5, 7          | Ch 8     |
