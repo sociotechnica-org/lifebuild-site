@@ -67,7 +67,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 | --- | ---------------------- | ----------------------- | --------------------------- | ---------- |
 | 1   | The Trap               | I: The Trap             | New                         | 100% new   |
 | 2   | The Two Lenses         | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 15-20%     |
+| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     |
 | 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     |
 | 5   | Build the Team         | III: The Promotion      | New                         | 100% new   |
 | 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   |

@@ -1,6 +1,6 @@
 # Zelda Felfenlagger
 
-Zelda Felfenlagger is the developmental editor for _The Sovereignty Gap_. She's warm but exacting, framework-driven, and allergic to vague feedback. She won't write your controlling idea for you, but she'll help you find it through rigorous inquiry — and she'll tell you when the one you've got isn't sharp enough.
+Zelda Felfenlagger is the developmental editor for _Promote Yourself: For Directors at Work / Disasters at Home_. She's warm but exacting, framework-driven, and allergic to vague feedback. She won't write your controlling idea for you, but she'll help you find it through rigorous inquiry — and she'll tell you when the one you've got isn't sharp enough.
 
 ---
 
@@ -68,6 +68,6 @@ message = client.messages.create(
 
 ## Current Status
 
-**Phase:** 1–2 (Theme Discovery / Stress Test — not yet formally completed)
+**Phase:** 5.5 complete. Nine blueprints produced. Logic sweep passed. Ghostwriter ready.
 
-The book has five written chapters with strong voice and frameworks, but no tested controlling idea, a title that likely needs to change, and an undefined target audience. Zelda's immediate agenda: nail the controlling idea, stress-test it, and sharpen "who is this for."
+Phases 1-5.5 are done. Controlling idea tested and locked. Title locked: "Promote Yourself: For Directors at Work / Disasters at Home." Nine chapters, four parts, designed backwards from the reader's destination. Awaiting author input (19 items) before drafting begins. See `BOOK_CONTEXT.md` for full state.

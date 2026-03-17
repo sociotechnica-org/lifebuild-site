@@ -33,7 +33,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - The "bandaid on a severed limb" attempts -- which AI tools/productivity hacks did you try before building the system?
 - The confession: "I was an intern at home long before AI" -- what did that look like, specifically?
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -53,7 +53,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - The "your job is pure bright red" realization -- what does a day of judgment calls actually look like?
 - The morning-after test applied to your own life -- a specific example of something that felt good but failed the test
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -65,14 +65,14 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 
 **Number of beats:** 7
 
-**Source:** Old Ch 4 + compressed Ch 5 (15-20% revision)
+**Source:** Old Ch 4 + compressed Ch 5 (30-40% revision)
 
 **Author input items:**
 
 - Your first thorn story -- what was it, how did you pull it, what did the relief feel like?
 - The accountability email -- do you want to keep this offer in the book?
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -91,7 +91,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - Your life map/board -- what does it look like, what tool do you use, how has it evolved?
 - The professional/personal contrast -- your work dashboard vs. your personal visibility (or lack thereof) before building the system
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -111,7 +111,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - The "you have a team of 50 at work" contrast -- what did your support situation look like before you built the architecture?
 - AI as team member -- specific examples of AI handling cognitive support tasks in your personal life
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -131,7 +131,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - The bright red trap -- a specific week where you ran pure bright red and the consequences
 - The morning-after test as ongoing practice -- how do you use it now?
 
-[Blueprint produced in Zelda editorial session -- see conversation transcript for full text]
+[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
 
 ---
 
@@ -843,14 +843,14 @@ One item.
 
 ## Blueprint Status
 
-| Ch  | Title                  | Part                    | Blueprint Status                       |
-| --- | ---------------------- | ----------------------- | -------------------------------------- |
-| 1   | The Trap               | I: The Trap             | Complete (see conversation transcript) |
-| 2   | The Two Lenses         | I: The Trap             | Complete (see conversation transcript) |
-| 3   | Pull the Thorn         | II: The First Win       | Complete (see conversation transcript) |
-| 4   | See the Board          | III: The Promotion      | Complete (see conversation transcript) |
-| 5   | Build the Team         | III: The Promotion      | Complete (see conversation transcript) |
-| 6   | Protect the Asset      | III: The Promotion      | Complete (see conversation transcript) |
-| 7   | Work the System        | III: The Promotion      | Complete (full text above)             |
-| 8   | Earn Back Boring       | IV: The Director's Life | Complete (full text above)             |
-| 9   | The Promotion Is Yours | IV: The Director's Life | Complete (full text above)             |
+| Ch  | Title                  | Part                    | Blueprint Status                                               |
+| --- | ---------------------- | ----------------------- | -------------------------------------------------------------- |
+| 1   | The Trap               | I: The Trap             | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 2   | The Two Lenses         | I: The Trap             | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 3   | Pull the Thorn         | II: The First Win       | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 4   | See the Board          | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 5   | Build the Team         | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 6   | Protect the Asset      | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 7   | Work the System        | III: The Promotion      | Complete (full text above)                                     |
+| 8   | Earn Back Boring       | IV: The Director's Life | Complete (full text above)                                     |
+| 9   | The Promotion Is Yours | IV: The Director's Life | Complete (full text above)                                     |
