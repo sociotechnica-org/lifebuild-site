@@ -119,22 +119,22 @@ These have no legitimate use in this author's voice:
 - **Vapid openers**: "In today's fast-paced world," "As technology continues to evolve," "Now more than ever," "In an era of." Regex: `^(In today's|As technology|Now more than ever|In an era of)`
 - **Pedagogical voice**: "Let's dive in," "Let's unpack," "Let's break it down," "Let's explore." Regex: `Let's (dive|unpack|break it down|explore)`
 - **False suspense**: "Here's the thing," "Here's where it gets interesting," "But here's the kicker." Regex: `[Hh]ere's (the thing|where it gets|the kicker)`
-- **Patronizing analogy**: "Think of it as," "Think of it like," "Imagine it as." Regex: `[Tt]hink of it (as|like)`
+- **Patronizing analogy**: "Think of it as," "Think of it like," "Imagine it as." Regex: `([Tt]hink of it (as|like)|[Ii]magine it as)`
 - **"Serves as" / "stands as" / "represents"**: Use "is." Regex: `(serves|stands|functions|represents) as`
-- **Gravitas inflation cluster**: Flag if 3+ of these appear in a single chapter: fundamental, crucial, essential, pivotal, paramount, profound, vital, critical. Individual uses are fine; clustering is the tell.
+- **Gravitas inflation cluster**: Flag if 3+ of these appear in a single chapter: fundamental, essential, paramount, profound. Individual uses are fine; clustering is the tell. Note: "crucial" and "pivotal" are already covered by the delve-family list above — do not double-count them here.
 - **Unearned profundity**: "Something shifted," "Something changed," "Something clicked," "Everything changed," "Everything shifted." Regex: `(Something (shifted|changed|clicked)|Everything (changed|shifted))`
 
 ### Category B: Budget patterns (flag as 🔵 Note if over budget)
 
 These are legitimate rhetorical moves that become AI tells through overuse:
 
-| Pattern                                                        | Budget                      | How to detect                                                                                                   |
-| -------------------------------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| "Not X, but Y" / "Not because X, but because Y" inversions     | 1 per piece / 2 per chapter | Regex: `[Nn]ot (because\|that\|just\|only\|merely).*but`                                                        |
-| Tricolon (rule of three in series)                             | 3 per chapter               | Look for comma-separated series of exactly 3 parallel items or 3 consecutive sentences with identical structure |
-| Anaphora stacking (3+ consecutive sentences with same opening) | 1 instance per chapter      | 3+ sentences starting with the same word/phrase within a paragraph                                              |
-| Present participial phrase clusters (3+ in one sentence)       | 2 per sentence              | Regex: `, \w+ing .*, \w+ing .*, \w+ing`                                                                         |
-| Bold-first bullet pattern (every item in a list starts bold)   | 1 list per chapter          | Scan bullet lists — flag if all items open with `**...**` and the chapter has 2+ such lists                     |
+| Pattern                                                        | Budget                 | How to detect                                                                                                   |
+| -------------------------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------- |
+| "Not X, but Y" / "Not because X, but because Y" inversions     | 1 per chapter          | Regex: `[Nn]ot (because\|that\|just\|only\|merely).*but`                                                        |
+| Tricolon (rule of three in series)                             | 3 per chapter          | Look for comma-separated series of exactly 3 parallel items or 3 consecutive sentences with identical structure |
+| Anaphora stacking (3+ consecutive sentences with same opening) | 1 instance per chapter | 3+ sentences starting with the same word/phrase within a paragraph                                              |
+| Present participial phrase clusters (3+ in one sentence)       | 2 per sentence         | Regex: `, \w+ing .*, \w+ing .*, \w+ing`                                                                         |
+| Bold-first bullet pattern (every item in a list starts bold)   | 1 list per chapter     | Scan bullet lists — flag if all items open with `**...**` and the chapter has 2+ such lists                     |
 
 ### Category C: Structural tells (flag as 🔵 Note for author review)
 
