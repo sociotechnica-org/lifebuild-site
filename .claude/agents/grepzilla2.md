@@ -17,7 +17,7 @@ This is an **Astro 5.x static site** that publishes _Boss at Work | Intern at Ho
 - Changelog entries in `src/content/changelog/` (Markdown with YAML frontmatter)
 - Version tracking in `src/data/version.json`
 - Cloudflare Pages deployment (static output)
-- Editorial agent files in `zelda/` (Markdown, not part of the Astro build)
+- Editorial agent files in `zelda/`, `ghostwriter/`, and `.claude/agents/` (Markdown, not part of the Astro build)
 
 ---
 
@@ -115,26 +115,34 @@ Patterns fall into two categories:
 
 These have no legitimate use in this author's voice:
 
-- **"Delve" family vocabulary**: delve, unpack, harness, leverage, foster, underscore, navigate (figurative), illuminate, showcase, reimagine, tapestry, landscape (figurative), paradigm, synergy, ecosystem (figurative), realm, testament, journey (figurative), resilience, intersection (figurative), crucial, pivotal, multifaceted, nuanced, robust, seamless, transformative, unprecedented. Grep for each. Any hit is a finding.
+- **"Delve" family vocabulary**: delve, unpack, harness, leverage, foster, underscore, navigate, illuminate, showcase, reimagine, tapestry, landscape, paradigm, synergy, ecosystem, realm, testament, journey, resilience, intersection, crucial, pivotal, multifaceted, nuanced, robust, seamless, transformative, unprecedented. Grep for each. Any hit is a finding. For words with common literal uses (navigate, landscape, ecosystem, journey, intersection), flag only figurative uses — in this book's context, nearly all uses will be figurative.
 - **Vapid openers**: "In today's fast-paced world," "As technology continues to evolve," "Now more than ever," "In an era of." Regex: `^(In today's|As technology|Now more than ever|In an era of)`
 - **Pedagogical voice**: "Let's dive in," "Let's unpack," "Let's break it down," "Let's explore." Regex: `Let's (dive|unpack|break it down|explore)`
 - **False suspense**: "Here's the thing," "Here's where it gets interesting," "But here's the kicker." Regex: `[Hh]ere's (the thing|where it gets|the kicker)`
 - **Patronizing analogy**: "Think of it as," "Think of it like," "Imagine it as." Regex: `[Tt]hink of it (as|like)`
-- **"Serves as" / "stands as"**: Use "is." Regex: `(serves|stands|functions) as`
+- **"Serves as" / "stands as" / "represents"**: Use "is." Regex: `(serves|stands|functions|represents) as`
 - **Gravitas inflation cluster**: Flag if 3+ of these appear in a single chapter: fundamental, crucial, essential, pivotal, paramount, profound, vital, critical. Individual uses are fine; clustering is the tell.
+- **Unearned profundity**: "Something shifted," "Something changed," "Something clicked," "Everything changed," "Everything shifted." Regex: `(Something (shifted|changed|clicked)|Everything (changed|shifted))`
 
 ### Category B: Budget patterns (flag as 🔵 Note if over budget)
 
 These are legitimate rhetorical moves that become AI tells through overuse:
 
-| Pattern                                                         | Budget                      | How to detect                                                                                                   |
-| --------------------------------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| "Not X, but Y" / "Not because X, but because Y" inversions      | 1 per piece / 2 per chapter | Regex: `[Nn]ot (because\|that\|just\|only\|merely).*but`                                                        |
-| Tricolon (rule of three in series)                              | 3 per chapter               | Look for comma-separated series of exactly 3 parallel items or 3 consecutive sentences with identical structure |
-| Anaphora stacking (3+ consecutive sentences with same opening)  | 1 instance per chapter      | 3+ sentences starting with the same word/phrase within a paragraph                                              |
-| Present participial phrase clusters (3+ in one sentence)        | 0 per sentence              | Regex: `, \w+ing .*, \w+ing .*, \w+ing`                                                                         |
-| Bold-first bullet pattern (every item in a list starts bold)    | 1 list per chapter          | Scan bullet lists — flag if all items open with `**...**` and the chapter has 2+ such lists                     |
-| Unearned profundity ("Something shifted," "Everything changed") | 1 per chapter               | Regex: `(Something (shifted\|changed\|clicked)\|Everything (changed\|shifted))`                                 |
+| Pattern                                                        | Budget                      | How to detect                                                                                                   |
+| -------------------------------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| "Not X, but Y" / "Not because X, but because Y" inversions     | 1 per piece / 2 per chapter | Regex: `[Nn]ot (because\|that\|just\|only\|merely).*but`                                                        |
+| Tricolon (rule of three in series)                             | 3 per chapter               | Look for comma-separated series of exactly 3 parallel items or 3 consecutive sentences with identical structure |
+| Anaphora stacking (3+ consecutive sentences with same opening) | 1 instance per chapter      | 3+ sentences starting with the same word/phrase within a paragraph                                              |
+| Present participial phrase clusters (3+ in one sentence)       | 2 per sentence              | Regex: `, \w+ing .*, \w+ing .*, \w+ing`                                                                         |
+| Bold-first bullet pattern (every item in a list starts bold)   | 1 list per chapter          | Scan bullet lists — flag if all items open with `**...**` and the chapter has 2+ such lists                     |
+
+### Category C: Structural tells (flag as 🔵 Note for author review)
+
+These are harder to automate but worth flagging when detectable:
+
+- **Fractal summaries**: Flag if the first paragraph and last paragraph of a chapter share 3+ consecutive significant words (excluding stopwords like the, a, is, and, of). This suggests the conclusion is re-summarizing the introduction.
+- **One-point dilution**: Flag if a chapter's thesis statement (or a distinctive phrase from it) appears more than twice. A point made once and supported is argument; the same point restated three ways is filler.
+- **Uniform paragraph/sentence length**: Note-only. Flag if manual review is warranted — full automation is impractical, but extreme uniformity (e.g., 10+ consecutive paragraphs of 3-5 sentences each) can be spotted.
 
 ### Reporting
 
