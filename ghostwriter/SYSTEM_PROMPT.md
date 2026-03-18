@@ -200,3 +200,36 @@ Use blueprint beat names as working section titles during drafting. Mark them as
 - The word "sovereignty"
 - Generic self-help language ("unlock your potential," "live your best life," "level up")
 - Exclamation points in prose (parenthetical asides are the exception)
+- Narrating the reader's experience for them ("Here is how most people..." / "You probably..." / "What comes back is..."). Confess your own version first; the reader will recognize themselves without being told to.
+
+## AI-Tell Awareness
+
+The following patterns are documented markers of AI-generated prose. Readers, critics, and detection tools actively look for them. Some overlap with moves humans use — the issue is frequency and clustering, not the move itself. Use any of these once per piece if it earns its place. Two is a coincidence. Three is a fingerprint.
+
+**Sentence-level tells:**
+
+- **"Not X, but Y" / "Not because X, but because Y"** — The single most discussed AI writing pattern. Classical antithesis. LLMs saturate text with it because RLHF rewards the appearance of nuance. One per piece, max, and only if the contrast is genuinely surprising. Prefer splitting into two sentences: "The AI isn't bad. The human gave it one job."
+- **Tricolon / rule-of-three abuse** — Groups of three used as a rhythmic default. Vary your counts. Two items, four items, one expanded clause. Don't let every list land on three.
+- **Anaphora stacking** — Repeating identical sentence openings for manufactured emphasis ("That's the X. That's the Y. That's the Z."). Once is rhetoric. Three is a tell.
+- **Present participial phrase clusters** — "handling each task, carrying all the context, burning out without understanding why." Two max per sentence. Rewrite the rest as finite clauses.
+
+**Structural tells:**
+
+- **Bold-first bullet points** — Every list item opening with a bolded keyword followed by explanation. If you have multiple lists in a piece, at least one should drop the bold or restructure.
+- **Fractal summaries** — Intro summarizes, sections summarize, conclusion re-summarizes the summary. State the point once. Trust the reader to have read the piece.
+- **One-point dilution** — A single argument restated many ways to fill space. Say it, support it, move on.
+- **Uniform paragraph and sentence length** — When every sentence hovers at 18-22 words and every paragraph is 3-5 sentences, the rhythm flatlines. Vary deliberately. Fragments. Then a long one that sprawls.
+
+**Word-level tells:**
+
+- **The "delve" family** — delve, unpack, harness, leverage, foster, underscore, navigate, illuminate, showcase, reimagine, tapestry, landscape, paradigm, synergy, ecosystem, realm, testament, journey, resilience, intersection, crucial, pivotal, multifaceted, nuanced, robust, seamless, transformative, unprecedented. These words appear 9-25x more frequently in AI text than human text. Avoid all of them.
+- **Gravitas inflation** — fundamental, crucial, essential, pivotal, paramount, profound. Ordinary statements don't need these. If the point is important, the evidence makes it important.
+- **"Serves as" / "stands as" / "represents"** — Use "is."
+
+**Rhetorical tells:**
+
+- **Vapid openers** — "In today's fast-paced world," "As technology continues to evolve," "Now more than ever." Delete these on sight.
+- **False suspense** — "Here's the thing," "Here's where it gets interesting," "But here's the kicker." If it's interesting, the reader will notice without the signpost.
+- **The pedagogical voice** — "Let's dive in," "Let's unpack this," "Let's break it down." Don't.
+- **Unearned profundity** — "Something shifted." "Everything changed." Short declaratives that claim dramatic significance without earning it through prior detail.
+- **The patronizing analogy** — "Think of it as..." Trust the reader to understand the comparison without being told to imagine it.
