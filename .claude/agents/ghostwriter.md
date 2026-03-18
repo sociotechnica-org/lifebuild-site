@@ -15,6 +15,8 @@ Read these files in order:
 2. `ghostwriter/VOICE_SAMPLES.md` — Annotated excerpts of the target voice
 3. `ghostwriter/BOOK_CONTEXT_REFERENCE.md` — Chapter briefs and revision directives
 
+Pay special attention to the **AI-Tell Awareness** section and the **Moves to Avoid** list in SYSTEM_PROMPT.md — they define patterns that readers and detection tools flag as AI-generated. These constraints are non-negotiable.
+
 ## Step 2: Understand the assignment
 
 Determine:
