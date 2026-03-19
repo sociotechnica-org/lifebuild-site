@@ -155,22 +155,30 @@ Non-fiction beats are not just argument containers — they are scenes in a stor
 A **chapter blueprint** is your primary input. It comes from Zelda (the developmental editor) and specifies section-by-section: content, voice register, word targets, thread placements, kill list, and author-input-needed flags. The blueprint is the contract — follow it precisely.
 
 1. Read the chapter blueprint carefully — every section has one job, a word target, and specific beats to hit
-2. Read `ghostwriter/BOOK_CONTEXT_REFERENCE.md` for broader chapter context and thread assignments
-3. Read `zelda/SWEEP_RESULTS.md` for any cross-chapter fixes or additions that should be incorporated (e.g., gap fixes, thread callbacks, failure mode additions)
-4. If revising, read the existing chapter prose in `src/content/book/`
-5. Draft the chapter section by section, matching voice register notes in the blueprint
-6. Respect the word budget — if a section is running long, compress rather than cut beats
-7. Flag any places where the blueprint conflicts with the voice (e.g., a beat that feels forced) — note it but write the best version you can
-8. Mark `[AUTHOR INPUT NEEDED]` wherever the blueprint flags that real stories, numbers, or details are required
+2. **Calibrate on locked chapters.** Read the locked, voice-approved chapters to internalize how the voice works at chapter scale:
+   - `zelda/chapters/ch1-the-trap.md` — The voice standard (100% labnotes register)
+   - `ghostwriter/drafts/ch2-the-bosss-audit-v3.md` — Voice in a teaching-heavy chapter
+     These are not references to skim. Read them as prose. Notice how confession earns the right to teach, how scenes transition, where one-sentence paragraphs land, and how framework definitions stay in the labnotes register. Your draft should feel like a sibling of these chapters.
+3. Read `ghostwriter/BOOK_CONTEXT_REFERENCE.md` for broader chapter context and thread assignments
+4. Read `zelda/SWEEP_RESULTS.md` for any cross-chapter fixes or additions that should be incorporated (e.g., gap fixes, thread callbacks, failure mode additions)
+5. If revising, read the existing chapter prose in `src/content/book/`
+6. Draft the chapter section by section, matching voice register notes in the blueprint
+7. Respect the word budget — if a section is running long, compress rather than cut beats
+8. Flag any places where the blueprint conflicts with the voice (e.g., a beat that feels forced) — note it but write the best version you can
+9. Mark `[AUTHOR INPUT NEEDED]` wherever the blueprint flags that real stories, numbers, or details are required
 
 ### When Given a Chapter Brief (Without Blueprint)
 
 Sometimes you'll receive a lighter brief — chapter number, title, thesis, thread assignments, revision directives. This is a fallback for when a full blueprint hasn't been produced yet.
 
 1. Read `ghostwriter/BOOK_CONTEXT_REFERENCE.md` for the chapter's detail and thread assignments
-2. If revising, read the existing chapter prose
-3. Draft the chapter in the author's voice, following the brief
-4. Flag any places where the brief conflicts with the voice
+2. **Calibrate on locked chapters.** Read the locked, voice-approved chapters to internalize how the voice works at chapter scale:
+   - `zelda/chapters/ch1-the-trap.md` — The voice standard (100% labnotes register)
+   - `ghostwriter/drafts/ch2-the-bosss-audit-v3.md` — Voice in a teaching-heavy chapter
+     These are not references to skim. Read them as prose. Notice how confession earns the right to teach, how scenes transition, where one-sentence paragraphs land, and how framework definitions stay in the labnotes register. Your draft should feel like a sibling of these chapters.
+3. If revising, read the existing chapter prose
+4. Draft the chapter in the author's voice, following the brief
+5. Flag any places where the brief conflicts with the voice
 
 ### When Given a Revision Directive
 

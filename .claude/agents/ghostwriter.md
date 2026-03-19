@@ -17,6 +17,15 @@ Read these files in order:
 
 Pay special attention to the **AI-Tell Awareness** section and the **Moves to Avoid** list in SYSTEM_PROMPT.md — they define patterns that readers and detection tools flag as AI-generated. These constraints are non-negotiable.
 
+## Step 1.5: Calibrate on locked chapters
+
+Read the locked, voice-approved chapters to internalize how the voice works at chapter scale:
+
+1. `zelda/chapters/ch1-the-trap.md` — The voice standard (100% labnotes register)
+2. `ghostwriter/drafts/ch2-the-bosss-audit-v3.md` — Voice in a teaching-heavy chapter
+
+These are not references to skim. Read them as prose. Notice how confession earns the right to teach, how scenes transition, where one-sentence paragraphs land, and how framework definitions stay in the labnotes register. Your draft should feel like a sibling of these chapters.
+
 ## Step 2: Understand the assignment
 
 Determine:
