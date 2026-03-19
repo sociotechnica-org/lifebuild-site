@@ -1,4 +1,4 @@
-# Chapter Blueprints: Boss at Work | Intern at Home
+# Chapter Blueprints: Boss @ Work | Intern @ Life
 
 ## Overview
 
@@ -368,7 +368,7 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 - **Competence is shown through the kind of problem being solved, never declared.**
 - **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
 - **Profanity budget:** One instance available. The death spiral or entropy descriptions are natural placement points.
-- **Book title is "Boss at Work | Intern at Home: Promote Yourself."** The promotion metaphor is the central framework throughout.
+- **Book title is "Boss @ Work | Intern @ Life: Port Your Competence."** The promotion metaphor is the central framework throughout.
 
 ### Failure Mode Prevention
 
@@ -1057,7 +1057,7 @@ It is also the most emotionally important chapter in the book. The reader starte
 
 The title -- "Earn Back Boring" -- is the book's most subversive claim. On a shelf of books promising optimization, peak performance, and 10x results, this chapter says: the goal is boring. Your personal life should be boring. Boring means the system is working. Boring means you're not firefighting. Boring means you have capacity to spare. Boring is what was stolen by the AI economy's cognitive demands, and you're taking it back.
 
-This chapter also completes the round trip -- the thread that carries the book's promise. "Boss at Work | Intern at Home" names the gap; the book must show both sides closing. Chapter 8 delivers the return leg: "Here's what happened at work when I started living this way at home." This is the surprise dividend -- the reader thought they were fixing their home life, but they accidentally trained for the future workforce. The round trip must land as a narrative turn, not just a thread payoff.
+This chapter also completes the round trip -- the thread that carries the book's promise. "Boss @ Work | Intern @ Life" names the gap; the book must show both sides closing. Chapter 8 delivers the return leg: "Here's what happened at work when I started living this way at home." This is the surprise dividend -- the reader thought they were fixing their home life, but they accidentally trained for the future workforce. The round trip must land as a narrative turn, not just a thread payoff.
 
 ### Target Word Count
 
