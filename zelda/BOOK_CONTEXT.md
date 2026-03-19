@@ -1,15 +1,15 @@
-# Boss @ Work | Intern @ Life — Book Context
+# Boss at Work | Intern at Home — Book Context
 
-**Last updated:** 2026-03-17
-**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ghostwriter ready to draft pending author input (19 items — see SWEEP_RESULTS.md).
+**Last updated:** 2026-03-19
+**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ch 1 drafted and scored (v7, structural revision applied — Beat 5/6 boundary moved). Ghostwriter ready to draft remaining chapters pending author input (19 items — see SWEEP_RESULTS.md).
 
 ---
 
 ## Overview
 
-**Title:** Boss @ Work | Intern @ Life: Port Your Competence (working title — pending market testing)
-**Previous titles:** The Sovereignty Gap (original), Promote Yourself: For Directors at Work / Disasters at Home (replaced — genre-signal misdirection), Boss at Work | Intern at Home: Port Yourself (replaced — "Port Yourself" was method-forward but identity-vague; "Port Your Competence" names the specific asset being transferred)
-**Title status:** Working title. Solves the genre-signal problem of "Promote Yourself" (which coded as career advice). "Boss @ Work | Intern @ Life" is a diagnostic title — the gap statement IS the title. "Port Your Competence" is a tech-exec-native subtitle meaning "take the competence you deploy at work and bring it home." Evolved from "Port Yourself" — "Port Your Competence" names the specific thing being transferred (competence, not identity) and echoes the realization: you already have the skills, you just forgot to bring them home.
+**Title:** Boss at Work | Intern at Home: Promote Yourself (working title — pending market testing)
+**Previous titles:** The Sovereignty Gap (original), Promote Yourself: For Directors at Work / Disasters at Home (replaced — genre-signal misdirection), Boss at Work | Intern at Home: Port Yourself (replaced — subtitle evolved through "Port Your Competence" before reverting to "Promote Yourself"; see Title Evolution section)
+**Title status:** Working title. "Boss at Work | Intern at Home" is a diagnostic title — the gap statement IS the title. The reader sees it and either thinks "that's me" or "that's not me" in under two seconds. "Promote Yourself" names the book's central instruction as the subtitle, which works because the diagnostic title prevents the genre-signal misdirection that killed "Promote Yourself" when it was standalone. The promotion metaphor is encoded in both the title (implicit — the reader understands they're operating at the wrong level) and the subtitle (explicit — "promote yourself").
 
 **Author's positioning:** "I work in a semi-autonomous AI-powered software factory. My job is to make as many strategy, creative, and judgment-based calls as I can in an eight-hour period. After three weeks, I came home so depleted I realized I'd landed in a trap. So I built my way out. This book is the field report."
 
@@ -118,19 +118,15 @@ Note: "at home" creates maximum provocation in conversation. May need calibratio
 
 ### Title Candidates (Final Three)
 
-**1. Boss @ Work | Intern @ Life: Port Your Competence** — PRIMARY (working title)
+**1. Boss at Work | Intern at Home: Promote Yourself** — PRIMARY (working title)
 
 Diagnostic title — the gap statement IS the title. The reader sees it and either thinks "that's me" or "that's not me" in under two seconds. No genre misdirection — nobody reads "Intern at Home" and thinks LinkedIn optimization. The title IS the confession. "Intern at Home" is structurally funny — the absurdity of a competent professional being an intern in their own life. The promotion metaphor is encoded without using the word "promote": the reader understands they're operating at the wrong level at home. The pipe separator reads as parallel but separate — two states, one person. Visually distinctive on a cover.
 
 "Boss" in the title, "Director" in the book. "Boss" is punchier, more universal, better shelf word. Chapter 1 then upgrades the word: "You think of yourself as a boss. But there's a difference between a boss and a director." The title sets up a word the book upgrades.
 
-"Port Your Competence" is a tech-exec-native subtitle. "Porting" means taking software built for one platform and making it run on another — same architecture, new environment, some adaptation required but the core logic transfers. "Your Competence" names the specific asset being ported — the professional skills the reader already has. It names the book's realization in three words: you already have everything you need, you just forgot to bring it home.
+Subtitle reverted to "Promote Yourself" — the strongest instruction all along, now legible once the diagnostic title eliminates the genre misdirection. The subtitle went through "Port Yourself" (method-forward but unfamiliar) and "Port Your Competence" (named the asset but introduced jargon) before returning to "Promote Yourself," which encodes the book's central metaphor (the promotion ladder: intern → manager → director) in two words. See Title Evolution section below for the full progression.
 
-Evolved from "Port Yourself" (which was method-forward but identity-vague) through a subtitle sprint exploring realization subtitles ("The Competence You Forgot to Bring Home" was the strongest realization version — "Port Your Competence" compresses it into subtitle length while keeping the "port" verb that tech execs recognize).
-
-Replaces "Promote Yourself: For Directors at Work / Disasters at Home" which was misfiring as a genre signal — readers assumed career/LinkedIn advice book. The old subtitle's gap statement ("Directors at Work / Disasters at Home") was always the strongest copy; it's now the title where it belonged.
-
-Shelf test: browser knows the problem, audience, and tone in four seconds. "Port Your Competence" creates a pickup moment — nobody has been told to "port your competence" before. The strangeness is a feature, and "competence" is a word tech executives respect but rarely see on book covers.
+Shelf test: browser knows the problem, audience, and tone in four seconds. "Promote Yourself" is immediately actionable — nobody wonders what it means.
 
 **2. Humaning: Outgrow the Economy That's Trying to Replace You** — SECONDARY
 
@@ -153,16 +149,18 @@ Shelf test: the disillusioned productivity reader picks it up immediately. "If y
 Key principles established during Phase 3 subtitle work:
 
 - The subtitle does whatever the title doesn't. If the title is provocative, the subtitle grounds. If the title is clean, the subtitle adds edge.
-- For "Boss @ Work | Intern @ Life": the title IS the diagnostic — it names the gap. The subtitle's job is to signal the method and the realization. "Port Your Competence" uses the reader's professional vocabulary (porting = same architecture, new environment) to name the move and the asset: take the competence you deploy at work and bring it home.
+- For "Boss at Work | Intern at Home": the title IS the diagnostic — it names the gap. The subtitle's job is to name the central instruction. "Promote Yourself" names the book's central metaphor directly. The diagnostic title prevents the genre-signal misdirection that killed "Promote Yourself" when it was standalone.
 - The old subtitle "For Directors at Work / Disasters at Home" was always the strongest copy — it was doing the title's job. The new title promotes it.
 
-### Title Evolution: Why "Promote Yourself" Was Replaced
+### Title Evolution: "Promote Yourself" — From Standalone to Subtitle
 
-"Promote Yourself" had a reflexive verb problem — it pattern-matched to imperative-verb self-help titles (Brand Yourself, Market Yourself, Position Yourself). Readers assumed career/LinkedIn advice. Market testing confirmed the genre signal was wrong: people thought it was about getting a promotion at work or doing better on LinkedIn — two things the target audience rarely thinks about.
+"Promote Yourself" as a standalone title had a reflexive verb problem — it pattern-matched to imperative-verb self-help titles (Brand Yourself, Market Yourself, Position Yourself). Readers assumed career/LinkedIn advice. Market testing confirmed the genre signal was wrong: people thought it was about getting a promotion at work.
 
-The spirit of "promote yourself" remains the book's central metaphor and instruction. It lives inside the book (the promotion ladder: intern → manager → director). It just can't be the title because the genre misdirection was fatal on the shelf.
+The spirit of "promote yourself" was always the book's central metaphor and instruction. It lives inside the book as the promotion ladder (intern → manager → director). The solution was not to abandon it but to pair it with a diagnostic title that prevents the misdirection.
 
-"Boss @ Work | Intern @ Life" solves this by making the gap statement the title — diagnostic, confessional, structurally funny. "Port Your Competence" solves the subtitle by naming both the method and the realization in tech-native vocabulary.
+"Boss at Work | Intern at Home" solves the genre problem by making the gap statement the title — diagnostic, confessional, structurally funny. Once the reader knows the book is about the personal/professional gap, "Promote Yourself" reads correctly as the method: promote yourself from intern at home to director at home.
+
+The subtitle went through "Port Yourself" (method-forward but unfamiliar to non-tech readers) and "Port Your Competence" (named the asset but introduced unnecessary jargon). "Promote Yourself" was the strongest instruction all along — it just needed the right title in front of it.
 
 ### Scope Clarification (Phase 3 Revisit, 2026-03-17)
 
@@ -172,13 +170,13 @@ The title doesn't need to signal the future-of-work angle. That lies in wait as 
 
 ### Manuscript Fit Assessment
 
-- **Boss @ Work | Intern @ Life: Port Your Competence** fits the post-pivot book. Diagnostic title matches the confessional opening. "Port" signals the transfer-of-competence method. The promotion metaphor runs through the book without needing to be in the title.
+- **Boss at Work | Intern at Home: Promote Yourself** fits the post-pivot book. Diagnostic title matches the confessional opening. "Promote Yourself" encodes the book's central metaphor (the promotion ladder: intern → manager → director) as a direct instruction — legible now that the diagnostic title prevents genre misdirection.
 - **Earn Back Boring** banked for Chapter 8 title. Captures the normalization destination.
 - **Humaning** banked as potential second book. Captures the bigger philosophical argument.
 
 ### Phase 3 Key Decisions
 
-- **"Boss @ Work | Intern @ Life: Port Your Competence" is the working title** (pending market testing). Replaces "Promote Yourself: For Directors at Work / Disasters at Home" which misfired on genre signal.
+- **"Boss at Work | Intern at Home: Promote Yourself" is the working title** (pending market testing). Replaces "Promote Yourself: For Directors at Work / Disasters at Home" which misfired on genre signal.
 - **Marcus is eliminated.** The author becomes the protagonist, opening with their lived experience in an AI-native software factory.
 - **The book's job-to-be-done has pivoted.** Original: AI-free toolkit for people afraid of technology. New: transformation guide for people landing in AI-native work and getting crushed by the cognitive load.
 - **Home as stable ground is the core strategic argument.** Work in the AI economy changes every few weeks — wrong place for permanent systems. Home challenges are standard, stable, not being disrupted. You build the capacity platform on stable ground (personal life), then deploy to unstable ground (work). This is the answer to "why at home?"
@@ -414,7 +412,7 @@ Each capability enables the next:
 
 ### Phase 3
 
-- **"Boss @ Work | Intern @ Life"** — the title. The pipe creates visual parallel. The gap statement as diagnostic.
+- **"Boss at Work | Intern at Home"** — the title. The pipe creates visual parallel. The gap statement as diagnostic.
 - **"Build a Life That Runs Itself"** — the promise (banked from Earn Back Boring subtitle)
 - **"Earn back boring"** — the normalization destination as a phrase (chapter 8 title)
 - **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
@@ -442,7 +440,7 @@ Each capability enables the next:
 1. ~~**Is "sovereignty" the right word?**~~ No. "Promote yourself" is the title. "Architect/direct" is the thesis language.
 2. ~~**Who exactly is the reader?**~~ Senior leaders and knowledge workers drowning in AI-era cognitive load.
 3. ~~**What's the controlling idea?**~~ Established (Phase 1) and stress-tested (Phase 2). Survived all four tests.
-4. ~~**The title names the problem, not the solution.**~~ Title now names the problem diagnostically ("Boss @ Work | Intern @ Life") and the subtitle names the method and realization ("Port Your Competence"). "Promote yourself" remains the central metaphor inside the book.
+4. ~~**The title names the problem, not the solution.**~~ Title now names the problem diagnostically ("Boss at Work | Intern at Home") and the subtitle names the instruction ("Promote Yourself"). The central metaphor is encoded in both.
 5. ~~**Marcus rewrite scope?**~~ Marcus eliminated entirely. Author becomes protagonist.
 6. ~~**Missing lens chapters for Engagement and Support?**~~ No longer relevant — four gaps eliminated.
 7. ~~**Engagement vs. Action gap naming?**~~ No longer relevant — four gaps eliminated.

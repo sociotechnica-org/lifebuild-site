@@ -1,6 +1,6 @@
 # Zelda's Editorial Methodology
 
-**A structured process for discovering, developing, and auditing the thematic core of _Boss @ Work | Intern @ Life: Port Your Competence_.**
+**A structured process for discovering, developing, and auditing the thematic core of _Boss at Work | Intern at Home: Promote Yourself_.**
 
 Load this as a project file in Claude Projects, or reference on demand when working through specific exercises. The companion `SYSTEM_PROMPT.md` implements this methodology; this document contains the full exercise instructions and editorial theory.
 
@@ -137,7 +137,7 @@ Your controlling idea survives all four stress tests. You can articulate the bef
 
 **Core principle:** Self-help titles should name the solution, not emphasize the problem. The title creates an emotional response; the subtitle explains what the book will do for the reader.
 
-> **For this book (resolved):** Working title: "Boss @ Work | Intern @ Life: Port Your Competence." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
+> **For this book (resolved):** Working title: "Boss at Work | Intern at Home: Promote Yourself." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
 
 ### Exercise 3A: Archetype Analysis
 
@@ -289,7 +289,7 @@ Flag chapters that fall into:
 2. **Telling, not showing** — Abstract claims without concrete examples
 3. **Repeating, not advancing** — Restating the same point instead of building on it
 4. **Dropping, not developing** — Introducing concepts then abandoning them
-5. **Multi-agenda** — The chapter tries to do too many things at once
+5. **Multi-agenda** — The chapter or beat tries to do too many things at once. At chapter level: too many threads or arguments competing for attention. At beat level: two distinct arguments sharing a single beat, even if the prose transitions smoothly between them. A beat carrying an argument that belongs to an adjacent beat should trigger this flag even if the chapter as a whole is not overloaded. Detection: state each beat's argument in one sentence. If a beat requires two sentences, check whether the second argument belongs elsewhere.
 6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: the author's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
 
 ### Narrative Sequencing Verification (Post-Ghostwriter)
@@ -299,13 +299,14 @@ After a chapter draft is delivered, verify narrative sequencing in addition to t
 1. **Were blueprint transition specs honored?** Check each section's "Reader knows at entry," "State changes to narrate," and "Exit state" against the actual prose. Flag any section where the ghostwriter skipped a specified state change.
 2. **Are there intra-beat teleportations the blueprint didn't anticipate?** The blueprint can't predict every micro-transition inside a beat. Read the draft as-if-naive: does every sentence follow from what came before? Flag any moment where the reader would think "wait, how did we get here?"
 3. **Do transitions between beats feel intentional?** The last image of one beat and the first image of the next should create a felt connection. Flag seams that feel accidental.
+4. **Does each beat contain exactly one argument?** State each beat's argument in one sentence. If a beat requires two sentences to state its argument, the beat contains two arguments and the second likely belongs to an adjacent beat. A beat can contain multiple narrative movements (scene, analysis, example) but they must serve a single argumentative purpose. Smooth prose can make a misplaced argument feel inevitable — check the argument, not the writing quality. This is the beat-level variant of the multi-agenda failure mode.
 
 ### Feedback Format
 
 1. State the chapter's thesis as you understand it (one sentence)
 2. Score each dimension with specific textual evidence
-3. Identify which failure modes apply (if any) — including #6 (advancing without narrating)
-4. Verify narrative sequencing (transition specs honored, no intra-beat teleportation)
+3. Identify which failure modes apply (if any) — including #5 beat-level (one argument per beat) and #6 (advancing without narrating)
+4. Verify narrative sequencing (transition specs honored, no intra-beat teleportation, one argument per beat)
 5. Give 2–3 specific, actionable revision directives
 6. Note any "kill your darlings" candidates — material that's well-written but off-theme
 
