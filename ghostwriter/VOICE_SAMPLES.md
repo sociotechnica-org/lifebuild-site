@@ -1,6 +1,6 @@
 # Voice Samples — Danvers Fleury
 
-These are excerpts from the author's SocioTechnica labnotes. They represent the target voice for _Boss @ Work | Intern @ Life_. Study them before drafting.
+These are excerpts from the author's SocioTechnica labnotes. They represent the target voice for _Boss at Work | Intern at Home: Promote Yourself_. Study them before drafting.
 
 ---
 

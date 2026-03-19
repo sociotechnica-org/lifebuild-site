@@ -1,4 +1,4 @@
-# Chapter Blueprints: Boss @ Work | Intern @ Life
+# Chapter Blueprints: Boss at Work | Intern at Home: Promote Yourself
 
 ## Overview
 
@@ -376,7 +376,7 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 - **Competence is shown through the kind of problem being solved, never declared.**
 - **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
 - **Profanity budget:** One instance available. The death spiral or entropy descriptions are natural placement points.
-- **Book title is "Boss @ Work | Intern @ Life: Port Your Competence."** The promotion metaphor is the central framework throughout.
+- **Book title is "Boss at Work | Intern at Home: Promote Yourself."** The promotion metaphor is the central framework throughout.
 
 ### Failure Mode Prevention
 
@@ -747,20 +747,386 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ## Ch 3: Pull the Thorn
 
-**Thesis:** Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a boss.
+**Map status:** Plan (pre-draft)
 
-**Target word count:** 3,500-4,500 words
+### Chapter Thesis
 
-**Number of beats:** 7
+Your first act as a boss is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened -- you changed a structure, not yourself. That is the pattern for everything that follows.
 
-**Source:** Old Ch 4 + compressed Ch 5 (30-40% revision)
+### Chapter Role in the Book
 
-**Author input items:**
+This is Part II: The First Win -- the entire part is one chapter. It carries more structural weight per word than any chapter except Ch 1. The reader arrives from Part I having been diagnosed. They have vocabulary (bronze/silver/gold, red/gray/blue), mechanism (the death spiral), data (their own audit results), a thesis ("build differently"), and a directive ("find one thorn, pull it in 72 hours -- your first act as a boss"). They have NOT yet experienced the method. Part I was seeing. Part II is doing.
 
-- Your first thorn story -- what was it, how did you pull it, what did the relief feel like?
-- The accountability email -- do you want to keep this offer in the book?
+The chapter does five things:
 
-[Full beat-by-beat blueprint not yet produced for this chapter. Use chapter brief in ghostwriter/BOOK_CONTEXT_REFERENCE.md and thread assignments in BOOK_CONTEXT.md.]
+1. **Delivers the reader's first operational experience of architecture-over-willpower -- the third path felt, not named.** The thorn exercise IS the third path in action, demonstrated through experience rather than argument. The thread is not invoked directly here; its second explicit touch is Ch 5.
+
+2. **Crystallizes the essentialist answer.** Ch 2 seeded "build differently" as a thesis statement. This chapter makes it experiential: "You changed a structure. That's an architectural move, not a willpower move. That's the pattern for everything that follows."
+
+3. **Names the four micro-skills that scale through Part III.** Externalize, decide, act, complete -- introduced here at the smallest possible scale (one thorn), then scaled in Ch 4-7 (externalize -> visibility, decide -> support, act -> capacity, complete -> systems).
+
+4. **Lands the first promotion metaphor as action, not concept.** Ch 1 introduced it. Ch 2 operationalized it. This chapter delivers the experience of being the boss -- making an executive decision about your own life.
+
+5. **Creates the pivot from diagnosis to building.** "You just ran through four moves. The rest of this book scales each one."
+
+### What the reader carries from Ch 1 and Ch 2 (reconciled)
+
+From Ch 1: The factory (cognitive demands), domestic entropy (board games, whiteboards, Sergeant Marge), the dishrag moment (cognitive crash, not burnout), complicated vs. complex (Claude 4.6 + hot tub), the death spiral (mechanical), the 2020 Freaky Friday inversion (skills transfer, infrastructure required), the stable ground argument (build where the ground holds), the third path (grind / escape / build), the promotion metaphor across three touches, "the first thing a boss does is look at the numbers."
+
+From Ch 2: Two audit tools (bronze/silver/gold + red/gray/blue). The author's results (90/10/0, pure bright red, gray masquerading as blue). The death spiral shown diagnostically (both audits colliding -- same spiral as Ch 1, now seen through the reader's own numbers rather than mechanically). The morning-after test. The reader's own audit results. The thesis: "build differently." The directive: "Find one thorn, pull it in 72 hours. Your first act as boss of your own life."
+
+### Target Word Count
+
+3,500-4,500 words
+
+### Source
+
+Old Ch 4 (thorn chapter) + compressed old Ch 5 (micro-skills, architecture not willpower). 30-40% revision -- significant prose survives, but sovereignty language must be stripped, Marcus must be eliminated, and the whole chapter must be reframed through the promotion metaphor and the essentialist answer.
+
+---
+
+### Structure: Seven Beats
+
+| Beat | Name                    | Word Target |
+| ---- | ----------------------- | ----------- |
+| 1    | The Assignment          | 250-350     |
+| 2    | The Thorn Metaphor      | 300-400     |
+| 3    | Target Selection        | 400-500     |
+| 4    | The Method (Four Moves) | 600-800     |
+| 5    | The Author's Thorn      | 350-500     |
+| 6    | The Micro-Skills        | 500-650     |
+| 7    | The Turn                | 350-450     |
+
+**Emotional shape:** Directed energy (1) -> Recognition (2) -> Self-diagnosis (3) -> Practical momentum (4) -> Relief through story (5) -> Surprised recognition / reframe (6) -> Directed confidence (7)
+
+---
+
+### Beat-by-Beat Specs
+
+### BEAT 1: The Assignment
+
+_Working title: [WORKING TITLE]_
+_Target: 250-350 words_
+_Voice register: Direct address, brisk. Carrying the momentum from Ch 2's close without repeating it._
+_Promotion metaphor touch: 1 of 3._
+
+**Content:** Open by landing in the directive from Ch 2's close. Do not repeat the thesis or re-explain the audit. The reader has been given an assignment. This beat acknowledges that and gets them moving.
+
+Frame through the promotion metaphor: this is the reader's first executive decision about their own life. Not a productivity hack. Not a morning routine adjustment. A boss-level decision about what stays and what goes.
+
+The 72-hour constraint named: "Not someday. Not when you have more time. Within 72 hours of reading these words."
+
+Brief bridge to the thorn metaphor: "But first, you need to know what you're looking for."
+
+**Reader knows at entry:** Everything from Ch 1-2. The reader has both audit tools, has seen the death spiral diagnostically, has run the exercise on their own week, has heard the thesis ("build differently"), and has been told to find one thorn and pull it in 72 hours as their first act as a boss. They are carrying directed momentum. They DO have the operational definition from Ch 2 Beat 6 ("one persistent red that's been draining you") but do NOT yet have the thorn metaphor -- the dog/paw image has not been delivered. Beat 2 upgrades the definition to a sticky image, not a new concept.
+**State changes to narrate:** None -- pure transition. The chapter is picking up the directive from Ch 2's close and channeling it into action.
+**Exit state:** The reader understands this chapter is operational, not diagnostic. They know the constraint (72 hours). They know this is framed as the boss's first act. They are ready to learn what a thorn is.
+
+**Thread touches:**
+
+- Promotion metaphor [ACTIVATED]: "Your first executive decision about your own life." The metaphor shifts from concept to action.
+
+**Voice notes:** Shortest beat. Do not re-explain the audit. Do not repeat "build differently." The energy is forward-facing.
+
+---
+
+### BEAT 2: The Thorn Metaphor
+
+_Working title: [WORKING TITLE]_
+_Target: 300-400 words_
+_Voice register: Narrative, grounded. The metaphor taught through image, not definition._
+_Source: ~80% from old Ch 4 "The Thorn" section_
+
+**Content:** The thorn in the paw. The dog limping -- not catastrophe, not crisis, just something small and sharp stuck in there, hurting with every step. Not enough to stop everything, enough to make everything harder.
+
+Connect to the audit vocabulary: "That's what persistent reds look like in your audit results. Small, sharp things that fire a pulse of dread every time you brush against them."
+
+The dog doesn't need a life overhaul. The dog needs someone to remove the thorn.
+
+"Your goal this week isn't to fix your life. It's to find one thorn and pull it out."
+
+**Reader knows at entry:** The directive (72 hours, first act as boss), the constraint. Does NOT yet have the thorn metaphor.
+**State changes to narrate:** The metaphor introduced and connected to the audit vocabulary. The reader now has a name for what they're looking for: a persistent red that's been hurting with every step.
+**Exit state:** The reader understands the thorn metaphor. They can connect it to their audit results -- thorns are persistent reds. The scope is calibrated: one thorn, not all of them.
+
+**Thread touches:**
+
+- Villain [LIGHT CALLBACK]: "Not enough to stop everything, enough to make everything harder." The thorn IS the old playbook's failure. Do not name the villain explicitly.
+
+**Voice notes:** The dog metaphor is excellent and sticky. Protect it. The connection to audit vocabulary ("persistent reds") is new. Keep it clean and brief.
+
+**Kill list for this beat:** Sovereignty language. Any reference to gaps.
+
+---
+
+### BEAT 3: Target Selection
+
+_Working title: [WORKING TITLE]_
+_Target: 400-500 words_
+_Voice register: Instructional with confessional anchoring._
+_Source: ~70% from old Ch 4 "What Makes a Good Target" + "Finding Your Thorn" + "Pick One" sections, compressed_
+
+**Content:**
+
+Four characteristics of a good target: repeats, resolvable in 72 hours, you feel it emotionally, resolving it would bring relief.
+
+Compressed prompts to surface the thorn:
+
+- What have you been avoiding for more than a month?
+- What commitment do you resent every time it appears?
+- What's generating dread disproportionate to the task?
+- What would you eliminate if you could snap your fingers?
+
+The author's secondary example (credit accounts for the kids): "For me, once, it was setting up credit-building accounts for my kids. Important. Simple. Took ten minutes when I finally did it. I avoided it for three years. Three years of small stabs, resolved in ten minutes."
+
+"Pick one. Write it down. Be specific. Not 'get healthier' or 'be more organized.' A thorn is concrete."
+
+**Reader knows at entry:** The thorn metaphor (persistent reds, small and sharp). The constraint (72 hours). Does NOT yet have criteria for selecting a target.
+**State changes to narrate:** The reader identifies their own thorn. This is the beat where the chapter becomes personal. The author's credit accounts story provides a model of scale.
+**Exit state:** The reader has selected one thorn and written it down. They have criteria for why it's a good target. They are ready to learn how to pull it.
+
+**Thread touches:**
+
+- None explicitly. Pure instruction.
+
+**Voice notes:** Compress the "Pick One" section slightly. Protect "three years of small stabs, resolved in ten minutes."
+
+**Kill list for this beat:** Sovereignty language. Marcus. Extended discussion of why people resist picking.
+
+---
+
+### BEAT 4: The Method (Four Moves)
+
+_Working title: [WORKING TITLE]_
+_Target: 600-800 words_
+_Voice register: Instructional, practical. Brief examples for each move._
+_Source: ~60% from old Ch 4 "The Method" section_
+
+**Content:**
+
+The 72-hour window restated briefly: "Short enough to maintain urgency. Long enough to handle logistics. Tight enough that deferral becomes harder than action."
+
+Accountability email offer: "Want some help? Drop me an email with the headline Accountability Support Request and your commitment in the body. I'll check in on you in 72 hours: danvers@sociotechnica.org." [AUTHOR INPUT NEEDED: keep or cut?]
+
+Four resolution methods:
+
+**Eliminate.** Some thorns shouldn't exist. "Elimination is the most underused option. We're trained to solve problems, not dissolve them."
+
+**Delegate.** Some thorns are real tasks -- just not yours. Brief embodied/unembodied distinction (two sentences maximum -- the full treatment is Ch 5). "The barrier to unembodied delegation has dropped dramatically. Most people haven't updated their habits to match."
+
+**Automate.** Recurring irritations that could run without you. Autopay, subscriptions, defaults and templates.
+
+**Reconstruct.** Can't eliminate, delegate, or automate -- change how you engage with it. Add a boundary. Change the sequence. Remove the friction.
+
+Brief examples: the meeting that shouldn't include you (eliminate), the insurance dispute (delegate to AI + call), the home maintenance (automate), the financial task (delegate). One or two sentences each.
+
+Close the beat with the action invitation: "If you're ready, put the book down. Pull your thorn. I'll be here when you get back." Brief, direct, no sentimentality. This is the pause Beat 6 depends on.
+
+**Reader knows at entry:** Their specific thorn. The criteria for selection. The constraint (72 hours). Does NOT yet know the resolution methods.
+**State changes to narrate:** The reader learns four methods for resolution. The embodied/unembodied distinction is introduced at minimum viable scale (developed in Ch 5). The accountability email makes the assignment real.
+**Exit state:** The reader has a method for their specific thorn. They know four options and can map their thorn to one. The chapter has made a real ask: do this within 72 hours. **GHOSTWRITER NOTE:** The prose must explicitly invite the reader to put the book down and pull their thorn before continuing. This creates the conditional that Beat 6 depends on ("When the thorn is out, notice what happened").
+
+**Thread touches:**
+
+- Villain [CALLBACK]: "We're trained to solve problems, not dissolve them" -- implicit callback to the old playbook.
+
+**Voice notes:** The four moves should feel like a menu, not a lecture. The old draft's delegate section was too long -- compress to two sentences with a forward reference to Ch 5. Compress examples to one to two sentences each.
+
+**Kill list for this beat:** Extended embodied/unembodied taxonomy (save for Ch 5). "They don't require special tools -- just clarity, courage, willingness" (argues wrong thesis -- the book argues structure, not personal qualities). Sovereignty language. Marcus examples.
+
+---
+
+### BEAT 5: The Author's Thorn
+
+_Working title: [WORKING TITLE]_
+_Target: 350-500 words_
+_Voice register: First person narrative. Confessional, specific. The chapter's strongest voice beat._
+_Promotion metaphor touch: 2 of 3._
+
+**Content:** The author's real first thorn story. [AUTHOR INPUT NEEDED -- critical path. The chapter cannot be drafted without this.]
+
+The story should follow the structure the reader just learned: what was the thorn, how long had it been avoided, which method did the author use, what happened when it was pulled.
+
+The relief: "The thing I'd been carrying? I wasn't carrying it anymore."
+
+Then the knife: "That wasn't a productivity win. That was a decision about what my life should look like, made by someone who had the authority to make it. I'd had the authority the whole time. I just hadn't been acting like it."
+
+**Reader knows at entry:** The thorn metaphor, their own thorn selected, the four methods. They have not yet heard the author's story.
+**State changes to narrate:** The author's specific thorn story -- a new narrative following the method the reader is about to attempt. The relief is narrated physically and specifically. The boss frame is applied to the experience.
+**Exit state:** The reader has seen the method work in someone else's life. They have felt the relief vicariously. The promotion metaphor has deepened: pulling a thorn is an executive decision, not task-completion.
+
+**Thread touches:**
+
+- Promotion metaphor [DEEPENED]: "A decision about what my life should look like, made by someone who had the authority to make it."
+
+**Voice notes:** Labnotes register -- confessional, specific, no hedging. The relief should be physical, not conceptual. The "authority" reframe should land abruptly -- do not build to it.
+
+**[AUTHOR INPUT NEEDED]:** Your first thorn story. What was it? How long had you been avoiding it? Which method? What did the relief feel like? This is the chapter's emotional anchor.
+
+---
+
+### BEAT 6: The Micro-Skills
+
+_Working title: [WORKING TITLE]_
+_Target: 500-650 words_
+_Voice register: Teaching through what just happened. The reframe that gives the experience meaning beyond a single win._
+_Source: ~50% from old Ch 5 "The Four Micro-Skills" + "Architecture, Not Willpower" sections, compressed_
+
+**Content:**
+
+Open with the pause: "When the thorn is out, notice what happened."
+
+The four micro-skills, named through the experience the reader just had:
+
+**Externalize.** "You got the problem out of your head and into words. Named it. Wrote it down."
+
+**Decide.** "You chose a method. Eliminate, delegate, automate, reconstruct. Not just reacting to what felt urgent -- making a strategic choice."
+
+**Act.** "You did it. Or handed it off. Or set up the system. The loop moved."
+
+**Complete.** "You confirmed it's done. The open item closed. The drain stopped."
+
+Then the essentialist answer, crystallized: "Notice what else happened. You didn't add anything to your life. You didn't wake up earlier. You didn't try harder. You didn't become more disciplined. You changed a structure. Removed a drain. Redirected how your system operates. That's an architectural move, not a willpower move. That's the pattern for everything that follows."
+
+The micro-skills as the bridge to Part III: "These four moves -- externalize, decide, act, complete -- are the loop that scales. You just ran it on one thorn. The next four chapters run it at life scale."
+
+**Reader knows at entry:** Their thorn is pulled (or the author's story has shown what it looks like). They have felt the relief. They know this was framed as an executive decision. They do NOT yet have a name for what they did.
+**State changes to narrate:** The experience is given names (four micro-skills). The essentialist answer crystallizes -- architecture, not willpower. The micro-skills are connected to the Part III chapter sequence.
+**Exit state:** The reader knows the four micro-skills by name. They have experienced the essentialist answer through their own action. They understand the thorn exercise was the smallest instance of a pattern the book will develop. The emotional state is surprised recognition -- "this is what 'build differently' actually means."
+
+**Thread touches:**
+
+- Essentialist answer [HIGH -- PRIMARY HOME -- CRYSTALLIZED]: "You changed a structure. That's an architectural move, not a willpower move."
+- Micro-skills [INTRODUCED]: Externalize, decide, act, complete -- named here, scaled in Ch 4-7.
+- Villain [CALLBACK]: "You didn't wake up earlier. You didn't try harder. You didn't become more disciplined." -- implicit contrast with the old playbook. Do not name explicitly.
+
+**Voice notes:** The micro-skills should emerge from the experience, not be deposited as taxonomy. The essentialist answer paragraph is the chapter's intellectual climax. Brief, precise, no hedging.
+
+**Kill list for this beat:** "They don't require special tools -- just clarity, courage, willingness." Extended completion psychology. Sovereignty language. Marcus. "The micro-skills of sovereignty" (becomes "the micro-skills of running things" or no label). Four gaps/bridges references.
+
+---
+
+### BEAT 7: The Turn
+
+_Working title: [WORKING TITLE]_
+_Target: 350-450 words_
+_Voice register: Transitional. Honest about what this was and wasn't. Forward-looking. Closing Part II._
+_Promotion metaphor touch: 3 of 3._
+
+**Content:**
+
+Honest assessment: "One thorn removed is a taste, not a transformation. Life generates new thorns constantly. The entropy never stops."
+
+But name what changed: "You have data now. The thorn cost you something. Pulling it cost you something. Was it worth it? That's not a motivational question. It's a boss's question."
+
+The cost framing: "Whatever the cost -- it traded a recurring drain for a one-time investment. That's the ROI of architecture."
+
+The pivot: "You just proved that changing your structure changes your results. One thorn. Four moves. Seventy-two hours. Now let's build the full structure."
+
+Forward look to Part III -- brief, no more than two sentences: "The next four chapters each scale one of those micro-skills into a permanent capability. Visibility. Support. Capacity. Systems."
+
+Close: "Part I showed you the trap. Part II showed you it breaks. Part III builds the thing that keeps it broken."
+
+**Reader knows at entry:** The micro-skills, the essentialist answer, the connection to Part III. The reader has either pulled their thorn or has a visceral understanding of what it would feel like.
+**State changes to narrate:** The honest assessment of scope. The cost reframe (recurring drain -> one-time investment = boss's ROI). The pivot from first win to full structure. Part III previewed.
+**Exit state:** The reader is energized and realistic. They know one thorn is not enough. They know the four micro-skills scale. They carry the essentialist answer as a felt truth ("I changed a structure, not myself"). The promotion metaphor is fully operational -- they have made their first executive decision. The emotional state is directed confidence: "this works, and there is more."
+
+**Thread touches:**
+
+- Promotion metaphor [LANDED]: "That's a boss's question." + the ROI framing. Progressed from concept (Ch 1) to directive (Ch 2) to action (Ch 3 Beats 1, 5) to earned identity (here).
+- Essentialist answer [REINFORCED -- ECHO ONLY]: "Architecture, not willpower" as the closing callback. Three to four words. Beat 6's job was crystallization; Beat 7 echoes it, does not repeat it.
+- Villain [CLOSING CALLBACK for Part II]: "Part III builds the thing that keeps it broken."
+
+**Voice notes:** Honest without deflating. The "taste, not transformation" line is important -- do not soften. The closing line should land with quiet confidence, not fanfare. Get out.
+
+**Kill list for this beat:** Extended "Momentum Problem" discussion (compress to two sentences). Four gaps/bridges. Marcus. Sovereignty language. Any mention of specific Part III chapter content beyond the four capability names.
+
+---
+
+### Thread Verification
+
+| Thread                                                     | Beat(s)          | Treatment                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Essentialist answer [HIGH -- PRIMARY HOME -- CRYSTALLIZED] | Beat 6           | Full crystallization. Lineage: Ch 1 Beat 6 seeded "not optimize, build" (embryonic, felt) -> Ch 2 Beat 2 seeded silver as embryonic form (felt, not named) -> Ch 2 Beat 6 named it ("build differently") as thesis statement -> Ch 3 Beat 6 crystallizes "architecture, not willpower" as the permanent name. The reader has been sensing this since Ch 1; Beat 6 gives it its final form. |
+| Essentialist answer [REINFORCED -- ECHO ONLY]              | Beat 7           | Closing callback: "Architecture, not willpower." Three to four words maximum. The paragraph is Beat 6's job. Beat 7 echoes it, does not repeat it.                                                                                                                                                                                                                                         |
+| Promotion metaphor                                         | Beats 1, 5, 7    | Three touches (within Ch 3): "your first executive decision" (1), "someone who had the authority to make it" (5), "a boss's question" + ROI framing (7). Progresses from directive to action to earned identity.                                                                                                                                                                           |
+| Villain [CALLBACK]                                         | Beats 2, 4, 6, 7 | Light callbacks only. "Enough to make everything harder" (2). "Trained to solve problems, not dissolve them" (4). "Didn't try harder, didn't become more disciplined" (6). "Part III builds the thing that keeps it broken" (7 -- Part II closing callback, implicit).                                                                                                                     |
+| Micro-skills [INTRODUCED]                                  | Beat 6           | Externalize, decide, act, complete -- named here, scaled in Ch 4-7. Bridge to Part III.                                                                                                                                                                                                                                                                                                    |
+
+### Threads correctly absent from Ch 3
+
+| Thread                        | Reason                                                                                                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Round trip                    | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Stable ground                 | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Third path                    | Present experientially (the thorn exercise IS the third path in action), but not invoked by name. Second explicit touch is Ch 5. Do not use the phrase "third path" or describe the thorn as "a third option" -- the experience carries it. |
+| OS metaphor                   | Not present. Correct.                                                                                                                                                                                                                       |
+| Complicated vs. complex       | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Personal/professional unified | Not present per thread map. Correct.                                                                                                                                                                                                        |
+
+### Kill List
+
+- All sovereignty language (7+ instances in old Ch 4-5)
+- Marcus -- entire scene on the train, all references (old Ch 5)
+- Four gaps (Balance, Restoration, Engagement, Support)
+- Four bridges
+- Extended "Momentum Problem" discussion (compress to two sentences in Beat 7)
+- Extended embodied/unembodied taxonomy (save for Ch 5 -- two sentences maximum here)
+- "They don't require special tools -- just clarity, courage, willingness" (argues wrong thesis)
+- "The honest truth about the 72-hour reset" (old Ch 5 register)
+- "Lens" / "lenses" (audit vocabulary only)
+- Future-self material (temporal discounting)
+- Delegation resistance discussion (save for Ch 5)
+- "The micro-skills of sovereignty" (becomes "the micro-skills of running things" or no label)
+- Blurring and Blending section (relocated to Ch 6)
+- Morning-After Test (already delivered in Ch 2 Beat 3)
+- Red/gray/blue definitions (already delivered in Ch 2)
+
+### Author Input Needed
+
+1. **[CRITICAL -- Beat 5]** Your first thorn story after the dishrag moment. What was it? How long had you been avoiding it? Which method (eliminate/delegate/automate/reconstruct)? What happened when you pulled it? What did the relief feel like? This is the chapter's emotional anchor.
+2. **[Beat 4]** Do you want to keep the accountability email offer (danvers@sociotechnica.org) in the book?
+
+**Drafting protocol if item 1 is not yet provided:** The ghostwriter should draft Beats 1-4 and 6-7 as a complete unit, leaving Beat 5 as a bracketed placeholder: [BEAT 5 PLACEHOLDER -- Author's first thorn story. See Author Input Needed item 1.]. Do not substitute Marcus-era prose or synthesize a story. The instruction-narrative sandwich (Beat 4 -> Beat 5 -> Beat 6) is the structural defense for the chapter's telling-not-showing failure mode; a placeholder is preferable to fabricated content.
+
+### Failure Mode Prevention
+
+**Selling, not teaching:** The accountability email risks sounding promotional. Defense: frame as the author doing what they're asking the reader to do. If it feels like a pitch, cut it.
+
+**Telling, not showing:** The four moves (Beat 4) are instructional by nature. Defense: the author's thorn story (Beat 5) provides narrative evidence. The micro-skills (Beat 6) are taught through the reader's own experience. Instruction sandwiched between narrative.
+
+**Repeating, not advancing:** The chapter risks re-explaining the audit or the death spiral. Defense: Beat 1 carries forward without repeating. Audit vocabulary appears only as callbacks ("persistent reds"), never re-taught.
+
+**Advancing without narrating:** Two risk points: (a) the reader is asked to pull a thorn before the author has shown them -- Beat 5 follows Beat 4 to demonstrate. (b) Beat 6 names the micro-skills as if the reader has already acted. Defense: the chapter explicitly invites action between Beats 4 and 5 ("If you're ready, put the book down"). Beat 6 opens with "When the thorn is out, notice what happened" -- present conditional, not past assertion.
+
+**Multi-agenda:** Four threads, only one at high intensity (essentialist answer). Promotion metaphor is structural. Villain callbacks are implicit. Micro-skills are new content, not a maintenance thread. Focused.
+
+### Emotional Shape
+
+Directed energy (Beat 1) -> Recognition (Beat 2) -> Self-diagnosis (Beat 3) -> Practical momentum (Beat 4) -> Relief through story (Beat 5) -> Surprised recognition / reframe (Beat 6) -> Directed confidence (Beat 7)
+
+### Downstream Verification
+
+Ch 3 Beat 7 exit state feeds Ch 4 Beat 1 entry. The reader arriving at Ch 4 has:
+
+- Pulled one thorn and experienced relief
+- Knows the four micro-skills (externalize, decide, act, complete)
+- Understands externalization at the smallest scale
+- Carries "architecture, not willpower" as a felt truth
+- Knows Part III scales each micro-skill into a permanent capability
+- Knows Ch 4 = Visibility = externalization at life scale
+
+When Ch 4 gets its full beat-by-beat blueprint, its Beat 1 "Reader knows at entry" should be built from this exit state.
+
+### Ghostwriter Notes
+
+- **Source text locations:** Old Ch 4 is `src/content/book/chapter-4.md`. Old Ch 5 is `src/content/book/chapter-5.md`. Read both. The thorn metaphor, target selection criteria, four methods, and micro-skills all have usable prose. Sovereignty language, Marcus, and gap/bridge structure must be stripped.
+- **The chapter has one comedic beat.** The credit accounts story in Beat 3 ("three years of small stabs, resolved in ten minutes"). Do not force comedy elsewhere.
+- **The essentialist answer paragraph in Beat 6 is the chapter's load-bearing moment.** "You didn't add anything to your life. You changed a structure." Must land with the same clarity as Ch 2's thesis statement.
+- **Profanity budget:** Zero for this chapter. Voice here is warm, direct, practical.
+- **The embodied/unembodied distinction must be two sentences, not a section.** Full treatment is Ch 5's territory.
+- **The accountability email is the author's real offer.** If kept, do not dress it up. The plainness is part of the voice.
+- **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
 
 ---
 
@@ -1071,7 +1437,7 @@ It is also the most emotionally important chapter in the book. The reader starte
 
 The title -- "Earn Back Boring" -- is the book's most subversive claim. On a shelf of books promising optimization, peak performance, and 10x results, this chapter says: the goal is boring. Your personal life should be boring. Boring means the system is working. Boring means you're not firefighting. Boring means you have capacity to spare. Boring is what was stolen by the AI economy's cognitive demands, and you're taking it back.
 
-This chapter also completes the round trip -- the thread that carries the book's promise. "Boss @ Work | Intern @ Life" names the gap; the book must show both sides closing. Chapter 8 delivers the return leg: "Here's what happened at work when I started living this way at home." This is the surprise dividend -- the reader thought they were fixing their home life, but they accidentally trained for the future workforce. The round trip must land as a narrative turn, not just a thread payoff.
+This chapter also completes the round trip -- the thread that carries the book's promise. "Boss at Work | Intern at Home" names the gap; the book must show both sides closing. Chapter 8 delivers the return leg: "Here's what happened at work when I started living this way at home." This is the surprise dividend -- the reader thought they were fixing their home life, but they accidentally trained for the future workforce. The round trip must land as a narrative turn, not just a thread payoff.
 
 ### Target Word Count
 
