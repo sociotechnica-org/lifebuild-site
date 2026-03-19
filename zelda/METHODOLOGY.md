@@ -1,6 +1,6 @@
 # Zelda's Editorial Methodology
 
-**A structured process for discovering, developing, and auditing the thematic core of _Boss at Work | Intern at Home: Port Yourself_.**
+**A structured process for discovering, developing, and auditing the thematic core of _Boss @ Work | Intern @ Life: Port Your Competence_.**
 
 Load this as a project file in Claude Projects, or reference on demand when working through specific exercises. The companion `SYSTEM_PROMPT.md` implements this methodology; this document contains the full exercise instructions and editorial theory.
 
@@ -137,7 +137,7 @@ Your controlling idea survives all four stress tests. You can articulate the bef
 
 **Core principle:** Self-help titles should name the solution, not emphasize the problem. The title creates an emotional response; the subtitle explains what the book will do for the reader.
 
-> **For this book (resolved):** Working title: "Boss at Work | Intern at Home: Port Yourself." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
+> **For this book (resolved):** Working title: "Boss @ Work | Intern @ Life: Port Your Competence." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
 
 ### Exercise 3A: Archetype Analysis
 
@@ -266,6 +266,8 @@ You have a chapter-by-chapter outline where: every chapter has a clear thesis co
 
 ### The Chapter Scorecard
 
+> **Before scoring a chapter, check the beat map status.** Read the best available source for the chapter being scored AND the chapter immediately preceding it. If the preceding chapter's beat map has been reconciled since the current chapter's blueprint was written, verify entry assumptions before scoring.
+
 For each submitted chapter, evaluate:
 
 | Dimension                 | Question                                                     | Score (1–5) |
@@ -288,7 +290,7 @@ Flag chapters that fall into:
 3. **Repeating, not advancing** — Restating the same point instead of building on it
 4. **Dropping, not developing** — Introducing concepts then abandoning them
 5. **Multi-agenda** — The chapter tries to do too many things at once
-6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: a character's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
+6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: the author's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
 
 ### Narrative Sequencing Verification (Post-Ghostwriter)
 
@@ -407,6 +409,29 @@ The blueprint:
 - Stays within the chapter's word budget
 - Has been reviewed by the author before the ghostwriter begins
 
+### Beat Map Reconciliation (Post-Draft)
+
+**When:** After a chapter draft has been through at least one round of revision and the author considers the narrative sequence stable. This is not a new phase -- it's a housekeeping step that closes the loop on Phase 5.5.
+
+**What:** Update the chapter's beat map in `BLUEPRINTS.md` to reflect what the prose actually does, not what the blueprint originally planned. The beat map starts as a plan. After drafting, it becomes a record.
+
+**Why:** Downstream chapters set their entry assumptions by looking back at upstream beat maps. If Ch 3's "Reader knows at entry" is built from Ch 2's original plan rather than Ch 2's actual prose, the chain breaks at the seam. The maps must reflect reality, or they mislead the next ghostwriter handoff.
+
+**What to update:**
+
+1. **Transition specs.** Reconcile "Reader knows at entry," "State changes to narrate," and "Exit state" for every beat against the actual prose. If the draft added, cut, or reordered material, update the specs to match.
+2. **Thread touches.** Note which threads actually landed in the prose vs. which were planned but cut or deferred. Mark deferred threads so downstream chapters know they're still unplaced.
+3. **Beat content.** If beats were merged, split, or substantially rewritten, update the beat descriptions. The map should be readable as a summary of the chapter as-written.
+4. **Word counts.** Replace target ranges with actual counts.
+5. **Kill list.** Add anything that was cut during revision. This prevents material from creeping back in during future edits.
+6. **Downstream chapter entry assumptions.** If any downstream chapter blueprint's "Reader knows at entry" references this chapter's content, verify it still matches. If not, flag it for Zelda to update before that chapter enters the drafting queue.
+
+**What NOT to update:** The chapter thesis, thread verification table, emotional shape, and failure mode prevention sections stay as editorial intent unless Zelda explicitly revises them. These are analytical tools, not descriptive records.
+
+**Mark it.** Add a status line at the top of the chapter's blueprint section:
+
+> **Map status:** Plan (pre-draft) | Draft-reconciled [date] | Final [date]
+
 ---
 
 ## Phase 5.6: Section Title Review
@@ -456,7 +481,7 @@ A title must pass all five. Four out of five means revision, not approval.
 
 ### Application to Blueprints
 
-Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Freaky Friday Inversion) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
+Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Death Spiral) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
 
 ### Phase 5.6 Exit Criteria
 
