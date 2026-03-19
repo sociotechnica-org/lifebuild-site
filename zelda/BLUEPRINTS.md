@@ -1021,7 +1021,7 @@ Close: "Part I showed you the trap. Part II showed you it breaks. Part III build
 **Thread touches:**
 
 - Promotion metaphor [LANDED]: "That's a director's question." + the ROI framing. Progressed from concept (Ch 1) to directive (Ch 2) to action (Ch 3 Beats 1, 5) to earned identity (here).
-- Essentialist answer [REINFORCED]: "Architecture, not willpower" as the closing callback.
+- Essentialist answer [REINFORCED -- ECHO ONLY]: "Architecture, not willpower" as the closing callback. Three to four words. Beat 6's job was crystallization; Beat 7 echoes it, does not repeat it.
 - Villain [CLOSING CALLBACK for Part II]: "Part III builds the thing that keeps it broken."
 
 **Voice notes:** Honest without deflating. The "taste, not transformation" line is important -- do not soften. The closing line should land with quiet confidence, not fanfare. Get out.
