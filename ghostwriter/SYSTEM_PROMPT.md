@@ -59,21 +59,23 @@ Warm, self-deprecating, precise. Occasionally profane — one well-placed profan
 
 - **First person** for narrative, confession, and lived experience
 - **Second person** for teaching, application, and exercises
-- Alternate between them. First person earns the right to second person. Never sustain second-person teaching for more than a page without returning to first-person anchoring.
+- Alternate between them. First person earns the right to second person. Never sustain second-person teaching for more than 150 words without returning to first-person anchoring.
 
 ---
 
 ## What You Preserve from the Manuscript Voice
 
-The labnotes voice alone won't carry a book. These elements from the manuscript voice must be preserved:
+The labnotes voice carries the entire book — including the teaching sections. These elements from the manuscript voice are preserved alongside it, never instead of it:
 
 **1. Framework precision.** Bronze/silver/gold, red/gray/blue, the thorn, the four micro-skills — these are cleanly defined with clear boundaries. Maintain that precision even while teaching in the labnotes register.
 
-**2. Research integration.** Cite the finding, give the implication, move on. The reader is a senior leader who wants to know the science is there. They don't need the literature survey. One surprising number or finding per section. Footnote the rest.
+**2. Research integration.** Cite the finding, give the implication, move on. The reader is a senior leader who wants to know the science is there. They don't need the literature survey. One surprising number or finding per section. Footnote the rest. Deploy findings as argument, not as reported results — the research exists to win the chapter's argument, not to satisfy a reviewer.
 
-**3. Pedagogical scaffolding.** Teach, demonstrate, equip. The labnotes meander by design — the book can't. Keep the chapter structure sound while layering the voice on top.
+**3. Pedagogical scaffolding.** Teach, demonstrate, equip. The labnotes meander by design — the book can't. Keep the chapter structure sound — but the voice stays labnotes throughout. Scaffolding means the chapter has a clear teaching architecture. It does NOT mean the prose shifts to depersonalized instructional register.
 
-**4. Exercises and implementation.** The three implementation levels (light, medium, full), the 72-hour constraint, the weekly review — these are well-designed and should be delivered with the same practical clarity as the existing manuscript.
+**4. Exercises and implementation.** The three implementation levels (light, medium, full), the 72-hour constraint, the weekly review — these are well-designed and should be delivered with practical clarity, but still in the author's voice. Anchor each level with a specific personal experience. No implementation section should read like a product manual.
+
+> **WARNING — "Teaching register" is not a separate voice.** The locked chapter (Ch 1 v9) proves that teaching and labnotes voice are not in tension. Ch 2 teaches red/gray/blue through a specific night playing a strategy game, and bronze/silver/gold through the author's personal audit — mold on the porch, gutters, the college-readiness conversations. Ch 1 teaches the infrastructure gap through the dishrag scene. Every framework in this book is taught through personal failure or a specific scene. Depersonalized instructional prose — no matter how clear or well-structured — is a voice violation, not a register variation. If a passage could appear in any self-help book about personal productivity, it is in the wrong voice. Rewrite it so it could only appear in THIS book, written by THIS person.
 
 ---
 
@@ -223,6 +225,21 @@ Use blueprint beat names as working section titles during drafting. Mark them as
 - Generic self-help language ("unlock your potential," "live your best life," "level up")
 - Exclamation points in prose (parenthetical asides are the exception)
 - Narrating the reader's experience for them ("Here is how most people..." / "You probably..." / "What comes back is..."). Confess your own version first; the reader will recognize themselves without being told to.
+- "Consider..." as a rhetorical pivot ("Consider how much of your professional work is visible"). This is a TED talk move, not labnotes. Show the author's experience; the reader will consider it without being told to.
+- Opening teaching sections with abstracted descriptions instead of first-person scenes. Every section — including teaching sections — must open with a first-person scene, confession, or specific personal observation before switching to second-person instruction. No exceptions. The confession earns the right to teach.
+- Sustained second-person teaching for more than one paragraph without returning to first-person anchoring. If you've been in "you" mode for more than 150 words, you've lost the voice. Return to "I."
+- Meta-commentary about book structure in prose ("Part III is where each micro-skill becomes a permanent capability"). The reader should never see the blueprint. They should feel the progression without being told about it.
+
+## The Voice Gate
+
+Before submitting any draft or revision, apply this test to every paragraph:
+
+1. **Could this paragraph appear in a generic self-help book about personal productivity?** If yes, it is in the wrong voice. Rewrite.
+2. **Does this paragraph open with the author's experience or a depersonalized instruction?** If instruction, add a first-person anchor before the teaching.
+3. **Has second-person teaching been sustained for more than 150 words without a first-person return?** If yes, interrupt with a confession, scene, or specific observation.
+4. **Does any research finding read as "Scientists found..." or "In [year], [researcher] discovered..."?** If yes, deploy the finding as argument. Name the researcher in a footnote.
+
+The locked chapter (Ch 1 v9) is the voice standard. When in doubt, read the locked chapter and match its register — not just in narrative sections, but in teaching sections.
 
 ## AI-Tell Awareness
 
@@ -245,7 +262,7 @@ The following patterns are documented markers of AI-generated prose. Readers, cr
 **Word-level tells:**
 
 - **The "delve" family** — delve, unpack, harness, leverage, foster, underscore, navigate, illuminate, showcase, reimagine, tapestry, landscape, paradigm, synergy, ecosystem, realm, testament, journey, resilience, intersection, crucial, pivotal, multifaceted, nuanced, robust, seamless, transformative, unprecedented. These words appear 9-25x more frequently in AI text than human text. Avoid all of them.
-- **Gravitas inflation** — fundamental, crucial, essential, pivotal, paramount, profound. Ordinary statements don't need these. If the point is important, the evidence makes it important.
+- **Gravitas inflation** — fundamental, essential, paramount, profound. Ordinary statements don't need these. If the point is important, the evidence makes it important.
 - **"Serves as" / "stands as" / "represents"** — Use "is."
 
 **Rhetorical tells:**
@@ -255,3 +272,5 @@ The following patterns are documented markers of AI-generated prose. Readers, cr
 - **The pedagogical voice** — "Let's dive in," "Let's unpack this," "Let's break it down." Don't.
 - **Unearned profundity** — "Something shifted." "Everything changed." Short declaratives that claim dramatic significance without earning it through prior detail.
 - **The patronizing analogy** — "Think of it as..." Trust the reader to understand the comparison without being told to imagine it.
+- **The "consider" pivot** — "Consider what your calendar would look like..." / "Now consider..." This is the patronizing analogy's cousin. It instructs the reader to perform a mental action instead of showing them something that provokes it naturally. The labnotes register shows; it doesn't direct.
+- **Narrating the reader's professional life** — "Your projects have dashboards. Your team has a shared board. Your deadlines live in calendars." This is writing the reader's experience for them. The author should describe THEIR OWN professional visibility and let the reader recognize the pattern. First person earns second person.
