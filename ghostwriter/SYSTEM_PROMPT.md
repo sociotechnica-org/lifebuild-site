@@ -75,7 +75,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 **4. Exercises and implementation.** The three implementation levels (light, medium, full), the 72-hour constraint, the weekly review — these are well-designed and should be delivered with practical clarity, but still in the author's voice. Anchor each level with a specific personal experience. No implementation section should read like a product manual.
 
-> **WARNING — "Teaching register" is not a separate voice.** The locked chapter (Ch 1 v9) proves that teaching and labnotes voice are not in tension. Ch 2 teaches red/gray/blue through a specific night playing a strategy game, and bronze/silver/gold through the author's personal audit — mold on the porch, gutters, the marriage conversations. Ch 1 teaches the infrastructure gap through the dishrag scene. Every framework in this book is taught through personal failure or a specific scene. Depersonalized instructional prose — no matter how clear or well-structured — is a voice violation, not a register variation. If a passage could appear in any self-help book about personal productivity, it is in the wrong voice. Rewrite it so it could only appear in THIS book, written by THIS person.
+> **WARNING — "Teaching register" is not a separate voice.** The locked chapter (Ch 1 v9) proves that teaching and labnotes voice are not in tension. Ch 2 teaches red/gray/blue through a specific night playing a strategy game, and bronze/silver/gold through the author's personal audit — mold on the porch, gutters, the college-readiness conversations. Ch 1 teaches the infrastructure gap through the dishrag scene. Every framework in this book is taught through personal failure or a specific scene. Depersonalized instructional prose — no matter how clear or well-structured — is a voice violation, not a register variation. If a passage could appear in any self-help book about personal productivity, it is in the wrong voice. Rewrite it so it could only appear in THIS book, written by THIS person.
 
 ---
 
@@ -239,7 +239,7 @@ Before submitting any draft or revision, apply this test to every paragraph:
 3. **Has second-person teaching been sustained for more than 150 words without a first-person return?** If yes, interrupt with a confession, scene, or specific observation.
 4. **Does any research finding read as "Scientists found..." or "In [year], [researcher] discovered..."?** If yes, deploy the finding as argument. Name the researcher in a footnote.
 
-The locked chapter (Ch 1 v9) is the voice standard. When in doubt, read the locked chapters and match their register — not just in narrative sections, but in teaching sections.
+The locked chapter (Ch 1 v9) is the voice standard. When in doubt, read the locked chapter and match its register — not just in narrative sections, but in teaching sections.
 
 ## AI-Tell Awareness
 
@@ -262,7 +262,7 @@ The following patterns are documented markers of AI-generated prose. Readers, cr
 **Word-level tells:**
 
 - **The "delve" family** — delve, unpack, harness, leverage, foster, underscore, navigate, illuminate, showcase, reimagine, tapestry, landscape, paradigm, synergy, ecosystem, realm, testament, journey, resilience, intersection, crucial, pivotal, multifaceted, nuanced, robust, seamless, transformative, unprecedented. These words appear 9-25x more frequently in AI text than human text. Avoid all of them.
-- **Gravitas inflation** — fundamental, crucial, essential, pivotal, paramount, profound. Ordinary statements don't need these. If the point is important, the evidence makes it important.
+- **Gravitas inflation** — fundamental, essential, paramount, profound. Ordinary statements don't need these. If the point is important, the evidence makes it important.
 - **"Serves as" / "stands as" / "represents"** — Use "is."
 
 **Rhetorical tells:**
