@@ -46,7 +46,7 @@ None.
 
 In spite of priding myself on not being a task-level performer at work -- someone who builds systems, manages strategy, thinks architecturally -- I was running zero systems at home. Pretty much just doing tasks. An endless, unstructured stream of bronze with no infrastructure underneath it.
 
-The worst part wasn't the zero. The worst part was the things I was doing *because* there was no silver.
+The worst part wasn't the zero. The worst part was the things I was doing _because_ there was no silver.
 
 My wife and I talk extensively about college readiness for our older son. Hours of conversation. We discuss homework policies, study habits, the gap between where he is and where he needs to be. We make small decisions about one surface-level aspect and leave the big underlying thing untouched. As a consultant, I would call this malpractice -- treating symptoms while circling the root cause, never lining up an actual solution. But with my wife, it's "yeah, let's talk for two hours about our new homework policy, sure. And then maybe another two next week? Can't wait." Those conversations circle the toilet bowl -- round and round a hard-to-fix problem, talking about inadequate solutions, and then picking one that I know in my heart will change nothing. But it ends the conversation.
 
@@ -195,30 +195,40 @@ Part I showed you the trap. Part II shows you it breaks.
 ## v3 Changes
 
 ### Directive 1: Give Blue and Gray Their Own Weight (Beat 3)
+
 - Added 4 sentences of the author's jogging blue story after blue's "compounds/radiates" definition. Specific lived moment: 2.5 miles, funny audiobook, heart rate managed, sharp the next morning.
 - Added 2 sentences giving gray its own unremarkable identity before "Gray isn't a problem until it puts on a costume."
 
 ### Directive 2: Give the Boss-Intern Device a Structural Job (Beats 1, 2, 3)
+
 - Beat 1: No changes (already working).
 - Beat 2 close: Sharpened the existing boss-intern passage to pivot toward the second audit. The boss notices the intern is exhausted, raising a different question.
 - Beat 3 opening: Added 2 sentences framing RGB as the boss's second move: "Same intern, different clipboard."
 
 ### Directive 3: Fix the Beat 2/Beat 3 Transition
+
 - Cut entire passage from "The general shape of a solution path" through "Except, it turns out, I wouldn't."
 - Revised sequence: "Bronze masquerading as silver" -> "They're trapped" -> boss-intern pivot -> section break -> Beat 3.
 
 ### Directive 4: Bridge Beat 1 to Chapter 1's Close
+
 - Added 2 sentences after the coffee opening bridging from Chapter 1.
 - OS/dashboard metaphor: DROPPED from Beat 1 per author decision. One-sentence use in Beat 6 retained per blueprint.
 
 ### Fix A: Cut "Chances are" and "and/or" (Beat 1)
+
 ### Fix B: Beat 2 opens on "I was 90% bronze." Hyphenation fixed.
+
 ### Fix C: Hyphenation (covered in Fix B above)
+
 ### Fix D: Cut "I love the novelty, variety and challenge of my work" (Beat 3)
+
 ### Fix E: "Enjoyment without restoration" replaced with "That wasn't restoration either"
+
 ### Fix F: Beat 5 heading restored with section break
 
 ### QA Patches (v3.1)
+
 - **Patch 1:** "Is it purging?" restored to "Is it purring?" (Beat 4)
 - **Patch 2:** "They're stuck" / "I was stuck" restored to "They're trapped" / "I was trapped" (Beat 2 close)
 - **Patch 3:** Added two-tools naming in Beat 1 ("I needed two views...")
@@ -231,6 +241,7 @@ Part I showed you the trap. Part II shows you it breaks.
 - **Patch 10:** Added this QA patches section
 
 ### Phase 5.6: Section Titles (locked 2026-03-19)
+
 - Beat 1: "Notice, Think, Evaporate"
 - Beat 2: "I Was 90% Bronze"
 - Beat 3: "Gray Isn't a Problem Until It Puts on a Costume"
