@@ -805,7 +805,7 @@ The 72-hour constraint named: "Not someday. Not when you have more time. Within 
 
 Brief bridge to the thorn metaphor: "But first, you need to know what you're looking for."
 
-**Reader knows at entry:** Everything from Ch 1-2. The reader has both audit tools, has seen the death spiral diagnostically, has run the exercise on their own week, has heard the thesis ("build differently"), and has been told to find one thorn and pull it in 72 hours as their first act as a director. They are carrying directed momentum. They do NOT yet know what a "thorn" is -- the word appeared in Ch 2 Beat 6 as a setup, but the metaphor has not been developed.
+**Reader knows at entry:** Everything from Ch 1-2. The reader has both audit tools, has seen the death spiral diagnostically, has run the exercise on their own week, has heard the thesis ("build differently"), and has been told to find one thorn and pull it in 72 hours as their first act as a director. They are carrying directed momentum. They DO have the operational definition from Ch 2 Beat 6 ("one persistent red that's been draining you") but do NOT yet have the thorn metaphor -- the dog/paw image has not been delivered. Beat 2 upgrades the definition to a sticky image, not a new concept.
 **State changes to narrate:** None -- pure transition. The chapter is picking up the directive from Ch 2's close and channeling it into action.
 **Exit state:** The reader understands this chapter is operational, not diagnostic. They know the constraint (72 hours). They know this is framed as a director's first act. They are ready to learn what a thorn is.
 
@@ -906,6 +906,8 @@ Four resolution methods:
 **Reconstruct.** Can't eliminate, delegate, or automate -- change how you engage with it. Add a boundary. Change the sequence. Remove the friction.
 
 Brief examples: the meeting that shouldn't include you (eliminate), the insurance dispute (delegate to AI + call), the home maintenance (automate), the financial task (delegate). One or two sentences each.
+
+Close the beat with the action invitation: "If you're ready, put the book down. Pull your thorn. I'll be here when you get back." Brief, direct, no sentimentality. This is the pause Beat 6 depends on.
 
 **Reader knows at entry:** Their specific thorn. The criteria for selection. The constraint (72 hours). Does NOT yet know the resolution methods.
 **State changes to narrate:** The reader learns four methods for resolution. The embodied/unembodied distinction is introduced at minimum viable scale (developed in Ch 5). The accountability email makes the assignment real.
@@ -1030,23 +1032,24 @@ Close: "Part I showed you the trap. Part II showed you it breaks. Part III build
 
 ### Thread Verification
 
-| Thread                                     | Beat(s)       | Treatment                                                                                                                                                                                              |
-| ------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Essentialist answer [HIGH -- PRIMARY HOME] | Beats 6, 7    | Beat 6: crystallized from Ch 2 Beat 6 seed -- "build differently" was named there; "architecture, not willpower" is new here. Beat 7: reinforced ("Architecture, not willpower" as closing callback).  |
-| Promotion metaphor                         | Beats 1, 5, 7 | Three touches: "your first executive decision" (1), "someone who had the authority to make it" (5), "a director's question" + ROI framing (7). Progresses from directive to action to earned identity. |
-| Villain [CALLBACK]                         | Beats 2, 4, 6 | Light callbacks only. "Enough to make everything harder" (2). "Trained to solve problems, not dissolve them" (4). "Didn't try harder, didn't become more disciplined" (6). Implicit, never named.      |
-| Micro-skills [INTRODUCED]                  | Beat 6        | Externalize, decide, act, complete -- named here, scaled in Ch 4-7. Bridge to Part III.                                                                                                                |
+| Thread                                                     | Beat(s)       | Treatment                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Essentialist answer [HIGH -- PRIMARY HOME -- CRYSTALLIZED] | Beat 6        | Full crystallization. Lineage: Ch 1 Beat 6 seeded "not optimize, build" (embryonic, felt) -> Ch 2 Beat 2 seeded silver as embryonic form (felt, not named) -> Ch 2 Beat 6 named it ("build differently") as thesis statement -> Ch 3 Beat 6 crystallizes "architecture, not willpower" as the permanent name. The reader has been sensing this since Ch 1; Beat 6 gives it its final form. |
+| Essentialist answer [REINFORCED -- ECHO ONLY]              | Beat 7        | Closing callback: "Architecture, not willpower." Three to four words maximum. The paragraph is Beat 6's job. Beat 7 echoes it, does not repeat it.                                                                                                                                                                                                                                         |
+| Promotion metaphor                                         | Beats 1, 5, 7 | Three touches (within Ch 3): "your first executive decision" (1), "someone who had the authority to make it" (5), "a director's question" + ROI framing (7). Progresses from directive to action to earned identity.                                                                                                                                                                       |
+| Villain [CALLBACK]                                         | Beats 2, 4, 6 | Light callbacks only. "Enough to make everything harder" (2). "Trained to solve problems, not dissolve them" (4). "Didn't try harder, didn't become more disciplined" (6). Implicit, never named.                                                                                                                                                                                          |
+| Micro-skills [INTRODUCED]                                  | Beat 6        | Externalize, decide, act, complete -- named here, scaled in Ch 4-7. Bridge to Part III.                                                                                                                                                                                                                                                                                                    |
 
 ### Threads correctly absent from Ch 3
 
-| Thread                        | Reason                                                          |
-| ----------------------------- | --------------------------------------------------------------- |
-| Round trip                    | Not present per thread map. Correct.                            |
-| Stable ground                 | Not present per thread map. Correct.                            |
-| Third path                    | Second touch is Ch 5 per thread map. Not present here. Correct. |
-| OS metaphor                   | Not present. Correct.                                           |
-| Complicated vs. complex       | Not present per thread map. Correct.                            |
-| Personal/professional unified | Not present per thread map. Correct.                            |
+| Thread                        | Reason                                                                                                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Round trip                    | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Stable ground                 | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Third path                    | Present experientially (the thorn exercise IS the third path in action), but not invoked by name. Second explicit touch is Ch 5. Do not use the phrase "third path" or describe the thorn as "a third option" -- the experience carries it. |
+| OS metaphor                   | Not present. Correct.                                                                                                                                                                                                                       |
+| Complicated vs. complex       | Not present per thread map. Correct.                                                                                                                                                                                                        |
+| Personal/professional unified | Not present per thread map. Correct.                                                                                                                                                                                                        |
 
 ### Kill List
 
@@ -1070,6 +1073,8 @@ Close: "Part I showed you the trap. Part II showed you it breaks. Part III build
 
 1. **[CRITICAL -- Beat 5]** Your first thorn story after the dishrag moment. What was it? How long had you been avoiding it? Which method (eliminate/delegate/automate/reconstruct)? What happened when you pulled it? What did the relief feel like? This is the chapter's emotional anchor.
 2. **[Beat 4]** Do you want to keep the accountability email offer (danvers@sociotechnica.org) in the book?
+
+**Drafting protocol if item 1 is not yet provided:** The ghostwriter should draft Beats 1-4 and 6-7 as a complete unit, leaving Beat 5 as a bracketed placeholder: [BEAT 5 PLACEHOLDER -- Author's first thorn story. See Author Input Needed item 1.]. Do not substitute Marcus-era prose or synthesize a story. The instruction-narrative sandwich (Beat 4 -> Beat 5 -> Beat 6) is the structural defense for the chapter's telling-not-showing failure mode; a placeholder is preferable to fabricated content.
 
 ### Failure Mode Prevention
 
