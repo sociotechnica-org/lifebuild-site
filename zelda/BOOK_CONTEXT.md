@@ -64,7 +64,7 @@ Tackling this industrial revolution with last year's playbook. The villain isn't
 - **v3 (Essentialism):** "Subtraction gets you to zero, not forward — once you have space, the point is to build capacity, not just keep saying no." _(Does something different from others: argues wrong direction, not just wrong precondition.)_
 - **v8 (Worldview):** Organizations think AI integration into workflows is the key to productivity — the author thinks it will be integrating nap pods into workplaces.
 - **v9 (AI-specific):** At current rates with current UIs and structures, we'll see a productivity bust blamed on AI but actually caused by not giving human workers an evolutionary path to adapt.
-- **v10 (Architect):** Assuming AI continues to evolve, the new knowledge workforce will mostly need to be directors and systems architects — start living that way now.
+- **v10 (Architect):** Assuming AI continues to evolve, the new knowledge workforce will mostly need to be bosses and systems architects — start living that way now.
 
 ---
 

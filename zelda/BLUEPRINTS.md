@@ -49,7 +49,7 @@ The chapter does six things:
 
 ### Source
 
-Author's hand-edited v4 draft (`src/content/book/chapter-1-v4.md`)
+Author's hand-edited v4 draft, now locked as `zelda/chapters/ch1-the-trap.md` (v9, 2026-03-19)
 
 **Revision intensity:** Apply 7 specific fixes to existing v4 prose
 

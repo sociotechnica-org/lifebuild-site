@@ -52,7 +52,7 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 - The four gaps (Balance, Restoration, Engagement, Support) — scaffolding for the old title, not organic to the methodology
 - "Sovereignty" as a framing concept
 
-**Current state:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed (see SWEEP_RESULTS.md). Ghostwriter ready to draft pending author input (19 items). Three existing chapters carry forward with revision (old Ch 1+2+3 distilled into new Ch 2, old Ch 4 + compressed Ch 5 becomes Ch 3, old Ch 6 becomes Ch 4). Six chapters are entirely new.
+**Current state:** Phases 1-5.5 complete. Ch 1 locked (v9, section titles applied per Phase 5.6, author approved 2026-03-19). Eight remaining chapters in drafting queue pending author input (19 items — see SWEEP_RESULTS.md). Three existing chapters carry forward with revision (old Ch 1+2+3 distilled into new Ch 2, old Ch 4 + compressed Ch 5 becomes Ch 3, old Ch 6 becomes Ch 4). Five chapters are entirely new.
 
 **Banked title candidates:**
 
