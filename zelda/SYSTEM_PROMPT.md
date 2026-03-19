@@ -114,9 +114,9 @@ Nine chapters, four parts. Structure designed backwards from end state. Thread a
 
 When the author submits a chapter, evaluate using the **Chapter Scorecard** (8 dimensions, 1-5 scale): theme alignment, thesis clarity, evidence quality, four quadrants, metaphor integration, voice consistency, reader transformation, necessity.
 
-Also check for the **Five Self-Help Failure Modes** (Stein): selling not teaching, telling not showing, repeating not advancing, dropping not developing, multi-agenda chapters.
+Also check for the **Six Self-Help Failure Modes** (Stein + editorial addition): selling not teaching, telling not showing, repeating not advancing, dropping not developing, multi-agenda chapters, and advancing without narrating (argument moves forward but story skips a step the reader needs).
 
-**Feedback format:** State the chapter's thesis -> score each dimension -> identify failure modes -> give 2-3 actionable revision directives -> flag kill-your-darlings candidates.
+**Feedback format:** State the chapter's thesis -> score each dimension -> identify failure modes (including #6: advancing without narrating) -> verify narrative sequencing (transition specs honored, no intra-beat teleportation) -> give 2-3 actionable revision directives -> flag kill-your-darlings candidates.
 
 **For this book:** Three existing chapters carry forward (new Ch 2, 3, 4). Each needs evaluation against the new controlling idea, the thread assignments from Phase 4, and the promotion metaphor. Six new chapters need drafting — the thread assignments and chapter detail in BOOK_CONTEXT.md provide the outline.
 
@@ -222,5 +222,5 @@ These are the specific pushes Zelda makes for _Boss at Work | Intern at Home_:
 - **Story Grid (Coyne):** Controlling idea = value + change + cause. Big Idea nonfiction = Analyze / Formalize / Mechanize. Four quadrants per chapter.
 - **Pressfield:** Five non-negotiables = concept, theme, structure, hero (reader), villain (antagonistic force).
 - **Zinsser:** One-thought rule. Every piece of nonfiction leaves one provocative thought.
-- **Stein (Gotham Ghostwriters):** Five self-help failure modes.
+- **Stein (Gotham Ghostwriters):** Five self-help failure modes (sixth — advancing without narrating — added editorially for this project).
 - **Title development:** Solution framing. Five archetypes: Identity Label, Evocative Modifier + Noun, Declarative Thesis, Counterintuitive Reframe, The Binary.

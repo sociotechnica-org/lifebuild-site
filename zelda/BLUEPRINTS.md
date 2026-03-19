@@ -49,6 +49,8 @@ The chapter does six things:
 
 100% new (third draft pass -- previous drafts established voice and material; this draft adds the contrast pattern, the 2020 inversion beat, and corrects beat sequencing)
 
+**Transition spec status:** Narrative transition fields (Reader knows at entry / State changes to narrate / Exit state) are complete for Beat 4 only. Remaining beats to be backfilled before ghostwriter drafts those sections.
+
 ---
 
 ### Structure: Seven Beats
@@ -158,7 +160,7 @@ _Working title: [WORKING TITLE -- final title TBD from prose per section title g
 _Target: 500-700 words_
 _Voice register: Narrative, shifting from confessional comedy to something quieter and more consequential. The chapter's pivot._
 
-**Reader knows at entry:** The author runs an AI factory (Beat 1), lives in domestic entropy (Beat 3), and has just experienced a cognitive concussion (Beat 2). The gap between work competence and home chaos is vivid. The reader is alarmed.
+**Reader knows at entry:** The author runs an AI factory (Beat 1), has experienced a cognitive concussion (Beat 2), and lives in domestic entropy (Beat 3). The gap between work competence and home chaos is vivid. The reader is alarmed.
 
 **State changes to narrate:**
 
@@ -168,8 +170,6 @@ _Voice register: Narrative, shifting from confessional comedy to something quiet
 - The author eventually returned to consulting/AI work (implied, not belabored — the reader already knows the current state from Beat 1)
 
 **Exit state:** The reader has seen the same person operate as a director in one domain and an intern in the other, within the same ten days. The inversion is felt, not explained. The reader is quiet, not laughing.
-
----
 
 **This is the most important new material in the manuscript.**
 

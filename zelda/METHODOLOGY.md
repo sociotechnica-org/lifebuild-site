@@ -523,7 +523,7 @@ The reverse outline shows: red (controlling idea) in every chapter, no rogue or 
 - **Shawn Coyne**, _The Story Grid_ — The controlling idea framework, Big Idea nonfiction structure
 - **Steven Pressfield**, _Nobody Wants to Read Your Sh\*t_ — Theme-first method, concept/theme/structure
 - **William Zinsser**, _On Writing Well_ — The one-thought rule
-- **Andrea Stein / Gotham Ghostwriters** — Five self-help failure modes
+- **Andrea Stein / Gotham Ghostwriters** — Five self-help failure modes (sixth — advancing without narrating — added editorially for this project)
 - **Jane Friedman** — Nonfiction book idea testing, title development
 - **Megan Close Zavala** (Turn the Page Book Coaching) — NC-based developmental editor, self-help specialization
 - **Nancy L. Erickson** (The Book Professor) — Theme discovery for nonfiction
