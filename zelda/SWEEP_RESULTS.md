@@ -36,7 +36,7 @@ Present in Ch 1 and Ch 9 only. Seven-chapter gap.
 
 ### D. Promotion metaphor — CLEAN
 
-Present in every chapter. Each has a specific director moment. Progresses from question (Ch 1) to first act (Ch 3) to capability-building (Ch 4-7) to arrival (Ch 8) to permanence (Ch 9). No premature peak.
+Present in every chapter. Each has a specific boss moment. Progresses from question (Ch 1) to first act (Ch 3) to capability-building (Ch 4-7) to arrival (Ch 8) to permanence (Ch 9). No premature peak.
 
 ### E. Third path — CLEAN
 
@@ -112,13 +112,13 @@ Delegation costs money for some implementations. **Fix:** One sentence in Ch 5 B
 
 ## Word Count / Pacing
 
-| Part                    | Chapters       | Words             | Role                    |
-| ----------------------- | -------------- | ----------------- | ----------------------- |
-| I: The Trap             | Ch 1-2         | 7,500-9,500       | Diagnosis               |
-| II: The First Win       | Ch 3           | 3,500-4,500       | Proof of concept        |
-| III: The Promotion      | Ch 4-7         | 14,500-18,500     | Building                |
-| IV: The Director's Life | Ch 8-9         | 6,000-8,000       | Integration and closing |
-| **Total**               | **9 chapters** | **32,000-40,500** |                         |
+| Part                | Chapters       | Words             | Role                    |
+| ------------------- | -------------- | ----------------- | ----------------------- |
+| I: The Trap         | Ch 1-2         | 7,500-9,500       | Diagnosis               |
+| II: The First Win   | Ch 3           | 3,500-4,500       | Proof of concept        |
+| III: The Promotion  | Ch 4-7         | 14,500-18,500     | Building                |
+| IV: The Boss's Life | Ch 8-9         | 6,000-8,000       | Integration and closing |
+| **Total**           | **9 chapters** | **32,000-40,500** |                         |
 
 **Recommendation:** Target upper end of ranges (38,000-40,000) for shelf competitiveness. Below 35,000 risks feeling insubstantial in trade paperback.
 

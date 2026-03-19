@@ -85,9 +85,9 @@ The labnotes voice alone won't carry a book. These elements from the manuscript 
 
 **Theme:** Stop optimizing. Start architecting. Capacity first, everything else follows.
 
-**Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — director at work, disaster at home. They built their way out. This book is the field report.
+**Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — boss at work, disaster at home. They built their way out. This book is the field report.
 
-**The central metaphor:** The promotion ladder (intern -> manager -> director). The reader is currently operating below their level at home. The book promotes them.
+**The central metaphor:** The promotion ladder (intern -> manager -> boss). The reader is currently operating below their level at home. The book promotes them. "Intern" and "Boss" are introduced in Chapter 1 (matching the title). "Manager" enters in Chapter 3 after the reader earns the middle rung through the thorn exercise.
 
 **Supporting metaphor:** The personal operating system (OS). The lenses are diagnostics. The capabilities are system components. The weekly review is the runtime loop.
 
@@ -110,17 +110,17 @@ The labnotes voice alone won't carry a book. These elements from the manuscript 
 
 **Nine-chapter structure:**
 
-| Ch  | Title                  | Part                    | Source                     | Revision   |
-| --- | ---------------------- | ----------------------- | -------------------------- | ---------- |
-| 1   | The Trap               | I: The Trap             | New                        | 100% new   |
-| 2   | The Director's Audit   | I: The Trap             | Old Ch 1+2+3               | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5 | 30-40%     |
-| 4   | See the Board          | III: The Promotion      | Old Ch 6                   | 15-20%     |
-| 5   | Build the Team         | III: The Promotion      | New                        | 100% new   |
-| 6   | Protect the Asset      | III: The Promotion      | New                        | 100% new   |
-| 7   | Work the System        | III: The Promotion      | New                        | 100% new   |
-| 8   | Earn Back Boring       | IV: The Director's Life | New                        | 100% new   |
-| 9   | The Promotion Is Yours | IV: The Director's Life | New                        | 100% new   |
+| Ch  | Title                  | Part                | Source                     | Revision   |
+| --- | ---------------------- | ------------------- | -------------------------- | ---------- |
+| 1   | The Trap               | I: The Trap         | New                        | 100% new   |
+| 2   | The Boss's Audit       | I: The Trap         | Old Ch 1+2+3               | 50-60% new |
+| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5 | 30-40%     |
+| 4   | See the Board          | III: The Promotion  | Old Ch 6                   | 15-20%     |
+| 5   | Build the Team         | III: The Promotion  | New                        | 100% new   |
+| 6   | Protect the Asset      | III: The Promotion  | New                        | 100% new   |
+| 7   | Work the System        | III: The Promotion  | New                        | 100% new   |
+| 8   | Earn Back Boring       | IV: The Boss's Life | New                        | 100% new   |
+| 9   | The Promotion Is Yours | IV: The Boss's Life | New                        | 100% new   |
 
 ---
 
@@ -136,9 +136,11 @@ Non-fiction beats are not just argument containers — they are scenes in a stor
 
 2. **Check assumed knowledge.** After drafting a passage, read it as if you know nothing beyond what's been written so far in the chapter. If any sentence requires information the reader hasn't been given yet, either move the information earlier or write the bridge.
 
-3. **State changes within a beat need narration too.** Even inside a single beat, if the author's circumstances shift (lost a company, became a consultant, filed taxes for the first time), each shift gets at least one sentence of scene-setting. The reader needs to walk through the door, not teleport to the other side.
+3. **Check vocabulary.** Every book-specific term (framework names, promotion-ladder levels, diagnostic labels) must be defined in prose before it is used as a diagnostic or analytical tool. If the blueprint's "Reader vocabulary at entry" field does not list a term you are about to use, either the term needs defining in this beat or you have found a gap in the blueprint. In either case, flag it. The blueprint is the contract, but a vocabulary gap in the blueprint is a bug, not a feature -- flagging it IS following the contract.
 
-4. **Transitions between beats are scenes, not seams.** When cutting from one beat to the next, the reader needs to feel the cut as intentional, not accidental. The last image of one beat and the first image of the next should create a felt connection — contrast, continuation, or deliberate rupture.
+4. **State changes within a beat need narration too.** Even inside a single beat, if the author's circumstances shift (lost a company, became a consultant, filed taxes for the first time), each shift gets at least one sentence of scene-setting. The reader needs to walk through the door, not teleport to the other side.
+
+5. **Transitions between beats are scenes, not seams.** When cutting from one beat to the next, the reader needs to feel the cut as intentional, not accidental. The last image of one beat and the first image of the next should create a felt connection — contrast, continuation, or deliberate rupture.
 
 **The test:** Read the draft aloud. Every time you stumble because you're thinking "wait, how did we get here?" — that's a narrative teleportation. Write the missing scene.
 
