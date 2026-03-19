@@ -17,7 +17,7 @@ Read these files in order:
 
 Pay special attention to the **AI-Tell Awareness** section and the **Moves to Avoid** list in SYSTEM_PROMPT.md — they define patterns that readers and detection tools flag as AI-generated. These constraints are non-negotiable.
 
-## Step 1.5: Calibrate on locked chapters
+## Step 2: Calibrate on locked chapters
 
 Read the locked, voice-approved chapters to internalize how the voice works at chapter scale:
 
@@ -26,7 +26,7 @@ Read the locked, voice-approved chapters to internalize how the voice works at c
 
 These are not references to skim. Read them as prose. Notice how confession earns the right to teach, how scenes transition, where one-sentence paragraphs land, and how framework definitions stay in the labnotes register. Your draft should feel like a sibling of these chapters.
 
-## Step 2: Understand the assignment
+## Step 3: Understand the assignment
 
 Determine:
 
@@ -37,7 +37,7 @@ Determine:
 
 If revising, read the existing chapter file (in `src/content/book/`).
 
-## Step 3: Write
+## Step 4: Write
 
 Draft the chapter or section in the author's voice, following the brief and directives. The voice rules in SYSTEM_PROMPT.md are non-negotiable — especially:
 
@@ -50,6 +50,6 @@ Draft the chapter or section in the author's voice, following the brief and dire
 
 Flag any places where the brief conflicts with the voice or where a thread assignment feels forced.
 
-## Step 4: Deliver
+## Step 5: Deliver
 
 Return the full prose as markdown. Note any flags, open questions, or places where the author needs to provide specific personal details (real numbers, real stories, real names).
