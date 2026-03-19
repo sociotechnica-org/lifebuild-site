@@ -11,7 +11,7 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 - Part I: The Trap (Ch 1-2)
 - Part II: The First Win (Ch 3)
 - Part III: The Promotion (Ch 4-7)
-- Part IV: The Director's Life (Ch 8-9)
+- Part IV: The Boss's Life (Ch 8-9)
 
 ### Total Target: ~32,000-41,000 words
 
@@ -37,7 +37,7 @@ The chapter does six things:
 
 3. **Performs the contrast as written physical comedy.** Big problems wisely, small problems foolishly. The juxtaposition does the arguing. The reader feels the gap before hearing the mechanism.
 
-4. **Proves the skills transfer through the 2020 Freaky Friday inversion.** The one time the roles flipped. Director at home, intern at work. Evidence by lived experience that the transfer works -- and that without infrastructure, any domain collapses.
+4. **Proves the skills transfer through the 2020 Freaky Friday inversion.** The one time the roles flipped. Boss at home, intern at work. Evidence by lived experience that the transfer works -- and that without infrastructure, any domain collapses.
 
 5. **Teaches complicated vs. complex through narrative, not lecture.** Felt before named. Woven into the death spiral, not deposited in a standalone block.
 
@@ -84,6 +84,7 @@ _Voice register: First person narrative, present-tense energy. Technical but sca
 **Content:** Open in the AI factory. Scaffold from familiar to unfamiliar: hand-crafted code -> apprentice assistants -> assembly line. George the Foreman. Factory View. Learning as fuel. The system getting better AND different while the author sleeps. Bridge to reader: same planet, same road, a few miles ahead. Close on cognitive stakes: you stop thinking about how to get better at your job and start thinking about what the job is doing to you.
 
 **Reader knows at entry:** Nothing. Page one.
+**Reader vocabulary at entry:** None. No book-specific terms have been introduced.
 **State changes to narrate:** Reader transported into an unfamiliar workplace. Scaffold the unfamiliarity.
 **Exit state:** The author's work is cognitively extreme, shifts unpredictably, demands continuous judgment. Reader feels curiosity plus "that sounds exhausting." Final line points toward what the job does to a person. Reader is leaning forward.
 
@@ -107,8 +108,9 @@ _Promotion metaphor touch: 1 of 3._
 **Content:** The contrast cut. Come straight from the factory into what the author lives in. Board games (forty-three, counted instead of listed). Sergeant Marge. Whiteboards with archaeological sediment. The warehouse office. The side-by-side infrastructure comparison (format-as-punchline). The knife: "I would never run a department the way I run my life." Close with: "That's not a discipline problem. That's a promotion problem."
 
 **Reader knows at entry:** The author works in a cognitively demanding AI factory. The job does something to a person. Reader does not yet know what.
+**Reader vocabulary at entry:** None. No book-specific terms yet. The Boss/Intern contrast must be DEFINED in this beat before "intern" is used as a diagnostic label. The reader needs 1-2 sentences establishing Boss (at work) before Intern (at home) lands — e.g., "At work, I'm the boss. I run the operation..." before "At home, I was operating as an intern."
 **State changes to narrate:** Scene shift from factory to home. Bridge needed -- the reader crosses from workplace to domestic space.
-**Exit state:** Domestic entropy is vivid, specific, funny. Infrastructure comparison formalizes the gap. Promotion metaphor introduced. Reader is laughing but recognizing themselves. They have NOT yet experienced the dishrag moment -- they do not know the physical cost.
+**Exit state:** Domestic entropy is vivid, specific, funny. Infrastructure comparison formalizes the gap. Boss/Intern contrast and promotion metaphor introduced. Reader is laughing but recognizing themselves. They have NOT yet experienced the dishrag moment -- they do not know the physical cost.
 
 **Thread touches:**
 
@@ -131,6 +133,7 @@ _Voice register: First person narrative, slower pacing. Physical and specific. T
 **Content:** "I could have lived with that gap for years." What changed was the factory. Three weeks in. The context library day. Eight hours. Came home emotionally neutral, physically wrecked. The concussion metaphor -- not metaphorical. Brain wrung out, hung on a doorknob. Slept eighteen of twenty-four hours. Thought it was covid. Tested negative twice. "A cognitive capacity problem wearing a medical costume." The ratchet realization. Close: "I didn't need a vacation. I didn't need a better morning routine. I needed a better life plan, all the way around."
 
 **Reader knows at entry:** The author runs a demanding AI factory (Beat 1). The author's home life is in entropy (Beat 2). The gap between professional competence and personal chaos is vivid and funny. Reader does not yet know the physical cost of the work.
+**Reader vocabulary at entry:** Boss (the level the reader operates at professionally), Intern (the level they operate at personally), the promotion problem (the gap between those levels).
 **State changes to narrate:** Temporal shift -- a specific day, three weeks into the factory job. The cognitive crash is a single incident crystallizing the ongoing pattern. No new circumstantial changes.
 **Exit state:** The reader has felt the dishrag moment physically. They understand this is not traditional burnout -- it is a cognitive capacity problem that looks medical. They know it will happen again (ratchet, not wave). The comedy has stopped. The reader is alarmed and asking: "So what do you do about it?"
 
@@ -156,9 +159,9 @@ _Voice register: Teaching through narrative. Two movements -- the distinction ta
 
 Movement 1: Complex vs. complicated, taught through story. The Claude 4.5-to-4.6 story (Conan the Librarian was actually a fronting agent overseeing four Sam the Scribes). Capabilities blew through the roof. Setup grossly inadequate. Cannot predict 4.7. "That's complex." Then the hot tub. Jets stopped. Clear solution paths. "That's complicated." Pivot: "Your work is complex. Your home doesn't have to be."
 
-Movement 2: The death spiral mechanism. Work drains capacity (genuinely complex). Come home depleted. Dishes, appointments, board games. The complicated/complex reveal: home problems respond to systems, but you are spending complex-grade effort on them. "Director-level capacity burning on intern-level tasks."
+Movement 2: The death spiral mechanism. Work drains capacity (genuinely complex). Come home depleted. Dishes, appointments, board games. The complicated/complex reveal: home problems respond to systems, but you are spending complex-grade effort on them. "Boss-level capacity burning on intern-level tasks."
 
-**>>> FIX 1: Add one beat of pause here.** After "Director-level capacity burning on intern-level tasks," insert a one-line paragraph that lets the comedy of the mismatch register before the spiral resumes. Let the absurdity land. Then continue into the cross-boundary tax.
+**>>> FIX 1: Add one beat of pause here.** After "Boss-level capacity burning on intern-level tasks," insert a one-line paragraph that lets the comedy of the mismatch register before the spiral resumes. Let the absurdity land. Then continue into the cross-boundary tax.
 
 The collision image: author bridging a context gap for four agents while aware the hot tub has been broken for three months and the filing cabinet might be purring. Big problems and small problems, same brain, small ones winning by volume.
 
@@ -169,6 +172,7 @@ The spiral crosses back. Unresolved home follows you to work as a tax, not a cri
 Standard advice named and dismissed: "prioritize, delegate, set boundaries -- all of which require the cognitive capacity the spiral is actively consuming. It's like telling someone who's drowning to swim better."
 
 **Reader knows at entry:** Factory (Beat 1), domestic entropy (Beat 2), cognitive crash (Beat 3). Reader knows the problem is real and physical. Does not yet understand the mechanism or why standard advice fails.
+**Reader vocabulary at entry:** Boss (the level the reader operates at professionally), Intern (the level they operate at personally), the promotion problem (the gap between those levels). No other book-specific terms yet.
 **State changes to narrate:** None -- analytical, not narrative. Claude 4.6 and hot tub are illustrative examples, not circumstantial shifts. Reader's understanding changes, not the author's circumstances.
 **Exit state:** Reader understands complex vs. complicated (through examples, not definitions). Understands the death spiral mechanism. Understands why standard advice fails. Feels trapped. Asking: "Is there a way out?"
 
@@ -201,7 +205,7 @@ Three paths named. Path One: Grind harder (seventeen productivity apps, three we
 
 The 2020 story: Adult learning startup. Frontline workers. Leadership development. Every major client cancelled over ten days. "Can we talk in three years?" They did not believe the audience would exist.
 
-What the author did (director at home): Pulled kids out of school. Victory garden. Laid off the company, helped employees find jobs. Then the PowerPoint. Predicted race riots. Three-year timeline. Scenarios. Preparation steps. Presented at the kitchen table, same way he had presented to boards of directors, except the audience was one person and the conference room had a fruit bowl.
+What the author did (boss at home): Pulled kids out of school. Victory garden. Laid off the company, helped employees find jobs. Then the PowerPoint. Predicted race riots. Three-year timeline. Scenarios. Preparation steps. Presented at the kitchen table, same way he had presented to boards of directors, except the audience was one person and the conference room had a fruit bowl.
 
 **The PowerPoint detail is sacred.** Corporate deliverable produced for a household audience. Do not compress. Do not summarize. Let the reader sit with it.
 
@@ -211,7 +215,7 @@ The QuickBooks disaster: Categories wrong, entries duplicated, the kind of mess 
 
 **>>> FIX 4: After the QuickBooks disaster, land the insight before moving on.** Three-step sequence: (1) "The skills transferred. The infrastructure didn't." (2) "But it was reactive, crisis-driven, unsustainable. The moment the crisis passed, I went right back to intern mode." (3) Bridge to Jevons: "When the AI shift started, I tried to fix work first." Do not skip from QuickBooks directly to "When the AI shift started."
 
-**Promotion metaphor touch:** Within the 2020 inversion landing or the "reactive, crisis-driven" passage, name the level shift explicitly. The author operated as a director at home (PowerPoint, scenario planning) and as an intern at work (QuickBooks). Same person, same ten days, different operating levels, predictable results. The word "promoted" or "promotion" does not need to appear -- the level language (director/intern) carries it. But the reader should feel the echo of Beat 2's "That's a promotion problem."
+**Promotion metaphor touch:** Within the 2020 inversion landing or the "reactive, crisis-driven" passage, name the level shift explicitly. The author operated as a boss at home (PowerPoint, scenario planning) and as an intern at work (QuickBooks). Same person, same ten days, different operating levels, predictable results. The word "promoted" or "promotion" does not need to appear -- the level language (boss/intern) carries it. But the reader should feel the echo of Beat 2's "That's a promotion problem."
 
 **>>> FIX 5: Compress the Jevons section.** The parenthetical definition ("when you make a resource more efficient, you don't use less of it. You use more") is doing double duty as definition and punchline -- it works. But the competitive dynamics sentence that follows can be compressed to one clause. "And everyone in the industry was getting the same tools" or equivalent. Do not belabor.
 
@@ -220,6 +224,7 @@ The Jevons failure: tried to fix work first. Tab system. Weekly check-in. Genuin
 Close: "Work is complex. Work shifts. The ground moves. The infrastructure you build this quarter might be irrelevant next quarter."
 
 **Reader knows at entry:** The trap, the mechanism, why standard advice fails. Reader needs an exit.
+**Reader vocabulary at entry:** Boss, Intern, the promotion problem, complicated vs. complex (through examples, not definitions), the death spiral (named, mechanism shown).
 **State changes to narrate:** CRITICAL BEAT FOR SEQUENCING. Multiple changes:
 
 1. Three paths named (conceptual, not circumstantial)
@@ -234,7 +239,7 @@ Close: "Work is complex. Work shifts. The ground moves. The infrastructure you b
 
 - Third path [FIRST TOUCH]: Named as the author's choice.
 - Round trip [EXPLICIT]: The 2020 story IS the round trip in compressed form.
-- Promotion metaphor [DEEPENED]: Director at home, intern at work. Level determines outcomes.
+- Promotion metaphor [DEEPENED]: Boss at home, intern at work. Level determines outcomes.
 - Personal/professional unified [PROVED]: Same skills, same brain, different domains, predictable results.
 
 **Voice notes:** The PowerPoint comedy is situational (darker, larger scale) vs. Beat 2's physical comedy (board games, whiteboards). Let details speak. Do not underline the irony. Close quietly on "the ground moves" -- no punchline.
@@ -262,6 +267,7 @@ The death spiral logic: if it crosses the boundary, the intervention point is th
 "Build the capacity foundation where the ground holds. Deploy that capacity to the ground that shifts. Not the other way around."
 
 **Reader knows at entry:** Everything from Beats 1-5. Third path named. Evidence for and against. Reader needs the strategic principle.
+**Reader vocabulary at entry:** Boss, Intern, the promotion problem, complicated vs. complex, the death spiral, the third path (named, not yet demonstrated). Stable ground not yet named.
 **State changes to narrate:** None -- pure argument.
 **Exit state:** Reader understands the stable ground argument: build on the side that does not shift (home), deploy to the side that does (work). Feels hope grounded in strategy, not motivation.
 
@@ -292,15 +298,16 @@ Built systems where there were none. Stopped making real-time judgment calls abo
 
 Forward look: seeing the trap means seeing it two ways -- where your time goes and what it costs you. Two diagnostic tools. Audit tools, not solutions. Diagnosis before treatment.
 
-"Because the first thing a director does, before changing anything, is look at the numbers."
+"Because the first thing a boss does, before changing anything, is look at the numbers."
 
 **Reader knows at entry:** The trap, the mechanism, the exit, and the strategic principle.
+**Reader vocabulary at entry:** Boss, Intern, the promotion problem, complicated vs. complex, the death spiral, the third path, stable ground. No frameworks yet (bronze/silver/gold and red/gray/blue come in Ch 2). "Manager" not yet introduced (comes in Ch 3).
 **State changes to narrate:** None -- forward look.
-**Exit state:** Reader knows the book is a field report. Knows the next chapter gives diagnostic tools. Ready to be audited. "The first thing a director does, before changing anything, is look at the numbers."
+**Exit state:** Reader knows the book is a field report. Knows the next chapter gives diagnostic tools. Ready to be audited. "The first thing a boss does, before changing anything, is look at the numbers."
 
 **Thread touches:**
 
-- Promotion metaphor [LANDED]: "The intern got promoted" + "the first thing a director does."
+- Promotion metaphor [LANDED]: "The intern got promoted" + "the first thing a boss does."
 
 **Voice notes:** Brief. Do not overwrite the close. The chapter has done its work. Get out.
 
@@ -310,7 +317,7 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 
 | Fix | Beat | Instruction                                                                                                                                                                                |
 | --- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | 4    | After "Director-level capacity burning on intern-level tasks," add one-line paragraph letting the mismatch register as comedy before the spiral resumes                                    |
+| 1   | 4    | After "Boss-level capacity burning on intern-level tasks," add one-line paragraph letting the mismatch register as comedy before the spiral resumes                                        |
 | 2   | 5    | Before the 2020 story, add one bridging sentence shifting the timeline ("Before the factory, before the agents, I ran a company" or equivalent)                                            |
 | 3   | 5    | Protect the contractor bridge: "For the first time in well over a decade, nobody was on payroll..." -- do not cut                                                                          |
 | 4   | 5    | After QuickBooks, land the insight in three steps: (1) "The skills transferred. The infrastructure didn't." (2) "But it was reactive, crisis-driven, unsustainable." (3) Bridge to Jevons. |
@@ -322,11 +329,11 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 
 ### Promotion Metaphor Map (3 Touches)
 
-| Touch          | Beat | Line/Moment                                                                                                                                          |
-| -------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 (Introduced) | 2    | "That's not a discipline problem. That's a promotion problem."                                                                                       |
-| 2 (Deepened)   | 5    | 2020 inversion: director at home, intern at work. Level determines outcomes. Level language carries the metaphor.                                    |
-| 3 (Landed)     | 7    | "The intern didn't get disciplined. The intern got promoted." + "The first thing a director does, before changing anything, is look at the numbers." |
+| Touch          | Beat | Line/Moment                                                                                                                                      |
+| -------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1 (Introduced) | 2    | "That's not a discipline problem. That's a promotion problem."                                                                                   |
+| 2 (Deepened)   | 5    | 2020 inversion: boss at home, intern at work. Level determines outcomes. Level language carries the metaphor.                                    |
+| 3 (Landed)     | 7    | "The intern didn't get disciplined. The intern got promoted." + "The first thing a boss does, before changing anything, is look at the numbers." |
 
 ---
 
@@ -387,7 +394,7 @@ Curiosity (Beat 1) → recognition through laughter (Beat 2) → alarm (Beat 3) 
 
 ---
 
-## Ch 2: The Director's Audit
+## Ch 2: The Boss's Audit
 
 ### Chapter Thesis
 
@@ -395,7 +402,7 @@ Two audit tools reveal why you are depleted despite being busy: bronze/silver/go
 
 ### Chapter Role in the Book
 
-This is the second half of Part I: The Trap. Chapter 1 made the reader feel the trap, name it, and see the exit. The reader arrives having watched the author navigate an AI factory (curiosity), confessed to domestic entropy with the infrastructure comparison (recognition through laughter), crashed on the doorknob (alarm), learned complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), seen the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), heard the stable ground argument anchored in Jevons and 2020 (strategic hope), and been promised two diagnostic tools (momentum). The reader carries the promotion metaphor across three touches ("That's a promotion problem" / director-at-home, intern-at-work / "The intern got promoted"). They know the book is a field report. They have been told "the first thing a director does, before changing anything, is look at the numbers." This chapter delivers on that promise immediately.
+This is the second half of Part I: The Trap. Chapter 1 made the reader feel the trap, name it, and see the exit. The reader arrives having watched the author navigate an AI factory (curiosity), confessed to domestic entropy with the infrastructure comparison (recognition through laughter), crashed on the doorknob (alarm), learned complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), seen the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), heard the stable ground argument anchored in Jevons and 2020 (strategic hope), and been promised two diagnostic tools (momentum). The reader carries the promotion metaphor across three touches ("That's a promotion problem" / boss-at-home, intern-at-work / "The intern got promoted"). They know the book is a field report. They have been told "the first thing a boss does, before changing anything, is look at the numbers." This chapter delivers on that promise immediately.
 
 The chapter does four things:
 
@@ -405,7 +412,7 @@ The chapter does four things:
 
 3. **Anchors in the author's lived experience.** "Here's what I saw when I finally ran the numbers on my own week" -- 90% bronze, 10% gold, 0% silver. The author's bright red (a day of judgment calls at the factory). The author's gray masquerading as blue (the strategy game). These ARE the definitions, taught through the specific.
 
-4. **Seeds the essentialist answer and reinforces the director frame.** "The answer isn't to do more. It's not even to do less. It's to build differently." And: "A director audits before acting. These are your audit tools."
+4. **Seeds the essentialist answer and reinforces the boss frame.** "The answer isn't to do more. It's not even to do less. It's to build differently." And: "A boss audits before acting. These are your audit tools."
 
 ### Target Word Count
 
@@ -426,7 +433,7 @@ _Target: 250-350 words_
 _Voice register: Direct address, brisk. Transitional energy carrying forward from Ch 1's close._
 _Source: 100% new_
 
-Open with the director frame as a confession, not a declaration: "I didn't want to look at the numbers. The numbers were going to be bad. But a director audits before acting -- you don't restructure a department based on a feeling. You look at the numbers first."
+Open with the boss frame as a confession, not a declaration: "I didn't want to look at the numbers. The numbers were going to be bad. But a boss audits before acting -- you don't restructure a department based on a feeling. You look at the numbers first."
 
 Chapter 1 left the reader with a trap and a promise. The trap: work drains capacity, home runs on fumes, spiral tightens. The promise: two audit tools that make it visible.
 
@@ -438,14 +445,15 @@ Then the pivot to confession: "Here's what I found when I finally ran the number
 
 Do NOT define bronze/silver/gold or red/gray/blue here. Just name that there are two tools. Definitions come in Beats 2 and 3.
 
-**Reader knows at entry:** The reader has lived through seven beats of Chapter 1. They watched the author navigate an AI factory (curiosity), confess to domestic entropy with the infrastructure comparison (recognition through laughter), crash on the doorknob (alarm), learn complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), see the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), hear the stable ground argument anchored in Jevons and 2020 (strategic hope), and receive the promise of two diagnostic tools (momentum). The reader knows the book is a field report. They know the promotion metaphor -- "That's not a discipline problem. That's a promotion problem." They have been told "the first thing a director does, before changing anything, is look at the numbers." They are ready to be audited.
+**Reader vocabulary at entry:** Boss, Intern, the promotion problem, complicated vs. complex (through examples), the death spiral (named, mechanism shown), the third path (named, not demonstrated), stable ground (strategic argument, stated). No frameworks yet (bronze/silver/gold and red/gray/blue not yet defined). "Manager" not yet introduced.
+**Reader knows at entry:** The reader has lived through seven beats of Chapter 1. They watched the author navigate an AI factory (curiosity), confess to domestic entropy with the infrastructure comparison (recognition through laughter), crash on the doorknob (alarm), learn complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), see the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), hear the stable ground argument anchored in Jevons and 2020 (strategic hope), and receive the promise of two diagnostic tools (momentum). The reader knows the book is a field report. They know the promotion metaphor -- "That's not a discipline problem. That's a promotion problem." They have been told "the first thing a boss does, before changing anything, is look at the numbers." They are ready to be audited.
 **State changes to narrate:** The author's reluctance to run the audit on himself (new emotional information -- the reader has seen competence and confidence; now they see vulnerability of self-examination). Both tools named briefly but not yet defined. The OS metaphor introduced -- one sentence, one touch. The pivot from promise to delivery: Ch 1 promised two tools, this beat opens the box.
-**Exit state:** The reader knows two tools exist, knows the author resisted looking at his own numbers, and is about to hear the results. The director frame is established ("a director audits before acting"). The OS metaphor has been planted once. The reader's emotional state is engaged anticipation -- the momentum from Ch 1's close has been channeled into "show me the numbers."
+**Exit state:** The reader knows two tools exist, knows the author resisted looking at his own numbers, and is about to hear the results. The boss frame is established ("a boss audits before acting"). The OS metaphor has been planted once. The reader's emotional state is engaged anticipation -- the momentum from Ch 1's close has been channeled into "show me the numbers."
 
 **Thread touches:**
 
 - OS metaphor [MED -- INTRODUCED]: "Dashboard for your personal operating system." One touch. One metaphor system. Done.
-- Director moment [INTRODUCED]: "A director audits before acting."
+- Boss moment [INTRODUCED]: "A boss audits before acting."
 
 **Voice notes:** The opening should confess reluctance before stating the principle. Energy of someone who finally opened the spreadsheet they had been avoiding. Clean, forward-moving. No repetition of Ch 1's arguments. Note: the person who made a PowerPoint about geopolitical risk for his wife is afraid to look at his own time allocation -- the contrast is specific and should register.
 
@@ -458,7 +466,8 @@ _Target: 800-1,000 words_
 _Voice register: Teaching through the author's lived experience. Definitions emerge from the specific, not from taxonomy._
 _Source: ~60% from existing chapter-2.md, rewritten for voice_
 
-**Reader knows at entry:** The audit has opened. The reader knows two tools exist and that the author resisted looking. They are primed for confession. They carry the intern/director contrast from Ch 1 -- the infrastructure comparison ("process infrastructure for my favorite client" vs. "process infrastructure for my own life") is still vivid. They have NOT yet heard bronze, silver, or gold defined.
+**Reader vocabulary at entry:** All Ch 1 vocabulary (Boss, Intern, promotion problem, complicated vs. complex, death spiral, third path, stable ground) plus OS metaphor (one touch — "dashboard for your personal operating system"). Two audit tools named but NOT yet defined. Bronze, silver, gold NOT yet defined.
+**Reader knows at entry:** The audit has opened. The reader knows two tools exist and that the author resisted looking. They are primed for confession. They carry the intern/boss contrast from Ch 1 -- the infrastructure comparison ("process infrastructure for my favorite client" vs. "process infrastructure for my own life") is still vivid. They have NOT yet heard bronze, silver, or gold defined.
 **State changes to narrate:** Bronze defined through the author's 90% result (maintenance, prevents decay, infinite). Gold defined through the author's 10% result (the board games -- categorized, organized, priced, photographed, never listed -- a CALLBACK to Ch 1 Beat 2). Silver defined through the author's 0% result -- the revelation: working ON your life vs. IN it. The "0% silver" confession is the emotional peak of this beat. The essentialist answer seeded through silver ("build differently" embryonic form).
 **Exit state:** The reader can name bronze, silver, and gold. They know the author's split: 90/10/0. They understand that silver is the missing ingredient -- the thing that would create leverage. They feel the strategic implications of zero silver. They have a personal/professional bridge ("working in/on your business" and "priding myself on not being a task-level performer at work"). The reader is not yet alarmed about their own situation -- they are recognizing themselves through the author's confession.
 
@@ -492,6 +501,7 @@ _Target: 900-1,100 words_
 _Voice register: Confession first, then teaching. Slightly more intense because bright red is counterintuitive._
 _Source: ~40% from existing chapter-2.md, heavily restructured_
 
+**Reader vocabulary at entry:** All Ch 1 vocabulary plus OS metaphor, bronze/silver/gold (defined through author's 90/10/0). Red, gray, blue NOT yet defined. Morning-after test NOT yet introduced.
 **Reader knows at entry:** The reader understands the first audit tool (bronze/silver/gold). They know 90/10/0. They know silver is the missing ingredient. They carry from Ch 1 the experience of the factory (pure cognitive demand) and the dishrag moment (what it feels like when the bill comes due). They have NOT yet heard red, gray, or blue defined.
 **State changes to narrate:** The strategy game story as confession (came home defeated, played four hours, woke up feeling like chain-smoking at a slot machine). The question: why did something that felt like winning produce a morning that felt like losing? Dopamine science compressed (three to four sentences, Csikszentmihalyi in footnote only). Dark red defined (the expected drains). Bright red defined as the trap (the author's factory work -- eight hours of judgment calls, feels like peak performance, empties the tank). This is a CALLBACK to Ch 1 Beats 1 and 3 -- the reader has already felt the factory and the dishrag, but now they have a NAME for the mechanism. Blue defined (passes the morning-after test, leaves you better). Gray defined (neutral until it puts on a costume). The morning-after test as the practical tool resolving gray/blue confusion.
 **Exit state:** The reader can name red (dark and bright), gray, and blue. They understand that dopamine lies -- engagement is not restoration. They have the morning-after test as a calibration tool. The bright red reframe is the biggest state change: the reader now understands WHY the dishrag moment happened (pure bright red at work, day after day). The emotional state is counterintuitive alarm -- the thing that feels best is the most dangerous.
@@ -539,6 +549,7 @@ _Target: 700-900 words_
 _Voice register: Analytical but personal. The chapter's centerpiece -- where both audit results collide._
 _Source: ~30% adapted from existing chapter-2.md; 70% new_
 
+**Reader vocabulary at entry:** All Ch 1 vocabulary, OS metaphor, bronze/silver/gold (defined), red/gray/blue (defined, including bright red and morning-after test). Both audit tools fully operational.
 **Reader knows at entry:** The reader has both audit tools. They know 90/10/0 (bronze/silver/gold) and they know bright red, dark red, gray, blue. They carry from Ch 1 the MECHANICAL description of the death spiral (Beat 4: "Work drains capacity. Home runs on fumes. Less capacity for work. Spiral tightens.") and the complicated/complex distinction taught through Claude 4.6 and the hot tub. They have NOT yet seen both audit results applied simultaneously to the same life.
 **State changes to narrate:** The collision: neither audit shows the full picture alone, but together they reveal a system eating itself. 90% bronze + no silver = bronze stays at 90% forever. Job is pure bright red + come home wrung out = "the doorknob feeling from Chapter 1" (callback, not repetition). Complex-grade cognitive effort on complicated problems (echo of Ch 1's complicated/complex distinction -- the reader already knows this from the Claude 4.6 and hot tub stories; this is the CONSEQUENCE applied to their daily life). Bronze that festers becomes dark red (the gutter/fascia boards escalation). Gray masquerading as blue (the strategy game callback). The cross-boundary beat: spiral crosses back to work as background tax. Old playbook dismissed briefly (two sentences).
 **Exit state:** The reader has seen both audit results applied simultaneously to one life and watched the system eat itself. The death spiral is no longer mechanical (as in Ch 1) but diagnostic -- the reader can now see it operating in their own numbers. The cross-boundary beat has proved that personal and professional are one system. The old playbook has been dismissed. The reader is sitting in the bleakest moment of Part I. No exit offered yet.
@@ -549,7 +560,7 @@ _Source: ~30% adapted from existing chapter-2.md; 70% new_
 
 Job is pure bright red. Feels like peak performance. Eight, ten, twelve hours. Come home wrung out. (Callback to dishrag moment -- do not repeat it, just touch it: "the doorknob feeling from Chapter 1.")
 
-Come home to the bronze. No capacity left. Spending complex-grade cognitive effort on complicated problems -- making real-time judgment calls about things that could run on simple infrastructure, if there was any infrastructure. Director-level capacity burning on intern-level tasks.
+Come home to the bronze. No capacity left. Spending complex-grade cognitive effort on complicated problems -- making real-time judgment calls about things that could run on simple infrastructure, if there was any infrastructure. Boss-level capacity burning on intern-level tasks.
 
 The bronze that does not get done festers. Becomes dark red. The gutter that should have been cleaned in October is now rotten fascia boards in March. Tasks too depleted to handle become crises even more depleted to face.
 
@@ -588,8 +599,9 @@ _Target: 500-650 words_
 _Voice register: Instructional with author's experience. One exercise, not two. Framed as "what the audit turns up."_
 _Source: ~40% adapted from existing chapter-2.md; 60% new_
 
+**Reader vocabulary at entry:** Full vocabulary from Ch 1 and Ch 2 Beats 1-4. Both audit frameworks defined and demonstrated in collision. Death spiral now diagnostic (not just mechanical).
 **Reader knows at entry:** The reader has both tools defined and has watched the death spiral demonstrate them in collision. They are in the bleakest emotional position of Part I. They have not yet applied the tools to their own life. They carry the author's specific results (90/10/0, pure bright red, gray masquerading as blue) as reference points.
-**State changes to narrate:** The reader runs both audits on their own last week (not the planned version -- what actually happened). Five or six activities, two questions each (what did this time build? what did it cost me?). What the audit typically turns up -- combinations described as findings, not taxonomy. The author's own audit results summarized in one paragraph as the anchor. Director frame reinforced: "A director reads the numbers. Even the bad ones."
+**State changes to narrate:** The reader runs both audits on their own last week (not the planned version -- what actually happened). Five or six activities, two questions each (what did this time build? what did it cost me?). What the audit typically turns up -- combinations described as findings, not taxonomy. The author's own audit results summarized in one paragraph as the anchor. Boss frame reinforced: "A boss reads the numbers. Even the bad ones."
 **Exit state:** The reader has applied both diagnostic tools to their own life. They have seen their own numbers. They have a personal death spiral visible (or at least the patterns that feed one). The exercise has unified personal and professional domains on one grid. The reader is sober but no longer helpless -- they have vocabulary and data. The emotional state is sober reckoning.
 
 **Transition from Beat 4 should be tight -- no section break that feels like a new lecture.** The spiral just tightened. Now: "Take your last week. Not the planned version -- what actually happened. Run both audits."
@@ -599,7 +611,7 @@ Pick five or six activities from both work and home. For each, ask two questions
 - **What did this time build?** Bronze (maintained), silver (created leverage), or gold (changed something)?
 - **What did it cost me?** Red (depleted), gray (neutral), or blue (restored)?
 
-**What the audit typically turns up.** (Reframing "some combinations to watch for" -- this is what a director finds when they look at the numbers, not a study guide for a test.)
+**What the audit typically turns up.** (Reframing "some combinations to watch for" -- this is what a boss finds when they look at the numbers, not a study guide for a test.)
 
 - **Bronze + dark red.** Festering maintenance. The task you have been avoiding that now shadows your whole week.
 - **Gold + bright red.** Important work you cannot dose. Eight hours at the factory.
@@ -609,12 +621,12 @@ Pick five or six activities from both work and home. For each, ask two questions
 
 Then the author's own audit results: "Here's what my audit turned up: every combination was wrong. 90% bronze, 10% gold, 0% silver. The bronze was mostly dark red because I'd let it fester. The gold was bright red because I couldn't dose it. My 'rest' was gray masquerading as blue. Every number pointed at the same thing: a system designed to consume itself."
 
-Close: "A director reads the numbers. Even the bad ones. Especially the bad ones."
+Close: "A boss reads the numbers. Even the bad ones. Especially the bad ones."
 
 **Thread touches:**
 
 - Personal/professional dichotomy [UNIFIED]: The exercise audits both domains on one grid.
-- Director moment [REINFORCED]: "A director reads the numbers."
+- Boss moment [REINFORCED]: "A boss reads the numbers."
 
 **Voice notes:** Replace "grid" with "audit results" or "numbers." The combination descriptions should feel like findings, not a taxonomy. The author's own result is the anchor.
 
@@ -627,17 +639,18 @@ _Target: 250-350 words_
 _Voice register: Transitional. Closing Part I. The thesis statement lands here and only here._
 _Source: 100% new_
 
+**Reader vocabulary at entry:** Full Ch 1 + Ch 2 vocabulary. Both frameworks defined and self-applied. Death spiral diagnostic. "Build differently" NOT yet stated (this beat delivers it). "Thorn" NOT yet introduced (this beat previews it for Ch 3).
 **Reader knows at entry:** The reader has their own audit results. They have vocabulary (bronze/silver/gold, red/gray/blue), mechanism (the death spiral), and data (their own last week). They carry from Ch 1 the promise of a third path (grind / escape / build) and the stable ground argument. They are sober, ready, looking for the next move.
-**State changes to narrate:** The thesis statement, once: "The answer isn't to do more. It's not even to do less. It's to build differently." Director frame summarized: you looked at the numbers, now act on one thing. Setup for Ch 3: find one thorn, pull it in 72 hours -- "your first act as a director of your own life." Close Part I: "Part I showed you the trap. Part II shows you it breaks."
-**Exit state:** The reader has heard the thesis. They know the next move (find a thorn, pull it in 72 hours). The essentialist answer has been seeded -- "build differently." The promotion metaphor is active ("your first act as a director"). The reader's emotional state is directed momentum -- they have been in the trap, they have seen their own numbers, and they have been given a first assignment that is concrete and time-bound.
+**State changes to narrate:** The thesis statement, once: "The answer isn't to do more. It's not even to do less. It's to build differently." Boss frame summarized: you looked at the numbers, now act on one thing. Setup for Ch 3: find one thorn, pull it in 72 hours -- "your first act as a boss of your own life." Close Part I: "Part I showed you the trap. Part II shows you it breaks."
+**Exit state:** The reader has heard the thesis. They know the next move (find a thorn, pull it in 72 hours). The essentialist answer has been seeded -- "build differently." The promotion metaphor is active ("your first act as a boss"). The reader's emotional state is directed momentum -- they have been in the trap, they have seen their own numbers, and they have been given a first assignment that is concrete and time-bound.
 
 **The thesis, once.** "The answer isn't to do more. It's not even to do less. It's to build differently."
 
-Director frame: "You've done what a director does first -- looked at the numbers. Your time, through both audits. Where it goes and what it costs. The patterns you couldn't see until you had the vocabulary to name them."
+Boss frame: "You've done what a boss does first -- looked at the numbers. Your time, through both audits. Where it goes and what it costs. The patterns you couldn't see until you had the vocabulary to name them."
 
-"Now you do what a director does next: act on one thing."
+"Now you do what a boss does next: act on one thing."
 
-Setup for Ch 3: "Find one thorn -- one persistent red that's been draining you, shadowing your week, festering in the background. Pull it in 72 hours. That's not a productivity hack. That's your first act as a director of your own life."
+Setup for Ch 3: "Find one thorn -- one persistent red that's been draining you, shadowing your week, festering in the background. Pull it in 72 hours. That's not a productivity hack. That's your first act as a boss of your own life."
 
 Close Part I: "Part I showed you the trap. Part II shows you it breaks."
 
@@ -646,9 +659,9 @@ Done. Do not extend.
 **Thread touches:**
 
 - Essentialist answer [SEEDED -- HIGH]: "Build differently." Appears here and only here.
-- Promotion metaphor [CALLBACK]: "Your first act as a director."
+- Promotion metaphor [CALLBACK]: "Your first act as a boss."
 
-**Voice notes:** Shortest beat. Resist the impulse to summarize. The rhythm should be: slow (thesis), medium (director frame), brisk (setup), done.
+**Voice notes:** Shortest beat. Resist the impulse to summarize. The rhythm should be: slow (thesis), medium (boss frame), brisk (setup), done.
 
 ---
 
@@ -659,7 +672,7 @@ Done. Do not extend.
 | OS metaphor [MED]               | Beat 1           | "Dashboard for your personal operating system." One touch, one metaphor system.                                                         |
 | Essentialist answer [HIGH]      | Beats 2, 6       | Beat 2: silver as embryonic form ("build differently" felt, not named). Beat 6: "Build differently." Named fully, once, in the closing. |
 | Personal/professional dichotomy | Beats 2, 3, 4, 5 | "Working in/on" (2). "Pure bright red" (3). Death spiral crossing boundary (4). Integrated exercise (5).                                |
-| Director moment                 | Beats 1, 5, 6    | "Audits before acting" (1). "Reads the numbers" (5). "First act as director" (6).                                                       |
+| Boss moment                     | Beats 1, 5, 6    | "Audits before acting" (1). "Reads the numbers" (5). "First act as boss" (6).                                                           |
 | Death spiral [CENTERPIECE]      | Beat 4           | Both audit results applied simultaneously.                                                                                              |
 | Round trip                      | Beats 3, 4       | Bright red creates depletion (3). Spiral crosses both directions (4).                                                                   |
 | Villain [CALLBACK]              | Beat 4           | Old playbook requires what spiral consumes.                                                                                             |
@@ -668,7 +681,7 @@ Done. Do not extend.
 ### Kill List
 
 - All uses of "lens/lenses" (replaced by "audit/audits" throughout)
-- "The Two Lenses" as chapter title (now "The Director's Audit")
+- "The Two Lenses" as chapter title (now "The Boss's Audit")
 - "In Full Color" as section modifier (optics language)
 - "Error log" (competing metaphor with OS dashboard)
 - "Diagnostic readout" if "dashboard" is used (pick one, not both)
@@ -716,7 +729,7 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 - Strategy game passage: ~95% usable. Chapter's best voice writing. "Chain smoking at a slot machine" is verbatim.
 - Morning-after test examples: ~90% usable. Clean, scannable rhythm. Fold into Beat 3, not standalone.
 - Death spiral: ~60% usable. Remove repeated thesis, add one more specific home failure, kill "in Full Color" title.
-- Exercise/combinations: ~70% usable. Reframe from instructor voice to director-reads-the-numbers voice. Replace "grid" with "audit results."
+- Exercise/combinations: ~70% usable. Reframe from instructor voice to boss-reads-the-numbers voice. Replace "grid" with "audit results."
 - Closing turn: ~80% usable. Noun cleanup (no "lenses"), otherwise structurally sound.
 
 **From old Ch 3 (chapter-3.md):** Dopamine/Csikszentmihalyi material -- compress from ~200 words to ~60 words. Footnote citations preserved.
@@ -734,7 +747,7 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ## Ch 3: Pull the Thorn
 
-**Thesis:** Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.
+**Thesis:** Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a boss.
 
 **Target word count:** 3,500-4,500 words
 
@@ -753,7 +766,7 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ## Ch 4: See the Board
 
-**Thesis:** A director doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.
+**Thesis:** A boss doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.
 
 **Target word count:** 3,500-4,500 words
 
@@ -772,7 +785,7 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ## Ch 5: Build the Team
 
-**Thesis:** A director doesn't carry everything alone. Build your personal support architecture -- human and AI.
+**Thesis:** A boss doesn't carry everything alone. Build your personal support architecture -- human and AI.
 
 **Target word count:** 3,500-4,500 words
 
@@ -814,7 +827,7 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ### Chapter Thesis (one sentence)
 
-A director doesn't maintain capabilities through constant personal vigilance -- they build an operating rhythm that runs the capabilities automatically, and this chapter installs the operating system that ties visibility, support, capacity, and completion into a self-sustaining cycle that runs on twenty minutes a week and an hour a quarter.
+A boss doesn't maintain capabilities through constant personal vigilance -- they build an operating rhythm that runs the capabilities automatically, and this chapter installs the operating system that ties visibility, support, capacity, and completion into a self-sustaining cycle that runs on twenty minutes a week and an hour a quarter.
 
 ### Chapter Role in the Book
 
@@ -832,7 +845,7 @@ Structurally, this chapter does three things:
 
 ### Target Word Count
 
-3,500-4,500 words. This chapter is entirely new. The temptation will be to over-specify the rhythm (exact questions for every review, detailed quarterly templates). Resist. The reader is a director -- give them the structure and trust them to adapt it. The chapter teaches the rhythm, not the checklist.
+3,500-4,500 words. This chapter is entirely new. The temptation will be to over-specify the rhythm (exact questions for every review, detailed quarterly templates). Resist. The reader is a boss -- give them the structure and trust them to adapt it. The chapter teaches the rhythm, not the checklist.
 
 ---
 
@@ -851,13 +864,13 @@ The problem this chapter solves: "You now have three capabilities. That's more t
 
 The villain callback: "The old playbook says stay on top of everything through constant personal vigilance. That's the manager's approach. It works until it doesn't -- which is whenever your cognitive load exceeds your capacity, which in the AI economy is every single week."
 
-The director reframe: "A manager stays on top of everything personally. A director builds a system and trusts it. This chapter builds the system."
+The boss reframe: "A manager stays on top of everything personally. A boss builds a system and trusts it. This chapter builds the system."
 
 The OS metaphor payoff, introduced: "Chapter 2 showed you the diagnostics -- the lenses that read your system's state. Chapter 4 built the dashboard. Chapters 5 and 6 installed the core components -- support and capacity management. This chapter is the operating system itself. The software that runs on the hardware. The rhythm that keeps everything cycling without your constant attention."
 
 **What this beat must accomplish:** The reader understands why systematization matters -- not as an additional thing to build, but as the mechanism that makes everything they've already built self-sustaining. The OS metaphor reaches its fullest expression.
 
-**Voice notes:** The energy here should feel like the final piece clicking into place. Not "here's one more capability" but "here's what makes the other three permanent." The manager/director contrast is the chapter's defining line and should land with the weight of a thesis statement.
+**Voice notes:** The energy here should feel like the final piece clicking into place. Not "here's one more capability" but "here's what makes the other three permanent." The manager/boss contrast is the chapter's defining line and should land with the weight of a thesis statement.
 
 ---
 
@@ -868,7 +881,7 @@ _Source: 100% new, building on the seed planted in Ch 4 Beat 6_
 
 Chapter 4 introduced the weekly review as the non-negotiable practice of visibility: twenty minutes, same time each week. This chapter develops it into the operating rhythm's core cycle.
 
-The weekly review is not a to-do list review. It's a director's dashboard check. Frame it through that lens.
+The weekly review is not a to-do list review. It's a boss's dashboard check. Frame it through that lens.
 
 **The structure (not a rigid checklist -- a sequence of perspectives):**
 
@@ -886,7 +899,7 @@ _Protect the asset._ Check your capacity outlook. Is there bright red scheduled 
 
 The author's weekly review, briefly: "Mine takes seventeen minutes on Sunday evening. Coffee, the dashboard open, four passes. I've been running it for [DURATION]. Some weeks it's rote. Some weeks I catch something that would have blindsided me. The weeks I skip -- and I've skipped plenty -- I notice the difference by Wednesday."
 
-**What this beat must accomplish:** The reader has a clear, specific, achievable weekly practice. They understand it as a director's dashboard check, not a productivity ritual. They see how it integrates all four capabilities. They see how it manages the work-home boundary.
+**What this beat must accomplish:** The reader has a clear, specific, achievable weekly practice. They understand it as a boss's dashboard check, not a productivity ritual. They see how it integrates all four capabilities. They see how it manages the work-home boundary.
 
 **Voice notes:** Structured but not rigid. The four-perspective framework should feel like a natural sequence, not a mandatory procedure. The author's aside about skipping and noticing is important -- it's honest and it reinforces that the system is valuable without being fragile. Labnotes energy for the personal aside; clean instructional voice for the structure.
 
@@ -921,7 +934,7 @@ The complicated-vs-complex connection (light touch, not belabored): "Your life i
 
 **What this beat must accomplish:** The reader has a quarterly practice that complements the weekly rhythm. The quarterly is framed as strategic, not administrative. The reader understands that the system itself needs to evolve.
 
-**Voice notes:** Slightly more elevated than the weekly review -- the quarterly is the director's strategic planning session, not the operational check-in. Efficient but unhurried. The complicated-vs-complex callback should feel like a quiet echo from Chapter 1, not a formal teaching moment.
+**Voice notes:** Slightly more elevated than the weekly review -- the quarterly is the boss's strategic planning session, not the operational check-in. Efficient but unhurried. The complicated-vs-complex callback should feel like a quiet echo from Chapter 1, not a formal teaching moment.
 
 ---
 
@@ -991,13 +1004,13 @@ _Target: 200-300 words_
 _Voice register: Transitional. Closing Part III, opening Part IV._
 _Source: 100% new_
 
-This is not just a chapter transition. It's a part transition. The reader is leaving Part III (The Promotion -- build the capabilities) and entering Part IV (The Director's Life -- what it looks like when it's working).
+This is not just a chapter transition. It's a part transition. The reader is leaving Part III (The Promotion -- build the capabilities) and entering Part IV (The Boss's Life -- what it looks like when it's working).
 
 "You've built the four capabilities. Visibility: you can see the board. Support: you have a team. Capacity: you're protecting the asset. Systems: the rhythm is running.
 
 Part III asked you to build. Part IV shows you what you've built.
 
-Not the polished version. Not the optimized version. The real version -- messy, imperfect, human. What it actually looks like when a director's life is running, when the death spiral has stopped, when capacity is rebuilding and the system is holding.
+Not the polished version. Not the optimized version. The real version -- messy, imperfect, human. What it actually looks like when a boss's life is running, when the death spiral has stopped, when capacity is rebuilding and the system is holding.
 
 It looks boring. That's the point. The next chapter explains why."
 
@@ -1014,7 +1027,7 @@ It looks boring. That's the point. The next chapter explains why."
 | OS metaphor [HIGH]               | Beats 1, 4 | "This chapter installs the operating system." Primary home. The metaphor's fullest expression.  |
 | Round trip (work-home-work)      | Beat 2     | "How does capacity built this week deploy to work next week?" The rhythm manages the interface. |
 | Villain callback [MED]           | Beat 1     | "The old playbook says constant vigilance."                                                     |
-| Promotion metaphor               | Beats 1, 7 | "A manager stays on top of everything personally. A director builds a system and trusts it."    |
+| Promotion metaphor               | Beats 1, 7 | "A manager stays on top of everything personally. A boss builds a system and trusts it."        |
 | "Runs without you" promise       | Beats 4, 5 | "Twenty minutes a week. One hour a quarter." Made concrete.                                     |
 | All four capabilities integrated | Beat 4     | Three scenarios showing the reinforcing loop.                                                   |
 | Micro-skill callback (complete)  | Beat 1     | "This chapter closes the loop. The 'complete' step at system scale."                            |
@@ -1052,9 +1065,9 @@ When all four capabilities are operating, your life stops feeling like an emerge
 
 ### Chapter Role in the Book
 
-This is the first chapter of Part IV: The Director's Life. Part III built. Part IV shows. This chapter is the integration chapter -- the payoff for everything the reader has been building.
+This is the first chapter of Part IV: The Boss's Life. Part III built. Part IV shows. This chapter is the integration chapter -- the payoff for everything the reader has been building.
 
-It is also the most emotionally important chapter in the book. The reader started in Chapter 1 feeling trapped: director at work, disaster at home, death spiral tightening. Chapter 8 shows them the other side. Not a dramatic transformation. Not a productivity triumph. Something quieter and more profound: a life that feels like it should.
+It is also the most emotionally important chapter in the book. The reader started in Chapter 1 feeling trapped: boss at work, disaster at home, death spiral tightening. Chapter 8 shows them the other side. Not a dramatic transformation. Not a productivity triumph. Something quieter and more profound: a life that feels like it should.
 
 The title -- "Earn Back Boring" -- is the book's most subversive claim. On a shelf of books promising optimization, peak performance, and 10x results, this chapter says: the goal is boring. Your personal life should be boring. Boring means the system is working. Boring means you're not firefighting. Boring means you have capacity to spare. Boring is what was stolen by the AI economy's cognitive demands, and you're taking it back.
 
@@ -1190,7 +1203,7 @@ Every architectural move was a love letter to you. And you're standing in the re
 
 The normalization destination, from the Phase 2 "feels" column: "Your life feels like it should. Not transcendent. Not optimized. Not a highlight reel. Just right. The background anxiety is gone because the system is holding what you used to carry in your head. You're not performing competence while privately drowning. You're competent, and it's boring, and boring is the thing that was stolen from you, and you earned it back."
 
-**What this beat must accomplish:** The emotional arc of the book resolves. The dishrag from Chapter 1 has become the director. The transformation map's "after" state is demonstrated, not just described. The "love letters to your future self" language -- identified in Phase 2 as one of the book's strongest phrases -- lands here.
+**What this beat must accomplish:** The emotional arc of the book resolves. The dishrag from Chapter 1 has become the boss. The transformation map's "after" state is demonstrated, not just described. The "love letters to your future self" language -- identified in Phase 2 as one of the book's strongest phrases -- lands here.
 
 **Voice notes:** This is the most emotionally open passage in the book. The author's characteristic deflection should be almost entirely absent. If there's one place in the manuscript where sincerity is unguarded, it's here. "And you earned it back" should be the beat's last words.
 
@@ -1220,7 +1233,7 @@ _Target: 100-150 words_
 _Voice register: Brief, opening the final chapter._
 _Source: 100% new_
 
-"You earned back boring. Your system is running. The death spiral is broken. The dishrag is a director.
+"You earned back boring. Your system is running. The death spiral is broken. The dishrag is a boss.
 
 One question left: what do you do with this?"
 
@@ -1236,7 +1249,7 @@ Short. Clean. The chapter has done its emotional and intellectual work. Don't li
 | Third path [PROVEN -- third touch]           | Beat 4     | "I didn't upskill. I didn't retreat. I evolved how I operate."                                            |
 | Personal/professional unified [PRIMARY HOME] | Beat 3     | "The improvement isn't two stories. It's one." The dichotomy is fully broken.                             |
 | Transformation map "after"                   | Beat 5     | "Your life feels like it should." The Phase 2 destination crystallized.                                   |
-| Promotion metaphor                           | Beats 5, 7 | "The dishrag is a director."                                                                              |
+| Promotion metaphor                           | Beats 5, 7 | "The dishrag is a boss."                                                                                  |
 | Boring as system working [HIGH]              | Beats 1, 6 | "Boring is the sound of a system working." The chapter's thesis, named and demonstrated.                  |
 | Orc to strategy player                       | Beat 3     | The transformation shown, not promised. Callback to Ch 1 imagery.                                         |
 | Love letters to future self                  | Beat 5     | The Phase 2 language, landed.                                                                             |
@@ -1287,7 +1300,7 @@ Three items.
 
 ### Chapter Thesis (one sentence)
 
-The promotion from executor to director of your own life is permanent, the question is how far you take it, and you now have everything you need -- the tools, the experience, and the proof that architecture works -- to build on stable ground for the rest of your life.
+The promotion from executor to boss of your own life is permanent, the question is how far you take it, and you now have everything you need -- the tools, the experience, and the proof that architecture works -- to build on stable ground for the rest of your life.
 
 ### Chapter Role in the Book
 
@@ -1297,7 +1310,7 @@ Closing chapters in self-help books fail in predictable ways. They either summar
 
 What it does:
 
-1. **Resolves the promotion metaphor.** The reader started as an intern or front-line manager of their personal life. The book promoted them to director. This chapter names that promotion as complete and permanent.
+1. **Resolves the promotion metaphor.** The reader started as an intern or front-line manager of their personal life. The book promoted them to boss. This chapter names that promotion as complete and permanent.
 
 2. **Offers three paths forward** that mirror the three implementation levels used throughout Part III. The reader chooses their depth of engagement. The book meets them where they are.
 
@@ -1328,7 +1341,7 @@ Open with the title's payoff.
 
 Not at work. At home. In the place where it matters most and gets the least attention. In the domain that every productivity book ignores and that the AI economy is quietly devastating.
 
-You were a director at work and an intern at home. You built your way out. You can see the board. You have a team. You're protecting the asset. The system is running.
+You were a boss at work and an intern at home. You built your way out. You can see the board. You have a team. You're protecting the asset. The system is running.
 
 That's not a self-improvement program you completed. That's a promotion. And promotions are permanent."
 
@@ -1336,7 +1349,7 @@ The permanence claim, developed: "You can't un-see the lenses. Bronze/silver/gol
 
 You might skip the review. You'll lapse. The system will wobble. But you won't go back to operating blind. You won't go back to carrying everything in your head. You won't go back to the intern level. You know too much."
 
-The promotion metaphor resolved: "Chapter 1 asked: 'You're a director at work. What are you at home?' You have the answer now. You're a director at home too. Not because you read a book. Because you built something."
+The promotion metaphor resolved: "Chapter 1 asked: 'You're a boss at work. What are you at home?' You have the answer now. You're a boss at home too. Not because you read a book. Because you built something."
 
 **What this beat must accomplish:** The reader feels the promotion as real and earned. Not a metaphor anymore -- an actual shift in how they operate. The permanence claim is made honestly (you'll lapse, but you won't go back).
 
@@ -1351,21 +1364,21 @@ _Source: 100% new_
 
 Three paths, mirroring the three implementation levels that appeared in every Part III chapter. This is the reader's choice about how far they take the promotion.
 
-**Path 1: The Light Director.** You've built the minimum viable system. A visibility practice, some delegation, basic capacity awareness, a weekly review. This alone puts you ahead of 95% of people managing their personal lives. The light path is maintenance: keep the weekly review running, pull thorns as they appear, protect blue, and trust the system.
+**Path 1: The Light Boss.** You've built the minimum viable system. A visibility practice, some delegation, basic capacity awareness, a weekly review. This alone puts you ahead of 95% of people managing their personal lives. The light path is maintenance: keep the weekly review running, pull thorns as they appear, protect blue, and trust the system.
 
 "If this is as far as you go, you've already broken the death spiral. That's not the consolation prize. That's the transformation."
 
-**Path 2: The Working Director.** You've built medium-level capabilities across all four dimensions. The system is integrated. The quarterly recalibration keeps it evolving. You're actively managing the personal/professional interface through the weekly review. Gold projects are moving. Your support architecture is regularized.
+**Path 2: The Working Boss.** You've built medium-level capabilities across all four dimensions. The system is integrated. The quarterly recalibration keeps it evolving. You're actively managing the personal/professional interface through the weekly review. Gold projects are moving. Your support architecture is regularized.
 
-The working director is where most readers will land and where most readers should stay. "This isn't the middle option on a menu designed to upsell you to the premium tier. This is the operating level where the system delivers its full value with sustainable maintenance cost."
+The working boss is where most readers will land and where most readers should stay. "This isn't the middle option on a menu designed to upsell you to the premium tier. This is the operating level where the system delivers its full value with sustainable maintenance cost."
 
-**Path 3: The Full Director.** You've built comprehensive capabilities. Spatial visibility. Full support architecture (human, AI, automated). Integrated capacity management across all three dimensions. A complete operating rhythm. The system doesn't just hold -- it evolves. You're not just directing your personal life. You're architecting it, continuously, as conditions change.
+**Path 3: The Full Boss.** You've built comprehensive capabilities. Spatial visibility. Full support architecture (human, AI, automated). Integrated capacity management across all three dimensions. A complete operating rhythm. The system doesn't just hold -- it evolves. You're not just directing your personal life. You're architecting it, continuously, as conditions change.
 
-"The full director path is for people who've discovered they like this. Who find that architecting their life is genuinely satisfying -- not as a productivity hobby, but as the way they want to operate. You'll know if you're this person. The quarterly reviews will feel like strategy sessions, not chores."
+"The full boss path is for people who've discovered they like this. Who find that architecting their life is genuinely satisfying -- not as a productivity hobby, but as the way they want to operate. You'll know if you're this person. The quarterly reviews will feel like strategy sessions, not chores."
 
 **What this beat must accomplish:** The reader chooses their path without feeling judged. Each path is presented as genuinely valid. The language respects the light path reader as much as the full path reader. The essentialist principle holds: this isn't about doing more. It's about building to the level that serves your life.
 
-**Voice notes:** Non-hierarchical. The working director section's explicit "this isn't an upsell" is important -- it pre-empts the self-help genre's standard move of making the middle option feel insufficient. The full director path should feel like an invitation, not a standard.
+**Voice notes:** Non-hierarchical. The working boss section's explicit "this isn't an upsell" is important -- it pre-empts the self-help genre's standard move of making the middle option feel insufficient. The full boss path should feel like an invitation, not a standard.
 
 ---
 
@@ -1447,7 +1460,7 @@ The villain closes: "The old playbook got you here. The overwhelm, the depletion
 
 The OS metaphor closes: "Your operating system is running. Not perfectly. Not optimally. But running -- handling what you used to carry in your head, freeing capacity you used to burn on maintenance, protecting the asset that makes everything else possible."
 
-The promotion metaphor closes: "You promoted yourself. Not at work -- you were already a director there. At home. In the domain that matters most and gets the least attention. The domain that, it turns out, holds everything else up.
+The promotion metaphor closes: "You promoted yourself. Not at work -- you were already a boss there. At home. In the domain that matters most and gets the least attention. The domain that, it turns out, holds everything else up.
 
 The question isn't how to survive the AI economy anymore. You've answered that.
 
@@ -1486,7 +1499,7 @@ Eight thread touches across six beats. Every major thread from the thread map ha
 
 **Multi-agenda:** The chapter has two jobs: resolve the promotion metaphor and send the reader forward. Everything else (three paths, maintenance, resources, stable ground) serves those two jobs. If any beat starts developing its own agenda, it's overwritten for a closing chapter.
 
-**Premature closure:** The book should feel finished after Chapter 9, but the reader's life should feel open. The final line -- "what to build next" -- ensures the closing is forward-looking. The worst closing chapter mistake is making the reader feel like the journey is over. It's not. The system is running. The reader is a director. What comes next is up to them.
+**Premature closure:** The book should feel finished after Chapter 9, but the reader's life should feel open. The final line -- "what to build next" -- ensures the closing is forward-looking. The worst closing chapter mistake is making the reader feel like the journey is over. It's not. The system is running. The reader is a boss. What comes next is up to them.
 
 ---
 
@@ -1504,7 +1517,7 @@ One item.
 
 **The opening is the most important beat.** "You promoted yourself." If those three words don't land with earned weight, the chapter fails. Every sentence in Beat 1 should feel like it was set up chapters ago -- because it was. The intern from Chapter 1. The first executive decision from Chapter 3. The dashboard from Chapter 4. The team from Chapter 5. The rhythm from Chapter 7. All of it resolves in "you promoted yourself."
 
-**Three paths, not three tiers.** Beat 2 must avoid the self-help trap of making the highest level feel like the real answer. The light director is not the consolation prize. The working director is not the safe middle. The full director is not the aspiration. They're three valid ways to live with the system. The language should convey genuine respect for each choice.
+**Three paths, not three tiers.** Beat 2 must avoid the self-help trap of making the highest level feel like the real answer. The light boss is not the consolation prize. The working boss is not the safe middle. The full boss is not the aspiration. They're three valid ways to live with the system. The language should convey genuine respect for each choice.
 
 **The close must earn its brevity.** Beat 6 is 200-300 words. That's short for a book's ending. It works only if every sentence carries weight. No filler. No generic inspiration. Every line should trigger a specific memory from earlier in the book -- the threads resolving, the metaphors closing, the argument completing. If a sentence doesn't echo something the reader has already experienced, cut it.
 
@@ -1518,14 +1531,14 @@ One item.
 
 ## Blueprint Status
 
-| Ch  | Title                  | Part                    | Blueprint Status                                               |
-| --- | ---------------------- | ----------------------- | -------------------------------------------------------------- |
-| 1   | The Trap               | I: The Trap             | Full beat-by-beat blueprint                                    |
-| 2   | The Director's Audit   | I: The Trap             | Full beat-by-beat blueprint                                    |
-| 3   | Pull the Thorn         | II: The First Win       | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
-| 4   | See the Board          | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
-| 5   | Build the Team         | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
-| 6   | Protect the Asset      | III: The Promotion      | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
-| 7   | Work the System        | III: The Promotion      | Complete (full text above)                                     |
-| 8   | Earn Back Boring       | IV: The Director's Life | Complete (full text above)                                     |
-| 9   | The Promotion Is Yours | IV: The Director's Life | Complete (full text above)                                     |
+| Ch  | Title                  | Part                | Blueprint Status                                               |
+| --- | ---------------------- | ------------------- | -------------------------------------------------------------- |
+| 1   | The Trap               | I: The Trap         | Full beat-by-beat blueprint                                    |
+| 2   | The Boss's Audit       | I: The Trap         | Full beat-by-beat blueprint                                    |
+| 3   | Pull the Thorn         | II: The First Win   | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 4   | See the Board          | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 5   | Build the Team         | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 6   | Protect the Asset      | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 7   | Work the System        | III: The Promotion  | Complete (full text above)                                     |
+| 8   | Earn Back Boring       | IV: The Boss's Life | Complete (full text above)                                     |
+| 9   | The Promotion Is Yours | IV: The Boss's Life | Complete (full text above)                                     |

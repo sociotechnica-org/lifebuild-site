@@ -29,11 +29,11 @@ The AI economy has transformed your life into a complex adaptive system, but eve
 
 ### Coyne Controlling Idea
 
-Freedom from busyness and overwhelm is gained when you promote yourself from executor to system director of your own life.
+Freedom from busyness and overwhelm is gained when you promote yourself from executor to boss of your own life.
 
 ### Zinsser Reduction (one thought the reader carries away)
 
-The ability to architect, then direct, is the defining superskill of the AI industrial revolution.
+The ability to architect your own life is the defining superskill of the AI industrial revolution.
 
 ### Theme (reader-facing, portable)
 
@@ -41,7 +41,7 @@ Stop optimizing. Start architecting. Capacity first, everything else follows.
 
 ### Key Insight: Capacity vs. Transformation
 
-Capacity is the **method** — how you get there, the first stage of the path. The architect/director shift is the **thought** — the reframe the reader carries away. The book teaches capacity-first as the method. The book argues that architecting and directing is the new essential mode of operating.
+Capacity is the **method** — how you get there, the first stage of the path. The intern-to-boss shift is the **thought** — the reframe the reader carries away. The book teaches capacity-first as the method. The book argues that architecting and running systems is the new essential mode of operating.
 
 ### Competitive Positioning
 
@@ -73,10 +73,10 @@ Tackling this industrial revolution with last year's playbook. The villain isn't
 ### 2A: Back-Cover Test — PASSED
 
 **Paragraph 1 (problem, in reader language):**
-In a world where new AI models launch weekly, organizations can't keep up and headlines scream at you about your future joblessness — it's easy to feel inadequate, even at the bleeding edge. Even elite performers are coming home feeling like dishrags, with nothing left to give, yet still feeling like they lost ground. Who will escape the cycle of busyness and fear? Those who promote themselves from life front line managers to life portfolio directors.
+In a world where new AI models launch weekly, organizations can't keep up and headlines scream at you about your future joblessness — it's easy to feel inadequate, even at the bleeding edge. Even elite performers are coming home feeling like dishrags, with nothing left to give, yet still feeling like they lost ground. Who will escape the cycle of busyness and fear? Those who promote themselves from interns of their own lives to the boss.
 
 **Paragraph 2 (promise — Option D, selected):**
-It's time to promote yourself. Not at work — in your life. You've been operating as the front-line manager of your own existence: handling every task, carrying every context, running on fumes and calling it discipline. _Promote Yourself_ gives you the practical path to a different operating level. You'll rebuild your capacity, architect systems that hold without your constant attention, and step into the role of director — the person who designs how their life works instead of just working their life. The old playbook got you here. This book gets you out.
+It's time to promote yourself. Not at work — in your life. You've been operating as the intern of your own existence: handling whatever's in front of you, carrying every context in your head, running on fumes and calling it discipline. _Boss @ Work | Intern @ Life_ gives you the practical path to a different operating level. You'll rebuild your capacity, architect systems that hold without your constant attention, and step into the role of boss — the person who designs how their life works instead of just working their life. The old playbook got you here. This book gets you out.
 
 ### 2B: Antagonist Interrogation — PASSED
 
@@ -92,7 +92,7 @@ It's time to promote yourself. Not at work — in your life. You've been operati
 
 | Dimension    | Before reading                                                                                                                                                                      | After reading                                                                                                                                                                                          |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Believes** | Me + more AI skills + more AI compute = my optimal performance.                                                                                                                     | Me shifting into the role of portfolio architect and systems director = my optimal performance.                                                                                                        |
+| **Believes** | Me + more AI skills + more AI compute = my optimal performance.                                                                                                                     | Me shifting into the role of boss — architect and operator of my own life system = my optimal performance.                                                                                             |
 | **Feels**    | A low-grade hum of anxiety that never fully stops — always behind, always dropping something, always performing competence while privately wondering how long you can keep this up. | Breathing room. Your personal life feels like it should — not triumphant, not optimized, just right. The background anxiety is gone because the system is holding what you used to carry in your head. |
 | **Does**     | Treats their personal life as a half-forgotten checklist. Shows up exhausted and defaults to whatever is in front of them. Every action sets their future self up for failure.      | Treats their personal life as a system they designed and direct. Takes time to build capacity. Every action is a love letter to their future self rather than a debt against them.                     |
 
@@ -100,7 +100,7 @@ It's time to promote yourself. Not at work — in your life. You've been operati
 
 ### 2D: Dinner Party Test — PASSED
 
-"Most people think the way to thrive in the AI economy is to get better at using agents at work. I think it's to promote yourself to systems director at home."
+"Most people think the way to thrive in the AI economy is to get better at using agents at work. I think it's to promote yourself to boss of your own life."
 
 Note: "at home" creates maximum provocation in conversation. May need calibration in actual copy so the book doesn't read as domestic organization.
 
@@ -122,7 +122,7 @@ Note: "at home" creates maximum provocation in conversation. May need calibratio
 
 Diagnostic title — the gap statement IS the title. The reader sees it and either thinks "that's me" or "that's not me" in under two seconds. No genre misdirection — nobody reads "Intern at Home" and thinks LinkedIn optimization. The title IS the confession. "Intern at Home" is structurally funny — the absurdity of a competent professional being an intern in their own life. The promotion metaphor is encoded without using the word "promote": the reader understands they're operating at the wrong level at home. The pipe separator reads as parallel but separate — two states, one person. Visually distinctive on a cover.
 
-"Boss" in the title, "Director" in the book. "Boss" is punchier, more universal, better shelf word. Chapter 1 then upgrades the word: "You think of yourself as a boss. But there's a difference between a boss and a director." The title sets up a word the book upgrades.
+"Boss" is the top of the promotion ladder — both in the title and in the book. The title names the gap ("Boss at work, Intern at life") and the book teaches the reader to close it. The promotion ladder (intern → manager → boss) uses the same vocabulary as the title, eliminating discontinuity between cover and content.
 
 "Port Your Competence" is a tech-exec-native subtitle. "Porting" means taking software built for one platform and making it run on another — same architecture, new environment, some adaptation required but the core logic transfers. "Your Competence" names the specific asset being ported — the professional skills the reader already has. It names the book's realization in three words: you already have everything you need, you just forgot to bring it home.
 
@@ -160,7 +160,7 @@ Key principles established during Phase 3 subtitle work:
 
 "Promote Yourself" had a reflexive verb problem — it pattern-matched to imperative-verb self-help titles (Brand Yourself, Market Yourself, Position Yourself). Readers assumed career/LinkedIn advice. Market testing confirmed the genre signal was wrong: people thought it was about getting a promotion at work or doing better on LinkedIn — two things the target audience rarely thinks about.
 
-The spirit of "promote yourself" remains the book's central metaphor and instruction. It lives inside the book (the promotion ladder: intern → manager → director). It just can't be the title because the genre misdirection was fatal on the shelf.
+The spirit of "promote yourself" remains the book's central metaphor and instruction. It lives inside the book (the promotion ladder: intern → manager → boss). It just can't be the title because the genre misdirection was fatal on the shelf.
 
 "Boss @ Work | Intern @ Life" solves this by making the gap statement the title — diagnostic, confessional, structurally funny. "Port Your Competence" solves the subtitle by naming both the method and the realization in tech-native vocabulary.
 
@@ -186,7 +186,7 @@ The title doesn't need to signal the future-of-work angle. That lies in wait as 
 - **The author is ahead of millions in lived experience** — working in an AI-native setup today that will become mainstream. The book is a field report from the future, not theory.
 - **"Earn Back Boring" banked for chapter/section use.** Captures the normalization destination.
 - **"Humaning" banked as potential second book.** Captures the bigger philosophical argument.
-- **"Promote Yourself" lives inside the book** as the central metaphor and instruction — the promotion ladder (intern → manager → director). It just doesn't work as a title due to genre misdirection.
+- **"Promote Yourself" lives inside the book** as the central metaphor and instruction — the promotion ladder (intern → manager → boss). It just doesn't work as a title due to genre misdirection.
 - **The future-of-work payoff is the surprise dividend.** Configuration 1: fix your personal life is the thesis, accidentally training for the AI-era workforce is the Chapter 8 turn. The title doesn't need to signal this.
 
 ---
@@ -204,7 +204,7 @@ The four gaps (Balance, Restoration, Engagement, Support) were reverse-engineere
 **What the gaps were doing and what replaces each function:**
 
 1. **Diagnostic labels** ("you have a Balance Gap") → The two lenses are more specific and actionable: "you're drowning in bronze and running on bright red"
-2. **Four-bridge structure** (each bridge closes a gap) → The four capabilities stand on their own as "what a director builds," organized by the promotion metaphor
+2. **Four-bridge structure** (each bridge closes a gap) → The four capabilities stand on their own as "what a boss builds," organized by the promotion metaphor
 3. **Reinforcing loop** (gaps feed each other) → Expressed through the lenses: "Bronze-heavy plus red-dominant equals a death spiral that consumes all your capacity"
 4. **Engagement/Action gap** → The naming was never resolved because it was never a natural category
 
@@ -221,31 +221,31 @@ The structure was designed by working backwards from the end state (reader has p
 - The four capabilities in Part III are layered, not parallel — each enables the next
 - No chapter exists because a previous draft had it; every chapter earns its place in the reader's journey
 
-| Ch  | Title                  | Part                    | Source                      | Revision   | One-Line Thesis                                                                                                                                                                                  |
-| --- | ---------------------- | ----------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | The Trap               | I: The Trap             | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
-| 2   | The Director's Audit   | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a director.                                                       |
-| 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     | A director doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                |
-| 5   | Build the Team         | III: The Promotion      | New                         | 100% new   | A director doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                              |
-| 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   | Your capacity is the scarcest resource in the AI economy. Manage it like the strategic asset it is.                                                                                              |
-| 7   | Work the System        | III: The Promotion      | New                         | 100% new   | A director builds systems that run without constant intervention. The operating rhythm that makes the other three capabilities self-sustaining.                                                  |
-| 8   | Earn Back Boring       | IV: The Director's Life | New                         | 100% new   | When all four capabilities are operating, your life feels like it should. The normalization promise delivered.                                                                                   |
-| 9   | The Promotion Is Yours | IV: The Director's Life | New                         | 100% new   | Three paths forward. The promotion is permanent — how far you take it is your call.                                                                                                              |
+| Ch  | Title                  | Part                | Source                      | Revision   | One-Line Thesis                                                                                                                                                                                  |
+| --- | ---------------------- | ------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The Trap               | I: The Trap         | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
+| 2   | The Boss's Audit       | I: The Trap         | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
+| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a boss.                                                           |
+| 4   | See the Board          | III: The Promotion  | Old Ch 6                    | 15-20%     | A boss doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                    |
+| 5   | Build the Team         | III: The Promotion  | New                         | 100% new   | A boss doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                                  |
+| 6   | Protect the Asset      | III: The Promotion  | New                         | 100% new   | Your capacity is the scarcest resource in the AI economy. Manage it like the strategic asset it is.                                                                                              |
+| 7   | Work the System        | III: The Promotion  | New                         | 100% new   | A boss builds systems that run without constant intervention. The operating rhythm that makes the other three capabilities self-sustaining.                                                      |
+| 8   | Earn Back Boring       | IV: The Boss's Life | New                         | 100% new   | When all four capabilities are operating, your life feels like it should. The normalization promise delivered.                                                                                   |
+| 9   | The Promotion Is Yours | IV: The Boss's Life | New                         | 100% new   | Three paths forward. The promotion is permanent — how far you take it is your call.                                                                                                              |
 
 ### Part Names
 
 - **Part I: The Trap** — You're operating below your level
 - **Part II: The First Win** — Taste the fix
 - **Part III: The Promotion** — Build the four capabilities that let your life run itself
-- **Part IV: The Director's Life** — What it looks like when it's working
+- **Part IV: The Boss's Life** — What it looks like when it's working
 
 ### Chapter-by-Chapter Detail (with Thread Assignments)
 
 Thread assignments are hypotheses for where ideas MIGHT live — tested during actual writing, not mandates.
 
 **Ch 1: The Trap** (100% new)
-Author's story: AI-native software factory, three weeks in, the dishrag realization. The confession: "I was an intern at home long before AI — the revolution just made it impossible to fake." The bandaid on a severed limb (AI agent coach, inbox automation — tools that optimize a broken system are still a broken system). Brief historical framing of industrial revolutions. The false binary (upskill or surrender) and the third path. The promotion metaphor introduced: "You're a director at work. What are you at home?"
+Author's story: AI-native software factory, three weeks in, the dishrag realization. Boss/Intern contrast introduced — the reader's first encounter with the promotion ladder. The confession: "I was an intern at home long before AI — the revolution just made it impossible to fake." The bandaid on a severed limb (AI agent coach, inbox automation — tools that optimize a broken system are still a broken system). Brief historical framing of industrial revolutions. The false binary (upskill or surrender) and the third path. The promotion metaphor introduced: "You're the boss at work. What are you at home?"
 
 - _Stable ground argument [HIGH]:_ Explicit — "I tried to fix work first. The ground kept shifting. Home is where the foundation goes."
 - _Complicated vs. complex [MED]:_ In reader language — "Every system I tried treated my life like a machine. But my life isn't a machine. It's a living system."
@@ -253,44 +253,44 @@ Author's story: AI-native software factory, three weeks in, the dishrag realizat
 - _Third path [MED]:_ First of three touches.
 - _Villain [MED]:_ First appearance.
 - _Transformation map "before" [LOW]:_ Name the reader's starting belief.
-- **Director moment:** "You're a director at work. What are you at home?"
+- **Boss moment:** "You're the boss at work. What are you at home?"
 
-**Ch 2: The Director's Audit** (50-60% new, distilled from old Ch 1+2+3)
+**Ch 2: The Boss's Audit** (50-60% new, distilled from old Ch 1+2+3)
 No four gaps. Two diagnostic tools: the strategic lens (bronze/silver/gold — what is your time building?) and the tactical lens (red/gray/blue — what is your time costing you?). The death spiral: bronze-heavy plus red-dominant equals a system that consumes all capacity. The morning-after test. AI-era angle: "Your job is pure bright red. Eight hours of judgment calls. It feels like your best work. And it's emptying the tank every day." Dense, rewarding — a senior leader getting a brilliant briefing. The reader walks out with two tools they can use today.
 
 - _OS metaphor [MED]:_ Framing — "These lenses are the diagnostic readout for your personal operating system. Right now, your OS is crashing."
 - _Essentialist answer seeded [HIGH]:_ "The answer isn't to do more. It's not even to do less. It's to build differently."
 - _Personal/professional dichotomy:_ Death spiral explicitly crosses the boundary.
-- **Director moment:** "A director audits before acting. These are your audit tools."
+- **Boss moment:** "A boss audits before acting. These are your audit tools."
 
 **Ch 3: Pull the Thorn** (30-40% revision of old Ch 4 + compressed old Ch 5)
 Thorn metaphor, target selection, four moves (eliminate/delegate/automate/reconstruct). Author's first thorn story. Accountability email offer. Closing beat: name the four micro-skills (externalize/decide/act/complete), land "architecture not willpower," pivot to Part III. "You just proved that changing your structure changes your results. Now let's build the full structure."
 
 - _Essentialist answer landed [HIGH]:_ "Notice what happened. You didn't add something. You changed a structure. That's the pattern for everything that follows."
 - _Villain callback [MED]:_ "The old playbook would have you white-knuckle through this."
-- **Director moment:** "This is your first executive decision about your own life."
+- **Boss moment:** "This is your first executive decision about your own life." (Manager introduced here: "You just went from intern to manager.")
 
 **Ch 4: See the Board — Visibility** (15-20% revision of old Ch 6)
 The professional/personal contrast (already in the text — strongest "port your competence" moment in existing manuscript — the work-to-home transfer of professional competence). Spectrum of visibility, neuroscience, bidirectional loop, three implementation levels, failure modes. Author's life map. "You'd never manage a department without a dashboard. Why are you managing your life without one?"
 
 - _Work-to-home transfer [HIGH]:_ "You already know how to build dashboards. Apply that same thinking here." Professional competence deployed to personal life — make explicit.
 - _Villain callback [MED]:_ "The old playbook says keep it all in your head."
-- **Director moment:** "You'd never manage a department without a dashboard."
+- **Boss moment:** "You'd never manage a department without a dashboard."
 
 **Ch 5: Build the Team — Support** (100% new)
 "You have a team of 50 at work. What's your team at home?" Types of support: operational (delegation), emotional (connection), cognitive (thinking partners), automated (AI and systems). Embodied/unembodied distinction expanded. AI as a specific kind of leverage. Three implementation levels. Author's story of building their own support architecture.
 
 - _Third path demonstrated [MED]:_ Second of three touches. AI as team member IS the synthesis — the third path in action.
-- _Work-to-home transfer:_ "Your first move as a new director is to assess your team. Do the same thing here."
+- _Work-to-home transfer:_ "Your first move as a new boss is to assess your team. Do the same thing here."
 - _Villain callback [MED]:_ "The old playbook says carry it all yourself."
-- **Director moment:** "First thing a new director does is assess their team."
+- **Boss moment:** "First thing a new boss does is assess their team."
 
 **Ch 6: Protect the Asset — Capacity** (100% new)
 Capacity as the scarcest, most valuable resource in the AI economy. The bright red trap at scale. Practical capacity protection: blue scheduling, bright red dosing, dark red clearing. Three energy dimensions expanded. Morning-after test as ongoing practice. Three implementation levels.
 
 - _Essentialist answer reinforced:_ "Protecting capacity isn't doing less. It's investing in the resource that makes everything else possible."
 - _Villain callback [MED]:_ "The old playbook calls pushing through depletion 'discipline.' This chapter calls it sabotage."
-- **Director moment:** "Running yourself into the ground isn't dedication. It's mismanagement."
+- **Boss moment:** "Running yourself into the ground isn't dedication. It's mismanagement."
 
 **Ch 7: Work the System — Systems** (100% new)
 The operating rhythm that ties the other three capabilities together. Weekly reviews using visibility. Delegation rhythms leveraging the team. Capacity check-ins. Quarterly recalibration. How the four capabilities reinforce each other when all operating. Three implementation levels.
@@ -299,23 +299,23 @@ The operating rhythm that ties the other three capabilities together. Weekly rev
 - _Home-to-work deployment [HIGH]:_ The rhythm explicitly manages the personal/professional interface. Not just personal maintenance — includes: how does capacity built this week deploy to work next week?
 - _"Runs without you" promise [MED]:_ "The system runs on 20 minutes a week and an hour a quarter."
 - _Villain callback [MED]:_ "The old playbook says stay on top of everything through constant vigilance."
-- **Director moment:** "A manager stays on top of everything personally. A director builds a system and trusts it."
+- **Boss moment:** "A manager stays on top of everything personally. A boss builds a system and trusts it."
 
 **Ch 8: Earn Back Boring** (100% new)
 Integration. What it looks like when all four capabilities are operating. Author's current life — not perfect, not optimized, just right. The normalization promise delivered. "Love letters to your future self." The orc becoming the strategy game player, shown rather than promised.
 
-- _Round trip completed [HIGH]:_ Major section, not a mention. "Here's what happened at work when I started living this way at home." Decision quality, creative output, the dishrag became a director in both domains.
+- _Round trip completed [HIGH]:_ Major section, not a mention. "Here's what happened at work when I started living this way at home." Decision quality, creative output, the dishrag became the boss in both domains.
 - _Third path proven [MED]:_ Third of three touches. "I didn't upskill technically. I evolved how I operate. Here's what that produced."
 - _Personal/professional dichotomy fully broken:_ Demonstrated as one system. The improvement isn't two stories — it's one.
 - _Transformation map "after" crystallized._
-- **Director moment:** "A life that feels like it should, run by someone who designed it that way."
+- **Boss moment:** "A life that feels like it should, run by someone who designed it that way."
 
 **Ch 9: The Promotion Is Yours** (100% new)
 Three paths forward (mirrors three implementation levels). What maintenance looks like. Where LifeBuild.me fits (if included). The closing argument: "You didn't just learn a system. You promoted yourself." Forward look: more people landing where you were every month.
 
 - _Villain closing:_ "The old playbook got you here. You built something different."
 - _Stable ground echoed:_ "The world will keep changing. You've built on stable ground. That foundation holds."
-- **Director moment:** "The question isn't how to survive anymore. It's what to build next."
+- **Boss moment:** "The question isn't how to survive anymore. It's what to build next."
 
 ### Thread Map
 
@@ -326,7 +326,7 @@ Hypothesized thread distribution across chapters. **Bold** = primary home (fulle
 | A. Round trip (work-home-work) | intro      | spiral     | --         | transfer  | transfer | --        | interface | **payoff**  | echo    |
 | B. Stable ground argument      | **stated** | --         | --         | --        | --       | --        | --        | --          | echo    |
 | C. Essentialist answer         | --         | seed       | **landed** | --        | --       | reinforce | --        | --          | --      |
-| D. Promotion metaphor          | intro      | audit      | first act  | dashboard | team     | asset     | system    | director    | yours   |
+| D. Promotion metaphor          | intro      | audit      | first act  | dashboard | team     | asset     | system    | boss        | yours   |
 | E. Third path                  | intro      | --         | --         | --        | demo     | --        | --        | **proven**  | --      |
 | F. Old playbook villain        | intro      | callback   | callback   | callback  | callback | callback  | callback  | --          | closing |
 | G. OS metaphor                 | --         | diagnostic | --         | dashboard | echo     | echo      | **built** | --          | closed  |
@@ -361,15 +361,15 @@ Each capability enables the next:
 - **The thorn:** Metaphor for a persistent red — small, sharp, hurts with every step. Pull one out as a first win.
 - **Four moves:** Eliminate, delegate, automate, reconstruct — resolution options for thorns
 - **Embodied vs. unembodied work:** Physical tasks (delegate to humans) vs. information tasks (delegate to humans or AI)
-- **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of directing
+- **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of being the boss
 - **Architecture not willpower:** The core thesis of the whole book
-- **Four capabilities:** Visibility, Support, Capacity, Systems — what a director builds. Layered, not parallel.
+- **Four capabilities:** Visibility, Support, Capacity, Systems — what a boss builds. Layered, not parallel.
 - **Three implementation levels:** Light, medium, full — meet the reader where they are. Used in every capability chapter and in the final "three paths" closing.
 - **Spectrum of visibility:** Head -> lists -> spatial organization -> navigable environments. Backed by dual-coding theory, place cells, method of loci, distributed cognition. (Ch 4)
 - **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 4)
 - **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion. Introduced in Ch 2, operationalized in Ch 6.
 - **Stable ground / unstable ground:** Home challenges are standard and stable; work in the AI economy shifts every few weeks. Build the capacity platform on stable ground, deploy to unstable ground.
-- **The promotion ladder:** Intern -> manager -> director. The reader is operating as an intern or front-line manager of their personal life while being a director at work. The book teaches them to promote themselves. The structure IS the metaphor — Part I is The Trap, Part III is The Promotion, Part IV is The Director's Life.
+- **The promotion ladder:** Intern -> manager -> boss. The reader is operating as an intern of their personal life while being a boss at work. The book promotes them. Intern (reactive, no systems) → Manager (intentional, personally carrying everything) → Boss (systems run without constant intervention). "Intern" and "Boss" introduced in Ch 1. "Manager" introduced in Ch 3 after the thorn exercise. The structure IS the metaphor — Part I is The Trap, Part III is The Promotion, Part IV is The Boss's Life.
 
 **Eliminated:**
 
@@ -403,10 +403,10 @@ Each capability enables the next:
 
 ### Phase 2
 
-- **"Life portfolio director" / "front-line manager to portfolio director"** — the full promotion metaphor in exec-native vocabulary
+- **"Intern to boss"** — the full promotion metaphor in title-native vocabulary
 - **"Love letters to your future self"** — the temporal architecture of the book in one phrase
 - **"Half-forgotten checklist"** — the mundane, devastating truth of most people's personal lives
-- **"A life that manages itself, by design"** — the promise in six words
+- **"A life that runs itself, by design"** — the promise in six words
 - **"The old playbook got you here. This book gets you out."** — closing line of back cover
 - **"Running on fumes and calling it discipline"** — the reader's current self-narrative
 - **"Even at the bleeding edge"** — signals the book knows the reader isn't behind
@@ -420,7 +420,7 @@ Each capability enables the next:
 - **"Outgrow the economy that's trying to replace you"** — the growth promise without the race (banked for Humaning)
 - **"You weren't built for this economy"** — evolutionary mismatch in seven words
 - **Build on stable ground (home), deploy to unstable ground (work)** — the core strategic argument for "why at home"
-- **Intern / manager / director** — the promotion ladder (updated from "grunt" in Phase 4)
+- **Intern / manager / boss** — the promotion ladder (updated from "director" to match the title)
 - **"I'm a human systems inventor"** — the author's self-description and credibility claim
 
 ### Phase 4

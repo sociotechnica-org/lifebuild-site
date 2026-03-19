@@ -9,7 +9,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 ### Chapter 1: The Trap (100% new)
 
 **Part:** I: The Trap
-**Thesis:** You're a director at work and a disaster at home — and the AI economy is making it worse, not better. The cognitive demands of the new economy are unprecedented, and they're draining the capacity you need for everything else.
+**Thesis:** You're a boss at work and a disaster at home — and the AI economy is making it worse, not better. The cognitive demands of the new economy are unprecedented, and they're draining the capacity you need for everything else.
 
 **Thread assignments:**
 
@@ -28,7 +28,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ---
 
-### Chapter 2: The Director's Audit (50-60% new, from old Ch 1+2+3)
+### Chapter 2: The Boss's Audit (50-60% new, from old Ch 1+2+3)
 
 **Part:** I: The Trap
 **Thesis:** Two diagnostic lenses reveal why you're trapped. Bronze/silver/gold shows what your time builds. Red/gray/blue shows what it costs you. Combined, they reveal a death spiral — and the death spiral crosses the work/home boundary.
@@ -38,7 +38,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 - OS metaphor [MED]: "These lenses are the diagnostic readout for your personal operating system. Right now, your OS is crashing."
 - Essentialist answer seeded [HIGH]: "The answer isn't to do more. It's not even to do less. It's to build differently."
 - Personal/professional dichotomy: Death spiral explicitly crosses the boundary.
-- Director moment: "A director audits before acting. These are your audit tools."
+- Boss moment: "A boss audits before acting. These are your audit tools."
 
 **Revision directives (from Zelda Phase 5):**
 
@@ -67,18 +67,18 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 ### Chapter 3: Pull the Thorn (30-40% revision, from old Ch 4 + compressed Ch 5)
 
 **Part:** II: The First Win
-**Thesis:** Your first act as a director is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened — you changed a structure, not yourself.
+**Thesis:** Your first act as a boss is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened — you changed a structure, not yourself.
 
 **Thread assignments:**
 
 - OS metaphor [LIGHT]: "Your first patch" — only if Ch 2 establishes the OS metaphor strongly
 - "Build differently" crystallized: The thorn exercise IS building differently — architecture, not willpower
-- 72-hour constraint reframed as "director's proof of concept"
+- 72-hour constraint reframed as "boss's proof of concept"
 - Micro-skills named as scalable loop: externalize, decide, act, complete
 
 **Revision directives (from Zelda Phase 5):**
 
-1. Reframe through promotion metaphor — "your first executive decision about your own life"
+1. Reframe through promotion metaphor — "your first executive decision about your own life" (this is where "manager" is introduced as the middle rung — "You just went from intern to manager")
 2. Add the author's real first thorn story (after the dishrag moment, not the credit accounts)
 3. Name four micro-skills explicitly as the loop that scales through Part III
 4. Rewrite "What This Built" to land "you changed a structure, not yourself"
@@ -105,15 +105,15 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 ### Chapter 4: See the Board (15-20% revision, from old Ch 6)
 
 **Part:** III: The Promotion
-**Thesis:** You already build dashboards at work. The question is why you've never built one for your life. Visibility — making your commitments spatial and navigable — is the first capability a director installs.
+**Thesis:** You already build dashboards at work. The question is why you've never built one for your life. Visibility — making your commitments spatial and navigable — is the first capability a boss installs.
 
 **Thread assignments:**
 
-- OS metaphor [HIGH]: "This is your control panel. Every director needs one."
+- OS metaphor [HIGH]: "This is your control panel. Every boss needs one."
 - Professional/personal bridge: "You already have dashboards at work."
 - Externalization as micro-skill callback: "This is externalization at life scale."
 - Author's audit scene: Replace Marcus with the author's real audit — real domains, real numbers, real imbalances
-- Weekly review as director's rhythm: "Directors don't operate from memory. They operate from reviews."
+- Weekly review as boss's rhythm: "A boss doesn't operate from memory. They operate from reviews."
 
 **Revision directives (from Zelda Phase 5):**
 
@@ -143,7 +143,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 ### Chapter 5: Build the Team (100% new)
 
 **Part:** III: The Promotion
-**Thesis:** Directors don't carry everything alone. The second capability is building a support system — human and AI — that shares the load.
+**Thesis:** A boss doesn't carry everything alone. The second capability is building a support system — human and AI — that shares the load.
 
 **Thread assignments:**
 
@@ -151,6 +151,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 - Third path [SECOND TOUCH]: Not grinding alone, not outsourcing your life. Building a team.
 - The author's support team: who actually helps, what AI does vs. humans
 - Old playbook villain callback: "The old playbook says asking for help is weakness."
+- Work-to-home transfer: "Your first move as a new boss is to assess your team. Do the same thing here."
 
 ---
 
@@ -179,18 +180,19 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 - Weekly review as the centerpiece practice
 - The four micro-skills running at system scale
 - Old playbook villain callback: "The old playbook gives you a planner. This gives you a practice."
+- Boss moment: "A manager stays on top of everything personally. A boss builds a system and trusts it."
 
 ---
 
 ### Chapter 8: Earn Back Boring (100% new)
 
-**Part:** IV: The Director's Life
+**Part:** IV: The Boss's Life
 **Thesis:** The destination isn't exciting. It's boring — in the best possible way. When your life runs itself, boredom means the system is working.
 
 **Thread assignments:**
 
 - Round trip [HIGH]: This is where work-to-home-to-work completes. The capacity built at home deploys to work.
-- Third path [PROVEN]: The author's life now — not grinding, not escaping, but directing.
+- Third path [PROVEN]: The author's life now — not grinding, not escaping, but running the operation.
 - The orc-to-player transformation demonstrated
 - Normalization: what it looks like when the system is mature
 
@@ -198,14 +200,14 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ### Chapter 9: The Promotion Is Yours (100% new)
 
-**Part:** IV: The Director's Life
+**Part:** IV: The Boss's Life
 **Thesis:** The closing — where the reader stands, what's available, the invitation forward.
 
 **Thread assignments:**
 
 - All threads resolved
 - LifeBuild product mention lands here (relocated from Ch 4)
-- The promotion metaphor completed: "You've been promoted. Now direct."
+- The promotion metaphor completed: "You've been promoted. Now run it."
 
 ---
 
