@@ -369,7 +369,7 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 - **Competence is shown through the kind of problem being solved, never declared.**
 - **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
 - **Profanity budget:** One instance available. The death spiral or entropy descriptions are natural placement points.
-- **Book title is "Boss @ Work | Intern @ Life: Port Your Competence."** The promotion metaphor is the central framework throughout.
+- **Book title is "Boss at Work | Intern at Home: Promote Yourself."** The promotion metaphor is the central framework throughout.
 
 ### Failure Mode Prevention
 
@@ -746,7 +746,7 @@ This is Part II: The First Win -- the entire part is one chapter. It carries mor
 
 The chapter does five things:
 
-1. **Delivers the reader's first operational experience of the third path.** The thorn exercise IS architecture over willpower, demonstrated through action rather than argument.
+1. **Delivers the reader's first operational experience of architecture-over-willpower -- the third path felt, not named.** The thorn exercise IS the third path in action, demonstrated through experience rather than argument. The thread is not invoked directly here; its second explicit touch is Ch 5.
 
 2. **Crystallizes the essentialist answer.** Ch 2 seeded "build differently" as a thesis statement. This chapter makes it experiential: "You changed a structure. That's an architectural move, not a willpower move. That's the pattern for everything that follows."
 
@@ -909,7 +909,7 @@ Brief examples: the meeting that shouldn't include you (eliminate), the insuranc
 
 **Reader knows at entry:** Their specific thorn. The criteria for selection. The constraint (72 hours). Does NOT yet know the resolution methods.
 **State changes to narrate:** The reader learns four methods for resolution. The embodied/unembodied distinction is introduced at minimum viable scale (developed in Ch 5). The accountability email makes the assignment real.
-**Exit state:** The reader has a method for their specific thorn. They know four options and can map their thorn to one. The chapter has made a real ask: do this within 72 hours.
+**Exit state:** The reader has a method for their specific thorn. They know four options and can map their thorn to one. The chapter has made a real ask: do this within 72 hours. **GHOSTWRITER NOTE:** The prose must explicitly invite the reader to put the book down and pull their thorn before continuing. This creates the conditional that Beat 6 depends on ("When the thorn is out, notice what happened").
 
 **Thread touches:**
 
@@ -1032,7 +1032,7 @@ Close: "Part I showed you the trap. Part II showed you it breaks. Part III build
 
 | Thread                                     | Beat(s)       | Treatment                                                                                                                                                                                              |
 | ------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Essentialist answer [HIGH -- PRIMARY HOME] | Beats 6, 7    | Beat 6: crystallized ("You changed a structure. That's an architectural move, not a willpower move."). Beat 7: reinforced ("Architecture, not willpower" as closing callback).                         |
+| Essentialist answer [HIGH -- PRIMARY HOME] | Beats 6, 7    | Beat 6: crystallized from Ch 2 Beat 6 seed -- "build differently" was named there; "architecture, not willpower" is new here. Beat 7: reinforced ("Architecture, not willpower" as closing callback).  |
 | Promotion metaphor                         | Beats 1, 5, 7 | Three touches: "your first executive decision" (1), "someone who had the authority to make it" (5), "a director's question" + ROI framing (7). Progresses from directive to action to earned identity. |
 | Villain [CALLBACK]                         | Beats 2, 4, 6 | Light callbacks only. "Enough to make everything harder" (2). "Trained to solve problems, not dissolve them" (4). "Didn't try harder, didn't become more disciplined" (6). Implicit, never named.      |
 | Micro-skills [INTRODUCED]                  | Beat 6        | Externalize, decide, act, complete -- named here, scaled in Ch 4-7. Bridge to Part III.                                                                                                                |
