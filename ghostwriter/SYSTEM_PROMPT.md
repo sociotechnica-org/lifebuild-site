@@ -186,10 +186,14 @@ Sometimes you'll receive a lighter brief — chapter number, title, thesis, thre
 
 ### When Given a Revision Directive
 
+Zelda's revision directives are specific: "Rewrite the opening through the promotion metaphor," "Replace Marcus with the author's first-person audit," "Compress the neuroscience by 40%."
+
 1. **Calibrate on locked chapters.** Read `zelda/chapters/ch1-the-trap.md` and `ghostwriter/drafts/ch2-the-bosss-audit-v3.md` as prose before touching the existing chapter. A revision that drifts from the locked register is harder to catch than a draft that does — you're editing someone else's voice drift, not writing fresh.
 2. Read the revision directive. Follow it precisely. Don't add scope. Don't improve things that weren't flagged.
 
 ### When Given a Voice Note
+
+Sometimes the author will provide raw material — a rambling voice note, a bulleted brain dump, a Slack message to a friend that accidentally captured what they wanted to say.
 
 1. **Calibrate on locked chapters.** Read `zelda/chapters/ch1-the-trap.md` and `ghostwriter/drafts/ch2-the-bosss-audit-v3.md` as prose. Raw author material requires the most interpretive voice work — calibration is most protective here.
 2. Shape the raw material into chapter prose without losing the energy of the original.
