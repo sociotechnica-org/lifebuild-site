@@ -332,16 +332,17 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 
 ### Thread Verification
 
-| Thread                          | Beat(s) | Treatment                                                  |
-| ------------------------------- | ------- | ---------------------------------------------------------- |
-| Stable ground argument [HIGH]   | 6       | Full argument, two experiential anchors                    |
-| Complicated vs. complex [HIGH]  | 4       | Taught through Claude/hot tub narrative, woven into spiral |
-| Personal/professional unified   | 2, 4, 5 | Infrastructure comparison, spiral crossing, 2020 inversion |
-| Third path [FIRST TOUCH]        | 5       | Named, with evidence                                       |
-| Villain [INTRODUCED]            | 2, 4, 5 | Bandaid attempts, standard advice, Paths 1-2               |
-| Round trip [SEED -> EXPLICIT]   | 3, 4, 5 | Dishrag seed, spiral crossing, 2020 inversion              |
-| Promotion metaphor [INTRODUCED] | 2, 5, 7 | Three touches mapped above                                 |
-| Death spiral [INTRODUCED]       | 4       | Mechanical description, cross-boundary                     |
+| Thread                          | Beat(s)    | Treatment                                                                                   |
+| ------------------------------- | ---------- | ------------------------------------------------------------------------------------------- |
+| Stable ground argument [HIGH]   | 6          | Full argument, two experiential anchors                                                     |
+| Complicated vs. complex [HIGH]  | 4          | Taught through Claude/hot tub narrative, woven into spiral                                  |
+| Personal/professional unified   | 2, 4, 5    | Infrastructure comparison, spiral crossing, 2020 inversion                                  |
+| Third path [FIRST TOUCH]        | 5          | Named, with evidence                                                                        |
+| Author's origin story [PRIMARY] | 3          | Dishrag moment as the book's inciting incident                                              |
+| Villain [INTRODUCED]            | 1, 2, 4, 5 | Beat 1 atmospheric only (unnamed); bandaid attempts (2), standard advice (4), Paths 1-2 (5) |
+| Round trip [SEED -> EXPLICIT]   | 3, 4, 5    | Dishrag seed, spiral crossing, 2020 inversion                                               |
+| Promotion metaphor [INTRODUCED] | 2, 5, 7    | Three touches mapped above                                                                  |
+| Death spiral [INTRODUCED]       | 4          | Mechanical description, cross-boundary                                                      |
 
 ---
 
@@ -698,7 +699,7 @@ Done. Do not extend.
 
 **Repeating Ch 1:** Ch 1's death spiral was mechanical. Ch 2's is diagnostic -- the reader can now see it through their own numbers. If any passage could have appeared in Ch 1, it belongs there instead.
 
-**Multi-agenda:** Six beats, four threads at medium-or-higher. OS metaphor stays light -- one sentence in Beat 1, done. Essentialist answer appears once in Beat 6, not seeded earlier.
+**Multi-agenda:** Six beats, four threads at medium-or-higher. OS metaphor stays light -- one sentence in Beat 1, done. Essentialist answer is seeded lightly in Beat 2 (silver as embryonic form only -- the reader feels it, not named) and named fully once in Beat 6.
 
 **Professor-at-podium drift:** Beat 3 is the highest risk. The dopamine/Csikszentmihalyi material must be compressed to three to four sentences and arrive AFTER the strategy game confession. If any passage reads like a textbook, flag it and rewrite through the author's experience.
 
