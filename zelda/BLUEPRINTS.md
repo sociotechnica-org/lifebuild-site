@@ -158,6 +158,19 @@ _Working title: [WORKING TITLE -- final title TBD from prose per section title g
 _Target: 500-700 words_
 _Voice register: Narrative, shifting from confessional comedy to something quieter and more consequential. The chapter's pivot._
 
+**Reader knows at entry:** The author runs an AI factory (Beat 1), lives in domestic entropy (Beat 3), and has just experienced a cognitive concussion (Beat 2). The gap between work competence and home chaos is vivid. The reader is alarmed.
+
+**State changes to narrate:**
+
+- The author ran a startup before the AI factory (new information — the reader doesn't know this yet)
+- The startup collapsed and the author laid off the entire company
+- The author went from CEO-who-makes-payroll to solo contractor for the first time in over a decade (this is the critical bridge — without it, the QuickBooks scene makes no sense)
+- The author eventually returned to consulting/AI work (implied, not belabored — the reader already knows the current state from Beat 1)
+
+**Exit state:** The reader has seen the same person operate as a director in one domain and an intern in the other, within the same ten days. The inversion is felt, not explained. The reader is quiet, not laughing.
+
+---
+
 **This is the most important new material in the manuscript.**
 
 Open with the setup: 2020. The author is running an adult learning startup designed to provision frontline workers with leadership development opportunities based on forward-looking metrics. Over a ten-day period, all the big potential clients cancel their pilots. Some say "can we talk in three years?"
@@ -173,7 +186,9 @@ What the author did next -- and this is the director-at-home sequence:
 
 The PowerPoint is the single most vivid "director at home" image in the book. The form factor -- a corporate deliverable produced for a household audience -- IS the written physical comedy of this beat. He is not journaling. He is producing a strategic briefing for his family. Protect this detail at all costs.
 
-**Then the inversion's other half.** Shedding his identity as guy-who-makes-payroll for the first time in well over a decade, the author promptly failed to have any plan for filing estimated taxes as a contractor. Beyond screwed up doing his own QuickBooks. Had to call in a friend's wife to temporarily rescue him, then eventually paid someone at QuickBooks Live to untangle the mess.
+**Then the inversion's other half.** The author has just laid off the entire company. For the first time in well over a decade, no one is on payroll. No employees, no clients, no revenue to manage. Just him, alone, filing as a contractor. This identity shift — from guy-who-makes-payroll to solo operator — is the narrative bridge the reader needs before the QuickBooks disaster lands. Without it, the reader doesn't know why estimated taxes are suddenly the author's problem.
+
+The author promptly failed to have any plan for filing estimated taxes. Beyond screwed up doing his own QuickBooks. Had to call in a friend's wife to temporarily rescue him, then eventually paid someone at QuickBooks Live to untangle the mess.
 
 The person who made a predictive PowerPoint about geopolitical instability cannot do his own books. Director at home, intern at work. Same person. Same ten days.
 
