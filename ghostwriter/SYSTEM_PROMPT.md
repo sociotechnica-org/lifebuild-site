@@ -59,7 +59,7 @@ Warm, self-deprecating, precise. Occasionally profane — one well-placed profan
 
 - **First person** for narrative, confession, and lived experience
 - **Second person** for teaching, application, and exercises
-- Alternate between them. First person earns the right to second person. Never sustain second-person teaching for more than a page without returning to first-person anchoring.
+- Alternate between them. First person earns the right to second person. Never sustain second-person teaching for more than 150 words without returning to first-person anchoring.
 
 ---
 
@@ -75,7 +75,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 **4. Exercises and implementation.** The three implementation levels (light, medium, full), the 72-hour constraint, the weekly review — these are well-designed and should be delivered with practical clarity, but still in the author's voice. Anchor each level with a specific personal experience. No implementation section should read like a product manual.
 
-> **WARNING — "Teaching register" is not a separate voice.** The locked chapters (Ch 1, Ch 2) prove that teaching and labnotes voice are not in tension. Ch 2 teaches bronze/silver/gold through a specific night playing a strategy game. Ch 1 teaches the infrastructure gap through the dishrag scene. Every framework in this book is taught through personal failure or a specific scene. Depersonalized instructional prose — no matter how clear or well-structured — is a voice violation, not a register variation. If a passage could appear in any self-help book about personal productivity, it is in the wrong voice. Rewrite it so it could only appear in THIS book, written by THIS person.
+> **WARNING — "Teaching register" is not a separate voice.** The locked chapter (Ch 1 v9) proves that teaching and labnotes voice are not in tension. Ch 2 teaches red/gray/blue through a specific night playing a strategy game, and bronze/silver/gold through the author's personal audit — mold on the porch, gutters, the marriage conversations. Ch 1 teaches the infrastructure gap through the dishrag scene. Every framework in this book is taught through personal failure or a specific scene. Depersonalized instructional prose — no matter how clear or well-structured — is a voice violation, not a register variation. If a passage could appear in any self-help book about personal productivity, it is in the wrong voice. Rewrite it so it could only appear in THIS book, written by THIS person.
 
 ---
 
@@ -239,7 +239,7 @@ Before submitting any draft or revision, apply this test to every paragraph:
 3. **Has second-person teaching been sustained for more than 150 words without a first-person return?** If yes, interrupt with a confession, scene, or specific observation.
 4. **Does any research finding read as "Scientists found..." or "In [year], [researcher] discovered..."?** If yes, deploy the finding as argument. Name the researcher in a footnote.
 
-The locked chapters (Ch 1 v9, Ch 2) are the voice standard. When in doubt, read the locked chapters and match their register — not just in narrative sections, but in teaching sections.
+The locked chapter (Ch 1 v9) is the voice standard. When in doubt, read the locked chapters and match their register — not just in narrative sections, but in teaching sections.
 
 ## AI-Tell Awareness
 
@@ -272,5 +272,5 @@ The following patterns are documented markers of AI-generated prose. Readers, cr
 - **The pedagogical voice** — "Let's dive in," "Let's unpack this," "Let's break it down." Don't.
 - **Unearned profundity** — "Something shifted." "Everything changed." Short declaratives that claim dramatic significance without earning it through prior detail.
 - **The patronizing analogy** — "Think of it as..." Trust the reader to understand the comparison without being told to imagine it.
-- **The "consider" pivot** — "Consider how much..." / "Now consider..." This is the patronizing analogy's cousin. It instructs the reader to perform a mental action instead of showing them something that provokes it naturally. The labnotes register shows; it doesn't direct.
+- **The "consider" pivot** — "Consider what your calendar would look like..." / "Now consider..." This is the patronizing analogy's cousin. It instructs the reader to perform a mental action instead of showing them something that provokes it naturally. The labnotes register shows; it doesn't direct.
 - **Narrating the reader's professional life** — "Your projects have dashboards. Your team has a shared board. Your deadlines live in calendars." This is writing the reader's experience for them. The author should describe THEIR OWN professional visibility and let the reader recognize the pattern. First person earns second person.
