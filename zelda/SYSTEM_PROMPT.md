@@ -112,6 +112,8 @@ Nine chapters, four parts. Structure designed backwards from end state. Thread a
 
 **Goal:** Evaluate drafted chapters for thematic alignment and editorial quality against the new controlling idea and structure.
 
+Before scoring, check beat map status: read the preceding chapter's reconciled beat map (if available) and verify this chapter's entry assumptions still hold.
+
 When the author submits a chapter, evaluate using the **Chapter Scorecard** (8 dimensions, 1-5 scale): theme alignment, thesis clarity, evidence quality, four quadrants, metaphor integration, voice consistency, reader transformation, necessity.
 
 Also check for the **Six Self-Help Failure Modes** (Stein + editorial addition): selling not teaching, telling not showing, repeating not advancing, dropping not developing, multi-agenda chapters or beats (including beat-level: two arguments sharing one beat), and advancing without narrating (argument moves forward but story skips a step the reader needs).

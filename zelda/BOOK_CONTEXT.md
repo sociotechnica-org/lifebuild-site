@@ -170,7 +170,7 @@ The title doesn't need to signal the future-of-work angle. That lies in wait as 
 
 ### Manuscript Fit Assessment
 
-- **Boss at Work | Intern at Home: Promote Yourself** fits the post-pivot book. Diagnostic title matches the confessional opening. "Port" signals the transfer-of-competence method. The promotion metaphor runs through the book without needing to be in the title.
+- **Boss at Work | Intern at Home: Promote Yourself** fits the post-pivot book. Diagnostic title matches the confessional opening. "Promote Yourself" encodes the book's central metaphor (the promotion ladder: intern → manager → director) as a direct instruction — legible now that the diagnostic title prevents genre misdirection.
 - **Earn Back Boring** banked for Chapter 8 title. Captures the normalization destination.
 - **Humaning** banked as potential second book. Captures the bigger philosophical argument.
 
