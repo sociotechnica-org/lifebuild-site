@@ -1,6 +1,4 @@
-# Chapter 2: The Boss's Audit — DRAFT v3 (section titles locked 2026-03-19)
-
-## Chapter 2: The Boss's Audit
+# Chapter 2: The Boss's Audit (v3, locked 2026-03-19)
 
 ## Notice, Think, Evaporate
 
@@ -36,11 +34,11 @@ I was drowning in it, doing it badly. Gutters that should have been cleaned in O
 
 I was 10% gold. The embarrassing part wasn't the percentage. Even the gold I had was unfinished gold. The board games from Chapter 1: categorized, organized, priced based on market values from five months ago, photographed with decent lighting, descriptions written. Never listed. Gold started and abandoned is worse than gold never attempted, because you've already spent the activation energy. You just didn't finish the reaction.
 
-Silver time is the one nobody talks about. I certainly didn't -- which is ironic, because I spent a huge percentage of my time on it at work. Silver builds capacity -- not your life directly, but your ability to change it. There's a phrase in the corporate world: working _in_ your business versus working _on_ your business. Working in means doing the daily tasks. Working on means improving the systems so the daily tasks get easier, faster, or disappear entirely.
+Silver time is the one nobody talks about. I certainly didn't -- which is ironic, because I spent a huge percentage of my time on it at work. Silver builds capacity. Your ability to change your life, not your life directly. There's a phrase in the corporate world: working _in_ your business versus working _on_ your business. Working in means doing the daily tasks. Working on means improving the systems so the daily tasks get easier, faster, or disappear entirely.
 
 Bronze is working in your life. Silver is working on it.
 
-What silver looks like: you set up automatic bill pay so that bronze task vanishes. You create a meal planning system that runs on autopilot. You delegate the cleaning to a service. You cancel the commitment that never should have been made. You build a process so the recurring task gets easier next time. Every hour of silver comes back multiplied -- not as a one-time payoff, but as ongoing capacity that compounds.
+What silver looks like: you set up automatic bill pay so that bronze task vanishes. You create a meal planning system that runs on autopilot. You delegate the cleaning to a service. You cancel the commitment that never should have been made. You build a process so the recurring task gets easier next time. Every hour of silver comes back multiplied. The payoff isn't one-time; it compounds.
 
 I was 0% silver.
 
