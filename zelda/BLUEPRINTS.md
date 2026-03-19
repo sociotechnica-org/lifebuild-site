@@ -17,7 +17,9 @@ Nine chapter blueprints produced during Phase 5.5 of the Zelda editorial process
 
 ---
 
-## Ch 1: The Trap (Revised — 7-Beat Structure)
+## Ch 1: The Trap (Final, v4-based)
+
+**Map status:** Draft-reconciled [2026-03-19] — based on chapter-1-v4.md
 
 ### Chapter Thesis
 
@@ -43,105 +45,70 @@ The chapter does six things:
 
 ### Target Word Count
 
-4,200-5,200 words (expanded from 3,800-4,800 to accommodate the Freaky Friday beat)
+3,850-4,700 words
 
 ### Source
 
-100% new (third draft pass -- previous drafts established voice and material; this draft adds the contrast pattern, the 2020 inversion beat, and corrects beat sequencing)
+Author's hand-edited v4 draft (`src/content/book/chapter-1-v4.md`)
 
-**Transition spec status:** Narrative transition fields (Reader knows at entry / State changes to narrate / Exit state) are complete for Beat 4 only. Remaining beats to be backfilled before ghostwriter drafts those sections.
+**Revision intensity:** Apply 7 specific fixes to existing v4 prose
 
----
-
-### Structure: Seven Beats
+**Transition spec status:** All beats reconciled against chapter-1-v4.md. Transition specs below reflect the actual prose, not the original plan.
 
 ---
 
-**BEAT 1: The Factory Floor**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
+### Seven-Beat Structure (Ratified Reorder)
+
+| Beat | Name                                 | Word Target |
+| ---- | ------------------------------------ | ----------- |
+| 1    | The Factory Floor                    | 500-650     |
+| 2    | The Intern Confession                | 650-800     |
+| 3    | The Dishrag Moment                   | 500-650     |
+| 4    | The Death Spiral                     | 800-950     |
+| 5    | The Third Path (with 2020 Inversion) | 700-850     |
+| 6    | The Stable Ground Argument           | 350-450     |
+| 7    | The Setup                            | 250-350     |
+
+**Emotional shape:** Curiosity (1) -> Recognition through laughter (2) -> Alarm (3) -> Understanding/trapped (4) -> Cautious hope (5) -> Strategic hope (6) -> Momentum (7)
+
+---
+
+### Beat-by-Beat Specs
+
+### BEAT 1: The Factory Floor
+
+_Working title: [WORKING TITLE]_
 _Target: 500-650 words_
-_Voice register: First person narrative, present-tense energy. Specific, technical, but scaffolded for non-technical readers._
+_Voice register: First person narrative, present-tense energy. Technical but scaffolded for non-technical readers._
 
-Open in the AI factory. The reader lands in the author's world.
+**Content:** Open in the AI factory. Scaffold from familiar to unfamiliar: hand-crafted code -> apprentice assistants -> assembly line. George the Foreman. Factory View. Learning as fuel. The system getting better AND different while the author sleeps. Bridge to reader: same planet, same road, a few miles ahead. Close on cognitive stakes: you stop thinking about how to get better at your job and start thinking about what the job is doing to you.
 
-**The scaffold for non-technical readers:** Software has, for decades, been crafted by hand. More recently, folks use agents as assistants, kind of like apprentices in a workshop. Where the author works, there is a giant assembly line of agents that feature requests pass through. Software gets built at night, while humans sleep, with no human seeing the code until morning. They check the defect rate and spend the day tuning the factory for its next run.
-
-The factory in operational terms: George the Foreman coaching on time allocation (not the author's time -- the agents' time), human judgment and taste as the bottleneck, the Factory View modeled after Toyota's lines, learning as fuel, the system getting better AND different while the author sleeps.
-
-Bridge to reader: this probably sounds like a different planet. It is the same planet, ahead on the same road. The AI tools in your workflow this quarter -- the assistants drafting emails, summarizing meetings, generating first passes -- those are the apprentices. The assembly line comes next.
-
-End on cognitive stakes, not technology: when workflows you perfected last month get outperformed by agents that did not exist Monday, when you cannot plan more than two weeks out -- you stop thinking about how to get better at your job. You start thinking about what the job is doing to you.
+**Reader knows at entry:** Nothing. Page one.
+**State changes to narrate:** Reader transported into an unfamiliar workplace. Scaffold the unfamiliarity.
+**Exit state:** The author's work is cognitively extreme, shifts unpredictably, demands continuous judgment. Reader feels curiosity plus "that sounds exhausting." Final line points toward what the job does to a person. Reader is leaning forward.
 
 **Thread touches:**
 
 - Villain [LIGHT]: The pace and relentlessness are the environment the old playbook fails in. Do not name the villain yet.
 
-**Contrast notes:** This beat establishes the work-altitude. The reader needs to feel the cognitive demands of this job -- not as impressive, but as genuinely, physically demanding. The beat should leave the reader thinking "that sounds exhausting" not "that sounds impressive." Exhaustion is the reader's entry point, not admiration.
+**Voice notes:** Labnotes dispatch energy. Technical details vivid but brief. Humor welcome (George the Foreman) but underlying tone is serious. Brisk pacing.
 
-**Voice notes:** Labnotes dispatch energy. Technical details vivid but brief. Scaffolding for non-technical readers should feel natural, not condescending. Humor welcome (George the Foreman) but underlying tone is serious. Brisk pacing.
-
----
-
-**BEAT 2: The Dishrag Moment**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
-_Target: 500-650 words_
-_Voice register: First person narrative, slower pacing. Physical and specific. The book's inciting incident._
-
-**One sentence of maestro before the crash.** The day should open with one line that shows what the author accomplished -- not as self-congratulation, but as context for the bill that came due. Building the context library, navigating a fog of problems that might also be features, making the calls that only a human can make. One sentence. Then the doorknob.
-
-Coming home. Not sad, not angry, not stressed, not running on adrenaline. Emotionally neutral. Working out fine. Sleeping fine. But the physical sensation of a concussion -- not metaphorical. Brain picked up, wrung out, hung on a doorknob.
-
-Slept 18 of the next 24 hours.
-
-Thought it was covid. It was not covid. A cognitive capacity problem wearing a medical costume. Gone past what was cognitively possible, and the bill came due in a currency not known to be spending.
-
-The realization -- not dramatic, just clear: this would not be the last time. The cognitive demands are a ratchet, not a wave. They do not recede. They click forward.
-
-Close with: "I didn't need a vacation. I didn't need a better morning routine. I needed a better life plan, all the way around."
-
-**Thread touches:**
-
-- Author's origin story [PRIMARY]: The inciting incident.
-- Death spiral [SEED]: The dishrag moment is the first symptom.
-- Round trip [SEED]: Work depleted, home received the wreckage.
-
-**Contrast notes:** The one-sentence maestro line at the top is crucial. The reader needs to feel the altitude of the work IMMEDIATELY before the crash. The whiplash between "navigating a fog of problems that might also be features" and "hung on a doorknob" IS the contrast in miniature.
-
-**Voice notes:** Most physically grounded writing in the chapter. Slow the pacing down from Beat 1. Short sentences. Sensory detail. Do NOT deflect with humor in this beat. The dishrag moment needs to land straight. Humor returns in Beat 3.
+**No fixes needed.** The v4 prose for this beat is strong. Preserve "The distance between where you are and where I am shrinks faster than either of us expected."
 
 ---
 
-**BEAT 3: The Intern Confession**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
+### BEAT 2: The Intern Confession
+
+_Working title: [WORKING TITLE]_
 _Target: 650-800 words_
-_Voice register: Mixed -- confessional narrative transitioning to wry self-assessment. The chapter's most voice-forward beat. THIS IS WHERE THE WRITTEN PHYSICAL COMEDY LIVES._
+_Voice register: Mixed -- confessional narrative transitioning to wry self-assessment. The chapter's most voice-forward beat. Written physical comedy lives here._
+_Promotion metaphor touch: 1 of 3._
 
-**The contrast cut.** Come straight from the dishrag moment into what the author walked home to. No preamble about qualifications first. The reader just watched someone navigate an AI factory. Now they see what that person's home looks like: board games categorized, organized, priced, photographed, never listed, office looks like a warehouse. Sergeant Marge who got him in shape while the supplement schedule defeated him. Two whiteboards with archaeological sediment. A hundred deferred actions.
+**Content:** The contrast cut. Come straight from the factory into what the author lives in. Board games (forty-three, counted instead of listed). Sergeant Marge. Whiteboards with archaeological sediment. The warehouse office. The side-by-side infrastructure comparison (format-as-punchline). The knife: "I would never run a department the way I run my life." Close with: "That's not a discipline problem. That's a promotion problem."
 
-The whiplash should be visceral. Maestro to intern in the time it takes to open a front door. The reader should laugh. The laugh is the argument.
-
-**Then the format-as-punchline comparison.** Only after the reader has FELT the contrast physically:
-
-Process Infrastructure For My Favorite Client:
-
-- System Level: Yearlong, multi-phase contracts with defined goals
-- Project Level: Sprint kickoffs and retrospectives
-- Task Level: Trello board for task tracking, daily standups
-
-Process Infrastructure For My Own Life:
-
-- Two whiteboards, minorly partially used
-- Dry ink from months-old projects that won't erase, even with spray
-- Plenty of abandoned spreadsheets
-- An AI physical trainer named Sergeant Marge who did a phenomenal job getting me into shape while utterly failing to manage my supplement schedule
-- A giant stack of board games -- categorized, organized, priced, photographed -- never made it up on Craigslist
-- A home office that looks like a warehouse
-
-The comparison formalizes what the reader just experienced as comedy. Twenty-some years of consulting, operations, digital transformation mentioned in passing -- not as a resume, but as the setup for the knife.
-
-**The knife.** "I would never run a department the way I run my life." No systems. No delegation framework. No capacity planning. Decisions made on the fly with whatever cognitive energy was left over from the real work. At home, an intern. Not a bad intern. Not a lazy intern. An intern who had never been given the tools, the frameworks, or the authority to operate at a higher level.
-
-Close with: "That's not a discipline problem. That's a promotion problem."
+**Reader knows at entry:** The author works in a cognitively demanding AI factory. The job does something to a person. Reader does not yet know what.
+**State changes to narrate:** Scene shift from factory to home. Bridge needed -- the reader crosses from workplace to domestic space.
+**Exit state:** Domestic entropy is vivid, specific, funny. Infrastructure comparison formalizes the gap. Promotion metaphor introduced. Reader is laughing but recognizing themselves. They have NOT yet experienced the dishrag moment -- they do not know the physical cost.
 
 **Thread touches:**
 
@@ -149,231 +116,273 @@ Close with: "That's not a discipline problem. That's a promotion problem."
 - Villain [FIRST NAMED]: Implicit in the bandaid attempts (Sergeant Marge optimizing a broken system).
 - Personal/professional unified [INTRODUCED]: The infrastructure comparison IS the cross-boundary argument.
 
-**Contrast notes:** The professional background is established ONLY through the nature of the work in Beats 1-2 and the left column of the infrastructure comparison. No resume recitation. No declarations of competence. The reader watches the author be good at complex things and bad at simple things, and the juxtaposition is the argument. The comedy is the pedagogy.
+**Voice notes:** Full author voice. The bullet-point comparison is the chapter's best comedic beat. The transition from comedy to the promotion question should be abrupt. Humor sets up the knife.
 
-**Voice notes:** Full author voice -- confessional, structurally funny, specific. The bullet-point comparison is the chapter's best comedic beat. The transition from comedy to the promotion question should be abrupt. The humor sets up the knife.
+**No fixes needed.** The v4 prose for this beat is the chapter's strongest section. Preserve all specific detail (forty-three games, Mr. Clean Magic Eraser, "set in January, found in October").
 
 ---
 
-**BEAT 4: The Freaky Friday Inversion (NEW)**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
-_Target: 500-700 words_
-_Voice register: Narrative, shifting from confessional comedy to something quieter and more consequential. The chapter's pivot._
+### BEAT 3: The Dishrag Moment
 
-**Reader knows at entry:** The author runs an AI factory (Beat 1), has experienced a cognitive concussion (Beat 2), and lives in domestic entropy (Beat 3). The gap between work competence and home chaos is vivid. The reader is alarmed.
+_Working title: [WORKING TITLE]_
+_Target: 500-650 words_
+_Voice register: First person narrative, slower pacing. Physical and specific. The book's inciting incident._
 
-**State changes to narrate:**
+**Content:** "I could have lived with that gap for years." What changed was the factory. Three weeks in. The context library day. Eight hours. Came home emotionally neutral, physically wrecked. The concussion metaphor -- not metaphorical. Brain wrung out, hung on a doorknob. Slept eighteen of twenty-four hours. Thought it was covid. Tested negative twice. "A cognitive capacity problem wearing a medical costume." The ratchet realization. Close: "I didn't need a vacation. I didn't need a better morning routine. I needed a better life plan, all the way around."
 
-- The author ran a startup before the AI factory (new information — the reader doesn't know this yet)
-- The startup collapsed and the author laid off the entire company
-- The author went from CEO-who-makes-payroll to solo contractor for the first time in over a decade (this is the critical bridge — without it, the QuickBooks scene makes no sense)
-- The author eventually returned to consulting/AI work (implied, not belabored — the reader already knows the current state from Beat 1)
-
-**Exit state:** The reader has seen the same person operate as a director in one domain and an intern in the other, within the same ten days. The inversion is felt, not explained. The reader is quiet, not laughing.
-
-**This is the most important new material in the manuscript.**
-
-Open with the setup: 2020. The author is running an adult learning startup designed to provision frontline workers with leadership development opportunities based on forward-looking metrics. Over a ten-day period, all the big potential clients cancel their pilots. Some say "can we talk in three years?"
-
-The author's reading of the signal: America's largest corporations think their frontline workers either will not be working or will not survive working. This is pattern recognition -- the same cognitive skill deployed at the factory, pointed at a different set of data.
-
-What the author did next -- and this is the director-at-home sequence:
-
-- Pulled the kids out of school early
-- Planted a victory garden
-- Laid off the company and helped the employees find jobs
-- Made his wife a PowerPoint predicting race riots given the demographic makeup of frontline workers, mapping a three-year timeline for the family to prepare
-
-The PowerPoint is the single most vivid "director at home" image in the book. The form factor -- a corporate deliverable produced for a household audience -- IS the written physical comedy of this beat. He is not journaling. He is producing a strategic briefing for his family. Protect this detail at all costs.
-
-**Then the inversion's other half.** The author has just laid off the entire company. For the first time in well over a decade, no one is on payroll. No employees, no clients, no revenue to manage. Just him, alone, filing as a contractor. This identity shift — from guy-who-makes-payroll to solo operator — is the narrative bridge the reader needs before the QuickBooks disaster lands. Without it, the reader doesn't know why estimated taxes are suddenly the author's problem.
-
-The author promptly failed to have any plan for filing estimated taxes. Beyond screwed up doing his own QuickBooks. Had to call in a friend's wife to temporarily rescue him, then eventually paid someone at QuickBooks Live to untangle the mess.
-
-The person who made a predictive PowerPoint about geopolitical instability cannot do his own books. Director at home, intern at work. Same person. Same ten days.
-
-**The insight that stuck.** "In this tiny, brief glimmer, I temporarily ran my home life like my work life and my work life like my home life. Seeing the difference stuck with me when this whole AI shift began happening."
-
-This beat does not editorialize the insight. It does not say "and this proves my thesis." The story proves it. The reader can see it. Those who figure it out will self-congratulate; those who do not will marvel when it lands later.
-
-**What this beat proves structurally:**
-
-- The skills transfer. They transferred once, under crisis, in the wrong direction. The book's promise is: do it deliberately, in the right direction, without waiting for a pandemic.
-- Without infrastructure, any domain collapses. The QuickBooks disaster is home-life entropy relocated to the professional domain. Same pattern, different address.
-- The author's insight is experiential, not theoretical. He did not read about this in a book. He lived through the inversion.
+**Reader knows at entry:** The author runs a demanding AI factory (Beat 1). The author's home life is in entropy (Beat 2). The gap between professional competence and personal chaos is vivid and funny. Reader does not yet know the physical cost of the work.
+**State changes to narrate:** Temporal shift -- a specific day, three weeks into the factory job. The cognitive crash is a single incident crystallizing the ongoing pattern. No new circumstantial changes.
+**Exit state:** The reader has felt the dishrag moment physically. They understand this is not traditional burnout -- it is a cognitive capacity problem that looks medical. They know it will happen again (ratchet, not wave). The comedy has stopped. The reader is alarmed and asking: "So what do you do about it?"
 
 **Thread touches:**
 
-- Round trip [EXPLICIT]: The 2020 story IS the round trip in compressed form -- home-to-work AND work-to-home transfer, visible in a single episode.
-- Promotion metaphor [DEEPENED]: The author operated as a director at home (PowerPoint, scenario planning, resource allocation) and as an intern at work (could not manage basic financial operations). Level determines outcomes, not effort or intelligence.
-- Personal/professional unified [PROVED]: The same skills, the same brain, applied differently in each domain, with predictable results.
-- Third path [PLANTED]: The seed. Not named. Not argued. Just visible in the evidence.
+- Author's origin story [PRIMARY]: The inciting incident.
+- Death spiral [SEED]: The dishrag moment is the first symptom.
+- Round trip [SEED]: Work depleted, home received the wreckage.
 
-**Contrast notes:** The comedy here is different from Beat 3. Beat 3 is physical comedy -- the warehouse office, the board games. Beat 4 is _situational_ comedy -- a man making his wife a PowerPoint about race riots while simultaneously being unable to file his taxes. The scale of the contrast is larger and the humor is darker. The ghostwriter should let the details speak. Do not underline the irony. The PowerPoint detail and the QuickBooks detail, placed next to each other, ARE the argument.
+**Voice notes:** Most physically grounded writing in the chapter. Slow pacing. Short sentences. Sensory detail. Do NOT deflect with humor. The doorknob image is stronger than any car-crash comparison -- protect it. The covid testing sequence ("Took a test. Negative. Took another one. Negative.") adds texture -- protect it.
 
-**Voice notes:** This beat starts with narrative momentum (the startup, the clients cancelling, the signal reading) and should slow down at the PowerPoint detail. Let the reader sit with it. The QuickBooks disaster can be told faster -- the comedy of the collapse is in the speed of it. Close quietly on "seeing the difference stuck with me." No punchline on the close. This beat earns a straight landing.
-
-**Kill list for this beat:** No explicit thesis statement about skills transfer. No "and this is why the book works" editorializing. No connecting it forward to the methodology. The story does the work. The reader draws the conclusion. Those who see it feel smart. Those who do not will see it in Chapter 8.
+**No fixes needed.** The v4 prose for this beat works.
 
 ---
 
-**BEAT 5: The Death Spiral (with Complicated vs. Complex)**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
-_Target: 800-1,000 words (compressed slightly from previous 900-1,100 to offset Beat 4 addition)_
+### BEAT 4: The Death Spiral
+
+_Working title: [WORKING TITLE]_
+_Target: 800-950 words_
 _Voice register: Teaching through narrative. Two movements -- the distinction taught through examples, then the spiral mechanism._
 
-**Movement 1: Complex vs. Complicated, taught through story.**
+**Content:**
 
-The Claude 4.5-to-4.6 story: working with an agent thought to be Conan the Librarian, discovered he was overseeing four Sam the Scribes, was a fronting agent. Capabilities blew through the roof. Setup for managing them was grossly inadequate. Cannot predict 4.7 or second-order impacts. No planning survives contact with the enemy.
+Movement 1: Complex vs. complicated, taught through story. The Claude 4.5-to-4.6 story (Conan the Librarian was actually a fronting agent overseeing four Sam the Scribes). Capabilities blew through the roof. Setup grossly inadequate. Cannot predict 4.7. "That's complex." Then the hot tub. Jets stopped. Clear solution paths. "That's complicated." Pivot: "Your work is complex. Your home doesn't have to be."
 
-Then name it: "That's complex."
+Movement 2: The death spiral mechanism. Work drains capacity (genuinely complex). Come home depleted. Dishes, appointments, board games. The complicated/complex reveal: home problems respond to systems, but you are spending complex-grade effort on them. "Director-level capacity burning on intern-level tasks."
 
-The hot tub: jets stopped working on one side. Could be airlocked, panel short, covered under warranty. Multiple clear solution paths. The hot tub will not spontaneously reorganize its own plumbing while you sleep.
+**>>> FIX 1: Add one beat of pause here.** After "Director-level capacity burning on intern-level tasks," insert a one-line paragraph that lets the comedy of the mismatch register before the spiral resumes. Let the absurdity land. Then continue into the cross-boundary tax.
 
-Then name it: "That's complicated."
+The collision image: author bridging a context gap for four agents while aware the hot tub has been broken for three months and the filing cabinet might be purring. Big problems and small problems, same brain, small ones winning by volume.
 
-The pivot: "Your work is complex. Your home doesn't have to be."
-
-**Movement 2: The death spiral, powered by the distinction.**
-
-Work drains cognitive capacity -- not because the job is bad, because the job is genuinely complex. Come home with less capacity than needed. Dishes, appointments, board games. Entropy accumulates.
-
-The complicated/complex reveal: home problems are complicated, not complex. They respond to systems. But you are spending complex-grade cognitive effort on them because you have no systems. Director-level capacity on intern-level tasks.
-
-The spiral crosses back: unresolved home follows you to work. Not as crisis -- as tax. Background processes consuming bandwidth. The warehouse office, the supplement schedule, the hot tub, the purring will from 2012.
+The spiral crosses back. Unresolved home follows you to work as a tax, not a crisis. Background bandwidth consumed.
 
 "Work drains capacity. Home runs on fumes. Less capacity for work. Spiral tightens."
 
-Old playbook named briefly: "Prioritize. Delegate. Set boundaries. All of which require the cognitive capacity the spiral is actively consuming."
+Standard advice named and dismissed: "prioritize, delegate, set boundaries -- all of which require the cognitive capacity the spiral is actively consuming. It's like telling someone who's drowning to swim better."
 
-**One moment of contrast within the spiral.** When describing the cross-boundary tax, give the reader one image of the collision: the author is in the middle of bridging a context gap for the agents, making a judgment call about whether to solve a problem or let the system build and react, and somewhere in the back of his mind he is aware the hot tub has been broken for three months and there is something in his filing cabinet that might be purring. Big problems and small problems occupying the same brain simultaneously.
+**Reader knows at entry:** Factory (Beat 1), domestic entropy (Beat 2), cognitive crash (Beat 3). Reader knows the problem is real and physical. Does not yet understand the mechanism or why standard advice fails.
+**State changes to narrate:** None -- analytical, not narrative. Claude 4.6 and hot tub are illustrative examples, not circumstantial shifts. Reader's understanding changes, not the author's circumstances.
+**Exit state:** Reader understands complex vs. complicated (through examples, not definitions). Understands the death spiral mechanism. Understands why standard advice fails. Feels trapped. Asking: "Is there a way out?"
 
 **Thread touches:**
 
-- Complicated vs. complex [HIGH -- PRIMARY HOME]: Taught through narrative, not definitions-first.
-- Death spiral [INTRODUCED]: The mechanical description, cross-boundary.
-- Personal/professional unified [DEVELOPED]: The spiral proves they are one system.
+- Complicated vs. complex [HIGH -- PRIMARY HOME]: Taught through narrative.
+- Death spiral [INTRODUCED]: Mechanical description, cross-boundary.
+- Personal/professional unified [DEVELOPED]: Spiral proves they are one system.
 - Villain [NAMED]: The old playbook's answers require what the spiral consumes.
 - Round trip [EXPLICIT]: Crosses the boundary in both directions.
 
-**Contrast notes:** The death spiral beat now sits AFTER the Freaky Friday inversion. This changes its function slightly: the reader has already SEEN that the skills transfer (2020 proves it). The death spiral explains why the transfer does not happen by default -- because the spiral consumes the capacity required to make it happen. The 2020 inversion worked because crisis provided the activation energy. The spiral explains why crisis should not be the only catalyst.
+**Voice notes:** Longest remaining beat, intellectual core. Do NOT use "complex adaptive system." The hot tub callback is both funny and diagnostic. Old playbook paragraph should be brief and sharp.
 
-**Voice notes:** Longest remaining beat, intellectual core. Two movements: first is narrative/concrete, second is analytical/mechanical. Do NOT use "complex adaptive system." The hot tub callback is both funny and diagnostic. Old playbook paragraph should be brief and sharp.
-
-**Kill list for this beat:** No Boeing 747. No rainforest. No teenager. No standalone definitions. The Claude story and the hot tub jets are the only examples needed. No "Complicated vs. Complex" as section header.
+**Kill list for this beat:** No Boeing 747. No rainforest. No teenager. No standalone definitions. No "Complicated vs. Complex" as section header.
 
 ---
 
-**BEAT 6: The Third Path**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
-_Target: 500-650 words_
-_Voice register: Shifting from analytical to forward-looking. The chapter's strategic argument._
+### BEAT 5: The Third Path (with 2020 Inversion)
 
-Three paths.
+_Working title: [WORKING TITLE]_
+_Target: 700-850 words_
+_Voice register: Shifting from analytical to narrative to forward-looking. The chapter's pivot and strategic argument._
+_Promotion metaphor touch: 2 of 3._
 
-**Path One: Grind harder.** Optimize the morning routine. Get up at five. Install seventeen productivity apps. Treats the problem as a personal efficiency gap. Lasts about three weeks, exactly long enough to buy another book about habits.
+**Content:**
 
-**Path Two: Escape.** Downshift the career. Take the less demanding role. Trade income and influence for breathing room. Understandable. But it means leaving the table right when the stakes are highest.
+Three paths named. Path One: Grind harder (seventeen productivity apps, three weeks, another book about habits). Path Two: Escape (downshift, trade income for breathing room, leave the table when stakes are highest). Path Three: Build something. Infrastructure, not optimization.
 
-**Path Three: Build something.** Not optimize yourself. Not retreat. Build actual infrastructure -- the same way you would build infrastructure for a department or a product or a team.
+**>>> FIX 2: Before the 2020 story, add one bridging sentence that shifts the timeline.** The reader has been in the AI factory and the home office for the entire chapter. Now the timeline shifts to 2020 and a startup. The reader needs a temporal handhold before the cut. Something like: "Before the factory, before the agents, I ran a company."
 
-The Jevons paradox at work: the author tried to fix work first. Tab system in Conductor. Weekly "how has the world changed" check-in. Genuine improvements. But each week that capacity increased, ambition ratcheted up to match. Being able to do more meant doing more. Competitive dynamics at scale. Lost hope that the easiest win was at work.
+The 2020 story: Adult learning startup. Frontline workers. Leadership development. Every major client cancelled over ten days. "Can we talk in three years?" They did not believe the audience would exist.
 
-**The stable ground argument, now with two anchors:**
+What the author did (director at home): Pulled kids out of school. Victory garden. Laid off the company, helped employees find jobs. Then the PowerPoint. Predicted race riots. Three-year timeline. Scenarios. Preparation steps. Presented at the kitchen table, same way he had presented to boards of directors, except the audience was one person and the conference room had a fruit bowl.
 
-Anchor 1 (Jevons): Work is complex. The ground moves. Infrastructure you build this quarter might be irrelevant next quarter.
+**The PowerPoint detail is sacred.** Corporate deliverable produced for a household audience. Do not compress. Do not summarize. Let the reader sit with it.
 
-Anchor 2 (2020): "In 2020, I directed at home by instinct under pressure. It worked. But it was reactive, crisis-driven, unsustainable. This book is about doing it by design, on stable ground."
+**>>> FIX 3: Protect the contractor bridge.** Before the QuickBooks disaster, narrate the identity shift: "I'd just laid off the entire company. For the first time in well over a decade, nobody was on payroll. No employees. No clients. No revenue to manage. Just me, filing as a contractor -- something I hadn't done since my twenties." Without this, the reader does not understand why estimated taxes are suddenly the author's problem.
 
-Home is where the hot tub jets have been broken for three months and will still be the same jets next quarter. Complicated problems that respond to systems, that stay fixed once fixed, that do not reorganize themselves while you sleep.
+The QuickBooks disaster: Categories wrong, entries duplicated, the kind of mess that compounds. The person who produced a predictive geopolitical briefing could not manage his own books.
 
-Build the capacity foundation where the ground holds. Deploy that capacity to the ground that shifts.
+**>>> FIX 4: After the QuickBooks disaster, land the insight before moving on.** Three-step sequence: (1) "The skills transferred. The infrastructure didn't." (2) "But it was reactive, crisis-driven, unsustainable. The moment the crisis passed, I went right back to intern mode." (3) Bridge to Jevons: "When the AI shift started, I tried to fix work first." Do not skip from QuickBooks directly to "When the AI shift started."
+
+**Promotion metaphor touch:** Within the 2020 inversion landing or the "reactive, crisis-driven" passage, name the level shift explicitly. The author operated as a director at home (PowerPoint, scenario planning) and as an intern at work (QuickBooks). Same person, same ten days, different operating levels, predictable results. The word "promoted" or "promotion" does not need to appear -- the level language (director/intern) carries it. But the reader should feel the echo of Beat 2's "That's a promotion problem."
+
+**>>> FIX 5: Compress the Jevons section.** The parenthetical definition ("when you make a resource more efficient, you don't use less of it. You use more") is doing double duty as definition and punchline -- it works. But the competitive dynamics sentence that follows can be compressed to one clause. "And everyone in the industry was getting the same tools" or equivalent. Do not belabor.
+
+The Jevons failure: tried to fix work first. Tab system. Weekly check-in. Genuine improvements. "It helped. And then it didn't." Each week capacity increased, ambition ratcheted to match. Efficiency did not save capacity -- it consumed more of it.
+
+Close: "Work is complex. Work shifts. The ground moves. The infrastructure you build this quarter might be irrelevant next quarter."
+
+**Reader knows at entry:** The trap, the mechanism, why standard advice fails. Reader needs an exit.
+**State changes to narrate:** CRITICAL BEAT FOR SEQUENCING. Multiple changes:
+
+1. Three paths named (conceptual, not circumstantial)
+2. New timeline: author ran a startup before the AI factory (reader does not know this -- narrate it)
+3. Startup collapses (clients cancel -- scene needed)
+4. Author transitions from CEO to solo contractor (the QuickBooks bridge)
+5. Author returns to consulting/AI work (implied, not belabored)
+6. "Tried to fix work first" introduces Jevons through experience
+   **Exit state:** Reader has seen evidence the skills transfer works (2020 PowerPoint) and that without infrastructure it collapses (QuickBooks + reversion). Reader has seen that fixing work first fails (Jevons). Ready for the strategic argument about where to build.
 
 **Thread touches:**
 
 - Third path [FIRST TOUCH]: Named as the author's choice.
-- Stable ground argument [HIGH -- PRIMARY HOME]: Full strategic argument with two experiential anchors.
-- Essentialist answer [SEEDED]: "Not optimize, build." Embryonic form, fully crystallized in Ch 3.
-- Villain [CONTRASTED]: Path One is the villain's prescription. Path Two is the villain's alternative.
+- Round trip [EXPLICIT]: The 2020 story IS the round trip in compressed form.
+- Promotion metaphor [DEEPENED]: Director at home, intern at work. Level determines outcomes.
+- Personal/professional unified [PROVED]: Same skills, same brain, different domains, predictable results.
 
-**Contrast notes:** The stable ground argument is now stronger because the reader has two pieces of evidence: the Jevons paradox proving work is the wrong place to build, and the 2020 inversion proving home is the right place to build. The argument is experiential, not theoretical.
+**Voice notes:** The PowerPoint comedy is situational (darker, larger scale) vs. Beat 2's physical comedy (board games, whiteboards). Let details speak. Do not underline the irony. Close quietly on "the ground moves" -- no punchline.
 
-**Voice notes:** Forward-leaning energy. The Jevons paragraph can be compressed -- the reader does not need the full economic explanation, just the felt experience. "It helped. And then it didn't." is a strong opening for that sequence.
+**Kill list for this beat:** No explicit thesis statement about skills transfer. No "and this is why the book works." No connecting forward to the methodology -- that is Chapter 8's job. The story proves it, the reader draws the conclusion.
 
 ---
 
-**BEAT 7: The Setup**
-_Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]_
-_Target: 200-300 words_
-_Voice register: Brief, direct, forward-looking._
+### BEAT 6: The Stable Ground Argument
 
-"That's not a discipline problem. That's a promotion problem."
+_Working title: [WORKING TITLE]_
+_Target: 350-450 words_
+_Voice register: Analytical/strategic, grounded by specific images from earlier beats._
 
-This book is the field report from what happened when the author stopped treating personal life as the thing that absorbs leftover capacity from work, and started treating it as the foundation that generates capacity for work.
+**Content:** "Home is different." Home is where the hot tub jets have been broken for three months and will still be the same jets next quarter. Complicated problems that respond to systems. Infrastructure you build today is still standing in October.
 
-Forward look to Chapter 2: seeing the trap clearly means seeing it in two ways -- where your time goes and what it costs you. Two audit tools. Diagnosis before treatment.
+"That's not a small distinction. That's the whole argument."
 
-"Because the first thing a director does, before changing anything, is look at the numbers."
+Two anchors: (1) tried to build at work first, each week capabilities changed and made it irrelevant; (2) in 2020, directed at home by instinct under pressure -- once, accidentally. This book is about doing it on purpose.
+
+The death spiral logic: if it crosses the boundary, the intervention point is the side where fixes hold. "You don't pour a foundation on a fault line."
+
+"Every system I've built for a client started with the same question: where is the stable ground?" Twenty years, other people's organizations. Cognitive concussion and unsold board games to realize he had never asked it about his own life.
+
+"Build the capacity foundation where the ground holds. Deploy that capacity to the ground that shifts. Not the other way around."
+
+**Reader knows at entry:** Everything from Beats 1-5. Third path named. Evidence for and against. Reader needs the strategic principle.
+**State changes to narrate:** None -- pure argument.
+**Exit state:** Reader understands the stable ground argument: build on the side that does not shift (home), deploy to the side that does (work). Feels hope grounded in strategy, not motivation.
 
 **Thread touches:**
 
-- Promotion metaphor [LANDED]: The chapter's closing image.
+- Stable ground argument [HIGH -- PRIMARY HOME]: Full strategic argument with two experiential anchors.
+- Essentialist answer [SEEDED]: "Not optimize, build." Embryonic form, fully crystallized in Ch 3.
+- Villain [CONTRASTED]: Path One is the villain's prescription.
+
+**Voice notes:** The "cognitive concussion and a stack of unsold board games" line grounds the abstraction in the chapter's specific images. Protect it. Risk here is TED-talk register -- the grounding prevents it.
+
+**No fixes needed.** The v4 prose for this beat is tight.
+
+---
+
+### BEAT 7: The Setup
+
+_Working title: [WORKING TITLE]_
+_Target: 250-350 words_
+_Voice register: Brief, direct, forward-looking. Confessional warmth in the middle, clean close._
+_Promotion metaphor touch: 3 of 3._
+
+**Content:** "This book is the field report."
+
+Built systems where there were none. Stopped making real-time judgment calls about things that could run on infrastructure. Learned to see where time goes and what it costs.
+
+**>>> FIX 6: Restore the v4 authenticity paragraph.** "I still have the executive function of a garden hose. I still forget the supplements. The whiteboards are clean now, but only because I replaced them -- the old ones were beyond saving. What changed wasn't me. What changed was the infrastructure around me. I stopped asking myself to perform at a level I'm not wired for and started building systems that perform at that level whether I show up sharp or show up useless. The intern didn't get disciplined. The intern got promoted." This is the chapter's voice payoff, the clearest thesis-in-action, and the third promotion metaphor touch. Do not cut it.
+
+Forward look: seeing the trap means seeing it two ways -- where your time goes and what it costs you. Two diagnostic tools. Audit tools, not solutions. Diagnosis before treatment.
+
+"Because the first thing a director does, before changing anything, is look at the numbers."
+
+**Reader knows at entry:** The trap, the mechanism, the exit, and the strategic principle.
+**State changes to narrate:** None -- forward look.
+**Exit state:** Reader knows the book is a field report. Knows the next chapter gives diagnostic tools. Ready to be audited. "The first thing a director does, before changing anything, is look at the numbers."
+
+**Thread touches:**
+
+- Promotion metaphor [LANDED]: "The intern got promoted" + "the first thing a director does."
 
 **Voice notes:** Brief. Do not overwrite the close. The chapter has done its work. Get out.
 
 ---
 
+### Consolidated Fix List
+
+| Fix | Beat | Instruction                                                                                                                                                                                |
+| --- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | 4    | After "Director-level capacity burning on intern-level tasks," add one-line paragraph letting the mismatch register as comedy before the spiral resumes                                    |
+| 2   | 5    | Before the 2020 story, add one bridging sentence shifting the timeline ("Before the factory, before the agents, I ran a company" or equivalent)                                            |
+| 3   | 5    | Protect the contractor bridge: "For the first time in well over a decade, nobody was on payroll..." -- do not cut                                                                          |
+| 4   | 5    | After QuickBooks, land the insight in three steps: (1) "The skills transferred. The infrastructure didn't." (2) "But it was reactive, crisis-driven, unsustainable." (3) Bridge to Jevons. |
+| 5   | 5    | Compress the competitive dynamics sentence after the Jevons definition to one clause                                                                                                       |
+| 6   | 7    | Restore the "executive function of a garden hose" paragraph from v4 -- this is the chapter's voice payoff and third promotion-metaphor touch                                               |
+| 7   | All  | Ratify resequencing: Factory Floor (1) -> Intern Confession (2) -> Dishrag Moment (3). The v4 draft already reflects this order.                                                           |
+
+---
+
+### Promotion Metaphor Map (3 Touches)
+
+| Touch          | Beat | Line/Moment                                                                                                                                          |
+| -------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 (Introduced) | 2    | "That's not a discipline problem. That's a promotion problem."                                                                                       |
+| 2 (Deepened)   | 5    | 2020 inversion: director at home, intern at work. Level determines outcomes. Level language carries the metaphor.                                    |
+| 3 (Landed)     | 7    | "The intern didn't get disciplined. The intern got promoted." + "The first thing a director does, before changing anything, is look at the numbers." |
+
+---
+
 ### Thread Verification
 
-| Thread                         | Beat             | Treatment                                                                                                      |
-| ------------------------------ | ---------------- | -------------------------------------------------------------------------------------------------------------- |
-| Stable ground argument [HIGH]  | Beat 6           | Full strategic argument with two anchors: Jevons paradox + 2020 inversion.                                     |
-| Complicated vs. complex [HIGH] | Beat 5           | Taught through narrative (Claude 4.5→4.6 = complex, hot tub = complicated). Woven into death spiral.           |
-| Author's origin story          | Beats 1, 2, 3, 4 | Factory floor (1), dishrag moment (2), intern confession (3), 2020 inversion (4). Braided.                     |
-| Death spiral introduced        | Beat 5           | Mechanical description with complicated/complex as the explanatory engine. Sits after the Freaky Friday proof. |
-| Promotion metaphor introduced  | Beats 3, 4, 7    | Introduced in 3, deepened in 4 (2020 inversion), landed in 7.                                                  |
-| Third path [FIRST TOUCH]       | Beat 6           | Named. Grind / escape / build.                                                                                 |
-| Villain [INTRODUCED]           | Beats 3, 5, 6    | Implicit in bandaid attempts (3), named in old playbook (5), contrasted with third path (6).                   |
-| Round trip [SEED → EXPLICIT]   | Beats 2, 4, 5    | Seeded in dishrag (2), explicit in 2020 inversion (4), explicit in death spiral (5).                           |
-| Personal/professional unified  | Beats 3, 4, 5    | Infrastructure comparison (3), 2020 inversion proves it (4), death spiral develops it (5).                     |
+| Thread                          | Beat(s) | Treatment                                                  |
+| ------------------------------- | ------- | ---------------------------------------------------------- |
+| Stable ground argument [HIGH]   | 6       | Full argument, two experiential anchors                    |
+| Complicated vs. complex [HIGH]  | 4       | Taught through Claude/hot tub narrative, woven into spiral |
+| Personal/professional unified   | 2, 4, 5 | Infrastructure comparison, spiral crossing, 2020 inversion |
+| Third path [FIRST TOUCH]        | 5       | Named, with evidence                                       |
+| Villain [INTRODUCED]            | 2, 4, 5 | Bandaid attempts, standard advice, Paths 1-2               |
+| Round trip [SEED -> EXPLICIT]   | 3, 4, 5 | Dishrag seed, spiral crossing, 2020 inversion              |
+| Promotion metaphor [INTRODUCED] | 2, 5, 7 | Three touches mapped above                                 |
+| Death spiral [INTRODUCED]       | 4       | Mechanical description, cross-boundary                     |
+
+---
 
 ### Kill List
 
-- Standalone complicated vs. complex section (taught inside death spiral instead)
-- Resume recitation ("twenty-five years of director-level experience")
-- Extended "this book is the field report" passage (Beat 7 handles in under 300 words)
+- Standalone complicated vs. complex section (taught inside death spiral)
+- Resume recitation or declarations of competence
+- Extended "this book is the field report" passage (Beat 7 handles in under 350 words)
 - Industrial revolution history
 - "Complicated vs. Complex" as section header
 - Boeing 747, rainforest, teenager as examples
-- Any declarative statement of credentials
-- Explicit thesis statement about skills transfer in Beat 4
-- Editorializing of the 2020 story's implications -- the story proves it, the reader draws the conclusion
+- Explicit thesis about skills transfer in Beat 5
+- Editorializing of the 2020 story's implications
 - The word "lenses" anywhere
-- Explicit connection from 2020 to the book's methodology -- that is Chapter 8's job
+- Explicit connection from 2020 to the methodology (Chapter 8's job)
+
+---
+
+### Ghostwriter Notes
+
+- **The v4 draft is the source text.** This is a fix-and-polish pass, not a rewrite. The first three beats need no structural changes. Beats 4-7 need the six specific fixes applied.
+- **The contrast pattern is the structural engine.** Juxtaposition does the arguing. Do not explain the gap. Perform it.
+- **The PowerPoint detail is sacred.** Do not compress, summarize, or editorialize.
+- **Competence is shown through the kind of problem being solved, never declared.**
+- **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
+- **Profanity budget:** One instance available. The death spiral or entropy descriptions are natural placement points.
+- **Book title is "Boss at Work | Intern at Home: Promote Yourself."** The promotion metaphor is the central framework throughout.
 
 ### Failure Mode Prevention
 
 **Multi-agenda:** Six threads is the maximum. Every thread has a specific beat assignment. No beat carries more than four. The most common drift will be seeding the essentialist answer too heavily -- Beat 6 seeds it lightly, and that is enough.
 
-**Telling, not showing:** The dishrag moment (Beat 2), the infrastructure comparison (Beat 3), and the 2020 inversion (Beat 4) are the primary evidence. If any passage makes a claim without a scene or example, flag it. The contrast pattern is the structural engine -- juxtaposition does the arguing, not declarations.
+**Telling, not showing:** The dishrag moment (Beat 3), the infrastructure comparison (Beat 2), and the 2020 inversion (Beat 5) are the primary evidence. If any passage makes a claim without a scene or example, flag it. The contrast pattern is the structural engine -- juxtaposition does the arguing, not declarations.
 
-**Selling, not teaching:** The third path (Beat 6) risks reading as a pitch. The stable ground argument with its two experiential anchors is the defense.
+**Selling, not teaching:** The stable ground argument (Beat 6) risks reading as a pitch. The two experiential anchors are the defense.
 
-**Repeating, not advancing:** Each beat must advance. Beat 1 orients. Beat 2 hooks. Beat 3 confesses. Beat 4 pivots. Beat 5 explains. Beat 6 proposes. Beat 7 launches.
+**Repeating, not advancing:** Each beat must advance. Beat 1 orients. Beat 2 confesses. Beat 3 hooks. Beat 4 explains. Beat 5 pivots. Beat 6 proposes. Beat 7 launches.
 
 ### Emotional Shape
 
-Curiosity (Beat 1) → alarm (Beat 2) → recognition through laughter (Beat 3) → quiet revelation (Beat 4) → understanding (Beat 5) → hope grounded in strategy (Beat 6) → momentum (Beat 7)
-
-### Ghostwriter Notes
-
-- **The contrast pattern is the chapter's structural engine.** Every beat after Beat 1 should touch both worlds -- work competence and home failure. The juxtaposition does the arguing. Do not explain the gap. Perform it.
-- **Written physical comedy is the register for the contrast.** Big problems wisely, small problems foolishly. The reader should laugh at the gap before they understand the mechanism. The comedy is the pedagogy.
-- **Beat 4 (Freaky Friday) is the chapter's pivot.** Everything before it shows the gap. Beat 4 proves the gap can close. Everything after it explains the mechanism and the strategy. The tonal shift is important -- Beats 1-3 are dispatch/comedy, Beat 4 is narrative with a quiet landing, Beats 5-7 are analytical/strategic.
-- **The PowerPoint detail is sacred.** It is the single most vivid image of "porting yourself" in the book. Do not compress it. Do not summarize it. Let the reader sit with the image of a man making his wife a strategic briefing about geopolitical risk.
-- **Competence is shown through the KIND of problem being solved, never through declarations.** "I navigated a fog of problems that might also be features" shows altitude. "I am a director-level professional with twenty-five years of experience" does not. The reader infers competence from the texture of the work.
-- **Section titles are working titles only.** Mark each section heading as [WORKING TITLE]. Do not propose final titles. Zelda will propose titles from the drafted prose after delivery.
-- **Profanity budget:** One instance available. The death spiral or the 2020 story are natural placement points. Author's call on the specific word, but "shit show" or equivalent would land in the entropy descriptions.
+Curiosity (Beat 1) → recognition through laughter (Beat 2) → alarm (Beat 3) → understanding/trapped (Beat 4) → cautious hope (Beat 5) → strategic hope (Beat 6) → momentum (Beat 7)
 
 ---
 
@@ -385,7 +394,7 @@ Two audit tools reveal why you are depleted despite being busy: bronze/silver/go
 
 ### Chapter Role in the Book
 
-This is the second half of Part I: The Trap. Chapter 1 made the reader feel the trap and name it. Chapter 2 hands them the instruments to see it operating in their own life. The reader arrives having felt the dishrag moment, understood complicated vs. complex, seen the death spiral mechanically, and been promised "two diagnostic tools." This chapter delivers on that promise immediately.
+This is the second half of Part I: The Trap. Chapter 1 made the reader feel the trap, name it, and see the exit. The reader arrives having watched the author navigate an AI factory (curiosity), confessed to domestic entropy with the infrastructure comparison (recognition through laughter), crashed on the doorknob (alarm), learned complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), seen the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), heard the stable ground argument anchored in Jevons and 2020 (strategic hope), and been promised two diagnostic tools (momentum). The reader carries the promotion metaphor across three touches ("That's a promotion problem" / director-at-home, intern-at-work / "The intern got promoted"). They know the book is a field report. They have been told "the first thing a director does, before changing anything, is look at the numbers." This chapter delivers on that promise immediately.
 
 The chapter does four things:
 
@@ -428,12 +437,16 @@ Then the pivot to confession: "Here's what I found when I finally ran the number
 
 Do NOT define bronze/silver/gold or red/gray/blue here. Just name that there are two tools. Definitions come in Beats 2 and 3.
 
+**Reader knows at entry:** The reader has lived through seven beats of Chapter 1. They watched the author navigate an AI factory (curiosity), confess to domestic entropy with the infrastructure comparison (recognition through laughter), crash on the doorknob (alarm), learn complicated vs. complex through the Claude 4.6 and hot tub stories inside the death spiral (understanding), see the 2020 Freaky Friday inversion prove that skills transfer but infrastructure is required (cautious hope), hear the stable ground argument anchored in Jevons and 2020 (strategic hope), and receive the promise of two diagnostic tools (momentum). The reader knows the book is a field report. They know the promotion metaphor -- "That's not a discipline problem. That's a promotion problem." They have been told "the first thing a director does, before changing anything, is look at the numbers." They are ready to be audited.
+**State changes to narrate:** The author's reluctance to run the audit on himself (new emotional information -- the reader has seen competence and confidence; now they see vulnerability of self-examination). Both tools named briefly but not yet defined. The OS metaphor introduced -- one sentence, one touch. The pivot from promise to delivery: Ch 1 promised two tools, this beat opens the box.
+**Exit state:** The reader knows two tools exist, knows the author resisted looking at his own numbers, and is about to hear the results. The director frame is established ("a director audits before acting"). The OS metaphor has been planted once. The reader's emotional state is engaged anticipation -- the momentum from Ch 1's close has been channeled into "show me the numbers."
+
 **Thread touches:**
 
 - OS metaphor [MED -- INTRODUCED]: "Dashboard for your personal operating system." One touch. One metaphor system. Done.
 - Director moment [INTRODUCED]: "A director audits before acting."
 
-**Voice notes:** The opening should confess reluctance before stating the principle. Energy of someone who finally opened the spreadsheet they had been avoiding. Clean, forward-moving. No repetition of Ch 1's arguments.
+**Voice notes:** The opening should confess reluctance before stating the principle. Energy of someone who finally opened the spreadsheet they had been avoiding. Clean, forward-moving. No repetition of Ch 1's arguments. Note: the person who made a PowerPoint about geopolitical risk for his wife is afraid to look at his own time allocation -- the contrast is specific and should register.
 
 **Kill list for this beat:** "Error log" (competing metaphor). "Diagnostic readout" unless it replaces "dashboard" entirely (pick one). Any use of "lens/lenses."
 
@@ -443,6 +456,10 @@ Do NOT define bronze/silver/gold or red/gray/blue here. Just name that there are
 _Target: 800-1,000 words_
 _Voice register: Teaching through the author's lived experience. Definitions emerge from the specific, not from taxonomy._
 _Source: ~60% from existing chapter-2.md, rewritten for voice_
+
+**Reader knows at entry:** The audit has opened. The reader knows two tools exist and that the author resisted looking. They are primed for confession. They carry the intern/director contrast from Ch 1 -- the infrastructure comparison ("process infrastructure for my favorite client" vs. "process infrastructure for my own life") is still vivid. They have NOT yet heard bronze, silver, or gold defined.
+**State changes to narrate:** Bronze defined through the author's 90% result (maintenance, prevents decay, infinite). Gold defined through the author's 10% result (the board games -- categorized, organized, priced, photographed, never listed -- a CALLBACK to Ch 1 Beat 2). Silver defined through the author's 0% result -- the revelation: working ON your life vs. IN it. The "0% silver" confession is the emotional peak of this beat. The essentialist answer seeded through silver ("build differently" embryonic form).
+**Exit state:** The reader can name bronze, silver, and gold. They know the author's split: 90/10/0. They understand that silver is the missing ingredient -- the thing that would create leverage. They feel the strategic implications of zero silver. They have a personal/professional bridge ("working in/on your business" and "priding myself on not being a task-level performer at work"). The reader is not yet alarmed about their own situation -- they are recognizing themselves through the author's confession.
 
 **Bronze first.** Open with the author's audit result: "I was 90% bronze." Define bronze through that context: maintenance, prevents decay, does not advance anything. Bronze is infinite -- there is always more. (Kill "potentially infinite" -- academic throat-clearing. Just say it: "Bronze is infinite.")
 
@@ -473,6 +490,10 @@ Close: "The person who drowns in bronze, dreams of gold, and never invests in si
 _Target: 900-1,100 words_
 _Voice register: Confession first, then teaching. Slightly more intense because bright red is counterintuitive._
 _Source: ~40% from existing chapter-2.md, heavily restructured_
+
+**Reader knows at entry:** The reader understands the first audit tool (bronze/silver/gold). They know 90/10/0. They know silver is the missing ingredient. They carry from Ch 1 the experience of the factory (pure cognitive demand) and the dishrag moment (what it feels like when the bill comes due). They have NOT yet heard red, gray, or blue defined.
+**State changes to narrate:** The strategy game story as confession (came home defeated, played four hours, woke up feeling like chain-smoking at a slot machine). The question: why did something that felt like winning produce a morning that felt like losing? Dopamine science compressed (three to four sentences, Csikszentmihalyi in footnote only). Dark red defined (the expected drains). Bright red defined as the trap (the author's factory work -- eight hours of judgment calls, feels like peak performance, empties the tank). This is a CALLBACK to Ch 1 Beats 1 and 3 -- the reader has already felt the factory and the dishrag, but now they have a NAME for the mechanism. Blue defined (passes the morning-after test, leaves you better). Gray defined (neutral until it puts on a costume). The morning-after test as the practical tool resolving gray/blue confusion.
+**Exit state:** The reader can name red (dark and bright), gray, and blue. They understand that dopamine lies -- engagement is not restoration. They have the morning-after test as a calibration tool. The bright red reframe is the biggest state change: the reader now understands WHY the dishrag moment happened (pure bright red at work, day after day). The emotional state is counterintuitive alarm -- the thing that feels best is the most dangerous.
 
 **IMPORTANT STRUCTURAL CHANGE: This beat is reordered from the previous draft.** The previous draft opened with a dopamine lecture, then gave the work anecdote, then the strategy game. The revised beat flips the order: lead with the strategy game story (confession), then give the science in compressed form (teaching), then define the colors through the author's experience.
 
@@ -516,6 +537,10 @@ Bright red is the trap. The author's bright red: the product owner role at the f
 _Target: 700-900 words_
 _Voice register: Analytical but personal. The chapter's centerpiece -- where both audit results collide._
 _Source: ~30% adapted from existing chapter-2.md; 70% new_
+
+**Reader knows at entry:** The reader has both audit tools. They know 90/10/0 (bronze/silver/gold) and they know bright red, dark red, gray, blue. They carry from Ch 1 the MECHANICAL description of the death spiral (Beat 4: "Work drains capacity. Home runs on fumes. Less capacity for work. Spiral tightens.") and the complicated/complex distinction taught through Claude 4.6 and the hot tub. They have NOT yet seen both audit results applied simultaneously to the same life.
+**State changes to narrate:** The collision: neither audit shows the full picture alone, but together they reveal a system eating itself. 90% bronze + no silver = bronze stays at 90% forever. Job is pure bright red + come home wrung out = "the doorknob feeling from Chapter 1" (callback, not repetition). Complex-grade cognitive effort on complicated problems (echo of Ch 1's complicated/complex distinction -- the reader already knows this from the Claude 4.6 and hot tub stories; this is the CONSEQUENCE applied to their daily life). Bronze that festers becomes dark red (the gutter/fascia boards escalation). Gray masquerading as blue (the strategy game callback). The cross-boundary beat: spiral crosses back to work as background tax. Old playbook dismissed briefly (two sentences).
+**Exit state:** The reader has seen both audit results applied simultaneously to one life and watched the system eat itself. The death spiral is no longer mechanical (as in Ch 1) but diagnostic -- the reader can now see it operating in their own numbers. The cross-boundary beat has proved that personal and professional are one system. The old playbook has been dismissed. The reader is sitting in the bleakest moment of Part I. No exit offered yet.
 
 **The collision.** "Here's what neither audit shows you alone."
 
@@ -562,6 +587,10 @@ _Target: 500-650 words_
 _Voice register: Instructional with author's experience. One exercise, not two. Framed as "what the audit turns up."_
 _Source: ~40% adapted from existing chapter-2.md; 60% new_
 
+**Reader knows at entry:** The reader has both tools defined and has watched the death spiral demonstrate them in collision. They are in the bleakest emotional position of Part I. They have not yet applied the tools to their own life. They carry the author's specific results (90/10/0, pure bright red, gray masquerading as blue) as reference points.
+**State changes to narrate:** The reader runs both audits on their own last week (not the planned version -- what actually happened). Five or six activities, two questions each (what did this time build? what did it cost me?). What the audit typically turns up -- combinations described as findings, not taxonomy. The author's own audit results summarized in one paragraph as the anchor. Director frame reinforced: "A director reads the numbers. Even the bad ones."
+**Exit state:** The reader has applied both diagnostic tools to their own life. They have seen their own numbers. They have a personal death spiral visible (or at least the patterns that feed one). The exercise has unified personal and professional domains on one grid. The reader is sober but no longer helpless -- they have vocabulary and data. The emotional state is sober reckoning.
+
 **Transition from Beat 4 should be tight -- no section break that feels like a new lecture.** The spiral just tightened. Now: "Take your last week. Not the planned version -- what actually happened. Run both audits."
 
 Pick five or six activities from both work and home. For each, ask two questions:
@@ -596,6 +625,10 @@ Close: "A director reads the numbers. Even the bad ones. Especially the bad ones
 _Target: 250-350 words_
 _Voice register: Transitional. Closing Part I. The thesis statement lands here and only here._
 _Source: 100% new_
+
+**Reader knows at entry:** The reader has their own audit results. They have vocabulary (bronze/silver/gold, red/gray/blue), mechanism (the death spiral), and data (their own last week). They carry from Ch 1 the promise of a third path (grind / escape / build) and the stable ground argument. They are sober, ready, looking for the next move.
+**State changes to narrate:** The thesis statement, once: "The answer isn't to do more. It's not even to do less. It's to build differently." Director frame summarized: you looked at the numbers, now act on one thing. Setup for Ch 3: find one thorn, pull it in 72 hours -- "your first act as a director of your own life." Close Part I: "Part I showed you the trap. Part II shows you it breaks."
+**Exit state:** The reader has heard the thesis. They know the next move (find a thorn, pull it in 72 hours). The essentialist answer has been seeded -- "build differently." The promotion metaphor is active ("your first act as a director"). The reader's emotional state is directed momentum -- they have been in the trap, they have seen their own numbers, and they have been given a first assignment that is concrete and time-bound.
 
 **The thesis, once.** "The answer isn't to do more. It's not even to do less. It's to build differently."
 

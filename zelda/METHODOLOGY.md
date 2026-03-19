@@ -266,6 +266,8 @@ You have a chapter-by-chapter outline where: every chapter has a clear thesis co
 
 ### The Chapter Scorecard
 
+> **Before scoring a chapter, check the beat map status.** Read the best available source for the chapter being scored AND the chapter immediately preceding it. If the preceding chapter's beat map has been reconciled since the current chapter's blueprint was written, verify entry assumptions before scoring.
+
 For each submitted chapter, evaluate:
 
 | Dimension                 | Question                                                     | Score (1–5) |
@@ -406,6 +408,28 @@ The blueprint:
 - Identifies all author-input-needed moments
 - Stays within the chapter's word budget
 - Has been reviewed by the author before the ghostwriter begins
+
+### Beat Map Reconciliation (Post-Draft)
+
+**When:** After a chapter draft has been through at least one round of revision and the author considers the narrative sequence stable. This is not a new phase -- it's a housekeeping step that closes the loop on Phase 5.5.
+
+**What:** Update the chapter's beat map in `BLUEPRINTS.md` to reflect what the prose actually does, not what the blueprint originally planned. The beat map starts as a plan. After drafting, it becomes a record.
+
+**Why:** Downstream chapters set their entry assumptions by looking back at upstream beat maps. If Ch 3's "Reader knows at entry" is built from Ch 2's original plan rather than Ch 2's actual prose, the chain breaks at the seam. The maps must reflect reality, or they mislead the next ghostwriter handoff.
+
+**What to update:**
+
+1. **Transition specs.** Reconcile "Reader knows at entry," "State changes to narrate," and "Exit state" for every beat against the actual prose. If the draft added, cut, or reordered material, update the specs to match.
+2. **Thread touches.** Note which threads actually landed in the prose vs. which were planned but cut or deferred. Mark deferred threads so downstream chapters know they're still unplaced.
+3. **Beat content.** If beats were merged, split, or substantially rewritten, update the beat descriptions. The map should be readable as a summary of the chapter as-written.
+4. **Word counts.** Replace target ranges with actual counts.
+5. **Kill list.** Add anything that was cut during revision. This prevents material from creeping back in during future edits.
+
+**What NOT to update:** The chapter thesis, thread verification table, emotional shape, and failure mode prevention sections stay as editorial intent unless Zelda explicitly revises them. These are analytical tools, not descriptive records.
+
+**Mark it.** Add a status line at the top of the chapter's blueprint section:
+
+> **Map status:** Plan (pre-draft) | Draft-reconciled [date] | Final [date]
 
 ---
 
