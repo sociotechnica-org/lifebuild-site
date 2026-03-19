@@ -279,7 +279,7 @@ For each submitted chapter, evaluate:
 | **Reader transformation** | Does the reader's understanding change from start to finish? |             |
 | **Necessity**             | If removed, would the controlling idea be weakened?          |             |
 
-### The Five Self-Help Failure Modes (Andrea Stein / Gotham Ghostwriters)
+### The Six Self-Help Failure Modes (Andrea Stein / Gotham Ghostwriters + editorial addition)
 
 Flag chapters that fall into:
 
@@ -288,14 +288,24 @@ Flag chapters that fall into:
 3. **Repeating, not advancing** — Restating the same point instead of building on it
 4. **Dropping, not developing** — Introducing concepts then abandoning them
 5. **Multi-agenda** — The chapter tries to do too many things at once
+6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: a character's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
+
+### Narrative Sequencing Verification (Post-Ghostwriter)
+
+After a chapter draft is delivered, verify narrative sequencing in addition to the scorecard:
+
+1. **Were blueprint transition specs honored?** Check each section's "Reader knows at entry," "State changes to narrate," and "Exit state" against the actual prose. Flag any section where the ghostwriter skipped a specified state change.
+2. **Are there intra-beat teleportations the blueprint didn't anticipate?** The blueprint can't predict every micro-transition inside a beat. Read the draft as-if-naive: does every sentence follow from what came before? Flag any moment where the reader would think "wait, how did we get here?"
+3. **Do transitions between beats feel intentional?** The last image of one beat and the first image of the next should create a felt connection. Flag seams that feel accidental.
 
 ### Feedback Format
 
 1. State the chapter's thesis as you understand it (one sentence)
 2. Score each dimension with specific textual evidence
-3. Identify which failure modes apply (if any)
-4. Give 2–3 specific, actionable revision directives
-5. Note any "kill your darlings" candidates — material that's well-written but off-theme
+3. Identify which failure modes apply (if any) — including #6 (advancing without narrating)
+4. Verify narrative sequencing (transition specs honored, no intra-beat teleportation)
+5. Give 2–3 specific, actionable revision directives
+6. Note any "kill your darlings" candidates — material that's well-written but off-theme
 
 ### Phase 5 Exit Criteria
 
@@ -334,13 +344,16 @@ For each chapter, produce:
 - **Voice register:** [First person narrative / second person teaching / mixed]
 - **Word target:** [Approximate]
 - **Carries forward from:** [Existing prose reference, or "new"]
+- **Reader knows at entry:** [What the reader understands at the start of this section — what prior sections have established]
+- **State changes to narrate:** [Any changes in the character's circumstances, setting, or situation that occur in this section. Each one needs at least a sentence of scene-setting. If none, write "None."]
+- **Exit state:** [What the reader knows and feels at the end of this section. This becomes the next section's "Reader knows at entry."]
 - **Key beats:**
   - [Specific moment, line, or move this section must land]
   - [Thread assignment this section serves]
 
 ### Section 2: [Section title]
 
-[Same structure]
+[Same structure — including Reader knows at entry, State changes to narrate, and Exit state]
 
 [Continue for all sections]
 
@@ -381,6 +394,8 @@ For each chapter, produce:
 5. **Note comedy placement.** Not every section should be funny. The blueprint should indicate where structural comedy serves the argument (usually narrative sections and transitions) versus where straight delivery is more effective (usually core framework definitions and exercises).
 
 6. **Respect the word budget.** Chapter targets are 4,000-6,000 words. If the section word targets sum to more than the chapter target, the blueprint is overscoped. Cut before writing, not after.
+
+7. **Specify narrative transitions.** Every section must include three fields: "Reader knows at entry" (what prior sections established), "State changes to narrate" (circumstance changes that need scene-setting), and "Exit state" (what the reader knows and feels afterward). These prevent narrative teleportation — the failure mode where the argument advances but the story skips a step. The ghostwriter follows these specs; Zelda verifies them in review.
 
 ### Phase 5.5 Exit Criteria
 
@@ -508,7 +523,7 @@ The reverse outline shows: red (controlling idea) in every chapter, no rogue or 
 - **Shawn Coyne**, _The Story Grid_ — The controlling idea framework, Big Idea nonfiction structure
 - **Steven Pressfield**, _Nobody Wants to Read Your Sh\*t_ — Theme-first method, concept/theme/structure
 - **William Zinsser**, _On Writing Well_ — The one-thought rule
-- **Andrea Stein / Gotham Ghostwriters** — Five self-help failure modes
+- **Andrea Stein / Gotham Ghostwriters** — Five self-help failure modes (sixth — advancing without narrating — added editorially for this project)
 - **Jane Friedman** — Nonfiction book idea testing, title development
 - **Megan Close Zavala** (Turn the Page Book Coaching) — NC-based developmental editor, self-help specialization
 - **Nancy L. Erickson** (The Book Professor) — Theme discovery for nonfiction
