@@ -290,7 +290,7 @@ Flag chapters that fall into:
 3. **Repeating, not advancing** — Restating the same point instead of building on it
 4. **Dropping, not developing** — Introducing concepts then abandoning them
 5. **Multi-agenda** — The chapter tries to do too many things at once
-6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: a character's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
+6. **Advancing without narrating** — The argument moves forward but the story skips a step. The reader is asked to understand a situation before the narrative has taken them there. Common triggers: the author's circumstances change between paragraphs with no scene (lost a job → filing taxes as a contractor, with nothing in between); a consequence is introduced before its cause has been established; analysis references an event the reader hasn't experienced yet. **Detection:** Read the draft as if you know nothing beyond what's been written so far. Every sentence that requires information the reader hasn't been given is a narrative teleportation. **Fix:** Write the missing scene, or reorder so the information arrives before the reference.
 
 ### Narrative Sequencing Verification (Post-Ghostwriter)
 
@@ -424,6 +424,7 @@ The blueprint:
 3. **Beat content.** If beats were merged, split, or substantially rewritten, update the beat descriptions. The map should be readable as a summary of the chapter as-written.
 4. **Word counts.** Replace target ranges with actual counts.
 5. **Kill list.** Add anything that was cut during revision. This prevents material from creeping back in during future edits.
+6. **Downstream chapter entry assumptions.** If any downstream chapter blueprint's "Reader knows at entry" references this chapter's content, verify it still matches. If not, flag it for Zelda to update before that chapter enters the drafting queue.
 
 **What NOT to update:** The chapter thesis, thread verification table, emotional shape, and failure mode prevention sections stay as editorial intent unless Zelda explicitly revises them. These are analytical tools, not descriptive records.
 
@@ -480,7 +481,7 @@ A title must pass all five. Four out of five means revision, not approval.
 
 ### Application to Blueprints
 
-Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Freaky Friday Inversion) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
+Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Death Spiral) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
 
 ### Phase 5.6 Exit Criteria
 

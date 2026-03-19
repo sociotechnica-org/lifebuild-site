@@ -128,15 +128,15 @@ The labnotes voice alone won't carry a book. These elements from the manuscript 
 
 Non-fiction beats are not just argument containers — they are scenes in a story. The reader experiences them in order, and each sentence builds on what came before. This is the single most important craft rule for integrating new material.
 
-**The rule:** Before introducing a consequence, punchline, or analysis, verify the reader has been walked through every state change that makes it make sense. If the character's situation changed between paragraphs — new job, new city, new relationship to money — the change is a scene, not a gap. Write it.
+**The rule:** Before introducing a consequence, punchline, or analysis, verify the reader has been walked through every state change that makes it make sense. If the author's situation changed between paragraphs — new job, new city, new relationship to money — the change is a scene, not a gap. Write it.
 
 **How to apply:**
 
-1. **Follow transition specs in the blueprint.** If the blueprint specifies a state change at the top of a beat (e.g., "the author is now a contractor"), write that transition as a scene: what happened, what it felt like, what changed. Do not skip to the consequences.
+1. **Follow transition specs in the blueprint** — specifically the "Reader knows at entry," "State changes to narrate," and "Exit state" fields for each beat. If the blueprint specifies a state change (e.g., "the author is now a contractor"), write that transition as a scene: what happened, what it felt like, what changed. Do not skip to the consequences. If no blueprint is available, construct these three fields yourself before drafting each beat and flag them as ghostwriter-generated so Zelda knows no blueprint spec exists to verify against.
 
 2. **Check assumed knowledge.** After drafting a passage, read it as if you know nothing beyond what's been written so far in the chapter. If any sentence requires information the reader hasn't been given yet, either move the information earlier or write the bridge.
 
-3. **State changes within a beat need narration too.** Even inside a single beat, if the character's circumstances shift (lost a company, became a consultant, filed taxes for the first time), each shift gets at least one sentence of scene-setting. The reader needs to walk through the door, not teleport to the other side.
+3. **State changes within a beat need narration too.** Even inside a single beat, if the author's circumstances shift (lost a company, became a consultant, filed taxes for the first time), each shift gets at least one sentence of scene-setting. The reader needs to walk through the door, not teleport to the other side.
 
 4. **Transitions between beats are scenes, not seams.** When cutting from one beat to the next, the reader needs to feel the cut as intentional, not accidental. The last image of one beat and the first image of the next should create a felt connection — contrast, continuation, or deliberate rupture.
 
