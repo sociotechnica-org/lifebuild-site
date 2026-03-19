@@ -305,8 +305,8 @@ After a chapter draft is delivered, verify narrative sequencing in addition to t
 
 1. State the chapter's thesis as you understand it (one sentence)
 2. Score each dimension with specific textual evidence
-3. Identify which failure modes apply (if any) — including #6 (advancing without narrating)
-4. Verify narrative sequencing (transition specs honored, no intra-beat teleportation)
+3. Identify which failure modes apply (if any) — including #5 beat-level (one argument per beat) and #6 (advancing without narrating)
+4. Verify narrative sequencing (transition specs honored, no intra-beat teleportation, one argument per beat)
 5. Give 2–3 specific, actionable revision directives
 6. Note any "kill your darlings" candidates — material that's well-written but off-theme
 
