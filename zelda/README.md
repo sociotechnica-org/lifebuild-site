@@ -70,4 +70,4 @@ message = client.messages.create(
 
 **Phase:** 5.5 complete. Nine blueprints produced. Logic sweep passed. Ghostwriter ready.
 
-Phases 1-5.5 are done. Controlling idea tested and locked. Working title: "Boss at Work | Intern at Home: Promote Yourself." Nine chapters, four parts, designed backwards from the reader's destination. Awaiting author input (19 items) before drafting begins. See `BOOK_CONTEXT.md` for full state.
+Phases 1-5.5 are done. Controlling idea tested and locked. Working title: "Boss at Work | Intern at Home: Promote Yourself." Nine chapters, four parts, designed backwards from the reader's destination. Ch 1 drafted and scored (v7, structural revision applied). Ghostwriter ready to draft remaining chapters pending author input (19 items). See `BOOK_CONTEXT.md` for full state.
