@@ -1,7 +1,7 @@
 # Boss at Work | Intern at Home — Book Context
 
 **Last updated:** 2026-03-19
-**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ch 1 drafted and scored (v7, structural revision applied — Beat 5/6 boundary moved). Ghostwriter ready to draft remaining chapters pending author input (19 items — see SWEEP_RESULTS.md).
+**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ch 1 locked (v9, section titles applied per Phase 5.6, author approved 2026-03-19). Ghostwriter ready to draft remaining chapters pending author input (19 items — see SWEEP_RESULTS.md).
 
 ---
 
@@ -124,7 +124,7 @@ Diagnostic title — the gap statement IS the title. The reader sees it and eith
 
 "Boss" is the top of the promotion ladder — both in the title and in the book. The title names the gap ("Boss at work, Intern at life") and the book teaches the reader to close it. The promotion ladder (intern → manager → boss) uses the same vocabulary as the title, eliminating discontinuity between cover and content.
 
-Subtitle reverted to "Promote Yourself" — the strongest instruction all along, now legible once the diagnostic title eliminates the genre misdirection. The subtitle went through "Port Yourself" (method-forward but unfamiliar) and "Port Your Competence" (named the asset but introduced jargon) before returning to "Promote Yourself," which encodes the book's central metaphor (the promotion ladder: intern → manager → director) in two words. See Title Evolution section below for the full progression.
+Subtitle reverted to "Promote Yourself" — the strongest instruction all along, now legible once the diagnostic title eliminates the genre misdirection. The subtitle went through "Port Yourself" (method-forward but unfamiliar) and "Port Your Competence" (named the asset but introduced jargon) before returning to "Promote Yourself," which encodes the book's central metaphor (the promotion ladder: intern → manager → boss) in two words. See Title Evolution section below for the full progression.
 
 Shelf test: browser knows the problem, audience, and tone in four seconds. "Promote Yourself" is immediately actionable — nobody wonders what it means.
 

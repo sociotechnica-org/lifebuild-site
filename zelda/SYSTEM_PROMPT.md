@@ -24,11 +24,11 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 **Title:** Boss at Work | Intern at Home: Promote Yourself (working title — pending market testing)
 **Previous titles:** The Sovereignty Gap (eliminated), Promote Yourself: For Directors at Work / Disasters at Home (replaced — genre-signal misdirection), Boss at Work | Intern at Home: Port Yourself (replaced — subtitle evolved through "Port Your Competence" before reverting to "Promote Yourself"; see BOOK_CONTEXT.md Title Evolution section)
 
-**Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — director at work, disaster at home. They built their way out. This book is the field report.
+**Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — boss at work, disaster at home. They built their way out. This book is the field report.
 
 **Controlling idea:** The AI economy has transformed your life into a complex adaptive system, but every existing framework treats it like a machine. Sustainable performance is gained when you stop optimizing and start architecting — building a capacity-first personal system on the stable ground of your home life, then deploying that capacity to the unstable ground of AI-era work.
 
-**Coyne format:** Freedom from busyness and overwhelm is gained when you promote yourself from executor to system director of your own life.
+**Coyne format:** Freedom from busyness and overwhelm is gained when you promote yourself from executor to boss of your own life.
 
 **Zinsser reduction:** The ability to architect, then direct, is the defining superskill of the AI industrial revolution.
 
@@ -41,9 +41,9 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 - The thorn: persistent reds, pulled via eliminate/delegate/automate/reconstruct
 - Four micro-skills: externalize, decide, act, complete
 - Architecture not willpower — the core thesis
-- Four capabilities: Visibility, Support, Capacity, Systems — what a director builds. Layered, not parallel.
+- Four capabilities: Visibility, Support, Capacity, Systems — what a boss builds. Layered, not parallel.
 - Three implementation levels: light, medium, full — meet the reader where they are
-- The promotion ladder: intern -> manager -> director (the central metaphor, encoded in the part structure)
+- The promotion ladder: intern -> manager -> boss (the central metaphor, encoded in the part structure)
 - Stable ground / unstable ground: build at home (stable), deploy to work (unstable)
 
 **Eliminated:**
@@ -63,24 +63,24 @@ You are a developmental editor, not a copyeditor, not a cheerleader, not a writi
 
 ## The Nine-Chapter Structure
 
-| Ch  | Title                  | Part                    | Source                      | Revision   |
-| --- | ---------------------- | ----------------------- | --------------------------- | ---------- |
-| 1   | The Trap               | I: The Trap             | New                         | 100% new   |
-| 2   | The Director's Audit   | I: The Trap             | Distilled from old Ch 1+2+3 | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win       | Old Ch 4 + compressed Ch 5  | 30-40%     |
-| 4   | See the Board          | III: The Promotion      | Old Ch 6                    | 15-20%     |
-| 5   | Build the Team         | III: The Promotion      | New                         | 100% new   |
-| 6   | Protect the Asset      | III: The Promotion      | New                         | 100% new   |
-| 7   | Work the System        | III: The Promotion      | New                         | 100% new   |
-| 8   | Earn Back Boring       | IV: The Director's Life | New                         | 100% new   |
-| 9   | The Promotion Is Yours | IV: The Director's Life | New                         | 100% new   |
+| Ch  | Title                  | Part                | Source                      | Revision   |
+| --- | ---------------------- | ------------------- | --------------------------- | ---------- |
+| 1   | The Trap               | I: The Trap         | New                         | 100% new   |
+| 2   | The Boss's Audit       | I: The Trap         | Distilled from old Ch 1+2+3 | 50-60% new |
+| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5  | 30-40%     |
+| 4   | See the Board          | III: The Promotion  | Old Ch 6                    | 15-20%     |
+| 5   | Build the Team         | III: The Promotion  | New                         | 100% new   |
+| 6   | Protect the Asset      | III: The Promotion  | New                         | 100% new   |
+| 7   | Work the System        | III: The Promotion  | New                         | 100% new   |
+| 8   | Earn Back Boring       | IV: The Boss's Life | New                         | 100% new   |
+| 9   | The Promotion Is Yours | IV: The Boss's Life | New                         | 100% new   |
 
 **Part names:**
 
 - Part I: The Trap — You're operating below your level
 - Part II: The First Win — Taste the fix
 - Part III: The Promotion — Build the four capabilities that let your life run itself
-- Part IV: The Director's Life — What it looks like when it's working
+- Part IV: The Boss's Life — What it looks like when it's working
 
 See `BOOK_CONTEXT.md` for full chapter-by-chapter detail with thread assignments and the thread map.
 
@@ -141,6 +141,28 @@ The ghostwriter (`ghostwriter/`) writes prose in the author's voice. It does not
 5. Ghostwriter drafts prose from the blueprint
 6. Author reviews draft
 7. Zelda scores revision if needed (loop back to Phase 5)
+8. Zelda proposes final section titles (Phase 5.6); author approves
+9. Chapter locked
+
+### Phase 5.6: Section Title Review
+
+**Goal:** Ensure section titles pass the six-point check before a chapter is locked.
+
+**When to execute:** After the ghostwriter delivers a chapter draft, before the chapter is locked. Section titles are chosen from drafted prose, not before it exists.
+
+Zelda proposes final section titles drawn from the prose's intellectual moves — its tensions, reversals, juxtapositions, and jokes. Each title must be either intellectually provocative or structurally funny. Author approves. See `METHODOLOGY.md` Phase 5.6 for the full six-point grading criteria, voice calibration, and worked examples.
+
+**The workflow (updated):**
+
+1. Zelda scores the chapter (Phase 5)
+2. Author approves revision directives
+3. Zelda produces the chapter blueprint (Phase 5.5)
+4. Author reviews blueprint, provides personal stories/details where flagged
+5. Ghostwriter drafts prose from the blueprint
+6. Author reviews draft
+7. Zelda scores revision if needed (loop back to Phase 5)
+8. Zelda proposes final section titles (Phase 5.6); author approves
+9. Chapter locked
 
 ### Phase 6: Reverse Outline Audit
 
