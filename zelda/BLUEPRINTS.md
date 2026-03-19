@@ -654,16 +654,16 @@ Done. Do not extend.
 
 ### Thread Verification
 
-| Thread                          | Beat             | Treatment                                                                                                |
-| ------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------- |
-| OS metaphor [MED]               | Beat 1           | "Dashboard for your personal operating system." One touch, one metaphor system.                          |
-| Essentialist answer [HIGH]      | Beat 6           | "Build differently." Once. In the closing.                                                               |
-| Personal/professional dichotomy | Beats 2, 3, 4, 5 | "Working in/on" (2). "Pure bright red" (3). Death spiral crossing boundary (4). Integrated exercise (5). |
-| Director moment                 | Beats 1, 5, 6    | "Audits before acting" (1). "Reads the numbers" (5). "First act as director" (6).                        |
-| Death spiral [CENTERPIECE]      | Beat 4           | Both audit results applied simultaneously.                                                               |
-| Round trip                      | Beats 3, 4       | Bright red creates depletion (3). Spiral crosses both directions (4).                                    |
-| Villain [CALLBACK]              | Beat 4           | Old playbook requires what spiral consumes.                                                              |
-| Complicated vs. complex [ECHO]  | Beat 4           | Light touch -- "complex-grade cognitive effort on complicated problems."                                 |
+| Thread                          | Beat             | Treatment                                                                                                                               |
+| ------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| OS metaphor [MED]               | Beat 1           | "Dashboard for your personal operating system." One touch, one metaphor system.                                                         |
+| Essentialist answer [HIGH]      | Beats 2, 6       | Beat 2: silver as embryonic form ("build differently" felt, not named). Beat 6: "Build differently." Named fully, once, in the closing. |
+| Personal/professional dichotomy | Beats 2, 3, 4, 5 | "Working in/on" (2). "Pure bright red" (3). Death spiral crossing boundary (4). Integrated exercise (5).                                |
+| Director moment                 | Beats 1, 5, 6    | "Audits before acting" (1). "Reads the numbers" (5). "First act as director" (6).                                                       |
+| Death spiral [CENTERPIECE]      | Beat 4           | Both audit results applied simultaneously.                                                                                              |
+| Round trip                      | Beats 3, 4       | Bright red creates depletion (3). Spiral crosses both directions (4).                                                                   |
+| Villain [CALLBACK]              | Beat 4           | Old playbook requires what spiral consumes.                                                                                             |
+| Complicated vs. complex [ECHO]  | Beat 4           | Light touch -- "complex-grade cognitive effort on complicated problems."                                                                |
 
 ### Kill List
 
