@@ -447,21 +447,33 @@ The blueprint:
 
 2. **Zelda proposes final titles after the draft exists.** Zelda reads the prose and proposes section titles drawn from the strongest image, line, or phrase in each section. Each proposal includes a one-sentence rationale.
 
-3. **Author approves or counters.** The author reviews Zelda's proposed titles. If the author proposes an alternative, Zelda grades it against the five principles and flags any violations.
+3. **Author approves or counters.** The author reviews Zelda's proposed titles. If the author proposes an alternative, Zelda grades it against the six-point check and flags any violations.
+
+### Voice Calibration for This Book
+
+Section titles must do one of two things: **provoke intellectually** or **land structurally funny**. These are the author's two registers. A title that is merely concrete, merely specific, or merely image-based is flat. "A Giant Stack of Board Games" is specific and physical — and it sits there doing nothing. "A Phenomenal Tool Optimizing a Broken System" uses the same section's material but creates intellectual tension: it sounds like a compliment, then twists.
+
+**The bookstore browser test:** Imagine someone picking up the book and flipping through a chapter to decide whether to buy it. They read only the section headings. Do those headings make them want to read the paragraphs underneath? If the titles are flat images, the browser puts the book down. If the titles have tension or comedy built into them, the browser starts reading.
+
+**Titles are adapted from prose, not quoted from it.** "Drawn from the prose" does not mean "copy the best line." It means the title uses the prose's intellectual moves — its tensions, reversals, juxtapositions, and jokes. A title can be trimmed, reframed, or recombined. The prose is the raw material, not a quote bank.
+
+**Never steal a punchline.** If a line is doing surprise or comedy work in the body — if it is the payoff of a build — promoting it to a heading kills the joke. The reader arrives at the punchline already knowing it. Test: would the line still land in the prose if the reader already read it as the heading? If no, find a different title. Lines that function as embedded diagnoses (not punchlines) can be elevated safely.
+
+**Sequence matters.** The section titles within a chapter read as a series. They should have their own rhythm — alternating between provocation and comedy, quiet and absurd. Grade titles individually, then read the full sequence aloud and check for unintended repetition of construction (e.g., three titles using "X wearing Y's clothes" is one too many).
 
 ### Five Principles for Section Titles
 
 **1. A section title is a doorway, not a label.**
 The title's job is to make the reader walk through. It should create a micro-question or micro-tension that the opening lines answer. It should never summarize the section's content.
 
-**2. Prefer concrete over abstract. Prefer image over concept.**
-The best section titles are specific, physical, and slightly odd. They come from the material, not from the outline. A detail from the section, elevated to heading, pulls double duty -- it orients and it intrigues.
+**2. Prefer texture over flatness. Prefer tension over mere specificity.**
+A title needs intellectual or comedic charge, not just a concrete image. "The Factory Floor" is concrete and dead. "Better While I Sleep" uses the same section's material but sets up a reversal the reader doesn't see coming. The test is not "is this specific?" but "is this doing something?"
 
 **3. The title can be the first line of the section, not a label above it.**
-Some sections want to open mid-thought. The title IS the opening beat. This is native to the author's voice -- fragments, incomplete thoughts, lines that drop you into the middle of something.
+Some sections want to open mid-thought. The title IS the opening beat. This is native to the author's voice — fragments, incomplete thoughts, lines that drop you into the middle of something.
 
 **4. Never use structural vocabulary as a section title.**
-"The Turn," "What Comes Next," "The Third Path," "Run the Audit" -- these are writer-facing terms. The reader should not see the scaffolding.
+"The Turn," "What Comes Next," "The Third Path," "Run the Audit," "The Setup," "The Confession" — these are writer-facing terms. The reader should not see the scaffolding. This includes emotional-function labels ("The Moment," "The Realization") and rhetorical-move labels ("The Argument," "The Evidence").
 
 **5. Match the register of what follows.**
 If the section opens with narrative, the title should have narrative energy. If the section opens with confession, the title should feel confessional. Mismatched register creates a stumble the reader feels but cannot name.
@@ -470,27 +482,58 @@ If the section opens with narrative, the title should have narrative energy. If 
 
 For each section title, ask: "If I read only this heading, would I know what the section argues?" If yes, the title is doing too much. It should make the reader want to know, not already know.
 
-### Grading Criteria (Five-Point Check)
+### Grading Criteria (Six-Point Check)
 
-A title must pass all five. Four out of five means revision, not approval.
+A title must pass all six. Five out of six means revision, not approval.
 
 1. **Doorway, not label.** Does the title create curiosity, or summarize the section? (Pass/Fail)
-2. **Concrete over abstract.** Is the title drawn from a specific image or phrase? (Pass/Fail)
+2. **Intellectual tension or comedy.** Is the title doing something — provoking, reversing, juxtaposing, or being funny? Or is it just sitting there being specific? (Pass/Fail)
 3. **No structural vocabulary.** Does the title avoid writer-facing terms? (Pass/Fail)
-4. **Register match.** Does the title's tone match the opening lines? (Pass/Fail)
+4. **Register match.** Does the title's tone match the section's energy? (Pass/Fail)
 5. **Telegraph test.** Would the reader already know the argument from the heading alone? If yes, fail. (Pass/Fail)
+6. **Punchline preservation.** If the title quotes a line from the prose, does that line still land when the reader reaches it in context? If the title spoils a joke or surprise, fail. (Pass/Fail)
+
+### Worked Example: Chapter 1 Title Evolution
+
+#### Antipattern: Blueprint Labels as Titles
+
+These are editorial scaffolding. They tell the writer what the section does. They tell the reader nothing worth knowing.
+
+| Blueprint label              | Failure mode             | Why it's dead on arrival                                                                                                                         |
+| ---------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| "The Factory Floor"          | Setting label            | Names a location. No question, no tension. The reader knows they'll read about a factory. So what?                                               |
+| "The Intern Confession"      | Rhetorical-move label    | Tells the reader the author will confess to being an intern. That IS the section — the title just spoiled it. "Confession" is writer vocabulary. |
+| "The Dishrag Moment"         | Emotional-function label | "Moment" signals a turning point — that's scaffolding. It names the section's narrative job, not its content.                                    |
+| "The Death Spiral"           | Framework label          | Names the concept the section teaches. The reader now knows the argument before reading a word. Fails telegraph test completely.                 |
+| "The Third Path"             | Structural vocabulary    | Names the rhetorical structure (there are three options, this is the third). The section's surprise — that there IS a third option — is gone.    |
+| "The Stable Ground Argument" | Thesis-as-label          | "Argument" is writer vocabulary. "Stable ground" IS the thesis. The title literally summarizes the section.                                      |
+| "The Setup"                  | Pure scaffolding         | Names the section's job in the book's architecture. The reader should never see this word.                                                       |
+
+#### Antipattern: Flat-Specific Titles
+
+These pass the "concrete" test but fail the "doing something" test. They pulled an image from the prose without pulling its intellectual charge.
+
+| Flat title (fails)                        | Why it fails                                                                | Charged replacement (passes)                       | Why it works                                                                                                    |
+| ----------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| "Crafted by Hand"                         | Concrete but inert — no tension, no question, no reversal                   | "Better While I Sleep"                             | Sounds aspirational; the section reveals "better" isn't the problem, "different" is. Sets up a reversal.        |
+| "A Giant Stack of Board Games"            | Specific but just sitting there — an image with no charge                   | "A Phenomenal Tool Optimizing a Broken System"     | Sounds like a compliment, then twists. Names the villain in a phrase that takes a beat to decode.               |
+| "It Was Not Covid"                        | Funny but observational — no intellectual tension                           | "A Capacity Problem Wearing a Medical Costume"     | Reframes "burnout" as a category error. Funny AND diagnostic.                                                   |
+| "Claude 4.5 Turned into Claude 4.6"       | Specific but only interesting to tech readers — no universal charge         | "The Hot Tub Will Not Reorganize Its Own Plumbing" | IS the complicated/complex distinction, compressed into comedy. Teaches and entertains simultaneously.          |
+| "A PowerPoint at the Kitchen Table"       | Concrete image but no charge — what about it?                               | "Adrenaline Wearing a System's Clothes"            | Names a category of failure (crisis response masquerading as architecture) in one image.                        |
+| "The Executive Function of a Garden Hose" | The line is a punchline in the prose — using it as a heading kills the joke | "Whatever's Left Over from the Real Work"          | Sounds like resignation; the section is actually the pivot away from it. Callback to earlier material reframed. |
 
 ### Application to Blueprints
 
-Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Death Spiral) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE -- final title TBD from prose per section title guidelines]."
+Blueprint beat names (Beat 1: The Factory Floor, Beat 4: The Death Spiral) are _editorial labels for the writer and ghostwriter_. They are NOT section titles for the manuscript. Each blueprint beat should include the note: "Working title: [WORKING TITLE — final title TBD from prose per section title guidelines]."
 
 ### Phase 5.6 Exit Criteria
 
 Every section title in the chapter:
 
-- Passes all five grading criteria
-- Is drawn from the drafted prose, not the blueprint
+- Passes all six grading criteria
+- Is adapted from the drafted prose (not copied from the blueprint)
 - Has been approved by the author
+- Reads well in sequence with the chapter's other titles (rhythm check)
 
 ---
 
