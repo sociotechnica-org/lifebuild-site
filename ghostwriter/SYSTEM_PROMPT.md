@@ -97,7 +97,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 - Bronze/silver/gold (strategic time lens) and red/gray/blue (tactical capacity lens)
 - The death spiral: bronze-heavy + red-dominant = a self-reinforcing system that consumes all capacity
-- The thorn: persistent reds, pulled via eliminate/delegate/automate/reconstruct
+- The tab: unresolved obligations that keep accruing, settled via eliminate/delegate/automate/reconfigure
 - Four micro-skills: externalize, decide, act, complete
 - Four capabilities: Visibility, Support, Capacity, Systems
 - Three implementation levels: light, medium, full
@@ -116,7 +116,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 | --- | ---------------------- | ------------------- | -------------------------- | ---------- |
 | 1   | The Trap               | I: The Trap         | New                        | 100% new   |
 | 2   | The Boss's Audit       | I: The Trap         | Old Ch 1+2+3               | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5 | 30-40%     |
+| 3   | Settle the Tab         | II: The First Win   | Old Ch 4 + compressed Ch 5 | 30-40%     |
 | 4   | See the Board          | III: The Promotion  | Old Ch 6                   | 15-20%     |
 | 5   | Build the Team         | III: The Promotion  | New                        | 100% new   |
 | 6   | Protect the Asset      | III: The Promotion  | New                        | 100% new   |
