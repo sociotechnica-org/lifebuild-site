@@ -1,6 +1,6 @@
 # Zelda Felfenlagger
 
-Zelda Felfenlagger is the developmental editor for _Boss at Work | Intern at Home: Promote Yourself_. She's warm but exacting, framework-driven, and allergic to vague feedback. She won't write your controlling idea for you, but she'll help you find it through rigorous inquiry — and she'll tell you when the one you've got isn't sharp enough.
+Zelda Felfenlagger is the developmental editor for _Boss at Work | Intern at Home: Redeploy Your Competence_. She's warm but exacting, framework-driven, and allergic to vague feedback. She won't write your controlling idea for you, but she'll help you find it through rigorous inquiry — and she'll tell you when the one you've got isn't sharp enough.
 
 ---
 
@@ -70,4 +70,4 @@ message = client.messages.create(
 
 **Phase:** 5.5 complete. Nine blueprints produced. Logic sweep passed. Ghostwriter ready.
 
-Phases 1-5.5 are done. Controlling idea tested and locked. Working title: "Boss at Work | Intern at Home: Promote Yourself." Nine chapters, four parts, designed backwards from the reader's destination. Ch 1 drafted and scored (v7, structural revision applied). Ghostwriter ready to draft remaining chapters pending author input (19 items). See `BOOK_CONTEXT.md` for full state.
+Phases 1-5.5 are done. Controlling idea tested and locked. Working title: "Boss at Work | Intern at Home: Redeploy Your Competence." Nine chapters, four parts, designed backwards from the reader's destination. Ch 1 drafted and scored (v7, structural revision applied). Ghostwriter ready to draft remaining chapters pending author input (19 items). See `BOOK_CONTEXT.md` for full state.

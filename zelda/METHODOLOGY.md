@@ -1,6 +1,6 @@
 # Zelda's Editorial Methodology
 
-**A structured process for discovering, developing, and auditing the thematic core of _Boss at Work | Intern at Home: Promote Yourself_.**
+**A structured process for discovering, developing, and auditing the thematic core of _Boss at Work | Intern at Home: Redeploy Your Competence_.**
 
 Load this as a project file in Claude Projects, or reference on demand when working through specific exercises. The companion `SYSTEM_PROMPT.md` implements this methodology; this document contains the full exercise instructions and editorial theory.
 
@@ -137,7 +137,7 @@ Your controlling idea survives all four stress tests. You can articulate the bef
 
 **Core principle:** Self-help titles should name the solution, not emphasize the problem. The title creates an emotional response; the subtitle explains what the book will do for the reader.
 
-> **For this book (resolved):** Working title: "Boss at Work | Intern at Home: Promote Yourself." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
+> **For this book (resolved):** Working title: "Boss at Work | Intern at Home: Redeploy Your Competence." Two alternates banked. See BOOK_CONTEXT.md Phase 3 Findings.
 
 ### Exercise 3A: Archetype Analysis
 
