@@ -1,6 +1,6 @@
 # Ghostwriter
 
-Voice-matched copywriter for _Boss at Work | Intern at Home: Promote Yourself_. Writes chapter prose in Danvers Fleury's natural voice — the labnotes register, not the manuscript register.
+Voice-matched copywriter for _Boss at Work | Intern at Home: Redeploy Your Competence_. Writes chapter prose in Danvers Fleury's natural voice — the labnotes register, not the manuscript register.
 
 ---
 
@@ -48,7 +48,7 @@ message = client.messages.create(
     messages=[
         {
             "role": "user",
-            "content": "Revise Chapter 3 (Pull the Thorn) per Zelda's directives. Here's the existing prose: [paste chapter]",
+            "content": "Revise Chapter 3 (Settle the Tab) per Zelda's directives. Here's the existing prose: [paste chapter]",
         }
     ],
 )

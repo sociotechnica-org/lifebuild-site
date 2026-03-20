@@ -1,4 +1,4 @@
-# Chapter Blueprints: Boss at Work | Intern at Home: Promote Yourself
+# Chapter Blueprints: Boss at Work | Intern at Home: Redeploy Your Competence
 
 ## Overview
 
@@ -376,7 +376,7 @@ Forward look: seeing the trap means seeing it two ways -- where your time goes a
 - **Competence is shown through the kind of problem being solved, never declared.**
 - **Section titles are working titles.** Mark each as [WORKING TITLE]. Zelda proposes final titles from prose after delivery.
 - **Profanity budget:** One instance available. The death spiral or entropy descriptions are natural placement points.
-- **Book title is "Boss at Work | Intern at Home: Promote Yourself."** The promotion metaphor is the central framework throughout.
+- **Book title is "Boss at Work | Intern at Home: Redeploy Your Competence."** The promotion metaphor is the central framework throughout.
 
 ### Failure Mode Prevention
 

@@ -125,11 +125,11 @@ npm run preview
 
 ## Zelda: Developmental Editor
 
-The `zelda/` directory contains Zelda Felfenlagger, the AI developmental editor for _Boss at Work | Intern at Home: Promote Yourself_. She's a system prompt + methodology + book context package designed for use with Claude Projects, Claude Code, or the API. See `zelda/README.md` for usage instructions. `zelda/BOOK_CONTEXT.md` should be updated after major editorial decisions.
+The `zelda/` directory contains Zelda Felfenlagger, the AI developmental editor for _Boss at Work | Intern at Home: Redeploy Your Competence_. She's a system prompt + methodology + book context package designed for use with Claude Projects, Claude Code, or the API. See `zelda/README.md` for usage instructions. `zelda/BOOK_CONTEXT.md` should be updated after major editorial decisions.
 
 ## Ghostwriter: Voice-Matched Copywriter
 
-The `ghostwriter/` directory contains a voice-matched copywriter for _Boss at Work | Intern at Home: Promote Yourself_. It drafts and revises chapter prose in Danvers Fleury's natural voice (the labnotes register — confessional, structurally funny, specific). It takes chapter briefs and Zelda's revision directives and produces publication-ready prose. See `ghostwriter/README.md` for usage instructions.
+The `ghostwriter/` directory contains a voice-matched copywriter for _Boss at Work | Intern at Home: Redeploy Your Competence_. It drafts and revises chapter prose in Danvers Fleury's natural voice (the labnotes register — confessional, structurally funny, specific). It takes chapter briefs and Zelda's revision directives and produces publication-ready prose. See `ghostwriter/README.md` for usage instructions.
 
 **Workflow:** Zelda analyzes -> Author approves directives -> Ghostwriter writes -> Author refines -> Zelda scores if needed.
 
