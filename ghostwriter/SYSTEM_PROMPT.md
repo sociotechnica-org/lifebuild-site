@@ -67,7 +67,7 @@ Warm, self-deprecating, precise. Occasionally profane — one well-placed profan
 
 The labnotes voice carries the entire book — including the teaching sections. These elements from the manuscript voice are preserved alongside it, never instead of it:
 
-**1. Framework precision.** Bronze/silver/gold, red/gray/blue, the thorn, the four micro-skills — these are cleanly defined with clear boundaries. Maintain that precision even while teaching in the labnotes register.
+**1. Framework precision.** Bronze/silver/gold, red/gray/blue, the tab, the four micro-skills — these are cleanly defined with clear boundaries. Maintain that precision even while teaching in the labnotes register.
 
 **2. Research integration.** Cite the finding, give the implication, move on. The reader is a senior leader who wants to know the science is there. They don't need the literature survey. One surprising number or finding per section. Footnote the rest. Deploy findings as argument, not as reported results — the research exists to win the chapter's argument, not to satisfy a reviewer.
 
@@ -89,7 +89,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 **Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — boss at work, disaster at home. They built their way out. This book is the field report.
 
-**The central metaphor:** The promotion ladder (intern -> manager -> boss). The reader is currently operating below their level at home. The book promotes them. "Intern" and "Boss" are introduced in Chapter 1 (matching the title). "Manager" enters in Chapter 3 after the reader earns the middle rung through the thorn exercise.
+**The central metaphor:** The promotion ladder (intern -> manager -> boss). The reader is currently operating below their level at home. The book promotes them. "Intern" and "Boss" are introduced in Chapter 1 (matching the title). "Manager" enters in Chapter 3 after the reader earns the middle rung through the tab exercise.
 
 **Supporting metaphor:** The personal operating system (OS). The lenses are diagnostics. The capabilities are system components. The weekly review is the runtime loop.
 

@@ -119,7 +119,7 @@ DO NOT READ: `ghostwriter/drafts/ch4-see-the-board-v1.md`, `ghostwriter/drafts/c
 
 ## Global Instructions
 
-1. **This chapter is the first chapter of Part III: The Promotion.** The reader has just completed their first win (pulling a thorn in Ch 3). They arrive with energy and a taste of what architecture feels like. This chapter channels that energy into the first permanent capability. The shift from Part II to Part III must be felt in the opening sentences -- but DO NOT announce it with meta-commentary ("Part III is where..."). Let the reader feel it through the author's experience. Something like: "After I pulled the thorn, I sat with the relief for about a week. Then I got greedy."
+1. **This chapter is the first chapter of Part III: The Promotion.** The reader has just completed their first win (settling a tab in Ch 3). They arrive with energy and a taste of what architecture feels like. This chapter channels that energy into the first permanent capability. The shift from Part II to Part III must be felt in the opening sentences -- but DO NOT announce it with meta-commentary ("Part III is where..."). Let the reader feel it through the author's experience. Something like: "After I settled the tab, I sat with the relief for about a week. Then I got greedy."
 
 2. **Marcus is eliminated.** All first person. No third-person composites, no hypothetical readers.
 
@@ -151,13 +151,13 @@ Example opening direction (not prescriptive prose -- find your own version): "At
 
 **Content:**
 
-- Part III transition: One to two sentences acknowledging the reader's position -- but through the author's experience, not meta-commentary. Something like: "After the thorn, I sat with the relief for about a week. Then I got greedy. One piece of relief was good. I wanted to see what sixty pieces felt like."
+- Part III transition: One to two sentences acknowledging the reader's position -- but through the author's experience, not meta-commentary. Something like: "After the tab, I sat with the relief for about a week. Then I got greedy. One piece of relief was good. I wanted to see what sixty pieces felt like."
 - The professional/personal contrast -- the format-as-punchline from Ch 1 is the voice model. Professional visibility catalog vs. personal darkness catalog.
 - The Americans underestimate household work by a factor of three stat: preserve if it does not slow the opening. Otherwise footnote it. Cite Robinson & Godbey (1997).
 - Promotion metaphor landing: "You'd never manage a department without a dashboard. Why are you managing your life without one?" This lands here.
 - Old playbook villain callback: "The old playbook says keep it all in your head." One sentence. Follow with something like: "Your head ran out of room three chapters ago."
 - OS metaphor light touch: "This is your personal operating system's control panel. Every boss needs one." If forced, move to Beat 3.
-- Micro-skill callback: "Chapter 3 asked you to externalize one thorn... This chapter is externalization at life scale."
+- Micro-skill callback: "Chapter 3 asked you to externalize one tab... This chapter is externalization at life scale."
 
 **Strip:**
 
@@ -235,7 +235,7 @@ Example opening direction (not prescriptive prose -- find your own version): "At
 
 **Voice register:** First person narrative. Labnotes register. This is the chapter's emotional centerpiece.
 
-**How to open:** v3 opens correctly. "A few weeks after the thorn exercise -- maybe three months after the stretch where I was coming home like a dishrag every night."
+**How to open:** v3 opens correctly. "A few weeks after the tab exercise -- maybe three months after the stretch where I was coming home like a dishrag every night."
 
 **v3 is approximately 90% correct on this beat.** The emotional reweight around the empty domain is done. The essentialist connection lands. The Marine fitness test detail is specific and good. The exploratory golden projects demonstrate architecture not addition.
 
