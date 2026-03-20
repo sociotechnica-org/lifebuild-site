@@ -48,7 +48,7 @@ message = client.messages.create(
     messages=[
         {
             "role": "user",
-            "content": "Revise Chapter 3 (Pull the Thorn) per Zelda's directives. Here's the existing prose: [paste chapter]",
+            "content": "Revise Chapter 3 (Settle the Tab) per Zelda's directives. Here's the existing prose: [paste chapter]",
         }
     ],
 )
