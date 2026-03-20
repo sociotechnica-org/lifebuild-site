@@ -745,13 +745,13 @@ Reluctant honesty (Beat 1) → recognition through confession (Beat 2) → count
 
 ---
 
-## Ch 3: Pull the Thorn
+## Ch 3: Settle the Tab
 
-**Map status:** Plan (pre-draft)
+**Map status:** LOCKED (v7, scored 35/40, approved 2026-03-20). Blueprint below is the pre-draft plan — the locked draft is `zelda/chapters/ch3-draft-v7.md`. Key changes from blueprint: "thorn" metaphor replaced with "tab," "reconstruct" renamed to "reconfigure," target-selection deliberation scene added, all four methods have personal stories (NFTs, leaf-blowing, supplements, dishwasher). Beat 5 is the credit card story. Micro-skills anchored in first person through credit card story.
 
 ### Chapter Thesis
 
-Your first act as a boss is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened -- you changed a structure, not yourself. That is the pattern for everything that follows.
+Your first act as a boss is an executive decision about your own life. Find one tab, settle it in 72 hours, and notice what happened -- you changed a structure, not yourself. That is the pattern for everything that follows.
 
 ### Chapter Role in the Book
 
@@ -980,7 +980,7 @@ The four micro-skills, named through the experience the reader just had:
 
 **Externalize.** "You got the problem out of your head and into words. Named it. Wrote it down."
 
-**Decide.** "You chose a method. Eliminate, delegate, automate, reconstruct. Not just reacting to what felt urgent -- making a strategic choice."
+**Decide.** "You chose a method. Eliminate, delegate, automate, reconfigure. Not just reacting to what felt urgent -- making a strategic choice."
 
 **Act.** "You did it. Or handed it off. Or set up the system. The loop moved."
 
@@ -1084,7 +1084,7 @@ Close: "Part I showed you the trap. Part II showed you it breaks. Part III build
 
 ### Author Input Needed
 
-1. **[CRITICAL -- Beat 5]** Your first thorn story after the dishrag moment. What was it? How long had you been avoiding it? Which method (eliminate/delegate/automate/reconstruct)? What happened when you pulled it? What did the relief feel like? This is the chapter's emotional anchor.
+1. **[CRITICAL -- Beat 5]** Your first thorn story after the dishrag moment. What was it? How long had you been avoiding it? Which method (eliminate/delegate/automate/reconfigure)? What happened when you pulled it? What did the relief feel like? This is the chapter's emotional anchor.
 2. **[Beat 4]** Do you want to keep the accountability email offer (danvers@sociotechnica.org) in the book?
 
 **Drafting protocol if item 1 is not yet provided:** The ghostwriter should draft Beats 1-4 and 6-7 as a complete unit, leaving Beat 5 as a bracketed placeholder: [BEAT 5 PLACEHOLDER -- Author's first thorn story. See Author Input Needed item 1.]. Do not substitute Marcus-era prose or synthesize a story. The instruction-narrative sandwich (Beat 4 -> Beat 5 -> Beat 6) is the structural defense for the chapter's telling-not-showing failure mode; a placeholder is preferable to fabricated content.
@@ -1901,7 +1901,7 @@ One item.
 | --- | ---------------------- | ------------------- | -------------------------------------------------------------- |
 | 1   | The Trap               | I: The Trap         | Full beat-by-beat blueprint                                    |
 | 2   | The Boss's Audit       | I: The Trap         | Full beat-by-beat blueprint                                    |
-| 3   | Pull the Thorn         | II: The First Win   | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
+| 3   | Settle the Tab         | II: The First Win   | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
 | 4   | See the Board          | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
 | 5   | Build the Team         | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |
 | 6   | Protect the Asset      | III: The Promotion  | Summary only (see BOOK_CONTEXT_REFERENCE.md for chapter brief) |

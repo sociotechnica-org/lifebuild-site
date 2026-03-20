@@ -122,7 +122,7 @@ Here's what neither audit shows you alone.
 
 I'm 90% bronze. No silver. So bronze stays at 90% forever, because I'm not building any systems to reduce it.
 
-My job is pure bright red. Feels like peak performance. Eight, ten, twelve hours. Come home wrung out. The doorknob feeling from Chapter 1.
+My job is pure bright red. Feels like peak performance. Eight, ten, twelve hours. Come home wrung out. The cognitive concussion from Chapter 1.
 
 Come home to the bronze. But there's no capacity left. I'm spending complex-grade cognitive effort on complicated problems -- making real-time judgment calls about things that could run on simple infrastructure, if I had any infrastructure. Boss-level capacity burning on intern-level tasks.
 
@@ -178,7 +178,7 @@ The audits don't fix anything. They can't. A dashboard that shows you're crashin
 
 Now you do what a boss does next: act on one thing.
 
-Find one thorn -- one persistent red that's been draining you, shadowing your week, festering in the background. Pull it in 72 hours. That's not a productivity hack. That's your first act as a boss of your own life.
+Find one tab -- one persistent red that's been draining you, shadowing your week, festering in the background. Settle it in 72 hours. That's not a productivity hack. That's your first act as a boss of your own life.
 
 Part I showed you the trap. Part II shows you it breaks.
 

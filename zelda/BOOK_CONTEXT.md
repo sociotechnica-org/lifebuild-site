@@ -1,7 +1,7 @@
 # Boss at Work | Intern at Home — Book Context
 
-**Last updated:** 2026-03-19
-**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ch 1 locked (v9, section titles applied per Phase 5.6, author approved 2026-03-19). Ch 2 locked (v3, scored 38/40, section titles applied per Phase 5.6, author approved 2026-03-19). Ghostwriter ready to draft remaining chapters pending author input (19 items — see SWEEP_RESULTS.md).
+**Last updated:** 2026-03-20
+**Editorial phase:** Phases 1-5.5 complete. Nine blueprints produced (see BLUEPRINTS.md). Logic sweep passed. Ch 1 locked (v9, section titles applied per Phase 5.6, author approved 2026-03-19). Ch 2 locked (v3, scored 38/40, section titles applied per Phase 5.6, author approved 2026-03-19). Ch 3 locked (v7, scored 35/40, author approved 2026-03-20). Ghostwriter ready to draft remaining chapters pending author input (19 items — see SWEEP_RESULTS.md).
 
 ---
 
@@ -223,7 +223,7 @@ The structure was designed by working backwards from the end state (reader has p
 | --- | ---------------------- | ------------------- | --------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | The Trap               | I: The Trap         | New                         | 100% new   | The AI economy demands more cognitive capacity than any previous era, but the real trap is that your personal life was never built to sustain you through this.                                  |
 | 2   | The Boss's Audit       | I: The Trap         | Distilled from old Ch 1+2+3 | 50-60% new | Two diagnostic tools reveal why you're depleted despite being busy: bronze/silver/gold shows where your time goes, red/gray/blue shows what it costs you. Together they reveal the death spiral. |
-| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one thorn, pull it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a boss.                                                           |
+| 3   | Settle the Tab         | II: The First Win   | Old Ch 4 + compressed Ch 5  | 30-40%     | Find one tab, settle it in 72 hours, experience architecture over willpower, and name the four micro-skills. Your first act as a boss.                                                           |
 | 4   | See the Board          | III: The Promotion  | Old Ch 6                    | 15-20%     | A boss doesn't manage blind. Visibility closes the gap between professional dashboards and personal darkness.                                                                                    |
 | 5   | Build the Team         | III: The Promotion  | New                         | 100% new   | A boss doesn't carry everything alone. Build your personal support architecture — human and AI.                                                                                                  |
 | 6   | Protect the Asset      | III: The Promotion  | New                         | 100% new   | Your capacity is the scarcest resource in the AI economy. Manage it like the strategic asset it is.                                                                                              |
@@ -261,12 +261,13 @@ No four gaps. Two diagnostic tools: the strategic lens (bronze/silver/gold — w
 - _Personal/professional dichotomy:_ Death spiral explicitly crosses the boundary.
 - **Boss moment:** "A boss audits before acting. These are your audit tools."
 
-**Ch 3: Pull the Thorn** (30-40% revision of old Ch 4 + compressed old Ch 5)
-Thorn metaphor, target selection, four moves (eliminate/delegate/automate/reconstruct). Author's first thorn story. Accountability email offer. Closing beat: name the four micro-skills (externalize/decide/act/complete), land "architecture not willpower," pivot to Part III. "You just proved that changing your structure changes your results. Now let's build the full structure."
+**Ch 3: Settle the Tab** (30-40% revision of old Ch 4 + compressed old Ch 5)
+Tab metaphor (an unresolved obligation that keeps accruing), target selection (driveway/laundry/credit card deliberation), four moves (eliminate/delegate/automate/reconfigure). Author's tab stories: credit card (primary, Beat 5), NFTs (partial elimination), leaf-blowing (delegation to son), supplements (automation via AI), dishwasher (reconfiguration with wife). Accountability email offer. Closing beat: name the four micro-skills (externalize/decide/act/complete) anchored in the credit card story, land "architecture not willpower," pivot to Part III. "You just proved that changing your structure changes your results."
 
 - _Essentialist answer landed [HIGH]:_ "Notice what happened. You didn't add something. You changed a structure. That's the pattern for everything that follows."
-- _Villain callback [MED]:_ "The old playbook would have you white-knuckle through this."
-- **Boss moment:** "This is your first executive decision about your own life." (Manager introduced here: "You just went from intern to manager.")
+- _Villain callback [MED]:_ "The old playbook says you're supposed to solve things, not stop doing them."
+- _AI-era capacity anchor [MED]:_ Tabs drain bandwidth needed for bright-red judgment calls from Ch 2.
+- **Boss moment:** "You just went from intern to manager." (Manager introduced here as the middle rung of the promotion ladder.)
 
 **Ch 4: See the Board — Visibility** (15-20% revision of old Ch 6)
 The professional/personal contrast (already in the text — strongest "port your competence" moment in existing manuscript — the work-to-home transfer of professional competence). Spectrum of visibility, neuroscience, bidirectional loop, three implementation levels, failure modes. Author's life map. "You'd never manage a department without a dashboard. Why are you managing your life without one?"
@@ -356,8 +357,8 @@ Each capability enables the next:
 - **Bronze/silver/gold:** Strategic time lens. Bronze = maintenance, silver = capacity-building, gold = future-building. The primary diagnostic for time allocation.
 - **Red/gray/blue:** Tactical capacity lens. Dark red = felt drain, bright red = masked drain, gray = neutral, blue = genuinely restorative. The primary diagnostic for energy/capacity.
 - **The death spiral:** Bronze-heavy plus red-dominant creates a self-reinforcing system that consumes all capacity and produces nothing but maintenance. (Replaces the four-gap reinforcing loop — same insight, expressed through the lenses.)
-- **The thorn:** Metaphor for a persistent red — small, sharp, hurts with every step. Pull one out as a first win.
-- **Four moves:** Eliminate, delegate, automate, reconstruct — resolution options for thorns
+- **The tab:** An unresolved obligation that keeps accruing while you look the other way. Bosses settle tabs; interns let them run. Settle one as a first win.
+- **Four moves:** Eliminate, delegate, automate, reconfigure — resolution options for tabs
 - **Embodied vs. unembodied work:** Physical tasks (delegate to humans) vs. information tasks (delegate to humans or AI)
 - **Four micro-skills:** Externalize, decide, act, complete — the atomic unit of being the boss
 - **Architecture not willpower:** The core thesis of the whole book
@@ -367,7 +368,7 @@ Each capability enables the next:
 - **Bidirectional loop:** External representation and internal mental model strengthen each other iteratively. (Ch 4)
 - **Morning-after test:** How to distinguish genuine restoration from dopamine-masked depletion. Introduced in Ch 2, operationalized in Ch 6.
 - **Stable ground / unstable ground:** Home challenges are standard and stable; work in the AI economy shifts every few weeks. Build the capacity platform on stable ground, deploy to unstable ground.
-- **The promotion ladder:** Intern -> manager -> boss. The reader is operating as an intern of their personal life while being a boss at work. The book promotes them. Intern (reactive, no systems) → Manager (intentional, personally carrying everything) → Boss (systems run without constant intervention). "Intern" and "Boss" introduced in Ch 1. "Manager" introduced in Ch 3 after the thorn exercise. The structure IS the metaphor — Part I is The Trap, Part III is The Promotion, Part IV is The Boss's Life.
+- **The promotion ladder:** Intern -> manager -> boss. The reader is operating as an intern of their personal life while being a boss at work. The book promotes them. Intern (reactive, no systems) → Manager (intentional, personally carrying everything) → Boss (systems run without constant intervention). "Intern" and "Boss" introduced in Ch 1. "Manager" introduced in Ch 3 after the tab exercise. The structure IS the metaphor — Part I is The Trap, Part III is The Promotion, Part IV is The Boss's Life.
 
 **Eliminated:**
 

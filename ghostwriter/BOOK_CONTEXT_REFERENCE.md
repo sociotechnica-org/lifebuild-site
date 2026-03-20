@@ -64,41 +64,28 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 
 ---
 
-### Chapter 3: Pull the Thorn (30-40% revision, from old Ch 4 + compressed Ch 5)
+### Chapter 3: Settle the Tab (LOCKED — v7, scored 35/40, approved 2026-03-20)
 
 **Part:** II: The First Win
-**Thesis:** Your first act as a boss is an executive decision about your own life. Find one thorn, pull it in 72 hours, and notice what happened — you changed a structure, not yourself.
+**Thesis:** Your first act as a boss is an executive decision about your own life. Find one tab, settle it in 72 hours, and notice what happened — you changed a structure, not yourself.
 
-**Thread assignments:**
+**Locked draft:** `zelda/chapters/ch3-draft-v7.md`
 
-- OS metaphor [LIGHT]: "Your first patch" — only if Ch 2 establishes the OS metaphor strongly
-- "Build differently" crystallized: The thorn exercise IS building differently — architecture, not willpower
-- 72-hour constraint reframed as "boss's proof of concept"
-- Micro-skills named as scalable loop: externalize, decide, act, complete
+**What landed:**
 
-**Revision directives (from Zelda Phase 5):**
+- Tab metaphor: an unresolved obligation that keeps accruing while you look the other way. Bosses settle tabs; interns let them run.
+- Target-selection deliberation: driveway (too big), laundry (too small), credit card (just right) — narrated as a scene, criteria extracted after
+- Four resolution methods: eliminate, delegate, automate, reconfigure — each with a personal story (NFTs, leaf-blowing, supplements, dishwasher)
+- Credit card story (Beat 5): the chapter's emotional centerpiece. Four years of dread, ten minutes to resolve.
+- Four micro-skills (externalize, decide, act, complete) anchored in the credit card story, first person
+- Essentialist answer: "You changed a structure. Structure, not character. That's the pattern for everything that follows."
+- Villain callback: "The old playbook says you're supposed to solve things, not stop doing them."
+- AI-era capacity anchor: tabs drain the same bandwidth your job demands
+- Promotion ladder: "You just went from intern to manager."
+- 72-hour constraint and accountability email offer
+- Closing: "You've seen the trap. You've broken it once. Now you build the thing that keeps it broken."
 
-1. Reframe through promotion metaphor — "your first executive decision about your own life" (this is where "manager" is introduced as the middle rung — "You just went from intern to manager")
-2. Add the author's real first thorn story (after the dishrag moment, not the credit accounts)
-3. Name four micro-skills explicitly as the loop that scales through Part III
-4. Rewrite "What This Built" to land "you changed a structure, not yourself"
-
-**Kill your darlings:**
-
-- All sovereignty references (7 instances)
-- Embodied/unembodied taxonomy (compress to 2 sentences, save for Ch 5)
-- "Momentum Question" hedging section (replace with brief Part III preview)
-- "They don't require special tools — just clarity, courage, willingness" (argues against the thesis)
-
-**What to preserve:**
-
-- The thorn metaphor (excellent, sticky)
-- 72-hour constraint
-- Four resolution methods (eliminate, delegate, automate, reconstruct)
-- Target-selection criteria
-- The credit-building anecdote (keep as secondary example)
-- Accountability email offer
-- Examples section
+**Key metaphor change:** "Thorn in the paw" retired in favor of "settle the tab." Ch 2's closing directive needs updating to match (currently still says "thorn").
 
 ---
 

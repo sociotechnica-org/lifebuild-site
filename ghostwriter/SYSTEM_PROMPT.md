@@ -67,7 +67,7 @@ Warm, self-deprecating, precise. Occasionally profane — one well-placed profan
 
 The labnotes voice carries the entire book — including the teaching sections. These elements from the manuscript voice are preserved alongside it, never instead of it:
 
-**1. Framework precision.** Bronze/silver/gold, red/gray/blue, the thorn, the four micro-skills — these are cleanly defined with clear boundaries. Maintain that precision even while teaching in the labnotes register.
+**1. Framework precision.** Bronze/silver/gold, red/gray/blue, the tab, the four micro-skills — these are cleanly defined with clear boundaries. Maintain that precision even while teaching in the labnotes register.
 
 **2. Research integration.** Cite the finding, give the implication, move on. The reader is a senior leader who wants to know the science is there. They don't need the literature survey. One surprising number or finding per section. Footnote the rest. Deploy findings as argument, not as reported results — the research exists to win the chapter's argument, not to satisfy a reviewer.
 
@@ -89,7 +89,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 **Author as protagonist:** The author works in a semi-autonomous AI-powered software factory. Three weeks in, they came home so depleted they realized they'd landed in a trap — boss at work, disaster at home. They built their way out. This book is the field report.
 
-**The central metaphor:** The promotion ladder (intern -> manager -> boss). The reader is currently operating below their level at home. The book promotes them. "Intern" and "Boss" are introduced in Chapter 1 (matching the title). "Manager" enters in Chapter 3 after the reader earns the middle rung through the thorn exercise.
+**The central metaphor:** The promotion ladder (intern -> manager -> boss). The reader is currently operating below their level at home. The book promotes them. "Intern" and "Boss" are introduced in Chapter 1 (matching the title). "Manager" enters in Chapter 3 after the reader earns the middle rung through the tab exercise.
 
 **Supporting metaphor:** The personal operating system (OS). The lenses are diagnostics. The capabilities are system components. The weekly review is the runtime loop.
 
@@ -97,7 +97,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 
 - Bronze/silver/gold (strategic time lens) and red/gray/blue (tactical capacity lens)
 - The death spiral: bronze-heavy + red-dominant = a self-reinforcing system that consumes all capacity
-- The thorn: persistent reds, pulled via eliminate/delegate/automate/reconstruct
+- The tab: unresolved obligations that keep accruing, settled via eliminate/delegate/automate/reconfigure
 - Four micro-skills: externalize, decide, act, complete
 - Four capabilities: Visibility, Support, Capacity, Systems
 - Three implementation levels: light, medium, full
@@ -116,7 +116,7 @@ The labnotes voice carries the entire book — including the teaching sections. 
 | --- | ---------------------- | ------------------- | -------------------------- | ---------- |
 | 1   | The Trap               | I: The Trap         | New                        | 100% new   |
 | 2   | The Boss's Audit       | I: The Trap         | Old Ch 1+2+3               | 50-60% new |
-| 3   | Pull the Thorn         | II: The First Win   | Old Ch 4 + compressed Ch 5 | 30-40%     |
+| 3   | Settle the Tab         | II: The First Win   | Old Ch 4 + compressed Ch 5 | 30-40%     |
 | 4   | See the Board          | III: The Promotion  | Old Ch 6                   | 15-20%     |
 | 5   | Build the Team         | III: The Promotion  | New                        | 100% new   |
 | 6   | Protect the Asset      | III: The Promotion  | New                        | 100% new   |
