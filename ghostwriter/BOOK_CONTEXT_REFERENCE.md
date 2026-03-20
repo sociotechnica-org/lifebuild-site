@@ -85,7 +85,7 @@ This file contains the chapter-level detail the ghostwriter needs when drafting 
 - 72-hour constraint and accountability email offer
 - Closing: "You've seen the trap. You've broken it once. Now you build the thing that keeps it broken."
 
-**Key metaphor change:** "Thorn in the paw" retired in favor of "settle the tab." Ch 2's closing directive needs updating to match (currently still says "thorn").
+**Key metaphor change:** "Thorn in the paw" retired in favor of "settle the tab." Ch 2 closing directive updated in locked v3 — uses "tab"/"Settle it" throughout.
 
 ---
 
