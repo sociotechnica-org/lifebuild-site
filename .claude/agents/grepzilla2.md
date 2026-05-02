@@ -17,7 +17,8 @@ This is an **Astro 5.x static site** that publishes _Boss at Work | Intern at Ho
 - Changelog entries in `src/content/changelog/` (Markdown with YAML frontmatter)
 - Version tracking in `src/data/version.json`
 - Cloudflare Pages deployment (static output)
-- Editorial agent files in `zelda/`, `ghostwriter/`, and `.claude/agents/` (Markdown, not part of the Astro build)
+- Editorial / collaboration agent files in `zelda/`, `ghostwriter/`, `quenton-quince/`, `larry-moleman/`, and `.claude/agents/` (Markdown, not part of the Astro build)
+- Cognitive Lab in `cognitive-lab/` — interactive workshop (`cognitive-lab-v0.1.html` with embedded JSON as the source of truth for areas, items, chunks, experiments, sources), supporting Markdown docs (`PROCESS.md`, `DECISIONS.md`, `cognitive-lab-plan.md`, `cognitive-lab-spec.md`, `frame-research-and-practice.md`, `turn-v0.1-*`, `capacity-checkin.html`)
 
 ---
 
@@ -74,14 +75,17 @@ Cross-reference `src/data/bookChapters.ts` against actual files:
 
 ---
 
-## Check 5: Cross-Reference Consistency (Zelda & Editorial Files)
+## Check 5: Cross-Reference Consistency (Editorial Files & Cognitive Lab)
 
-When `zelda/` files are changed or when book content changes:
+When `zelda/`, `ghostwriter/`, `quenton-quince/`, `larry-moleman/`, or `cognitive-lab/` files are changed:
 
 - **Book context drift**: Chapter information in `zelda/BOOK_CONTEXT.md` that doesn't match current state of `src/data/bookChapters.ts` or actual chapter content.
-- **Framework references**: Frameworks or concepts mentioned in Zelda's files that aren't actually present in the published chapters (or vice versa — frameworks in chapters not captured in BOOK_CONTEXT.md).
-- **Stale open questions**: Editorial questions in BOOK_CONTEXT.md that have been resolved by changes in the codebase.
-- **Cross-file references**: Zelda's SYSTEM_PROMPT.md referencing files by name that don't exist or have been renamed.
+- **Framework references**: Frameworks or concepts mentioned in editorial files that aren't actually present in the published chapters (or vice versa).
+- **Stale open questions**: Editorial questions in `zelda/BOOK_CONTEXT.md` or LAB items in `cognitive-lab/cognitive-lab-v0.1.html` that have been resolved by changes elsewhere but not yet updated here.
+- **Cross-file references**: Agent files (`zelda/SYSTEM_PROMPT.md`, `ghostwriter/SYSTEM_PROMPT.md`, `quenton-quince/SYSTEM_PROMPT.md`, `larry-moleman/SYSTEM_PROMPT.md`, and the corresponding `METHODOLOGY.md` / `JOB_CATALOG.md` / `PLAYS.md` / `PRINCIPLES.md` / `LAB_CONTEXT.md` companions) referencing files or paths by name that don't exist or have been renamed.
+- **Decisions log drift**: Entries in `cognitive-lab/DECISIONS.md` that reference LAB-XXX items, area IDs, or chunk IDs not present in `cognitive-lab/cognitive-lab-v0.1.html`.
+- **Process doc drift**: Claims in `cognitive-lab/PROCESS.md` (about agent roles, lab structure, file paths) that don't match actual state — e.g., a referenced agent file that doesn't exist, an area listed that's not in the lab data.
+- **Plays-or-principles referenced not found**: Plays mentioned in any agent file (e.g., "the Bootstrap-a-Workshop play") that don't appear in the corresponding `PLAYS.md`. Principles cited that aren't in `PRINCIPLES.md`.
 
 ---
 
@@ -149,6 +153,35 @@ These are harder to automate but worth flagging when detectable:
 - Category A hits: Report each instance with file, line, the offending word/phrase, and a suggested replacement or deletion
 - Category B over-budget: Report the count, the budget, and list the instances so the author can choose which to keep
 - If a chapter passes all checks with zero findings, report "Clean" for that chapter — don't skip the section
+
+---
+
+## Check 9: Cognitive Lab Content Integrity
+
+When `cognitive-lab/cognitive-lab-v0.1.html` or any `cognitive-lab/*.md` file is changed:
+
+The lab's source of truth is the embedded JSON inside `<script type="application/json" id="lab-data">` in `cognitive-lab/cognitive-lab-v0.1.html`. Read the JSON and validate:
+
+- **JSON structural integrity**: The embedded data block parses as valid JSON. The top-level shape has `areas` (array) and `items` (object). No trailing commas, no truncation.
+- **Required fields**:
+  - Every area has `id`, `name`, `type`, `accent`, `description`, `items`.
+  - Every item in the `items` dictionary has `id`, `title`, `status`, `priority`, `area`, `brief`.
+  - Every chunk has `id`, `title` (summary and body recommended).
+  - Every experiment has `id`, `date` (title, observation, impact recommended).
+- **LAB item integrity**:
+  - Every LAB-XXX in the `items` dictionary appears in at least one area's `items` array.
+  - Every LAB-XXX referenced in any area's `items` array exists in the `items` dictionary.
+  - Every LAB-XXX appears in the Backlog Wall area's `items` array (the canonical full-list).
+  - No orphaned items (defined but unused) and no broken references (used but undefined).
+- **Area ID resolution**: Every item's `area` field references an existing area `id`. Every cross-reference in chunks/experiments to another area uses the canonical `id` slug.
+- **ID uniqueness**: Item IDs unique globally. Chunk IDs unique within an area. Experiment IDs unique within an area.
+- **Source path validity**: For each `sources` (or legacy `artifacts`) entry, if the `href` is a relative path (no `http://` / `https://` / `#` prefix), the file should exist at `cognitive-lab/<href>` or at the repo root. Flag missing paths.
+- **Status validity**: Every item's `status` is one of: `backlog`, `in-progress`, `drafted`, `live`, `archived`.
+- **Priority validity**: Every item's `priority` is one of: `P0`, `P1`, `P2`.
+- **Workshop coherence**: Areas with `workshop: true` should have `items`, `experiments`, or `chunks` populated (a workshop with nothing in it is unfinished).
+- **Cross-reference with DECISIONS.md and PROCESS.md**: LAB-XXX, area IDs, and chunk IDs cited in `cognitive-lab/DECISIONS.md` or `cognitive-lab/PROCESS.md` exist in the lab data. Flag stale references.
+
+For `cognitive-lab/*.md` files (PROCESS, DECISIONS, plan, spec, research-and-practice, hacks-today, the deck's source map), apply Check 1 (Content Integrity — heading hierarchy, broken footnotes, broken links) and Check 8 (AI-Tell Detection — Category A is hard-flag).
 
 ---
 
