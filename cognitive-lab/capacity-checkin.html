@@ -257,6 +257,11 @@
   function saveAll(data) { memStore = data; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {} }
   function getDay(key) { return loadAll()[key] || {}; }
   function setDay(key, partial) { const all = loadAll(); all[key] = Object.assign({}, all[key] || {}, partial); saveAll(all); }
+  // Full HTML escape for any user-controlled string headed for innerHTML
+  // or an HTML attribute. Prevents stored XSS via imported JSON.
+  function escapeHTML(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
 
   document.getElementById('subDate').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
@@ -285,7 +290,7 @@
     const yd = getDay(yesterdayKey()).evening;
     const el = document.getElementById('ydayBanner');
     if (yd && yd.withdraw != null) {
-      const plan = yd.recoveryPlan ? ' Recovery plan was: ' + yd.recoveryPlan + '.' : '';
+      const plan = yd.recoveryPlan ? ' Recovery plan was: ' + escapeHTML(yd.recoveryPlan) + '.' : '';
       el.innerHTML = '<b>Yesterday’s withdrawal:</b> ' + yd.withdraw + '.' + plan + ' Now grade what it actually got back.';
       el.style.display = 'block';
     } else {
@@ -343,7 +348,7 @@
     const status = document.getElementById('gradeStatus');
     if (e.withdraw == null) status.innerHTML = 'No withdrawal logged for <b>' + fmtDate(k) + '</b>. Saving here will create a stub with just the replenishment.';
     else if (e.actualReplenish != null) status.innerHTML = '<b>' + fmtDate(k) + '</b> already graded at +' + e.actualReplenish + ' against -' + e.withdraw + '. Save will overwrite.';
-    else status.innerHTML = '<b>' + fmtDate(k) + '</b> withdrawal: -' + e.withdraw + '. Recovery plan: ' + (e.recoveryPlan || '—') + '.';
+    else status.innerHTML = '<b>' + fmtDate(k) + '</b> withdrawal: -' + e.withdraw + '. Recovery plan: ' + (e.recoveryPlan ? escapeHTML(e.recoveryPlan) : '—') + '.';
 
     if (e.actualReplenish != null) {
       document.getElementById('ydayReplenish').value = e.actualReplenish;
@@ -511,7 +516,7 @@
     const sorted = days.slice().reverse().slice(0, 30);
     listEl.innerHTML = sorted.map(d => {
       if (d.key === editingKey) return renderEditForm(d);
-      const note = (d.withdrawNote || d.recoveryPlan || '').replace(/[<>]/g, '');
+      const note = escapeHTML(d.withdrawNote || d.recoveryPlan || '');
       const wCol = d.withdraw != null ? '<span class="w">−' + d.withdraw + '</span>' : '<span class="pending">—</span>';
       const rCol = d.replenish != null ? '<span class="r">+' + d.replenish + '</span>' : '<span class="pending">pending</span>';
       return '<div class="history-row" data-key="' + d.key + '">' + '<span class="date">' + fmtDate(d.key) + '</span>' + wCol + rCol + '<span class="note" title="' + note + '">' + (note || '—') + '</span>' + '<button class="edit-btn" title="Edit">✎</button>' + '</div>';
@@ -590,7 +595,19 @@
         const data = JSON.parse(ev.target.result);
         if (typeof data !== 'object') throw new Error('bad');
         if (!confirm('Import will merge with existing data. Continue?')) return;
-        const merged = Object.assign({}, loadAll(), data);
+        // Per-date field-level merge: a date that exists in both keeps morning + evening
+        // from existing where the import doesn't overwrite specific fields. Avoids the
+        // shallow-merge bug where importing a partial day silently discarded the rest.
+        const existing = loadAll();
+        const merged = Object.assign({}, existing);
+        Object.keys(data).forEach(key => {
+          const e = existing[key] || {};
+          const i = data[key] || {};
+          merged[key] = {
+            morning: Object.assign({}, e.morning || {}, i.morning || {}),
+            evening: Object.assign({}, e.evening || {}, i.evening || {}),
+          };
+        });
         saveAll(merged); renderHistory(); restoreUI(); populateGradingDate();
       } catch(err) { alert('Import failed: invalid file.'); }
     };
