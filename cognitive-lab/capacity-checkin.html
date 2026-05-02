@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capacity Check-In</title>
+<style>
+  :root { color-scheme: light; --bg: #faf8f5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: var(--bg); color: #2d3142; line-height: 1.5; font-size: 15px; }
+  .container { max-width: 720px; margin: 0 auto; padding: 18px 20px 60px; }
+  header { margin-bottom: 14px; }
+  h1 { margin: 0 0 4px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .sub { color: #6b7280; font-size: 13px; margin: 0; }
+  .tabs { display: flex; gap: 4px; margin: 18px 0 16px; background: #f1efe9; padding: 4px; border-radius: 10px; }
+  .tabs button { flex: 1; padding: 8px 10px; border: 0; background: transparent; border-radius: 7px; font-size: 13px; font-weight: 500; color: #6b7280; cursor: pointer; transition: all 0.15s; }
+  .tabs button.active { background: #fff; color: #2d3142; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .card { background: #fff; border: 1px solid #ece8e0; border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+  .card h2 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+  .card .hint { color: #6b7280; font-size: 12.5px; margin: 0 0 12px; }
+  label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: #374151; }
+  textarea, input[type="text"], input[type="number"], input[type="date"], select {
+    width: 100%; padding: 8px 10px; font: inherit; font-size: 14px;
+    border: 1px solid #e5e1d8; border-radius: 8px; background: #fbfaf6; color: #2d3142;
+  }
+  textarea { min-height: 52px; resize: vertical; }
+  textarea:focus, input:focus, select:focus { outline: none; border-color: #5b8def; background: #fff; }
+  .slider-row { margin-bottom: 14px; }
+  .slider-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .slider-head .val { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 16px; }
+  .slider-head .val.red { color: #c05050; }
+  .slider-head .val.blue { color: #4a7bd4; }
+  input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; }
+  input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; }
+  input[type=range].withdraw::-webkit-slider-runnable-track { background: linear-gradient(to right, #d4d0c8 0%, #d4d0c8 30%, #e8a070 50%, #c05050 75%, #8a3030 100%); }
+  input[type=range].replenish::-webkit-slider-runnable-track { background: linear-gradient(to right, #d4d0c8 0%, #d4d0c8 25%, #a8c0e8 55%, #4a7bd4 100%); }
+  input[type=range].neutral::-webkit-slider-runnable-track { background: linear-gradient(to right, #e0dcd2 0%, #c8c5be 100%); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #fff; border: 2px solid #2d3142; margin-top: -6px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+  .scale-labels { display: flex; justify-content: space-between; font-size: 10.5px; color: #9ca3af; margin-top: 4px; padding: 0 2px; }
+  .color-pick { display: flex; gap: 8px; margin-top: 6px; }
+  .color-pick label { flex: 1; padding: 10px; border: 2px solid #e5e1d8; border-radius: 9px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.15s; background: #fbfaf6; margin-bottom: 0; }
+  .color-pick input { display: none; }
+  .color-pick label:hover { background: #fff; }
+  .color-pick label.dark-red.selected { background: #f5e0e0; border-color: #c05050; color: #8a3030; }
+  .color-pick label.bright-red.selected { background: #fce8d8; border-color: #e07b5a; color: #b04020; }
+  .color-pick label.gray.selected { background: #ececec; border-color: #9ca3af; color: #4b5563; }
+  .color-pick label.blue.selected { background: #e0ecf8; border-color: #5b8def; color: #2c5fb8; }
+  .btn-row { display: flex; gap: 8px; margin-top: 8px; }
+  button.primary { background: #2d3142; color: #fff; border: 0; padding: 10px 16px; font-size: 14px; font-weight: 500; border-radius: 8px; cursor: pointer; flex: 1; }
+  button.primary:hover { background: #1f2333; }
+  button.ghost { background: transparent; border: 1px solid #d4d0c8; color: #6b7280; padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+  button.ghost:hover { background: #f5f3ed; }
+  button.danger { background: transparent; border: 1px solid #e5b5b5; color: #c05050; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+  button.danger:hover { background: #fbecec; }
+  .saved { background: #e0ecf8; color: #2c5fb8; padding: 8px 12px; border-radius: 8px; font-size: 13px; margin-top: 8px; display: none; }
+  .saved.show { display: block; }
+  .summary { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .stat { background: #fbfaf6; border-radius: 9px; padding: 10px 12px; border: 1px solid #ece8e0; }
+  .stat .label { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .sublabel { font-size: 10px; color: #9ca3af; margin-top: 1px; }
+  .stat .val { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .stat .val.red { color: #c05050; }
+  .stat .val.blue { color: #4a7bd4; }
+  .stat .val.neg { color: #c05050; }
+  .stat .val.pos { color: #4a7bd4; }
+  .chart-wrap { background: #fff; border: 1px solid #ece8e0; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .chart-host { position: relative; height: 240px; width: 100%; }
+  .chart-host canvas { display: block !important; max-width: 100% !important; }
+  .chart-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 13px; text-align: center; padding: 0 20px; }
+  .history-list { max-height: 360px; overflow-y: auto; }
+  .history-row { display: grid; grid-template-columns: 90px 60px 60px 1fr 28px; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1efe9; align-items: center; font-size: 13px; }
+  .history-row:last-child { border-bottom: 0; }
+  .history-row .date { color: #6b7280; font-size: 12px; }
+  .history-row .w { color: #c05050; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .history-row .r { color: #4a7bd4; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .history-row .pending { color: #c0a060; font-style: italic; font-size: 11.5px; }
+  .history-row .note { color: #4b5563; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .history-row .edit-btn { background: transparent; border: 0; color: #9ca3af; cursor: pointer; padding: 4px; font-size: 14px; border-radius: 4px; }
+  .history-row .edit-btn:hover { color: #2d3142; background: #f5f3ed; }
+  .edit-form { padding: 12px; background: #fbfaf6; border-radius: 9px; margin: 4px 0; border: 1px solid #ece8e0; }
+  .edit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .edit-grid label { font-size: 11px; color: #6b7280; margin-bottom: 2px; font-weight: 500; }
+  .edit-grid input { padding: 6px 8px; font-size: 13px; }
+  .edit-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .edit-actions button { padding: 6px 12px; font-size: 12.5px; border-radius: 6px; cursor: pointer; }
+  .empty { color: #9ca3af; text-align: center; padding: 24px; font-size: 13.5px; }
+  .legend-key { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; font-size: 12px; color: #6b7280; }
+  .legend-key span { display: flex; align-items: center; gap: 6px; }
+  .legend-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; border: 1px solid transparent; }
+  .legend-key i.pending { background: repeating-linear-gradient(45deg, #d8e1ee, #d8e1ee 3px, #f1efe9 3px, #f1efe9 6px); border-color: #c5d0e2; }
+  .scale-help { background: #fbfaf6; border-radius: 8px; padding: 10px 12px; font-size: 12.5px; color: #4b5563; margin-bottom: 14px; border-left: 3px solid #d4d0c8; }
+  .scale-help b { color: #2d3142; }
+  .yday-banner { background: #fff7e8; border-left: 3px solid #d4a030; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #6b5b20; margin-bottom: 12px; }
+  .yday-banner b { color: #4a3a08; }
+  .grade-row { display: grid; grid-template-columns: 1fr; gap: 6px; margin-bottom: 12px; padding: 10px 12px; background: #fbfaf6; border-radius: 8px; border: 1px solid #ece8e0; }
+  .grade-row label { margin-bottom: 0; font-size: 12px; color: #6b7280; }
+  .grade-row select { padding: 6px 10px; font-size: 13px; }
+  .grade-row .grade-status { font-size: 12px; color: #6b7280; }
+  .grade-row .grade-status b { color: #2d3142; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Capacity Check-In</h1>
+    <p class="sub" id="subDate"></p>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="morning" class="active">Morning</button>
+    <button data-tab="evening">End of Day</button>
+    <button data-tab="history">History</button>
+  </nav>
+
+  <section class="panel active" id="panel-morning">
+    <div class="yday-banner" id="ydayBanner" style="display:none"></div>
+
+    <div class="card">
+      <h2>Morning-after test</h2>
+      <p class="hint">How do you actually feel this morning? Yesterday's masking has worn off.</p>
+      <div class="slider-row">
+        <div class="slider-head"><label>Clear-headedness</label><span class="val" id="clarityVal">5</span></div>
+        <input type="range" min="1" max="10" step="0.5" value="5" id="clarity" class="neutral">
+        <div class="scale-labels"><span>foggy / flat</span><span>sharp / ready</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="slider-head"><label>Reserves right now</label><span class="val" id="reservesVal">5</span></div>
+        <input type="range" min="1" max="10" step="0.5" value="5" id="reserves" class="neutral">
+        <div class="scale-labels"><span>running on empty</span><span>full tank</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Replenishment grade</h2>
+      <p class="hint">How much did the recovery actually replenish you? This is the data point.</p>
+
+      <div class="grade-row">
+        <label for="gradingDate">Grading replenishment for</label>
+        <select id="gradingDate"></select>
+        <div class="grade-status" id="gradeStatus"></div>
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-head"><label>Replenishment score</label><span class="val blue" id="ydayReplenishVal">5</span></div>
+        <input type="range" min="0" max="10" step="0.5" value="5" id="ydayReplenish" class="replenish">
+        <div class="scale-labels"><span>0 nothing back</span><span>5 modest</span><span>10 deeply restored</span></div>
+      </div>
+
+      <label>Verdict on that day</label>
+      <div class="color-pick" id="yesterdayColor">
+        <label class="dark-red"><input type="radio" name="ycolor" value="dark-red">Dark red</label>
+        <label class="bright-red"><input type="radio" name="ycolor" value="bright-red">Bright red</label>
+        <label class="gray"><input type="radio" name="ycolor" value="gray">Gray</label>
+        <label class="blue"><input type="radio" name="ycolor" value="blue">Blue</label>
+      </div>
+      <div style="height: 12px"></div>
+      <label>What you called rest &mdash; did it actually restore you?</label>
+      <textarea id="restCheck" placeholder="e.g. The hot tub did the job. The TV after didn't."></textarea>
+      <div style="height: 8px"></div>
+      <label>Bright red you didn't see coming?</label>
+      <textarea id="brightRed" placeholder="The work that felt great while you were doing it but you're paying for now."></textarea>
+    </div>
+
+    <div class="card">
+      <h2>Today, on purpose</h2>
+      <label>One thing to protect today</label>
+      <input type="text" id="protect" placeholder="A blue activity, a boundary, a stop time...">
+      <div style="height: 8px"></div>
+      <label>Bright-red trap to watch for</label>
+      <input type="text" id="trap" placeholder="The session you'll want to extend past where you should">
+    </div>
+
+    <div class="btn-row">
+      <button class="primary" id="saveMorning">Save morning check-in</button>
+      <button class="ghost" id="clearMorning">Clear</button>
+    </div>
+    <div class="saved" id="morningSaved">Saved.</div>
+  </section>
+
+  <section class="panel" id="panel-evening">
+    <div class="card">
+      <h2>Today's withdrawal</h2>
+      <p class="hint">How much did work spend? Replenishment gets logged tomorrow morning.</p>
+      <div class="scale-help"><b>Your scale:</b> 1&ndash;3 normal day &middot; 4&ndash;6 intense &middot; 7&ndash;9 rough (no sick day, except maybe 9) &middot; 10 concussion-feeling.</div>
+      <div class="slider-row">
+        <div class="slider-head"><label>Withdrawal at work</label><span class="val red" id="withdrawVal">5</span></div>
+        <input type="range" min="0" max="10" step="0.5" value="5" id="withdraw" class="withdraw">
+        <div class="scale-labels"><span>0 nothing</span><span>5 intense</span><span>10 concussion</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>What's on the recovery menu</h2>
+      <p class="hint">List what you're doing tonight to replenish. We don't grade it now &mdash; tomorrow morning will.</p>
+      <label>What did the withdrawing today?</label>
+      <textarea id="withdrawNote" placeholder="The meeting marathon, the hard call, the bright red flow session..."></textarea>
+      <div style="height: 8px"></div>
+      <label>What you're trying for replenishment tonight</label>
+      <textarea id="recoveryPlan" placeholder="Hot tub, dinner, book, lights out by 10..."></textarea>
+      <div style="height: 8px"></div>
+      <label>Predicted replenishment <span style="color:#9ca3af; font-weight:400">(optional)</span></label>
+      <input type="text" id="predicted" placeholder="Just a guess">
+    </div>
+    <div class="btn-row">
+      <button class="primary" id="saveEvening">Save end-of-day</button>
+      <button class="ghost" id="clearEvening">Clear</button>
+    </div>
+    <div class="saved" id="eveningSaved">Saved.</div>
+  </section>
+
+  <section class="panel" id="panel-history">
+    <div class="summary" id="summaryStats"></div>
+
+    <div class="chart-wrap">
+      <div class="legend-key">
+        <span><i style="background:#c05050"></i>Withdrawal (down)</span>
+        <span><i style="background:#4a7bd4"></i>Replenishment (up)</span>
+        <span><i class="pending"></i>Pending</span>
+        <span><i style="background:#2d3142"></i>Net</span>
+      </div>
+      <div class="chart-host">
+        <canvas id="chart"></canvas>
+        <div class="chart-empty" id="chartEmpty" style="display:none">No data yet — once you've logged a few days the chart fills in.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom:10px">Recent days <span style="font-size:11px; font-weight:400; color:#9ca3af">(click ✎ to edit date or values)</span></h2>
+      <div class="history-list" id="historyList"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="ghost" id="exportData">Export JSON</button>
+      <button class="ghost" id="importData">Import JSON</button>
+    </div>
+    <input type="file" id="fileInput" accept=".json" style="display:none">
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+<script>
+(function(){
+  const STORAGE_KEY = 'capacity-checkin-v2';
+
+  const dateKey = (d) => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  const todayKey = () => dateKey(new Date());
+  const yesterdayKey = () => { const d = new Date(); d.setDate(d.getDate()-1); return dateKey(d); };
+  const fmtDate = (k) => {
+    const [y,m,d] = k.split('-').map(Number);
+    const dt = new Date(y, m-1, d);
+    return dt.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+  };
+
+  let memStore = {};
+  function loadAll() { try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) return JSON.parse(raw); } catch(e) {} return memStore; }
+  function saveAll(data) { memStore = data; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {} }
+  function getDay(key) { return loadAll()[key] || {}; }
+  function setDay(key, partial) { const all = loadAll(); all[key] = Object.assign({}, all[key] || {}, partial); saveAll(all); }
+
+  document.getElementById('subDate').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'history') renderHistory();
+      if (btn.dataset.tab === 'morning') populateGradingDate();
+    });
+  });
+
+  const wireSlider = (id, valId) => {
+    const s = document.getElementById(id); const v = document.getElementById(valId);
+    const update = () => { v.textContent = parseFloat(s.value).toString(); };
+    s.addEventListener('input', update); update(); return s;
+  };
+  wireSlider('clarity', 'clarityVal');
+  wireSlider('reserves', 'reservesVal');
+  wireSlider('ydayReplenish', 'ydayReplenishVal');
+  wireSlider('withdraw', 'withdrawVal');
+
+  function renderYdayBanner() {
+    const yd = getDay(yesterdayKey()).evening;
+    const el = document.getElementById('ydayBanner');
+    if (yd && yd.withdraw != null) {
+      const plan = yd.recoveryPlan ? ' Recovery plan was: ' + yd.recoveryPlan + '.' : '';
+      el.innerHTML = '<b>Yesterday’s withdrawal:</b> ' + yd.withdraw + '.' + plan + ' Now grade what it actually got back.';
+      el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  }
+  renderYdayBanner();
+
+  document.querySelectorAll('#yesterdayColor input').forEach(input => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('#yesterdayColor label').forEach(l => l.classList.remove('selected'));
+      input.parentElement.classList.add('selected');
+    });
+  });
+
+  function populateGradingDate() {
+    const sel = document.getElementById('gradingDate');
+    const all = loadAll();
+    const keys = Object.keys(all).sort();
+    const seen = new Set();
+    const opts = [];
+    for (let i = keys.length - 1; i >= 0; i--) {
+      const k = keys[i]; const e = all[k].evening;
+      if (e && e.withdraw != null && e.actualReplenish == null) {
+        opts.push({ key: k, label: fmtDate(k) + '  ·  pending (W: ' + e.withdraw + ')' });
+        seen.add(k);
+      }
+    }
+    const yk = yesterdayKey();
+    if (!seen.has(yk)) {
+      const e = (all[yk] || {}).evening;
+      const suffix = e && e.actualReplenish != null ? ' · already graded' : ' · no withdrawal logged';
+      opts.push({ key: yk, label: fmtDate(yk) + '  ·  yesterday' + suffix });
+      seen.add(yk);
+    }
+    for (let i = keys.length - 1; i >= 0 && opts.length < 14; i--) {
+      const k = keys[i]; if (seen.has(k)) continue;
+      const e = all[k].evening;
+      if (e && e.actualReplenish != null) {
+        opts.push({ key: k, label: fmtDate(k) + '  ·  re-grade (R: ' + e.actualReplenish + ')' });
+        seen.add(k);
+      }
+    }
+    const previousValue = sel.value;
+    sel.innerHTML = opts.map(o => '<option value="' + o.key + '">' + o.label + '</option>').join('');
+    if (previousValue && opts.find(o => o.key === previousValue)) sel.value = previousValue;
+    else if (opts.length) sel.value = opts[0].key;
+    loadGradingForSelected();
+  }
+
+  function loadGradingForSelected() {
+    const sel = document.getElementById('gradingDate');
+    const k = sel.value; if (!k) return;
+    const e = getDay(k).evening || {};
+    const status = document.getElementById('gradeStatus');
+    if (e.withdraw == null) status.innerHTML = 'No withdrawal logged for <b>' + fmtDate(k) + '</b>. Saving here will create a stub with just the replenishment.';
+    else if (e.actualReplenish != null) status.innerHTML = '<b>' + fmtDate(k) + '</b> already graded at +' + e.actualReplenish + ' against -' + e.withdraw + '. Save will overwrite.';
+    else status.innerHTML = '<b>' + fmtDate(k) + '</b> withdrawal: -' + e.withdraw + '. Recovery plan: ' + (e.recoveryPlan || '—') + '.';
+
+    if (e.actualReplenish != null) {
+      document.getElementById('ydayReplenish').value = e.actualReplenish;
+      document.getElementById('ydayReplenishVal').textContent = e.actualReplenish;
+    }
+    if (e.replenishVerdict) {
+      document.querySelectorAll('#yesterdayColor label').forEach(l => l.classList.remove('selected'));
+      const radio = document.querySelector('#yesterdayColor input[value="'+e.replenishVerdict+'"]');
+      if (radio) { radio.checked = true; radio.parentElement.classList.add('selected'); }
+    }
+  }
+
+  document.getElementById('gradingDate').addEventListener('change', loadGradingForSelected);
+  populateGradingDate();
+
+  function restoreUI() {
+    const day = getDay(todayKey());
+    if (day.morning) {
+      const m = day.morning;
+      const setSlide = (id, valId, v) => { if (v != null) { document.getElementById(id).value = v; document.getElementById(valId).textContent = v; } };
+      setSlide('clarity', 'clarityVal', m.clarity);
+      setSlide('reserves', 'reservesVal', m.reserves);
+      document.getElementById('restCheck').value = m.restCheck || '';
+      document.getElementById('brightRed').value = m.brightRed || '';
+      document.getElementById('protect').value = m.protect || '';
+      document.getElementById('trap').value = m.trap || '';
+    }
+    if (day.evening) {
+      const e = day.evening;
+      const wSl = document.getElementById('withdraw');
+      if (e.withdraw != null) { wSl.value = e.withdraw; document.getElementById('withdrawVal').textContent = e.withdraw; }
+      document.getElementById('withdrawNote').value = e.withdrawNote || '';
+      document.getElementById('recoveryPlan').value = e.recoveryPlan || '';
+      document.getElementById('predicted').value = e.predicted || '';
+    }
+  }
+  restoreUI();
+
+  const flashSaved = (id) => { const el = document.getElementById(id); el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2200); };
+
+  document.getElementById('saveMorning').addEventListener('click', () => {
+    const yColorInput = document.querySelector('#yesterdayColor input:checked');
+    const ydayRep = parseFloat(document.getElementById('ydayReplenish').value);
+    const gradeKey = document.getElementById('gradingDate').value || yesterdayKey();
+    setDay(todayKey(), {
+      morning: {
+        clarity: parseFloat(document.getElementById('clarity').value),
+        reserves: parseFloat(document.getElementById('reserves').value),
+        ydayReplenish: ydayRep, gradedDate: gradeKey,
+        yColor: yColorInput ? yColorInput.value : null,
+        restCheck: document.getElementById('restCheck').value,
+        brightRed: document.getElementById('brightRed').value,
+        protect: document.getElementById('protect').value,
+        trap: document.getElementById('trap').value,
+        savedAt: new Date().toISOString()
+      }
+    });
+    const ye = getDay(gradeKey).evening || {};
+    setDay(gradeKey, { evening: Object.assign({}, ye, { actualReplenish: ydayRep, replenishVerdict: yColorInput ? yColorInput.value : null }) });
+    flashSaved('morningSaved');
+    populateGradingDate();
+  });
+
+  document.getElementById('saveEvening').addEventListener('click', () => {
+    const existing = getDay(todayKey()).evening || {};
+    setDay(todayKey(), {
+      evening: Object.assign({}, existing, {
+        withdraw: parseFloat(document.getElementById('withdraw').value),
+        withdrawNote: document.getElementById('withdrawNote').value,
+        recoveryPlan: document.getElementById('recoveryPlan').value,
+        predicted: document.getElementById('predicted').value,
+        savedAt: new Date().toISOString()
+      })
+    });
+    flashSaved('eveningSaved');
+  });
+
+  document.getElementById('clearMorning').addEventListener('click', () => {
+    if (!confirm("Clear today's morning entry?")) return;
+    const all = loadAll(); if (all[todayKey()]) { delete all[todayKey()].morning; saveAll(all); }
+    location.reload();
+  });
+  document.getElementById('clearEvening').addEventListener('click', () => {
+    if (!confirm("Clear today's evening entry?")) return;
+    const all = loadAll(); if (all[todayKey()]) { delete all[todayKey()].evening; saveAll(all); }
+    location.reload();
+  });
+
+  let chart = null;
+  function renderHistory() {
+    const all = loadAll();
+    const keys = Object.keys(all).sort();
+    const days = keys.map(k => {
+      const e = all[k].evening || {};
+      return { key: k, withdraw: e.withdraw != null ? e.withdraw : null, replenish: e.actualReplenish != null ? e.actualReplenish : null, recoveryPlan: e.recoveryPlan || '', withdrawNote: e.withdrawNote || '' };
+    }).filter(d => d.withdraw != null || d.replenish != null);
+
+    const complete = days.filter(d => d.withdraw != null && d.replenish != null);
+    const recent = complete.slice(-7);
+    const n = recent.length;
+    const avgW = n ? recent.reduce((s,d)=>s+d.withdraw,0)/n : 0;
+    const avgR = n ? recent.reduce((s,d)=>s+d.replenish,0)/n : 0;
+    const avgNet = avgR - avgW;
+    const ndaysLabel = n === 0 ? 'no complete days' : (n === 1 ? '1 day' : n + ' days');
+    document.getElementById('summaryStats').innerHTML =
+      '<div class="stat"><div class="label">Avg withdraw</div><div class="sublabel">over ' + ndaysLabel + '</div><div class="val red">' + (n ? avgW.toFixed(1) : '—') + '</div></div>' +
+      '<div class="stat"><div class="label">Avg replenish</div><div class="sublabel">over ' + ndaysLabel + '</div><div class="val blue">' + (n ? avgR.toFixed(1) : '—') + '</div></div>' +
+      '<div class="stat"><div class="label">Avg net</div><div class="sublabel">over ' + ndaysLabel + '</div><div class="val ' + (avgNet >= 0 ? 'pos' : 'neg') + '">' + (n ? (avgNet >= 0 ? '+' : '') + avgNet.toFixed(1) : '—') + '</div></div>';
+
+    const last30 = days.slice(-30);
+    const padded = last30.slice();
+    while (padded.length < 7) padded.push({ key: '__pad_' + padded.length, withdraw: null, replenish: null, _pad: true });
+
+    const labels = padded.map(d => d._pad ? '' : fmtDate(d.key));
+    const wDataNeg = padded.map(d => d.withdraw != null ? -d.withdraw : null);
+    const rData = padded.map(d => d.replenish);
+    const pendData = padded.map(d => (d.withdraw != null && d.replenish == null) ? 0.4 : null);
+    const nData = padded.map(d => (d.withdraw != null && d.replenish != null) ? (d.replenish - d.withdraw) : null);
+
+    document.getElementById('chartEmpty').style.display = (last30.length === 0) ? 'flex' : 'none';
+
+    const ctx = document.getElementById('chart').getContext('2d');
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      data: {
+        labels: labels,
+        datasets: [
+          { type: 'bar', label: 'Withdrawal', data: wDataNeg, backgroundColor: '#c05050', borderRadius: 3, order: 3, maxBarThickness: 30, categoryPercentage: 0.7, barPercentage: 0.95, stack: 'tx' },
+          { type: 'bar', label: 'Replenishment', data: rData, backgroundColor: '#4a7bd4', borderRadius: 3, order: 3, maxBarThickness: 30, categoryPercentage: 0.7, barPercentage: 0.95, stack: 'tx' },
+          { type: 'bar', label: 'Pending', data: pendData, backgroundColor: 'rgba(74,123,212,0.20)', borderColor: 'rgba(74,123,212,0.55)', borderWidth: 1, borderRadius: 3, order: 3, maxBarThickness: 30, categoryPercentage: 0.7, barPercentage: 0.95, stack: 'tx' },
+          { type: 'line', label: 'Net', data: nData, borderColor: '#2d3142', backgroundColor: '#2d3142', borderWidth: 2, pointRadius: 3, tension: 0.25, order: 1, fill: false, spanGaps: false }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            filter: (item) => !(item.dataset.label === 'Pending' && item.raw === 0.4),
+            callbacks: {
+              label: (item) => {
+                if (item.dataset.label === 'Withdrawal' && item.raw != null) return 'Withdrawal: ' + Math.abs(item.raw);
+                if (item.dataset.label === 'Replenishment' && item.raw != null) return 'Replenishment: +' + item.raw;
+                if (item.dataset.label === 'Net' && item.raw != null) return 'Net: ' + (item.raw >= 0 ? '+' : '') + item.raw;
+                return null;
+              },
+              title: (items) => { const i = items[0].dataIndex; const d = padded[i]; return d._pad ? '' : fmtDate(d.key); }
+            }
+          }
+        },
+        scales: {
+          y: { stacked: true, suggestedMin: -10, suggestedMax: 10, grid: { color: '#f1efe9' }, ticks: { color: '#9ca3af', font: { size: 11 }, callback: (v) => Math.abs(v) } },
+          x: { stacked: true, grid: { display: false }, ticks: { color: '#9ca3af', font: { size: 10 }, maxRotation: 0, autoSkipPadding: 12 } }
+        }
+      }
+    });
+
+    renderHistoryList(days);
+  }
+
+  let editingKey = null;
+  function renderHistoryList(days) {
+    const listEl = document.getElementById('historyList');
+    if (days.length === 0) { listEl.innerHTML = '<div class="empty">No entries yet.</div>'; return; }
+    const sorted = days.slice().reverse().slice(0, 30);
+    listEl.innerHTML = sorted.map(d => {
+      if (d.key === editingKey) return renderEditForm(d);
+      const note = (d.withdrawNote || d.recoveryPlan || '').replace(/[<>]/g, '');
+      const wCol = d.withdraw != null ? '<span class="w">−' + d.withdraw + '</span>' : '<span class="pending">—</span>';
+      const rCol = d.replenish != null ? '<span class="r">+' + d.replenish + '</span>' : '<span class="pending">pending</span>';
+      return '<div class="history-row" data-key="' + d.key + '">' + '<span class="date">' + fmtDate(d.key) + '</span>' + wCol + rCol + '<span class="note" title="' + note + '">' + (note || '—') + '</span>' + '<button class="edit-btn" title="Edit">✎</button>' + '</div>';
+    }).join('');
+    listEl.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => { editingKey = btn.closest('.history-row').dataset.key; renderHistory(); });
+    });
+  }
+
+  function renderEditForm(d) {
+    const note = (d.withdrawNote || d.recoveryPlan || '').replace(/"/g, '&quot;');
+    return '<div class="edit-form" data-key="' + d.key + '">' +
+      '<div class="edit-grid">' +
+        '<div><label>Date</label><input type="date" data-edit="date" value="' + d.key + '"></div>' +
+        '<div><label>Withdrawal</label><input type="number" step="0.5" min="0" max="10" data-edit="withdraw" value="' + (d.withdraw != null ? d.withdraw : '') + '"></div>' +
+        '<div><label>Replenishment</label><input type="number" step="0.5" min="0" max="10" data-edit="replenish" value="' + (d.replenish != null ? d.replenish : '') + '"></div>' +
+      '</div>' +
+      '<label>Note</label><input type="text" data-edit="note" value="' + note + '">' +
+      '<div style="height:8px"></div>' +
+      '<div class="edit-actions">' +
+        '<button class="primary" data-act="save">Save</button>' +
+        '<button class="ghost" data-act="cancel">Cancel</button>' +
+        '<button class="danger" data-act="delete">Delete day</button>' +
+      '</div></div>';
+  }
+
+  document.getElementById('historyList').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-act]'); if (!btn) return;
+    const form = btn.closest('.edit-form'); const oldKey = form.dataset.key; const act = btn.dataset.act;
+    const all = loadAll();
+    if (act === 'cancel') { editingKey = null; renderHistory(); return; }
+    if (act === 'delete') {
+      if (!confirm('Delete the entire day ' + fmtDate(oldKey) + '?')) return;
+      delete all[oldKey]; saveAll(all); editingKey = null; renderHistory(); return;
+    }
+    if (act === 'save') {
+      const newDate = form.querySelector('[data-edit="date"]').value;
+      const wRaw = form.querySelector('[data-edit="withdraw"]').value;
+      const rRaw = form.querySelector('[data-edit="replenish"]').value;
+      const note = form.querySelector('[data-edit="note"]').value;
+      if (!newDate || !/^\d{4}-\d{2}-\d{2}$/.test(newDate)) { alert('Invalid date'); return; }
+      const wVal = wRaw === '' ? null : parseFloat(wRaw);
+      const rVal = rRaw === '' ? null : parseFloat(rRaw);
+      const dayObj = all[oldKey] || {};
+      const evening = Object.assign({}, dayObj.evening || {});
+      if (wVal != null) evening.withdraw = wVal; else delete evening.withdraw;
+      if (rVal != null) evening.actualReplenish = rVal; else delete evening.actualReplenish;
+      delete evening.seeded;
+      if (wVal != null) evening.withdrawNote = note; else evening.recoveryPlan = note;
+      if (newDate !== oldKey) {
+        const targetDay = all[newDate] || {};
+        const targetEvening = Object.assign({}, targetDay.evening || {}, evening);
+        all[newDate] = Object.assign({}, targetDay, { evening: targetEvening });
+        if (all[oldKey]) { delete all[oldKey].evening; if (Object.keys(all[oldKey]).length === 0) delete all[oldKey]; }
+      } else {
+        all[oldKey] = Object.assign({}, dayObj, { evening });
+      }
+      saveAll(all); editingKey = null; renderHistory();
+    }
+  });
+
+  document.getElementById('exportData').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(loadAll(), null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'capacity-checkin-' + todayKey() + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById('importData').addEventListener('click', () => { document.getElementById('fileInput').click(); });
+  document.getElementById('fileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (typeof data !== 'object') throw new Error('bad');
+        if (!confirm('Import will merge with existing data. Continue?')) return;
+        const merged = Object.assign({}, loadAll(), data);
+        saveAll(merged); renderHistory(); restoreUI(); populateGradingDate();
+      } catch(err) { alert('Import failed: invalid file.'); }
+    };
+    reader.readAsText(file);
+  });
+})();
+</script>
+</body>
+</html>
