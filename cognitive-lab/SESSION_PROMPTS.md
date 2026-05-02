@@ -22,7 +22,7 @@ The 7 Turn Work Week framework. Pick up where we left off.
 Today: [WHAT YOU WANT TO DO]
 ```
 
-Quenton's load-brain procedure runs automatically: he reads `quenton-quince/SYSTEM_PROMPT.md`, `METHODOLOGY.md`, `LAB_CONTEXT.md`, `PLAYS.md`, and `PRINCIPLES.md`. He'll orient on the lab state himself.
+Quenton's load-brain procedure (defined in `.claude/agents/quenton-quince.md`) instructs him to read `quenton-quince/SYSTEM_PROMPT.md`, `METHODOLOGY.md`, `LAB_CONTEXT.md`, `PLAYS.md`, and `PRINCIPLES.md` on launch. The short form relies on this — use the long form below if returning after a gap, switching branches, or any time you want the lab state explicitly re-oriented.
 
 ---
 
@@ -43,14 +43,19 @@ Orient by reading:
   cognitive-lab/cognitive-lab-v0.1.html
 
 State of play (update this section as the framework evolves):
-- Frame Workshop is shipped (v0.2 four-batch form: Scope / Outcome /
-  Approach / Safety; lived-tested 2026-05-01).
-- Pilot Check Station is shipped (three-dimension rule-out:
-  cognitive king / emotional / physical, threshold ≤3 = grounded).
+- Frame Workshop: prototype shipped, v0.2 four-batch form (Scope /
+  Outcome / Approach / Safety) lived-tested 2026-05-01. LAB-001 marked
+  live; LAB-002 (chapter outline) still in-progress.
+- Pilot Check Station: workshop and prototype shipped (three-dimension
+  rule-out: cognitive king / emotional / physical, threshold ≤3 =
+  grounded). LAB-007 (form refinement) and LAB-008 (chapter) still
+  in-progress.
 - Two central images: cache-game (Frame's organizing metaphor) and
   heartbeat (Gauge↔Recovery rhythm).
 - Capacity check-in PoC and Pilot Check converge into a unified Gauge
-  instrument (LAB-025, queued).
+  instrument. Two related backlog items: LAB-025 (Make the Gauge a
+  workshop, embed capacity check-in) and LAB-021 (Capacity check-in
+  v0.2, turn-aware data model). Both P1.
 - Quenton (you) and Larry Moleman are project-resident agents (PR #123).
 - grepzilla2 covers cognitive-lab/ now (PR #126); use for markdown-heavy
   PRs that Devin skips.
@@ -143,7 +148,7 @@ End the session by running Larry's Session-Integration play.
 
 ## What's automatic — don't bother specifying
 
-Quenton on launch:
+### Quenton on launch
 
 - Reads SYSTEM_PROMPT, METHODOLOGY, LAB_CONTEXT, PLAYS, PRINCIPLES
 - Reads the relevant area's recent Log entries before proposing
@@ -154,7 +159,7 @@ Quenton on launch:
 - Hands operational follow-up to Larry without being asked
 - Closes sessions with what was decided / what's queued / next step
 
-Larry on launch:
+### Larry on launch
 
 - Reads SYSTEM_PROMPT, JOB_CATALOG, PLAYS, LAB_CONTEXT
 - Returns receipts in the standard format (Did / Noticed / Queued)
