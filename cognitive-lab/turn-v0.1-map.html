@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Turn · A framework for working with AI</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --border: #ece8e0;
+    --border-soft: #f1efe9;
+    --ink: #2d3142;
+    --ink-2: #4b5563;
+    --muted: #6b7280;
+    --faint: #9ca3af;
+    --gauge: #2d3142;
+    --gauge-tint: #f5f3ed;
+    --required: #4a7bd4;
+    --required-tint: #e8eff8;
+    --conditional: #d4a030;
+    --conditional-tint: #fff7e8;
+    --insertable: #4a8a5a;
+    --insertable-tint: #e8f0e8;
+    --meta: #8a7a5a;
+    --meta-tint: #f5f1e8;
+    --sleep: #2c3e6f;
+    --sleep-tint: #e6e9f2;
+    --warn: #c05050;
+    --warn-tint: #fbecec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  .deck { height: 100vh; display: flex; flex-direction: column; }
+
+  /* Top bar */
+  .topbar {
+    padding: 14px 28px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    flex: 0 0 auto;
+  }
+  .topbar .act-strip { display: flex; gap: 14px; }
+  .topbar .act-strip span { color: var(--faint); }
+  .topbar .act-strip span.current { color: var(--ink); font-weight: 700; }
+
+  /* Slides */
+  .slides { flex: 1; position: relative; overflow: hidden; }
+  .slide {
+    position: absolute; inset: 0;
+    padding: 32px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+    overflow-y: auto;
+  }
+  .slide.active { opacity: 1; pointer-events: auto; }
+  .slide-inner { max-width: 1100px; width: 100%; margin: 0 auto; }
+
+  /* Type */
+  .kicker {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h1.title {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.18;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  h1.title.hero { font-size: 56px; margin-bottom: 18px; }
+  p.lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 820px;
+    font-weight: 500;
+  }
+  p.body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 14px;
+    max-width: 820px;
+  }
+  p.body + p.body { margin-top: -2px; }
+  p.note {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 720px;
+    margin-top: 8px;
+  }
+  blockquote.principle {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.35;
+    margin: 18px 0;
+    padding: 14px 22px;
+    border-left: 3px solid var(--gauge);
+    background: var(--gauge-tint);
+    border-radius: 4px;
+    max-width: 820px;
+  }
+
+  /* Phase cards */
+  .pcard {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px 12px;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .pcard .badge {
+    position: absolute;
+    top: -8px; left: 14px;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--card);
+  }
+  .pcard.required { border-color: var(--required); background: var(--required-tint); }
+  .pcard.required .badge { color: var(--required); border: 1px solid var(--required); }
+  .pcard.required .pname { color: var(--required); }
+  .pcard.conditional { border-color: var(--conditional); background: var(--conditional-tint); }
+  .pcard.conditional .badge { color: var(--conditional); border: 1px solid var(--conditional); }
+  .pcard.conditional .pname { color: var(--conditional); }
+  .pcard.insertable { border-color: var(--insertable); background: var(--insertable-tint); }
+  .pcard.insertable .badge { color: var(--insertable); border: 1px solid var(--insertable); }
+  .pcard.insertable .pname { color: var(--insertable); }
+  .pcard .pname { font-size: 17px; font-weight: 600; margin-top: 4px; }
+  .pcard .pdur { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pcard .precond {
+    font-size: 12.5px; color: var(--ink-2); line-height: 1.45;
+    border-top: 1px solid rgba(0,0,0,0.05); padding-top: 6px; margin-top: 2px;
+  }
+  .pcard .precond .key {
+    text-transform: uppercase; letter-spacing: 0.06em; font-size: 9.5px;
+    color: var(--faint); display: block; margin-bottom: 2px; font-weight: 600;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 820px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 980px; }
+
+  /* Gauge box */
+  .gauge-hero {
+    background: var(--gauge-tint);
+    border: 1.5px solid var(--gauge);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+    max-width: 820px;
+    margin-bottom: 16px;
+  }
+  .gauge-hero .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gauge); font-weight: 700;
+  }
+  .gauge-hero .name { font-size: 22px; font-weight: 600; color: var(--gauge); margin-bottom: 4px; }
+  .gauge-hero .desc { font-size: 13.5px; color: var(--ink-2); }
+  .gauge-hero .reread {
+    font-size: 12.5px; color: var(--ink-2); border-left: 1px solid var(--border);
+    padding-left: 18px; line-height: 1.5;
+  }
+  .gauge-hero .reread strong { color: var(--gauge); font-style: normal; }
+
+  /* Chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; max-width: 980px; }
+  .chip {
+    display: inline-block; font-size: 11.5px; padding: 4px 10px; border-radius: 14px;
+    border: 1px solid; font-weight: 500; white-space: nowrap;
+  }
+  .chip.req { color: var(--required); border-color: var(--required); background: var(--required-tint); }
+  .chip.cond { color: var(--conditional); border-color: var(--conditional); background: var(--conditional-tint); }
+  .chip.ins { color: var(--insertable); border-color: var(--insertable); background: var(--insertable-tint); }
+  .chip.gauge {
+    color: var(--gauge); border-color: var(--gauge); background: var(--gauge-tint);
+    font-style: italic; font-size: 11px;
+  }
+  .chip.skip {
+    color: var(--faint); border-color: var(--faint); border-style: dashed;
+    background: transparent; font-style: italic;
+  }
+  .chip.sleep {
+    color: var(--sleep); border-color: var(--sleep); background: var(--sleep-tint);
+    font-weight: 600;
+  }
+  .chip.sleep::before { content: "☾ "; }
+  .arrow-chip { color: var(--faint); font-size: 13px; margin: 0 1px; }
+
+  /* Reasons list */
+  ol.reasons { padding-left: 0; list-style: none; max-width: 820px; counter-reset: li; }
+  ol.reasons li {
+    padding: 9px 0; border-bottom: 1px solid var(--border-soft);
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    font-size: 14px; color: var(--ink-2); line-height: 1.5;
+  }
+  ol.reasons li:last-child { border-bottom: 0; }
+  ol.reasons li::before {
+    content: counter(li); counter-increment: li;
+    font-variant-numeric: tabular-nums; font-weight: 700; color: var(--required); font-size: 14px;
+  }
+  ol.reasons li strong { color: var(--ink); }
+
+  /* Meta boxes */
+  .meta-box {
+    border: 1px dashed var(--meta); background: var(--meta-tint);
+    border-radius: 10px; padding: 14px 18px; font-size: 14px; color: var(--ink-2);
+  }
+  .meta-box .glyph {
+    display: inline-block; width: 28px; color: var(--meta);
+    font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace;
+  }
+  .meta-box strong { color: var(--meta); margin-right: 6px; }
+
+  /* Category strip */
+  .cat-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; max-width: 980px; }
+  .cat { padding: 12px 16px; border-radius: 8px; border: 1.5px solid; }
+  .cat.req { border-color: var(--required); background: var(--required-tint); }
+  .cat.cond { border-color: var(--conditional); background: var(--conditional-tint); }
+  .cat.ins { border-color: var(--insertable); background: var(--insertable-tint); }
+  .cat .cat-label {
+    font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .cat.req .cat-label { color: var(--required); }
+  .cat.cond .cat-label { color: var(--conditional); }
+  .cat.ins .cat-label { color: var(--insertable); }
+  .cat .cat-phases { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .cat .cat-desc { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+
+  /* Path detail */
+  .path-detail {
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; background: var(--card); max-width: 1000px;
+    margin-bottom: 10px;
+  }
+  .path-detail .ptitle { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .path-detail .pfeel { font-size: 11.5px; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+
+  /* Callouts */
+  .callout {
+    background: var(--sleep-tint); border-left: 3px solid var(--sleep);
+    padding: 12px 16px; border-radius: 4px; max-width: 820px; margin-top: 12px;
+  }
+  .callout strong { color: var(--sleep); }
+  .callout-warn {
+    background: var(--warn-tint); border-left: 3px solid var(--warn);
+    padding: 12px 16px; border-radius: 4px; max-width: 820px; margin-top: 12px;
+  }
+  .callout-warn strong { color: var(--warn); }
+
+  /* Symptom grid */
+  .symptoms {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 880px;
+  }
+  .symptom {
+    border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px;
+    background: var(--card); font-size: 13.5px; color: var(--ink-2);
+  }
+  .symptom strong { color: var(--ink); display: block; font-size: 13px; margin-bottom: 2px; }
+
+  /* Two-col research */
+  .research-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 920px;
+  }
+  .research-col {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .research-col h4 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    font-weight: 700; color: var(--gauge); margin-bottom: 8px;
+  }
+  .research-col ul { list-style: none; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+  .research-col li { padding: 3px 0; }
+  .research-col li strong { color: var(--ink); }
+
+  /* Three-signal table */
+  .signals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 1020px; }
+  .signal {
+    border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; background: var(--card);
+  }
+  .signal h4 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .signal.felt { border-color: var(--gauge); background: var(--gauge-tint); }
+  .signal.felt h4 { color: var(--gauge); }
+  .signal.behav { border-color: var(--conditional); background: var(--conditional-tint); }
+  .signal.behav h4 { color: var(--conditional); }
+  .signal.temp { border-color: var(--insertable); background: var(--insertable-tint); }
+  .signal.temp h4 { color: var(--insertable); }
+  .signal .sname { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .signal .sbody { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+  .signal .sbody .row { padding: 3px 0; }
+  .signal .sbody .row .key { color: var(--faint); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; display: block; }
+
+  /* Nav */
+  .nav {
+    padding: 10px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border-soft);
+    background: var(--card);
+    flex: 0 0 auto;
+  }
+  .nav-button {
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 14px; font-size: 13px; color: var(--ink-2); cursor: pointer;
+    font-family: inherit;
+  }
+  .nav-button:hover { background: var(--gauge-tint); }
+  .nav-button:disabled { opacity: 0.3; cursor: not-allowed; }
+  .counter { font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; letter-spacing: 0.1em; }
+  .counter .ti { color: var(--ink-2); }
+  .dots { display: flex; gap: 4px; flex-wrap: wrap; max-width: 50%; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--border);
+    cursor: pointer; transition: background 0.2s;
+  }
+  .dot.active { background: var(--gauge); }
+  .dot:hover { background: var(--muted); }
+  .dot.act-1 { background: var(--required); opacity: 0.35; }
+  .dot.act-2 { background: var(--warn); opacity: 0.35; }
+  .dot.act-3 { background: var(--insertable); opacity: 0.35; }
+  .dot.act-4 { background: var(--gauge); opacity: 0.35; }
+  .dot.active.act-1 { background: var(--required); opacity: 1; }
+  .dot.active.act-2 { background: var(--warn); opacity: 1; }
+  .dot.active.act-3 { background: var(--insertable); opacity: 1; }
+  .dot.active.act-4 { background: var(--gauge); opacity: 1; }
+
+  @media print {
+    body { overflow: visible; height: auto; }
+    .deck { display: block; height: auto; }
+    .topbar, .nav { display: none; }
+    .slides { overflow: visible; }
+    .slide {
+      position: relative; opacity: 1 !important; pointer-events: auto;
+      page-break-after: always; min-height: 100vh; transition: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .slide { padding: 24px 24px; }
+    h1.title { font-size: 26px; }
+    h1.title.hero { font-size: 36px; }
+    p.lede { font-size: 16px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .cat-strip { grid-template-columns: 1fr; }
+    .signals { grid-template-columns: 1fr; }
+    .symptoms { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .gauge-hero { grid-template-columns: 1fr; gap: 12px; }
+    .gauge-hero .reread { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+  <div class="topbar">
+    <span>The Turn · A framework for working with AI</span>
+    <div class="act-strip" id="act-strip">
+      <span data-act="1">I — The new pace</span>
+      <span data-act="2">II — Why the headache</span>
+      <span data-act="3">III — Borrowed wisdom</span>
+      <span data-act="4">IV — The framework</span>
+    </div>
+  </div>
+
+  <div class="slides">
+
+    <!-- ===== ACT I ===== -->
+
+    <!-- 1: Title -->
+    <section class="slide active" data-slide="1" data-act="1">
+      <div class="slide-inner" style="text-align: center;">
+        <p class="kicker">A framework for working with AI</p>
+        <h1 class="title hero">The Turn</h1>
+        <p class="lede" style="font-size: 22px; color: var(--muted); max-width: 640px; margin: 0 auto; font-weight: 400;">
+          Working sustainably alongside AI agents that don't sleep
+        </p>
+      </div>
+    </section>
+
+    <!-- 2: Knowledge work was batched -->
+    <section class="slide" data-slide="2" data-act="1">
+      <div class="slide-inner">
+        <p class="kicker">Act I — The new pace of work</p>
+        <h1 class="title">Knowledge work used to come in batches</h1>
+        <p class="lede">Mornings were emails. Afternoons were meetings. Projects had milestones. Reports had deadlines.</p>
+        <p class="body">
+          The work had a shape — discrete, planned, paced. You knew when you were on, when you were off, when something shipped, and when you'd done a day's worth. The tools you used — calendars, project software, email, status pages — were all designed for this rhythm. They assume the work pauses. They assume you do too.
+        </p>
+        <p class="note">This is the world most knowledge-work tools were designed for.</p>
+      </div>
+    </section>
+
+    <!-- 3: AI made it continuous -->
+    <section class="slide" data-slide="3" data-act="1">
+      <div class="slide-inner">
+        <p class="kicker">Act I — The new pace of work</p>
+        <h1 class="title">AI made it continuous</h1>
+        <p class="lede">AI agents work twenty-four hours a day. They don't pause.</p>
+        <p class="body">
+          They draft overnight. They review code while you sleep. They write emails before you've finished your coffee. The work doesn't stop. It doesn't even slow down. Output that used to be scarce is now effectively infinite — and every minute you're awake, more of it lands in your queue waiting for human judgment.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4: People are breaking -->
+    <section class="slide" data-slide="4" data-act="1">
+      <div class="slide-inner">
+        <p class="kicker">Act I — The new pace of work</p>
+        <h1 class="title">The most AI-fluent people are breaking first</h1>
+        <p class="body">
+          Not the people resisting the tools — the people using them most. They're the ones with ten open windows, the ones losing whole next-days to a great session yesterday, the ones who can't tell exhaustion from focus. They're shipping more than ever and feeling worse than ever, and they can't quite say why.
+        </p>
+        <p class="note">If you've felt this, you're not failing the tools. The tools are missing something.</p>
+      </div>
+    </section>
+
+    <!-- ===== ACT II ===== -->
+
+    <!-- 5: Continuous flow needs continuous management -->
+    <section class="slide" data-slide="5" data-act="2">
+      <div class="slide-inner">
+        <p class="kicker">Act II — Why batch tools fail</p>
+        <h1 class="title">Continuous flow needs continuous management</h1>
+        <p class="lede">The interface broke before the work did.</p>
+        <p class="body">
+          Calendars assume meetings. Project software assumes tasks. Status pages assume sign-offs. They were built to coordinate batched work between humans on a shared schedule. None of them were built to manage a stream of agent output landing twenty-four hours a day, with you as the only human who can decide what matters.
+        </p>
+        <p class="body">
+          When the work stops pausing, the tools don't just lag — they stop being able to <em>describe</em> what's happening. So you fill in the gap with attention, browser tabs, and willpower. None of those scale.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6: ATC analogy -->
+    <section class="slide" data-slide="6" data-act="2">
+      <div class="slide-inner">
+        <p class="kicker">Act II — Why batch tools fail</p>
+        <h1 class="title">Imagine an air traffic control center with no controllers</h1>
+        <p class="body">
+          Every pilot navigating their own approach. No radar. No scheduling. Forty planes in the pattern, each making local decisions with local information.
+        </p>
+        <p class="body">
+          At first it works. The skies are big, the pilots are good, traffic flows. Then something goes wrong, and you can't find the data fast enough to fix it. Then it goes wrong again, faster. By dinner, it's plane crashes every fifteen minutes — not because the pilots are bad, but because there's no coordination layer.
+        </p>
+        <div class="callout-warn">
+          <strong>That's AI-augmented knowledge work today.</strong>
+          The pilots are good. The agents are powerful. The interface that lets a human direct the whole picture isn't there yet.
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: What this feels like -->
+    <section class="slide" data-slide="7" data-act="2">
+      <div class="slide-inner">
+        <p class="kicker">Act II — Why batch tools fail</p>
+        <h1 class="title">What this actually feels like</h1>
+        <p class="body" style="margin-bottom: 16px;">
+          Five symptoms most AI-fluent people will recognize:
+        </p>
+        <div class="symptoms">
+          <div class="symptom"><strong>Bright-red sessions.</strong> Work that felt great while you were doing it, but you're paying for the next morning. Dopamine masked the cost during.</div>
+          <div class="symptom"><strong>Pushing 85 → 100.</strong> Going from "could go home whole" to "shipped" costs you the next day's six good hours.</div>
+          <div class="symptom"><strong>Tab-roulette.</strong> Switching between agent windows while waiting on responses. You never get deep, you just get scattered.</div>
+          <div class="symptom"><strong>Catatonic mornings.</strong> Paying for the night before. The body sends the bill late.</div>
+          <div class="symptom"><strong>Frozen calls.</strong> Decisions you'd normally make easily, suddenly you can't. Decision fatigue arrives without warning.</div>
+        </div>
+        <p class="note">These aren't moral failings. They're predictable results of running batch-shaped tools against continuous-flow work.</p>
+      </div>
+    </section>
+
+    <!-- ===== ACT III ===== -->
+
+    <!-- 8: Continuous flow isn't new -->
+    <section class="slide" data-slide="8" data-act="3">
+      <div class="slide-inner">
+        <p class="kicker">Act III — Borrowed wisdom</p>
+        <h1 class="title">Continuous flow isn't actually new</h1>
+        <p class="lede">It's new for knowledge work. It's not new for the world.</p>
+        <p class="body">
+          Air traffic control. Naval watch standing. Manufacturing lines. Hospital ICUs. Combat aviation. Long-haul shipping. Power grids. These have been running twenty-four-hour operations alongside humans for decades — sometimes centuries.
+        </p>
+        <p class="body">
+          They've each had to solve some version of the same question: <em>how do humans operate sustainably in a system that doesn't stop?</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- 9: The science exists -->
+    <section class="slide" data-slide="9" data-act="3">
+      <div class="slide-inner">
+        <p class="kicker">Act III — Borrowed wisdom</p>
+        <h1 class="title">The science already exists</h1>
+        <p class="body" style="margin-bottom: 16px;">
+          Forty years of research, sitting in the literature, mostly applied to industries you've heard of but haven't worked in. We're going to borrow what works.
+        </p>
+        <div class="research-grid">
+          <div class="research-col">
+            <h4>Industries with answers</h4>
+            <ul>
+              <li><strong>Aviation</strong> — pre-flight checklists, duty-time limits, pre-committed turnback points</li>
+              <li><strong>Naval</strong> — watch standing, formal handoffs, "taking the conn"</li>
+              <li><strong>Manufacturing</strong> — bottleneck management, andon, takt time</li>
+              <li><strong>Medicine</strong> — surgical checklists, structured handoff protocols</li>
+              <li><strong>Sport</strong> — load management, daily readiness, periodization</li>
+            </ul>
+          </div>
+          <div class="research-col">
+            <h4>Science with answers</h4>
+            <ul>
+              <li><strong>Cognitive load research</strong> — what kinds of mental load there are, how to reduce them</li>
+              <li><strong>Recovery psychology</strong> — what actually restores capacity (and what only feels like rest)</li>
+              <li><strong>Decision fatigue research</strong> — why sequential decisions degrade</li>
+              <li><strong>Compensatory effort theory</strong> — why "feeling fine" can be the warning sign</li>
+              <li><strong>Human factors</strong> — what happens when humans operate alongside automation</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">The framework here is mostly translation, not invention. We don't have to start from scratch.</p>
+      </div>
+    </section>
+
+    <!-- ===== ACT IV ===== -->
+
+    <!-- 10: Match activity to capacity -->
+    <section class="slide" data-slide="10" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Match activity to capacity</h1>
+        <blockquote class="principle">
+          The team that rests strategically will outperform the team that pushes continuously.
+        </blockquote>
+        <p class="body">
+          The principle the rest of this builds on. Read your capacity. Honor the reading. Decide what to do based on what you've actually got — not what you wish you had, not what the calendar says you should.
+        </p>
+        <p class="body">
+          <strong>Aviation precedent.</strong> Pilots run a checklist called <strong>IM SAFE</strong> before every flight: Illness, Medication, Stress, Alcohol, Fatigue, Eating. If any line fails, the flight doesn't happen. The captain who calls fatigue is the good captain. The system trusts the call.
+        </p>
+      </div>
+    </section>
+
+    <!-- 11: The Gauge -->
+    <section class="slide" data-slide="11" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Read the Gauge before you fly</h1>
+        <div class="gauge-hero">
+          <div>
+            <div class="label">The instrument</div>
+            <div class="name">The Gauge</div>
+            <div class="desc">your honest capacity reading — felt sense, post-sleep most reliable</div>
+          </div>
+          <div class="reread">
+            <strong>Read it at every boundary:</strong><br>
+            post-sleep (mandatory) · after recovery · after a turn closes · between turns · mid-push if reserves drop
+          </div>
+        </div>
+        <p class="body">
+          The Gauge is the answer to <em>"how much have I got right now?"</em> Its first job isn't to record what happened — it's to <strong>set the mode</strong> for what comes next. Read it before any phase fires. Re-read it after every recovery. The reading dispatches the next move.
+        </p>
+      </div>
+    </section>
+
+    <!-- 12: Phase library -->
+    <section class="slide" data-slide="12" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">A turn has six phases — three kinds</h1>
+        <p class="body" style="margin-bottom: 22px;">
+          The turn isn't a script. It's a rule book. Six phases, three categories, with rules about when each runs.
+        </p>
+        <div class="cat-strip">
+          <div class="cat req">
+            <div class="cat-label">Required</div>
+            <div class="cat-phases">Frame · Debrief</div>
+            <div class="cat-desc">Always run. The bookends of any turn.</div>
+          </div>
+          <div class="cat cond">
+            <div class="cat-label">Conditional</div>
+            <div class="cat-phases">Comprehend · Sync · Push</div>
+            <div class="cat-desc">Run only when their preconditions are met. Otherwise short-circuit or skip.</div>
+          </div>
+          <div class="cat ins">
+            <div class="cat-label">Insertable</div>
+            <div class="cat-phases">Recover</div>
+            <div class="cat-desc">Available anywhere. Includes sleep. Followed by a forced re-read of the Gauge.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13: Required -->
+    <section class="slide" data-slide="13" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Required: Frame &amp; Debrief — the bookends</h1>
+        <p class="body" style="margin-bottom: 18px;">
+          Every turn has these two phases. Frame opens; Debrief closes. Both run always — even when everything in between gets skipped. Without Frame you drift. Without Debrief the turn doesn't compound into learning.
+        </p>
+        <div class="grid-2">
+          <div class="pcard required">
+            <span class="badge">Required</span>
+            <div class="pname">Frame</div>
+            <div class="pdur">5–15 minutes</div>
+            <div class="precond">
+              <span class="key">Function</span>
+              Set scope. Pick the single decision this turn must produce. Name what's <em>not</em> in this turn. Quick, deliberate, written down.
+            </div>
+          </div>
+          <div class="pcard required">
+            <span class="badge">Required</span>
+            <div class="pname">Debrief</div>
+            <div class="pdur">10–20 minutes</div>
+            <div class="precond">
+              <span class="key">Function</span>
+              Capture what happened. Note what worked and what didn't. Set up the next Gauge read. The cycle closes here, not when the work ships.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14: Conditional -->
+    <section class="slide" data-slide="14" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Conditional: the work, gated by reality</h1>
+        <p class="body" style="margin-bottom: 18px;">
+          When the world doesn't supply the precondition, the phase collapses to seconds or skips entirely. The structure adapts to what's actually true today.
+        </p>
+        <div class="grid-3">
+          <div class="pcard conditional">
+            <span class="badge">Conditional</span>
+            <div class="pname">Comprehend</div>
+            <div class="pdur">1–60 minutes · variable</div>
+            <div class="precond">
+              <span class="key">Precondition</span>
+              Agent state to load. Nothing ran overnight? One-minute check is enough. Heavy overnight? Take the full hour.
+            </div>
+          </div>
+          <div class="pcard conditional">
+            <span class="badge">Conditional</span>
+            <div class="pname">Sync</div>
+            <div class="pdur">2–60 minutes · variable</div>
+            <div class="precond">
+              <span class="key">Precondition</span>
+              Humans or agents to align with. Working solo? Skip, or do a two-minute pass with yourself.
+            </div>
+          </div>
+          <div class="pcard conditional">
+            <span class="badge">Conditional</span>
+            <div class="pname">Push</div>
+            <div class="pdur">2–3 hours (or less)</div>
+            <div class="precond">
+              <span class="key">Precondition</span>
+              Reserves above threshold AND a real decision waiting. Otherwise defer to a later turn.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15: Insertable -->
+    <section class="slide" data-slide="15" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Insertable: Recover — anywhere, anytime</h1>
+        <div class="grid-2">
+          <div class="pcard insertable">
+            <span class="badge">Insertable</span>
+            <div class="pname">Recover</div>
+            <div class="pdur">minutes to hours</div>
+            <div class="precond">
+              <span class="key">Pick a recovery mode</span>
+              <strong>Detach</strong> · psychological off-time, the strongest predictor of next-turn capacity<br>
+              <strong>Relax</strong> · low-arousal, parasympathetic — slow walk, hot bath, music<br>
+              <strong>Master</strong> · a hard new thing — counterintuitively restorative<br>
+              <strong>Choose</strong> · autonomy mode — do whatever you actually want
+            </div>
+          </div>
+          <div>
+            <p class="body">
+              Recover can be inserted between any two phases. Pick the mode deliberately — generic "rest" is usually scrolling, which doesn't restore. After every Recover, re-read the Gauge.
+            </p>
+            <div class="callout">
+              <strong>Sleep is a special, mandatory Recover.</strong> It happens roughly every twenty-four hours regardless of plan, and it triggers a forced post-sleep Gauge read — the morning-after check, IM-SAFE-equivalent.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16: Composition rules -->
+    <section class="slide" data-slide="16" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">The rule book: how the phases compose</h1>
+        <div class="grid-3" style="margin-top: 6px;">
+          <div class="pcard" style="background: var(--card);">
+            <div class="pname" style="color: var(--ink); font-size: 14px;">Canonical order</div>
+            <div class="precond">Frame → Comprehend → Sync → Push → Debrief → Recover. The default sequence when reserves are high and all preconditions are met.</div>
+          </div>
+          <div class="pcard" style="background: var(--card);">
+            <div class="pname" style="color: var(--ink); font-size: 14px;">Conditional skipping</div>
+            <div class="precond">Conditional phases collapse or skip when their preconditions aren't met. The structure isn't a script — it's a checklist.</div>
+          </div>
+          <div class="pcard" style="background: var(--card);">
+            <div class="pname" style="color: var(--ink); font-size: 14px;">Recover anywhere · re-read after</div>
+            <div class="precond">Recover can be inserted between any two phases. After it, the Gauge is re-read. Sleep is a special insertion.</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top: 18px;">
+          <strong>Days are reporting periods. Turns are work units.</strong>
+          A turn can span sleep — work that ended on Sync at 6pm continues with Push at 8am, if the morning Gauge passes.
+        </div>
+      </div>
+    </section>
+
+    <!-- 17: Multi-signal -->
+    <section class="slide" data-slide="17" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">The Gauge alone isn't enough</h1>
+        <p class="body" style="margin-bottom: 16px;">
+          Subjective capacity reports become unreliable in mid-task — exactly when you most need them. (The "bright red" problem: dopamine masks cost during flow.) So the framework uses three different signal types, with different reliability profiles.
+        </p>
+        <div class="signals">
+          <div class="signal felt">
+            <h4>Signal 1</h4>
+            <div class="sname">Felt sense</div>
+            <div class="sbody">
+              <div class="row"><span class="key">What</span>The Gauge — your honest reading of how you feel.</div>
+              <div class="row"><span class="key">Reliable</span>Post-sleep, post-recovery, low reserves.</div>
+              <div class="row"><span class="key">Unreliable</span>Mid-task in compensatory mode. Bright red.</div>
+              <div class="row"><span class="key">When</span>Major boundaries.</div>
+            </div>
+          </div>
+          <div class="signal behav">
+            <h4>Signal 2</h4>
+            <div class="sname">Behavioral</div>
+            <div class="sbody">
+              <div class="row"><span class="key">What</span>Decision speed, irritability, re-reading, breath, posture, drift.</div>
+              <div class="row"><span class="key">Reliable</span>Continuous, with practice.</div>
+              <div class="row"><span class="key">Unreliable</span>If you don't notice it.</div>
+              <div class="row"><span class="key">When</span>Ambient — passive.</div>
+            </div>
+          </div>
+          <div class="signal temp">
+            <h4>Signal 3</h4>
+            <div class="sname">Temporal</div>
+            <div class="sbody">
+              <div class="row"><span class="key">What</span>Hard ceilings: max push duration, total active hours, sleep floor.</div>
+              <div class="row"><span class="key">Reliable</span>Always. The clock doesn't lie.</div>
+              <div class="row"><span class="key">Unreliable</span>Doesn't adapt to today's actual capacity.</div>
+              <div class="row"><span class="key">When</span>Pre-committed.</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Aviation does this too: IM SAFE (felt sense) + duty-time limits (temporal) + crew cross-check (behavioral). The system trusts no single signal.</p>
+      </div>
+    </section>
+
+    <!-- 18: Bright-red tripwire -->
+    <section class="slide" data-slide="18" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">If you feel great after 90 minutes of intensity, that's the warning</h1>
+        <p class="lede">In compensatory mode, feeling-good is the warning sign — not the green light.</p>
+        <p class="body">
+          When demand exceeds capacity, the body and brain compensate by spending reserves you can't feel spending. Dopamine masks the cost. By the time you notice depletion, you're already in deficit. The flow-state advice that says "ride it as long as it lasts" is correct for tasks that end on their own. It's wrong for AI-native work, where the task can run forever and the only stop is internal.
+        </p>
+        <div class="callout-warn">
+          <strong>The tripwire.</strong> Hard time-box on Push (around 2.5 hours). Pre-committed when fresh, executed regardless of how good it feels mid-flow. Combat aviation calls this "bingo fuel" — the turnback point is decided when the head is clear, and it's executed without negotiation when the time comes.
+        </div>
+      </div>
+    </section>
+
+    <!-- 19: Example paths -->
+    <section class="slide" data-slide="19" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">The same phases build different days</h1>
+        <p class="body" style="margin-bottom: 14px;">
+          Three different starting conditions, three different paths through the same rule book.
+        </p>
+
+        <div class="path-detail">
+          <div class="ptitle">A canonical day</div>
+          <div class="pfeel">reserves high, agents ran overnight, team is around</div>
+          <div class="chips">
+            <span class="chip gauge">Gauge: ready</span><span class="arrow-chip">→</span>
+            <span class="chip req">Frame</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Comprehend</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Sync</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Push</span><span class="arrow-chip">→</span>
+            <span class="chip req">Debrief</span><span class="arrow-chip">→</span>
+            <span class="chip ins">Recover</span>
+          </div>
+        </div>
+
+        <div class="path-detail">
+          <div class="ptitle">A solo cold-start</div>
+          <div class="pfeel">no overnight agents, collaborator out — Comprehend and Sync collapse</div>
+          <div class="chips">
+            <span class="chip gauge">Gauge: ready</span><span class="arrow-chip">→</span>
+            <span class="chip req">Frame</span><span class="arrow-chip">→</span>
+            <span class="chip skip">Comprehend (skip)</span><span class="arrow-chip">→</span>
+            <span class="chip skip">Sync (skip)</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Push</span><span class="arrow-chip">→</span>
+            <span class="chip req">Debrief</span><span class="arrow-chip">→</span>
+            <span class="chip ins">Recover</span>
+          </div>
+        </div>
+
+        <div class="path-detail">
+          <div class="ptitle">A turn that spans sleep</div>
+          <div class="pfeel">work persists across the body's rest cycle</div>
+          <div class="chips">
+            <span class="chip gauge">Gauge: ready (eve)</span><span class="arrow-chip">→</span>
+            <span class="chip req">Frame</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Comprehend</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Sync</span><span class="arrow-chip">→</span>
+            <span class="chip sleep">sleep</span><span class="arrow-chip">→</span>
+            <span class="chip gauge">morning-after: pass</span><span class="arrow-chip">→</span>
+            <span class="chip cond">Push</span><span class="arrow-chip">→</span>
+            <span class="chip req">Debrief</span><span class="arrow-chip">→</span>
+            <span class="chip ins">Recover</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20: Meta-disciplines -->
+    <section class="slide" data-slide="20" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Two disciplines run across all of it</h1>
+        <p class="body" style="margin-bottom: 16px;">
+          These don't belong to a phase. They live across the structure. Both deserve their own practice.
+        </p>
+        <div class="grid-2">
+          <div class="meta-box">
+            <span class="glyph">╲╱</span>
+            <strong>Transition</strong>
+            <p style="margin-top: 6px;">Every phase boundary is taxed. Closing one phase cleanly and opening the next with intent is its own skill. Cognitive science calls this "attention residue" and it's measured. Practice surface: water, walk, posture change, a verbal cue.</p>
+          </div>
+          <div class="meta-box">
+            <span class="glyph">┄┄</span>
+            <strong>Trim</strong>
+            <p style="margin-top: 6px;">Selection discipline within each phase. Don't comprehend everything, don't sync on everything, don't decide everything, don't capture everything. Lighter once Frame is doing its job — but never disappears.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21: Where to start -->
+    <section class="slide" data-slide="21" data-act="4">
+      <div class="slide-inner">
+        <p class="kicker">Act IV — The framework</p>
+        <h1 class="title">Build Frame first</h1>
+        <p class="body" style="margin-bottom: 12px;">
+          The framework adapts to whatever's true. So which phase deserves the most attention first? Frame. Six reasons converge on the same answer:
+        </p>
+        <ol class="reasons">
+          <li><span><strong>Multiplicative downstream effect.</strong> Better Frame means less Comprehend, less Sync, less Push, less Debrief, less Recover. No other phase has reach into all five others.</span></li>
+          <li><span><strong>Cheapest to design.</strong> 5–15 minutes, templatable, repeatable. A one-page checklist.</span></li>
+          <li><span><strong>The literature agrees.</strong> Reducing demand <em>before</em> committing to it is consistently the highest-ROI cognitive intervention across forty years of research.</span></li>
+          <li><span><strong>Measure twice, cut once.</strong> Frame is the measure-twice phase.</span></li>
+          <li><span><strong>Hardest to recover from if missed.</strong> A bad Frame can't really be fixed mid-turn. It corrupts everything downstream.</span></li>
+          <li><span><strong>Where AI-native is uniquely new.</strong> Demand reduction onto a durable knowledge layer has no pre-AI analogue. The most learning is here.</span></li>
+        </ol>
+        <p class="note" style="margin-top: 14px;">Build the Frame template. Run it for a week. Iterate. Then layer on the rest.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="nav-button prev">← prev</button>
+    <div class="dots" id="dots"></div>
+    <span class="counter"><span class="ti" id="cur">1</span> / <span id="total">21</span></span>
+    <button class="nav-button next">next →</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+    const dotsEl = document.getElementById('dots');
+    const totalEl = document.getElementById('total');
+    const curEl = document.getElementById('cur');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const actStrip = document.getElementById('act-strip');
+
+    totalEl.textContent = total;
+
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('span');
+      const act = slides[i].dataset.act || '1';
+      d.className = 'dot act-' + act + (i === 0 ? ' active' : '');
+      d.title = 'Slide ' + (i+1);
+      d.addEventListener('click', () => show(i));
+      dotsEl.appendChild(d);
+    }
+    const dots = dotsEl.querySelectorAll('.dot');
+
+    function highlightAct(act) {
+      actStrip.querySelectorAll('span').forEach(s => {
+        s.classList.toggle('current', s.dataset.act === act);
+      });
+    }
+
+    function show(i) {
+      if (i < 0 || i >= total) return;
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      curEl.textContent = current + 1;
+      highlightAct(slides[current].dataset.act);
+      history.replaceState(null, '', '#' + (current + 1));
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn.addEventListener('click', () => show(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(current - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { show(current + 1); e.preventDefault(); }
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(total - 1);
+    });
+
+    function fromHash() {
+      const n = parseInt(location.hash.slice(1));
+      if (n >= 1 && n <= total) show(n - 1);
+    }
+    window.addEventListener('hashchange', fromHash);
+    highlightAct(slides[0].dataset.act);
+    fromHash();
+  })();
+</script>
+</body>
+</html>
