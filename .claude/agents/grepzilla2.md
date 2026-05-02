@@ -82,7 +82,13 @@ When `zelda/`, `ghostwriter/`, `quenton-quince/`, `larry-moleman/`, or `cognitiv
 - **Book context drift**: Chapter information in `zelda/BOOK_CONTEXT.md` that doesn't match current state of `src/data/bookChapters.ts` or actual chapter content.
 - **Framework references**: Frameworks or concepts mentioned in editorial files that aren't actually present in the published chapters (or vice versa).
 - **Stale open questions**: Editorial questions in `zelda/BOOK_CONTEXT.md` or LAB items in `cognitive-lab/cognitive-lab-v0.1.html` that have been resolved by changes elsewhere but not yet updated here.
-- **Cross-file references**: Agent files (`zelda/SYSTEM_PROMPT.md`, `ghostwriter/SYSTEM_PROMPT.md`, `quenton-quince/SYSTEM_PROMPT.md`, `larry-moleman/SYSTEM_PROMPT.md`, and the corresponding `METHODOLOGY.md` / `JOB_CATALOG.md` / `PLAYS.md` / `PRINCIPLES.md` / `LAB_CONTEXT.md` companions) referencing files or paths by name that don't exist or have been renamed.
+- **Cross-file references**: Agent files referencing files or paths by name that don't exist or have been renamed. Each agent folder has a different mix of companion files — verify references against the actual contents:
+  - `zelda/`: SYSTEM_PROMPT, METHODOLOGY, BLUEPRINTS, BOOK_CONTEXT, BOOK2_CONTEXT, SESSION_TEMPLATE, SWEEP_RESULTS, README, chapters/
+  - `ghostwriter/`: SYSTEM_PROMPT, BOOK_CONTEXT_REFERENCE, VOICE_SAMPLES, README, briefs/, drafts/
+  - `quenton-quince/`: SYSTEM_PROMPT, METHODOLOGY, PLAYS, PRINCIPLES, LAB_CONTEXT, README
+  - `larry-moleman/`: SYSTEM_PROMPT, JOB_CATALOG, PLAYS, LAB_CONTEXT, README
+  - `cognitive-lab/`: PROCESS, DECISIONS, cognitive-lab-plan, cognitive-lab-spec, frame-research-and-practice, turn-v0.1-hacks-today, turn-v0.1-phases-and-leverage, turn-v0.1-map (.html and .md), capacity-checkin.html, cognitive-lab-v0.1.html
+    Treat references that match these folders' actual contents as valid; flag any reference to a file that isn't present.
 - **Decisions log drift**: Entries in `cognitive-lab/DECISIONS.md` that reference LAB-XXX items, area IDs, or chunk IDs not present in `cognitive-lab/cognitive-lab-v0.1.html`.
 - **Process doc drift**: Claims in `cognitive-lab/PROCESS.md` (about agent roles, lab structure, file paths) that don't match actual state — e.g., a referenced agent file that doesn't exist, an area listed that's not in the lab data.
 - **Plays-or-principles referenced not found**: Plays mentioned in any agent file (e.g., "the Bootstrap-a-Workshop play") that don't appear in the corresponding `PLAYS.md`. Principles cited that aren't in `PRINCIPLES.md`.
@@ -175,8 +181,8 @@ The lab's source of truth is the embedded JSON inside `<script type="application
   - No orphaned items (defined but unused) and no broken references (used but undefined).
 - **Area ID resolution**: Every item's `area` field references an existing area `id`. Every cross-reference in chunks/experiments to another area uses the canonical `id` slug.
 - **ID uniqueness**: Item IDs unique globally. Chunk IDs unique within an area. Experiment IDs unique within an area.
-- **Source path validity**: For each `sources` (or legacy `artifacts`) entry, if the `href` is a relative path (no `http://` / `https://` / `#` prefix), the file should exist at `cognitive-lab/<href>` or at the repo root. Flag missing paths.
-- **Status validity**: Every item's `status` is one of: `backlog`, `in-progress`, `drafted`, `live`, `archived`.
+- **Source path validity**: For each **area's** `sources` (or legacy `artifacts`) array — these are area-level fields, not item-level — iterate the entries. If an entry's `href` is a relative path (no `http://` / `https://` / `#` prefix), the file should exist at `cognitive-lab/<href>` or at the repo root. Flag missing paths. Both field names (`sources` and `artifacts`) are currently in use across different areas; check both.
+- **Status validity**: Every item's `status` (in the baseline JSON) is one of: `backlog`, `in-progress`, `drafted`, `live`, `archived`. **Note:** the baseline JSON typically only carries `backlog` and `in-progress` — the lab's UI status-cycle moves items into `drafted` / `live` / `archived` via a localStorage shadow that is not part of the tracked file. So a typo like `draft` (instead of `drafted`) won't be caught by comparison against current data; flag any value outside the enum.
 - **Priority validity**: Every item's `priority` is one of: `P0`, `P1`, `P2`.
 - **Workshop coherence**: Areas with `workshop: true` should have `items`, `experiments`, or `chunks` populated (a workshop with nothing in it is unfinished).
 - **Cross-reference with DECISIONS.md and PROCESS.md**: LAB-XXX, area IDs, and chunk IDs cited in `cognitive-lab/DECISIONS.md` or `cognitive-lab/PROCESS.md` exist in the lab data. Flag stale references.
