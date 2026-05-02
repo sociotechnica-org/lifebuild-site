@@ -4,3 +4,8 @@ node_modules/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Cognitive lab — hand-crafted single-file workshop tool with bespoke
+# HTML/JS/CSS formatting (incl. embedded JSON). Treated as a vendored
+# artifact, not reformatted by prettier.
+cognitive-lab/
