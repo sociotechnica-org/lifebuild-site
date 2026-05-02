@@ -2,7 +2,7 @@
 
 How a design session runs. Reference for during-session decisions; not a script to follow rigidly.
 
-## Five phases of a design session
+## Six phases of a design session
 
 ### 1. Orient
 
