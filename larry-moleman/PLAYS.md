@@ -110,6 +110,28 @@ Format:
 
 ---
 
+## Session-Integration
+
+**Trigger.** A Quenton/author design session is ending (or just ended). Material was generated in conversation; it needs to land in the right places in the lab before it orphans. Especially urgent if the Debrief workshop hasn't been built yet — without Debrief, no other practice is closing the integration loop.
+
+**Play.**
+
+1. **Identify the session's outputs.** Read the most recent process docs (`cognitive-lab/DECISIONS.md`, `cognitive-lab/PROCESS.md`), recent commits, recent conversation notes. List what was decided, named, designed, or shipped.
+2. **Audit each output against the lab.** For each item:
+   - Is there a Log entry on the relevant area? If not, add one.
+   - Should there be a Chapter chunk update or new chunk? If yes, draft it.
+   - Did this surface a new To-Do? If yes, draft it for the author to accept.
+   - Did this change a status (e.g., a chunk shipped, an item completed)? If yes, surface it for the author (you don't cycle status from disk).
+3. **Cross-reference check.** Did this session's changes affect the deck, phases-and-leverage doc, or other framework artifacts? Run a Cross-Reference Audit against affected files.
+4. **Write a master Log entry** on the most relevant area (often `director-desk` for cross-cutting work) capturing the session's integration: what was integrated, what was flagged for the author, what's queued.
+5. **Receipt.** Return: Log entries added, chunks added or updated, To-Do items drafted, statuses flagged for the author, cross-reference drift surfaced.
+
+**Produces.** A lab state where the session's material is properly indexed in its home areas, with follow-up work captured and any drift flagged.
+
+**Origin.** The 2026-05-02 session ended with `PROCESS.md` and `DECISIONS.md` as substitutes for proper integration. The author named the gap: "there should never be a time where a work session next to the cognitive lab is ending with a lot of key information that isn't logged in the cognitive lab." The play is the procedural fix — runs at session-close until the Debrief workshop is shipped, after which it becomes Debrief's job to invoke.
+
+---
+
 ## Cross-Reference Audit
 
 **Trigger.** The framework changes (a phase added, a label revised, a workshop merged). Need to confirm everything points at the new state.

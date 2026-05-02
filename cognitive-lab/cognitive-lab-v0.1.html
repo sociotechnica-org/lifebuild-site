@@ -3077,11 +3077,21 @@
       "name": "Debrief Booth",
       "type": "phase / required",
       "accent": "blue",
-      "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read.",
-      "items": ["LAB-003","LAB-004"],
-      "artifacts": [
+      "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
+      "items": ["LAB-003","LAB-004","LAB-032"],
+      "sources": [
         { "label": "turn-v0.1-phases-and-leverage.md (Debrief section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
+      "experiments": [
+        {
+          "id": "exp-debrief-2026-05-02-absent-as-symptom",
+          "title": "Debrief absent → urgent priority surfaced",
+          "date": "2026-05-02 (afternoon)",
+          "observation": "Today's session ended with material orphaning. PROCESS.md and DECISIONS.md were created as substitute records, but they don't replace the area-level integration that Debrief is designed to do (Log entries, chunk updates, To-Do spawning, status changes, cross-references). The pattern: every design session ends with integration debt because Debrief practice doesn't exist yet to close the loop.",
+          "impact": "Debrief workshop bootstrap (LAB-032) bumped to top priority. The absence of Debrief is itself the lived data validating its importance. Until Debrief exists, Larry's Session-Integration play (newly added) substitutes — runs at session-close to integrate orphan material."
+        }
+      ],
+      "chunks": [],
       "notes": []
     },
     {
@@ -3102,11 +3112,36 @@
       "name": "The Gauge",
       "type": "gauge / telemetry",
       "accent": "dark",
-      "description": "The capacity instrument. Read at every boundary. Gates the day's mode.",
-      "items": ["LAB-020","LAB-021","LAB-025"],
-      "artifacts": [
+      "description": "The capacity instrument. Read at every boundary. Gates the day's mode. The continuous read-and-dispatch cycle (capacity ↔ restoration) is the framework's heartbeat.",
+      "items": ["LAB-020","LAB-021","LAB-025","LAB-030"],
+      "sources": [
         { "label": "Capacity Check-In (the live instrument)", "href": "capacity-checkin.html" },
-        { "label": "turn-v0.1-map.html (slides 11 + 17, multi-signal model)", "href": "turn-v0.1-map.html" }
+        { "label": "turn-v0.1-map.html (slides 11 + 17, multi-signal model)", "href": "turn-v0.1-map.html" },
+        { "label": "PROCESS.md (heartbeat as one of two central images)", "href": "PROCESS.md" }
+      ],
+      "experiments": [
+        {
+          "id": "exp-gauge-2026-05-02-heartbeat-named",
+          "title": "Heartbeat named as second central image",
+          "date": "2026-05-02 (afternoon)",
+          "observation": "The give-and-take of capacity check ↔ restoration plan was named as the framework's meta-rhythm. Not just a phase — the rhythm that makes every phase work. Capacity reading dispatches: cleared (continue) or grounded (insert recovery, re-read). The cycle runs continuously, between every phase, across days.",
+          "impact": "Now treated as one of two central images for the framework, alongside the cache-game (Frame's organizing metaphor). The cache-game designs the day; the heartbeat keeps you alive playing it. Captured as a chunk on this area; queued for integration into the deck (LAB-030)."
+        },
+        {
+          "id": "exp-gauge-2026-05-02-merger-architecture",
+          "title": "Capacity check-in + Pilot Check converge into unified Gauge",
+          "date": "2026-05-02 (morning)",
+          "observation": "The capacity check-in PoC and the Pilot Check Station are different views of the same instrument. Each is half-built; together they're the complete instrument. The PoC has felt-sense + bank metaphor + morning-after; the Pilot Check has three-dimension rule-out + targeted prescription. Naming them as separate areas was creating duplication.",
+          "impact": "Architecture decided: merger queued as LAB-025 (Make the Gauge a workshop, embed capacity check-in). Pilot Check Station may dissolve into a use-pattern of the Gauge after the merger."
+        }
+      ],
+      "chunks": [
+        {
+          "id": "chunk-gauge-heartbeat",
+          "title": "The heartbeat — capacity ↔ restoration as meta-rhythm",
+          "summary": "The continuous Gauge-read-and-dispatch cycle is the framework's beating rhythm. Without it, the framework is just phases without honoring capacity.",
+          "body": "The framework has two central images. The cache-game (Jess's contribution) names how the day's game gets designed — Frame as the game-design moment. The heartbeat names how the day's rhythm cycles.\n\nThe heartbeat: capacity check → action plan → capacity check → action plan. The Gauge reads, the result dispatches: cleared (continue with the planned phase) or grounded (insert recovery, re-read). The cycle runs continuously throughout the day, between every phase, across days.\n\nWith the heartbeat, every phase boundary is gated by capacity and every grounded reading dispatches a targeted recovery. Without it, the cycle just runs through phases regardless of state — and the framework collapses into ritual.\n\nThe Pilot Check is the explicit pre-flight version of the heartbeat (rule-out across cognitive / emotional / physical, dispatching recovery hours per red dimension). The Gauge is the continuous instrument the heartbeat runs on.\n\nThe two images compose. The cache-game is *how the day's game is designed.* The heartbeat is *how the day's rhythm cycles.* Neither alone is the framework; together they make the practice live."
+        }
       ],
       "notes": [
         "The capacity check-in is the felt-sense layer of the Gauge. It's been doing real recovery-planning work and is the seed the Gauge grows from.",
@@ -3118,9 +3153,36 @@
       "name": "Director's Desk",
       "type": "aux / persistent",
       "accent": "dark",
-      "description": "Your seat. Where the Frame card sits today, where lab notes get written.",
+      "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
       "items": ["LAB-022","LAB-023","LAB-024","LAB-029"],
-      "artifacts": [],
+      "sources": [
+        { "label": "PROCESS.md (how the agents compose, lab-to-book flow)", "href": "PROCESS.md" },
+        { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
+      ],
+      "experiments": [
+        {
+          "id": "exp-director-2026-05-02-session-integration",
+          "title": "Session-Integration play applied to 2026-05-02 session",
+          "date": "2026-05-02 (late afternoon)",
+          "observation": "Author named a procedural gap: today's session ended with material orphaning to a panic-push PR (DECISIONS.md, PROCESS.md) instead of being properly integrated into the lab. The Debrief workshop, which would normally close the integration loop, hasn't been built yet — so every session leaves integration debt. Solution: Larry's Session-Integration play, runs at session-close until Debrief is shipped.",
+          "impact": "Added Session-Integration play to larry-moleman/PLAYS.md (11th play). Ran the play to integrate this session's orphans: Log entries on the-gauge (heartbeat naming, Gauge merger architecture), debrief-booth (Debrief absent-as-symptom), transition-hallway (research compiled). Heartbeat chunk added to the-gauge. New To-Dos: LAB-030 (integrate heartbeat into deck), LAB-031 (bootstrap Transition Workshop), LAB-032 (bootstrap Debrief Workshop — urgent), LAB-033 (bootstrap Trim Workshop). Status flagged for author: Debrief workshop bootstrap (LAB-032) is the urgent next priority since absence of Debrief is what surfaced the gap."
+        },
+        {
+          "id": "exp-director-2026-05-02-process-docs",
+          "title": "Process docs seeded (PR #124)",
+          "date": "2026-05-02 (early afternoon)",
+          "observation": "Five process docs landed in PR #124: quenton-quince/PLAYS.md, quenton-quince/PRINCIPLES.md, larry-moleman/PLAYS.md, cognitive-lab/PROCESS.md, cognitive-lab/DECISIONS.md. Captures the durable process knowledge that was previously orphaning in conversation transcripts.",
+          "impact": "Lab now has named patterns (plays), earned heuristics (principles), agent composition map (PROCESS.md), and synthesized decisions log. Future sessions can reference and update these docs rather than rediscovering."
+        },
+        {
+          "id": "exp-director-2026-05-02-agent-split",
+          "title": "Two-role agent split shipped (Quenton + Larry)",
+          "date": "2026-05-02 (mid-day)",
+          "observation": "PR #123 merged. Quenton Quince (design collaborator, Opus) and Larry Moleman (lab assistant, Sonnet) now project-resident agents with companion folders mirroring zelda/ and ghostwriter/. Different cognitive shapes get different agents: high-variance design vs. low-variance operations.",
+          "impact": "Future sessions invoke the right agent for the work shape. Session opening prompt template in conversation: 'Launch Quenton Quince to pick up cognitive-lab work...' Operational tasks route to Larry."
+        }
+      ],
+      "chunks": [],
       "notes": []
     },
     {
@@ -3171,11 +3233,24 @@
       "name": "Transition Hallway",
       "type": "meta-discipline",
       "accent": "tan",
-      "description": "Every phase boundary is taxed. Close · reset · open. Practice surface for the boundary move.",
-      "items": ["LAB-005","LAB-006"],
-      "artifacts": [
-        { "label": "turn-v0.1-map.html (deck slide 20)", "href": "turn-v0.1-map.html" }
+      "description": "Every phase boundary is taxed (Leroy 2009 attention residue). Close · reset · open. Practice surface for the boundary move. Same shape across micro / meso / macro / super-macro scales.",
+      "items": ["LAB-005","LAB-006","LAB-031"],
+      "sources": [
+        { "label": "turn-v0.1-map.html (deck slide 20)", "href": "turn-v0.1-map.html" },
+        { "label": "Leroy 2009 — Attention Residue (canonical mechanism)", "href": "#" },
+        { "label": "Shah, Friedman, Kruglanski 2002 — Goal Shielding (loss after interruption)", "href": "#" },
+        { "label": "Gollwitzer 1999 — Implementation Intentions (the open beat)", "href": "#" }
       ],
+      "experiments": [
+        {
+          "id": "exp-transition-2026-05-02-research-compiled",
+          "title": "Transition research compiled, three-beat protocol named",
+          "date": "2026-05-02 (afternoon)",
+          "observation": "Five research anchors identified: Attention Residue (Leroy 2009 — the canonical mechanism), Goal Shielding loss after interruption (Shah, Friedman, Kruglanski 2002), Implementation Intentions (Gollwitzer 1999), pre-performance routines (sports psych — golf, free throws), industry handoff protocols (naval taking-the-conn, surgical SBAR, aviation sterile cockpit). The unified shape across all of them: Close → Reset → Open, three beats.",
+          "impact": "Three-beat protocol holds across scales: micro (between tasks, 30–60 sec), meso (between phases, 1–3 min), macro (between turns, including sleep — the Pilot Check IS the open beat), super-macro (between days/weeks/projects). Workshop bootstrap queued as LAB-031. Material is chunk-ready when Transition Workshop is built."
+        }
+      ],
+      "chunks": [],
       "notes": []
     },
     {
@@ -3184,7 +3259,7 @@
       "type": "meta-discipline",
       "accent": "tan",
       "description": "Selection discipline within each phase. Lower priority once Frame is doing its job.",
-      "items": ["LAB-017","LAB-018"],
+      "items": ["LAB-017","LAB-018","LAB-033"],
       "artifacts": [
         { "label": "turn-v0.1-map.html (deck slide 20)", "href": "turn-v0.1-map.html" }
       ],
@@ -3265,7 +3340,8 @@
         "LAB-001","LAB-002","LAB-003","LAB-004","LAB-005","LAB-006","LAB-007","LAB-008",
         "LAB-009","LAB-010","LAB-011","LAB-012","LAB-013","LAB-014","LAB-015","LAB-016",
         "LAB-017","LAB-018","LAB-019","LAB-020","LAB-021","LAB-022","LAB-023","LAB-024",
-        "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029"
+        "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029",
+        "LAB-030","LAB-031","LAB-032","LAB-033"
       ],
       "artifacts": [],
       "notes": []
@@ -3544,6 +3620,42 @@
       "area": "director-desk",
       "brief": "An AI agent generates the title for Log entries from observation + impact. Manual override stays available.",
       "full": "When a Log entry is saved (or after observation/impact are filled), an AI agent suggests a 4–8 word label that captures the entry's gist. User accepts, edits, or replaces. Belongs to the broader 'magical workshop' direction where AI teammates contribute structured content. Touches every workshop area, not just Frame. Requires an LLM call (Claude API) — server endpoint or client-side proxy. Lower-tier model (Haiku) sufficient for titling. Lives in director-desk because the capability spans the whole lab, not one area."
+    },
+    "LAB-030": {
+      "id": "LAB-030",
+      "title": "Integrate the heartbeat into the deck",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "the-gauge",
+      "brief": "Update deck slides to surface the heartbeat as the framework's second central image alongside the cache-game.",
+      "full": "The framework now has two named central images. The cache-game is well-represented in the deck (Frame batches with subtitles tied to the metaphor). The heartbeat (capacity ↔ restoration as continuous meta-rhythm) is not yet in the deck. Update slides 11 and 17–18 (Gauge and multi-signal model) to name the heartbeat explicitly. Possibly add a slide that pairs the two images. Coordinates with chunk-gauge-heartbeat in the-gauge area."
+    },
+    "LAB-031": {
+      "id": "LAB-031",
+      "title": "Bootstrap Transition Workshop",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "transition-hallway",
+      "brief": "Apply the Bootstrap-a-Workshop play to Transition Hallway. Wildcat the practice, design the form, build the prototype with the three-beat (close · reset · open) protocol.",
+      "full": "Research and chunks are ready (LAB-005 / LAB-006 cover the form and chapter; the experiment log already has the research compilation). What's missing: the workshop bootstrap itself — mark area workshop:true, build the prototype (likely a checklist with scale toggle for micro/meso/macro), wire save handler to log each transition. Open question to settle in the wildcat: one protocol or three (one per scale). Lean: one protocol with scale awareness."
+    },
+    "LAB-032": {
+      "id": "LAB-032",
+      "title": "Bootstrap Debrief Workshop (URGENT)",
+      "status": "backlog",
+      "priority": "P0",
+      "area": "debrief-booth",
+      "brief": "Apply the Bootstrap-a-Workshop play to Debrief Booth. URGENT — absence of Debrief is what creates session-end integration debt. Until Debrief exists, Larry's Session-Integration play substitutes.",
+      "full": "Bootstrap procedure: wildcat a Debrief on a recent turn (5 minutes, no template), capture the structure that emerges, design the form from the lived data. Probable shape (from After-Action Review tradition): What was framed → What actually happened → Where they diverged → What to sustain → What to improve → Capacity reading at end → Items to update / Logs to write / chunks to refresh. Then build the workshop. The Debrief practice is the procedural fix for the integration-debt gap surfaced 2026-05-02."
+    },
+    "LAB-033": {
+      "id": "LAB-033",
+      "title": "Bootstrap Trim Workshop",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "trim-bench",
+      "brief": "Apply the Bootstrap-a-Workshop play to Trim Bench. Lower priority — Trim is meta-ambient (lives inside other phases) and may not need a full workshop right away.",
+      "full": "Trim is selection discipline within phases. It may be sufficient to surface as principles + chunks rather than a full workshop with prototype. Open question to settle when this comes up: does Trim need its own prototype, or is it expressed entirely through how other workshops handle their fields (e.g., Frame's 'Not Doing' column already operationalizes Trim)? Answer probably emerges from running the existing workshops for a few weeks."
     }
   }
 }
