@@ -14,7 +14,7 @@ These are patterns, not scripts. Adapt the steps when the situation calls for it
 
 1. Run the practice informally — talk it out, no template, ~5 minutes.
 2. Capture what surfaced: what fields naturally emerged, what order they came in, what didn't get said.
-3. Pull research grounding *after* the wildcat, to validate (or push back on) the lived shape.
+3. Pull research grounding _after_ the wildcat, to validate (or push back on) the lived shape.
 4. Design v0.1 of the form from the wildcat output, not from the research.
 5. Run the v0.1 form on a real turn the same day.
 
@@ -174,7 +174,7 @@ These are patterns, not scripts. Adapt the steps when the situation calls for it
 
 ---
 
-## When to *not* run a play
+## When to _not_ run a play
 
 Plays are patterns, not obligations. Skip them when:
 

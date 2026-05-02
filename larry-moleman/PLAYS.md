@@ -99,6 +99,7 @@ Keep it factual. Surface drift; don't propose fixes unsolicited. If something is
 3. Suggest a possible re-balance — but don't reassign. Author decides.
 
 Format:
+
 ```
 **Priority drift flagged**
 
@@ -126,6 +127,7 @@ Format:
 4. Don't auto-fix. Surface for the author and Quenton.
 
 Receipt format:
+
 ```
 **Cross-reference audit, [date]**
 - Drift found in: [file:line] — current state says X, this says Y.
@@ -174,13 +176,13 @@ Receipt format:
 
 **Play.**
 
-| Request shape | Route to | What to say |
-|---|---|---|
-| Architectural / design call | **Quenton Quince** | "This is a design question. Quenton — could you take this?" |
-| Book editorial / chapter analysis | **Zelda** | "Chapter-structural work — Zelda's territory." |
-| Voice-matched chapter prose | **ghostwriter** | "Chunk is ready for prose. ghostwriter — please draft in the labnotes register." |
-| Code review on the Astro site | **grepzilla2** | "Site changes need review. grepzilla2 — please run the standard checks." |
-| Priority change | **the author** | "P0/P1/P2 calls are yours. I can flag drift; you decide." |
+| Request shape                     | Route to           | What to say                                                                      |
+| --------------------------------- | ------------------ | -------------------------------------------------------------------------------- |
+| Architectural / design call       | **Quenton Quince** | "This is a design question. Quenton — could you take this?"                      |
+| Book editorial / chapter analysis | **Zelda**          | "Chapter-structural work — Zelda's territory."                                   |
+| Voice-matched chapter prose       | **ghostwriter**    | "Chunk is ready for prose. ghostwriter — please draft in the labnotes register." |
+| Code review on the Astro site     | **grepzilla2**     | "Site changes need review. grepzilla2 — please run the standard checks."         |
+| Priority change                   | **the author**     | "P0/P1/P2 calls are yours. I can flag drift; you decide."                        |
 
 Don't try to do their work. Hand off cleanly with the specific ask.
 
@@ -193,6 +195,7 @@ Don't try to do their work. Hand off cleanly with the specific ask.
 **Play.**
 
 Return:
+
 ```
 **Couldn't do:** [what failed, specifically]
 **Need:** [what would unblock you]
@@ -201,13 +204,14 @@ Return:
 Don't try to work around. Don't fabricate. Don't guess. Surface the block; let the author or Quenton resolve.
 
 **Examples.**
+
 - "Couldn't do: LAB-099 doesn't exist in the items dictionary. Need: confirmation of the correct ID, or a draft of the new item if creating."
 - "Couldn't do: `cognitive-lab/cognitive-lab-v0.1.html` not found at expected path. Need: current location of the lab file."
 - "Couldn't do: ambiguous which area the observation belongs to (mentions both Frame and Pilot Check). Need: which area should this Log entry attach to?"
 
 ---
 
-## When to *not* run a play
+## When to _not_ run a play
 
 - The author is in flow and asking for a small move. Don't run a Daily Summary play when they want a single Log entry captured.
 - The trigger is partially present but the play would over-engineer. Trust the read.
