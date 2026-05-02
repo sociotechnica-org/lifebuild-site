@@ -37,33 +37,38 @@ Then open `http://localhost:8765/cognitive-lab-v0.1.html`.
 The lab is a top-down, click-to-explore floor plan with four bands:
 
 **Band 1 — Reference / aux** (gestalt visuals, hover for label):
+
 - The Library (research)
 - The Archive (lab notes, decisions, shipped)
 - Deck Theater (the v0.2 presentation)
 - Backlog Wall (priority list)
 
 **Band 2 — Phase cycle** (six rooms left-to-right):
+
 - Frame · Comprehend · Sync · Produce (formerly Push) · Debrief · Recover
 
 **Band 3 — Meta-disciplines:**
+
 - Transition Hallway · Trim Bench
 
 **Band 4 — Bottom (instruments + Director):**
+
 - The Gauge · Pilot Check Station · Director's Desk
 
 Click any area opens a side drawer (drawer expands to 66vw if the area has `workshop: true`). Drawers contain:
+
 - A description (shown via the (i) tooltip in the header)
 - Top half: the prototype (forms, sliders) — workshop areas only
 - Bottom half: the four-tile floor shelf — **To Do · Log · Chapter · Sources**
 
 ## The four-tile shelf (every area)
 
-| Tile | What lives here |
-|---|---|
-| **✓ To Do** | Forward-looking work — items to build, run, or write |
-| **📓 Log** | Backward-looking observations — what happened during runs, what was noticed, what changed |
-| **📚 Chapter** | Book material as chunks (title → summary → longform body). Chunks are editable. |
-| **📎 Sources** | Inputs — research references, past versions, related files |
+| Tile           | What lives here                                                                           |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| **✓ To Do**    | Forward-looking work — items to build, run, or write                                      |
+| **📓 Log**     | Backward-looking observations — what happened during runs, what was noticed, what changed |
+| **📚 Chapter** | Book material as chunks (title → summary → longform body). Chunks are editable.           |
+| **📎 Sources** | Inputs — research references, past versions, related files                                |
 
 Items have stable IDs (LAB-001, LAB-002, etc.). Status cycles: backlog → in-progress → drafted → live → archived. When an item moves to live or archived, an auto-Log entry captures the transition.
 

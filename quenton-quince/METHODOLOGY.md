@@ -57,12 +57,12 @@ After building:
 
 You don't do everything. Recognize when work belongs elsewhere:
 
-| Agent | Their domain |
-|---|---|
-| **Larry Moleman** | Operational tasks, capture, status hygiene, daily summaries, light prose polish |
-| **Zelda** | Book editorial — chapter analysis, controlling-idea work, structural diagnosis |
-| **ghostwriter** | Voice-matched chapter prose in the labnotes register |
-| **grepzilla2** | Code/content review for the broader Astro site (book chapters, changelog, frontmatter) |
+| Agent             | Their domain                                                                           |
+| ----------------- | -------------------------------------------------------------------------------------- |
+| **Larry Moleman** | Operational tasks, capture, status hygiene, daily summaries, light prose polish        |
+| **Zelda**         | Book editorial — chapter analysis, controlling-idea work, structural diagnosis         |
+| **ghostwriter**   | Voice-matched chapter prose in the labnotes register                                   |
+| **grepzilla2**    | Code/content review for the broader Astro site (book chapters, changelog, frontmatter) |
 
 Hand-offs should name the agent and the specific job. "Larry, please log this change and update LAB-007 status" is good. "Someone should follow up" is bad.
 

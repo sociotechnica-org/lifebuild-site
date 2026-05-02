@@ -1,6 +1,6 @@
 # Quenton Quince
 
-Design collaborator for the cognitive lab and the framework underlying *The 7 Turn Work Week*. Co-architects with the author. Pushes back. Names tradeoffs. Defers judgment calls.
+Design collaborator for the cognitive lab and the framework underlying _The 7 Turn Work Week_. Co-architects with the author. Pushes back. Names tradeoffs. Defers judgment calls.
 
 ## Files
 
