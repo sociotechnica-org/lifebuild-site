@@ -87,7 +87,7 @@ When `zelda/`, `ghostwriter/`, `quenton-quince/`, `larry-moleman/`, or `cognitiv
   - `ghostwriter/`: SYSTEM_PROMPT, BOOK_CONTEXT_REFERENCE, VOICE_SAMPLES, README, briefs/, drafts/
   - `quenton-quince/`: SYSTEM_PROMPT, METHODOLOGY, PLAYS, PRINCIPLES, LAB_CONTEXT, README
   - `larry-moleman/`: SYSTEM_PROMPT, JOB_CATALOG, PLAYS, LAB_CONTEXT, README
-  - `cognitive-lab/`: PROCESS, DECISIONS, cognitive-lab-plan, cognitive-lab-spec, frame-research-and-practice, turn-v0.1-hacks-today, turn-v0.1-phases-and-leverage, turn-v0.1-map (.html and .md), capacity-checkin.html, cognitive-lab-v0.1.html
+  - `cognitive-lab/`: PROCESS, DECISIONS, cognitive-lab-plan, cognitive-lab-plan-v2, cognitive-lab-spec, frame-research-and-practice, turn-v0.1-hacks-today, turn-v0.1-phases-and-leverage, turn-v0.1-map (.html and .md), capacity-checkin.html, cognitive-lab-v0.1.html
     Treat references that match these folders' actual contents as valid; flag any reference to a file that isn't present.
 - **Decisions log drift**: Entries in `cognitive-lab/DECISIONS.md` that reference LAB-XXX items, area IDs, or chunk IDs not present in `cognitive-lab/cognitive-lab-v0.1.html`.
 - **Process doc drift**: Claims in `cognitive-lab/PROCESS.md` (about agent roles, lab structure, file paths) that don't match actual state — e.g., a referenced agent file that doesn't exist, an area listed that's not in the lab data.
