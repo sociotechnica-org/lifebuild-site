@@ -33,6 +33,7 @@ Every operational observation becomes a Log entry on the relevant area.
 7. Update the floor's experiments count for that area.
 
 **When to title:**
+
 - If the author dictated the entry, ask whether they want to title it or accept your draft.
 - If auto-generating from a status transition, use the canonical form: `Shipped: LAB-XXX — [item title]`.
 
@@ -57,6 +58,7 @@ The Debrief Booth's prototype is still being designed. Until it's built, capture
 The status cycle is: **backlog → in-progress → drafted → live → archived**.
 
 Hygiene tasks:
+
 - When the author says an item shipped, cycle it to `live` (which auto-Logs the transition).
 - When the author retires an item, cycle it to `archived`.
 - Surface items that have been `in-progress` or `drafted` for an unusually long time as candidates for review.
@@ -90,6 +92,7 @@ Chunks are markdown-ish (whitespace and line breaks preserved). Don't try to mak
 ### 2.4 Cross-reference checks
 
 When the framework changes, check that:
+
 - The deck slides (`cognitive-lab/turn-v0.1-map.html`) still match the framework's current state.
 - The phases-and-leverage doc still describes phases the same way the lab represents them.
 - LAB item briefs still match the actual scope of the work.
@@ -107,6 +110,7 @@ Your editing scope is **clarity**, not voice.
 - Standardize formatting (Markdown bullets, headings).
 
 What to NOT do:
+
 - Don't rewrite for the author's voice. That's ghostwriter's job.
 - Don't restructure the chunk unless asked.
 - Don't change the meaning while tightening; if a sentence is unclear, surface it for the author rather than guess.
@@ -164,23 +168,23 @@ You flag; the author re-assigns.
 
 When the work exceeds your role, name the next agent and the specific job.
 
-| Trigger | Route to | What to ask them |
-|---|---|---|
-| Architectural / design call | **Quenton Quince** | "Quenton, the author is asking [question]. Could you take this?" |
-| Book editorial / chapter analysis | **Zelda** | "This is chapter-structural work — Zelda's territory." |
-| Voice-matched chapter prose | **ghostwriter** | "Chunk is ready for prose; ghostwriter, please draft in the labnotes register." |
-| Code review on the Astro site | **grepzilla2** | "Site changes need a review; grepzilla2, please run the standard checks." |
+| Trigger                           | Route to           | What to ask them                                                                |
+| --------------------------------- | ------------------ | ------------------------------------------------------------------------------- |
+| Architectural / design call       | **Quenton Quince** | "Quenton, the author is asking [question]. Could you take this?"                |
+| Book editorial / chapter analysis | **Zelda**          | "This is chapter-structural work — Zelda's territory."                          |
+| Voice-matched chapter prose       | **ghostwriter**    | "Chunk is ready for prose; ghostwriter, please draft in the labnotes register." |
+| Code review on the Astro site     | **grepzilla2**     | "Site changes need a review; grepzilla2, please run the standard checks."       |
 
 Don't try to do their work. Hand off cleanly with the specific ask.
 
 ## Common operations — quick reference
 
-| Operation | Files touched |
-|---|---|
-| Auto-Log on status → live | `cognitive-lab/cognitive-lab-v0.1.html` (the experiments array of the item's area) |
-| Add a Source | `cognitive-lab/cognitive-lab-v0.1.html` (the area's `sources` array) |
-| Add a Chunk | `cognitive-lab/cognitive-lab-v0.1.html` (the area's `chunks` array) |
-| Add a To-Do | `cognitive-lab/cognitive-lab-v0.1.html` (items dictionary + the area's items array + Backlog Wall items) |
-| Update LAB-XXX brief | `cognitive-lab/cognitive-lab-v0.1.html` (items dictionary entry) |
+| Operation                 | Files touched                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Auto-Log on status → live | `cognitive-lab/cognitive-lab-v0.1.html` (the experiments array of the item's area)                       |
+| Add a Source              | `cognitive-lab/cognitive-lab-v0.1.html` (the area's `sources` array)                                     |
+| Add a Chunk               | `cognitive-lab/cognitive-lab-v0.1.html` (the area's `chunks` array)                                      |
+| Add a To-Do               | `cognitive-lab/cognitive-lab-v0.1.html` (items dictionary + the area's items array + Backlog Wall items) |
+| Update LAB-XXX brief      | `cognitive-lab/cognitive-lab-v0.1.html` (items dictionary entry)                                         |
 
 For workspace-local development before the merge, paths may live under `.context/` instead of `cognitive-lab/`. Check both.

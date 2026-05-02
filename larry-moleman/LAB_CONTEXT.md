@@ -100,23 +100,23 @@ Find the area's `"chunks": [` and prepend the new chunk, or update an existing o
 
 ## Areas in the lab (for routing)
 
-| Area ID | Name | Workshop? |
-|---|---|---|
-| `frame-workshop` | Frame Workshop | yes |
-| `comprehend-station` | Comprehend Station | no |
-| `sync-floor` | Sync Floor | no |
-| `push-bay` | Produce Bay | no |
-| `debrief-booth` | Debrief Booth | no |
-| `recovery-room` | Recovery Room | no |
-| `the-gauge` | The Gauge | no |
-| `pilot-check-station` | Pilot Check Station | yes |
-| `transition-hallway` | Transition Hallway | no |
-| `trim-bench` | Trim Bench | no |
-| `library` | The Library | no |
-| `archive` | The Archive | no |
-| `backlog-wall` | Backlog Wall | no |
-| `deck-theater` | Deck Theater | no |
-| `director-desk` | Director's Desk | no |
+| Area ID               | Name                | Workshop? |
+| --------------------- | ------------------- | --------- |
+| `frame-workshop`      | Frame Workshop      | yes       |
+| `comprehend-station`  | Comprehend Station  | no        |
+| `sync-floor`          | Sync Floor          | no        |
+| `push-bay`            | Produce Bay         | no        |
+| `debrief-booth`       | Debrief Booth       | no        |
+| `recovery-room`       | Recovery Room       | no        |
+| `the-gauge`           | The Gauge           | no        |
+| `pilot-check-station` | Pilot Check Station | yes       |
+| `transition-hallway`  | Transition Hallway  | no        |
+| `trim-bench`          | Trim Bench          | no        |
+| `library`             | The Library         | no        |
+| `archive`             | The Archive         | no        |
+| `backlog-wall`        | Backlog Wall        | no        |
+| `deck-theater`        | Deck Theater        | no        |
+| `director-desk`       | Director's Desk     | no        |
 
 This list will grow as more areas become workshops and as new areas are added.
 
