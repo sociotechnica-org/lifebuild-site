@@ -139,7 +139,7 @@ Format:
 **Play.**
 
 1. Read the underlying source material fully (decisions log, lab experiments, git log, process docs, relevant LAB items).
-2. Identify the natural two acts: **what was built / decided** and **what's next** (open priorities, queued work, chads).
+2. Identify the natural two acts: **what was built / decided** and **what's next** (open priorities, queued work, unresolved loose ends).
 3. Per act, surface 3–6 headline items. Each headline is one scannable line — the operator should absorb the whole act in ~10 seconds.
 4. Under each headline, place the underlying detail as drill-down — visually subordinated (indented bullet or `details:` line) so the reader chooses which items to go deep on.
 5. Nothing from the source material gets dropped. If it doesn't fit a headline, it lives in drill-down.

@@ -3133,7 +3133,7 @@
               <label>Done means <span class="ff-hint">up to three from the lab — the floor for this turn</span></label>
               <div class="ff-picker" data-field="must" data-mode="multi" data-cap="3">
                 <div class="ff-picker-chips" id="ff-must-chips"></div>
-                <div class="ff-picker-cap" id="ff-must-cap"></div>
+                <div class="ff-picker-cap" id="ff-must-cap" aria-live="polite"></div>
                 <div class="ff-picker-controls">
                   <button type="button" class="ff-picker-toggle" id="ff-must-toggle">Browse items</button>
                   <button type="button" class="ff-picker-text-toggle" id="ff-must-text-toggle">Use free text instead</button>
@@ -3750,7 +3750,7 @@
           "id": "chunk-priority-spec-v0.1",
           "title": "Priority spec — turn-based P0 with hard cap at 3 (v0.1)",
           "summary": "P0 means next up to bat or at bat for the upcoming or current Produce phase. Hard cap of 3, no override. Backlog Wall retires; toolbar Priority view becomes the canonical surface. Continuation across turns is carried by the status badge, not a third priority tier.",
-          "body": "**v0.1 / wildcat / shipped 2026-05-03.** First-stake spec for what priority means in this lab, written from the priority spec wildcat session. Subject to revision once the Debrief workshop ships and the in-app priority editor lands.\n\n## What P0 means\n\n*P0 = next up to bat or at bat for the upcoming or current Produce phase.*\n\nThe unit is the **turn**, not the day, not the sprint. This is consistent with the book title (*The 7 Turn Work Week*) and the phase architecture — Frame · Comprehend · Sync · Produce · Debrief · Recover. A P0 item is one of the things actually getting played in the next or current Produce phase. P1 is queued behind. P2 is later.\n\nInside P0 there are two natural sub-states: **at bat** (currently in-progress or drafted for the live or upcoming Produce phase) and **next up to bat** (staged, backlog status, but committed for the coming turn). These are not separate priority tiers. They're carried by the existing status badge — `in-progress` / `drafted` reads as *at bat*; `backlog` on a P0 reads as *next up to bat*. The Priority view's existing Marquee treatment for P0 carries the urgency; the status badge inside the tile carries the at-bat distinction. No new chrome.\n\n## Where P0 lives (the surface)\n\nThe **toolbar Priority view** is the canonical priority surface. The Backlog Wall floor tile retires — same simplification pattern as the F.R.A.M.E. acronym drop and the capacity check-in / Pilot Check merger. Two surfaces showing the same data was a duplication trap; the Priority view's three visual modes (Marquee P0 / Banner P1 / Summary P2) already do the priority sort visibly.\n\nRetiring the floor tile is queued as a separate build task (LAB to be spawned at session close). This chunk defines the spec; the move is mechanical.\n\n## The hard cap\n\n**Three P0s. No override.**\n\nThis is cognitive-load-driven, not flexibility-driven. *Cognitive load management means not having 25 open to-dos.* Override-as-data sounds reasonable until you remember the framework's first principle: extraneous load reduction is the highest-ROI cognitive intervention (Sweller, CLT). A four-P0 day is extraneous load disguised as urgency.\n\nEnforcement lives in the editing path. While priority is JSON-only (current state), the cap is honored by hand and visible at a glance — if there are four red Marquee tiles in the Priority view, fix the data. When the in-app priority editor ships (post-Debrief), it blocks the fourth at the UI layer.\n\n## How priority changes (the cadence)\n\nPriority moves at **turn boundaries**, not continuously. The natural shift moments:\n\n- **Frame** picks the P0s for the upcoming Produce — at bat for this turn.\n- **Debrief** retires P0s that are done, demotes P0s that didn't fire, and stages the next at-bats from P1.\n- **Mid-turn** changes are exceptional. If a P0 needs to drop and another P1 promotes, do it deliberately — the cap stays at 3.\n\nThis is what makes the turn-unit work: priority isn't a wishlist refreshed continuously; it's the slate of the current turn.\n\n## Cross-refs\n\n- **Frame** (frame-workshop) — Frame is where P0s are picked. The selection-over-generation move (LAB-027) reads from priority; doesn't write to it. The picker shows P0s as the natural Done means / Bonus candidates.\n- **Debrief** (debrief-booth) — Debrief is where priority gets revised. The retire / demote / stage moves happen in synthesis sweep one (Log entry on the area).\n- **The Gauge** — capacity reading gates whether a P0 even runs this turn. A grounded reading inserts recovery; the P0 waits.\n- **Backlog Wall** — retiring. The toolbar Priority view becomes canonical. Click-through to floor drawer still works for individual items.\n\n## Open questions (deferred to Debrief workshop)\n\n- When the in-app priority editor lands, does it expose at-bat / next-up-to-bat as a deliberate sub-state choice, or stay status-encoded? Current call: status-encoded.\n- Does the cap apply across the whole lab (3 P0s total) or per area (3 P0s per area)? Current call: across the whole lab. Per-area would defeat the cognitive-load purpose.\n- Does P1 also want a soft cap (e.g., 8) to keep the queue from sprawling? Deferred — solve P0 first, see if P1 sprawl is actually a problem."
+          "body": "**v0.1 / wildcat / shipped 2026-05-03.** First-stake spec for what priority means in this lab, written from the priority spec wildcat session. Subject to revision once the Debrief workshop ships and the in-app priority editor lands.\n\n## What P0 means\n\n*P0 = next up to bat or at bat for the upcoming or current Produce phase.*\n\nThe unit is the **turn**, not the day, not the sprint. This is consistent with the book title (*The 7 Turn Work Week*) and the phase architecture — Frame · Comprehend · Sync · Produce · Debrief · Recover. A P0 item is one of the things actually getting played in the next or current Produce phase. P1 is queued behind. P2 is later.\n\nInside P0 there are two natural sub-states: **at bat** (currently in-progress or drafted for the live or upcoming Produce phase) and **next up to bat** (staged, backlog status, but committed for the coming turn). These are not separate priority tiers. They're carried by the existing status badge — `in-progress` / `drafted` reads as *at bat*; `backlog` on a P0 reads as *next up to bat*. The Priority view's existing Marquee treatment for P0 carries the urgency; the status badge inside the tile carries the at-bat distinction. No new chrome.\n\n## Where P0 lives (the surface)\n\nThe **toolbar Priority view** is the canonical priority surface. The Backlog Wall floor tile retires — same simplification pattern as the F.R.A.M.E. acronym drop and the capacity check-in / Pilot Check merger. Two surfaces showing the same data was a duplication trap; the Priority view's three visual modes (Marquee P0 / Banner P1 / Summary P2) already do the priority sort visibly.\n\nRetiring the floor tile is queued as a separate build task (LAB to be spawned at session close). This chunk defines the spec; the move is mechanical.\n\n## The hard cap\n\n**Three P0s. No override.**\n\nThis is cognitive-load-driven, not flexibility-driven. *Cognitive load management means not having 25 open to-dos.* Override-as-data sounds reasonable until you remember the framework's first principle: extraneous load reduction is the highest-ROI cognitive intervention (Sweller, CLT). A four-P0 day is extraneous load disguised as urgency.\n\nEnforcement lives in the editing path. While priority is JSON-only (current state), the cap is honored by hand and visible at a glance — if there are four red Marquee tiles in the Priority view, fix the data. When the in-app priority editor ships (post-Debrief), it blocks the fourth at the UI layer.\n\n*Current-state note:* the baseline JSON ships with more than three P0s — a known gap that LAB-035 will close at the UI layer. Until then, treat the cap as a naming constraint on active turns, not a hard validation on the stored data.\n\n## How priority changes (the cadence)\n\nPriority moves at **turn boundaries**, not continuously. The natural shift moments:\n\n- **Frame** picks the P0s for the upcoming Produce — at bat for this turn.\n- **Debrief** retires P0s that are done, demotes P0s that didn't fire, and stages the next at-bats from P1.\n- **Mid-turn** changes are exceptional. If a P0 needs to drop and another P1 promotes, do it deliberately — the cap stays at 3.\n\nThis is what makes the turn-unit work: priority isn't a wishlist refreshed continuously; it's the slate of the current turn.\n\n## Cross-refs\n\n- **Frame** (frame-workshop) — Frame is where P0s are picked. The selection-over-generation move (LAB-027) reads from priority; doesn't write to it. The picker shows P0s as the natural Done means / Bonus candidates.\n- **Debrief** (debrief-booth) — Debrief is where priority gets revised. The retire / demote / stage moves happen in synthesis sweep one (Log entry on the area).\n- **The Gauge** — capacity reading gates whether a P0 even runs this turn. A grounded reading inserts recovery; the P0 waits.\n- **Backlog Wall** — retiring. The toolbar Priority view becomes canonical. Click-through to floor drawer still works for individual items.\n\n## Open questions (deferred to Debrief workshop)\n\n- When the in-app priority editor lands, does it expose at-bat / next-up-to-bat as a deliberate sub-state choice, or stay status-encoded? Current call: status-encoded.\n- Does the cap apply across the whole lab (3 P0s total) or per area (3 P0s per area)? Current call: across the whole lab. Per-area would defeat the cognitive-load purpose.\n- Does P1 also want a soft cap (e.g., 8) to keep the queue from sprawling? Deferred — solve P0 first, see if P1 sprawl is actually a problem."
         }
       ],
       "notes": []
@@ -4341,19 +4341,19 @@
       "id": "LAB-046",
       "title": "Auto-export nudge / last-exported indicator",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "director-desk",
       "brief": "Surface 'last exported N ago' in the lab header; nudge if over a threshold. Partly superseded by lab-server.py but relevant for plain http.server deployments.",
-      "full": "lab-server.py handles persistence for the canonical local-server deployment. But users running the lab on plain http.server (no write endpoint) still rely on manual export. An 'last exported N ago' indicator in the toolbar (or lab header) and a nudge when the threshold is exceeded (e.g., >4 hours since last export) reduces the risk of data loss in the non-server deployment path. This is P3 because the server path is the recommended path; the plain-server path is a fallback use case."
+      "full": "lab-server.py handles persistence for the canonical local-server deployment. But users running the lab on plain http.server (no write endpoint) still rely on manual export. An 'last exported N ago' indicator in the toolbar (or lab header) and a nudge when the threshold is exceeded (e.g., >4 hours since last export) reduces the risk of data loss in the non-server deployment path. P2 (later) because the server path is the recommended path; the plain-server path is a fallback use case."
     },
     "LAB-047": {
       "id": "LAB-047",
       "title": "Done-shape vocabulary in Frame help text",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "frame-workshop",
       "brief": "Add the three Done flavors (completion / milestone / effort) to Frame help text and hover guidance, separate from the per-slot Approach help affordance.",
-      "full": "The three Done flavors are introduced via inline placeholder in the LAB-027 v3 chip. A Director who doesn't know the vocabulary might not understand what 'completion vs. milestone vs. effort' means or why it matters. Help text on the Done means field (not the per-slot Approach, which is a different affordance per LAB-042) should explain the three flavors in 2–3 sentences with one example each. This is P3 because the inline placeholder is sufficient for a first pass; the help text is for polish and onboarding."
+      "full": "The three Done flavors are introduced via inline placeholder in the LAB-027 v3 chip. A Director who doesn't know the vocabulary might not understand what 'completion vs. milestone vs. effort' means or why it matters. Help text on the Done means field (not the per-slot Approach, which is a different affordance per LAB-042) should explain the three flavors in 2–3 sentences with one example each. P2 (later) because the inline placeholder is sufficient for a first pass; the help text is for polish and onboarding."
     }
   }
 }
@@ -4923,7 +4923,9 @@
 
   function setWsMode(mode) {
     wsMode = mode;
-    document.querySelectorAll('.ws-mode').forEach(el => el.classList.remove('active'));
+    // Scoped to direct children of #workshop-view so we don't strip `active`
+    // from the nested Debrief / Pilot Check workshop modes.
+    document.querySelectorAll('#workshop-view > .ws-mode').forEach(el => el.classList.remove('active'));
     const target = document.getElementById('ws-' + mode);
     if (target) target.classList.add('active');
   }
@@ -5415,7 +5417,7 @@
             ? `<span class="ff-slot-toggle" aria-hidden="true">${expandedSet.has(i) ? '▾' : '▸'}</span>`
             : ''
         }
-        <button type="button" class="ff-chip-x" data-act="ff-chip-remove" data-field="${field}" data-item="${id}" title="Remove">×</button>
+        <button type="button" class="ff-chip-x" data-act="ff-chip-remove" data-field="${field}" data-item="${id}" aria-label="Remove ${title}">×</button>
       </span>`;
       if (!slotsEnabled) return chipHTML;
       const isOpen = expandedSet.has(i);
@@ -6142,7 +6144,7 @@
     if (match) openDrawer(match[1]);
   }
   window.addEventListener('hashchange', handleHash);
-  handleHash(); // on load
+  // Initial handleHash() runs after hydrateFromServer() resolves — see Init block below.
 
   /* ── Toolbar: Export ── */
   document.getElementById('btn-export').addEventListener('click', () => {
@@ -7386,6 +7388,7 @@
     buildSearchIndex();
     wireGapsHandlers();
     setView(loadActiveView());
+    handleHash(); // initial hash route runs after server data is in localStorage
   });
 
 })();
