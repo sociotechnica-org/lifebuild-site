@@ -132,6 +132,47 @@ Format:
 
 ---
 
+## Presentation-Style Recap
+
+**Trigger.** Any recall or state-capture deliverable for an operator who is spun up on context but time-distant from the detail — the re-immerse case. Canonical example: operator worked the produce stage 48 hours ago and needs to orient before a debrief session. They have energy and high-level context but aren't fresh on specifics.
+
+**Play.**
+
+1. Read the underlying source material fully (decisions log, lab experiments, git log, process docs, relevant LAB items).
+2. Identify the natural two acts: **what was built / decided** and **what's next** (open priorities, queued work, chads).
+3. Per act, surface 3–6 headline items. Each headline is one scannable line — the operator should absorb the whole act in ~10 seconds.
+4. Under each headline, place the underlying detail as drill-down — visually subordinated (indented bullet or `details:` line) so the reader chooses which items to go deep on.
+5. Nothing from the source material gets dropped. If it doesn't fit a headline, it lives in drill-down.
+
+**Shape.**
+
+```
+## ACT I — What we built / decided
+
+**Headline 1** — one-line hook
+
+  - details: [underlying specifics from the source material]
+  - details: [...]
+
+**Headline 2** — one-line hook
+
+  - details: [...]
+
+## ACT II — What's next
+
+**Headline 1** — one-line hook
+
+  - details: [open item, priority, acceptance criteria]
+```
+
+**Why this shape.** Flat comprehensive reports overload an operator who has energy but not detail-recall. They can't calibrate which parts to read. Presentation-shape gives the whole picture in 60 seconds, then lets them choose drill-down depth. The operator exits in control of their own re-immersion.
+
+**Anti-pattern.** Don't substitute presentation-shape for deliverables that ARE durable archival records — session integration logging, decision-log synthesis, the Debrief workshop's durable record. Those formats require full fidelity as the primary shape. Presentation-shape is for operator-facing recall scaffolds, not archival records.
+
+**Origin.** 2026-05-03 session. Larry produced a comprehensive flat re-immerse brief for a 48-hour-stale produce stage. Content was right; shape was wrong for an operator who was spun up but not detail-fresh. Author named it: "making it simpler and more visual and then being able to dive into the details where helpful would be more helpful." Captured on `debrief-booth` as `exp-debrief-2026-05-03-reimmerse-presentation-shape` (re-immerse is Debrief's first step when produce and debrief are time-separated, so the finding lives with Debrief design, not cross-cutting agent ops).
+
+---
+
 ## Cross-Reference Audit
 
 **Trigger.** The framework changes (a phase added, a label revised, a workshop merged). Need to confirm everything points at the new state.
