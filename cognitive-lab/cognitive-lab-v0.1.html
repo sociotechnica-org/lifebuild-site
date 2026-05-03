@@ -1590,6 +1590,381 @@
   .frame-form-actions .ff-btn:hover { transform: translateY(-1px); }
   .frame-form-actions .ff-btn:active { transform: translateY(0); }
 
+  /* ── Frame Workshop: typed-ref picker (Done means / Bonus) ── */
+  .ff-picker { display: flex; flex-direction: column; gap: 6px; }
+  .ff-picker-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 28px;
+    padding: 4px;
+    background: var(--panel-bg);
+    border: 1px dashed var(--panel-bd);
+    border-radius: 4px;
+    align-items: center;
+  }
+  .ff-picker-chips:empty::before {
+    content: 'No item picked yet — click "Browse items" below.';
+    font-size: 11.5px;
+    color: #6f7a90;
+    font-style: italic;
+    padding: 0 4px;
+  }
+  .ff-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 6px 3px 8px;
+    background: rgba(74,123,212,0.14);
+    border: 1px solid rgba(74,123,212,0.45);
+    border-radius: 12px;
+    font-size: 11.5px;
+    color: var(--fg);
+    cursor: pointer;
+    line-height: 1.3;
+    max-width: 100%;
+  }
+  .ff-chip:hover { background: rgba(74,123,212,0.22); }
+  .ff-chip .ff-chip-id {
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: #6f9ee0;
+    font-weight: bold;
+  }
+  .ff-chip .ff-chip-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 240px;
+  }
+  .ff-chip .ff-chip-x {
+    margin-left: 2px;
+    color: #97a3ba;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .ff-chip .ff-chip-x:hover { color: #ff7a7a; }
+  .ff-picker-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ff-picker-toggle, .ff-picker-text-toggle {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--panel-bd);
+    background: transparent;
+    color: var(--accent-dim);
+    cursor: pointer;
+  }
+  .ff-picker-toggle:hover, .ff-picker-text-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .ff-picker-toggle.open {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,255,255,0.04);
+  }
+  .ff-picker-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .ff-pp-section-label {
+    font-family: var(--font-px);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    padding: 2px 4px;
+    margin-top: 4px;
+  }
+  .ff-pp-section-label:first-child { margin-top: 0; }
+  .ff-pp-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 6px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.015);
+  }
+  .ff-pp-row:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--panel-bd);
+  }
+  .ff-pp-row.selected {
+    background: rgba(74,123,212,0.10);
+    border-color: rgba(74,123,212,0.45);
+  }
+  .ff-pp-row .ff-pp-pri {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px 0;
+    border-radius: 3px;
+  }
+  .ff-pp-row .ff-pp-pri.P0 { background: #c44a4a; color: #fff; }
+  .ff-pp-row .ff-pp-pri.P1 { background: #5a5a8a; color: #dde; }
+  .ff-pp-row .ff-pp-pri.P2 { background: #404050; color: #aaa; }
+  .ff-pp-row .ff-pp-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .ff-pp-row .ff-pp-id {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+    letter-spacing: 0.5px;
+  }
+  .ff-pp-row .ff-pp-title {
+    font-size: 12.5px;
+    color: var(--fg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ff-pp-row .ff-pp-stat {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #97a3ba;
+    background: rgba(255,255,255,0.04);
+  }
+  .ff-pp-row .ff-pp-stat[data-s="in-progress"] { color: #6f9ee0; background: rgba(74,123,212,0.14); }
+  .ff-pp-row .ff-pp-stat[data-s="drafted"]     { color: #e0bb70; background: rgba(212,160,48,0.14); }
+  .ff-pp-row .ff-pp-stat[data-s="backlog"]     { color: #97a3ba; }
+  .ff-pp-expand {
+    background: transparent;
+    border: 1px dashed var(--panel-bd);
+    border-radius: 4px;
+    padding: 5px 8px;
+    color: var(--accent-dim);
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  .ff-pp-expand:hover { color: var(--accent); border-color: var(--accent); }
+  .ff-pp-empty {
+    font-size: 11.5px;
+    color: #6f7a90;
+    font-style: italic;
+    padding: 6px 4px;
+  }
+  .ff-picker-text textarea {
+    width: 100%;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 7px 9px;
+    font-family: inherit;
+    font-size: 13px;
+    border-radius: 4px;
+    line-height: 1.45;
+    resize: vertical;
+    min-height: 38px;
+  }
+  .ff-picker-text textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* Slot counter line below the chip list (cap-of-3 visibility) */
+  .ff-picker-cap {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6f7a90;
+    padding: 0 4px;
+    line-height: 1.4;
+  }
+  .ff-picker-cap.full {
+    color: #c44a4a;
+  }
+  /* Picker rows that are unselectable because the cap is reached */
+  .ff-pp-row.at-cap {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .ff-pp-row.at-cap:hover {
+    background: rgba(255,255,255,0.015);
+    border-color: transparent;
+  }
+  /* Browse-items button when at cap */
+  .ff-picker-toggle.at-cap {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  /* Notes block under the Done-means picker */
+  .ff-must-notes-wrap {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ff-sublabel {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+  }
+  .ff-must-notes {
+    width: 100%;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 6px 9px;
+    font-family: inherit;
+    font-size: 12.5px;
+    border-radius: 4px;
+    line-height: 1.45;
+    resize: vertical;
+    min-height: 32px;
+  }
+  .ff-must-notes:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  /* Notes line in viewing mode under the Done-means chips */
+  .ws-vb-notes {
+    font-size: 12.5px;
+    color: var(--fg);
+    opacity: 0.85;
+    margin-top: 6px;
+    padding-left: 4px;
+    border-left: 2px solid var(--panel-bd);
+    padding: 2px 0 2px 8px;
+    white-space: pre-wrap;
+  }
+
+  /* Viewing chips: same look as edit-mode chips, no remove button */
+  .ws-vb-row .val .ff-chip { cursor: pointer; }
+
+  /* ── Frame Workshop: per-slot Approach unfold (LAB-027 v3) ──
+        A chip is the visual anchor for one Done-means slot. Clicking it
+        toggles a thin panel beneath the chip with four prompts:
+        Mode · Leaning on · AI / people · Done this turn.
+        Default collapsed. One open at a time per field is fine but not enforced. */
+  /* When the chips container holds slots (must field), stack vertically so
+     each slot's unfold can sit directly under its chip. Bonus stays horizontal. */
+  .ff-picker[data-field="must"] .ff-picker-chips { flex-direction: column; align-items: stretch; }
+  .ff-slot { display: flex; flex-direction: column; gap: 4px; align-self: flex-start; max-width: 100%; }
+  .ff-slot.expanded > .ff-chip {
+    background: rgba(74,123,212,0.22);
+    border-color: rgba(74,123,212,0.7);
+  }
+  .ff-slot-approach {
+    margin-left: 14px;
+    margin-top: 2px;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid var(--panel-bd);
+    border-left: 2px solid rgba(74,123,212,0.55);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ff-slot-approach[hidden] { display: none; }
+  .ff-slot-field { display: flex; flex-direction: column; gap: 3px; }
+  .ff-slot-field label {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    font-weight: normal;
+    margin: 0;
+  }
+  .ff-slot-field .ff-hint {
+    font-family: inherit;
+    font-size: 10.5px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #6f7a90;
+    font-style: italic;
+    font-weight: normal;
+  }
+  .ff-slot-field input,
+  .ff-slot-field textarea {
+    width: 100%;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 5px 8px;
+    font-family: inherit;
+    font-size: 12.5px;
+    border-radius: 3px;
+    line-height: 1.4;
+    resize: vertical;
+  }
+  .ff-slot-field textarea { min-height: 28px; }
+  .ff-slot-field input:focus,
+  .ff-slot-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .ff-slot-toggle {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: #6f9ee0;
+    margin-left: 4px;
+    user-select: none;
+  }
+  /* Viewing-mode rendering of approach data — read-only, dimmer styling */
+  .ws-vb-slot { display: flex; flex-direction: column; gap: 4px; margin-top: 2px; }
+  .ws-vb-slot-approach {
+    margin-left: 14px;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.12);
+    border-left: 2px solid rgba(74,123,212,0.4);
+    border-radius: 0 3px 3px 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--fg);
+    opacity: 0.92;
+  }
+  .ws-vb-slot-approach .vb-ap-line { display: flex; gap: 6px; padding: 1px 0; }
+  .ws-vb-slot-approach .vb-ap-lbl {
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    flex-shrink: 0;
+    min-width: 78px;
+    padding-top: 2px;
+  }
+  .ws-vb-slot-approach .vb-ap-val {
+    color: var(--fg);
+    white-space: pre-wrap;
+    flex: 1;
+    min-width: 0;
+  }
+
   /* ── Pilot Check Workshop ── three-dimension capacity rule-out */
   .pc-help {
     font-size: 12px;
@@ -2755,12 +3130,37 @@
               <div class="frame-batch-subtitle">Set the scoring. The high-value catches and the bonuses.</div>
             </div>
             <div>
-              <label>Done means</label>
-              <textarea id="ff-must" placeholder="A thing that exists at the end. Not a topic. (decided X, shipped Y, wrote draft of Z.)"></textarea>
+              <label>Done means <span class="ff-hint">up to three from the lab — the floor for this turn</span></label>
+              <div class="ff-picker" data-field="must" data-mode="multi" data-cap="3">
+                <div class="ff-picker-chips" id="ff-must-chips"></div>
+                <div class="ff-picker-cap" id="ff-must-cap"></div>
+                <div class="ff-picker-controls">
+                  <button type="button" class="ff-picker-toggle" id="ff-must-toggle">Browse items</button>
+                  <button type="button" class="ff-picker-text-toggle" id="ff-must-text-toggle">Use free text instead</button>
+                </div>
+                <div class="ff-picker-panel" id="ff-must-panel" hidden></div>
+                <div class="ff-picker-text" id="ff-must-text-wrap" hidden>
+                  <textarea id="ff-must-text" placeholder="Free-text fallback. (Use the picker above when you can — the lab keeps better track of typed refs.)"></textarea>
+                </div>
+              </div>
+              <div class="ff-must-notes-wrap">
+                <label class="ff-sublabel" for="ff-must-notes">Notes <span class="ff-hint">optional · caveats, conditions, anything that connects the picks</span></label>
+                <textarea id="ff-must-notes" class="ff-must-notes" placeholder="Optional. Anything that ties the picks together or qualifies the floor."></textarea>
+              </div>
             </div>
             <div>
-              <label>Bonus <span class="ff-hint">if time and capacity allow</span></label>
-              <textarea id="ff-stretch" placeholder="Goals you'd take if time allows — named so they don't get promoted by accident."></textarea>
+              <label>Bonus <span class="ff-hint">if time and capacity allow · pick one or more</span></label>
+              <div class="ff-picker" data-field="stretch" data-mode="multi">
+                <div class="ff-picker-chips" id="ff-stretch-chips"></div>
+                <div class="ff-picker-controls">
+                  <button type="button" class="ff-picker-toggle" id="ff-stretch-toggle">Browse items</button>
+                  <button type="button" class="ff-picker-text-toggle" id="ff-stretch-text-toggle">Use free text instead</button>
+                </div>
+                <div class="ff-picker-panel" id="ff-stretch-panel" hidden></div>
+                <div class="ff-picker-text" id="ff-stretch-text-wrap" hidden>
+                  <textarea id="ff-stretch-text" placeholder="Free-text fallback for bonuses you'd take if time allows."></textarea>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -2768,11 +3168,11 @@
           <div class="frame-batch">
             <div class="frame-batch-header">
               <div class="frame-batch-title">Approach</div>
-              <div class="frame-batch-subtitle">Set the plan. How you'll play.</div>
+              <div class="frame-batch-subtitle">Set the plan. How you'll play. Per-card specifics live under each Done-means chip above.</div>
             </div>
             <div>
-              <label>How I'll work <span class="ff-hint">mode · AI · people · leaning on</span></label>
-              <textarea id="ff-approach" placeholder="Mode (pair-prog / delegate / deep-write / synth). AI (agents, what for). People (or solo). Leaning on (docs, prior outputs)."></textarea>
+              <label>How I'll work — overall <span class="ff-hint">optional · cross-card mode, posture, the day's overall stance</span></label>
+              <textarea id="ff-approach" placeholder="Optional. Day-level mode or posture (e.g., pair-prog with Opus all day). Per-card specifics — mode, leaning on, who's involved, done this turn — live under each Done-means chip."></textarea>
             </div>
           </div>
 
@@ -2866,6 +3266,98 @@
           <div class="workshop-section-label" id="pc-recent-label">Today's Pilot Checks <span id="pc-recent-count"></span></div>
           <div id="pc-recent-list" class="ws-recent-list"></div>
         </div>
+      </div>
+
+      <!-- DEBRIEF — sibling block, three internal modes (resting/editing/viewing). Mirrors Frame Workshop pattern but scoped to db- IDs. -->
+      <div id="ws-debrief-content" style="display:none">
+
+        <!-- DB-RESTING -->
+        <div class="ws-mode active" id="db-resting">
+          <div class="ws-cta">
+            <button class="ws-cta-btn" id="db-start-btn">
+              <span class="ws-cta-icon">＋</span>
+              <span class="ws-cta-text">Start a new Debrief Card</span>
+              <span class="ws-cta-sub" id="db-cta-date"></span>
+            </button>
+          </div>
+
+          <div class="ws-recent">
+            <div class="ws-recent-label" id="db-recent-label">Today's Debriefs <span id="db-recent-count"></span></div>
+            <div id="db-recent-list" class="ws-recent-list"></div>
+          </div>
+        </div>
+
+        <!-- DB-EDITING -->
+        <div class="ws-mode" id="db-editing">
+          <div class="ws-mode-header">
+            <button class="ws-back-btn" id="db-cancel-btn">← Cancel</button>
+            <div class="ws-mode-title" id="db-editing-title">New Debrief Card · <span id="db-date"></span></div>
+          </div>
+          <div class="frame-form">
+
+            <div class="frame-batch">
+              <div class="frame-batch-header">
+                <div class="frame-batch-title">Subject</div>
+                <div class="frame-batch-subtitle">What produce stage are you debriefing?</div>
+              </div>
+              <div>
+                <label>Produce stage</label>
+                <textarea id="db-subject" placeholder="Name the produce stage / session / work block being debriefed."></textarea>
+              </div>
+            </div>
+
+            <div class="frame-batch">
+              <div class="frame-batch-header">
+                <div class="frame-batch-title">Six probe fields</div>
+                <div class="frame-batch-subtitle">Interleaved-with-checkpoints in dogfood mode. Order suggested, not rigid.</div>
+              </div>
+              <div>
+                <label>What we Framed</label>
+                <textarea id="db-framed" placeholder="What was the original frame (scope, outcome, approach, safety) for the produce stage? Pull the Frame card if available."></textarea>
+              </div>
+              <div>
+                <label>What actually happened</label>
+                <textarea id="db-actual" placeholder="The real shape of the work. Where did it actually go?"></textarea>
+              </div>
+              <div>
+                <label>Where they diverged</label>
+                <textarea id="db-diverged" placeholder="Gap between framed and actual. Surprises, drift, scope creep, scope shrink."></textarea>
+              </div>
+              <div>
+                <label>What to sustain</label>
+                <textarea id="db-sustain" placeholder="What worked that we want to keep doing. Concrete moves, not vibes."></textarea>
+              </div>
+              <div>
+                <label>What to improve</label>
+                <textarea id="db-improve" placeholder="What to change next time. Concrete moves, not vibes."></textarea>
+              </div>
+              <div>
+                <label>Capacity reading + next-up</label>
+                <textarea id="db-capacity" placeholder="Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next produce?"></textarea>
+              </div>
+            </div>
+
+            <div class="frame-form-actions">
+              <button class="ff-btn primary" id="db-save">Save</button>
+              <button class="ff-btn" id="db-clear">Clear fields</button>
+              <span class="ff-saved" id="db-saved">✓ saved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DB-VIEWING -->
+        <div class="ws-mode" id="db-viewing">
+          <div class="ws-mode-header">
+            <button class="ws-back-btn" id="db-back-btn">← Back</button>
+            <div class="ws-mode-title" id="db-viewing-date"></div>
+          </div>
+          <div class="ws-viewing-body" id="db-viewing-body"></div>
+          <div class="ws-viewing-actions">
+            <button class="ff-btn" id="db-edit-btn">Edit &amp; Re-save</button>
+            <button class="ff-btn danger" id="db-delete-btn">Delete</button>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -3077,12 +3569,20 @@
       "name": "Debrief Booth",
       "type": "phase / required",
       "accent": "blue",
+      "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
       "items": ["LAB-003","LAB-004","LAB-032"],
       "sources": [
         { "label": "turn-v0.1-phases-and-leverage.md (Debrief section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
       "experiments": [
+        {
+          "id": "exp-debrief-2026-05-03-reimmerse-presentation-shape",
+          "title": "Debrief's re-immerse step wants presentation-shape, not flat report",
+          "date": "2026-05-03 (mid-day)",
+          "observation": "Running the Debrief dogfood for a produce stage 48 hours stale exposed a design choice for Debrief's first step. When produce and debrief are time-separated, the operator is spun up on context but not fresh on detail — they need to re-immerse before processing. A flat comprehensive recall brief overloads them: they have energy but can't calibrate which detail to load. The right shape is presentation-style — two acts (what was built / decided | what's next), 3–6 scannable headlines per act, with drill-down detail beneath each. The operator chooses depth. This is structural to Debrief's re-immerse phase, not a generic agent-output preference.",
+          "impact": "Debrief Workshop spec gains a design constraint: the re-immerse step (when present) outputs a presentation-shape brief, with the underlying full report reachable through drill-down. Live test happening this session — Larry rebuilt the produce-stage recap in presentation-shape and the author is using it to settle 'the truth' before the debrief proper begins. Agent-side capture: Larry's PLAYS.md gained a 'Presentation-Style Recap' play covering the operator-facing recall-scaffold case more generally. The separate, sibling finding — that Debrief needs a re-immerse phase at all when time-separated — is parked for session-close logging by Quenton's direction."
+        },
         {
           "id": "exp-debrief-2026-05-02-absent-as-symptom",
           "title": "Debrief absent → urgent priority surfaced",
@@ -3091,7 +3591,14 @@
           "impact": "Debrief workshop bootstrap (LAB-032) bumped to top priority. The absence of Debrief is itself the lived data validating its importance. Until Debrief exists, Larry's Session-Integration play (newly added) substitutes — runs at session-close to integrate orphan material."
         }
       ],
-      "chunks": [],
+      "chunks": [
+        {
+          "id": "chunk-debrief-preliminary-process",
+          "title": "Debrief Workshop — preliminary process (v0.1)",
+          "summary": "First-stake spec for Debrief: re-immerse (when time-separated), six fields, interleaved-with-checkpoints in dogfood mode, 45-min bingo. Subject to revision via the dogfood run that's about to use it.",
+          "body": "**v0.1 / preliminary / wildcat.** This is a first stake, written to be revised *during* the very debrief it scripts. Treat it as a runnable script, not a settled spec. LAB-032 is the bootstrap.\n\n## Workshop-level constraints\n\n- **Bingo fuel: 45-minute hard cap.** If we're not synthesizing by minute 35, trim — drop a probe field, shorten the answers, or skip straight to the two synthesis sweeps.\n- **Dogfood mode is the default for v0.1.** Every field is doubling as a design probe (\"did this prompt land?\") and as the actual debrief content (\"what's the answer?\"). Both passes happen interleaved.\n- **One operator, one runner.** Author is operator. Quenton runs the script. Larry captures.\n\n## Phase 1 — Re-immerse (conditional)\n\n**When to run:** produce and debrief are time-separated by more than ~1 working day, or operator is spun up on context but cold on detail.\n\n**Skip when:** same-session debrief (operator is still warm on the work).\n\n**Output shape:** presentation-style brief — two acts (what was built / decided | what's next), 3–6 scannable headlines per act, drill-down detail beneath each. Operator chooses depth. (Agent-side play captured in Larry's PLAYS.md as Presentation-Style Recap.)\n\n**Exit criterion:** operator says \"I've settled the truth.\" Then move to Phase 2.\n\n## Phase 2 — Six probe fields (interleaved-with-checkpoints)\n\nEach field gets two passes: the **content pass** (operator answers the prompt) and the **checkpoint pass** (60 seconds — did the prompt land? what didn't get said? what's the failure mode?). The checkpoint *is* the design probe. Capture both.\n\nOrder is suggested, not rigid. If a field is empty when prompted, name it empty and move on; don't force fill.\n\n1. **What we Framed** — what was the original frame (scope, outcome, approach, safety) for the produce stage? Pull the Frame card if available.\n2. **What actually happened** — the real shape of the work. Where did it actually go?\n3. **Where they diverged** — gap between framed and actual. Surprises, drift, scope creep, scope shrink.\n4. **What to sustain** — what worked that we want to keep doing. Concrete moves, not vibes.\n5. **What to improve** — what to change next time. Concrete moves, not vibes.\n6. **Capacity reading + next-up** — Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next produce?\n\n**Checkpoint shape (60 sec per field):**\n- Did the prompt land? (Y / N / partial)\n- What didn't get said that should have?\n- What's the failure mode of this field as written?\n\n## Phase 3 — Two synthesis sweeps at close\n\nRun both. They have different audiences.\n\n1. **Produce-stage retrospective** — Log entry on the relevant area(s). What was decided, what was built, what surfaced for next time. This is the durable lab record. Hand off to Larry.\n2. **Lessons for the workshop spec** — what the dogfood checkpoints surfaced. Field renames, prompt rewrites, phase additions/cuts, mode changes (interleaved vs. pure-sequential). This feeds back into this very chunk for v0.2.\n\n## Modes\n\n- **Interleaved-with-checkpoints** (this run, and any first-time / unfamiliar-shape run) — every field tested as a design probe.\n- **Pure-sequential** (option once the workshop has stabilized) — content pass only, no checkpoints. Faster. Use when the spec is settled and we just want the debrief output.\n\n## Open questions (for the dogfood to answer)\n\n- Are six fields the right count? (Could collapse to four; could expand to seven if Capacity wants to split from Next-Up.)\n- Does \"What we Framed\" need the Frame card pulled, or is operator recall enough?\n- Where does the Gauge read actually sit — start of debrief, end, or both?\n- What's the right artifact for the produce-stage retrospective — a single Log entry, or one per area touched?\n\nThese aren't blockers. They're what we're listening for during the run."
+        }
+      ],
       "notes": []
     },
     {
@@ -3182,7 +3689,14 @@
           "impact": "Future sessions invoke the right agent for the work shape. Session opening prompt template in conversation: 'Launch Quenton Quince to pick up cognitive-lab work...' Operational tasks route to Larry."
         }
       ],
-      "chunks": [],
+      "chunks": [
+        {
+          "id": "chunk-priority-spec-v0.1",
+          "title": "Priority spec — turn-based P0 with hard cap at 3 (v0.1)",
+          "summary": "P0 means next up to bat or at bat for the upcoming or current Produce phase. Hard cap of 3, no override. Backlog Wall retires; toolbar Priority view becomes the canonical surface. Continuation across turns is carried by the status badge, not a third priority tier.",
+          "body": "**v0.1 / wildcat / shipped 2026-05-03.** First-stake spec for what priority means in this lab, written from the priority spec wildcat session. Subject to revision once the Debrief workshop ships and the in-app priority editor lands.\n\n## What P0 means\n\n*P0 = next up to bat or at bat for the upcoming or current Produce phase.*\n\nThe unit is the **turn**, not the day, not the sprint. This is consistent with the book title (*The 7 Turn Work Week*) and the phase architecture — Frame · Comprehend · Sync · Produce · Debrief · Recover. A P0 item is one of the things actually getting played in the next or current Produce phase. P1 is queued behind. P2 is later.\n\nInside P0 there are two natural sub-states: **at bat** (currently in-progress or drafted for the live or upcoming Produce phase) and **next up to bat** (staged, backlog status, but committed for the coming turn). These are not separate priority tiers. They're carried by the existing status badge — `in-progress` / `drafted` reads as *at bat*; `backlog` on a P0 reads as *next up to bat*. The Priority view's existing Marquee treatment for P0 carries the urgency; the status badge inside the tile carries the at-bat distinction. No new chrome.\n\n## Where P0 lives (the surface)\n\nThe **toolbar Priority view** is the canonical priority surface. The Backlog Wall floor tile retires — same simplification pattern as the F.R.A.M.E. acronym drop and the capacity check-in / Pilot Check merger. Two surfaces showing the same data was a duplication trap; the Priority view's three visual modes (Marquee P0 / Banner P1 / Summary P2) already do the priority sort visibly.\n\nRetiring the floor tile is queued as a separate build task (LAB to be spawned at session close). This chunk defines the spec; the move is mechanical.\n\n## The hard cap\n\n**Three P0s. No override.**\n\nThis is cognitive-load-driven, not flexibility-driven. *Cognitive load management means not having 25 open to-dos.* Override-as-data sounds reasonable until you remember the framework's first principle: extraneous load reduction is the highest-ROI cognitive intervention (Sweller, CLT). A four-P0 day is extraneous load disguised as urgency.\n\nEnforcement lives in the editing path. While priority is JSON-only (current state), the cap is honored by hand and visible at a glance — if there are four red Marquee tiles in the Priority view, fix the data. When the in-app priority editor ships (post-Debrief), it blocks the fourth at the UI layer.\n\n## How priority changes (the cadence)\n\nPriority moves at **turn boundaries**, not continuously. The natural shift moments:\n\n- **Frame** picks the P0s for the upcoming Produce — at bat for this turn.\n- **Debrief** retires P0s that are done, demotes P0s that didn't fire, and stages the next at-bats from P1.\n- **Mid-turn** changes are exceptional. If a P0 needs to drop and another P1 promotes, do it deliberately — the cap stays at 3.\n\nThis is what makes the turn-unit work: priority isn't a wishlist refreshed continuously; it's the slate of the current turn.\n\n## Cross-refs\n\n- **Frame** (frame-workshop) — Frame is where P0s are picked. The selection-over-generation move (LAB-027) reads from priority; doesn't write to it. The picker shows P0s as the natural Done means / Bonus candidates.\n- **Debrief** (debrief-booth) — Debrief is where priority gets revised. The retire / demote / stage moves happen in synthesis sweep one (Log entry on the area).\n- **The Gauge** — capacity reading gates whether a P0 even runs this turn. A grounded reading inserts recovery; the P0 waits.\n- **Backlog Wall** — retiring. The toolbar Priority view becomes canonical. Click-through to floor drawer still works for individual items.\n\n## Open questions (deferred to Debrief workshop)\n\n- When the in-app priority editor lands, does it expose at-bat / next-up-to-bat as a deliberate sub-state choice, or stay status-encoded? Current call: status-encoded.\n- Does the cap apply across the whole lab (3 P0s total) or per area (3 P0s per area)? Current call: across the whole lab. Per-area would defeat the cognitive-load purpose.\n- Does P1 also want a soft cap (e.g., 8) to keep the queue from sprawling? Deferred — solve P0 first, see if P1 sprawl is actually a problem."
+        }
+      ],
       "notes": []
     },
     {
@@ -3766,8 +4280,10 @@
     // Workshop mode: wider drawer + the right prototype form
     const wsView = document.getElementById('workshop-view');
     const floorHeading = document.querySelector('#area-view .floor-heading');
-    const frameModes = document.querySelectorAll('#workshop-view .ws-mode');
+    // Frame modes are the bare .ws-mode children (not nested inside ws-debrief-content)
+    const frameModes = document.querySelectorAll('#workshop-view > .ws-mode');
     const pilotContent = document.getElementById('ws-pilot-content');
+    const debriefContent = document.getElementById('ws-debrief-content');
     if (area.workshop) {
       drawer.classList.add('workshop');
       wsView.classList.add('visible');
@@ -3776,10 +4292,17 @@
       if (areaId === 'pilot-check-station') {
         frameModes.forEach(el => el.style.display = 'none');
         if (pilotContent) pilotContent.style.display = 'block';
+        if (debriefContent) debriefContent.style.display = 'none';
         initPilotCheckWorkshop();
+      } else if (areaId === 'debrief-booth') {
+        frameModes.forEach(el => el.style.display = 'none');
+        if (pilotContent) pilotContent.style.display = 'none';
+        if (debriefContent) debriefContent.style.display = 'block';
+        initDebriefWorkshop();
       } else {
         frameModes.forEach(el => el.style.display = '');
         if (pilotContent) pilotContent.style.display = 'none';
+        if (debriefContent) debriefContent.style.display = 'none';
         if (areaId === 'frame-workshop') initFrameWorkshop();
       }
     } else {
@@ -3788,6 +4311,7 @@
       if (floorHeading) floorHeading.style.display = 'none';
       frameModes.forEach(el => el.style.display = '');
       if (pilotContent) pilotContent.style.display = 'none';
+      if (debriefContent) debriefContent.style.display = 'none';
     }
 
     showAreaView(area);
@@ -3817,9 +4341,65 @@
     history.replaceState(null, '', location.pathname + location.search);
   }
 
+  /* ── Server persistence (Option A) ──
+     File is canonical; localStorage is the working copy.
+     postSave is fire-and-forget: localStorage writes are unconditional, server POST
+     is best-effort. If the user is on plain `python -m http.server` (no /api/save),
+     the POST 404s and we fall back to localStorage-only — existing behavior. */
+  const SERVER_SAVE_PATHS = {
+    'frame-cards':   '/api/save/frame-cards',
+    'debrief-cards': '/api/save/debrief-cards',
+    'pilot-checks':  '/api/save/pilot-checks'
+  };
+  const SERVER_LOAD_PATHS = {
+    'frame-cards':   '/exports/frame-cards.json',
+    'debrief-cards': '/exports/debrief-cards.json',
+    'pilot-checks':  '/exports/pilot-checks.json'
+  };
+  function postSave(type, arr) {
+    const url = SERVER_SAVE_PATHS[type];
+    if (!url) return;
+    try {
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(arr || [])
+      }).catch(() => { /* server not running: localStorage already saved, fine */ });
+    } catch { /* network blocked: localStorage already saved, fine */ }
+  }
+  async function loadFromServer(type) {
+    const url = SERVER_LOAD_PATHS[type];
+    if (!url) return null;
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return null; // 404 on plain http.server, or before first save
+      const data = await res.json();
+      return Array.isArray(data) ? data : null;
+    } catch { return null; }
+  }
+  async function hydrateFromServer() {
+    // Replace localStorage working copy with server's canonical file when present.
+    const pairs = [
+      ['frame-cards',   FRAME_KEY],
+      ['debrief-cards', DEBRIEF_KEY],
+      ['pilot-checks',  PC_KEY]
+    ];
+    await Promise.all(pairs.map(async ([type, key]) => {
+      const data = await loadFromServer(type);
+      if (data === null) return; // no file yet → keep localStorage as-is
+      try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
+    }));
+  }
+
   /* ── Frame Workshop: storage helpers ── */
   const FRAME_KEY = 'cognitive-lab-v0.1::frame-cards';
   const FF_FIELDS = ['in','out','must','stretch','approach','miss','end'];
+  // Fields that are typed-ref pickers (LAB-027 v2). Stored as either:
+  //   - array of {id, title} refs (picker mode), or
+  //   - non-empty string (free-text fallback / legacy back-compat).
+  // Done means is multi with a hard cap of 3 (mirrors the priority spec — LAB-027 v2.5).
+  const FF_PICKER_FIELDS = { must: 'multi', stretch: 'multi' };
+  const FF_PICKER_CAPS   = { must: 3 }; // omitted = uncapped
   const FF_LABELS = { must:'Done means', stretch:'Bonus', in:'Doing', out:'Not Doing', approach:'How I\'ll work', miss:'What ruins this', end:'When to stop' };
 
   function loadFrameCards() {
@@ -3828,21 +4408,156 @@
   }
   function saveFrameCards(arr) {
     try { localStorage.setItem(FRAME_KEY, JSON.stringify(arr)); } catch {}
+    postSave('frame-cards', arr);
   }
   function todayDateString() {
     const d = new Date();
     return d.toISOString().slice(0,10) + ' ' + d.toTimeString().slice(0,5);
   }
+
+  // In-memory picker state for the field currently being edited.
+  // Reset every time we enter edit mode. Mirrors the saved card's must/stretch.
+  // Each ref carries optional per-slot approach fields (LAB-027 v3, must field only):
+  //   { id, title, mode?, leaning_on?, ai_people?, done_this_turn? }
+  let framePickerState = { must: [], stretch: [] };
+  // Whether the picker panel is expanded for each field. Independent of state.
+  let framePickerPanelOpen = { must: false, stretch: false };
+  // Which priority tier the picker is currently showing (P0 default, expandable to P1, P2).
+  let framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+  // Whether the free-text fallback is active per field.
+  let framePickerTextMode = { must: false, stretch: false };
+  // Which Done-means slot indices have their per-slot Approach unfold open (LAB-027 v3).
+  // Set of indices into framePickerState.must. Stretch never unfolds (out of scope per design call).
+  let frameSlotExpanded = { must: new Set() };
+
+  // Fields supported on the per-slot Approach unfold. Order matters — render order.
+  const FF_SLOT_FIELDS = ['mode', 'leaning_on', 'ai_people', 'done_this_turn'];
+  const FF_SLOT_LABELS = {
+    mode:           'Mode',
+    leaning_on:     'Leaning on',
+    ai_people:      'AI / people',
+    done_this_turn: 'Done this turn'
+  };
+  const FF_SLOT_HINTS = {
+    mode:           'how I\'ll work it · pair / delegate / write / synth / review',
+    leaning_on:     'files, prior outputs, sources',
+    ai_people:      'who\'s involved · agents, collaborators, or solo',
+    done_this_turn: 'completion · milestone · effort'
+  };
+  const FF_SLOT_PLACEHOLDERS = {
+    mode:           'pair / delegate / write / synth / review',
+    leaning_on:     'docs, prior outputs, the v2.5 chip code',
+    ai_people:      'opus 4.7 / solo / @jess for review',
+    done_this_turn: 'completion: ship the form. milestone: section 3 past structural-holds. effort: one full Push on chapter draft.'
+  };
+
+  // After a chip at `removedIdx` is dropped from the must array, return a new Set with
+  // the removed index gone and any later indexes shifted down by 1. Keeps the expanded
+  // state paired with chips when the array reindexes.
+  function shiftExpandedDown(set, removedIdx) {
+    const out = new Set();
+    set.forEach(i => {
+      if (i < removedIdx) out.add(i);
+      else if (i > removedIdx) out.add(i - 1);
+    });
+    return out;
+  }
+
   function clearFrameForm() {
-    FF_FIELDS.forEach(f => { document.getElementById('ff-'+f).value = ''; });
+    FF_FIELDS.forEach(f => {
+      if (FF_PICKER_FIELDS[f]) {
+        framePickerState[f] = [];
+        framePickerTextMode[f] = false;
+        const ta = document.getElementById('ff-' + f + '-text');
+        if (ta) ta.value = '';
+      } else {
+        const el = document.getElementById('ff-' + f);
+        if (el) el.value = '';
+      }
+    });
+    const notesEl = document.getElementById('ff-must-notes');
+    if (notesEl) notesEl.value = '';
+    framePickerPanelOpen = { must: false, stretch: false };
+    framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+    frameSlotExpanded = { must: new Set() };
+    Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
   }
+
+  // Coerce stored value into an array of refs; legacy strings stay strings.
+  // For LAB-027 v3, ref objects may carry optional approach fields
+  // (mode / leaning_on / ai_people / done_this_turn). Pass them through
+  // when present; absent on legacy v2.5 cards (back-compat).
+  function coerceFieldValue(field, value) {
+    if (Array.isArray(value)) return value.filter(r => r && r.id).map(r => {
+      const out = { id: r.id, title: r.title || '' };
+      FF_SLOT_FIELDS.forEach(k => {
+        if (typeof r[k] === 'string' && r[k].length > 0) out[k] = r[k];
+      });
+      return out;
+    });
+    return value || '';
+  }
+
   function loadIntoFrameForm(card) {
-    FF_FIELDS.forEach(f => { document.getElementById('ff-'+f).value = card[f] || ''; });
+    FF_FIELDS.forEach(f => {
+      if (FF_PICKER_FIELDS[f]) {
+        const v = coerceFieldValue(f, card[f]);
+        if (Array.isArray(v)) {
+          framePickerState[f] = v;
+          framePickerTextMode[f] = false;
+          const ta = document.getElementById('ff-' + f + '-text');
+          if (ta) ta.value = '';
+        } else {
+          // Legacy string. Show in free-text fallback so existing cards round-trip safely.
+          framePickerState[f] = [];
+          framePickerTextMode[f] = !!v;
+          const ta = document.getElementById('ff-' + f + '-text');
+          if (ta) ta.value = v || '';
+        }
+      } else {
+        const el = document.getElementById('ff-' + f);
+        if (el) el.value = card[f] || '';
+      }
+    });
+    const notesEl = document.getElementById('ff-must-notes');
+    if (notesEl) notesEl.value = card.must_notes || '';
+    framePickerPanelOpen = { must: false, stretch: false };
+    framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+    // Auto-expand any must slot whose ref carries approach data. Empty slots stay collapsed
+    // so a fresh card doesn't open four panels at once. Keeps lived data visible after reload.
+    frameSlotExpanded = { must: new Set() };
+    (framePickerState.must || []).forEach((r, i) => {
+      if (FF_SLOT_FIELDS.some(k => r && r[k])) frameSlotExpanded.must.add(i);
+    });
+    Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
   }
+
   function readFrameForm() {
     const card = { savedAt: new Date().toISOString(), date: todayDateString() };
-    FF_FIELDS.forEach(f => { card[f] = document.getElementById('ff-'+f).value.trim(); });
+    FF_FIELDS.forEach(f => {
+      if (FF_PICKER_FIELDS[f]) {
+        if (framePickerTextMode[f]) {
+          // Free-text fallback active. Persist as string.
+          const ta = document.getElementById('ff-' + f + '-text');
+          card[f] = ta ? ta.value.trim() : '';
+        } else {
+          // Picker mode. Persist as ref array (may be empty).
+          card[f] = framePickerState[f].slice();
+        }
+      } else {
+        card[f] = document.getElementById('ff-' + f).value.trim();
+      }
+    });
+    const notesEl = document.getElementById('ff-must-notes');
+    const notesVal = notesEl ? notesEl.value.trim() : '';
+    if (notesVal) card.must_notes = notesVal;
     return card;
+  }
+
+  // True if a given field value is "filled" (used by save validation + viewing renderer).
+  function fieldIsFilled(value) {
+    if (Array.isArray(value)) return value.length > 0;
+    return !!(value && (typeof value === 'string') && value.trim().length > 0);
   }
   function flashSaved() {
     const el = document.getElementById('ff-saved');
@@ -3867,6 +4582,7 @@
   }
   function savePilotChecks(arr) {
     try { localStorage.setItem(PC_KEY, JSON.stringify(arr)); } catch {}
+    postSave('pilot-checks', arr);
   }
 
   function pcZone(v) {
@@ -4044,7 +4760,9 @@
     if (card) loadIntoFrameForm(card); else clearFrameForm();
     setWsMode('editing');
     setTimeout(() => {
-      const first = document.getElementById('ff-must');
+      // ff-must is now a picker shell; focus the Doing textarea so the user can type immediately,
+      // and let them tab into the picker when they want to set Done means.
+      const first = document.getElementById('ff-in');
       if (first) first.focus();
     }, 50);
   }
@@ -4056,8 +4774,52 @@
     editingOriginalIdx = idx; // remember for Edit & Re-save
     document.getElementById('ws-viewing-date').textContent = card.date || '(no date)';
     const rows = FF_FIELDS
-      .filter(f => card[f] && card[f].length > 0)
-      .map(f => `<div class="ws-vb-row"><div class="lbl">${FF_LABELS[f]}</div><div class="val">${escapeHTML(card[f])}</div></div>`)
+      .filter(f => fieldIsFilled(card[f]))
+      .map(f => {
+        const v = card[f];
+        let valHTML;
+        if (Array.isArray(v)) {
+          // Typed-ref array → render as chips. For must (LAB-027 v3), also render
+          // the per-slot Approach beneath each chip if any approach data was saved.
+          const renderApproachBlock = (ref) => {
+            const lines = FF_SLOT_FIELDS
+              .filter(k => typeof ref[k] === 'string' && ref[k].trim().length > 0)
+              .map(k => `<div class="vb-ap-line">
+                <span class="vb-ap-lbl">${escapeHTML(FF_SLOT_LABELS[k])}</span>
+                <span class="vb-ap-val">${escapeHTML(ref[k])}</span>
+              </div>`)
+              .join('');
+            return lines ? `<div class="ws-vb-slot-approach">${lines}</div>` : '';
+          };
+          if (f === 'must') {
+            valHTML = '<div class="ff-picker-chips" style="flex-direction:column;align-items:stretch;">' + v.map(ref => {
+              const id = escapeHTML(ref.id || '');
+              const title = escapeHTML(ref.title || '');
+              const chip = `<span class="ff-chip" data-act="open-ref" data-item="${id}">
+                <span class="ff-chip-id">${id}</span>
+                <span class="ff-chip-title">${title}</span>
+              </span>`;
+              return `<div class="ws-vb-slot">${chip}${renderApproachBlock(ref)}</div>`;
+            }).join('') + '</div>';
+          } else {
+            valHTML = '<div class="ff-picker-chips">' + v.map(ref => {
+              const id = escapeHTML(ref.id || '');
+              const title = escapeHTML(ref.title || '');
+              return `<span class="ff-chip" data-act="open-ref" data-item="${id}">
+                <span class="ff-chip-id">${id}</span>
+                <span class="ff-chip-title">${title}</span>
+              </span>`;
+            }).join('') + '</div>';
+          }
+        } else {
+          valHTML = escapeHTML(v);
+        }
+        // Append must_notes inline beneath the chips for the must row.
+        if (f === 'must' && card.must_notes) {
+          valHTML += `<div class="ws-vb-notes">${escapeHTML(card.must_notes)}</div>`;
+        }
+        return `<div class="ws-vb-row"><div class="lbl">${FF_LABELS[f]}</div><div class="val">${valHTML}</div></div>`;
+      })
       .join('');
     document.getElementById('ws-viewing-body').innerHTML =
       rows || '<div style="color:#888;font-size:12px;font-style:italic;">Empty card.</div>';
@@ -4115,10 +4877,17 @@
       const g = groups[key];
       const items = g.cards.slice().reverse().map(({card, idx}) => {
         const time = (card.date || '').slice(11) || '·';
-        const must = (card.must || '').slice(0, 110);
+        let mustSummary;
+        if (Array.isArray(card.must)) {
+          mustSummary = card.must.length === 0
+            ? '(no must)'
+            : card.must.map(r => (r.id || '') + (r.title ? ' · ' + r.title : '')).join('; ');
+        } else {
+          mustSummary = (card.must || '').slice(0, 110) || '(no must)';
+        }
         return `<div class="ws-recent-card" data-idx="${idx}">
           <div class="rc-date">${escapeHTML(time)}</div>
-          <div class="rc-must">${escapeHTML(must || '(no must)')}</div>
+          <div class="rc-must">${escapeHTML(mustSummary)}</div>
         </div>`;
       }).join('');
       const labelClass = g.isToday ? 'ws-recent-group-label today' : 'ws-recent-group-label';
@@ -4408,6 +5177,315 @@
     }
   });
 
+  /* ── Frame Workshop: typed-ref picker (LAB-027 v2) ──
+        Surfaces lab items as click-to-select for Done means (single) and Bonus (multi).
+        Default surfaced subset: P0 with status in {in-progress, drafted, backlog}.
+        Within P0, in-progress + drafted render before backlog (the at-bat / next-up
+        distinction encoded by status badge — no new tier).
+        See more: expands to include P1, then P2.  ── */
+
+  function getFramePickerCandidates(tier) {
+    // Reuse allItemsArray() so picker matches the Priority view's source of truth.
+    const items = (typeof allItemsArray === 'function') ? allItemsArray() : [];
+    const wantedTiers = tier === 'P0' ? ['P0']
+                      : tier === 'P1' ? ['P0','P1']
+                      : ['P0','P1','P2'];
+    return items
+      .filter(it => wantedTiers.includes(it.priority))
+      .filter(it => it.status !== 'live' && it.status !== 'archived')
+      .sort((a, b) => {
+        // Priority first.
+        const pa = priorityRank(a.priority), pb = priorityRank(b.priority);
+        if (pa !== pb) return pa - pb;
+        // Within priority: in-progress, drafted, backlog (statusRank gives 0,1,2 — perfect).
+        const sa = statusRank(a.status), sb = statusRank(b.status);
+        if (sa !== sb) return sa - sb;
+        return a.id.localeCompare(b.id);
+      });
+  }
+
+  function renderFramePicker(field) {
+    const mode = FF_PICKER_FIELDS[field]; // 'single' | 'multi'
+    const cap  = FF_PICKER_CAPS[field] || 0; // 0 = uncapped
+    const chipsEl = document.getElementById('ff-' + field + '-chips');
+    const capEl   = document.getElementById('ff-' + field + '-cap');
+    const panelEl = document.getElementById('ff-' + field + '-panel');
+    const toggleBtn = document.getElementById('ff-' + field + '-toggle');
+    const textWrap = document.getElementById('ff-' + field + '-text-wrap');
+    const textToggle = document.getElementById('ff-' + field + '-text-toggle');
+    if (!chipsEl || !panelEl || !toggleBtn) return;
+
+    // Render chip list of selected refs. For the must field (LAB-027 v3), each chip is
+    // wrapped in a slot that also renders an inline Approach unfold beneath it.
+    const selected = framePickerState[field] || [];
+    const slotsEnabled = (field === 'must');
+    const expandedSet = (slotsEnabled && frameSlotExpanded.must) ? frameSlotExpanded.must : new Set();
+
+    chipsEl.innerHTML = selected.map((ref, i) => {
+      const id = escapeHTML(ref.id || '');
+      const title = escapeHTML(ref.title || '');
+      const chipHTML = `<span class="ff-chip" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
+        <span class="ff-chip-id">${id}</span>
+        <span class="ff-chip-title">${title}</span>${
+          slotsEnabled
+            ? `<span class="ff-slot-toggle" aria-hidden="true">${expandedSet.has(i) ? '▾' : '▸'}</span>`
+            : ''
+        }
+        <button type="button" class="ff-chip-x" data-act="ff-chip-remove" data-field="${field}" data-item="${id}" title="Remove">×</button>
+      </span>`;
+      if (!slotsEnabled) return chipHTML;
+      const isOpen = expandedSet.has(i);
+      const unfoldHTML = `<div class="ff-slot-approach" data-slot-idx="${i}"${isOpen ? '' : ' hidden'}>
+        ${FF_SLOT_FIELDS.map(k => {
+          const val = escapeHTML(ref[k] || '');
+          const isLong = (k === 'leaning_on' || k === 'done_this_turn');
+          const inputHTML = isLong
+            ? `<textarea data-act="ff-slot-input" data-slot-idx="${i}" data-slot-key="${k}" placeholder="${escapeHTML(FF_SLOT_PLACEHOLDERS[k])}">${val}</textarea>`
+            : `<input type="text" data-act="ff-slot-input" data-slot-idx="${i}" data-slot-key="${k}" value="${val}" placeholder="${escapeHTML(FF_SLOT_PLACEHOLDERS[k])}">`;
+          return `<div class="ff-slot-field">
+            <label>${escapeHTML(FF_SLOT_LABELS[k])} <span class="ff-hint">${escapeHTML(FF_SLOT_HINTS[k])}</span></label>
+            ${inputHTML}
+          </div>`;
+        }).join('')}
+      </div>`;
+      return `<div class="ff-slot${isOpen ? ' expanded' : ''}" data-slot-idx="${i}">
+        ${chipHTML}
+        ${unfoldHTML}
+      </div>`;
+    }).join('');
+
+    // Cap counter line (only when this field has a cap).
+    const atCap = cap > 0 && selected.length >= cap;
+    if (capEl) {
+      if (cap > 0) {
+        capEl.hidden = false;
+        capEl.classList.toggle('full', atCap);
+        capEl.textContent = atCap
+          ? `${selected.length} of ${cap} · picker full — remove a chip to pick another`
+          : `${selected.length} of ${cap} picked`;
+      } else {
+        capEl.hidden = true;
+        capEl.textContent = '';
+      }
+    }
+
+    // Free-text fallback visibility.
+    const inText = !!framePickerTextMode[field];
+    if (textWrap) textWrap.hidden = !inText;
+    if (textToggle) textToggle.textContent = inText ? 'Use the picker instead' : 'Use free text instead';
+
+    // Picker panel visibility — hidden when in text mode.
+    const open = !!framePickerPanelOpen[field] && !inText;
+    panelEl.hidden = !open;
+    toggleBtn.classList.toggle('open', open);
+    // At-cap state on the Browse button: greyed but still clickable so the panel can be
+    // opened to remove via the row's "selected" highlight (clicking a selected row deselects).
+    toggleBtn.classList.toggle('at-cap', atCap && !open);
+    toggleBtn.textContent = open ? 'Close' : (atCap ? 'Browse items (full)' : 'Browse items');
+    if (inText) {
+      toggleBtn.disabled = true;
+      toggleBtn.style.opacity = '0.4';
+      toggleBtn.style.cursor = 'not-allowed';
+    } else {
+      toggleBtn.disabled = false;
+      toggleBtn.style.opacity = '';
+      toggleBtn.style.cursor = '';
+    }
+
+    if (!open) return;
+
+    // Render the panel contents.
+    const tier = framePickerExpandTier[field] || 'P0';
+    const candidates = getFramePickerCandidates(tier);
+    const selectedIds = new Set(selected.map(r => r.id));
+
+    // Group by priority for visual separation.
+    const groups = { P0: [], P1: [], P2: [] };
+    candidates.forEach(it => { if (groups[it.priority]) groups[it.priority].push(it); });
+
+    let html = '';
+    ['P0','P1','P2'].forEach(p => {
+      if (groups[p].length === 0) return;
+      if (tier === 'P0' && p !== 'P0') return;
+      if (tier === 'P1' && p === 'P2') return;
+      html += `<div class="ff-pp-section-label">${p} · ${escapeHTML(PRI_LABEL[p] || '')}</div>`;
+      html += groups[p].map(it => {
+        const isSel = selectedIds.has(it.id);
+        const sel = isSel ? ' selected' : '';
+        // At cap: rows for unselected items become non-clickable visually. Selected rows stay
+        // clickable so the user can deselect to free a slot.
+        const dim = (atCap && !isSel) ? ' at-cap' : '';
+        const statLabel = STATUS_LABEL[it.status] || it.status;
+        return `<div class="ff-pp-row${sel}${dim}" data-act="ff-pick" data-field="${field}" data-item="${escapeHTML(it.id)}" data-title="${escapeHTML(it.title)}">
+          <span class="ff-pp-pri ${it.priority}">${it.priority}</span>
+          <div class="ff-pp-body">
+            <span class="ff-pp-id">${escapeHTML(it.id)}</span>
+            <span class="ff-pp-title">${escapeHTML(it.title)}</span>
+          </div>
+          <span class="ff-pp-stat" data-s="${it.status}">${escapeHTML(statLabel)}</span>
+        </div>`;
+      }).join('');
+    });
+
+    if (html === '') {
+      html = '<div class="ff-pp-empty">Nothing in this tier. Try expanding to P1 or P2.</div>';
+    }
+
+    // See-more affordance.
+    if (tier === 'P0') {
+      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P1">See P1 too</button>`;
+    } else if (tier === 'P1') {
+      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P2">See P2 too</button>`;
+      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P0" style="margin-left:6px;">Back to P0 only</button>`;
+    } else {
+      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P0">Back to P0 only</button>`;
+    }
+
+    panelEl.innerHTML = html;
+  }
+
+  // Delegated event handler for the Frame edit form (picker controls + chips).
+  document.getElementById('ws-editing').addEventListener('click', (e) => {
+    const tgt = e.target;
+    // Toggle picker panel
+    if (tgt.id === 'ff-must-toggle' || tgt.id === 'ff-stretch-toggle') {
+      const field = tgt.id === 'ff-must-toggle' ? 'must' : 'stretch';
+      framePickerPanelOpen[field] = !framePickerPanelOpen[field];
+      renderFramePicker(field);
+      return;
+    }
+    // Toggle free-text fallback
+    if (tgt.id === 'ff-must-text-toggle' || tgt.id === 'ff-stretch-text-toggle') {
+      const field = tgt.id === 'ff-must-text-toggle' ? 'must' : 'stretch';
+      framePickerTextMode[field] = !framePickerTextMode[field];
+      // When switching to text mode: keep any existing selections cleared from active state
+      // (state remains in array form under-the-hood but readFrameForm uses textMode flag to decide).
+      // When switching back to picker: clear text input so it doesn't ghost-save.
+      if (!framePickerTextMode[field]) {
+        const ta = document.getElementById('ff-' + field + '-text');
+        if (ta) ta.value = '';
+      }
+      framePickerPanelOpen[field] = false;
+      renderFramePicker(field);
+      return;
+    }
+    // Pick / unpick an item in the panel
+    const pickRow = tgt.closest('[data-act="ff-pick"]');
+    if (pickRow) {
+      const field = pickRow.dataset.field;
+      const id = pickRow.dataset.item;
+      const title = pickRow.dataset.title;
+      const mode = FF_PICKER_FIELDS[field];
+      const cap  = FF_PICKER_CAPS[field] || 0;
+      const cur = framePickerState[field] || [];
+      const existsAt = cur.findIndex(r => r.id === id);
+      if (mode === 'single') {
+        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title }];
+        if (field === 'must') {
+          frameSlotExpanded.must = (existsAt >= 0) ? new Set() : new Set([0]);
+        }
+      } else {
+        if (existsAt >= 0) {
+          // Always allow deselect — drop the chip and the corresponding expanded index,
+          // shifting later indexes down so the unfold state stays paired with chips.
+          cur.splice(existsAt, 1);
+          if (field === 'must') frameSlotExpanded.must = shiftExpandedDown(frameSlotExpanded.must, existsAt);
+        } else if (cap > 0 && cur.length >= cap) {
+          // At cap: silently no-op. The row is rendered .at-cap so the user already sees why.
+          return;
+        } else {
+          cur.push({ id, title });
+          // Auto-expand the just-picked must slot so the user can fill its Approach
+          // immediately without an extra click. Stretch slots stay non-unfoldable.
+          if (field === 'must') frameSlotExpanded.must.add(cur.length - 1);
+        }
+        framePickerState[field] = cur;
+      }
+      renderFramePicker(field);
+      return;
+    }
+    // Expand tier (see more)
+    const expandBtn = tgt.closest('[data-act="ff-expand-tier"]');
+    if (expandBtn) {
+      const field = expandBtn.dataset.field;
+      const tier  = expandBtn.dataset.tier;
+      framePickerExpandTier[field] = tier;
+      renderFramePicker(field);
+      return;
+    }
+    // Remove a chip (the × button)
+    const removeBtn = tgt.closest('[data-act="ff-chip-remove"]');
+    if (removeBtn) {
+      e.stopPropagation();
+      const field = removeBtn.dataset.field;
+      const id = removeBtn.dataset.item;
+      const cur = framePickerState[field] || [];
+      const removedAt = cur.findIndex(r => r.id === id);
+      framePickerState[field] = cur.filter(r => r.id !== id);
+      if (field === 'must' && removedAt >= 0) {
+        frameSlotExpanded.must = shiftExpandedDown(frameSlotExpanded.must, removedAt);
+      }
+      renderFramePicker(field);
+      return;
+    }
+    // Click chip body (not the ×) → for must field, toggle the per-slot Approach unfold.
+    // For other fields (stretch), continue to open the item in the floor drawer.
+    const chip = tgt.closest('[data-act="ff-chip"]');
+    if (chip) {
+      const field = chip.dataset.field;
+      if (field === 'must') {
+        const idx = parseInt(chip.dataset.slotIdx, 10);
+        if (!Number.isNaN(idx)) {
+          if (frameSlotExpanded.must.has(idx)) frameSlotExpanded.must.delete(idx);
+          else frameSlotExpanded.must.add(idx);
+          renderFramePicker('must');
+        }
+        return;
+      }
+      const id = chip.dataset.item;
+      openItemFromFrameRef(id);
+      return;
+    }
+  });
+
+  // Per-slot Approach inputs: write to framePickerState.must[i][key] on every input.
+  // No re-render — that would steal focus mid-typing. The state is the source of truth
+  // when readFrameForm runs at save-time.
+  document.getElementById('ws-editing').addEventListener('input', (e) => {
+    const input = e.target.closest('[data-act="ff-slot-input"]');
+    if (!input) return;
+    const idx = parseInt(input.dataset.slotIdx, 10);
+    const key = input.dataset.slotKey;
+    if (Number.isNaN(idx) || !FF_SLOT_FIELDS.includes(key)) return;
+    const ref = (framePickerState.must || [])[idx];
+    if (!ref) return;
+    const val = input.value;
+    if (val && val.length > 0) ref[key] = val;
+    else delete ref[key];
+  });
+
+  // Delegated handler for chips inside the viewing-mode body.
+  document.getElementById('ws-viewing-body').addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-act="open-ref"]');
+    if (!chip) return;
+    const id = chip.dataset.item;
+    openItemFromFrameRef(id);
+  });
+
+  // Resolve a typed ref (LAB-###) → switch to floor view, open the area drawer,
+  // and drilldown if the area isn't a workshop. Mirrors the priority-view chip behavior.
+  function openItemFromFrameRef(itemId) {
+    const item = baseline.items[itemId] || (shadow.newItems && shadow.newItems[itemId]);
+    if (!item) return;
+    const area = resolveAreaForItem(item);
+    if (!area) return;
+    if (typeof setView === 'function') setView('floor');
+    if (typeof openDrawer === 'function') openDrawer(area.id);
+    if (!area.workshop && typeof openDrilldown === 'function') {
+      setTimeout(() => openDrilldown(itemId), 30);
+    }
+  }
+
   function initFrameWorkshop() { enterResting(); }
 
   /* ── Workshop button handlers (wired once at load) ── */
@@ -4416,7 +5494,20 @@
   });
 
   document.getElementById('ws-cancel-btn').addEventListener('click', () => {
-    const hasContent = FF_FIELDS.some(f => document.getElementById('ff-'+f).value.trim());
+    const hasContent = FF_FIELDS.some(f => {
+      if (FF_PICKER_FIELDS[f]) {
+        if (framePickerTextMode[f]) {
+          const ta = document.getElementById('ff-' + f + '-text');
+          return !!(ta && ta.value.trim());
+        }
+        return framePickerState[f].length > 0;
+      }
+      const el = document.getElementById('ff-' + f);
+      return !!(el && el.value.trim());
+    }) || (() => {
+      const n = document.getElementById('ff-must-notes');
+      return !!(n && n.value.trim());
+    })();
     if (hasContent && !confirm('Discard this card? Unsaved changes will be lost.')) return;
     enterResting();
   });
@@ -4447,7 +5538,7 @@
 
   document.getElementById('ff-save').addEventListener('click', () => {
     const card = readFrameForm();
-    const filled = FF_FIELDS.filter(f => card[f]).length;
+    const filled = FF_FIELDS.filter(f => fieldIsFilled(card[f])).length;
     if (filled === 0) return;
     const cards = loadFrameCards();
     if (editingOriginalIdx >= 0 && cards[editingOriginalIdx]) {
@@ -4463,15 +5554,252 @@
   });
 
   document.getElementById('ff-clear').addEventListener('click', () => {
-    if (FF_FIELDS.some(f => document.getElementById('ff-'+f).value.trim())) {
-      if (!confirm('Clear all fields?')) return;
-    }
+    const hasAny = FF_FIELDS.some(f => {
+      if (FF_PICKER_FIELDS[f]) {
+        if (framePickerTextMode[f]) {
+          const ta = document.getElementById('ff-' + f + '-text');
+          return !!(ta && ta.value.trim());
+        }
+        return framePickerState[f].length > 0;
+      }
+      const el = document.getElementById('ff-' + f);
+      return !!(el && el.value.trim());
+    }) || (() => {
+      const n = document.getElementById('ff-must-notes');
+      return !!(n && n.value.trim());
+    })();
+    if (hasAny && !confirm('Clear all fields?')) return;
     clearFrameForm();
     setTimeout(() => {
-      const first = document.getElementById('ff-must');
+      const first = document.querySelector('#ff-must-toggle');
       if (first) first.focus();
     }, 30);
   });
+
+  /* ── Debrief Workshop ── */
+  const DEBRIEF_KEY = 'cognitive-lab-v0.1::debrief-cards';
+  const DB_FIELDS = ['subject','framed','actual','diverged','sustain','improve','capacity'];
+  const DB_LABELS = {
+    subject:  'Produce stage',
+    framed:   'What we Framed',
+    actual:   'What actually happened',
+    diverged: 'Where they diverged',
+    sustain:  'What to sustain',
+    improve:  'What to improve',
+    capacity: 'Capacity reading + next-up'
+  };
+
+  function loadDebriefCards() {
+    try { return JSON.parse(localStorage.getItem(DEBRIEF_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveDebriefCards(arr) {
+    try { localStorage.setItem(DEBRIEF_KEY, JSON.stringify(arr)); } catch {}
+    postSave('debrief-cards', arr);
+  }
+  function clearDebriefForm() {
+    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); if (el) el.value = ''; });
+  }
+  function loadIntoDebriefForm(card) {
+    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); if (el) el.value = card[f] || ''; });
+  }
+  function readDebriefForm() {
+    const card = { savedAt: new Date().toISOString(), date: todayDateString() };
+    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); card[f] = el ? el.value.trim() : ''; });
+    return card;
+  }
+  function flashDebriefSaved() {
+    const el = document.getElementById('db-saved');
+    if (!el) return;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 1800);
+  }
+
+  let dbMode = 'resting';
+  let dbEditingOriginalIdx = -1;
+
+  function setDbMode(mode) {
+    dbMode = mode;
+    document.querySelectorAll('#ws-debrief-content .ws-mode').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('db-' + mode);
+    if (target) target.classList.add('active');
+  }
+
+  function dbEnterResting() {
+    dbEditingOriginalIdx = -1;
+    setDbMode('resting');
+    const ctaDate = document.getElementById('db-cta-date');
+    if (ctaDate) ctaDate.textContent = todayDateString();
+    dbRenderRecent();
+  }
+
+  function dbEnterEditing(card, idx) {
+    dbEditingOriginalIdx = (typeof idx === 'number') ? idx : -1;
+    const dateEl = document.getElementById('db-date');
+    if (dateEl) dateEl.textContent = todayDateString();
+    document.getElementById('db-editing-title').innerHTML =
+      (dbEditingOriginalIdx >= 0 ? 'Edit Debrief Card · ' : 'New Debrief Card · ') +
+      `<span id="db-date">${todayDateString()}</span>`;
+    if (card) loadIntoDebriefForm(card); else clearDebriefForm();
+    setDbMode('editing');
+    setTimeout(() => {
+      const first = document.getElementById('db-subject');
+      if (first) first.focus();
+    }, 50);
+  }
+
+  function dbEnterViewing(idx) {
+    const cards = loadDebriefCards();
+    const card = cards[idx];
+    if (!card) return;
+    dbEditingOriginalIdx = idx;
+    document.getElementById('db-viewing-date').textContent = card.date || '(no date)';
+    const rows = DB_FIELDS
+      .filter(f => card[f] && card[f].length > 0)
+      .map(f => `<div class="ws-vb-row"><div class="lbl">${DB_LABELS[f]}</div><div class="val">${escapeHTML(card[f])}</div></div>`)
+      .join('');
+    document.getElementById('db-viewing-body').innerHTML =
+      rows || '<div style="color:#888;font-size:12px;font-style:italic;">Empty card.</div>';
+    setDbMode('viewing');
+  }
+
+  function dbRenderRecent() {
+    const cards = loadDebriefCards();
+    const list = document.getElementById('db-recent-list');
+    const countEl = document.getElementById('db-recent-count');
+    const labelEl = document.getElementById('db-recent-label');
+    if (!list) return;
+
+    const today = new Date().toISOString().slice(0,10);
+    const yest  = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+
+    if (cards.length === 0) {
+      if (countEl) countEl.textContent = '';
+      if (labelEl) labelEl.firstChild.textContent = "Today's Debriefs ";
+      list.innerHTML = '<div class="ws-recent-empty">No debrief cards yet. Start one above.</div>';
+      return;
+    }
+
+    const groups = {};
+    cards.forEach((c, i) => {
+      const dateOnly = (c.date || '').slice(0,10);
+      let key, label, isToday = false;
+      if (dateOnly === today)      { key = 'today';     label = 'Today';     isToday = true; }
+      else if (dateOnly === yest)  { key = 'yesterday'; label = 'Yesterday'; }
+      else                          { key = dateOnly || 'undated'; label = dateOnly || 'Earlier'; }
+      if (!groups[key]) groups[key] = { label, isToday, cards: [] };
+      groups[key].cards.push({ card: c, idx: i });
+    });
+
+    const order = [];
+    if (groups.today) order.push('today');
+    if (groups.yesterday) order.push('yesterday');
+    Object.keys(groups)
+      .filter(k => k !== 'today' && k !== 'yesterday' && k !== 'undated')
+      .sort().reverse()
+      .forEach(k => order.push(k));
+    if (groups.undated) order.push('undated');
+
+    const todayCount = groups.today ? groups.today.cards.length : 0;
+    if (countEl) countEl.textContent = todayCount > 0 ? '(' + todayCount + ')' : '';
+    if (labelEl) {
+      labelEl.firstChild.textContent = todayCount > 0 ? "Today's Debriefs " : 'Recent Debriefs ';
+    }
+
+    list.innerHTML = order.map(key => {
+      const g = groups[key];
+      const items = g.cards.slice().reverse().map(({card, idx}) => {
+        const time = (card.date || '').slice(11) || '·';
+        const subject = (card.subject || '').slice(0, 110);
+        return `<div class="ws-recent-card" data-idx="${idx}">
+          <div class="rc-date">${escapeHTML(time)}</div>
+          <div class="rc-must">${escapeHTML(subject || '(no subject)')}</div>
+        </div>`;
+      }).join('');
+      const labelClass = g.isToday ? 'ws-recent-group-label today' : 'ws-recent-group-label';
+      return `<div class="ws-recent-group">
+        <div class="${labelClass}">${escapeHTML(g.label)}</div>
+        ${items}
+      </div>`;
+    }).join('');
+  }
+
+  function initDebriefWorkshop() { dbEnterResting(); }
+
+  // Wire debrief controls (bound once at load)
+  (function wireDebrief() {
+    const startBtn = document.getElementById('db-start-btn');
+    if (startBtn) startBtn.addEventListener('click', () => dbEnterEditing(null));
+
+    const cancelBtn = document.getElementById('db-cancel-btn');
+    if (cancelBtn) cancelBtn.addEventListener('click', () => {
+      const hasContent = DB_FIELDS.some(f => {
+        const el = document.getElementById('db-'+f);
+        return el && el.value.trim();
+      });
+      if (hasContent && !confirm('Discard this card? Unsaved changes will be lost.')) return;
+      dbEnterResting();
+    });
+
+    const backBtn = document.getElementById('db-back-btn');
+    if (backBtn) backBtn.addEventListener('click', () => dbEnterResting());
+
+    const editBtn = document.getElementById('db-edit-btn');
+    if (editBtn) editBtn.addEventListener('click', () => {
+      const cards = loadDebriefCards();
+      if (dbEditingOriginalIdx < 0 || !cards[dbEditingOriginalIdx]) return;
+      dbEnterEditing(cards[dbEditingOriginalIdx], dbEditingOriginalIdx);
+    });
+
+    const deleteBtn = document.getElementById('db-delete-btn');
+    if (deleteBtn) deleteBtn.addEventListener('click', () => {
+      const cards = loadDebriefCards();
+      if (dbEditingOriginalIdx < 0 || !cards[dbEditingOriginalIdx]) return;
+      if (!confirm('Delete this debrief card?')) return;
+      cards.splice(dbEditingOriginalIdx, 1);
+      saveDebriefCards(cards);
+      dbEnterResting();
+    });
+
+    const recentList = document.getElementById('db-recent-list');
+    if (recentList) recentList.addEventListener('click', e => {
+      const card = e.target.closest('.ws-recent-card');
+      if (!card) return;
+      const idx = parseInt(card.dataset.idx, 10);
+      if (!Number.isNaN(idx)) dbEnterViewing(idx);
+    });
+
+    const saveBtn = document.getElementById('db-save');
+    if (saveBtn) saveBtn.addEventListener('click', () => {
+      const card = readDebriefForm();
+      const filled = DB_FIELDS.filter(f => card[f]).length;
+      if (filled === 0) return;
+      const cards = loadDebriefCards();
+      if (dbEditingOriginalIdx >= 0 && cards[dbEditingOriginalIdx]) {
+        card.date = cards[dbEditingOriginalIdx].date || card.date;
+        cards[dbEditingOriginalIdx] = card;
+      } else {
+        cards.push(card);
+      }
+      saveDebriefCards(cards);
+      flashDebriefSaved();
+      setTimeout(() => dbEnterResting(), 600);
+    });
+
+    const clearBtn = document.getElementById('db-clear');
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+      const hasContent = DB_FIELDS.some(f => {
+        const el = document.getElementById('db-'+f);
+        return el && el.value.trim();
+      });
+      if (hasContent && !confirm('Clear all fields?')) return;
+      clearDebriefForm();
+      setTimeout(() => {
+        const first = document.getElementById('db-subject');
+        if (first) first.focus();
+      }, 30);
+    });
+  })();
 
   /* ── Area view ── */
   function showAreaView(area) {
@@ -4642,6 +5970,7 @@
     merged._shadow = shadow;
     merged._frameCards = loadFrameCards();
     merged._pilotChecks = loadPilotChecks();
+    merged._debriefCards = loadDebriefCards();
     merged._chunks = shadow.chunks || {};
     merged._experiments = shadow.experiments || {};
     merged._exported = new Date().toISOString();
@@ -4688,6 +6017,10 @@
         // Restore Pilot Checks if present
         if (Array.isArray(data._pilotChecks)) {
           savePilotChecks(data._pilotChecks);
+        }
+        // Restore Debrief Cards if present
+        if (Array.isArray(data._debriefCards)) {
+          saveDebriefCards(data._debriefCards);
         }
         if (currentAreaId) {
           const area = baseline.areas.find(a => a.id === currentAreaId);
@@ -5859,12 +7192,17 @@
     }
   });
 
-  /* ── Init ── */
-  renderFloorBadges();
-  buildAreaVisuals();
-  buildSearchIndex();
-  wireGapsHandlers();
-  setView(loadActiveView());
+  /* ── Init ──
+     Hydrate localStorage from the server's canonical files first (if available),
+     then bootstrap the UI. On plain `python -m http.server` the fetches 404 and
+     we fall through to the existing localStorage-only behavior. */
+  hydrateFromServer().then(() => {
+    renderFloorBadges();
+    buildAreaVisuals();
+    buildSearchIndex();
+    wireGapsHandlers();
+    setView(loadActiveView());
+  });
 
 })();
 </script>
