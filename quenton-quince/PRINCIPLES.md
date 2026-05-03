@@ -80,7 +80,9 @@ Use the practice as you design it. v0.1 of the form on day one of running it. Th
 
 When durable substrate exists (a backlog, prior outputs, a knowledge layer), the form leans on it rather than recreating it. Selection from a list is faster, lower-load, and more accurate than generation from scratch.
 
-**Lived example.** Frame v0.2's Done-means field was free-text in v0.2. v0.3 (LAB-027) makes it click-to-select from the Backlog Wall — Frame becomes selection over generation.
+This principle also applies to vocabulary: when the job has an established language (flavors of Done, modes of Approach, types of transition), surface that language in the form as a picker rather than expecting the operator to generate it from scratch. The form should speak in the language of the job at hand.
+
+**Lived example.** Frame v0.2's Done-means field was free-text in v0.2. v0.3 (LAB-027) makes it click-to-select from the Backlog Wall — Frame becomes selection over generation. The entry-point case: without a picker, Done means is invented each time the Director frames a turn; with a picker, it's chosen from the items already named and prioritized. The same logic extends downstream: when the Frame card is structured data (item ID, Done flavor, per-slot Approach), Debrief can read and compare it programmatically. Free-text Frame cards produce manual reconstruction tasks at Debrief; structured Frame cards produce automated comparisons. The Frame ← Debrief chain is only as strong as the structure Frame generates.
 
 ---
 

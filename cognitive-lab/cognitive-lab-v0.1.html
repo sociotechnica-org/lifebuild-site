@@ -3439,7 +3439,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
-      "items": ["LAB-001","LAB-002","LAB-026","LAB-027","LAB-028"],
+      "items": ["LAB-001","LAB-002","LAB-026","LAB-027","LAB-028","LAB-039","LAB-040","LAB-041","LAB-042","LAB-043","LAB-044","LAB-047"],
       "sources": [
         { "label": "frame-research-and-practice.md (the chunk skeleton)", "href": "frame-research-and-practice.md" },
         { "label": "turn-v0.1-phases-and-leverage.md (Frame section)", "href": "turn-v0.1-phases-and-leverage.md" },
@@ -3447,6 +3447,27 @@
         { "label": "turn-v0.1-map.html (deck slide 13)", "href": "turn-v0.1-map.html" }
       ],
       "experiments": [
+        {
+          "id": "exp-frame-2026-05-03-done-flavors",
+          "title": "Three Done flavors — completion, milestone, effort",
+          "date": "2026-05-03",
+          "observation": "LAB-027 v3 introduced three named types of Done means in Frame: completion (full delivery), milestone (a bar crossed, more remains), and effort (the Push happened; output is what moved). Each is legitimate; the frame card names which flavor applies to that slot. No slider — selection-over-generation argument: a three-way pick is lower-load and more precise than a free-text description of what 'done' means for this card. Per-slot naming means one Frame can carry heterogeneous Done shapes (one Must might be completion-shaped, another might be effort-shaped).",
+          "impact": "Done means field is now typed, not just described. Flavor surfaces at Debrief as the reconciliation shape — completion verifies delivery, milestone verifies bar-crossing, effort verifies the Push happened and what moved. Inline placeholder in the LAB-027 v3 chip carries the three-option hint. Selection-over-generation extends from the picker (what item) to the flavor (what kind of done). Per-flavor Debrief reconciliation deferred to LAB-032 v0.2."
+        },
+        {
+          "id": "exp-frame-2026-05-03-v3-design-calls",
+          "title": "Schema-flat, inline-expand, Bonus-no-unfold (v3 calls)",
+          "date": "2026-05-03",
+          "observation": "Quenton made three design calls for LAB-027 v3 (per-slot Approach unfold): (1) Schema-flat — the Approach data nests inside the Done means chip's object, not as a parallel array; keeps the Frame card a single flat record readable without cross-referencing. (2) UI-inline-expand — the Approach unfolds inline under each chip on click, not in a side panel or modal; preserves spatial context while keeping the form uncluttered when collapsed. (3) Bonus-no-unfold — Bonus slots do not get an Approach unfold; the per-slot Approach is for Done means (the floor items), not Bonus (opportunistic pickups). Bonus Approach is still captured in the top-level How I'll work field.",
+          "impact": "These three calls define the LAB-027 v3 shape and constrain any v4 work. The schema-flat call in particular has downstream implications for the export/import format and for how Debrief reads the frame card."
+        },
+        {
+          "id": "exp-frame-2026-05-03-relational-to-debrief",
+          "title": "Frame is structurally relational to Debrief; text breaks the chain",
+          "date": "2026-05-03",
+          "observation": "Three data cases for the Frame↔Debrief relationship surfaced: (1) framed+worked — Frame card exists, Produce followed it; Debrief reads the card and reconciles. (2) worked-not-framed — no Frame card; Debrief must reconstruct scope from memory, which is degraded and asymmetric. (3) framed-but-deviated — Frame card exists but Produce went somewhere else; Debrief's highest-value case (the divergence is the learning). The finding: when Frame is free-text (pre-LAB-027), the chain is fragile because Debrief has to interpret unstructured prose. When Frame is structured (LAB-027 picker + flavor + per-slot Approach), Debrief can read the card programmatically and surface the comparison automatically.",
+          "impact": "Design constraint for both workshops: structured Frame data is a precondition for useful automated Debrief reconciliation. Free-text Frame cards produce Debriefs that are manual reconstruction tasks, not comparisons. This is part of the argument for the LAB-027 picker over free-text. Logged on both frame-workshop and debrief-booth with cross-references."
+        },
         {
           "id": "exp-frame-2026-05-01-v02-shipped",
           "title": "Frame form v0.2 ships — v0.1 retired",
@@ -3571,11 +3592,32 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
-      "items": ["LAB-003","LAB-004","LAB-032"],
+      "items": ["LAB-003","LAB-004","LAB-032","LAB-045"],
       "sources": [
         { "label": "turn-v0.1-phases-and-leverage.md (Debrief section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
       "experiments": [
+        {
+          "id": "exp-debrief-2026-05-03-dogfood-upstream-design",
+          "title": "Debrief dogfood became upstream design session",
+          "date": "2026-05-03",
+          "observation": "Today's nominal task was a produce-stage Debrief (LAB-032 v0.1 workshop, first dogfood run). Instead, the debrief process exposed upstream blockers in Frame (LAB-027: no picker, no per-slot Approach, no Done flavors) and priority infrastructure (no priority spec, no cap-of-3 enforcement). The session walked the chain backward — Debrief surfaced Frame gaps; Frame gaps surfaced priority gaps; priority gaps surfaced persistence gaps. Each upstream fix was designed and built before the Debrief proper could proceed. The nominal debrief is still pending.",
+          "impact": "Phase 3 of the Debrief preliminary process spec may need a third synthesis mode: 'this Debrief produced upstream design work, not retrospective.' The six-probe-fields model assumes a completed produce stage with a settled Frame card to compare against. When the produce stage is architecturally blocked, the Debrief becomes a diagnostic session rather than a retrospective. This is a legitimate mode and the spec should name it. Flagged in chunk-debrief-preliminary-process Open Questions. Per-flavor Debrief reconciliation shape queued as LAB item at session close."
+        },
+        {
+          "id": "exp-debrief-2026-05-03-relational-to-frame",
+          "title": "Frame↔Debrief structural relationship; three data cases",
+          "date": "2026-05-03",
+          "observation": "Three cases for the Frame↔Debrief chain: (1) framed+worked — Frame card exists, Produce followed it; Debrief reconciles. (2) worked-not-framed — no Frame card; Debrief reconstructs from memory, degraded. (3) framed-but-deviated — Frame exists but Produce went elsewhere; highest-value Debrief case. Key finding: free-text Frame cards make Debrief a manual reconstruction task. Structured Frame data (LAB-027 picker + flavor + per-slot Approach) lets Debrief read and compare programmatically, eventually automating the reconciliation comparison.",
+          "impact": "Design constraint: structured Frame data is a precondition for useful automated Debrief reconciliation. This is part of why LAB-027 picker matters — it doesn't just reduce Frame load, it enables Debrief comparison quality. Cross-ref: same finding logged on frame-workshop as exp-frame-2026-05-03-relational-to-debrief."
+        },
+        {
+          "id": "exp-debrief-2026-05-03-reimmerse-constraint-named",
+          "title": "Re-immerse phase named as Debrief design constraint",
+          "date": "2026-05-03",
+          "observation": "The re-immerse phase need (first logged as part of the presentation-shape finding) has been promoted from 'phase listed' to 'design constraint named explicitly.' The distinction: same-session Debrief = consolidation (operator is warm on the work, re-immerse can skip). Multi-day-later Debrief = reconstruction-then-consolidation (operator is spun up on context but cold on detail; re-immerse is mandatory before the six probe fields run). These are structurally different Debrief modes, not just a phase that's sometimes fast. The exit criterion for re-immerse is operator saying 'I've settled the truth.' Without that, the probe-field answers are built on misremembered produce-stage details.",
+          "impact": "Chunk updated (chunk-debrief-preliminary-process Phase 1 section) to reflect the named constraint — reconstruction-then-consolidation vs. consolidation-only as two distinct Debrief modes based on time-separation. Not just 'skip when same-session'; the cognitive model behind the split is now explicit."
+        },
         {
           "id": "exp-debrief-2026-05-03-reimmerse-presentation-shape",
           "title": "Debrief's re-immerse step wants presentation-shape, not flat report",
@@ -3596,7 +3638,7 @@
           "id": "chunk-debrief-preliminary-process",
           "title": "Debrief Workshop — preliminary process (v0.1)",
           "summary": "First-stake spec for Debrief: re-immerse (when time-separated), six fields, interleaved-with-checkpoints in dogfood mode, 45-min bingo. Subject to revision via the dogfood run that's about to use it.",
-          "body": "**v0.1 / preliminary / wildcat.** This is a first stake, written to be revised *during* the very debrief it scripts. Treat it as a runnable script, not a settled spec. LAB-032 is the bootstrap.\n\n## Workshop-level constraints\n\n- **Bingo fuel: 45-minute hard cap.** If we're not synthesizing by minute 35, trim — drop a probe field, shorten the answers, or skip straight to the two synthesis sweeps.\n- **Dogfood mode is the default for v0.1.** Every field is doubling as a design probe (\"did this prompt land?\") and as the actual debrief content (\"what's the answer?\"). Both passes happen interleaved.\n- **One operator, one runner.** Author is operator. Quenton runs the script. Larry captures.\n\n## Phase 1 — Re-immerse (conditional)\n\n**When to run:** produce and debrief are time-separated by more than ~1 working day, or operator is spun up on context but cold on detail.\n\n**Skip when:** same-session debrief (operator is still warm on the work).\n\n**Output shape:** presentation-style brief — two acts (what was built / decided | what's next), 3–6 scannable headlines per act, drill-down detail beneath each. Operator chooses depth. (Agent-side play captured in Larry's PLAYS.md as Presentation-Style Recap.)\n\n**Exit criterion:** operator says \"I've settled the truth.\" Then move to Phase 2.\n\n## Phase 2 — Six probe fields (interleaved-with-checkpoints)\n\nEach field gets two passes: the **content pass** (operator answers the prompt) and the **checkpoint pass** (60 seconds — did the prompt land? what didn't get said? what's the failure mode?). The checkpoint *is* the design probe. Capture both.\n\nOrder is suggested, not rigid. If a field is empty when prompted, name it empty and move on; don't force fill.\n\n1. **What we Framed** — what was the original frame (scope, outcome, approach, safety) for the produce stage? Pull the Frame card if available.\n2. **What actually happened** — the real shape of the work. Where did it actually go?\n3. **Where they diverged** — gap between framed and actual. Surprises, drift, scope creep, scope shrink.\n4. **What to sustain** — what worked that we want to keep doing. Concrete moves, not vibes.\n5. **What to improve** — what to change next time. Concrete moves, not vibes.\n6. **Capacity reading + next-up** — Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next produce?\n\n**Checkpoint shape (60 sec per field):**\n- Did the prompt land? (Y / N / partial)\n- What didn't get said that should have?\n- What's the failure mode of this field as written?\n\n## Phase 3 — Two synthesis sweeps at close\n\nRun both. They have different audiences.\n\n1. **Produce-stage retrospective** — Log entry on the relevant area(s). What was decided, what was built, what surfaced for next time. This is the durable lab record. Hand off to Larry.\n2. **Lessons for the workshop spec** — what the dogfood checkpoints surfaced. Field renames, prompt rewrites, phase additions/cuts, mode changes (interleaved vs. pure-sequential). This feeds back into this very chunk for v0.2.\n\n## Modes\n\n- **Interleaved-with-checkpoints** (this run, and any first-time / unfamiliar-shape run) — every field tested as a design probe.\n- **Pure-sequential** (option once the workshop has stabilized) — content pass only, no checkpoints. Faster. Use when the spec is settled and we just want the debrief output.\n\n## Open questions (for the dogfood to answer)\n\n- Are six fields the right count? (Could collapse to four; could expand to seven if Capacity wants to split from Next-Up.)\n- Does \"What we Framed\" need the Frame card pulled, or is operator recall enough?\n- Where does the Gauge read actually sit — start of debrief, end, or both?\n- What's the right artifact for the produce-stage retrospective — a single Log entry, or one per area touched?\n\nThese aren't blockers. They're what we're listening for during the run."
+          "body": "**v0.1 / preliminary / wildcat.** This is a first stake, written to be revised *during* the very debrief it scripts. Treat it as a runnable script, not a settled spec. LAB-032 is the bootstrap.\n\n## Workshop-level constraints\n\n- **Bingo fuel: 45-minute hard cap.** If we're not synthesizing by minute 35, trim — drop a probe field, shorten the answers, or skip straight to the two synthesis sweeps.\n- **Dogfood mode is the default for v0.1.** Every field is doubling as a design probe (\"did this prompt land?\") and as the actual debrief content (\"what's the answer?\"). Both passes happen interleaved.\n- **One operator, one runner.** Author is operator. Quenton runs the script. Larry captures.\n\n## Phase 1 — Re-immerse (conditional)\n\n**Named design constraint.** Same-session Debrief = *consolidation* (operator is warm on the work; Phase 1 skips). Multi-day-later Debrief = *reconstruction-then-consolidation* (operator is spun up on context but cold on detail; Phase 1 is mandatory). These are structurally different Debrief modes, not just a phase that's sometimes fast. Without the reconstruction pass, the probe-field answers in Phase 2 are built on misremembered produce-stage details.\n\n**When to run:** produce and debrief are time-separated by more than ~1 working day, or operator is spun up on context but cold on detail.\n\n**Skip when:** same-session debrief (operator is still warm on the work — consolidation mode only).\n\n**Output shape:** presentation-style brief — two acts (what was built / decided | what's next), 3–6 scannable headlines per act, drill-down detail beneath each. Operator chooses depth. (Agent-side play captured in Larry's PLAYS.md as Presentation-Style Recap.)\n\n**Exit criterion:** operator says \"I've settled the truth.\" Then move to Phase 2.\n\n## Phase 2 — Six probe fields (interleaved-with-checkpoints)\n\nEach field gets two passes: the **content pass** (operator answers the prompt) and the **checkpoint pass** (60 seconds — did the prompt land? what didn't get said? what's the failure mode?). The checkpoint *is* the design probe. Capture both.\n\nOrder is suggested, not rigid. If a field is empty when prompted, name it empty and move on; don't force fill.\n\n1. **What we Framed** — what was the original frame (scope, outcome, approach, safety) for the produce stage? Pull the Frame card if available.\n2. **What actually happened** — the real shape of the work. Where did it actually go?\n3. **Where they diverged** — gap between framed and actual. Surprises, drift, scope creep, scope shrink.\n4. **What to sustain** — what worked that we want to keep doing. Concrete moves, not vibes.\n5. **What to improve** — what to change next time. Concrete moves, not vibes.\n6. **Capacity reading + next-up** — Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next produce?\n\n**Checkpoint shape (60 sec per field):**\n- Did the prompt land? (Y / N / partial)\n- What didn't get said that should have?\n- What's the failure mode of this field as written?\n\n## Phase 3 — Two synthesis sweeps at close\n\nRun both. They have different audiences.\n\n1. **Produce-stage retrospective** — Log entry on the relevant area(s). What was decided, what was built, what surfaced for next time. This is the durable lab record. Hand off to Larry.\n2. **Lessons for the workshop spec** — what the dogfood checkpoints surfaced. Field renames, prompt rewrites, phase additions/cuts, mode changes (interleaved vs. pure-sequential). This feeds back into this very chunk for v0.2.\n\n## Modes\n\n- **Interleaved-with-checkpoints** (this run, and any first-time / unfamiliar-shape run) — every field tested as a design probe.\n- **Pure-sequential** (option once the workshop has stabilized) — content pass only, no checkpoints. Faster. Use when the spec is settled and we just want the debrief output.\n\n## Open questions (for the dogfood to answer)\n\n- Are six fields the right count? (Could collapse to four; could expand to seven if Capacity wants to split from Next-Up.)\n- Does \"What we Framed\" need the Frame card pulled, or is operator recall enough?\n- Where does the Gauge read actually sit — start of debrief, end, or both?\n- What's the right artifact for the produce-stage retrospective — a single Log entry, or one per area touched?\n- **Third synthesis mode needed?** The 2026-05-03 dogfood run became a chained upstream architectural design session rather than a retrospective — the nominal Debrief exposed Frame and priority blockers that had to be fixed before the Debrief proper could run. Phase 3's current two synthesis sweeps (produce-stage retrospective + lessons for the workshop spec) don't cover the case where the Debrief produced upstream design work rather than retrospective output. A third mode may be needed: \"this Debrief was diagnostic, not retrospective — log what was designed and built, not what was looked back on.\"\n\nThese aren't blockers. They're what we're listening for during the run."
         }
       ],
       "notes": []
@@ -3661,12 +3703,26 @@
       "type": "aux / persistent",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
-      "items": ["LAB-022","LAB-023","LAB-024","LAB-029"],
+      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-035","LAB-036","LAB-037","LAB-038","LAB-046"],
       "sources": [
         { "label": "PROCESS.md (how the agents compose, lab-to-book flow)", "href": "PROCESS.md" },
         { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
       ],
       "experiments": [
+        {
+          "id": "exp-director-2026-05-03-session-integration",
+          "title": "Session integration: 2026-05-03 design+build session",
+          "date": "2026-05-03",
+          "observation": "Long, dense session. Nominal task was bootstrapping the Debrief Workshop (LAB-032). Actual path: debrief dogfood exposed upstream Frame blockers (no structured Done means, no picker, no per-slot Approach); those exposed priority infrastructure gaps (no priority spec, no cap-of-3); those exposed persistence fragility (frame card content lost when dev server port changed). Session walked the chain backward and fixed each layer. Outputs shipped in PR #128: persistence server (lab-server.py), Debrief Workshop v0.1 form (LAB-032 drafted), LAB-027 v2 picker → v2.5 cap+notes → v3 per-slot Approach unfold, priority spec chunk on director-desk, re-immerse constraint named on debrief-booth, Presentation-Style Recap play added to PLAYS.md. Log entries added across frame-workshop, debrief-booth, director-desk. DECISIONS.md updated with 2026-05-03 entry. PRINCIPLES.md Selection-over-generation expanded. Fourteen new LAB items spawned (LAB-034–LAB-047). Status flags for author: LAB-027 → drafted, LAB-032 → drafted; LAB-026 → candidate for live or archived (absorbed by v2/v2.5/v3 work).",
+          "impact": "Lab state is integrated. The dogfood confirmed the framework's value: upstream blockers surfaced and got fixed in the session that was nominally Debrief-bootstrapping. The meta-finding (debrief surfacing upstream design work, not just retrospective) is itself a design finding for Phase 3 of the Debrief spec. Persistence is now durable via lab-server.py (Option A: local server with write endpoint)."
+        },
+        {
+          "id": "exp-director-2026-05-03-persistence-fix",
+          "title": "Persistence fragility named and fixed; lab-server.py built",
+          "date": "2026-05-03",
+          "observation": "localStorage is per-origin (protocol + hostname + port). When the dev server port changed during a session (from one python http.server invocation to another), the 2026-05-01 12:29 Frame card content was lost — it had been saved to localStorage under a different origin key. Three options evaluated: (A) local server with a write endpoint (lab-server.py), (B) File System Access API (browser-native file write), (C) session-close auto-export. Option A chosen: most transparent, no browser permission friction, survives port changes, enables import/export round-trips. Rejected B: permission dialog is friction; rejected C: requires discipline that will fail at the worst moment.",
+          "impact": "lab-server.py (172 lines, Python) built and shipped in PR #128. Endpoints: /api/save (writes frame cards + debrief cards to exports/), /api/load (returns saved state). HTML hooks: postSave callback, hydrateFromServer on init, debriefCards in export/import. localStorage still used as the fast read layer; server is the durable write layer. Exports live in cognitive-lab/exports/ (.gitkeep in repo, actual JSON files gitignored). Lab shadow persistence (chunks, experiments, item statuses) still localStorage-only — queued as LAB item for server v0.2."
+        },
         {
           "id": "exp-director-2026-05-02-session-integration",
           "title": "Session-Integration play applied to 2026-05-02 session",
@@ -3855,7 +3911,9 @@
         "LAB-009","LAB-010","LAB-011","LAB-012","LAB-013","LAB-014","LAB-015","LAB-016",
         "LAB-017","LAB-018","LAB-019","LAB-020","LAB-021","LAB-022","LAB-023","LAB-024",
         "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029",
-        "LAB-030","LAB-031","LAB-032","LAB-033"
+        "LAB-030","LAB-031","LAB-032","LAB-033",
+        "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040",
+        "LAB-041","LAB-042","LAB-043","LAB-044","LAB-045","LAB-046","LAB-047"
       ],
       "artifacts": [],
       "notes": []
@@ -4170,6 +4228,132 @@
       "area": "trim-bench",
       "brief": "Apply the Bootstrap-a-Workshop play to Trim Bench. Lower priority — Trim is meta-ambient (lives inside other phases) and may not need a full workshop right away.",
       "full": "Trim is selection discipline within phases. It may be sufficient to surface as principles + chunks rather than a full workshop with prototype. Open question to settle when this comes up: does Trim need its own prototype, or is it expressed entirely through how other workshops handle their fields (e.g., Frame's 'Not Doing' column already operationalizes Trim)? Answer probably emerges from running the existing workshops for a few weeks."
+    },
+    "LAB-034": {
+      "id": "LAB-034",
+      "title": "Retire Backlog Wall floor tile",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "backlog-wall",
+      "brief": "Mechanical UI move: remove the Backlog Wall floor tile. Toolbar Priority view absorbs its role as the canonical priority surface.",
+      "full": "Per the priority spec (chunk-priority-spec-v0.1 on director-desk): the toolbar Priority view is the canonical priority surface. The Backlog Wall floor tile is the redundant surface — same data, second location, duplication trap. Retirement is mechanical: remove the tile from the floor render, ensure Priority view click-through to individual item drawers still works, update any help text that references Backlog Wall as the place to find priority. Acceptance: Priority view is the only place items are sorted by priority; individual area drawers are the drill-down path."
+    },
+    "LAB-035": {
+      "id": "LAB-035",
+      "title": "In-app priority editor (post-Debrief)",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "director-desk",
+      "brief": "UI for editing item priority — cap-of-3 enforcement at the UI layer. Runs post-Debrief when priority shifts happen at turn boundaries.",
+      "full": "Current state: priority is edited directly in the baseline JSON. Post-Debrief feature: an in-app priority editor that lets the Director promote/demote items between P0/P1/P2 with the cap-of-3 enforced at the UI layer (blocks a fourth P0 from being set). The natural use moment is Debrief synthesis sweep one: retire done P0s, demote P0s that didn't fire, stage next at-bats from P1. The editor should surface the full priority view (current P0s, P1s, and next-up candidates) in one pane so the Director sees the whole slate at once. Cap applies across the whole lab, not per-area."
+    },
+    "LAB-036": {
+      "id": "LAB-036",
+      "title": "Lab shadow persistence v0.2 (server-side)",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "director-desk",
+      "brief": "Extend lab-server.py to persist the lab shadow (chunks, experiments, item statuses) to /exports/shadow.json via a /api/save/shadow endpoint.",
+      "full": "Current state: lab-server.py persists frame cards and debrief cards. The lab shadow (localStorage key cognitive-lab-v0.1) — which holds item statuses, experiments, chunks — is still localStorage-only and vulnerable to origin changes and browser data clearing. This item adds: /api/save/shadow endpoint that writes the full shadow JSON to cognitive-lab/exports/shadow.json; /api/load/shadow endpoint that returns it on init; HTML integration to call both on save and on load. The protocol stays identical to the frame-card persistence. Acceptance: shadow survives a port change, a browser-data-clear, and a fresh tab open."
+    },
+    "LAB-037": {
+      "id": "LAB-037",
+      "title": "Live multi-tab sync (SSE or poll)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Keep multiple open tabs of the lab in sync in real time via Server-Sent Events or a polling endpoint.",
+      "full": "When the lab is open in two tabs simultaneously (e.g., main view and a frame card), edits in one tab don't propagate to the other without a manual refresh. SSE endpoint (/api/events) or a polling endpoint (/api/poll?since=timestamp) would push state changes to all open tabs. Lower priority because single-tab workflow is the norm; becomes important if Jess's multiplayer mode (LAB-024) is built. Requires lab-server.py to be running."
+    },
+    "LAB-038": {
+      "id": "LAB-038",
+      "title": "Supabase migration path for lab-server.py",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Replace local file writes in lab-server.py with Supabase calls; protocol stays identical for the client.",
+      "full": "lab-server.py currently writes to local filesystem (cognitive-lab/exports/). A Supabase backend would make the persistence cloud-hosted and accessible across devices. The client-side protocol (fetch to /api/save, /api/load) stays identical — the swap is server-side only. Acceptance: same behavior as local server, data survives across machines and session restarts. Lower priority; the local server is sufficient for single-operator dogfood phase."
+    },
+    "LAB-039": {
+      "id": "LAB-039",
+      "title": "LAB-027 v4 — selection picker for Mode and Done flavors",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "Selection-over-generation v2 of the per-slot Approach unfold: replace free-text Mode and Done-flavor fields with pickers. Only after free-text version earns its keep.",
+      "full": "LAB-027 v3 ships free-text Approach fields (Mode, Leaning on, AI/people, Done this turn) with Done-flavor inline placeholder. v4 would replace Mode with a picker (pair-prog / delegate / write / synth / review) and Done-flavor with a selection chip (completion / milestone / effort) rather than relying on the author to type the vocabulary. Selection-over-generation argument: once the vocabulary is stabilized by free-text runs, a picker is lower-load and more consistent. Acceptance: free-text v3 has been run at least 5 times and the Mode vocabulary has stabilized. Do not build until v3 earns its keep."
+    },
+    "LAB-040": {
+      "id": "LAB-040",
+      "title": "Auto-status-change on selected To-Do completion",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "When a Frame's Done means is marked complete at Debrief, auto-candidate the linked To-Do for status promotion.",
+      "full": "When a Frame card's Done means slot has a linked To-Do item and the flavor is 'completion,' and the Debrief marks that slot as delivered, surface the linked To-Do as a candidate for status promotion (drafted → live, or in-progress → drafted). Not auto-apply — surface as a candidate for the Director to accept. The Director still cycles the badge; the suggestion reduces friction. Acceptance: no false-positives (milestone and effort flavors don't trigger completion candidates). Cross-ref: needs LAB-032 Debrief workshop to have structured reconciliation before this is buildable."
+    },
+    "LAB-041": {
+      "id": "LAB-041",
+      "title": "Agent-assisted To-Do creation inline in Frame",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "If defined work is missing from the backlog when the Director tries to Frame, an agent helps make it appear inline.",
+      "full": "Substantial feature. When the Director opens the Done means picker in Frame and the work they want to do isn't in the backlog yet, they should be able to create it inline — ideally with agent assistance (brief generation, priority suggestion). The agent drafts the To-Do card from a one-line description; the Director accepts, edits, or rejects; the new item appears in the picker immediately. Requires: (1) inline To-Do creation UI in the Frame picker, (2) agent call to draft brief + full from title, (3) immediate availability in the picker after save. Acceptance: end-to-end flow from 'this item doesn't exist yet' to 'it's in my Frame card' in under 60 seconds."
+    },
+    "LAB-042": {
+      "id": "LAB-042",
+      "title": "Field-level help affordance on Approach unfold",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "Hover or click '?' on each Approach prompt for longer guidance; reduces the need for the Director to have the framework internalized.",
+      "full": "The per-slot Approach unfold (LAB-027 v3) has four prompts: Mode, Leaning on, AI/people, Done this turn. A new user or a Director returning after time away may not know what each prompt is looking for. A '?' affordance (hover tooltip or click-to-expand panel) surfaces the longer guidance — the cognitive job, the mechanism, the failure mode — inline without cluttering the default view. Progressive disclosure principle: the form stays clean; the help is available on demand. Acceptance: each Approach prompt has a '?' that surfaces 2–3 sentences of guidance and an example."
+    },
+    "LAB-043": {
+      "id": "LAB-043",
+      "title": "Cap-of-3 fallback: single-open-at-a-time if scroll-fatigue",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "If lived use shows scroll-fatigue with three Approach unfolds auto-expanded, switch the default to single-open-at-a-time (accordion behavior).",
+      "full": "LAB-027 v3 auto-expands Approach unfolds when a Done means chip is picked and on load when data exists. With three P0 slots all expanded, the Form could get tall. If the Director reports scroll-fatigue or if mid-Push glances are showing the wrong part of the card, switch to accordion behavior: only one Approach unfold open at a time; opening a new one collapses the prior. This is a fallback, not the default — wait for lived evidence before building. Acceptance: only build if at least one explicit scroll-fatigue report from the author."
+    },
+    "LAB-044": {
+      "id": "LAB-044",
+      "title": "Update frame-research-and-practice.md with v3 additions",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "frame-workshop",
+      "brief": "Document the three Done flavors, per-slot Approach pattern, and cap-of-3-as-floor framing in frame-research-and-practice.md and the Frame chapter material.",
+      "full": "frame-research-and-practice.md predates LAB-027 v2/v2.5/v3. Section 1 (The form) still describes free-text Done means; the picker pattern, three Done flavors (completion / milestone / effort), the cap-of-3 floor, and the per-slot Approach unfold need to be threaded in. Section 8 (Open questions) can be updated to reflect which v0.2 candidates shipped. This is documentation work, not design work — the design is settled in the lab; the doc needs to catch up. Route to Zelda if structural chapter changes are needed; Larry can handle the chunk integration."
+    },
+    "LAB-045": {
+      "id": "LAB-045",
+      "title": "Per-flavor Debrief reconciliation shape",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "debrief-booth",
+      "brief": "Update chunk-debrief-preliminary-process 'Where they diverged' field to be per-flavor: completion verifies delivery, milestone verifies bar-crossing, effort verifies the Push happened and what moved.",
+      "full": "Current Debrief spec (chunk-debrief-preliminary-process) has a single 'Where they diverged' probe field. With three Done flavors in Frame (completion / milestone / effort), the reconciliation shape is different per flavor: completion flavor — did it ship? if not, what blocked it? milestone flavor — was the bar crossed? what's the current state vs. the bar named in Frame? effort flavor — did the Push happen? what moved? what didn't? The probe field needs to branch by flavor, or the Debrief form needs to read the Frame card's flavor metadata and adapt the prompt. Lands when LAB-032 picker comes (v0.2 of Debrief workshop). Don't build until Frame card flavor data is stable."
+    },
+    "LAB-046": {
+      "id": "LAB-046",
+      "title": "Auto-export nudge / last-exported indicator",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "director-desk",
+      "brief": "Surface 'last exported N ago' in the lab header; nudge if over a threshold. Partly superseded by lab-server.py but relevant for plain http.server deployments.",
+      "full": "lab-server.py handles persistence for the canonical local-server deployment. But users running the lab on plain http.server (no write endpoint) still rely on manual export. An 'last exported N ago' indicator in the toolbar (or lab header) and a nudge when the threshold is exceeded (e.g., >4 hours since last export) reduces the risk of data loss in the non-server deployment path. This is P3 because the server path is the recommended path; the plain-server path is a fallback use case."
+    },
+    "LAB-047": {
+      "id": "LAB-047",
+      "title": "Done-shape vocabulary in Frame help text",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "frame-workshop",
+      "brief": "Add the three Done flavors (completion / milestone / effort) to Frame help text and hover guidance, separate from the per-slot Approach help affordance.",
+      "full": "The three Done flavors are introduced via inline placeholder in the LAB-027 v3 chip. A Director who doesn't know the vocabulary might not understand what 'completion vs. milestone vs. effort' means or why it matters. Help text on the Done means field (not the per-slot Approach, which is a different affordance per LAB-042) should explain the three flavors in 2–3 sentences with one example each. This is P3 because the inline placeholder is sufficient for a first pass; the help text is for polish and onboarding."
     }
   }
 }
