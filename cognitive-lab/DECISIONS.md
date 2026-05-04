@@ -6,6 +6,78 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-04 (evening) · Frontier-first Frame picker with expand
+
+**Decision.** The per-leg Frame picker defaults to the active Course's frontier. Expand to Full lab is the deliberate emergence valve. Off-frontier picks are tagged with `ref.off_frontier=true` and shown with a chip badge. The strict-only and glow-only alternatives were rejected.
+
+**Reasoning.** Morning dogfood surfaced the seam bug: the picker was showing the entire lab instead of the Course frontier, defeating the rogaine metaphor at the per-leg level. The expand toggle was chosen over a strict frontier-only picker because emergence is a legitimate reason to go off-frontier — something surfaces mid-leg that wasn't visible at Course-planning time. Strict-only would suppress that. Glow-only (highlight off-frontier picks without tagging) would surface the data visually but lose it for Debrief writeback. The tag + chip badge preserves both: visible to the author in the Frame, queryable by the Debrief save handler (LAB-042, deferred).
+
+**Status.** Active. Tag in place; Debrief pre-fill queued as LAB-042 (P2).
+
+**References.** Commits on branch `danversfleury/lab-course-tier` (v0.2 arc), `cognitive-lab/cognitive-lab-v0.1.html` (chunk-frontier-first-picker, LAB-042).
+
+---
+
+## 2026-05-04 (evening) · Comprehend Signals: deck-open + status-cycle auto-log; conservative surveillance line
+
+**Decision.** Comprehend auto-logs three kinds of intentional acts: `note` (manual), `synthesis` (status cycle to live/archived), `deck` (deck-open matched by DECK_FILE_RE). Frame card field activity is explicitly excluded for now.
+
+**Reasoning.** The seam bug the author caught in morning dogfood: the Comprehend zone was showing "idle" while real comprehension activity was happening elsewhere (deck walks, status cycles). The fix required a surveillance line — a principle for which acts merit a log entry. The line drawn: only acts the user *intentionally took* and *would expect to leave a record*. Status cycles and deck-opens clear this bar. Field edits in Frame (Doing / Not Doing / Approach) do not — they're exploratory; the user may type and delete without committing. Logging them would capture intent-noise. One Course of dogfood will reveal whether the signal is sparse enough to warrant expansion (LAB-044, P3).
+
+**Status.** Active. Surveillance line is a first-class constraint, not a footnote. Expansion criteria deferred to LAB-044.
+
+**References.** Branch `danversfleury/lab-course-tier` (v0.2 arc), `cognitive-lab/cognitive-lab-v0.1.html` (chunk-comprehend-signals, LAB-044, LAB-046).
+
+---
+
+## 2026-05-04 (evening) · Four-channel Hex Map encoding (hue / luminosity / stroke / motion)
+
+**Decision.** Hex Map v0.2 encodes four cognitive jobs across four independent visual channels: hue=biome (stable identity), luminosity=relevance (4-state ramp), stroke=priority (P0 → 2px ring), motion=attention (pulse on select + breath on active-leg working set). Replaces the v0.1 fill-vs-outline approach and the purple "both" override ring.
+
+**Reasoning.** Morning dogfood surfaced the misread: P0 red was winning the visual fight against biome hue, making it impossible to read frontier state independently of priority state. The v0.1 fill-vs-outline encoding was trying to carry multiple states through a single channel, which collapsed when states co-occurred. Four independent channels solve this: each type of information has its own visual grammar; they compose without ambiguity. The design follows the Bruner/Snap Circuits principle already adopted for the lab: each cognitive job gets its own representation primitive rather than overloading a single channel.
+
+**Status.** Active. All four channels shipped in the v0.2 arc.
+
+**References.** Branch `danversfleury/lab-course-tier` (v0.2 arc), `cognitive-lab/cognitive-lab-v0.1.html` (chunk-four-channel-hex-encoding).
+
+---
+
+## 2026-05-04 (evening) · Luminosity ramp (4-state: archived / available / in-frontier / active)
+
+**Decision.** The luminosity channel uses four states: 18% (archived — terrain), 50% (available — items exist but not on frontier), 100% (in-frontier — reachable this week), 100% + saturation boost (active — in current leg's working set). Steps are logarithmic-ish for perceptual evenness.
+
+**Reasoning.** Linear steps (0-25-50-100) would make the archived→available step perceptually large and the available→frontier step small — the wrong distribution for the cognitive jobs each state does. Logarithmic-ish distribution (18-50-100) makes archived recede into background (terrain), available readable but muted, frontier fully lit. The 18% floor keeps archived hexes visible as terrain context rather than invisible — the map is a map, not a spotlight. The saturation boost for active-leg distinguishes "on course frontier" from "actually in this leg's working set" without adding a fifth luminosity state.
+
+**Status.** Active.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-luminosity-ramp).
+
+---
+
+## 2026-05-04 (evening) · Motion budget: pulse + breath only; prefers-reduced-motion honored
+
+**Decision.** The Hex Map uses exactly two motion behaviors: a single 600ms pulse on select, and a slow 6s ±5% ambient breath on the active-leg working set. No additional motion states. Both suppressed when prefers-reduced-motion is set.
+
+**Reasoning.** Motion is a preattentive feature — it pulls attention before the user consciously decides to look. Uncontrolled motion would pull attention out of the author's current task continuously. The cap is cognitive-load-driven: the same principle (extraneous load reduction is the highest-ROI cognitive intervention) that drives the P0 hard cap at 3 applies to motion in the UI. The pulse confirms selection without persisting; the breath signals "live right now" from the periphery without demanding focus. prefers-reduced-motion compliance is a hard constraint, not optional.
+
+**Status.** Active.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-motion-budget).
+
+---
+
+## 2026-05-04 (evening) · Biome regions replace the random Hex Map grid
+
+**Decision.** Hex Map v0.2 clusters hexes into labeled, biome-tinted regions rather than a flat grid. Regions are the legend; the separate swatch row is dropped. Regions sort biggest-first. Semantic adjacency within biomes is deferred (LAB-043, P3).
+
+**Reasoning.** Morning dogfood surfaced the misread: the v0.1 grid layout looked random — spatial proximity implied relationship, but the grid had no relationship logic. This imposed extraneous load (inferring meaning from position that had none). Biome regions give the map a spatial grammar: you navigate to the turn-phases cluster or the capacity-instruments cluster, not to cell (3,2). Regions-as-legend drops the redundant swatch row — the map tells its own story. Sorting biggest-first makes the dominant cognitive territory (turn phases, 5–6 hexes) visually anchor the layout.
+
+**Status.** Active. Within-biome semantic adjacency deferred per Quenton's call — revisit after one Course of lived use shows whether it matters.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-biome-regions, LAB-043).
+
+---
+
 ## 2026-05-04 · Phase 5 click-throughs and Sync form deferred to backlog
 
 **Decision.** Phase 5 of the rogaine-spine arc ships the Snap Circuit Leg view in read-only form. Click-through wiring (zone → form/drawer) and the Sync station form are explicitly deferred.

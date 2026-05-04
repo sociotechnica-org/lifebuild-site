@@ -4379,6 +4379,12 @@
       ],
       "chunks": [
         {
+          "id": "chunk-frontier-first-picker",
+          "title": "Frontier-first Frame picker with expand",
+          "summary": "The per-leg Frame picker scopes to the active Course's frontier by default. Expand to Full lab is the deliberate emergence valve. Off-frontier picks get tagged so Debrief can surface them.",
+          "body": "Phase 2 of the rogaine-spine arc resolves the seam bug the author caught in morning dogfood: the Frame picker was showing the entire lab instead of scoping to the current Course's frontier.\n\n**The decision (Quenton design dialog):** The picker defaults to the Course frontier — items the author already committed as reachable this week. This is the right default because the rogaine metaphor holds at the per-leg level: the racer chooses from the terrain they've already entered, not from the full map.\n\n**Expand = deliberate emergence valve.** The author can toggle to Full lab view. This is not a shortcut — it's a named design move. Emergence is the only good reason to pick off-frontier: something surfaces mid-leg that wasn't visible at Course-planning time. The toggle requires a deliberate act so that off-frontier picks are never accidental.\n\n**Off-frontier tagging.** When the author picks an item outside the frontier, the pick is saved with `ref.off_frontier = true` and displayed with a chip badge in the Frame. This makes the off-frontier pick visible at a glance — no inference required.\n\n**Debrief pre-fill (deferred, LAB-042).** The tag is designed to feed Debrief's `changes_to_course.frontier_added` field. At Debrief time, the system can pre-fill: 'You picked [item] off-frontier this leg — add to Course frontier?' The author confirms or dismisses. This wires the Course-planning feedback loop without requiring manual cross-referencing. Deferred to LAB-042.\n\n**Alternatives considered and rejected:**\n- Strict picker (frontier-only, no expand): prevents emergence; wrong tradeoff.\n- Glow/badge on off-frontier picks without a tag: visually informative but loses the data for Debrief writeback."
+        },
+        {
           "id": "chunk-course-as-spine-station-as-lens",
           "title": "Course as spine — each station as a different lens",
           "summary": "Architectural shift: Frame doesn't file a card, it sets the course. Every later station (Comprehend, Sync, Produce, Debrief) is a different lens on the same course.",
@@ -4446,11 +4452,17 @@
       "type": "phase / conditional",
       "accent": "amber",
       "description": "Where Comprehend practice and chapter live. The phase that loads remaining state from agents and prior work.",
-      "items": ["LAB-009","LAB-010"],
+      "items": ["LAB-009","LAB-010","LAB-044","LAB-046"],
       "artifacts": [
         { "label": "turn-v0.1-phases-and-leverage.md (Comprehend section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
       "chunks": [
+        {
+          "id": "chunk-comprehend-signals",
+          "title": "Comprehend Signals — what the station captures and why",
+          "summary": "Comprehend auto-logs three kinds of intentional acts: notes (manual), synthesis (status cycle to live/archived), deck-open. The surveillance line: only acts the user intentionally took and would expect to leave a record.",
+          "body": "Phase 1.5 of the rogaine-spine arc formalizes what Comprehend captures and draws the surveillance line.\n\n**Three capture kinds:**\n- `note` — manual note entry by the user. Explicit; no ambiguity.\n- `synthesis` — auto-logged when a leg's status cycles to `live` or `archived`. The status cycle is an intentional act with a durable consequence; logging it is reasonable.\n- `deck` — auto-logged when the user opens a deck file (matched by DECK_FILE_RE). Deck-opens are deliberate re-immersion acts; they would naturally leave a record if the system were a notebook.\n\n**The shape:**\n```\nleg.comprehend[]: [\n  { at: ISO-timestamp, kind: 'note' | 'synthesis' | 'deck', ... }\n]\n```\n\n**The surveillance line.** Comprehend only captures acts the user *intentionally took* and *would expect to leave a record*. This excludes: passive file reads, hover events, search queries, time-on-zone, and Frame card field activity. Quenton's formulation in the design dialog: 'if the user would be surprised to see it in a log, don't log it.'\n\nExplicitly deferred: auto-logging Frame card field activity (Doing / Not Doing / Approach). Phase 1.5 deferred this because field edits are exploratory — the user may type and delete without committing. Wait one Course of dogfood before expanding. See LAB-044.\n\nThe surveillance line is a first-class design constraint, not a footnote. Every future Comprehend expansion should be evaluated against it."
+        },
         {
           "id": "chunk-missing-comprehend",
           "title": "Re-immersion has been doing work without a home",
@@ -4492,7 +4504,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
-      "items": ["LAB-003","LAB-004","LAB-032","LAB-038"],
+      "items": ["LAB-003","LAB-004","LAB-032","LAB-038","LAB-042"],
       "sources": [
         { "label": "turn-v0.1-phases-and-leverage.md (Debrief section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
@@ -4594,7 +4606,7 @@
       "type": "aux / persistent",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
-      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041"],
+      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041","LAB-043","LAB-045"],
       "sources": [
         { "label": "PROCESS.md (how the agents compose, lab-to-book flow)", "href": "PROCESS.md" },
         { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
@@ -4623,6 +4635,30 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-four-channel-hex-encoding",
+          "title": "Four-channel Hex Map encoding — hue, luminosity, stroke, motion",
+          "summary": "Hex Map v0.2 assigns each cognitive job its own visual primitive: hue=biome, luminosity=relevance, stroke=priority, motion=attention. Stops overloading hue.",
+          "body": "Hex Map v0.1 used hue (biome color) and fog-of-war as its only encoding channels, with a priority glow ring that visually competed with the biome color. Morning dogfood surfaced the problem: P0 red was winning the visual fight against biome hue, making frontier state hard to read independently of priority state.\n\nv0.2 resolves this by giving each cognitive job its own independent channel:\n\n- **Hue** → biome (stable area identity; doesn't change within a Course).\n- **Luminosity** → relevance (4-state ramp; see chunk-luminosity-ramp).\n- **Stroke** → priority (P0 items in the area → 2px ring; no P0 → 1px or none).\n- **Motion** → attention (single pulse on select; ambient breath on active-leg working set; see chunk-motion-budget).\n\nEach channel is orthogonal. You can read P0 state without interpreting biome color. You can read relevance without reading priority. The four channels compose: the map becomes readable at a glance because each type of information has its own visual grammar.\n\n**What this replaces:** the v0.1 fill-vs-outline approach and the purple 'both' override ring. Both tried to encode multiple states through a single channel (fill pattern), which created ambiguity when states co-occurred."
+        },
+        {
+          "id": "chunk-luminosity-ramp",
+          "title": "Luminosity ramp — four-state relevance encoding",
+          "summary": "Four-state luminosity ramp: 18% archived (terrain), 50% available, 100% in-frontier, 100%+sat active in current leg. Logarithmic-ish steps for perceptual evenness.",
+          "body": "The luminosity channel encodes how relevant a hex is to the current leg's work:\n\n| State | Luminosity | Meaning |\n|---|---|---|\n| archived | 18% | terrain; context only; no active items |\n| available | 50% | items exist but not on current frontier |\n| in-frontier | 100% | reachable this week; on course.frontier[] |\n| active (current leg) | 100% + saturation boost | in working set for this leg |\n\nThe steps are logarithmic-ish rather than linear. Linear 0-25-50-100 would produce a ramp where the archived→available step is perceptually large and the available→frontier step is small. The logarithmic distribution (18-50-100) gives perceptually even steps — archived recedes into the background (terrain), available is readable but muted, frontier is fully lit.\n\nThe active-leg saturation boost distinguishes 'on course frontier' from 'actually in this leg's working set' without introducing a fifth luminosity state. Saturation is a distinct channel from luminosity; the combination is unambiguous.\n\nThe 18% floor for archived hexes is intentional: they stay visible as terrain context, not invisible. The map is a map — terrain below the fog line is still visible, just dark."
+        },
+        {
+          "id": "chunk-motion-budget",
+          "title": "Motion budget — pulse + breath, nothing more",
+          "summary": "Two motion behaviors only: single 600ms pulse on select, slow 6s ±5% ambient breath on active-leg working set. Cap prevents Vegas-slot-machine overload. Honors prefers-reduced-motion.",
+          "body": "Motion is the most attention-grabbing encoding channel available. The motion budget for the Hex Map is deliberately minimal:\n\n**Pulse (select):** a single 600ms opacity pulse when the user clicks a hex. One pulse, then stops. Confirms the selection landed without persisting the animation.\n\n**Breath (active-leg working set):** a slow ambient breathing animation (±5% opacity, 6s cycle) on hexes that are in the active leg's working set. The breath is slow enough to be peripheral — you notice it when you look, not from across the room. It signals 'this is live right now' without demanding focus.\n\n**The cap:** two behaviors only. No additional motion states, no layered animations, no staggered pulses. The cap is cognitive-load-driven — motion is a preattentive feature; uncontrolled motion pulls attention out of the author's current task.\n\n**prefers-reduced-motion:** both animations are suppressed when the OS reduced-motion preference is set. This is not optional — it's a hard constraint."
+        },
+        {
+          "id": "chunk-biome-regions",
+          "title": "Biome regions — clusters replace the random grid",
+          "summary": "Hex Map clusters areas into labeled, biome-tinted regions. Regions are the legend; the swatch row is gone. Sorted biggest-first so dominant biomes anchor the layout.",
+          "body": "Hex Map v0.1 laid out hexes in a simple grid. The layout looked random — there was no spatial grammar telling the author why Frame was next to the Gauge or why the Backlog Wall was adjacent to Director's Desk. Morning dogfood surfaced the misread: spatial proximity implied relationship, but the grid had no relationship logic.\n\nv0.2 clusters hexes into biome regions — groups of related areas that share an accent color and a conceptual cluster:\n\n- **Turn phases** (blue + amber): Frame · Comprehend · Sync · Produce · Debrief — the five-phase arc in one cluster.\n- **Capacity instruments** (amber + green): Gauge · Pilot Check · Recovery — the capacity regulation group.\n- **Lab infrastructure** (dark): Director's Desk · Library · Archive · Backlog Wall.\n- **Presentation** (teal): Deck Theater.\n\nEach region is labeled with the cluster name and biome-tinted (a faint background wash). The regions ARE the legend — there is no separate swatch row.\n\nSorting: regions render biggest-first. The largest biome (turn phases, with 5–6 hexes) anchors the layout; smaller clusters fill around it. This makes the dominant cognitive territory visually dominant, which is the right default.\n\n**Semantic adjacency within biomes** (deferred, LAB-043): Phase 1 packs hexes within a biome in a simple 3-column grid. Whether related items within a biome should cluster (chapter chunks near their sources) is deferred until lived use shows it matters."
+        },
         {
           "id": "chunk-snap-circuit-leg-view",
           "title": "Snap Circuit board — Leg view (v0.1)",
@@ -4825,7 +4861,8 @@
         "LAB-017","LAB-018","LAB-019","LAB-020","LAB-021","LAB-022","LAB-023","LAB-024",
         "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029",
         "LAB-030","LAB-031","LAB-032","LAB-033",
-        "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040","LAB-041"
+        "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040","LAB-041",
+        "LAB-042","LAB-043","LAB-044","LAB-045","LAB-046"
       ],
       "artifacts": [],
       "notes": []
@@ -5222,6 +5259,51 @@
       "area": "director-desk",
       "brief": "Hex Map v0.1 is read-only. v0.2: click-to-add-to-frontier, hover details panel, semantic adjacency.",
       "full": "Hex Map v0.1 (commit c554317, Step 0b of the rogaine-spine arc) is read-only — biome/fog/glow/halo are rendered but not interactive. v0.2 targets: (1) click-to-add-to-frontier — clicking a hex opens a picker of that area's items to add to course.frontier[]; (2) hover details panel — hovering a hex shows item count, P0 count, active leg count, most recent Log entry title; (3) semantic adjacency — items from related areas are placed near each other on the map, not just grouped by area. Adjacency is a design call for Quenton (what makes two areas semantically adjacent in this lab?). P2 — the read-only map is valuable; interaction is quality-of-life."
+    },
+    "LAB-042": {
+      "id": "LAB-042",
+      "title": "Off-frontier picks → Debrief frontier-added pre-fill",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "debrief-booth",
+      "brief": "Phase 2 captures ref.off_frontier=true on off-frontier picks. Debrief save handler should pre-fill changes_to_course.frontier_added from those flags so the user just confirms.",
+      "full": "Phase 2 of the rogaine-spine arc wires the Frame picker to default to the Course frontier and tags any off-frontier pick with ref.off_frontier=true plus a chip badge. The next step in the feedback loop: at Debrief time, the save handler reads the current leg's Frame picks, finds any flagged off_frontier=true, and pre-fills changes_to_course.frontier_added with those items. The user sees: 'You picked [item] off-frontier this leg — add to Course frontier?' and confirms or dismisses. This closes the Course-planning feedback loop without requiring manual cross-referencing between Frame and Debrief. P2 — the tag is in place; the pre-fill is a quality-of-life step after Debrief workshop ships (LAB-032)."
+    },
+    "LAB-043": {
+      "id": "LAB-043",
+      "title": "Hex Map adjacency v0.2 — semantic clusters within biomes",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "director-desk",
+      "brief": "Phase 1 packs hexes per area in a 3-col grid within biomes. Open question: should items near related items within a biome cluster? Deferred until lived use shows it matters.",
+      "full": "Hex Map v0.2 (Phase 1) groups hexes into biome regions with a simple 3-column packing. Per Quenton's design dialog (turn 3), semantic adjacency within a biome — e.g., chapter chunks near their source documents, Frame near Pilot Check in the capacity cluster — was explicitly deferred. Rationale: the biome regions already provide 80% of the spatial grammar; adding within-biome adjacency logic before seeing how the map is actually used risks premature optimization. Revisit after one Course of dogfood. If the author navigates the map by looking for known relationships, semantic adjacency is worth the complexity. If they navigate by biome + label, it isn't. P3."
+    },
+    "LAB-044": {
+      "id": "LAB-044",
+      "title": "Comprehend Signals expansion (Frame field activity)",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "Phase 1.5 explicitly deferred auto-logging Frame card field activity (Doing/Not Doing/Approach). Wait one Course of dogfood; if the Comprehend zone stays sparse, expand.",
+      "full": "Phase 1.5 drew the Comprehend surveillance line at intentional acts the user would expect to leave a record: notes (manual), synthesis (status cycle), deck-opens. Frame card field activity — typing in Doing, Not Doing, or Approach — was explicitly excluded. Rationale: field edits are exploratory; the user may type and delete without committing. Logging field edits would capture intent-noise rather than intent-signal. However, if one Course of lived use shows the Comprehend zone staying sparse (few captures, thin record), expansion to field activity may be warranted. The question to answer at that point: what's the right commit event? (Save button? Field blur? Word count threshold?) Deferred to Quenton and the author after dogfood. P3."
+    },
+    "LAB-045": {
+      "id": "LAB-045",
+      "title": "prereqs[] data model + chain edges on Hex Map",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Add prereqs[] field to items, back-fill known chains with the author, render arrows on the Hex Map as chain edges.",
+      "full": "Per Quenton's Phase 1 spec, 'chain rendering as drawn edges' was deferred because item.prereqs[] doesn't exist in the data model. The full build: (1) add prereqs: string[] to the item shape in the baseline JSON; (2) work with the author to back-fill known dependency chains (e.g., LAB-042 depends on LAB-032; LAB-037 depends on LAB-035); (3) render directed edges (arrows) between hex tiles on the Hex Map where a prereqs relationship exists. Arrows are lightweight — the map should remain readable; edges are secondary information. P2 — the prereqs data is the blocking artifact; the rendering follows once the data exists."
+    },
+    "LAB-046": {
+      "id": "LAB-046",
+      "title": "Comprehend sufficient threshold (Course Coach territory)",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "Phase 1.5 deferred: at what density/count does Comprehend register as sufficient? Don't pre-design — that's the Course Coach's job (LAB-034). Captured so it's not forgotten.",
+      "full": "Phase 1.5 deliberately deferred the question of sufficiency: when has a leg's Comprehend phase loaded enough context to proceed to Produce? This is not a question Larry or the lab UI should answer alone — it's Course Coach territory (LAB-034). The Course Coach reads leg histories and can detect patterns like 'legs where Comprehend had < 2 entries correlated with mid-leg re-immersion interruptions.' Pre-designing a sufficiency threshold now would be premature — it would encode a guess before the data exists to inform it. Capture the question here so it's not forgotten when LAB-034 becomes active. P3."
     }
   }
 }
