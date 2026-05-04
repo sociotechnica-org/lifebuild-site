@@ -1911,14 +1911,18 @@
     margin-top: 4px;
     align-items: center;
   }
-  .frame-form-actions .ff-saved {
+  .frame-form-actions .ff-saved,
+  .course-actions .ff-saved,
+  .course-comprehend-actions .ff-saved {
     font-size: 11px;
     color: var(--success);
     opacity: 0;
     transition: opacity 0.2s;
     margin-left: 6px;
   }
-  .frame-form-actions .ff-saved.show { opacity: 1; }
+  .frame-form-actions .ff-saved.show,
+  .course-actions .ff-saved.show,
+  .course-comprehend-actions .ff-saved.show { opacity: 1; }
   .frame-form-actions .ff-btn {
     font-family: var(--font-px);
     font-size: 10px;
