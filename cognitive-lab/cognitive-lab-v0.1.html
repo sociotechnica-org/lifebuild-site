@@ -8540,6 +8540,10 @@
   function renderCourseHexMap() {
     const wrap = document.getElementById('course-hexmap');
     if (!wrap) return;
+    // Hide any visible hex tooltip — lens switches replace the SVG so no
+    // mouseout fires on the detached node, leaving a stale tooltip.
+    const staleTooltip = document.getElementById('hex-tooltip');
+    if (staleTooltip) staleTooltip.hidden = true;
     const c = getOrInitCourseDraft();
     const frontierSet = new Set(c.frontier || []);
     const workingSet = getActiveLegWorkingSet();
