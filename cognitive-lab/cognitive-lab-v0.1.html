@@ -783,6 +783,32 @@
     pointer-events: none;
   }
 
+  /* Comprehend Workshop (Move 2). Phases fill in across 2a-2e. */
+  #ws-comprehend-content { display: flex; flex-direction: column; gap: 12px; }
+  .comp-placeholder {
+    background: var(--panel-bg);
+    border: 1px dashed var(--panel-bd);
+    border-radius: 6px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .comp-placeholder-title {
+    font-family: var(--font-px);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  .comp-placeholder-sub {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: #6f7a90;
+    margin: 4px 0;
+    line-height: 1.5;
+  }
+
   /* Hex hover tooltip (Move 1): instant HTML tooltip layer. Native SVG
      <title> tooltips have a ~1 sec delay; this surfaces immediately on
      mouseenter and follows the cursor. Native <title> stays in the DOM
@@ -4191,18 +4217,20 @@
     </div>
   </div>
 
-  <!-- Band 2: Phase cycle (single visual each) -->
+  <!-- Band 2: Phase cycle (single visual each).
+       Move 2a (v0.4 build): Comprehend leads. Per the C-before-F call —
+       you can't scope what you haven't read in. Frame follows. -->
   <div class="band band-phase">
+    <div class="area area-visual" data-area="comprehend-station" data-accent="amber">
+      <div class="area-scene">🛠️</div>
+      <div class="area-label">Comprehend<span class="lbl-sub">orient first</span></div>
+      <div class="badge-row" id="badges-comprehend-station"></div>
+    </div>
+    <div class="arrow">→</div>
     <div class="area area-visual" data-area="frame-workshop" data-accent="blue">
       <div class="area-scene">🖼️</div>
       <div class="area-label">Frame<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-frame-workshop"></div>
-    </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="comprehend-station" data-accent="amber">
-      <div class="area-scene">🛠️</div>
-      <div class="area-label">Comprehend<span class="lbl-sub">conditional</span></div>
-      <div class="badge-row" id="badges-comprehend-station"></div>
     </div>
     <div class="arrow">→</div>
     <div class="area area-visual" data-area="sync-floor" data-accent="amber">
@@ -4638,6 +4666,19 @@
 
       </div>
 
+      <!-- COMPREHEND STATION (Move 2 v0.4 build).
+           Workshop content for the orientation room. Phases land here:
+             2a — placeholder + open-via-workshop wiring (this file).
+             2b — "Where you are" snapshot at the top.
+             2c — Sidebar + main split with deck walks.
+             2d — Product walks with iframe + walk-mode banner.
+             2e — Walk logging + polish folds.
+           Sibling block to ws-debrief-content; openDrawer toggles it. -->
+      <div id="ws-comprehend-content" style="display:none">
+        <div id="comp-snapshot"></div>
+        <div id="comp-walk-studio"></div>
+      </div>
+
     </div>
 
     <!-- Area view (bottom half — floor: four tiles, content swaps below) -->
@@ -4826,9 +4867,10 @@
     {
       "id": "comprehend-station",
       "name": "Comprehend Station",
-      "type": "phase / conditional",
+      "type": "phase / required",
       "accent": "amber",
-      "description": "Where Comprehend practice and chapter live. The phase that loads remaining state from agents and prior work.",
+      "workshop": true,
+      "description": "Where the lab orients you. Re-immerse on prior legs, walk decks, take guided product walks of new features. The phase that loads remaining state from agents and prior work — first step in the cycle (C-before-F).",
       "items": ["LAB-009","LAB-010","LAB-044","LAB-046"],
       "artifacts": [
         { "label": "turn-v0.1-phases-and-leverage.md (Comprehend section)", "href": "turn-v0.1-phases-and-leverage.md" }
@@ -5878,6 +5920,7 @@
     const frameModes = document.querySelectorAll('#workshop-view > .ws-mode');
     const pilotContent = document.getElementById('ws-pilot-content');
     const debriefContent = document.getElementById('ws-debrief-content');
+    const comprehendContent = document.getElementById('ws-comprehend-content');
     if (area.workshop) {
       drawer.classList.add('workshop');
       wsView.classList.add('visible');
@@ -5888,14 +5931,23 @@
         frameModes.forEach(el => el.style.display = 'none');
         if (pilotContent) pilotContent.style.display = 'block';
         if (debriefContent) debriefContent.style.display = 'none';
+        if (comprehendContent) comprehendContent.style.display = 'none';
         initPilotCheckWorkshop();
       } else if (areaId === 'debrief-booth') {
         frameModes.forEach(el => el.style.display = 'none');
         if (pilotContent) pilotContent.style.display = 'none';
         if (debriefContent) debriefContent.style.display = 'block';
+        if (comprehendContent) comprehendContent.style.display = 'none';
         initDebriefWorkshop();
+      } else if (areaId === 'comprehend-station') {
+        frameModes.forEach(el => el.style.display = 'none');
+        if (pilotContent) pilotContent.style.display = 'none';
+        if (debriefContent) debriefContent.style.display = 'none';
+        if (comprehendContent) comprehendContent.style.display = 'block';
+        initComprehendWorkshop();
       } else {
         frameModes.forEach(el => el.style.display = '');
+        if (comprehendContent) comprehendContent.style.display = 'none';
         if (pilotContent) pilotContent.style.display = 'none';
         if (debriefContent) debriefContent.style.display = 'none';
         if (areaId === 'frame-workshop') initFrameWorkshop();
@@ -5907,6 +5959,7 @@
       frameModes.forEach(el => el.style.display = '');
       if (pilotContent) pilotContent.style.display = 'none';
       if (debriefContent) debriefContent.style.display = 'none';
+      if (comprehendContent) comprehendContent.style.display = 'none';
     }
 
     showAreaView(area);
@@ -7837,6 +7890,33 @@
   }
 
   function initDebriefWorkshop() { dbEnterResting(); }
+
+  /* ── Comprehend Workshop (Move 2 v0.4 build) ──
+     The orientation room. Phases land here:
+       2a — placeholder + open-via-workshop wiring (this file).
+       2b — "Where you are" snapshot at the top.
+       2c — Sidebar + main split with deck walks.
+       2d — Product walks with iframe + walk-mode banner.
+       2e — Walk logging + polish folds.
+     Each render rebuilds the workshop content from scratch (matches
+     the renderCourseHexMap pattern; cheap at this scale, no listener
+     leaks). */
+  function initComprehendWorkshop() {
+    renderComprehendWorkshop();
+  }
+  function renderComprehendWorkshop() {
+    const snapshot = document.getElementById('comp-snapshot');
+    const studio = document.getElementById('comp-walk-studio');
+    if (!snapshot || !studio) return;
+    // 2a placeholder. 2b will fill snapshot; 2c-2e will fill studio.
+    snapshot.innerHTML =
+      '<div class="comp-placeholder">' +
+        '<p class="comp-placeholder-title">Comprehend Station</p>' +
+        '<p class="comp-placeholder-sub">Orientation room. The lab\'s "where am I, what just happened" surface.</p>' +
+        '<p class="comp-placeholder-sub">Building across Moves 2a–2e: snapshot · walk studio · iframe walks · walk logging.</p>' +
+      '</div>';
+    studio.innerHTML = '';
+  }
 
   // Wire debrief controls (bound once at load)
   (function wireDebrief() {
