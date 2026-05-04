@@ -926,7 +926,10 @@
     background: var(--panel-bg);
     border: 1px solid var(--panel-bd);
     border-radius: 6px;
-    overflow: hidden;
+    /* overflow: visible so the sidebar item hover-preview tooltip can
+       escape into the main pane area without being clipped. Scoped
+       clipping happens on the inner sidebar/main panes individually. */
+    overflow: visible;
   }
   .comp-studio-header {
     padding: 8px 14px;
@@ -1037,6 +1040,19 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    /* Border-radius lives on the parent .comp-studio. Round just the
+       right corners on the main pane so the visual remains crisp now
+       that the parent uses overflow: visible. */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  /* Scoped empty-state styling for the studio sidebar (the global
+     .comp-snap-val .comp-snap-empty selector doesn't match here). */
+  .comp-studio-sidebar .comp-snap-empty {
+    color: #6f7a90;
+    font-style: italic;
+    font-size: 11px;
+    padding: 6px 8px;
   }
   .comp-studio-main-empty {
     padding: 40px 24px;
@@ -8205,7 +8221,12 @@
        kind         'deck' or 'product' (Move 2d adds product walks)
        subtitle?    short blurb under the title
        preview?     hover-tooltip text (Move 2e polish fold)
-       deck_href?   for kind:'deck' — iframe src (relative path)
+       deck_href?   for kind:'deck' — iframe src (relative path).
+                    MUST be a trusted local path. The iframe loads
+                    same-origin without `sandbox`, so an external or
+                    untrusted URL would run with full lab privileges.
+                    If a future workflow ingests external decks, gate
+                    them through a sandbox allowlist before adding here.
        target_route? for kind:'product' — hash route to boot the lab
                      iframe into for the walk's first step
        steps?       for kind:'product' — array of {narrative, target_selector?}
