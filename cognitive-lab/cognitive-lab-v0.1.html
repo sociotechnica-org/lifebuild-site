@@ -5529,19 +5529,19 @@
       "id": "LAB-043",
       "title": "Hex Map adjacency v0.2 — semantic clusters within biomes",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "director-desk",
       "brief": "Phase 1 packs hexes per area in a 3-col grid within biomes. Open question: should items near related items within a biome cluster? Deferred until lived use shows it matters.",
-      "full": "Hex Map v0.2 (Phase 1) groups hexes into biome regions with a simple 3-column packing. Per Quenton's design dialog (turn 3), semantic adjacency within a biome — e.g., chapter chunks near their source documents, Frame near Pilot Check in the capacity cluster — was explicitly deferred. Rationale: the biome regions already provide 80% of the spatial grammar; adding within-biome adjacency logic before seeing how the map is actually used risks premature optimization. Revisit after one Course of dogfood. If the author navigates the map by looking for known relationships, semantic adjacency is worth the complexity. If they navigate by biome + label, it isn't. P3."
+      "full": "Hex Map v0.2 (Phase 1) groups hexes into biome regions with a simple 3-column packing. Per Quenton's design dialog (turn 3), semantic adjacency within a biome — e.g., chapter chunks near their source documents, Frame near Pilot Check in the capacity cluster — was explicitly deferred. Rationale: the biome regions already provide 80% of the spatial grammar; adding within-biome adjacency logic before seeing how the map is actually used risks premature optimization. Revisit after one Course of dogfood. If the author navigates the map by looking for known relationships, semantic adjacency is worth the complexity. If they navigate by biome + label, it isn't. P2 (later)."
     },
     "LAB-044": {
       "id": "LAB-044",
       "title": "Comprehend Signals expansion (Frame field activity)",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "Phase 1.5 explicitly deferred auto-logging Frame card field activity (Doing/Not Doing/Approach). Wait one Course of dogfood; if the Comprehend zone stays sparse, expand.",
-      "full": "Phase 1.5 drew the Comprehend surveillance line at intentional acts the user would expect to leave a record: notes (manual), synthesis (status cycle), deck-opens. Frame card field activity — typing in Doing, Not Doing, or Approach — was explicitly excluded. Rationale: field edits are exploratory; the user may type and delete without committing. Logging field edits would capture intent-noise rather than intent-signal. However, if one Course of lived use shows the Comprehend zone staying sparse (few captures, thin record), expansion to field activity may be warranted. The question to answer at that point: what's the right commit event? (Save button? Field blur? Word count threshold?) Deferred to Quenton and the author after dogfood. P3."
+      "full": "Phase 1.5 drew the Comprehend surveillance line at intentional acts the user would expect to leave a record: notes (manual), synthesis (status cycle), deck-opens. Frame card field activity — typing in Doing, Not Doing, or Approach — was explicitly excluded. Rationale: field edits are exploratory; the user may type and delete without committing. Logging field edits would capture intent-noise rather than intent-signal. However, if one Course of lived use shows the Comprehend zone staying sparse (few captures, thin record), expansion to field activity may be warranted. The question to answer at that point: what's the right commit event? (Save button? Field blur? Word count threshold?) Deferred to Quenton and the author after dogfood. P2 (later)."
     },
     "LAB-045": {
       "id": "LAB-045",
@@ -5556,7 +5556,7 @@
       "id": "LAB-046",
       "title": "Comprehend sufficient threshold (Course Coach territory)",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "Phase 1.5 deferred: at what density/count does Comprehend register as sufficient? Don't pre-design — that's the Course Coach's job (LAB-034). Captured so it's not forgotten.",
       "full": "Phase 1.5 deliberately deferred the question of sufficiency: when has a leg's Comprehend phase loaded enough context to proceed to Produce? This is not a question Larry or the lab UI should answer alone — it's Course Coach territory (LAB-034). The Course Coach reads leg histories and can detect patterns like 'legs where Comprehend had < 2 entries correlated with mid-leg re-immersion interruptions.' Pre-designing a sufficiency threshold now would be premature — it would encode a guess before the data exists to inform it. Capture the question here so it's not forgotten when LAB-034 becomes active. P3."
@@ -8887,7 +8887,10 @@
           const color = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
           const itemsHTML = g.items.map(it => {
             const idShort = (it.id || '').replace(/^LAB-/, '');
-            const pri = it.priority || 'P2';
+            // Allowlist priority before injecting into class/text. Schema
+            // is P0/P1/P2; anything else falls back to P2 so the class
+            // attribute can't be poisoned by a hand-edited JSON value.
+            const pri = ['P0','P1','P2'].includes(it.priority) ? it.priority : 'P2';
             return `<button type="button" class="bc-drawer-item" data-item="${escapeHTML(it.id)}" title="${escapeHTML(it.areaName || '')}: ${escapeHTML(it.title || '')}">
               <span class="bc-drawer-item-id">${escapeHTML(idShort)}</span>
               <span class="bc-drawer-item-title">${escapeHTML(it.title || '(no title)')}</span>
