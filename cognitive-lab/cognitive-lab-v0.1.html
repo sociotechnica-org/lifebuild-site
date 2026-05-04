@@ -2524,6 +2524,58 @@
   }
   .course-header-bar .ch-link:hover { color: var(--fg); }
 
+  /* ── Debrief Workshop: rogaine-shape extras (Phase 4) ──
+     Score display is auto-computed read-only summary. Radio group is
+     the "Course held?" three-state pick that surfaces the framed-but-
+     deviated case as a first-class outcome. */
+  .db-score-display {
+    background: var(--bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: var(--font-px);
+    font-size: 11.5px;
+    color: var(--fg);
+    line-height: 1.5;
+  }
+  .db-score-display .db-score-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    align-items: baseline;
+  }
+  .db-score-display .db-score-label {
+    color: var(--accent-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+  .db-score-display .db-score-value { color: var(--fg); font-weight: bold; }
+  .db-score-display .db-score-empty { color: #6f7a90; font-style: italic; }
+  .db-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .db-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--fg);
+    cursor: pointer;
+    background: rgba(0,0,0,0.10);
+  }
+  .db-radio:hover { background: rgba(226,160,74,0.06); }
+  .db-radio input[type="radio"] {
+    margin: 0;
+    accent-color: var(--accent);
+  }
+
   /* ── Workshop modes ── */
   .ws-mode { display: none; flex-direction: column; gap: 12px; }
   .ws-mode.active { display: flex; }
@@ -3728,7 +3780,7 @@
           </div>
         </div>
 
-        <!-- DB-EDITING -->
+        <!-- DB-EDITING — rogaine shape (Phase 4): Score · Caught · Course held? · Better moves · Capacity + next -->
         <div class="ws-mode" id="db-editing">
           <div class="ws-mode-header">
             <button class="ws-back-btn" id="db-cancel-btn">← Cancel</button>
@@ -3738,48 +3790,62 @@
 
             <div class="frame-batch">
               <div class="frame-batch-header">
-                <div class="frame-batch-title">Subject</div>
-                <div class="frame-batch-subtitle">What produce stage are you debriefing?</div>
+                <div class="frame-batch-title">Score</div>
+                <div class="frame-batch-subtitle">Auto-computed from this leg's Frame card. You verify; you don't fill.</div>
               </div>
               <div>
-                <label>Produce stage</label>
-                <textarea id="db-subject" placeholder="Name the produce stage / session / work block being debriefed."></textarea>
+                <div id="db-score-display" class="db-score-display">No active leg — open Frame Workshop and save a card to start one.</div>
               </div>
             </div>
 
             <div class="frame-batch">
               <div class="frame-batch-header">
-                <div class="frame-batch-title">Six probe fields</div>
-                <div class="frame-batch-subtitle">Interleaved-with-checkpoints in dogfood mode. Order suggested, not rigid.</div>
+                <div class="frame-batch-title">Caught</div>
+                <div class="frame-batch-subtitle">What you actually came home with. Be specific.</div>
               </div>
               <div>
-                <label>What we Framed</label>
-                <textarea id="db-framed" placeholder="What was the original frame (scope, outcome, approach, safety) for the produce stage? Pull the Frame card if available."></textarea>
+                <textarea id="db-caught" placeholder="The catches. Items shipped, milestones crossed, effort burned."></textarea>
+              </div>
+            </div>
+
+            <div class="frame-batch">
+              <div class="frame-batch-header">
+                <div class="frame-batch-title">Course held?</div>
+                <div class="frame-batch-subtitle">Did the day match what you framed? Pick one.</div>
+              </div>
+              <div class="db-radio-group">
+                <label class="db-radio"><input type="radio" name="db-course-held" value="as-set"> Ran the course as set</label>
+                <label class="db-radio"><input type="radio" name="db-course-held" value="different"> Ran a different course (course changed mid-leg)</label>
+                <label class="db-radio"><input type="radio" name="db-course-held" value="wrong-from-start"> Course was wrong from the start</label>
               </div>
               <div>
-                <label>What actually happened</label>
-                <textarea id="db-actual" placeholder="The real shape of the work. Where did it actually go?"></textarea>
+                <label>What changed it <span class="ff-hint">if different or wrong-from-start</span></label>
+                <textarea id="db-changed-it" placeholder="What invalidated the original course? What did you switch to?"></textarea>
+              </div>
+            </div>
+
+            <div class="frame-batch">
+              <div class="frame-batch-header">
+                <div class="frame-batch-title">Better moves</div>
+                <div class="frame-batch-subtitle">What would the coach say? Optional — leave blank for the future Course Coach to fill.</div>
               </div>
               <div>
-                <label>Where they diverged</label>
-                <textarea id="db-diverged" placeholder="Gap between framed and actual. Surprises, drift, scope creep, scope shrink."></textarea>
+                <textarea id="db-better-moves" placeholder="What would the next-leg version of yourself do differently?"></textarea>
+              </div>
+            </div>
+
+            <div class="frame-batch">
+              <div class="frame-batch-header">
+                <div class="frame-batch-title">Capacity + next</div>
+                <div class="frame-batch-subtitle">Gauge read · what's queued for the next leg.</div>
               </div>
               <div>
-                <label>What to sustain</label>
-                <textarea id="db-sustain" placeholder="What worked that we want to keep doing. Concrete moves, not vibes."></textarea>
-              </div>
-              <div>
-                <label>What to improve</label>
-                <textarea id="db-improve" placeholder="What to change next time. Concrete moves, not vibes."></textarea>
-              </div>
-              <div>
-                <label>Capacity reading + next-up</label>
-                <textarea id="db-capacity" placeholder="Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next produce?"></textarea>
+                <textarea id="db-capacity" placeholder="Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next leg?"></textarea>
               </div>
             </div>
 
             <div class="frame-form-actions">
-              <button class="ff-btn primary" id="db-save">Save</button>
+              <button class="ff-btn primary" id="db-save">Save Debrief</button>
               <button class="ff-btn" id="db-clear">Clear fields</button>
               <span class="ff-saved" id="db-saved">✓ saved</span>
             </div>
@@ -6314,15 +6380,30 @@
 
   /* ── Debrief Workshop ── */
   const DEBRIEF_KEY = 'cognitive-lab-v0.1::debrief-cards';
-  const DB_FIELDS = ['subject','framed','actual','diverged','sustain','improve','capacity'];
+  // Phase 4 input fields (rogaine shape). DOM ids: db-caught, db-changed-it,
+  // db-better-moves, db-capacity. course_held is a radio group; not in this list.
+  const DB_FIELDS = ['caught','changed_it','better_moves','capacity'];
+  // Legacy fields kept readable in view-mode for back-compat with older cards.
+  const DB_FIELDS_LEGACY = ['subject','framed','actual','diverged','sustain','improve'];
   const DB_LABELS = {
-    subject:  'Produce stage',
-    framed:   'What we Framed',
-    actual:   'What actually happened',
-    diverged: 'Where they diverged',
-    sustain:  'What to sustain',
-    improve:  'What to improve',
-    capacity: 'Capacity reading + next-up'
+    // Phase 4 labels
+    caught:        'Caught',
+    course_held:   'Course held?',
+    changed_it:    'What changed it',
+    better_moves:  'Better moves',
+    capacity:      'Capacity + next',
+    // Legacy labels
+    subject:       'Produce stage',
+    framed:        'What we Framed',
+    actual:        'What actually happened',
+    diverged:      'Where they diverged',
+    sustain:       'What to sustain',
+    improve:       'What to improve'
+  };
+  const DB_COURSE_HELD_LABEL = {
+    'as-set':           'Ran the course as set',
+    'different':        'Ran a different course (course changed mid-leg)',
+    'wrong-from-start': 'Course was wrong from the start'
   };
 
   function loadDebriefCards() {
@@ -6333,16 +6414,96 @@
     try { localStorage.setItem(DEBRIEF_KEY, JSON.stringify(arr)); } catch {}
     postSave('debrief-cards', arr);
   }
+  function dbReadCourseHeld() {
+    const checked = document.querySelector('input[name="db-course-held"]:checked');
+    return checked ? checked.value : '';
+  }
+  function dbSetCourseHeld(value) {
+    document.querySelectorAll('input[name="db-course-held"]').forEach(r => {
+      r.checked = (value && r.value === value);
+    });
+  }
   function clearDebriefForm() {
-    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); if (el) el.value = ''; });
+    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f.replace(/_/g, '-')); if (el) el.value = ''; });
+    dbSetCourseHeld('');
+    renderDebriefScore();
   }
   function loadIntoDebriefForm(card) {
-    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); if (el) el.value = card[f] || ''; });
+    DB_FIELDS.forEach(f => {
+      const el = document.getElementById('db-'+f.replace(/_/g, '-'));
+      if (el) el.value = card[f] || '';
+    });
+    dbSetCourseHeld(card && card.course_held);
+    renderDebriefScore();
   }
   function readDebriefForm() {
     const card = { savedAt: new Date().toISOString(), date: todayDateString() };
-    DB_FIELDS.forEach(f => { const el = document.getElementById('db-'+f); card[f] = el ? el.value.trim() : ''; });
+    DB_FIELDS.forEach(f => {
+      const el = document.getElementById('db-'+f.replace(/_/g, '-'));
+      card[f] = el ? el.value.trim() : '';
+    });
+    card.course_held = dbReadCourseHeld();
     return card;
+  }
+  function dbCardHasContent(card) {
+    if (!card) return false;
+    if (card.course_held) return true;
+    return DB_FIELDS.some(f => (card[f] || '').toString().trim().length > 0);
+  }
+  /* Score auto-derive from active leg's Frame card.
+     Phase 4 only counts plan-side: Musts (from frame.must) and Bonus (from
+     frame.stretch). When leg.produce.selected is populated by future phases,
+     "completed" counts will replace plan counts. */
+  function renderDebriefScore() {
+    const el = document.getElementById('db-score-display');
+    if (!el) return;
+    const leg = findActiveLeg();
+    if (!leg) {
+      el.innerHTML = '<span class="db-score-empty">No active leg — open Frame Workshop and save a card to start one.</span>';
+      return;
+    }
+    const card = findFrameCardForLeg(leg);
+    if (!card) {
+      el.innerHTML =
+        '<div class="db-score-line">' +
+          '<span class="db-score-label">Leg</span><span class="db-score-value">' + escapeHTML(leg.id) + '</span>' +
+          '<span class="db-score-empty">No Frame card linked yet.</span>' +
+        '</div>';
+      return;
+    }
+    const mustArr  = Array.isArray(card.must) ? card.must
+                   : (typeof card.must === 'string' && card.must.trim() ? [{ id: 'free' }] : []);
+    const bonusArr = Array.isArray(card.stretch) ? card.stretch
+                   : (typeof card.stretch === 'string' && card.stretch.trim() ? [{ id: 'free' }] : []);
+    const flavors = mustArr
+      .map(r => r && r.done_this_turn)
+      .filter(Boolean);
+    const flavorMix = flavors.length === 0 ? 'no per-Done flavors named' : flavors.join(' · ');
+    el.innerHTML =
+      '<div class="db-score-line">' +
+        '<span class="db-score-label">Leg</span><span class="db-score-value">' + escapeHTML(leg.id) + '</span>' +
+        '<span class="db-score-label">Musts planned</span><span class="db-score-value">' + mustArr.length + '/3</span>' +
+        '<span class="db-score-label">Bonus planned</span><span class="db-score-value">' + bonusArr.length + '</span>' +
+        '<span class="db-score-label">Flavor mix</span><span class="db-score-value">' + escapeHTML(flavorMix) + '</span>' +
+      '</div>';
+  }
+  /* changes_to_course writeback. Phase 4 captures the Debrief outcome on the
+     active leg, links the just-saved Debrief card, bumps the leg's status to
+     debriefed. The frontier add/remove UI is queued for a future LAB item;
+     today the writeback records the qualitative outcome only. */
+  function attachDebriefToLeg(card) {
+    if (!card || !card.savedAt) return null;
+    const leg = findActiveLeg();
+    if (!leg) return null;
+    leg.debrief_card_id = card.savedAt;
+    leg.changes_to_course = {
+      at: new Date().toISOString(),
+      debrief_card_id: card.savedAt,
+      course_held: card.course_held || '',
+      summary: card.changed_it || ''
+    };
+    leg.status = 'debriefed';
+    return upsertLeg(leg);
   }
   function flashDebriefSaved() {
     const el = document.getElementById('db-saved');
@@ -6378,8 +6539,9 @@
       `<span id="db-date">${todayDateString()}</span>`;
     if (card) loadIntoDebriefForm(card); else clearDebriefForm();
     setDbMode('editing');
+    renderDebriefScore();
     setTimeout(() => {
-      const first = document.getElementById('db-subject');
+      const first = document.getElementById('db-caught');
       if (first) first.focus();
     }, 50);
   }
@@ -6390,12 +6552,26 @@
     if (!card) return;
     dbEditingOriginalIdx = idx;
     document.getElementById('db-viewing-date').textContent = card.date || '(no date)';
-    const rows = DB_FIELDS
-      .filter(f => card[f] && card[f].length > 0)
-      .map(f => `<div class="ws-vb-row"><div class="lbl">${DB_LABELS[f]}</div><div class="val">${escapeHTML(card[f])}</div></div>`)
-      .join('');
+    // Phase 4 view renderer: show new fields first, then legacy fields if they
+    // exist on the card (back-compat for cards saved under the pre-rogaine shape).
+    const rowParts = [];
+    if (card.course_held) {
+      rowParts.push(`<div class="ws-vb-row"><div class="lbl">${DB_LABELS.course_held}</div><div class="val">${escapeHTML(DB_COURSE_HELD_LABEL[card.course_held] || card.course_held)}</div></div>`);
+    }
+    DB_FIELDS.forEach(f => {
+      const v = card[f];
+      if (v && (typeof v !== 'string' || v.length > 0)) {
+        rowParts.push(`<div class="ws-vb-row"><div class="lbl">${DB_LABELS[f]}</div><div class="val">${escapeHTML(v)}</div></div>`);
+      }
+    });
+    DB_FIELDS_LEGACY.forEach(f => {
+      const v = card[f];
+      if (v && (typeof v !== 'string' || v.length > 0)) {
+        rowParts.push(`<div class="ws-vb-row"><div class="lbl">${DB_LABELS[f]} <span class="ff-hint" style="margin-left:4px;">legacy</span></div><div class="val">${escapeHTML(v)}</div></div>`);
+      }
+    });
     document.getElementById('db-viewing-body').innerHTML =
-      rows || '<div style="color:#888;font-size:12px;font-style:italic;">Empty card.</div>';
+      rowParts.length > 0 ? rowParts.join('') : '<div style="color:#888;font-size:12px;font-style:italic;">Empty card.</div>';
     setDbMode('viewing');
   }
 
@@ -6446,10 +6622,12 @@
       const g = groups[key];
       const items = g.cards.slice().reverse().map(({card, idx}) => {
         const time = (card.date || '').slice(11) || '·';
-        const subject = (card.subject || '').slice(0, 110);
+        // Phase 4: prefer the new "caught" field; fall back to legacy "subject"
+        // for older cards. Either way, truncate to 110 chars.
+        const headline = (card.caught || card.subject || '').slice(0, 110);
         return `<div class="ws-recent-card" data-idx="${idx}">
           <div class="rc-date">${escapeHTML(time)}</div>
-          <div class="rc-must">${escapeHTML(subject || '(no subject)')}</div>
+          <div class="rc-must">${escapeHTML(headline || '(no caught yet)')}</div>
         </div>`;
       }).join('');
       const labelClass = g.isToday ? 'ws-recent-group-label today' : 'ws-recent-group-label';
@@ -6469,11 +6647,8 @@
 
     const cancelBtn = document.getElementById('db-cancel-btn');
     if (cancelBtn) cancelBtn.addEventListener('click', () => {
-      const hasContent = DB_FIELDS.some(f => {
-        const el = document.getElementById('db-'+f);
-        return el && el.value.trim();
-      });
-      if (hasContent && !confirm('Discard this card? Unsaved changes will be lost.')) return;
+      const draft = readDebriefForm();
+      if (dbCardHasContent(draft) && !confirm('Discard this card? Unsaved changes will be lost.')) return;
       dbEnterResting();
     });
 
@@ -6508,30 +6683,36 @@
     const saveBtn = document.getElementById('db-save');
     if (saveBtn) saveBtn.addEventListener('click', () => {
       const card = readDebriefForm();
-      const filled = DB_FIELDS.filter(f => card[f]).length;
-      if (filled === 0) return;
+      if (!dbCardHasContent(card)) return;
       const cards = loadDebriefCards();
       if (dbEditingOriginalIdx >= 0 && cards[dbEditingOriginalIdx]) {
-        card.date = cards[dbEditingOriginalIdx].date || card.date;
+        const orig = cards[dbEditingOriginalIdx];
+        // Preserve date + savedAt + any legacy fields (subject, framed, actual,
+        // diverged, sustain, improve) that the new form no longer edits.
+        card.date = orig.date || card.date;
+        card.savedAt = orig.savedAt || card.savedAt;
+        DB_FIELDS_LEGACY.forEach(f => { if (orig[f] !== undefined) card[f] = orig[f]; });
         cards[dbEditingOriginalIdx] = card;
       } else {
         cards.push(card);
       }
       saveDebriefCards(cards);
+      // Phase 4: link the active leg to this Debrief card and write back the
+      // changes_to_course outcome. Bumps leg.status to 'debriefed'. Course
+      // Header re-renders so the leg's new status shows immediately.
+      attachDebriefToLeg(card);
+      renderCourseHeader();
       flashDebriefSaved();
       setTimeout(() => dbEnterResting(), 600);
     });
 
     const clearBtn = document.getElementById('db-clear');
     if (clearBtn) clearBtn.addEventListener('click', () => {
-      const hasContent = DB_FIELDS.some(f => {
-        const el = document.getElementById('db-'+f);
-        return el && el.value.trim();
-      });
-      if (hasContent && !confirm('Clear all fields?')) return;
+      const draft = readDebriefForm();
+      if (dbCardHasContent(draft) && !confirm('Clear all fields?')) return;
       clearDebriefForm();
       setTimeout(() => {
-        const first = document.getElementById('db-subject');
+        const first = document.getElementById('db-caught');
         if (first) first.focus();
       }, 30);
     });
