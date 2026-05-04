@@ -6,6 +6,28 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-04 (later) · Move 2 (Comprehension Station arc) — orientation workshop, Walk Studio, C-before-F, iframe pattern, LAB-009 status
+
+**Decision.** Five sub-phases shipped in the Move 2 arc (branch `danversfleury/lab-course-tier`, 11 commits since the v0.4 session-close):
+
+1. **Comprehend Station ships as a workshop (Move 2a–2e).** Comprehend Station promoted to `workshop: true`. "Where you are" orientation snapshot at top of the drawer: active leg + Course, last 3 comprehend acts, time since last touch, last debrief if present. Collapsible via sessionStorage; click a recent entry to expand inline. Walk Studio sidebar + main split: sidebar lists available walks; main pane renders a presentation deck or a product walk (step renderer + iframe of the live lab). Walk start and completion log to `leg.comprehend[]` as `kind:'walk'`. cc-kind-walk chip color (reddish-purple). Leg view zone subtitle counts walks alongside notes/synthesis/decks.
+
+2. **Walk Studio meta-loop: the lab teaches itself.** The realization driving Move 2: when Claude ships a feature and asks for a test, instructions live in chat. That's friction. The fix: instructions live inside the lab as structured product walks. The full loop — Claude ships a feature, authors a walk, author opens Comprehend Station, walks through the live lab in an iframe, completion logs to the leg — is now real. First authored walk: 'Walk: Build canvas v0.1' (8 steps), replacing the chat-instructed test of the v0.4 build canvas.
+
+3. **C-before-F floor reorder.** Band 2 reorders to Comprehend → Frame. The principle: orientation precedes scoping. You can't pick what to do this turn until you've loaded what just happened. The C-before-F principle stands in layout; the boot-strip gate (hard Comprehend checkpoint before Frame) is explicitly deferred to LAB-048 (P2).
+
+4. **Walk-mode iframe pattern + localStorage isolation.** Walk Studio loads the lab inside an iframe with `?walk=1`. Lab init applies `body.walk-mode`, hides Comprehend Station from the floor (opacity 0.3 + pointer-events none + aria-hidden — recursion defense), and suppresses localStorage writes for view+lens so iframe navigation doesn't bleed to the parent lab's own state. This is now a documented convention for any future feature that embeds the lab in an iframe.
+
+5. **LAB-009 (Comprehend form) — call: drafted.** Comprehend Station now ships as an orientation workshop with Walk Studio. The structured re-immersion form (agent-context picker, 'context loaded' gate before Produce) isn't yet built — that's the chapter material. Status is drafted: the workshop form is live; the chapter material isn't.
+
+**Reasoning.** The test-in-chat loop was friction that compounded with each shipped feature. Authoring the test as a walk inside the lab transforms every feature shipping into a self-documenting artifact. The Walk Studio embeds the lab's own surfaces inside the lab — the metaphor holds: Comprehend Station orients you to the lab, and the lab teaches you how to use it. The C-before-F reorder makes the principle structural rather than incidental. The iframe + localStorage isolation pattern resolves a real engineering risk (iframe navigation bleeding to parent state) in a reusable, named way.
+
+**Status.** Active. All five sub-phases shipped on branch `danversfleury/lab-course-tier`. New deferred items: LAB-052 (interactive walks), LAB-053 (persistent walk progress), LAB-054 (JSON-loaded WALKS), LAB-055 (in-lab authoring UI), LAB-056 (sandbox-Course mode), LAB-057 (multi-walk sequences).
+
+**References.** Branch `danversfleury/lab-course-tier` (11 commits since `fbcd25e`). `cognitive-lab/cognitive-lab-v0.1.html` (chunks: chunk-comprehend-station-v0.1, chunk-walk-studio-meta-loop, chunk-c-before-f-floor-reorder, chunk-walk-mode-iframe-recursion-defense; items LAB-009 [drafted], LAB-052–LAB-057).
+
+---
+
 ## 2026-05-04 (late) · Build canvas v0.1 — snap-circuit grid, lens architecture, HTML tooltip; LAB-043/044/046 reclassified
 
 **Decision.** Four framework-level calls shipped in the v0.4 arc (branch `danversfleury/lab-course-tier`, 14 commits since `7437bc4`):

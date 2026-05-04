@@ -5302,11 +5302,23 @@
       "accent": "amber",
       "workshop": true,
       "description": "Where the lab orients you. Re-immerse on prior legs, walk decks, take guided product walks of new features. The phase that loads remaining state from agents and prior work — first step in the cycle (C-before-F).",
-      "items": ["LAB-009","LAB-010","LAB-044","LAB-046"],
+      "items": ["LAB-009","LAB-010","LAB-044","LAB-046","LAB-052","LAB-053","LAB-054","LAB-055","LAB-056","LAB-057"],
       "artifacts": [
         { "label": "turn-v0.1-phases-and-leverage.md (Comprehend section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
       "chunks": [
+        {
+          "id": "chunk-walk-studio-meta-loop",
+          "title": "Walk Studio meta-loop — the lab teaches itself",
+          "summary": "Claude authors product walks for shipped features into the WALKS const; the author opens them in Comprehend Station; walks log to leg.comprehend[] as kind:'walk' with start/completion. Replaces chat-instructed test loops.",
+          "body": "The realization driving Move 2: when Claude ships a feature and asks for a test, instructions live in chat ('open this URL, click here...'). That's friction. The fix: those instructions live inside the lab as structured walks. The lab teaches itself.\n\nThe full meta-loop:\n1. Claude ships a feature.\n2. Claude authors a product walk into the WALKS const (or later, walks.json).\n3. The author opens Comprehend Station.\n4. The author selects the walk in the Walk Studio sidebar.\n5. The walk renders in an iframe of the live lab; Next/Back steps guide through it.\n6. Walk start and completion log to `leg.comprehend[]` as `kind:'walk'`.\n\n**The iframe pattern:** Walk Studio loads the lab in `?walk=1` mode. Lab init reads the flag, applies `body.walk-mode`, hides Comprehend Station from the floor (opacity 0.3 + pointer-events none + aria-hidden), and suppresses localStorage writes for view+lens so iframe nav doesn't bleed to parent. This prevents a nested Walk Studio inside the iframe (recursion defense).\n\n**Walk schema (v0.1):** `{ id, title, kind: 'deck' | 'product', steps: [{ heading, body, target_route? }] }`. The `target_route` field overrides the iframe's view+lens via URL query — letting a walk step navigate to a specific lens without the author clicking there manually.\n\n**First authored walk:** 'Walk: Build canvas v0.1' — 8 steps, replaces the chat-instructed test of the v0.4 build canvas. Step 0 is a mutation warning for state-mutating walks. Passive Next/Back — no auto-advance on click (v0.2 candidate, LAB-052).\n\n**Logging:** `comprehendEntryParts` extended for `kind:'walk'`; cc-kind-walk chip color is reddish-purple. Leg view zone subtitle counts walks alongside notes, synthesis, and deck entries.\n\nThis is the first durable loop where lab development is self-documented inside the lab itself, not in chat."
+        },
+        {
+          "id": "chunk-comprehend-station-v0.1",
+          "title": "Comprehend Station v0.1 — orientation room ships as a workshop",
+          "summary": "Comprehend Station promoted to workshop:true. 'Where you are' orientation snapshot (4 items, collapsible) + Walk Studio (deck and product walks in sidebar + iframe). Comprehend leads the floor — C-before-F per v0.4 design dialog.",
+          "body": "Move 2 of the v0.4 arc ships Comprehend Station as the lab's orientation center.\n\n**What it is:** a 'Where am I?' snapshot + a Walk Studio. Comprehend = orientation. Before you can pick what to do this turn (Frame), you need to know what just happened.\n\n**Orientation snapshot (2b):** Four items displayed at top of the workshop drawer:\n1. Active leg + Course (or fallback if no active leg)\n2. Last 3 acts from the leg's comprehend[] log\n3. Time since last touch\n4. Last debrief if present\n\nCollapsible via sessionStorage preference. Drilldown: click a recent entry to expand the body inline.\n\n**Walk Studio (2c):** Sidebar + main split. Sidebar lists available walks; main pane shows the selected walk's steps or an iframe of the lab. Two kinds:\n- `deck` — a presentation HTML file loaded in the iframe (e.g., turn-v0.1-map or comprehension-deck-v0.1).\n- `product` — a structured walk with steps rendered beside an iframe of the live lab (see chunk-walk-studio-meta-loop).\n\nHover preview tooltip on each sidebar item.\n\n**C-before-F reorder (2a):** Comprehend Station moves to Band 2 position 1, ahead of Frame Workshop. Band 2 = Comprehend → Frame per the v0.4 design dialog. The principle: orientation precedes scoping. You can't pick what to do this turn until you've spun back up on what just happened. Drawer dispatch updated.\n\n**LAB-009 status note:** Comprehend Station now ships as a workshop with orientation and Walk Studio. The form itself (re-immersion flow, agent-context picker, 'context loaded' gate before Produce) isn't yet built — that's the chapter material. Status: drafted (form ships; chapter material doesn't)."
+        },
         {
           "id": "chunk-comprehend-signals",
           "title": "Comprehend Signals — what the station captures and why",
@@ -5485,6 +5497,18 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-walk-mode-iframe-recursion-defense",
+          "title": "Walk-mode iframe pattern + localStorage isolation",
+          "summary": "Walk Studio loads the lab inside an iframe with ?walk=1. Lab init reads the flag, hides Comprehend Station from the floor, suppresses localStorage writes for view+lens, and prevents nested Walk Studios.",
+          "body": "Walk Studio loads the live lab inside an iframe so product walks can demonstrate the actual UI. The iframe URL gets `?walk=1` appended. This triggers a chain of initialization behavior:\n\n**body.walk-mode class:** applied on `?walk=1`, used as a CSS scoping hook for all walk-mode overrides.\n\n**Comprehend Station hidden in iframe:** The floor tile for Comprehend Station gets `opacity: 0.3`, `pointer-events: none`, and `aria-hidden: true` inside walk mode. Reason: if the user opened a Walk Studio walk inside an iframe that still showed Comprehend Station, they could open Walk Studio again — creating a nested Walk Studio inside an iframe inside the Walk Studio. Recursion defense.\n\n**localStorage suppression:** In walk mode, localStorage writes for `view` and `lens` state are suppressed. The iframe can navigate to different views and lenses (via `target_route` on each step) without bleeding those state changes back to the parent lab's own view/lens. The parent and iframe maintain independent navigation state.\n\n**Drawer dispatch updated:** The floor's drawer dispatch was updated in Move 2a to emit Comprehend Station as the first tile in Band 2 (C-before-F). The walk-mode hiding ensures this doesn't create a recursion vector when Comprehend Station is the walk host.\n\n**Pattern reuse:** Any future feature that embeds the lab in an iframe (e.g., a preview pane, a sandbox mode) should follow the same `?walk=1` flag + localStorage-suppression pattern. It's now a documented convention, not an ad-hoc hack."
+        },
+        {
+          "id": "chunk-c-before-f-floor-reorder",
+          "title": "C-before-F floor reorder — Comprehend leads the phase cycle",
+          "summary": "Comprehend Station moves to Band 2 position 1, ahead of Frame Workshop, per the v0.4 design dialog. Orientation precedes scoping — you can't pick what to do this turn until you've loaded what just happened.",
+          "body": "The v0.4 design dialog (Quenton) established the principle: the leg cycle should be C→F·S·P·D, not F·C·S·P·D. Comprehend leads because orientation precedes scoping.\n\nThe reasoning: Frame asks the author to pick what to do this turn — scope, frontier item, approach. But that decision requires knowing what just happened (last leg's state, what agents shipped, what's changed on the frontier). The author can't pick optimally before they've loaded context. Comprehend-first makes the pickup cost visible and honored rather than skipped.\n\nThe design call: the floor reorders Band 2 to Comprehend → Frame. This is a layout change, not a hard gate. The boot-strip gate (a hard Comprehend checkpoint that must clear before Frame loads) was considered and explicitly rejected for v0.1 — the principle is active; the enforcement mechanism is deferred to LAB-048.\n\nThe practical impact: when the author lands on the lab, Comprehend Station is the first workshop-accented tile they see. The spatial order reinforces the phase order. Walk Studio's first authored walk begins at the Comprehend Station, making the C-before-F principle a lived experience before the author has read the spec.\n\nCross-ref: LAB-048 (Comprehend boot gate, P2 — the mechanism when the principle wants enforcement)."
+        },
         {
           "id": "chunk-build-canvas-v0.1",
           "title": "Build canvas v0.1 — snap-circuit grid, tool drawer, click-to-place, template apply",
@@ -5743,7 +5767,8 @@
         "LAB-030","LAB-031","LAB-032","LAB-033",
         "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040","LAB-041",
         "LAB-042","LAB-043","LAB-044","LAB-045","LAB-046",
-        "LAB-047","LAB-048","LAB-049","LAB-050","LAB-051"
+        "LAB-047","LAB-048","LAB-049","LAB-050","LAB-051",
+        "LAB-052","LAB-053","LAB-054","LAB-055","LAB-056","LAB-057"
       ],
       "artifacts": [],
       "notes": []
@@ -6230,6 +6255,60 @@
       "area": "director-desk",
       "brief": "Author's long-vision: each phase-box eventually lives in 'map world.' Central traversable space; phase-cycler moves through which phase the user is in. Library/research/tools become buildings.",
       "full": "Author's long-vision for the lab (captured 2026-05-04, not a near-term build item):\n\nEach phase-box (Frame, Comprehend, Sync, Produce, Debrief — outside Recover) eventually lives in 'map world' — a central traversable space. A phase-cycler at the bottom of the screen moves through which phase the user is currently in relative to the map. Moving through phases is literally moving through the map.\n\nLibrary and research tools become buildings in the map world. Resources are rooms you enter, not tabs you click.\n\nThis is a long-vision capture, not a near-term spec. The design questions (what does 'traversable space' mean at a technical level? how does it compose with the existing Hex Map lenses?) are for Quenton when the time comes.\n\nNot v0.4. Not v0.5. Capture for the road map. P3."
+    },
+    "LAB-052": {
+      "id": "LAB-052",
+      "title": "Walk Studio: interactive walks (auto-advance on correct click)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "comprehend-station",
+      "brief": "v0.1 ships passive Next/Back. v0.2: target_selector field on each step; iframe listens for click on the target; advances when matched.",
+      "full": "v0.1 Walk Studio ships with passive Next/Back navigation. The author reads the step description, takes the action manually, then clicks Next.\n\nv0.2: add a `target_selector` field to each walk step. The iframe listens for a click on that selector; when matched, it fires a postMessage to the parent Walk Studio, which auto-advances to the next step.\n\nNeeds per-walk DOM target plumbing. Brittle if selectors change as the lab UI evolves — selector references will need updating when the HTML changes. This is the primary maintenance cost.\n\nOnly worthwhile for walks where the correct-click signal is unambiguous (e.g., 'click the Build tab' — one correct target). Steps with multiple valid actions remain passive.\n\nP2. Passive Next/Back is acceptable; interactive is better for longer walks."
+    },
+    "LAB-053": {
+      "id": "LAB-053",
+      "title": "Walk Studio: persistent walk progress",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "comprehend-station",
+      "brief": "v0.1 progress is sessionStorage (refresh = restart). v0.2: persist progress on the leg or per-walk in localStorage so a long walk can be resumed across browser restarts.",
+      "full": "v0.1 stores walk progress (current step index) in sessionStorage. Refreshing the browser or closing the tab resets to step 0.\n\nv0.2: persist progress either on the active leg's comprehend record (`leg.comprehend[].step_index`) or per-walk in localStorage (`walk-progress/{walk-id}`). Either approach lets the author resume a long walk across browser restarts without losing their place.\n\nOnly matters if walks grow past ~10 steps — shorter walks can be restarted without real cost. Ship v0.1, let lived use surface whether resume is needed before building.\n\nP2 — acceptable to defer until walks are long enough that restart is a real annoyance."
+    },
+    "LAB-054": {
+      "id": "LAB-054",
+      "title": "Walk Studio: JSON-loaded WALKS (vs hardcoded const)",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "v0.1 keeps WALKS as a const in lab HTML. Move to cognitive-lab/exports/walks.json with lab-server.py persistence pattern (or static JSON fetch) when 5+ walks exist.",
+      "full": "v0.1 stores the WALKS array as a hardcoded const inside the lab HTML. This is acceptable at 1–3 walks — Claude edits the HTML directly when authoring a new walk.\n\nAt 5+ walks, the const becomes unwieldy and the round-trip cost of editing HTML grows. At that point, move WALKS to a standalone JSON file: `cognitive-lab/exports/walks.json`. The lab fetches it on load (or on Walk Studio open) via `fetch('./exports/walks.json')`.\n\nCan follow the same persistence pattern as lab-server.py's other exports — or start as a static file that Claude edits directly, promoting to server-managed later.\n\nP3. The const approach works fine until volume forces the move. Do not build this preemptively."
+    },
+    "LAB-055": {
+      "id": "LAB-055",
+      "title": "Walk Studio: in-lab walk authoring UI",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "v0.1 has Claude editing the WALKS const in HTML. v0.2 (later): an in-lab form to add/edit/delete walks. Whole feature, warrants its own design pass.",
+      "full": "v0.1: walk authoring means Claude edits the WALKS const (or walks.json once LAB-054 lands) directly in the file. This is the right choice at low walk volume — it's transparent and doesn't need a UI.\n\nv0.2 (later): an in-lab form inside Walk Studio for creating and editing walks. Fields: id, title, kind (deck/product), and a step editor (heading, body, target_route per step).\n\nThis is a whole feature — UI design, data persistence, validation — warrants its own design pass with Quenton before building. Don't sketch it until Claude-authored walks become genuinely limiting.\n\nP3. The Claude-authoring pattern works; build the UI only when it's clearly blocking the author from creating walks without technical help."
+    },
+    "LAB-056": {
+      "id": "LAB-056",
+      "title": "Walk Studio: sandbox-Course mode for state-mutating walks",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "v0.1 warns on step 0 of state-mutating walks. v0.2 could create a temporary throwaway Course on walk-start and discard on close.",
+      "full": "v0.1 handles state-mutating walks (walks that create Courses, start Legs, write Comprehend entries) with a step-0 mutation warning: 'This walk will write to your lab state. Open a fresh Course first if you want a sandbox.'\n\nv0.2 option: Walk Studio creates a temporary Course (id: 'WALK-SANDBOX') on walk-start and discards it on walk-close. The walk plays out against throwaway state that doesn't affect the author's real Course history.\n\nThe warning-only approach is acceptable for v0.1 and possibly indefinitely — experienced authors can manage their own state. The sandbox only earns its keep if walks routinely mutate in ways the author regrets.\n\nP3. Warning-only is fine. Build the sandbox only if dogfood surfaces repeated state-mutation regret."
+    },
+    "LAB-057": {
+      "id": "LAB-057",
+      "title": "Walk Studio: multi-walk sequences",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "comprehend-station",
+      "brief": "v0.2: walks that reference other walks (e.g., a 'build the v0.4 from scratch' sequence that chains multiple walks). Needs a walk-graph data model.",
+      "full": "v0.1 walks are standalone: each has its own steps, and completing one doesn't automatically start another.\n\nv0.2: a walk can reference a sequence of other walks — e.g., 'Build the v0.4 from scratch' = build-canvas-walk → course-planning-walk → frame-walk, played in order. The author completes each sub-walk, then the sequence auto-advances to the next.\n\nNeeds a walk-graph data model: each walk gets an optional `next_walk_id` field, or a top-level Sequence object that lists an ordered array of walk IDs.\n\nWarrants a design pass before building — the interaction shape (does the sequence show progress across sub-walks? does each sub-walk feel self-contained or stitched?) is not obvious.\n\nP3. Standalone walks are the right starting point. Build sequences when a multi-walk training arc is actually needed."
     }
   }
 }
