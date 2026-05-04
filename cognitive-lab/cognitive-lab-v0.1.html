@@ -1188,6 +1188,10 @@
     background: rgba(226,160,74,0.55);
     text-transform: uppercase;
     letter-spacing: 1px;
+    /* Belt-and-suspenders — parent already has pointer-events:none, but
+       being explicit prevents a future refactor from accidentally turning
+       the overlay into a click target. */
+    pointer-events: none;
   }
   .comp-studio-main-empty {
     padding: 40px 24px;
@@ -8459,10 +8463,15 @@
     return s;
   }
   // Build the iframe URL for a product walk. Adds `?walk=1` plus the
-  // walk's target_route (if set).
+  // walk's target_route (if set). target_route is allowlisted to safe
+  // query-string characters so a stray `#` or `..` can't break URL
+  // parsing or escape the iframe destination.
   function walkIframeSrc(walk) {
     let qs = 'walk=1';
-    if (walk.target_route) qs += '&' + walk.target_route;
+    if (walk.target_route) {
+      const safe = walk.target_route.replace(/[^a-zA-Z0-9=&_.%-]/g, '');
+      if (safe) qs += '&' + safe;
+    }
     return 'cognitive-lab-v0.1.html?' + qs;
   }
 
@@ -8683,7 +8692,12 @@
                   : '<button type="button" class="primary" data-act="walk-next">Next →</button>') +
               '</div>' +
             '</div>' +
-            '<iframe class="comp-studio-iframe" src="' + escapeHTML(walkIframeSrc(activeWalk)) + '" title="' + escapeHTML(activeWalk.title) + ' (walk mode)"></iframe>' +
+            // sandbox attribute closes the window.top navigation gap from
+            // the inner same-origin frame. allow-same-origin keeps
+            // localStorage access (the whole point of a state-mutating walk);
+            // allow-scripts keeps the lab interactive; allow-forms keeps
+            // any form submissions inside Frame/Debrief working.
+            '<iframe class="comp-studio-iframe" src="' + escapeHTML(walkIframeSrc(activeWalk)) + '" title="' + escapeHTML(activeWalk.title) + ' (walk mode)" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>' +
           '</div>' +
         '</div>';
     }
@@ -11693,6 +11707,13 @@
     banner.className = 'walk-banner';
     banner.textContent = '⚑ Walk in progress — close from the Comprehend Station to return to the full lab';
     document.body.insertBefore(banner, document.body.firstChild);
+    // Hide the Comprehend Station area from assistive tech as well as
+    // visually — the CSS already opacity-dims it; aria-hidden suppresses
+    // screen-reader announcements of the inert overlay text.
+    document.addEventListener('DOMContentLoaded', () => {
+      const inertArea = document.querySelector('.area[data-area="comprehend-station"]');
+      if (inertArea) inertArea.setAttribute('aria-hidden', 'true');
+    });
   })();
 
   hydrateFromServer().then(() => {
