@@ -400,6 +400,185 @@
     display: inline-block;
   }
 
+  /* ── Leg view: Snap Circuit board (Phase 5) ──
+     Five vertically-stacked component cards (Frame, Comprehend, Sync,
+     Produce, Debrief). Each card has a "component glyph" (battery /
+     transistor / capacitor / signal / output) on the left, header on top,
+     content below. Wires are visual: short vertical bars between cards
+     indicating signal flow direction. */
+  .leg-board {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .leg-board-empty {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    padding: 24px 18px;
+    text-align: center;
+    font-family: var(--font-px);
+    font-size: 11.5px;
+    color: #6f7a90;
+    line-height: 1.6;
+  }
+  .leg-board-empty button {
+    color: var(--accent);
+    text-decoration: underline dotted;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
+  .leg-zone {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .leg-zone[data-zone="frame"]      { border-color: rgba(74,123,212,0.55); }
+  .leg-zone[data-zone="comprehend"] { border-color: rgba(212,160,48,0.55); }
+  .leg-zone[data-zone="sync"]       { border-color: rgba(45,138,126,0.55); }
+  .leg-zone[data-zone="produce"]    { border-color: rgba(226,160,74,0.55); }
+  .leg-zone[data-zone="debrief"]    { border-color: rgba(74,138,90,0.55); }
+  .leg-zone-glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: rgba(0,0,0,0.18);
+    border-right: 1px solid var(--panel-bd);
+    color: var(--fg);
+  }
+  .leg-zone[data-zone="frame"]      .leg-zone-glyph { color: #6f9ee0; }
+  .leg-zone[data-zone="comprehend"] .leg-zone-glyph { color: #d4a030; }
+  .leg-zone[data-zone="sync"]       .leg-zone-glyph { color: #5cb09a; }
+  .leg-zone[data-zone="produce"]    .leg-zone-glyph { color: #e2a04a; }
+  .leg-zone[data-zone="debrief"]    .leg-zone-glyph { color: #4a8a5a; }
+  .leg-zone-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .leg-zone-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .leg-zone-title {
+    font-family: var(--font-px);
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+  }
+  .leg-zone-component {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    color: var(--accent-dim);
+    letter-spacing: 1px;
+  }
+  .leg-zone-status {
+    margin-left: auto;
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1px 5px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 2px;
+    color: var(--accent-dim);
+  }
+  .leg-zone-status.lit { color: var(--accent); border-color: var(--accent); background: rgba(226,160,74,0.10); }
+  .leg-zone-status.done { color: #4a8a5a; border-color: rgba(74,138,90,0.55); background: rgba(74,138,90,0.08); }
+  .leg-zone-content {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--fg);
+    line-height: 1.45;
+  }
+  .leg-zone-empty {
+    color: #6f7a90;
+    font-style: italic;
+    font-size: 11.5px;
+  }
+  .leg-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 4px 0;
+  }
+  .leg-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 6px 2px 7px;
+    background: rgba(74,123,212,0.14);
+    border: 1px solid rgba(74,123,212,0.45);
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--fg);
+  }
+  .leg-chip.bonus { background: rgba(226,160,74,0.10); border-color: rgba(226,160,74,0.40); }
+  .leg-chip .leg-chip-id {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    color: #6f9ee0;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .leg-chip.bonus .leg-chip-id { color: #d4a030; }
+  .leg-zone-line {
+    font-size: 11.5px;
+    color: var(--accent-dim);
+  }
+  .leg-zone-line .lzl-label { font-family: var(--font-px); font-size: 9.5px; letter-spacing: 1px; margin-right: 6px; }
+  .leg-zone-line .lzl-value { color: var(--fg); }
+  .leg-wire {
+    width: 2px;
+    height: 14px;
+    background: var(--panel-bd);
+    margin: 0 auto;
+    position: relative;
+  }
+  .leg-wire::after {
+    content: '▼';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: var(--panel-bd);
+  }
+  .leg-comprehend-list {
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .leg-comprehend-list li {
+    padding: 4px 6px;
+    border-left: 2px solid rgba(212,160,48,0.45);
+    margin: 4px 0;
+    font-size: 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  .leg-comprehend-list .lcl-when {
+    display: block;
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    margin-bottom: 2px;
+  }
+
   /* ── Comprehend (on-demand re-immersion notes attached to the active leg) ── */
   .course-comprehend {
     background: var(--panel-bg);
@@ -3401,6 +3580,7 @@
   <div id="view-toggle" role="tablist" aria-label="Lab view">
     <button class="vt-btn active" data-view="floor"     role="tab">Floor</button>
     <button class="vt-btn"        data-view="course"    role="tab">Course</button>
+    <button class="vt-btn"        data-view="leg"       role="tab">Leg</button>
     <button class="vt-btn"        data-view="priority"  role="tab">Priority</button>
     <button class="vt-btn"        data-view="timeline"  role="tab">Timeline</button>
     <button class="vt-btn"        data-view="by-status" role="tab">By Status</button>
@@ -3536,6 +3716,18 @@
   <h2 class="alt-heading">By-status view</h2>
   <p class="alt-sub">Kanban-style board. Click any card to open it in the floor drawer.</p>
   <div class="bs-board" id="bs-board"></div>
+</div>
+
+<!-- ── Leg view (Phase 5: Snap Circuit board) ──
+     Iconic re-skin of the active leg as a five-zone circuit board:
+     Frame (power source) · Comprehend (amplifier) · Sync (filter) ·
+     Produce (live signal) · Debrief (output stage). Honors the WS004
+     Snap-Circuits-vs-DOS aspiration: same data the JSON has, rendered
+     as a board you can read at a glance. -->
+<div id="leg-view" class="alt-view">
+  <h2 class="alt-heading">Leg · circuit board</h2>
+  <p class="alt-sub">Active leg rendered as a five-stage circuit. Each zone is one phase of the leg; signal flows top-to-bottom from the power source (Frame) to the output stage (Debrief).</p>
+  <div id="leg-body"></div>
 </div>
 
 <!-- ── Course view ──
@@ -6997,7 +7189,7 @@
      ────────────────────────────────────────────────────────────── */
 
   const VIEW_KEY = STORAGE_KEY + '::active-view';
-  const VIEWS = ['floor', 'course', 'priority', 'timeline', 'by-status'];
+  const VIEWS = ['floor', 'course', 'leg', 'priority', 'timeline', 'by-status'];
   let activeView = 'floor';
 
   function loadActiveView() {
@@ -7061,6 +7253,7 @@
     const isAlt = name !== 'floor';
     document.body.classList.toggle('alt-view-active', isAlt);
     document.getElementById('course-view').classList.toggle('visible', name === 'course');
+    document.getElementById('leg-view').classList.toggle('visible', name === 'leg');
     document.getElementById('priority-view').classList.toggle('visible', name === 'priority');
     document.getElementById('timeline-view').classList.toggle('visible', name === 'timeline');
     document.getElementById('by-status-view').classList.toggle('visible', name === 'by-status');
@@ -7070,6 +7263,7 @@
 
   function renderActiveAltView() {
     if (activeView === 'course')     renderCourseView();
+    if (activeView === 'leg')        renderLegView();
     if (activeView === 'priority')   renderPriorityView();
     if (activeView === 'timeline')   renderTimelineView();
     if (activeView === 'by-status')  renderByStatusView();
@@ -7703,6 +7897,155 @@
       </div>
     `;
   }
+
+  /* ── Leg view: Snap Circuit board (Phase 5) ──
+     Renders the active leg as a five-zone circuit board. Each zone reads
+     from the corresponding leg sub-record and the linked Frame/Debrief
+     cards. Read-only; click-throughs to forms come in v0.2. */
+  function renderLegView() {
+    const wrap = document.getElementById('leg-body');
+    if (!wrap) return;
+    const leg = findActiveLeg();
+    if (!leg) {
+      wrap.innerHTML =
+        '<div class="leg-board-empty">' +
+          'No active leg this week. ' +
+          '<button type="button" data-act="goto-frame">Open Frame Workshop</button> ' +
+          'and save a card to start one — the circuit lights up as the leg fills out.' +
+        '</div>';
+      return;
+    }
+    const frame = findFrameCardForLeg(leg);
+    const debrief = findDebriefCardForLeg(leg);
+
+    const zones = [];
+    zones.push(renderLegZoneFrame(leg, frame));
+    zones.push('<div class="leg-wire" aria-hidden="true"></div>');
+    zones.push(renderLegZoneComprehend(leg));
+    zones.push('<div class="leg-wire" aria-hidden="true"></div>');
+    zones.push(renderLegZoneSync(leg));
+    zones.push('<div class="leg-wire" aria-hidden="true"></div>');
+    zones.push(renderLegZoneProduce(leg));
+    zones.push('<div class="leg-wire" aria-hidden="true"></div>');
+    zones.push(renderLegZoneDebrief(leg, debrief));
+    wrap.innerHTML =
+      '<div class="leg-board-empty" style="margin-bottom:14px;text-align:left;background:transparent;border:none;padding:6px 0;">' +
+        '<strong style="color:var(--accent);">' + escapeHTML(leg.id) + '</strong> · leg ' + escapeHTML(String(leg.leg_number)) + ' of ' + COURSE_LEG_COUNT +
+        ' · <span style="text-transform:uppercase;letter-spacing:1px;font-size:10px;">' + escapeHTML(leg.status) + '</span>' +
+      '</div>' +
+      '<div class="leg-board">' + zones.join('') + '</div>';
+  }
+  function findDebriefCardForLeg(leg) {
+    if (!leg || !leg.debrief_card_id) return null;
+    return loadDebriefCards().find(c => c && c.savedAt === leg.debrief_card_id) || null;
+  }
+  function legZoneShell(zoneId, glyph, component, title, statusClass, statusLabel, contentHTML) {
+    return `<div class="leg-zone" data-zone="${zoneId}">
+      <div class="leg-zone-glyph" aria-hidden="true">${glyph}</div>
+      <div class="leg-zone-body">
+        <div class="leg-zone-header">
+          <span class="leg-zone-title">${escapeHTML(title)}</span>
+          <span class="leg-zone-component">${escapeHTML(component)}</span>
+          <span class="leg-zone-status ${statusClass}">${escapeHTML(statusLabel)}</span>
+        </div>
+        <div class="leg-zone-content">${contentHTML}</div>
+      </div>
+    </div>`;
+  }
+  function renderLegZoneFrame(leg, card) {
+    if (!card) {
+      return legZoneShell('frame', '🔋', 'power source', 'Frame', '', 'unset',
+        '<div class="leg-zone-empty">No Frame card linked. Open Frame Workshop and save a card to power the leg.</div>');
+    }
+    const mustArr  = Array.isArray(card.must) ? card.must
+                   : (typeof card.must === 'string' && card.must.trim() ? [{ id: 'free', title: card.must.slice(0, 80) }] : []);
+    const bonusArr = Array.isArray(card.stretch) ? card.stretch
+                   : (typeof card.stretch === 'string' && card.stretch.trim() ? [{ id: 'free', title: card.stretch.slice(0, 80) }] : []);
+    const mustChips = mustArr.length > 0
+      ? '<div class="leg-chip-row">' + mustArr.map(r => `<span class="leg-chip"><span class="leg-chip-id">${escapeHTML((r && r.id) || '·')}</span><span>${escapeHTML((r && r.title) || '')}</span></span>`).join('') + '</div>'
+      : '<div class="leg-zone-empty">No musts named yet.</div>';
+    const bonusChips = bonusArr.length > 0
+      ? '<div class="leg-chip-row">' + bonusArr.map(r => `<span class="leg-chip bonus"><span class="leg-chip-id">${escapeHTML((r && r.id) || '·')}</span><span>${escapeHTML((r && r.title) || '')}</span></span>`).join('') + '</div>'
+      : '';
+    const inLine = (card.in || '').trim();
+    const inHTML = inLine
+      ? `<div class="leg-zone-line"><span class="lzl-label">DOING</span><span class="lzl-value">${escapeHTML(inLine.slice(0, 240))}</span></div>`
+      : '';
+    return legZoneShell('frame', '🔋', 'power source', 'Frame', 'lit', mustArr.length + ' musts · ' + bonusArr.length + ' bonus',
+      inHTML + mustChips + bonusChips);
+  }
+  function renderLegZoneComprehend(leg) {
+    const notes = Array.isArray(leg.comprehend) ? leg.comprehend : [];
+    if (notes.length === 0) {
+      return legZoneShell('comprehend', '⚡', 'amplifier', 'Comprehend', '', 'idle',
+        '<div class="leg-zone-empty">No notes yet. Capture re-immersion notes from the Course view to amplify what you\'re holding in mind.</div>');
+    }
+    const recent = notes.slice(-3).reverse();
+    const items = recent.map(n =>
+      `<li><span class="lcl-when">${escapeHTML(fmtComprehendWhen(n && n.at))}</span>${escapeHTML((n && n.text) || '').replace(/\n/g, '<br>')}</li>`
+    ).join('');
+    const more = notes.length > 3
+      ? `<div class="leg-zone-line"><span class="lzl-label">+${notes.length - 3} earlier</span></div>`
+      : '';
+    return legZoneShell('comprehend', '⚡', 'amplifier', 'Comprehend', 'lit', notes.length + ' note' + (notes.length === 1 ? '' : 's'),
+      '<ul class="leg-comprehend-list">' + items + '</ul>' + more);
+  }
+  function renderLegZoneSync(leg) {
+    if (!leg.sync) {
+      return legZoneShell('sync', '⏚', 'filter', 'Sync', '', 'deferred',
+        '<div class="leg-zone-empty">Sync station deferred to a later phase. The slot exists; the form does not yet.</div>');
+    }
+    const summary = (leg.sync && leg.sync.summary) || JSON.stringify(leg.sync).slice(0, 200);
+    return legZoneShell('sync', '⏚', 'filter', 'Sync', 'lit', 'captured',
+      `<div class="leg-zone-line"><span class="lzl-value">${escapeHTML(summary)}</span></div>`);
+  }
+  function renderLegZoneProduce(leg) {
+    const p = leg.produce || { selected: [], bonuses: [], notes: [] };
+    const selectedCount = (p.selected || []).length;
+    const bonusCount    = (p.bonuses  || []).length;
+    const noteCount     = (p.notes    || []).length;
+    const totalActivity = selectedCount + bonusCount + noteCount;
+    if (totalActivity === 0) {
+      return legZoneShell('produce', '〰', 'live signal', 'Produce', '', 'quiet',
+        '<div class="leg-zone-empty">No produce activity logged yet. The Produce ledger lights up as items are picked up and bonuses are claimed.</div>');
+    }
+    const lines = [];
+    if (selectedCount > 0) lines.push(`<div class="leg-zone-line"><span class="lzl-label">SELECTED</span><span class="lzl-value">${selectedCount}</span></div>`);
+    if (bonusCount > 0)    lines.push(`<div class="leg-zone-line"><span class="lzl-label">BONUSES</span><span class="lzl-value">${bonusCount}</span></div>`);
+    if (noteCount > 0)     lines.push(`<div class="leg-zone-line"><span class="lzl-label">NOTES</span><span class="lzl-value">${noteCount}</span></div>`);
+    return legZoneShell('produce', '〰', 'live signal', 'Produce', 'lit', 'flowing',
+      lines.join(''));
+  }
+  function renderLegZoneDebrief(leg, card) {
+    if (!card) {
+      const status = leg.status === 'debriefed' ? 'done' : '';
+      const label  = leg.status === 'debriefed' ? 'closed' : 'pending';
+      return legZoneShell('debrief', '🔊', 'output stage', 'Debrief', status, label,
+        '<div class="leg-zone-empty">No Debrief card yet. Open Debrief Booth, save a card, and the leg closes — the output stage lights green.</div>');
+    }
+    const courseHeld = card.course_held && DB_COURSE_HELD_LABEL[card.course_held]
+      ? DB_COURSE_HELD_LABEL[card.course_held]
+      : (card.course_held || '—');
+    const caught = (card.caught || '').slice(0, 220);
+    const caughtHTML = caught
+      ? `<div class="leg-zone-line"><span class="lzl-label">CAUGHT</span><span class="lzl-value">${escapeHTML(caught)}</span></div>`
+      : '';
+    const heldHTML = `<div class="leg-zone-line"><span class="lzl-label">COURSE HELD</span><span class="lzl-value">${escapeHTML(courseHeld)}</span></div>`;
+    const changes = leg.changes_to_course;
+    const changesHTML = changes && changes.summary
+      ? `<div class="leg-zone-line"><span class="lzl-label">CHANGES</span><span class="lzl-value">${escapeHTML(String(changes.summary).slice(0, 200))}</span></div>`
+      : '';
+    return legZoneShell('debrief', '🔊', 'output stage', 'Debrief', 'done', 'closed',
+      heldHTML + caughtHTML + changesHTML);
+  }
+
+  // Leg-view click handler (jump to Frame Workshop from the empty-state).
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.dataset && e.target.dataset.act === 'goto-frame') {
+      if (typeof setView === 'function') setView('floor');
+      if (typeof openDrawer === 'function') openDrawer('frame-workshop');
+    }
+  });
 
   /* ── On-demand Comprehend (Phase 3) ──
      Single textarea + Capture button. Appends a timestamped note to the
