@@ -425,6 +425,74 @@
   @media (prefers-reduced-motion: reduce) {
     .hex-cell.breathing { animation: none; }
   }
+  /* Course view lens tabs (Move 3a): three lenses on the same data —
+     Build (user-placed canvas, default), By function (biome view, v0.2
+     restored), By priority (concentric rings, v0.3). The user owns one
+     placement; lenses are read-only re-projections. */
+  .course-hexmap-tabs {
+    display: flex;
+    gap: 4px;
+    margin: 6px 0 10px;
+    border-bottom: 1px solid var(--panel-bd);
+  }
+  .ch-tab {
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    padding: 6px 12px;
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: -1px;
+  }
+  .ch-tab:hover { color: var(--fg); }
+  .ch-tab.active {
+    color: var(--accent);
+    border-color: var(--panel-bd);
+    border-bottom-color: var(--panel-bg);
+    background: var(--panel-bg);
+  }
+  /* Build canvas placeholder (Move 3a). Fills out across 3b–3e. */
+  .course-build-placeholder {
+    background: var(--panel-bg);
+    border: 1px dashed var(--panel-bd);
+    border-radius: 6px;
+    padding: 32px 24px;
+    text-align: center;
+    color: #6f7a90;
+    font-family: var(--font-px);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .course-build-placeholder strong { color: var(--accent); }
+  /* By-function lens (restored from v0.2): clustered biome regions. */
+  .hex-region-bg {
+    fill-opacity: 0.06;
+    stroke-opacity: 0.45;
+    stroke-width: 1;
+  }
+  .hex-region-label {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: var(--accent-dim);
+    dominant-baseline: hanging;
+    pointer-events: none;
+  }
+  .hex-region-count {
+    font-family: var(--font-px);
+    font-size: 9px;
+    fill: #6f7a90;
+    dominant-baseline: hanging;
+    pointer-events: none;
+  }
+
   /* Hex hover tooltip (Move 1): instant HTML tooltip layer. Native SVG
      <title> tooltips have a ~1 sec delay; this surfaces immediately on
      mouseenter and follows the cursor. Native <title> stays in the DOM
@@ -8450,6 +8518,25 @@
     return { x, y };
   }
 
+  /* Course view lens dispatcher (Move 3a).
+     Three lenses on the same course/items data — Build (default; user-
+     placed canvas, fills out across Moves 3b-3e), By function (v0.2
+     biome view restored), By priority (v0.3 concentric rings). User
+     placement persists across lens switches; lenses are projections,
+     not workspaces. */
+  const COURSE_HEX_LENS_KEY = 'cognitive-lab-v0.1::course-hex-lens';
+  const COURSE_HEX_LENSES = ['build', 'function', 'priority'];
+  function loadCourseHexLens() {
+    try {
+      const v = localStorage.getItem(COURSE_HEX_LENS_KEY);
+      return COURSE_HEX_LENSES.includes(v) ? v : 'build';
+    } catch { return 'build'; }
+  }
+  function saveCourseHexLens(v) {
+    try { localStorage.setItem(COURSE_HEX_LENS_KEY, v); } catch {}
+  }
+  let courseHexLens = loadCourseHexLens();
+
   function renderCourseHexMap() {
     const wrap = document.getElementById('course-hexmap');
     if (!wrap) return;
@@ -8457,11 +8544,241 @@
     const frontierSet = new Set(c.frontier || []);
     const workingSet = getActiveLegWorkingSet();
     const items = allItemsArray();
-    if (items.length === 0) {
-      wrap.innerHTML = '<p class="course-hexmap-title">Map</p><p class="course-hexmap-sub">No items in the lab yet.</p>';
+    const inFrontierCount = items.filter(it => frontierSet.has(it.id)).length;
+    const activeCount = workingSet.size;
+    // Outer chrome — header + tabs + content slot. Tabs are stable across
+    // lens switches; only the content slot's innerHTML changes.
+    wrap.innerHTML = `
+      <p class="course-hexmap-title">Map · ${items.length} items · ${inFrontierCount} in frontier · ${activeCount} active in current leg</p>
+      <div class="course-hexmap-tabs" role="tablist" aria-label="Course map lens">
+        <button class="ch-tab${courseHexLens === 'build'    ? ' active' : ''}" data-lens="build"    role="tab">▦ Build</button>
+        <button class="ch-tab${courseHexLens === 'function' ? ' active' : ''}" data-lens="function" role="tab">⛰ By function</button>
+        <button class="ch-tab${courseHexLens === 'priority' ? ' active' : ''}" data-lens="priority" role="tab">◎ By priority</button>
+      </div>
+      <div id="course-hexmap-content"></div>
+    `;
+    // Tab click delegation.
+    wrap.querySelectorAll('.ch-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lens = btn.dataset.lens;
+        if (lens && COURSE_HEX_LENSES.includes(lens) && lens !== courseHexLens) {
+          courseHexLens = lens;
+          saveCourseHexLens(lens);
+          renderCourseHexMap();
+        }
+      });
+    });
+    // Dispatch to lens.
+    const slot = document.getElementById('course-hexmap-content');
+    if (!items.length) {
+      slot.innerHTML = '<p class="course-hexmap-sub">No items in the lab yet.</p>';
       return;
     }
+    if (courseHexLens === 'priority')      renderCourseLensByPriority(slot, items, frontierSet, workingSet);
+    else if (courseHexLens === 'function') renderCourseLensByFunction(slot, items, frontierSet, workingSet);
+    else                                    renderCourseLensBuild(slot, items, frontierSet, workingSet);
+    // Wire shared SVG listeners (click + tooltip) on whatever SVG ended up
+    // in the slot. Lenses without an SVG (Build placeholder today) skip.
+    wireHexSVGListeners(slot);
+  }
 
+  /* Shared listener wiring used by every lens that renders an SVG with
+     .hex-cell polygons. Click → single-pulse animation. Mouseover →
+     instant HTML tooltip from the polygon's aria-label. */
+  function wireHexSVGListeners(container) {
+    const svg = container.querySelector('svg');
+    if (!svg) return;
+    svg.addEventListener('click', (e) => {
+      const tgt = e.target;
+      if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
+      tgt.classList.remove('pulse-once');
+      void tgt.getBoundingClientRect();
+      tgt.classList.add('pulse-once');
+    });
+    svg.addEventListener('animationend', (e) => {
+      if (e.target && e.target.classList && e.target.classList.contains('pulse-once')) {
+        e.target.classList.remove('pulse-once');
+      }
+    });
+    let tooltip = document.getElementById('hex-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.id = 'hex-tooltip';
+      tooltip.className = 'hex-tooltip';
+      tooltip.hidden = true;
+      document.body.appendChild(tooltip);
+    }
+    svg.addEventListener('mouseover', (e) => {
+      const tgt = e.target;
+      if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
+      const label = tgt.getAttribute('aria-label');
+      if (!label) return;
+      tooltip.textContent = label;
+      tooltip.hidden = false;
+    });
+    svg.addEventListener('mousemove', (e) => {
+      if (tooltip.hidden) return;
+      const pad = 14;
+      const tw = tooltip.offsetWidth || 240;
+      const th = tooltip.offsetHeight || 32;
+      let x = e.clientX + pad;
+      let y = e.clientY + pad;
+      if (x + tw > window.innerWidth - 8)  x = e.clientX - tw - pad;
+      if (y + th > window.innerHeight - 8) y = e.clientY - th - pad;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top  = y + 'px';
+    });
+    svg.addEventListener('mouseout', (e) => {
+      const tgt = e.target;
+      if (tgt && tgt.classList && tgt.classList.contains('hex-cell')) {
+        tooltip.hidden = true;
+      }
+    });
+  }
+
+  /* Build lens (Move 3a stub).
+     Fills out in Move 3b (empty canvas with grid), 3c (tool drawer),
+     3d (click-to-place + persistence), 3e (template apply). */
+  function renderCourseLensBuild(slot /*, items, frontierSet, workingSet */) {
+    slot.innerHTML = `
+      <div class="course-build-placeholder">
+        <p>The <strong>Build canvas</strong> ships across Moves 3b–3e:</p>
+        <p>3b · empty grid (snap-circuit board) → 3c · tool drawer (item palette)<br>
+           3d · click-to-place + persistence → 3e · template apply (current frontier as starting position)</p>
+        <p style="margin-top: 14px;">For now, switch to <strong>By priority</strong> or <strong>By function</strong>.</p>
+      </div>
+    `;
+  }
+
+  /* By-function lens — restored from v0.2.
+     Items grouped into labeled biome regions (one cluster per area).
+     Within a cluster, P0 first, then status rank. Across clusters,
+     biggest-first so dominant biomes anchor the top-left. */
+  function renderCourseLensByFunction(slot, items, frontierSet, workingSet) {
+    const byArea = new Map();
+    items.forEach(it => {
+      const aId = it.areaId || '__orphan';
+      if (!byArea.has(aId)) byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
+      byArea.get(aId).items.push(it);
+    });
+    byArea.forEach(r => {
+      r.items.sort((a, b) => {
+        const pa = priorityRank(a.priority) - priorityRank(b.priority);
+        if (pa !== 0) return pa;
+        const sa = statusRank(a.status) - statusRank(b.status);
+        if (sa !== 0) return sa;
+        return (a.id || '').localeCompare(b.id || '');
+      });
+    });
+    const regions = Array.from(byArea.values()).sort((a, b) => {
+      if (b.items.length !== a.items.length) return b.items.length - a.items.length;
+      return (a.areaName || '').localeCompare(b.areaName || '');
+    });
+    const S = 20;
+    const STEP_X = 1.5 * S;
+    const STEP_Y = Math.sqrt(3) * S;
+    const OFFSET_Y = STEP_Y / 2;
+    const HEX_PAD = 8;
+    const LABEL_H = 14;
+    const REGION_GAP = 12;
+    const CANVAS_W = 740;
+    regions.forEach(r => {
+      const n = r.items.length;
+      const cols = Math.min(3, n);
+      const rows = Math.ceil(n / cols);
+      r.cols = cols;
+      r.rows = rows;
+      r.w = HEX_PAD * 2 + 2 * S + (cols - 1) * STEP_X;
+      const oddOffset = cols > 1 ? OFFSET_Y : 0;
+      r.h = HEX_PAD * 2 + LABEL_H + STEP_Y + (rows - 1) * STEP_Y + oddOffset;
+    });
+    let cursorX = 0, cursorY = 0, rowMaxH = 0, totalH = 0, totalW = 0;
+    regions.forEach(r => {
+      if (cursorX + r.w > CANVAS_W && cursorX > 0) {
+        cursorX = 0;
+        cursorY += rowMaxH + REGION_GAP;
+        rowMaxH = 0;
+      }
+      r.x = cursorX;
+      r.y = cursorY;
+      cursorX += r.w + REGION_GAP;
+      if (r.h > rowMaxH) rowMaxH = r.h;
+      if (cursorY + r.h > totalH) totalH = cursorY + r.h;
+      if (r.x + r.w > totalW) totalW = r.x + r.w;
+    });
+    const finalW = Math.max(totalW + REGION_GAP, CANVAS_W);
+    const finalH = totalH + REGION_GAP;
+    const regionGroups = regions.map(r => {
+      const accent = (AREA_VISUALS[r.areaId] && AREA_VISUALS[r.areaId].accent) || 'dark';
+      const tint = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
+      const hexes = r.items.map((it, i) => {
+        const col = i % r.cols;
+        const row = Math.floor(i / r.cols);
+        const cx = HEX_PAD + S + col * STEP_X;
+        const cy = HEX_PAD + LABEL_H + (STEP_Y / 2) + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
+        const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+        const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
+        const opacity = hexLuminosityFor(it, frontierSet);
+        const isActive = workingSet.has(it.id);
+        const classes = ['hex-cell'];
+        if (isActive) {
+          classes.push('active');
+          classes.push('breathing');
+        }
+        const points = hexPolygonPoints(cx, cy, S);
+        const genus = it.areaName || '(orphan)';
+        const species = it.title || '(no title)';
+        const inFrontier = frontierSet.has(it.id);
+        const stateBits = [];
+        if (isActive)    stateBits.push('in active leg');
+        if (inFrontier)  stateBits.push('in frontier');
+        stateBits.push(escapeHTML(it.priority || ''));
+        stateBits.push(escapeHTML(it.status || ''));
+        const labelText = escapeHTML(genus) + ': ' + escapeHTML(species) + ' · ' + stateBits.join(' · ');
+        return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}" role="img" aria-label="${labelText}"></polygon>`;
+      }).join('\n');
+      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" rx="8" ry="8" fill="${tint}" stroke="${tint}" />`;
+      const labelY = HEX_PAD - 2;
+      const label = `<text class="hex-region-label" x="${HEX_PAD}" y="${labelY}">${escapeHTML(r.areaName)}</text>` +
+                    `<text class="hex-region-count" x="${(r.w - HEX_PAD).toFixed(2)}" y="${labelY}" text-anchor="end">${r.items.length}</text>`;
+      return `<g transform="translate(${r.x.toFixed(2)},${r.y.toFixed(2)})">${bg}${label}${hexes}</g>`;
+    }).join('\n');
+    // Area legend (same as priority lens — same data, same encoding).
+    const areaSet = new Map();
+    items.forEach(it => {
+      const k = it.areaId || '__orphan';
+      if (!areaSet.has(k)) {
+        const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+        areaSet.set(k, {
+          name: it.areaName || k,
+          color: HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark,
+          count: 0
+        });
+      }
+      areaSet.get(k).count++;
+    });
+    const areasForLegend = Array.from(areaSet.values()).sort((a, b) => a.name.localeCompare(b.name));
+    const legendHTML = areasForLegend.map(a =>
+      `<span class="lg-item"><span class="lg-swatch" style="background:${a.color}"></span>${escapeHTML(a.name)}<span style="color:var(--accent-dim);margin-left:2px;">·${a.count}</span></span>`
+    ).join('');
+    slot.innerHTML = `
+      <p class="course-hexmap-sub">By function · items grouped into biome regions (one cluster per area). Same encoding as Priority lens; different layout.</p>
+      <svg viewBox="0 0 ${finalW.toFixed(2)} ${finalH.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map by function: ${items.length} items grouped into ${regions.length} biome regions.">
+        ${regionGroups}
+      </svg>
+      <div class="course-hexmap-legend">${legendHTML}</div>
+      <div class="course-hexmap-key">
+        <span class="lg-item"><span class="lg-swatch dim"></span>archived</span>
+        <span class="lg-item"><span class="lg-swatch avail"></span>available</span>
+        <span class="lg-item"><span class="lg-swatch front"></span>in frontier</span>
+        <span class="lg-item"><span class="lg-swatch act"></span>active (breathes)</span>
+      </div>
+    `;
+  }
+
+  /* By-priority lens — concentric rings (v0.3 layout).
+     Body lifted from the prior renderCourseHexMap; now a sibling lens. */
+  function renderCourseLensByPriority(slot, items, frontierSet, workingSet) {
     // ── Sort items into priority tiers, then by area within each tier ──
     // Within a tier, same-area items pack adjacently in the spiral.
     // Within an area+tier, status-rank (in-progress first) so the most-
@@ -8608,12 +8925,9 @@
       `<span class="lg-item"><span class="lg-swatch" style="background:${a.color}"></span>${escapeHTML(a.name)}<span style="color:var(--accent-dim);margin-left:2px;">·${a.count}</span></span>`
     ).join('');
 
-    const inFrontierCount = items.filter(it => frontierSet.has(it.id)).length;
-    const activeCount = workingSet.size;
-    wrap.innerHTML = `
-      <p class="course-hexmap-title">Map · ${items.length} items · ${inFrontierCount} in frontier · ${activeCount} active in current leg</p>
-      <p class="course-hexmap-sub">v0.3: rings = priority (P0 center → P1 → P2). Color = area (see legend). Brightness = relevance (archived dim → in-frontier bright → active brightest). The current leg's working items breathe slowly. Hover any hex for the area + item title.</p>
-      <svg viewBox="0 0 ${CANVAS_W.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${items.length} items in concentric rings (P0 center, P1 mid, P2 outer). Color carries area. ${inFrontierCount} in frontier; ${activeCount} active in current leg.">
+    slot.innerHTML = `
+      <p class="course-hexmap-sub">By priority · concentric rings (P0 center → P1 → P2). Color = area. Brightness = relevance.</p>
+      <svg viewBox="0 0 ${CANVAS_W.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map by priority: ${items.length} items in concentric rings (P0 center, P1 mid, P2 outer). Color carries area.">
         ${bands.join('\n')}
         ${cells.join('\n')}
       </svg>
@@ -8625,67 +8939,6 @@
         <span class="lg-item"><span class="lg-swatch act"></span>active (breathes)</span>
       </div>
     `;
-
-    // Single-pulse-on-select wiring (unchanged from v0.2) + Move 1 hover
-    // tooltip. Listeners attach fresh after each render (innerHTML wipes them).
-    const svg = wrap.querySelector('svg');
-    if (svg) {
-      svg.addEventListener('click', (e) => {
-        const tgt = e.target;
-        if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
-        tgt.classList.remove('pulse-once');
-        void tgt.getBoundingClientRect();
-        tgt.classList.add('pulse-once');
-      });
-      svg.addEventListener('animationend', (e) => {
-        if (e.target && e.target.classList && e.target.classList.contains('pulse-once')) {
-          e.target.classList.remove('pulse-once');
-        }
-      });
-
-      // Move 1: instant HTML tooltip layer. Lazily create a single tooltip
-      // div on the body; reuse across re-renders so we don't leak DOM nodes.
-      let tooltip = document.getElementById('hex-tooltip');
-      if (!tooltip) {
-        tooltip = document.createElement('div');
-        tooltip.id = 'hex-tooltip';
-        tooltip.className = 'hex-tooltip';
-        tooltip.hidden = true;
-        document.body.appendChild(tooltip);
-      }
-      svg.addEventListener('mouseover', (e) => {
-        const tgt = e.target;
-        if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
-        // Read from aria-label (was: <title>'s textContent, but that triggered
-        // a duplicate native browser tooltip after 1 sec). aria-label gives
-        // both screen-reader accessibility and our instant tooltip from one
-        // attribute, with no native-browser tooltip layer competing.
-        const label = tgt.getAttribute('aria-label');
-        if (!label) return;
-        tooltip.textContent = label;
-        tooltip.hidden = false;
-      });
-      svg.addEventListener('mousemove', (e) => {
-        if (tooltip.hidden) return;
-        // Position offset from the cursor; nudge above/left when near the
-        // viewport edges so the tooltip stays fully visible.
-        const pad = 14;
-        const tw = tooltip.offsetWidth || 240;
-        const th = tooltip.offsetHeight || 32;
-        let x = e.clientX + pad;
-        let y = e.clientY + pad;
-        if (x + tw > window.innerWidth - 8)  x = e.clientX - tw - pad;
-        if (y + th > window.innerHeight - 8) y = e.clientY - th - pad;
-        tooltip.style.left = x + 'px';
-        tooltip.style.top  = y + 'px';
-      });
-      svg.addEventListener('mouseout', (e) => {
-        const tgt = e.target;
-        if (tgt && tgt.classList && tgt.classList.contains('hex-cell')) {
-          tooltip.hidden = true;
-        }
-      });
-    }
   }
 
   /* Format helper used by both the Comprehend section and the Leg view's
