@@ -2186,6 +2186,29 @@
     max-width: 100%;
   }
   .ff-chip:hover { background: rgba(74,123,212,0.22); }
+  /* Phase 2: off-frontier picks render with a warm accent and a small ↗
+     badge, distinguishing them visually from on-frontier chips without
+     breaking the picker layout. */
+  .ff-chip.off-frontier {
+    background: rgba(226,160,74,0.12);
+    border-color: rgba(226,160,74,0.45);
+  }
+  .ff-chip.off-frontier:hover { background: rgba(226,160,74,0.22); }
+  .ff-chip.off-frontier .ff-chip-id { color: #e2a04a; }
+  .ff-chip .ff-chip-off-frontier {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(226,160,74,0.25);
+    color: var(--accent);
+    font-size: 10px;
+    font-family: var(--font-px);
+    line-height: 1;
+    cursor: help;
+  }
   .ff-chip .ff-chip-id {
     font-family: var(--font-px);
     font-size: 10px;
@@ -2254,6 +2277,47 @@
     margin-top: 4px;
   }
   .ff-pp-section-label:first-child { margin-top: 0; }
+  /* Phase 2: scope toggle bar at the top of the picker panel. Two buttons
+     (Frontier · Full lab) with the active scope highlighted. */
+  .ff-pp-scope-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 4px 4px 8px;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed var(--panel-bd);
+  }
+  .ff-pp-scope {
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--accent-dim);
+    cursor: pointer;
+  }
+  .ff-pp-scope:hover { color: var(--fg); }
+  .ff-pp-scope.active {
+    background: rgba(226,160,74,0.12);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .ff-pp-scope.disabled,
+  .ff-pp-scope[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .ff-pp-scope-hint {
+    font-family: inherit;
+    font-size: 11px;
+    color: #6f7a90;
+    font-style: italic;
+    margin-left: 4px;
+  }
   .ff-pp-row {
     display: grid;
     grid-template-columns: 32px 1fr auto;
@@ -5607,6 +5671,12 @@
   let framePickerPanelOpen = { must: false, stretch: false };
   // Which priority tier the picker is currently showing (P0 default, expandable to P1, P2).
   let framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+  // Phase 2 (Frontier Wiring): default the picker scope to the active Course's
+  // frontier. Per the rogaine-spine architecture, per-leg Frame picks *from* the
+  // frontier. The user can expand to the full lab via the toggle, in which case
+  // off-frontier picks get marked on the ref so Debrief can later surface them
+  // as candidate changes_to_course.frontier_added.
+  let framePickerScope = { must: 'frontier', stretch: 'frontier' };
   // Whether the free-text fallback is active per field.
   let framePickerTextMode = { must: false, stretch: false };
   // Which Done-means slot indices have their per-slot Approach unfold open (LAB-027 v3).
@@ -6368,24 +6438,49 @@
         distinction encoded by status badge — no new tier).
         See more: expands to include P1, then P2.  ── */
 
-  function getFramePickerCandidates(tier) {
+  // Returns the active course's frontier as a Set for fast membership checks.
+  // Empty Set if no active course or no frontier — caller should treat that as
+  // "no frontier set" and degrade to the full-lab scope.
+  function getActiveFrontierSet() {
+    const c = (typeof findActiveCourse === 'function') ? findActiveCourse() : null;
+    if (!c || !Array.isArray(c.frontier)) return new Set();
+    return new Set(c.frontier);
+  }
+
+  function getFramePickerCandidates(tier, scope) {
     // Reuse allItemsArray() so picker matches the Priority view's source of truth.
+    // Phase 2: when scope === 'frontier', intersect with the active course's
+    // frontier. Default scope is 'frontier' (the rogaine discipline); the
+    // picker UI exposes a toggle to expand to 'all' (the full lab).
     const items = (typeof allItemsArray === 'function') ? allItemsArray() : [];
     const wantedTiers = tier === 'P0' ? ['P0']
                       : tier === 'P1' ? ['P0','P1']
                       : ['P0','P1','P2'];
-    return items
+    const useScope = scope || 'frontier';
+    let filtered = items
       .filter(it => wantedTiers.includes(it.priority))
-      .filter(it => it.status !== 'live' && it.status !== 'archived')
-      .sort((a, b) => {
-        // Priority first.
-        const pa = priorityRank(a.priority), pb = priorityRank(b.priority);
-        if (pa !== pb) return pa - pb;
-        // Within priority: in-progress, drafted, backlog (statusRank gives 0,1,2 — perfect).
-        const sa = statusRank(a.status), sb = statusRank(b.status);
-        if (sa !== sb) return sa - sb;
-        return a.id.localeCompare(b.id);
-      });
+      .filter(it => it.status !== 'live' && it.status !== 'archived');
+    if (useScope === 'frontier') {
+      const frontier = getActiveFrontierSet();
+      // If frontier is empty (no course set or empty frontier), the caller is
+      // expected to have flipped to 'all' already. As a safety net, return all
+      // candidates rather than an empty list — this prevents an unfillable picker
+      // when the user hasn't planned a course yet.
+      if (frontier.size === 0) {
+        // fall through with no frontier filter
+      } else {
+        filtered = filtered.filter(it => frontier.has(it.id));
+      }
+    }
+    return filtered.sort((a, b) => {
+      // Priority first.
+      const pa = priorityRank(a.priority), pb = priorityRank(b.priority);
+      if (pa !== pb) return pa - pb;
+      // Within priority: in-progress, drafted, backlog (statusRank gives 0,1,2 — perfect).
+      const sa = statusRank(a.status), sb = statusRank(b.status);
+      if (sa !== sb) return sa - sb;
+      return a.id.localeCompare(b.id);
+    });
   }
 
   function renderFramePicker(field) {
@@ -6408,9 +6503,16 @@
     chipsEl.innerHTML = selected.map((ref, i) => {
       const id = escapeHTML(ref.id || '');
       const title = escapeHTML(ref.title || '');
-      const chipHTML = `<span class="ff-chip" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
+      // Phase 2: off-frontier picks render with a small "↗" badge so the
+      // user sees mid-leg deviations from the planned course at a glance.
+      // Debrief later surfaces these as candidate changes_to_course.
+      const offFrontier = !!ref.off_frontier;
+      const offBadge = offFrontier
+        ? '<span class="ff-chip-off-frontier" title="Off-frontier pick — surfaces in Debrief as a candidate course-frontier change.">↗</span>'
+        : '';
+      const chipHTML = `<span class="ff-chip${offFrontier ? ' off-frontier' : ''}" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
         <span class="ff-chip-id">${id}</span>
-        <span class="ff-chip-title">${title}</span>${
+        <span class="ff-chip-title">${title}</span>${offBadge}${
           slotsEnabled
             ? `<span class="ff-slot-toggle" aria-hidden="true">${expandedSet.has(i) ? '▾' : '▸'}</span>`
             : ''
@@ -6480,14 +6582,35 @@
 
     // Render the panel contents.
     const tier = framePickerExpandTier[field] || 'P0';
-    const candidates = getFramePickerCandidates(tier);
+    // Phase 2: resolve scope. If frontier is empty and the user hasn't already
+    // flipped to 'all' explicitly, auto-flip and surface a hint instead of an
+    // empty picker. This is the "no course set" / "course has no frontier yet"
+    // safety net.
+    const frontierSet = getActiveFrontierSet();
+    const frontierEmpty = frontierSet.size === 0;
+    if (frontierEmpty && framePickerScope[field] === 'frontier') {
+      framePickerScope[field] = 'all';
+    }
+    const scope = framePickerScope[field] || 'frontier';
+    const candidates = getFramePickerCandidates(tier, scope);
     const selectedIds = new Set(selected.map(r => r.id));
 
     // Group by priority for visual separation.
     const groups = { P0: [], P1: [], P2: [] };
     candidates.forEach(it => { if (groups[it.priority]) groups[it.priority].push(it); });
 
+    // Scope toggle — shows the count in the active scope, lets the user flip.
+    // When frontier is empty, the toggle is disabled and labeled accordingly.
+    const frontierLabel = frontierEmpty
+      ? 'No frontier set'
+      : 'Frontier (' + frontierSet.size + ')';
     let html = '';
+    html += `<div class="ff-pp-scope-bar">
+      <button type="button" class="ff-pp-scope${scope === 'frontier' ? ' active' : ''}${frontierEmpty ? ' disabled' : ''}" data-act="ff-scope" data-field="${field}" data-scope="frontier"${frontierEmpty ? ' disabled' : ''}>${escapeHTML(frontierLabel)}</button>
+      <button type="button" class="ff-pp-scope${scope === 'all' ? ' active' : ''}" data-act="ff-scope" data-field="${field}" data-scope="all">Full lab</button>
+      ${frontierEmpty ? '<span class="ff-pp-scope-hint">No course frontier yet — set one in the Course view to scope this picker.</span>' : ''}
+    </div>`;
+
     ['P0','P1','P2'].forEach(p => {
       if (groups[p].length === 0) return;
       if (tier === 'P0' && p !== 'P0') return;
@@ -6511,8 +6634,13 @@
       }).join('');
     });
 
-    if (html === '') {
-      html = '<div class="ff-pp-empty">Nothing in this tier. Try expanding to P1 or P2.</div>';
+    // The candidate-list emptiness check needs to ignore the scope-bar HTML
+    // we just appended; check after the loop above produced no row content.
+    const hasRows = candidates.length > 0;
+    if (!hasRows) {
+      html += scope === 'frontier'
+        ? '<div class="ff-pp-empty">No frontier items in this tier. Try expanding to P1/P2 or switching to Full lab.</div>'
+        : '<div class="ff-pp-empty">Nothing in this tier. Try expanding to P1 or P2.</div>';
     }
 
     // See-more affordance.
@@ -6553,6 +6681,17 @@
       renderFramePicker(field);
       return;
     }
+    // Phase 2: scope toggle (Frontier / Full lab) inside the picker panel.
+    const scopeBtn = tgt.closest('[data-act="ff-scope"]');
+    if (scopeBtn && !scopeBtn.disabled && !scopeBtn.classList.contains('disabled')) {
+      const field = scopeBtn.dataset.field;
+      const next  = scopeBtn.dataset.scope; // 'frontier' | 'all'
+      if (field && next && framePickerScope[field] !== next) {
+        framePickerScope[field] = next;
+        renderFramePicker(field);
+      }
+      return;
+    }
     // Pick / unpick an item in the panel
     const pickRow = tgt.closest('[data-act="ff-pick"]');
     if (pickRow) {
@@ -6563,8 +6702,13 @@
       const cap  = FF_PICKER_CAPS[field] || 0;
       const cur = framePickerState[field] || [];
       const existsAt = cur.findIndex(r => r.id === id);
+      // Phase 2: tag the new ref with off_frontier=true if the item isn't in
+      // the active course's frontier. Frontier-membership is checked at the
+      // moment of pick so the flag reflects the course state at that time.
+      const frontier = getActiveFrontierSet();
+      const isOffFrontier = frontier.size > 0 && !frontier.has(id);
       if (mode === 'single') {
-        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title }];
+        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title, off_frontier: isOffFrontier }];
         if (field === 'must') {
           frameSlotExpanded.must = (existsAt >= 0) ? new Set() : new Set([0]);
         }
@@ -6578,7 +6722,7 @@
           // At cap: silently no-op. The row is rendered .at-cap so the user already sees why.
           return;
         } else {
-          cur.push({ id, title });
+          cur.push({ id, title, off_frontier: isOffFrontier });
           // Auto-expand the just-picked must slot so the user can fill its Approach
           // immediately without an extra click. Stretch slots stay non-unfoldable.
           if (field === 'must') frameSlotExpanded.must.add(cur.length - 1);
