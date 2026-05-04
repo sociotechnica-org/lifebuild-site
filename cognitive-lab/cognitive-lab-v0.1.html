@@ -808,6 +808,119 @@
     margin: 4px 0;
     line-height: 1.5;
   }
+  /* "Where you are" orientation snapshot (Move 2b). Collapsible at the
+     top of the Comprehend workshop. Compact 4-item read of the lab's
+     current state — designed for re-immerse-in-3-seconds. */
+  .comp-snapshot {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .comp-snapshot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(226,160,74,0.06);
+    border-bottom: 1px solid var(--panel-bd);
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    cursor: pointer;
+    user-select: none;
+  }
+  .comp-snapshot-header:hover { background: rgba(226,160,74,0.10); }
+  .comp-snapshot-header .comp-snap-toggle {
+    margin-left: auto;
+    color: var(--accent-dim);
+    font-size: 9px;
+    transition: transform 150ms;
+  }
+  .comp-snapshot.collapsed .comp-snap-toggle { transform: rotate(-90deg); }
+  .comp-snapshot.collapsed .comp-snapshot-body { display: none; }
+  .comp-snapshot-body {
+    padding: 12px 14px;
+    display: grid;
+    gap: 10px;
+  }
+  .comp-snap-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .comp-snap-label {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+  }
+  .comp-snap-val { font-size: 12.5px; color: var(--fg); line-height: 1.45; }
+  .comp-snap-val .comp-snap-id {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  .comp-snap-val .comp-snap-status {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    padding: 1px 5px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    margin-left: 6px;
+  }
+  .comp-snap-val .comp-snap-empty { color: #6f7a90; font-style: italic; }
+  .comp-snap-recent {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .comp-snap-recent li {
+    font-size: 11.5px;
+    line-height: 1.4;
+    padding: 4px 6px;
+    background: rgba(255,255,255,0.02);
+    border-left: 2px solid var(--panel-bd);
+    cursor: pointer;
+  }
+  .comp-snap-recent li:hover { background: rgba(255,255,255,0.05); }
+  .comp-snap-recent li.cc-note      { border-left-color: rgba(212,160,48,0.55); }
+  .comp-snap-recent li.cc-synthesis { border-left-color: rgba(92,176,154,0.55); }
+  .comp-snap-recent li.cc-deck      { border-left-color: rgba(74,123,212,0.55); }
+  .comp-snap-recent li.cc-walk      { border-left-color: rgba(204,121,167,0.55); }
+  .comp-snap-recent .comp-snap-when {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    color: var(--accent-dim);
+    margin-right: 6px;
+  }
+  /* Polish: snapshot drilldown (Move 2e fold-in v0.2) — clicking an
+     entry toggles the full body inline. */
+  .comp-snap-recent li.expanded .comp-snap-body {
+    display: block;
+    margin-top: 4px;
+    padding: 4px 6px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    font-size: 11px;
+    color: var(--fg);
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+  .comp-snap-recent .comp-snap-body { display: none; }
 
   /* Hex hover tooltip (Move 1): instant HTML tooltip layer. Native SVG
      <title> tooltips have a ~1 sec delay; this surfaces immediately on
@@ -7893,14 +8006,50 @@
 
   /* ── Comprehend Workshop (Move 2 v0.4 build) ──
      The orientation room. Phases land here:
-       2a — placeholder + open-via-workshop wiring (this file).
-       2b — "Where you are" snapshot at the top.
+       2a — placeholder + open-via-workshop wiring.
+       2b — "Where you are" snapshot at the top (this file).
        2c — Sidebar + main split with deck walks.
        2d — Product walks with iframe + walk-mode banner.
        2e — Walk logging + polish folds.
      Each render rebuilds the workshop content from scratch (matches
      the renderCourseHexMap pattern; cheap at this scale, no listener
      leaks). */
+
+  // Compact relative-time formatter for the snapshot. Designed for
+  // re-immerse-glance reads; not for precise reporting. Returns null
+  // for missing input so callers can skip the row.
+  function fmtRelativeTime(iso) {
+    if (!iso) return null;
+    const then = new Date(iso).getTime();
+    if (!isFinite(then)) return null;
+    const now = Date.now();
+    const diff = now - then;
+    if (diff < 0) return 'just now';
+    const sec = Math.floor(diff / 1000);
+    if (sec < 60)        return sec + 's ago';
+    const min = Math.floor(sec / 60);
+    if (min < 60)        return min + 'm ago';
+    const hr = Math.floor(min / 60);
+    if (hr < 24)         return hr + 'h ago';
+    const day = Math.floor(hr / 24);
+    if (day < 7)         return day + 'd ago';
+    const wk = Math.floor(day / 7);
+    if (wk < 5)          return wk + 'w ago';
+    return new Date(iso).toISOString().slice(0, 10);
+  }
+
+  // Snapshot collapse state — sessionStorage so a single dogfood
+  // session preserves the user's preference but a new browser session
+  // starts fresh (snapshot expanded by default — that's the orient case).
+  const COMP_SNAP_COLLAPSED_KEY = 'cognitive-lab-v0.1::comp-snap-collapsed';
+  function isCompSnapCollapsed() {
+    try { return sessionStorage.getItem(COMP_SNAP_COLLAPSED_KEY) === '1'; }
+    catch { return false; }
+  }
+  function setCompSnapCollapsed(v) {
+    try { sessionStorage.setItem(COMP_SNAP_COLLAPSED_KEY, v ? '1' : '0'); } catch {}
+  }
+
   function initComprehendWorkshop() {
     renderComprehendWorkshop();
   }
@@ -7908,13 +8057,117 @@
     const snapshot = document.getElementById('comp-snapshot');
     const studio = document.getElementById('comp-walk-studio');
     if (!snapshot || !studio) return;
-    // 2a placeholder. 2b will fill snapshot; 2c-2e will fill studio.
+
+    // ── "Where you are" snapshot (Move 2b) ──
+    // Four rows: leg + course / recent comprehend / time since / last debrief.
+    const leg = (typeof findActiveLeg === 'function') ? findActiveLeg() : null;
+    const course = (typeof findActiveCourse === 'function') ? findActiveCourse() : null;
+    const collapsed = isCompSnapCollapsed();
+
+    const legRow = leg
+      ? `<div class="comp-snap-row">
+          <span class="comp-snap-label">Active leg</span>
+          <span class="comp-snap-val">
+            <span class="comp-snap-id">${escapeHTML(leg.id)}</span>
+            <span>leg ${leg.leg_number || '?'} of ${COURSE_LEG_COUNT}</span>
+            <span class="comp-snap-status">${escapeHTML(leg.status || 'unknown')}</span>
+          </span>
+        </div>`
+      : `<div class="comp-snap-row">
+          <span class="comp-snap-label">Active leg</span>
+          <span class="comp-snap-val"><span class="comp-snap-empty">No active leg yet — open Frame Workshop and save a card to start one.</span></span>
+        </div>`;
+
+    const courseRow = course
+      ? `<div class="comp-snap-row">
+          <span class="comp-snap-label">Course</span>
+          <span class="comp-snap-val">
+            <span class="comp-snap-id">${escapeHTML(course.id)}</span>
+            <span>${escapeHTML(course.theme || '(no theme yet)')}</span>
+          </span>
+        </div>`
+      : '';
+
+    // Recent comprehend entries: last 3, newest first. Each row
+    // expandable (drilldown polish from Move 2e fold-in v0.2).
+    const entries = (leg && Array.isArray(leg.comprehend))
+      ? leg.comprehend.slice(-3).reverse()
+      : [];
+    const recentRow = leg
+      ? `<div class="comp-snap-row">
+          <span class="comp-snap-label">Last 3 acts</span>
+          <span class="comp-snap-val">${
+            entries.length === 0
+              ? '<span class="comp-snap-empty">No comprehend activity on this leg yet.</span>'
+              : `<ul class="comp-snap-recent">${entries.map((e, i) => {
+                  const p = comprehendEntryParts(e);
+                  return `<li class="cc-${p.kind}" data-idx="${i}" role="button" tabindex="0">
+                    <span class="comp-snap-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span>
+                    <span class="cc-kind cc-kind-${p.kind}">${escapeHTML(p.label)}</span>
+                    ${p.bodyHTML}
+                    <div class="comp-snap-body">${p.bodyHTML}</div>
+                  </li>`;
+                }).join('')}</ul>`
+          }</span>
+        </div>`
+      : '';
+
+    const lastTouchedAt = leg ? (leg.updatedAt || leg.createdAt) : null;
+    const sinceRel = fmtRelativeTime(lastTouchedAt);
+    const sinceRow = sinceRel
+      ? `<div class="comp-snap-row">
+          <span class="comp-snap-label">Last touched</span>
+          <span class="comp-snap-val">${escapeHTML(sinceRel)}</span>
+        </div>`
+      : '';
+
+    // Last Debrief summary if present. Skip the row entirely when no
+    // debrief — per Quenton, "no debrief yet" is noise.
+    const debriefCard = leg ? findDebriefCardForLeg(leg) : null;
+    const debriefRow = debriefCard
+      ? `<div class="comp-snap-row">
+          <span class="comp-snap-label">Last debrief</span>
+          <span class="comp-snap-val">${escapeHTML((debriefCard.caught || '').slice(0, 220) || '(no caught text)')}</span>
+        </div>`
+      : '';
+
+    snapshot.className = 'comp-snapshot' + (collapsed ? ' collapsed' : '');
     snapshot.innerHTML =
-      '<div class="comp-placeholder">' +
-        '<p class="comp-placeholder-title">Comprehend Station</p>' +
-        '<p class="comp-placeholder-sub">Orientation room. The lab\'s "where am I, what just happened" surface.</p>' +
-        '<p class="comp-placeholder-sub">Building across Moves 2a–2e: snapshot · walk studio · iframe walks · walk logging.</p>' +
-      '</div>';
+      `<div class="comp-snapshot-header" data-act="snap-toggle">
+        ▸ Where you are
+        <span class="comp-snap-toggle">▼</span>
+      </div>` +
+      `<div class="comp-snapshot-body">
+        ${legRow}
+        ${courseRow}
+        ${sinceRow}
+        ${recentRow}
+        ${debriefRow}
+      </div>`;
+
+    // Header toggles collapse state.
+    const header = snapshot.querySelector('[data-act="snap-toggle"]');
+    if (header) {
+      header.addEventListener('click', () => {
+        const next = !snapshot.classList.contains('collapsed');
+        setCompSnapCollapsed(next);
+        snapshot.classList.toggle('collapsed', next);
+      });
+    }
+    // Recent-entry drilldown (polish fold).
+    snapshot.querySelectorAll('.comp-snap-recent li').forEach(li => {
+      li.addEventListener('click', () => {
+        li.classList.toggle('expanded');
+      });
+      li.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          li.classList.toggle('expanded');
+        }
+      });
+    });
+
+    // 2c-2e fill in the studio. Empty for now.
     studio.innerHTML = '';
   }
 
