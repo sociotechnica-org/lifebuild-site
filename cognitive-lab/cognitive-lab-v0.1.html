@@ -632,6 +632,82 @@
     font-size: 11px;
     padding: 8px 6px;
   }
+  /* In-hand state (Move 3d): drawer item that's currently being held,
+     ready to snap into a cell. Highlighted with accent border + bg. */
+  .bc-drawer-item.bc-in-hand {
+    background: rgba(226,160,74,0.18);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  /* In-hand cursor on the canvas: empty cells get a subtle "drop me here"
+     pulse; the cursor itself becomes a crosshair. */
+  .bc-canvas.bc-in-hand .bc-cell:not(.bc-cell-occupied) { cursor: crosshair; }
+  .bc-canvas.bc-in-hand .bc-cell:not(.bc-cell-occupied) .bc-cell-bg {
+    fill: rgba(226,160,74,0.05);
+    stroke: rgba(226,160,74,0.30);
+  }
+  .bc-canvas.bc-in-hand .bc-cell:not(.bc-cell-occupied):hover .bc-cell-bg {
+    fill: rgba(226,160,74,0.20);
+    stroke: var(--accent);
+    stroke-width: 1.6;
+  }
+  /* Placed piece — small filled hex inside the cell. Color = area accent.
+     Shows the LAB-### number as a label so the user can read what's where
+     without hovering. */
+  .bc-placed-hex {
+    stroke: rgba(0,0,0,0.45);
+    stroke-width: 1;
+    cursor: pointer;
+    transition: filter 120ms ease;
+  }
+  .bc-cell:hover .bc-placed-hex { filter: brightness(1.15); }
+  .bc-placed-label {
+    font-family: var(--font-px);
+    font-size: 8px;
+    font-weight: bold;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+  }
+  /* Action chip — floats next to a clicked occupied cell. Two actions
+     today: Pick up (returns piece to hand for re-placement) and Remove
+     (returns piece to drawer). */
+  .bc-canvas-wrap { position: relative; }
+  .bc-action-chip {
+    position: absolute;
+    z-index: 20;
+    background: rgba(0,0,0,0.94);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    padding: 4px;
+    display: flex;
+    gap: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    font-family: var(--font-px);
+    font-size: 10px;
+  }
+  .bc-action-chip button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--fg);
+    padding: 4px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: 0.5px;
+  }
+  .bc-action-chip button:hover {
+    background: rgba(226,160,74,0.18);
+    border-color: var(--accent);
+  }
+  .bc-action-chip button.danger:hover {
+    background: rgba(194,84,80,0.22);
+    border-color: #c25450;
+    color: #ffb0a8;
+  }
   /* By-function lens (restored from v0.2): clustered biome regions. */
   .hex-region-bg {
     fill-opacity: 0.06;
@@ -5849,6 +5925,10 @@
       bail_conditions: '',
       legs: [],                // shape defined by Leg wrapper (step 1)
       status: 'planning',      // planning · in-progress · debriefed · archived
+      // Build canvas placements (Move 3d): { item_id → {row, col} }.
+      // Position the user has snapped each item to on the snap-circuit
+      // grid. Legacy courses without this field default to {} on read.
+      build_positions: {},
       createdAt: now,
       updatedAt: now
     };
@@ -8805,8 +8885,8 @@
 
   /* Build lens (Moves 3b → 3e).
      3b ships the empty snap-circuit grid (rows A–G × cols 1–10 = 70
-     cells). Cells are clickable but inert until the tool drawer (3c)
-     and click-to-place mechanic (3d) land. */
+     cells). 3c adds the tool drawer. 3d wires click-to-place +
+     persistence + the placed-piece render + action chip. */
   const BC_ROWS    = 7;
   const BC_COLS    = 10;
   const BC_CELL    = 52;       // pixel size of each grid cell
@@ -8816,7 +8896,42 @@
     // "A1", "B7", etc — snap-circuit board convention.
     return BC_ROW_LETTERS[row] + (col + 1);
   }
+  // Move 3d module-level state. Persisted state lives on course.build_positions.
+  let bcInHand = null;        // string item_id when an item is "in hand", else null
+  let bcActionItemId = null;  // item_id whose action chip is currently open
+
+  function getBuildPositions(course) {
+    return (course && course.build_positions) || {};
+  }
+  function findItemAtCell(positions, row, col) {
+    // Returns item_id at (row,col) or null. O(n) over placements; fine
+    // at our scale (≤ 70 placements max).
+    for (const id in positions) {
+      const p = positions[id];
+      if (p && p.row === row && p.col === col) return id;
+    }
+    return null;
+  }
+  function setBuildPosition(itemId, row, col) {
+    const c = getOrInitCourseDraft();
+    c.build_positions = c.build_positions || {};
+    c.build_positions[itemId] = { row, col };
+    upsertCourse(c);
+  }
+  function clearBuildPosition(itemId) {
+    const c = getOrInitCourseDraft();
+    if (c.build_positions && itemId in c.build_positions) {
+      delete c.build_positions[itemId];
+      upsertCourse(c);
+    }
+  }
   function renderCourseLensBuild(slot, items /*, frontierSet, workingSet */) {
+    const course = getOrInitCourseDraft();
+    const positions = getBuildPositions(course);
+    // Build a quick lookup table: items by id (used for placed-piece render).
+    const itemsById = new Map();
+    (items || []).forEach(it => itemsById.set(it.id, it));
+
     const w = BC_LABEL_PAD * 2 + BC_COLS * BC_CELL;
     const h = BC_LABEL_PAD + BC_ROWS * BC_CELL + 8;
 
@@ -8837,8 +8952,8 @@
     }
 
     // Grid cells, wrapped in role="row" groups so the ARIA grid pattern
-    // is complete (grid > row > gridcell). Without row wrappers, JAWS/NVDA
-    // can't construct the grid coordinate system for arrow-key navigation.
+    // is complete (grid > row > gridcell). Cells with placements render
+    // a small filled hex inside (color = area accent) + the LAB-### label.
     const cells = [];
     for (let r = 0; r < BC_ROWS; r++) {
       cells.push(`<g role="row" aria-label="Row ${BC_ROW_LETTERS[r]}">`);
@@ -8846,19 +8961,38 @@
         const x = BC_LABEL_PAD + c * BC_CELL;
         const y = BC_LABEL_PAD + r * BC_CELL;
         const cellId = bcCellId(r, c);
-        cells.push(`<g class="bc-cell" data-row="${r}" data-col="${c}" data-cell="${cellId}" role="gridcell" aria-label="cell ${cellId}, empty">
-          <rect class="bc-cell-bg" x="${x}" y="${y}" width="${BC_CELL}" height="${BC_CELL}" rx="3" ry="3"/>
-          <circle class="bc-cell-snap" cx="${x + BC_CELL / 2}" cy="${y + BC_CELL / 2}" r="3"/>
-        </g>`);
+        const occupiedId = findItemAtCell(positions, r, c);
+        const occupiedItem = occupiedId ? itemsById.get(occupiedId) : null;
+        const isOccupied = !!occupiedItem;
+        const cellClasses = ['bc-cell'];
+        if (isOccupied) cellClasses.push('bc-cell-occupied');
+        const ariaLabel = isOccupied
+          ? `cell ${cellId}: ${(occupiedItem.areaName || '')}: ${(occupiedItem.title || '')}`
+          : `cell ${cellId}, empty`;
+        let inner = `<rect class="bc-cell-bg" x="${x}" y="${y}" width="${BC_CELL}" height="${BC_CELL}" rx="3" ry="3"/>`;
+        if (!isOccupied) {
+          inner += `<circle class="bc-cell-snap" cx="${x + BC_CELL / 2}" cy="${y + BC_CELL / 2}" r="3"/>`;
+        } else {
+          // Render the placed piece inside the cell.
+          const accent = (AREA_VISUALS[occupiedItem.areaId] && AREA_VISUALS[occupiedItem.areaId].accent) || 'dark';
+          const fill = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
+          const cx = x + BC_CELL / 2;
+          const cy = y + BC_CELL / 2;
+          const hexSide = BC_CELL * 0.36;
+          const points = hexPolygonPoints(cx, cy, hexSide);
+          const numShort = (occupiedId || '').replace(/^LAB-/, '');
+          inner += `<polygon class="bc-placed-hex" data-item="${escapeHTML(occupiedId)}" points="${points}" fill="${fill}"/>`;
+          inner += `<text class="bc-placed-label" x="${cx.toFixed(2)}" y="${cy.toFixed(2)}">${escapeHTML(numShort)}</text>`;
+        }
+        cells.push(`<g class="${cellClasses.join(' ')}" data-row="${r}" data-col="${c}" data-cell="${cellId}" role="gridcell" aria-label="${escapeHTML(ariaLabel)}">${inner}</g>`);
       }
       cells.push(`</g>`);
     }
 
     // ── Drawer: items grouped by area (biome) ──
-    // Move 3c renders all items as not-yet-placed; Move 3d wires
-    // course.build_positions and filters the drawer by what's still
-    // un-placed.
-    const placedSet = new Set(); // populated by Move 3d
+    // Move 3d filters by course.build_positions — items already placed
+    // don't appear in the drawer.
+    const placedSet = new Set(Object.keys(positions));
     const drawerItems = (items || []).filter(it => !placedSet.has(it.id));
     const byArea = new Map();
     drawerItems.forEach(it => {
@@ -8907,11 +9041,15 @@
           </div>`;
         }).join('');
 
+    const placedCount = Object.keys(positions).length;
+    const inHandHint = bcInHand
+      ? `<strong>${escapeHTML((itemsById.get(bcInHand) && itemsById.get(bcInHand).title) || bcInHand)}</strong> in hand — click an empty cell to snap it. Click the same item in the drawer to drop it.`
+      : `Click an item in the drawer to take it in hand, then click a cell to place it. Click a placed piece for actions (pick up · remove).`;
     slot.innerHTML = `
-      <p class="course-hexmap-sub">Build · empty canvas + tool drawer. Click a cell or item to confirm interaction (real click-to-place lands in Move 3d).</p>
+      <p class="course-hexmap-sub">Build · ${placedCount} placed · ${drawerItems.length} in drawer. ${inHandHint}</p>
       <div class="bc-build-layout">
         <div class="bc-canvas-wrap">
-          <svg class="bc-canvas" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" role="grid" aria-label="Build canvas: ${BC_ROWS}×${BC_COLS} grid, currently empty.">
+          <svg class="bc-canvas${bcInHand ? ' bc-in-hand' : ''}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" role="grid" aria-label="Build canvas: ${BC_ROWS}×${BC_COLS} grid, ${placedCount} placed.">
             ${colLabels.join('')}
             ${rowLabels.join('')}
             ${cells.join('')}
@@ -8919,47 +9057,145 @@
         </div>
         <div class="bc-drawer" aria-label="Item drawer">
           <p class="bc-drawer-title">Tool drawer · ${drawerItems.length} items</p>
-          <p class="bc-drawer-sub">Pieces grouped by area. Click an item to take it in hand (Move 3d wires placement).</p>
+          <p class="bc-drawer-sub">Pieces grouped by area. Click to take in hand; click again to drop. With one in hand, click a cell to snap it.</p>
           ${drawerInner}
         </div>
       </div>
-      <p class="bc-canvas-hint">Coming in 3d–3e: <strong>click-to-place</strong> · <strong>template apply</strong> (frontier as starting position).</p>
+      <p class="bc-canvas-hint">Coming in 3e: <strong>template apply</strong> (frontier as starting position).</p>
     `;
 
-    // Inert click handlers — acknowledge interactions until 3d wires the
-    // real placement mechanic.
+    // Re-apply in-hand visual on the drawer item (rendered after the
+    // drawerInner string was built, so we toggle the class imperatively).
+    if (bcInHand) {
+      const handBtn = slot.querySelector(`.bc-drawer-item[data-item="${bcInHand.replace(/"/g, '\\"')}"]`);
+      if (handBtn) handBtn.classList.add('bc-in-hand');
+    }
+
+    // ── Canvas click handler: place / show action chip ──
     const svg = slot.querySelector('svg.bc-canvas');
     if (svg) {
       svg.addEventListener('click', (e) => {
         const cell = e.target && e.target.closest ? e.target.closest('.bc-cell') : null;
         if (!cell) return;
-        const bg = cell.querySelector('.bc-cell-bg');
-        if (!bg) return;
-        bg.style.transition = 'none';
-        bg.style.fill   = 'rgba(226,160,74,0.22)';
-        bg.style.stroke = 'var(--accent)';
-        setTimeout(() => {
-          bg.style.transition = '';
-          bg.style.fill   = '';
-          bg.style.stroke = '';
-        }, 180);
+        const row = parseInt(cell.dataset.row, 10);
+        const col = parseInt(cell.dataset.col, 10);
+        const occupiedId = findItemAtCell(positions, row, col);
+        if (occupiedId) {
+          if (bcInHand && bcInHand !== occupiedId) {
+            // Swap: in-hand piece takes this cell; the displaced piece
+            // pops back to the drawer (no swap-place; a separate Move
+            // affordance can come in v0.5).
+            clearBuildPosition(occupiedId);
+            setBuildPosition(bcInHand, row, col);
+            bcInHand = null;
+            bcActionItemId = null;
+            renderCourseHexMap();
+            return;
+          }
+          // Open the action chip on this cell.
+          openBuildActionChip(slot, cell, occupiedId);
+          return;
+        }
+        // Empty cell.
+        if (!bcInHand) {
+          // Visual ping (no in-hand item; nothing to place).
+          const bg = cell.querySelector('.bc-cell-bg');
+          if (bg) {
+            bg.style.transition = 'none';
+            bg.style.fill   = 'rgba(226,160,74,0.22)';
+            bg.style.stroke = 'var(--accent)';
+            setTimeout(() => {
+              bg.style.transition = '';
+              bg.style.fill   = '';
+              bg.style.stroke = '';
+            }, 180);
+          }
+          return;
+        }
+        // Place the in-hand item.
+        setBuildPosition(bcInHand, row, col);
+        bcInHand = null;
+        bcActionItemId = null;
+        renderCourseHexMap();
       });
     }
+    // ── Drawer click handler: take / drop in hand ──
     const drawer = slot.querySelector('.bc-drawer');
     if (drawer) {
       drawer.addEventListener('click', (e) => {
         const btn = e.target && e.target.closest ? e.target.closest('.bc-drawer-item') : null;
         if (!btn) return;
-        // Visual ack: brief border pulse on the clicked item.
-        btn.style.transition = 'none';
-        btn.style.borderColor = 'var(--accent)';
-        btn.style.background  = 'rgba(226,160,74,0.18)';
-        setTimeout(() => {
-          btn.style.transition  = '';
-          btn.style.borderColor = '';
-          btn.style.background  = '';
-        }, 180);
+        const id = btn.dataset.item;
+        if (!id) return;
+        bcInHand = (bcInHand === id) ? null : id;
+        bcActionItemId = null;
+        renderCourseHexMap();
       });
+    }
+    // ── Outside-click closes the action chip ──
+    if (bcActionItemId) {
+      // Wait one tick so the chip-opening click doesn't immediately close it.
+      setTimeout(() => {
+        const closer = (e) => {
+          const chip = document.querySelector('.bc-action-chip');
+          if (chip && chip.contains(e.target)) return;
+          bcActionItemId = null;
+          document.removeEventListener('click', closer);
+          renderCourseHexMap();
+        };
+        document.addEventListener('click', closer);
+      }, 0);
+    }
+  }
+
+  /* Build canvas action chip — shown when a placed piece is clicked
+     (without an in-hand swap). Two actions today: Pick up (returns the
+     piece to hand, ready for re-placement) and Remove (returns the
+     piece to the drawer). Move (drag-relocation) is deferred to v0.5+
+     per Quenton; today's Pick-up + place achieves the same outcome in
+     two clicks. */
+  function openBuildActionChip(slot, cellEl, itemId) {
+    bcActionItemId = itemId;
+    // Position the chip relative to the canvas-wrap (which is
+    // position:relative). Use the cell's bounding rect, translated into
+    // wrap-local coords.
+    const wrap = slot.querySelector('.bc-canvas-wrap');
+    if (!wrap) return;
+    // Remove any pre-existing chip first.
+    const existing = wrap.querySelector('.bc-action-chip');
+    if (existing) existing.remove();
+    const cellRect = cellEl.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const left = cellRect.right - wrapRect.left + 4;
+    const top  = cellRect.top   - wrapRect.top;
+    const chip = document.createElement('div');
+    chip.className = 'bc-action-chip';
+    chip.style.left = left + 'px';
+    chip.style.top  = top  + 'px';
+    chip.innerHTML = `
+      <button data-act="pickup" type="button">⇪ Pick up</button>
+      <button data-act="remove" type="button" class="danger">↩ Remove</button>
+      <button data-act="cancel" type="button">×</button>
+    `;
+    chip.addEventListener('click', (e) => {
+      const btn = e.target && e.target.closest ? e.target.closest('button[data-act]') : null;
+      if (!btn) return;
+      const act = btn.dataset.act;
+      if (act === 'pickup') {
+        clearBuildPosition(itemId);
+        bcInHand = itemId;
+      } else if (act === 'remove') {
+        clearBuildPosition(itemId);
+        bcInHand = null;
+      } // 'cancel' just closes
+      bcActionItemId = null;
+      renderCourseHexMap();
+    });
+    wrap.appendChild(chip);
+    // Constrain chip horizontally if it would overflow the wrap.
+    const chipRect = chip.getBoundingClientRect();
+    if (chipRect.right > wrapRect.right - 4) {
+      chip.style.left = (cellRect.left - wrapRect.left - chipRect.width - 4) + 'px';
     }
   }
 
