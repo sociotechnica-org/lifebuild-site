@@ -368,37 +368,33 @@
     height: auto;
     display: block;
   }
-  /* ── Hex Map v0.2 (Phase 1: biome regions + 4-channel encoding) ──
-     Channels (per Quenton design dialog):
-       Hue        → biome (area accent) — stable identity
-       Luminosity → relevance to current course (4-state ramp)
-       Stroke     → priority (2px ring on P0, 1px on others)
-       Motion     → attention call-out (single pulse on select; ambient
-                    breath on the active leg's working set)
-     Drops the v0.1 fill-vs-outline + teal frontier ring + purple
-     "both" ring — luminosity now carries the frontier signal cleanly,
-     and P0's red ring stacks on any luminosity without fighting. */
+  /* ── Hex Map v0.3 (concentric rings + map-legend palette) ──
+     Per the author's "make a real map" direction:
+       - Layout: concentric rings. P0 anchors the center (the must-have
+         course for this week). P1 expands outward. P2 outermost.
+         Ring position carries priority (was: red P0 stroke).
+       - Hue: area = biome = map-legend color. Color-blind-safe palette
+         (Okabe-Ito 8). Legend below the map maps area → color.
+       - Luminosity: relevance to current course (4-state, unchanged).
+       - Motion: pulse on click + ambient breath on active leg's
+         working set (unchanged).
+     Drops from v0.2: red P0 stroke (spatial position carries it now),
+     biome region backgrounds (rings replace clustering), per-hex
+     LAB-### labels (genus:species hover tooltip is the reveal). */
   .hex-cell {
-    stroke: #2a2a35;
+    stroke: rgba(255,255,255,0.18);
     stroke-width: 1;
     transition: opacity 200ms ease;
+    cursor: default;
   }
-  .hex-cell:hover { stroke: var(--accent); stroke-width: 1.5; cursor: default; }
-  /* P0 = priority ring. Second-channeled with stroke-width: 2 (vs 1 for
-     non-P0) so the cue survives any color-vision profile. */
-  .hex-cell.p0 {
-    stroke: #c25450;
-    stroke-width: 2;
-    filter: drop-shadow(0 0 3px rgba(194,84,80,0.55));
-  }
+  .hex-cell:hover { stroke: var(--accent); stroke-width: 2; }
   /* Active = item is in the active leg's Frame card. Saturation boost +
      subtle glow so the working set pops without the ambient breath
      having to start before the user has even glanced at it. */
   .hex-cell.active {
-    filter: saturate(1.1) drop-shadow(0 0 4px rgba(255,255,255,0.18));
-  }
-  .hex-cell.active.p0 {
-    filter: saturate(1.1) drop-shadow(0 0 4px rgba(194,84,80,0.6));
+    stroke: rgba(255,255,255,0.55);
+    stroke-width: 2;
+    filter: saturate(1.15) drop-shadow(0 0 4px rgba(255,255,255,0.22));
   }
   /* Pulse-on-select: single bump, fades. Acknowledgment, not ambience. */
   @keyframes hex-pulse-once {
@@ -434,43 +430,28 @@
   @media (prefers-reduced-motion: reduce) {
     .hex-cell.breathing { animation: none; }
   }
-  .hex-label {
-    font-family: var(--font-px);
-    font-size: 7px;
-    fill: #fff;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    pointer-events: none;
-    opacity: 0.85;
+  /* Ring bands — faint concentric circles behind the hex spiral. Help the
+     eye see the priority structure (P0 ring, P1 ring, P2 ring) without
+     drawing strong borders that compete with the hexes. */
+  .hex-ring-band {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
   }
-  /* Biome region — labeled cluster wrapping each area's hexes. The
-     translucent background tints the cluster with the biome's hue. */
-  .hex-region-bg {
-    rx: 8;
-    ry: 8;
-    stroke-width: 1;
-    fill-opacity: 0.06;
-    stroke-opacity: 0.45;
-  }
-  .hex-region-label {
+  .hex-ring-label {
     font-family: var(--font-px);
     font-size: 9.5px;
     font-weight: bold;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    fill: var(--accent-dim);
-    dominant-baseline: hanging;
+    letter-spacing: 2px;
+    fill: rgba(255,255,255,0.32);
+    text-anchor: middle;
     pointer-events: none;
   }
-  .hex-region-count {
-    font-family: var(--font-px);
-    font-size: 9px;
-    fill: #6f7a90;
-    dominant-baseline: hanging;
-    pointer-events: none;
-  }
-  /* Legend now shows the encoding channels rather than swatches per
-     biome — the regions themselves carry the biome legend. */
+  /* Map legend (v0.3): area name → color swatch. Replaces the v0.2
+     channel-state legend; the ring bands carry the priority signal,
+     so the legend's job is just genus identification (which biome is
+     which color). */
   .course-hexmap-legend {
     display: flex;
     flex-wrap: wrap;
@@ -482,23 +463,42 @@
     font-size: 10px;
     color: var(--accent-dim);
   }
-  .course-hexmap-legend .lg-item { display: inline-flex; align-items: center; gap: 5px; }
+  .course-hexmap-legend .lg-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--fg);
+  }
   .course-hexmap-legend .lg-swatch {
     display: inline-block;
     width: 14px;
     height: 12px;
     border-radius: 2px;
+  }
+  /* v0.3: a small secondary legend strip explaining the luminosity
+     ramp. Smaller + dimmer than the area legend so the area-legend
+     reads as the primary "key." */
+  .course-hexmap-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 6px;
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    color: var(--accent-dim);
+  }
+  .course-hexmap-key .lg-item { display: inline-flex; align-items: center; gap: 4px; }
+  .course-hexmap-key .lg-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 10px;
+    border-radius: 2px;
     background: #5e6f8a;
   }
-  .course-hexmap-legend .lg-swatch.dim   { opacity: 0.18; }
-  .course-hexmap-legend .lg-swatch.avail { opacity: 0.50; }
-  .course-hexmap-legend .lg-swatch.front { opacity: 1.0; }
-  .course-hexmap-legend .lg-swatch.act   { opacity: 1.0; box-shadow: 0 0 4px rgba(255,255,255,0.4); }
-  .course-hexmap-legend .lg-ring {
-    display: inline-block;
-    width: 12px; height: 12px; border-radius: 50%;
-    border: 2px solid;
-  }
+  .course-hexmap-key .lg-swatch.dim   { opacity: 0.18; }
+  .course-hexmap-key .lg-swatch.avail { opacity: 0.50; }
+  .course-hexmap-key .lg-swatch.front { opacity: 1.0; }
+  .course-hexmap-key .lg-swatch.act   { opacity: 1.0; box-shadow: 0 0 4px rgba(255,255,255,0.5); }
 
   /* ── Leg view: Snap Circuit board (Phase 5) ──
      Five vertically-stacked component cards (Frame, Comprehend, Sync,
@@ -8318,21 +8318,27 @@
     panel.innerHTML = html;
   }
 
-  /* ── Hex Map v0.2 (Course view) ──
-     Biome regions (cluster per area, labeled, translucent biome-colored
-     background) + 4-channel encoding (hue=biome, luminosity=relevance,
-     stroke=priority, motion=attention). Per Quenton's design dialog. */
+  /* ── Hex Map v0.3 (Course view) ──
+     Concentric rings carry priority (P0 center → P1 mid → P2 outer).
+     Color carries biome (area). Luminosity carries relevance. Motion
+     carries attention. Hover reveals genus:species ("Frame Workshop:
+     chapter draft"). Per the author's "make a real map" direction.
+
+     Color palette: Okabe-Ito 8-color qualitative scheme. Designed to
+     be distinguishable to all common color-vision profiles (protan-,
+     deutan-, tritanopia). Each accent in the lab data maps to one
+     Okabe-Ito hue; legend below the map shows the binding. */
   const HEX_ACCENT_FILL = {
-    blue:   '#4a7bd4',
-    amber:  '#d4a030',
-    green:  '#4a8a5a',
-    orange: '#e2a04a',
-    teal:   '#2d8a7e',
-    tan:    '#8a7a5a',
-    warm:   '#a88a5a',
-    dark:   '#555555',
-    red:    '#c25450',
-    purple: '#9a6fc2'
+    blue:   '#0072B2',  // Okabe-Ito blue
+    amber:  '#E69F00',  // Okabe-Ito orange (warm yellow)
+    green:  '#009E73',  // Okabe-Ito bluish green
+    orange: '#D55E00',  // Okabe-Ito vermillion
+    teal:   '#56B4E9',  // Okabe-Ito sky blue
+    tan:    '#CC79A7',  // Okabe-Ito reddish purple
+    warm:   '#F0E442',  // Okabe-Ito yellow
+    dark:   '#888888',  // neutral gray (Okabe-Ito uses black; lighter for our dark bg)
+    red:    '#D55E00',  // collapse to vermillion
+    purple: '#CC79A7'   // collapse to reddish purple
   };
   // Phase 1 (v0.2) luminosity ramp. Four states designed against ~3:1
   // contrast steps (perceptually distinct without being shouty).
@@ -8375,6 +8381,42 @@
     return set;
   }
 
+  /* Concentric hex spiral generator (axial coordinates).
+     Yields {q, r, ring} for each hex starting at center (ring 0) and
+     spiraling outward. Used to assign items to ring positions in the
+     v0.3 layout: P0 fills inner positions first, P1 next, P2 last.
+     Algorithm cribbed from Red Blob Games' canonical hex-grid reference.
+     6 axial directions in a stable spiral order: */
+  const HEX_DIRS = [
+    { q:  1, r:  0 }, // 0: E
+    { q:  1, r: -1 }, // 1: NE
+    { q:  0, r: -1 }, // 2: NW
+    { q: -1, r:  0 }, // 3: W
+    { q: -1, r:  1 }, // 4: SW
+    { q:  0, r:  1 }  // 5: SE
+  ];
+  function* hexSpiral(maxRing) {
+    yield { q: 0, r: 0, ring: 0 };
+    for (let ring = 1; ring <= maxRing; ring++) {
+      // Start at the SW corner: `ring` steps in direction 4 from center.
+      let q = HEX_DIRS[4].q * ring;
+      let r = HEX_DIRS[4].r * ring;
+      for (let side = 0; side < 6; side++) {
+        for (let step = 0; step < ring; step++) {
+          yield { q, r, ring };
+          q += HEX_DIRS[side].q;
+          r += HEX_DIRS[side].r;
+        }
+      }
+    }
+  }
+  // Flat-top axial → pixel center.
+  function hexAxialToPixel(q, r, S) {
+    const x = S * (1.5 * q);
+    const y = S * (Math.sqrt(3) * (r + q / 2));
+    return { x, y };
+  }
+
   function renderCourseHexMap() {
     const wrap = document.getElementById('course-hexmap');
     if (!wrap) return;
@@ -8387,158 +8429,175 @@
       return;
     }
 
-    // ── Group items into biome regions (one cluster per area) ──
-    const byArea = new Map();
-    items.forEach(it => {
-      const aId = it.areaId || '__orphan';
-      if (!byArea.has(aId)) byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
-      byArea.get(aId).items.push(it);
-    });
-    // Sort items within each region: P0 first (so the eye lands on
-    // the most-urgent biome resident), then by status rank, then by id.
-    byArea.forEach(r => {
-      r.items.sort((a, b) => {
-        const pa = priorityRank(a.priority) - priorityRank(b.priority);
-        if (pa !== 0) return pa;
-        const sa = statusRank(a.status) - statusRank(b.status);
-        if (sa !== 0) return sa;
-        return (a.id || '').localeCompare(b.id || '');
-      });
-    });
-    // Sort regions: biggest first (so the layout has a stable feel
-    // — the dominant biomes anchor the top-left corner).
-    const regions = Array.from(byArea.values()).sort((a, b) => {
-      if (b.items.length !== a.items.length) return b.items.length - a.items.length;
-      return (a.areaName || '').localeCompare(b.areaName || '');
+    // ── Sort items into priority tiers, then by area within each tier ──
+    // Within a tier, same-area items pack adjacently in the spiral.
+    // Within an area+tier, status-rank (in-progress first) so the most-
+    // active items land closer to the center of their tier band.
+    const tierOrder = { P0: 0, P1: 1, P2: 2 };
+    const sorted = items.slice().sort((a, b) => {
+      const ta = tierOrder[a.priority] !== undefined ? tierOrder[a.priority] : 3;
+      const tb = tierOrder[b.priority] !== undefined ? tierOrder[b.priority] : 3;
+      if (ta !== tb) return ta - tb;
+      // Within tier: cluster by area.
+      const ax = (a.areaName || '').localeCompare(b.areaName || '');
+      if (ax !== 0) return ax;
+      const sa = statusRank(a.status) - statusRank(b.status);
+      if (sa !== 0) return sa;
+      return (a.id || '').localeCompare(b.id || '');
     });
 
-    // ── Hex + cluster geometry ──
-    const S = 22;                       // hex side length (smaller than v0.1; clusters get denser)
-    const STEP_X = 1.5 * S;             // 33
-    const STEP_Y = Math.sqrt(3) * S;    // ~38
-    const OFFSET_Y = STEP_Y / 2;        // ~19 (odd-col offset)
-    const HEX_PAD = 8;                  // padding inside a region around the hex grid
-    const LABEL_H = 14;                 // height reserved above hexes for the region label
-    const REGION_GAP = 14;              // gap between regions (both axes)
-    const CANVAS_W = 740;               // target width (matches .course-hexmap max-width)
-
-    function regionDims(r) {
-      const n = r.items.length;
-      const cols = Math.min(3, n);
-      const rows = Math.ceil(n / cols);
-      const w = HEX_PAD * 2 + 2 * S + (cols - 1) * STEP_X;
-      const oddOffset = cols > 1 ? OFFSET_Y : 0;
-      const h = HEX_PAD * 2 + LABEL_H + STEP_Y + (rows - 1) * STEP_Y + oddOffset;
-      return { cols, rows, w, h };
+    // ── Compute the per-tier ring boundaries ──
+    // Total cumulative hex positions through ring N = 1 + 3N(N+1).
+    // We need enough rings to fit all items.
+    function ringCapacity(maxRing) {
+      return 1 + 3 * maxRing * (maxRing + 1);
     }
-    // Pre-compute region dimensions so we can pack them.
-    regions.forEach(r => {
-      const d = regionDims(r);
-      r.cols = d.cols;
-      r.rows = d.rows;
-      r.w    = d.w;
-      r.h    = d.h;
+    let needRings = 0;
+    while (ringCapacity(needRings) < items.length) needRings++;
+    // For each tier, find the ring range it occupies.
+    const tierCounts = { P0: 0, P1: 0, P2: 0 };
+    sorted.forEach(it => {
+      const k = it.priority in tierCounts ? it.priority : 'P2';
+      tierCounts[k]++;
     });
+    // Boundary rings: which ring contains the LAST hex of P0, P1, P2.
+    // Computed by walking item count cumulatively against ring capacity.
+    function ringOfPosition(pos) {
+      // Returns the ring number that contains the position-th hex in spiral order.
+      let r = 0;
+      while (ringCapacity(r) <= pos) r++;
+      return r;
+    }
+    const lastP0Pos = tierCounts.P0 - 1;
+    const lastP1Pos = tierCounts.P0 + tierCounts.P1 - 1;
+    const lastP2Pos = tierCounts.P0 + tierCounts.P1 + tierCounts.P2 - 1;
+    const p0LastRing = lastP0Pos >= 0 ? ringOfPosition(lastP0Pos) : -1;
+    const p1LastRing = lastP1Pos >= 0 ? ringOfPosition(lastP1Pos) : p0LastRing;
+    const p2LastRing = lastP2Pos >= 0 ? ringOfPosition(lastP2Pos) : p1LastRing;
 
-    // ── Pack regions: greedy left-to-right, wrap to next row when overflow ──
-    let cursorX = 0, cursorY = 0, rowMaxH = 0, totalH = 0, totalW = 0;
-    regions.forEach(r => {
-      if (cursorX + r.w > CANVAS_W && cursorX > 0) {
-        // Wrap to next row.
-        cursorX = 0;
-        cursorY += rowMaxH + REGION_GAP;
-        rowMaxH = 0;
+    // ── Hex geometry ──
+    const S = 26;                       // hex side length
+    const STEP_X = 1.5 * S;             // ~39 (flat-top horizontal step)
+    const STEP_Y = Math.sqrt(3) * S;    // ~45 (flat-top vertical step)
+    const PAD = S + 8;                  // canvas edge padding
+    // Canvas radius: ring N reaches ~N * STEP_X horizontally, ~N * STEP_Y vertically.
+    const radiusX = needRings * STEP_X + S;
+    const radiusY = needRings * STEP_Y + S;
+    const CANVAS_W = radiusX * 2 + PAD * 2;
+    const CANVAS_H = radiusY * 2 + PAD * 2;
+    const CENTER_X = CANVAS_W / 2;
+    const CENTER_Y = CANVAS_H / 2;
+
+    // ── Walk the spiral, assigning each item to a hex coordinate ──
+    const positions = [];
+    const gen = hexSpiral(needRings);
+    for (let i = 0; i < items.length; i++) {
+      const next = gen.next().value;
+      if (!next) break;
+      positions.push(next);
+    }
+
+    // ── Render each hex ──
+    const cells = sorted.map((it, i) => {
+      const pos = positions[i];
+      if (!pos) return '';
+      const px = hexAxialToPixel(pos.q, pos.r, S);
+      const cx = CENTER_X + px.x;
+      const cy = CENTER_Y + px.y;
+      const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+      const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
+      const opacity = hexLuminosityFor(it, frontierSet);
+      const isActive = workingSet.has(it.id);
+      const classes = ['hex-cell'];
+      if (isActive) {
+        classes.push('active');
+        // Ambient breath only on the active leg's working set.
+        classes.push('breathing');
       }
-      r.x = cursorX;
-      r.y = cursorY;
-      cursorX += r.w + REGION_GAP;
-      if (r.h > rowMaxH) rowMaxH = r.h;
-      if (cursorY + r.h > totalH) totalH = cursorY + r.h;
-      if (r.x + r.w > totalW) totalW = r.x + r.w;
+      const points = hexPolygonPoints(cx, cy, S);
+      // Genus:species hover format per author's design call.
+      const genus = it.areaName || '(orphan)';
+      const species = it.title || '(no title)';
+      const inFrontier = frontierSet.has(it.id);
+      const stateBits = [];
+      if (isActive)    stateBits.push('in active leg');
+      if (inFrontier)  stateBits.push('in frontier');
+      stateBits.push(it.priority);
+      stateBits.push(it.status);
+      const stateText = stateBits.length > 0 ? ' · ' + stateBits.join(' · ') : '';
+      return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
+        <title>${escapeHTML(genus)}: ${escapeHTML(species)}${stateText}</title>
+      </polygon>`;
     });
-    // Canvas dimensions (a bit of padding on the right + bottom).
-    const CANVAS_H = totalH + REGION_GAP;
-    const CANVAS_W_FINAL = Math.max(totalW + REGION_GAP, CANVAS_W);
 
-    // ── Render each region as an SVG group ──
-    const regionGroups = regions.map(r => {
-      const accent = (AREA_VISUALS[r.areaId] && AREA_VISUALS[r.areaId].accent) || 'dark';
-      const tint = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
+    // ── Ring-band guides (faint dashed circles + ring labels) ──
+    // Drawn behind the hexes so they don't compete. Only drawn for tier
+    // boundaries (P0 outer edge, P1 outer edge), not every ring.
+    const bandRadius = (ringNum) => ringNum * STEP_X + S * 0.5;
+    const bands = [];
+    if (p0LastRing >= 0 && tierCounts.P0 > 0) {
+      const r0 = bandRadius(p0LastRing);
+      bands.push(`<circle class="hex-ring-band" cx="${CENTER_X}" cy="${CENTER_Y}" r="${r0.toFixed(2)}" />`);
+      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r0 - 6).toFixed(2)}">P0 · ${tierCounts.P0}</text>`);
+    }
+    if (p1LastRing > p0LastRing && tierCounts.P1 > 0) {
+      const r1 = bandRadius(p1LastRing);
+      bands.push(`<circle class="hex-ring-band" cx="${CENTER_X}" cy="${CENTER_Y}" r="${r1.toFixed(2)}" />`);
+      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r1 - 6).toFixed(2)}">P1 · ${tierCounts.P1}</text>`);
+    }
+    if (p2LastRing > p1LastRing && tierCounts.P2 > 0) {
+      const r2 = bandRadius(p2LastRing);
+      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r2 - 6).toFixed(2)}">P2 · ${tierCounts.P2}</text>`);
+    }
 
-      const hexes = r.items.map((it, i) => {
-        const col = i % r.cols;
-        const row = Math.floor(i / r.cols);
-        // Local cx/cy within the region (region has its own coordinate origin).
-        const cx = HEX_PAD + S + col * STEP_X;
-        const cy = HEX_PAD + LABEL_H + (STEP_Y / 2) + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
-        const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-        const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
-        const opacity = hexLuminosityFor(it, frontierSet);
-        const isActive = workingSet.has(it.id);
-        const classes = ['hex-cell'];
-        if (it.priority === 'P0') classes.push('p0');
-        if (isActive) {
-          classes.push('active');
-          // Ambient breath only on the active leg's working set.
-          classes.push('breathing');
-        }
-        const points = hexPolygonPoints(cx, cy, S);
-        const numShort = (it.id || '').replace(/^LAB-/, '');
-        return `<g>
-          <polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
-            <title>${escapeHTML(it.id)} · ${escapeHTML(it.title)} · ${escapeHTML(it.priority)} · ${escapeHTML(it.status)} · ${escapeHTML(it.areaName)}${isActive ? ' · in active leg' : ''}${frontierSet.has(it.id) ? ' · in frontier' : ''}</title>
-          </polygon>
-          <text class="hex-label" x="${cx.toFixed(2)}" y="${cy.toFixed(2)}">${escapeHTML(numShort)}</text>
-        </g>`;
-      }).join('\n');
-
-      // Region background + label (region-local coordinates 0..r.w, 0..r.h).
-      // rx/ry as SVG presentation attributes serve as a fallback for browsers
-      // that don't support rx/ry as CSS properties (Firefox <122, Safari <17).
-      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" rx="8" ry="8" fill="${tint}" stroke="${tint}" />`;
-      const labelY = HEX_PAD - 2;
-      const label = `<text class="hex-region-label" x="${HEX_PAD}" y="${labelY}">${escapeHTML(r.areaName)}</text>` +
-                    `<text class="hex-region-count" x="${(r.w - HEX_PAD).toFixed(2)}" y="${labelY}" text-anchor="end">${r.items.length}</text>`;
-
-      return `<g transform="translate(${r.x.toFixed(2)},${r.y.toFixed(2)})">
-        ${bg}
-        ${label}
-        ${hexes}
-      </g>`;
-    }).join('\n');
+    // ── Build the area legend (genus → color) ──
+    // Show one chip per unique area present in the lab, sorted by name.
+    const areaSet = new Map();
+    items.forEach(it => {
+      const k = it.areaId || '__orphan';
+      if (!areaSet.has(k)) {
+        const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+        areaSet.set(k, {
+          name: it.areaName || k,
+          color: HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark,
+          count: 0
+        });
+      }
+      areaSet.get(k).count++;
+    });
+    const areasForLegend = Array.from(areaSet.values()).sort((a, b) => a.name.localeCompare(b.name));
+    const legendHTML = areasForLegend.map(a =>
+      `<span class="lg-item"><span class="lg-swatch" style="background:${a.color}"></span>${escapeHTML(a.name)}<span style="color:var(--accent-dim);margin-left:2px;">·${a.count}</span></span>`
+    ).join('');
 
     const inFrontierCount = items.filter(it => frontierSet.has(it.id)).length;
     const activeCount = workingSet.size;
     wrap.innerHTML = `
       <p class="course-hexmap-title">Map · ${items.length} items · ${inFrontierCount} in frontier · ${activeCount} active in current leg</p>
-      <p class="course-hexmap-sub">v0.2: regions = areas (biomes). Brightness = relevance (archived dim → in-frontier bright → active brightest). P0 ring = red. The current leg's working items breathe slowly. Hover for details.</p>
-      <svg viewBox="0 0 ${CANVAS_W_FINAL.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${items.length} items grouped by area (biome). ${inFrontierCount} in this Course's frontier. ${activeCount} in the active leg's working set.">
-        ${regionGroups}
+      <p class="course-hexmap-sub">v0.3: rings = priority (P0 center → P1 → P2). Color = area (see legend). Brightness = relevance (archived dim → in-frontier bright → active brightest). The current leg's working items breathe slowly. Hover any hex for the area + item title.</p>
+      <svg viewBox="0 0 ${CANVAS_W.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${items.length} items in concentric rings (P0 center, P1 mid, P2 outer). Color carries area. ${inFrontierCount} in frontier; ${activeCount} active in current leg.">
+        ${bands.join('\n')}
+        ${cells.join('\n')}
       </svg>
-      <div class="course-hexmap-legend">
-        <span class="lg-item"><span class="lg-swatch dim"></span>archived (terrain)</span>
+      <div class="course-hexmap-legend">${legendHTML}</div>
+      <div class="course-hexmap-key">
+        <span class="lg-item"><span class="lg-swatch dim"></span>archived</span>
         <span class="lg-item"><span class="lg-swatch avail"></span>available</span>
         <span class="lg-item"><span class="lg-swatch front"></span>in frontier</span>
-        <span class="lg-item"><span class="lg-swatch act"></span>active in current leg (breathes)</span>
-        <span class="lg-item"><span class="lg-ring" style="border-color:#c25450"></span>P0</span>
+        <span class="lg-item"><span class="lg-swatch act"></span>active (breathes)</span>
       </div>
     `;
 
-    // Phase 1 motion: single-pulse-on-select. Wired here so the listener
-    // is fresh after each render (innerHTML wipes prior listeners).
+    // Single-pulse-on-select wiring (unchanged from v0.2).
     const svg = wrap.querySelector('svg');
     if (svg) {
       svg.addEventListener('click', (e) => {
         const tgt = e.target;
         if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
-        // Re-trigger the keyframe by removing + re-adding the class.
         tgt.classList.remove('pulse-once');
-        // Force reflow so the animation restarts when the class is re-added.
         void tgt.getBoundingClientRect();
         tgt.classList.add('pulse-once');
       });
-      // Clean up the class once the animation finishes so a future click
-      // can fire it again (and so it doesn't stick on the DOM).
       svg.addEventListener('animationend', (e) => {
         if (e.target && e.target.classList && e.target.classList.contains('pulse-once')) {
           e.target.classList.remove('pulse-once');
