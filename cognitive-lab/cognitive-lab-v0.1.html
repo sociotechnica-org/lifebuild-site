@@ -633,6 +633,44 @@
     font-size: 11px;
     padding: 8px 6px;
   }
+  /* Drawer action buttons (Move 3e): Apply template + Clear board.
+     Live in the drawer header below the title. */
+  .bc-drawer-actions {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .bc-drawer-action {
+    flex: 1;
+    min-width: 92px;
+    background: transparent;
+    color: var(--accent-dim);
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: color 100ms, border-color 100ms, background 100ms;
+  }
+  .bc-drawer-action:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(226,160,74,0.08);
+  }
+  .bc-drawer-action.danger:hover {
+    color: #ffb0a8;
+    border-color: #c25450;
+    background: rgba(194,84,80,0.10);
+  }
+  .bc-drawer-action[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
   /* In-hand state (Move 3d): drawer item that's currently being held,
      ready to snap into a cell. Highlighted with accent border + bg. */
   .bc-drawer-item.bc-in-hand {
@@ -8925,6 +8963,64 @@
       upsertCourse(c);
     }
   }
+  function clearAllBuildPositions() {
+    const c = getOrInitCourseDraft();
+    if (c.build_positions && Object.keys(c.build_positions).length > 0) {
+      c.build_positions = {};
+      upsertCourse(c);
+    }
+  }
+  /* Move 3e template apply: takes the active course's frontier,
+     resolves to actual items, sorts by priority then area, and snaps
+     them into the canvas in row-major order starting at (0,0). Skips
+     items already placed (preserves user's existing layout). Returns
+     the count placed. Per Quenton: starting position, not constraint —
+     every piece is individually editable after via the action chip. */
+  function applyBuildTemplate(items) {
+    const c = getOrInitCourseDraft();
+    const positions = (c.build_positions = c.build_positions || {});
+    const frontier = Array.isArray(c.frontier) ? c.frontier : [];
+    const placedSet = new Set(Object.keys(positions));
+    const itemsById = new Map();
+    (items || []).forEach(it => itemsById.set(it.id, it));
+    // Frontier items in priority+area order. Drops items already placed
+    // and items that don't resolve (frontier id with no matching item).
+    const candidates = frontier
+      .map(id => itemsById.get(id))
+      .filter(it => it && !placedSet.has(it.id))
+      .sort((a, b) => {
+        const pa = priorityRank(a.priority) - priorityRank(b.priority);
+        if (pa !== 0) return pa;
+        const ax = (a.areaName || '').localeCompare(b.areaName || '');
+        if (ax !== 0) return ax;
+        return (a.id || '').localeCompare(b.id || '');
+      });
+    // Find the first empty cell in row-major order; place each candidate
+    // there. If the canvas fills (>= BC_ROWS * BC_COLS placements), stop.
+    const occupiedCells = new Set();
+    Object.values(positions).forEach(p => {
+      if (p && typeof p.row === 'number') occupiedCells.add(p.row + ',' + p.col);
+    });
+    let placedCount = 0;
+    let cursor = 0;
+    for (const it of candidates) {
+      // Walk row-major from `cursor` until we find an empty cell.
+      while (cursor < BC_ROWS * BC_COLS) {
+        const row = Math.floor(cursor / BC_COLS);
+        const col = cursor % BC_COLS;
+        cursor++;
+        if (!occupiedCells.has(row + ',' + col)) {
+          positions[it.id] = { row, col };
+          occupiedCells.add(row + ',' + col);
+          placedCount++;
+          break;
+        }
+      }
+      if (cursor >= BC_ROWS * BC_COLS) break;
+    }
+    if (placedCount > 0) upsertCourse(c);
+    return placedCount;
+  }
   function renderCourseLensBuild(slot, items /*, frontierSet, workingSet */) {
     const course = getOrInitCourseDraft();
     const positions = getBuildPositions(course);
@@ -9058,10 +9154,14 @@
         <div class="bc-drawer" aria-label="Item drawer">
           <p class="bc-drawer-title">Tool drawer · ${drawerItems.length} items</p>
           <p class="bc-drawer-sub">Pieces grouped by area. Click to take in hand; click again to drop. With one in hand, click a cell to snap it.</p>
+          <div class="bc-drawer-actions">
+            <button type="button" class="bc-drawer-action" data-act="apply-template" ${(course.frontier || []).length === 0 ? 'disabled' : ''} title="Snap this Course's frontier items to the board in priority + area order. Skips items already placed.">▦ Apply template</button>
+            <button type="button" class="bc-drawer-action danger" data-act="clear-board" ${placedCount === 0 ? 'disabled' : ''} title="Remove all placements from the board.">✕ Clear board</button>
+          </div>
           ${drawerInner}
         </div>
       </div>
-      <p class="bc-canvas-hint">Coming in 3e: <strong>template apply</strong> (frontier as starting position).</p>
+      <p class="bc-canvas-hint">Apply template = frontier in priority order, snapped row-major. Clear board = remove all placements. Per-piece edits via the action chip on a placed cell.</p>
     `;
 
     // Re-apply in-hand visual on the drawer item (rendered after the
@@ -9119,10 +9219,40 @@
         renderCourseHexMap();
       });
     }
-    // ── Drawer click handler: take / drop in hand ──
+    // ── Drawer click handler: take/drop in hand + template actions ──
     const drawer = slot.querySelector('.bc-drawer');
     if (drawer) {
       drawer.addEventListener('click', (e) => {
+        // Template actions take precedence over item picks (their selectors
+        // don't overlap, but checking the action button first is clearer).
+        const actBtn = e.target && e.target.closest ? e.target.closest('.bc-drawer-action') : null;
+        if (actBtn) {
+          const act = actBtn.dataset.act;
+          if (act === 'apply-template') {
+            const placed = applyBuildTemplate(items);
+            if (placed === 0) {
+              // Either frontier is empty, every frontier item is already
+              // placed, or the canvas is full. The button's disabled state
+              // catches empty-frontier; the others fall through silently.
+              return;
+            }
+            bcInHand = null;
+            bcActionItemId = null;
+            renderCourseHexMap();
+            return;
+          }
+          if (act === 'clear-board') {
+            const placedCountNow = Object.keys(getBuildPositions(getOrInitCourseDraft())).length;
+            if (placedCountNow === 0) return;
+            if (!confirm('Remove all ' + placedCountNow + ' placements from the board?')) return;
+            clearAllBuildPositions();
+            bcInHand = null;
+            bcActionItemId = null;
+            renderCourseHexMap();
+            return;
+          }
+          return;
+        }
         const btn = e.target && e.target.closest ? e.target.closest('.bc-drawer-item') : null;
         if (!btn) return;
         const id = btn.dataset.item;
