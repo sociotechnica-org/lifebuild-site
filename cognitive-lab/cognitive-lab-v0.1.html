@@ -337,6 +337,69 @@
     color: var(--accent-dim);
   }
 
+  /* ── Course hex map (the Map / Course visualization, read-only v0.1) ──
+     Each LAB item is a flat-top hex. Fill = area accent. Opacity = status fog
+     (archived dim, in-progress bright). P0 ring = red glow. Frontier ring =
+     bright accent halo. Spatial layout groups by area; no semantic adjacency. */
+  .course-hexmap {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    padding: 14px 16px;
+    max-width: 760px;
+  }
+  .course-hexmap-title {
+    font-family: var(--font-px);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    margin: 0 0 8px;
+  }
+  .course-hexmap-sub {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: #6f7a90;
+    margin: 0 0 10px;
+  }
+  .course-hexmap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hex-cell { stroke: #2a2a35; stroke-width: 1; transition: opacity 120ms ease; }
+  .hex-cell:hover { stroke: var(--accent); stroke-width: 1.5; cursor: default; }
+  .hex-cell.p0 { stroke: #c25450; stroke-width: 2; filter: drop-shadow(0 0 3px rgba(194,84,80,0.55)); }
+  .hex-cell.in-frontier { stroke: #5cb09a; stroke-width: 2.5; filter: drop-shadow(0 0 4px rgba(92,176,154,0.6)); }
+  .hex-cell.in-frontier.p0 { stroke: #b890d4; filter: drop-shadow(0 0 5px rgba(184,144,212,0.7)); }
+  .hex-label {
+    font-family: var(--font-px);
+    font-size: 7px;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+  .course-hexmap-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--panel-bd);
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+  }
+  .course-hexmap-legend .lg-item { display: inline-flex; align-items: center; gap: 5px; }
+  .course-hexmap-legend .lg-swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .course-hexmap-legend .lg-ring {
+    width: 12px; height: 12px; border-radius: 50%; border: 2px solid;
+    display: inline-block;
+  }
+
   /* ── Lab tile (shared across alt views) ──
      Each tile pulls its area icon + accent color from the floor,
      so an item visually carries the room it lives in. */
@@ -3265,11 +3328,13 @@
 <!-- ── Course view ──
      A Course is a 7-leg arc (one ISO week). Frontier-not-itinerary: the Course
      names what's *reachable* this week; per-leg Frame picks from the frontier.
-     Step 0a: planning form stub (theme / target_outcome / frontier / bail_conditions). -->
+     Step 0a: planning form (theme / target_outcome / frontier / bail_conditions).
+     Step 0b: Hex Map renders the Map; frontier picks highlight on it. -->
 <div id="course-view" class="alt-view">
   <h2 class="alt-heading">Course · 7-leg arc</h2>
   <p class="alt-sub">A week's planned arc. Set the theme, name the target, declare what's reachable, and the bail conditions. Per-leg Frame picks from the frontier.</p>
   <div id="course-body"></div>
+  <div id="course-hexmap" class="course-hexmap"></div>
 </div>
 
 <!-- ── Cmd-K palette ── -->
@@ -6893,6 +6958,7 @@
     `;
     renderCourseFrontierChips();
     if (courseFrontierPanelOpen) renderCourseFrontierPanel();
+    renderCourseHexMap();
   }
 
   function renderCourseFrontierChips() {
@@ -6943,6 +7009,113 @@
     panel.innerHTML = html;
   }
 
+  /* ── Hex Map (Course view, read-only v0.1) ──
+     Renders all Map items as flat-top hexes. Fill = area accent. Opacity = status
+     fog. P0 ring = red glow. Frontier ring = bright accent halo. Spatial layout
+     packs by area (no semantic adjacency yet). */
+  const HEX_ACCENT_FILL = {
+    blue:   '#4a7bd4',
+    amber:  '#d4a030',
+    green:  '#4a8a5a',
+    orange: '#e2a04a',
+    teal:   '#2d8a7e',
+    tan:    '#8a7a5a',
+    warm:   '#a88a5a',
+    dark:   '#555555',
+    red:    '#c25450',
+    purple: '#9a6fc2'
+  };
+  const HEX_STATUS_OPACITY = {
+    'archived':    0.30,
+    'live':        0.55,
+    'backlog':     0.75,
+    'drafted':     0.90,
+    'in-progress': 1.00
+  };
+
+  function hexPolygonPoints(cx, cy, s) {
+    // Flat-top hex centered at (cx, cy) with side length s. Six vertices.
+    const h = (Math.sqrt(3) / 2) * s;
+    return [
+      [cx + s,     cy        ],
+      [cx + s / 2, cy - h    ],
+      [cx - s / 2, cy - h    ],
+      [cx - s,     cy        ],
+      [cx - s / 2, cy + h    ],
+      [cx + s / 2, cy + h    ]
+    ].map(p => p[0].toFixed(2) + ',' + p[1].toFixed(2)).join(' ');
+  }
+
+  function renderCourseHexMap() {
+    const wrap = document.getElementById('course-hexmap');
+    if (!wrap) return;
+    const c = getOrInitCourseDraft();
+    const frontierSet = new Set(c.frontier || []);
+    const items = allItemsArray();
+    if (items.length === 0) {
+      wrap.innerHTML = '<p class="course-hexmap-title">Map</p><p class="course-hexmap-sub">No items in the lab yet.</p>';
+      return;
+    }
+    // Sort items: by area (alphabetic for stable layout), then priority, then id.
+    const sorted = items.slice().sort((a, b) => {
+      const ax = (a.areaName || 'zzz').localeCompare(b.areaName || 'zzz');
+      if (ax !== 0) return ax;
+      const pr = priorityRank(a.priority) - priorityRank(b.priority);
+      if (pr !== 0) return pr;
+      return (a.id || '').localeCompare(b.id || '');
+    });
+
+    // Lay out in a flat-top hex grid. ~8 cols wide. Odd cols offset down.
+    const COLS = 8;
+    const S = 30;                       // hex side length
+    const STEP_X = 1.5 * S;             // horizontal step (col)
+    const STEP_Y = Math.sqrt(3) * S;    // vertical step (row)
+    const OFFSET_Y = STEP_Y / 2;        // odd-col vertical offset
+    const PAD = S + 4;                  // canvas padding
+
+    const cells = sorted.map((it, i) => {
+      const col = i % COLS;
+      const row = Math.floor(i / COLS);
+      const cx = PAD + col * STEP_X;
+      const cy = PAD + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
+      const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+      const fill = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
+      const opacity = HEX_STATUS_OPACITY[it.status] || 0.75;
+      const classes = ['hex-cell'];
+      if (it.priority === 'P0') classes.push('p0');
+      if (frontierSet.has(it.id)) classes.push('in-frontier');
+      const points = hexPolygonPoints(cx, cy, S);
+      const numShort = (it.id || '').replace(/^LAB-/, '');
+      return `<g>
+        <polygon class="${classes.join(' ')}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
+          <title>${escapeHTML(it.id)} · ${escapeHTML(it.title)} · ${escapeHTML(it.priority)} · ${escapeHTML(it.status)} · ${escapeHTML(it.areaName)}</title>
+        </polygon>
+        <text class="hex-label" x="${cx.toFixed(2)}" y="${cy.toFixed(2)}">${escapeHTML(numShort)}</text>
+      </g>`;
+    });
+
+    const lastRow = Math.floor((sorted.length - 1) / COLS);
+    const width  = PAD * 2 + (COLS - 1) * STEP_X + S;
+    const height = PAD * 2 + lastRow * STEP_Y + OFFSET_Y;
+
+    wrap.innerHTML = `
+      <p class="course-hexmap-title">Map · ${sorted.length} items · ${frontierSet.size} in this Course's frontier</p>
+      <p class="course-hexmap-sub">Read-only v0.1. Fill = area accent. Opacity = status (archived dim → in-progress bright). Red glow = P0. Teal glow = in this Course's frontier. Hover for details.</p>
+      <svg viewBox="0 0 ${width.toFixed(2)} ${height.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${sorted.length} items as hexes, with ${frontierSet.size} highlighted as the active Course's frontier">
+        ${cells.join('\n')}
+      </svg>
+      <div class="course-hexmap-legend">
+        <span class="lg-item"><span class="lg-swatch" style="background:#4a7bd4"></span>Frame</span>
+        <span class="lg-item"><span class="lg-swatch" style="background:#d4a030"></span>Pilot Check</span>
+        <span class="lg-item"><span class="lg-swatch" style="background:#a88a5a"></span>Library / Warm</span>
+        <span class="lg-item"><span class="lg-swatch" style="background:#2d8a7e"></span>Teal areas</span>
+        <span class="lg-item"><span class="lg-swatch" style="background:#555"></span>Director's Desk / Dark</span>
+        <span class="lg-item"><span class="lg-ring" style="border-color:#c25450"></span>P0</span>
+        <span class="lg-item"><span class="lg-ring" style="border-color:#5cb09a"></span>In frontier</span>
+      </div>
+    `;
+  }
+
   // Delegated handlers for the Course view (inputs + frontier picker + save).
   document.getElementById('course-view').addEventListener('click', (e) => {
     const tgt = e.target;
@@ -6976,6 +7149,7 @@
       c.frontier = (c.frontier || []).filter(x => x !== id);
       renderCourseFrontierChips();
       if (courseFrontierPanelOpen) renderCourseFrontierPanel();
+      renderCourseHexMap();
       return;
     }
     const toggleRow = tgt.closest('[data-act="frontier-toggle"]');
@@ -6987,6 +7161,7 @@
       c.frontier = Array.from(set);
       renderCourseFrontierChips();
       renderCourseFrontierPanel();
+      renderCourseHexMap();
       return;
     }
   });
