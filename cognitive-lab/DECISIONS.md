@@ -6,6 +6,90 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-04 · Phase 5 click-throughs and Sync form deferred to backlog
+
+**Decision.** Phase 5 of the rogaine-spine arc ships the Snap Circuit Leg view in read-only form. Click-through wiring (zone → form/drawer) and the Sync station form are explicitly deferred.
+
+**Reasoning.** The read-only board delivers the cognitive job (orientation at the leg scale) without requiring fully-built forms for every phase. Wiring click-throughs before all target forms exist would create dead-end interactions. The deferred items are scoped as LAB-037 (click-throughs) and LAB-035 (Sync form) — both P2, both unblocked by the current phase shipping cleanly.
+
+**Status.** Active. LAB-037 and LAB-035 in backlog.
+
+**References.** Commit `11c6cd1` (Phase 5 fixes), `cognitive-lab/cognitive-lab-v0.1.html` (LAB-035, LAB-037).
+
+---
+
+## 2026-05-04 · Course Coach named as future agent role
+
+**Decision.** A future agent role — Course Coach — is named and scoped. It reads the current Course's `legs[]` array like poker hand histories and suggests better moves for the next leg's Frame.
+
+**Reasoning.** Once 4–5 legs have completed Frame and Debrief sub-records, patterns become detectable: consistent over-scoping, frontier items that keep getting skipped, capacity mis-reads recurring on the same day-of-week. A poker-coach framing (reading hand histories, surfacing patterns, suggesting adjustments) is the right shape. Whether it's a sub-agent or top-level agent is a design call for Quenton — deferred until leg-history depth accumulates.
+
+**Status.** Active (spec only). Implementation queued as LAB-034, P2.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (LAB-034, chunk-course-tier-spec).
+
+---
+
+## 2026-05-04 · Bruner / Snap Circuits design language adopted
+
+**Decision.** The lab's design language is explicitly Bruner-grounded: push every representation from symbolic toward iconic and enactive. Hex Map (Course/week scale) and Snap Circuit board (Leg/turn scale) are the first two implementations. All subsequent visual decisions are evaluated against this standard.
+
+**Reasoning.** The lab as built is heavily symbolic — text fields, JSON, written labels. Bruner's three modes (enactive / iconic / symbolic) name the gap. Alan Kay: "constructing a diagram is much less difficult than reading one." WS004 ("Beyond the Symbolic") established the Snap Circuits analogy for AI agent composition — a child snapping components is performing the architecture, not reading about it. The rogaine-spine arc brought that analogy into the lab's own UI: the five-zone circuit board makes the turn structure tactile. Every new view now starts with the question: what is the iconic/enactive equivalent of what we're expressing symbolically?
+
+**Status.** Active. Applies to all future lab UI work.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-bruner-snap-design-language), WS004, commits `c554317` (Hex Map), `21f4cdc` (Snap Circuit board).
+
+---
+
+## 2026-05-04 · Two-tier visualization split (Hex Map for Course/Map, Snap Circuits for Leg)
+
+**Decision.** The lab uses two distinct visualizations that do different cognitive jobs and don't overlap: Hex Map for the Course/week scale; Snap Circuit board for the Leg/turn scale.
+
+**Reasoning.** A single visualization trying to show both week-level terrain and leg-level wiring would either be too dense or too abstract. The split lets each metaphor do its native job cleanly: the Hex Map gives bird's-eye terrain orientation (where is the work, what's in fog, what's glowing P0); the Snap Circuit board gives signal-flow orientation (how does this leg wire together, which zones are live). The two compose — you consult the map to know the week, you consult the circuit to run the leg.
+
+**Status.** Active. Hex Map v0.1 (read-only) and Snap Circuit board v0.1 (read-only) shipped. v0.2 interaction queued as LAB-041 and LAB-037.
+
+**References.** Commits `c554317` (Hex Map), `21f4cdc` (Snap Circuit board), `cognitive-lab/cognitive-lab-v0.1.html` (chunk-hex-map-course-view-v01, chunk-snap-circuit-leg-view).
+
+---
+
+## 2026-05-04 · Frontier-not-itinerary as the Course planning call
+
+**Decision.** A Course names what is *reachable* this week — items on `course.frontier[]` — not which leg hits which item. Per-leg Frame picks from the frontier at turn-start. Debrief feeds back via `changes_to_course`.
+
+**Reasoning.** The itinerary version (leg 1 = items A+B, leg 2 = C+D) violates the rogaine condition: the racer doesn't plan checkpoints in order; they choose dynamically based on terrain and capacity. An itinerary creates guilt debt and stale plans. A frontier creates feedback loops — each leg's Frame is a real-time route decision against current conditions. Quenton's formulation: "The Course names the terrain. The racer picks the route." The design also solves the self-imposed-constraint problem: a well-set frontier is genuinely larger than any seven legs can reach, preserving real selectivity at planning time.
+
+**Status.** Active. Implemented in the Course data model.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-frontier-vs-itinerary, chunk-course-tier-spec, chunk-course-setter-problem-self-set).
+
+---
+
+## 2026-05-04 · "7 leg courses" naming locked to book title
+
+**Decision.** The canonical week-scale unit is a **7 leg course**. One Full Turn = one leg. One ISO week = one Course (7 legs). The naming is locked to the book title *The 7 Turn Work Week*.
+
+**Reasoning.** The three-tier model (Course → Leg → Phase) embeds the book's central claim in the data architecture. "Turn" and "leg" are synonyms at the turn scale — "leg" is the rogaine vocabulary for a segment of a larger course, making the metaphor structurally consistent. The ISO-week Course ID convention (`YYYY-WNN`) is unambiguous and human-readable. Locking the naming to the book title makes every Course in the lab a lived proof point of the book's argument.
+
+**Status.** Active. Locked 2026-05-04.
+
+**References.** `cognitive-lab/cognitive-lab-v0.1.html` (chunk-7-leg-courses-naming), branch `danversfleury/lab-course-tier`.
+
+---
+
+## 2026-05-04 · Course tier added (three-tier data model: Map → Course → Leg)
+
+**Decision.** The lab's data model gains a third tier above the existing phase-level records: Map (the lab itself) → Course (one ISO week, 7-leg arc) → Leg (one Full Turn, wrapping Frame · Comprehend · Sync · Produce · Debrief sub-records).
+
+**Reasoning.** The structural realization: each lab station (Frame, Comprehend, Sync, Produce, Debrief) isn't a separate form/function — there's a **unit of work** flowing through every phase. Danvers brought a deep research brief on rogaining (the Australian orienteering sport) and proposed that knowledge work is best modeled as a turn-based rogaine. A turn = a "leg" (one Full Turn). A week = a "7 leg course" — locked to the book title. The three-tier model resolves a prior architecture mismatch: the Frame card was being treated as a filing artifact (save and archive), when its real job is to *start a leg*. Every later station is a different lens on the same underlying unit of work. The Leg record wraps all five sub-records and stays open until Debrief closes it.
+
+**Status.** Active. Phase 1–5 of the rogaine-spine arc implemented and merged on branch `danversfleury/lab-course-tier` (11 commits beyond main as of 2026-05-04).
+
+**References.** Commits `a377f9b` through `11c6cd1`, `cognitive-lab/cognitive-lab-v0.1.html` (chunk-course-tier-spec, chunk-7-leg-courses-naming, chunk-course-as-spine-station-as-lens).
+
+---
+
 ## 2026-05-02 · Two-role agent split — Quenton (design) / Larry (operations)
 
 **Decision.** Two distinct AI agents for working in the lab, each with its own companion folder following the Zelda/ghostwriter pattern.

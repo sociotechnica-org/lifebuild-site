@@ -4148,7 +4148,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
-      "items": ["LAB-001","LAB-002","LAB-026","LAB-027","LAB-028"],
+      "items": ["LAB-001","LAB-002","LAB-026","LAB-027","LAB-028","LAB-036"],
       "sources": [
         { "label": "frame-research-and-practice.md (the chunk skeleton)", "href": "frame-research-and-practice.md" },
         { "label": "turn-v0.1-phases-and-leverage.md (Frame section)", "href": "turn-v0.1-phases-and-leverage.md" },
@@ -4186,6 +4186,18 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-course-as-spine-station-as-lens",
+          "title": "Course as spine — each station as a different lens",
+          "summary": "Architectural shift: Frame doesn't file a card, it sets the course. Every later station (Comprehend, Sync, Produce, Debrief) is a different lens on the same course.",
+          "body": "The rogaine-spine arc produced a reframe of the lab's architecture. Previously, each station (Frame, Comprehend, Sync, Produce, Debrief) operated as a separate form/function — you filled in the Frame, then moved to Comprehend, etc. The forms were adjacent, not hierarchical.\n\nThe architectural shift: the Frame card is no longer the unit. The **Leg** is the unit, and the Frame card is the planning artifact *inside* the leg. Each station is a lens on the same underlying work unit:\n\n- **Frame** — sets the course for this leg (scope, frontier pick, approach).\n- **Comprehend** — re-immersion lens (what do I need to load before I can produce?).\n- **Sync** — alignment lens (who else needs to be oriented, what's their state?).\n- **Produce** — execution lens (the work itself, measured against the Frame).\n- **Debrief** — retrospective lens (what happened vs. what was framed? what changes for the next leg?).\n\nThe Leg record wraps all five sub-records. The Snap Circuit board (chunk-snap-circuit-leg-view) renders the five zones in one view — the whole turn at a glance, not five separate drawers.\n\nPractical implication: Frame no longer 'files a card.' Frame 'starts a leg.' The leg stays open until Debrief closes it. This is the persistence model that enables the Course Header bar (shows active leg at top of every workshop drawer) and the Course Coach pattern (reads the leg's full arc, not just individual sub-records)."
+        },
+        {
+          "id": "chunk-course-setter-problem-self-set",
+          "title": "Course-setter problem — when the racer sets their own course",
+          "summary": "IRF Rule C2 (most but not all checkpoints) has to be self-imposed when the racer sets the course, or the asymmetry that makes rogaine work disappears.",
+          "body": "In organized rogaining, the course setter and the racer are different people. The course setter places checkpoints with the constraint that no racer can visit all of them in the time limit — this is IRF (International Rogaining Federation) Rule C2 in spirit: the frontier is larger than any single route through it.\n\nWhen knowledge workers set their own Course, the course-setter problem appears: there's no external constraint forcing the frontier to be genuinely larger than one leg can cover. The temptation is to set an itinerary — a course small enough to complete — which defeats the selectivity that makes rogaining work as a planning metaphor.\n\n**The self-imposed constraint:** a well-set Course should have more frontier items than any seven legs can reach. If you can see yourself completing every frontier item in the week, the frontier is too small. The cognitive work is setting the course *honestly* — naming what's reachable without over-constraining the route.\n\nThis is a calibration note for Frame-Course planning. When the author reviews the week's frontier on Frame, the question is: 'Is this frontier actually larger than I can execute? Am I leaving real selectivity for each leg?' If the answer is no, the Course needs more items, or the P0/frontier split needs rebalancing.\n\nDesign implication: the Course planning form should surface this check — possibly as a heuristic prompt ('Is there more here than any seven legs can reach?'). Deferred to v0.2 Course planning UX."
+        },
         {
           "id": "chunk-frame-form",
           "title": "The form",
@@ -4246,6 +4258,14 @@
       "artifacts": [
         { "label": "turn-v0.1-phases-and-leverage.md (Comprehend section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
+      "chunks": [
+        {
+          "id": "chunk-missing-comprehend",
+          "title": "Re-immersion has been doing work without a home",
+          "summary": "Recap-play, session-start prompts, and the new on-demand Comprehend on the Course view all belong in Comprehend Station. The phase has been doing real work without a formal home in the lab.",
+          "body": "Before Phase 3 of the rogaine-spine arc, Comprehend was doing real cognitive work under a different name across several surfaces:\n\n- **Recap-play (Larry's PLAYS.md)** — the presentation-shape re-immersion brief that fires when produce and debrief are time-separated. This is Comprehend's re-immerse step running as an informal play.\n- **SESSION_PROMPTS.md** — the session-start prompts that load prior context before work begins. Structurally, these are Comprehend rituals without the Comprehend label.\n- **Debrief's re-immerse phase** — when the debrief happens >1 day after produce, the debrief opens with a re-immersion step (presentation-shape brief, drill-down detail). This is Comprehend logic inside the Debrief wrapper.\n\nPhase 3 formalizes the on-demand Comprehend: a textarea + log on the Course view, persisted to `course.comprehend[]`. This gives Comprehend a first-class data record and a surface to write to, rather than orphaning it across plays and prompts.\n\n**What Comprehend does:** loads remaining state from prior legs, agent outputs, and source material before the current leg's Produce phase. The phase is *conditional* (skip when the operator is still warm on the prior leg's context) but *high-ROI* when cold-starting or resuming stale work.\n\n**What's still missing:** Comprehend Station has no workshop prototype. The on-demand textarea on the Course view is a placeholder. A full Comprehend Station workshop would have: a structured re-immersion form (what was last built, what's the current frontier state, what agents need to be loaded), an agent-context picker, and a 'context loaded' gate before Produce. This is not yet scoped as a LAB item — flag for Quenton and the author."
+        }
+      ],
       "notes": []
     },
     {
@@ -4280,7 +4300,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
-      "items": ["LAB-003","LAB-004","LAB-032"],
+      "items": ["LAB-003","LAB-004","LAB-032","LAB-038"],
       "sources": [
         { "label": "turn-v0.1-phases-and-leverage.md (Debrief section)", "href": "turn-v0.1-phases-and-leverage.md" }
       ],
@@ -4301,6 +4321,12 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-three-goal-frames-and-demote-discipline",
+          "title": "Three goal frames and the demote discipline",
+          "summary": "Race-to-win / race-to-optimize / race-to-finish. Elite rogainers adopt frame 2 and fall back to frame 3 at first sign of trouble. The discipline is: demote the plan when the plan is no longer correct.",
+          "body": "Rogaining surfaces three distinct goal frames a racer can hold:\n\n1. **Race-to-win** — maximize score against the field. Requires perfect route-planning, sustained pace, no bailout.\n2. **Race-to-optimize** — maximize your own performance against your prior runs. Win or lose to the field is secondary; beating your personal benchmark is the goal.\n3. **Race-to-finish** — get to the hash house before the bingo. Score is irrelevant; don't DNF.\n\nElite rogainers move between these frames deliberately. They start in frame 2 (personal optimization), maintain frame 1 awareness (field position), and pre-commit to falling back to frame 3 at the first sign of trouble (capacity drop, time overrun, route failure).\n\nThe critical discipline is the **demotion move**: when conditions change, the racer must be willing to demote from frame 2 to frame 3 *before the evidence is overwhelming.* Waiting until the situation is dire means the demotion is panic, not judgment.\n\nTranslation to knowledge work:\n- Frame 1 = shipping the external deliverable on the external deadline.\n- Frame 2 = running the best possible turn for your own growth and output quality.\n- Frame 3 = closing the leg cleanly and debriefing, even if the produce was minimal.\n\nThe Debrief question 'Course held?' directly captures the demotion: did you stay in your planned frame, or did you correctly demote when the frame was no longer serving you? Demoting correctly is a skill, not a failure. Demoting too late (or never) is the failure mode.\n\nThe 'What changed it' field in the rogaine-shaped Debrief captures the trigger for any demotion — building a personal record of when and why the racer reads the terrain correctly."
+        },
         {
           "id": "chunk-debrief-preliminary-process",
           "title": "Debrief Workshop — preliminary process (v0.1)",
@@ -4353,6 +4379,12 @@
       ],
       "chunks": [
         {
+          "id": "chunk-hash-house-gauge-pilot-check",
+          "title": "Hash house = Pilot Check visit (refuel, re-orient, decide)",
+          "summary": "The lab's heartbeat IS the hash house. Pilot Check = hash-house visit: refuel, re-orient, decide whether to continue. A tightening of an existing instrument, not a new one.",
+          "body": "In rogaining, the **hash house** is the central base camp. Racers return there to refuel, check time, re-orient, and decide whether to continue the current route or revise. Elite racers treat each hash-house visit as a decision point, not just a rest stop: they assess their capacity against remaining time and course, then commit or pivot.\n\nThe lab's Pilot Check is the hash house visit. The parallels are direct:\n\n- **Refuel** → capacity read (Cognitive / Emotional / Physical sliders).\n- **Re-orient** → Gauge dispatch (cleared or grounded) + diagnosis of which dimension is red.\n- **Decide whether to continue** → Full Turn vs. Partial Turn vs. Recovery insertion.\n\nThis framing tightens an instrument that already exists — it doesn't add a new one. The Gauge is the continuous instrument (between every phase); the Pilot Check is the explicit pre-leg hash-house visit (before a Full Turn starts).\n\nPractical implication: the Pilot Check form can be framed to the author as 'you're at the hash house — what's your read?' rather than 'complete this checklist.' The framing change may improve compliance on sessions where the operator is inclined to skip the check. The hash-house visit is non-optional in rogaining; that normative weight transfers.\n\nThe Debrief's 'Capacity + next' field closes the loop: post-leg gauge read = leaving the hash house for the next leg.\n\nCross-ref: chunk-gauge-heartbeat (The Gauge) — the heartbeat is the continuous rhythm; the hash house is the explicit check-in point within that rhythm."
+        },
+        {
           "id": "chunk-gauge-heartbeat",
           "title": "The heartbeat — capacity ↔ restoration as meta-rhythm",
           "summary": "The continuous Gauge-read-and-dispatch cycle is the framework's beating rhythm. Without it, the framework is just phases without honoring capacity.",
@@ -4370,7 +4402,7 @@
       "type": "aux / persistent",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
-      "items": ["LAB-022","LAB-023","LAB-024","LAB-029"],
+      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041"],
       "sources": [
         { "label": "PROCESS.md (how the agents compose, lab-to-book flow)", "href": "PROCESS.md" },
         { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
@@ -4399,6 +4431,42 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-snap-circuit-leg-view",
+          "title": "Snap Circuit board — Leg view (v0.1)",
+          "summary": "The Leg rendered as a five-zone vertical circuit board. Frame=power source, Comprehend=amplifier, Sync=filter, Produce=live signal, Debrief=output stage. Signal flows top-to-bottom with wire segments. Read-only v0.1; click-throughs deferred.",
+          "body": "Phase 5 of the rogaine-spine arc ships a Snap Circuit board as the Leg view (new toolbar tab: LEG). Five vertical zones named after electronics components:\n\n- Frame = power source (the turn begins here; scope and intent)\n- Comprehend = amplifier (context loaded and boosted)\n- Sync = filter (noise removed; roster and alignment)\n- Produce = live signal (work output; the active phase)\n- Debrief = output stage (result measured, captured, fed forward)\n\nWire segments connect the zones top-to-bottom. Zone display shows the sub-record's status (pending / active / done) plus key metadata when populated. The circuit metaphor does a different cognitive job than the Hex Map: Hex Map is terrain (where am I in the week?); Snap Circuit is wiring (how does this leg flow?). The two metaphors compose — one for the Course/week scale, one for the Leg/turn scale.\n\nv0.1 is read-only. Clicking a zone does nothing. Phase 5 fix commit (11c6cd1) hoists fmtComprehendWhen, swaps the groundedness glyph from ⏚ to ≈, and hardens click handlers. Click-through wiring (zone → form/drawer) deferred to LAB-037.\n\nDesign lineage: WS004 ('Beyond the Symbolic: Humanizing AI Tools'), Bruner's iconic/enactive distinction. Snap Circuits is Alan Kay's 'constructing a diagram is much less difficult than reading one' made physical."
+        },
+        {
+          "id": "chunk-hex-map-course-view-v01",
+          "title": "Hex Map — Course/Map view (v0.1)",
+          "summary": "Hex Map as the Course/week visualization. Each hex is a lab area; biome accent = area color; fog = status; P0 glow; frontier halo. Read-only v0.1 spec.",
+          "body": "Step 0b of the rogaine-spine arc ships a read-only Hex Map as the Course/Map view (visible on the Course toolbar tab, below the planning form). Spec:\n\n- Each hexagon represents one lab area.\n- **Biome** → area accent color (blue for Frame, amber for Comprehend/Sync/Produce, green for Recovery, etc.).\n- **Fog of war** → hex darkens for areas with no active work (status-driven).\n- **P0 glow** → bright pulse ring on hexes whose items include a P0.\n- **Frontier halo** → ring highlight on hexes that are on the current Course's frontier (reachable this week).\n\nThe Hex Map gives terrain-level orientation at the week/Course scale: where is the work concentrated, what's in fog, what's glowing with urgency. This is the Course-level bird's eye. The Snap Circuit board (chunk-snap-circuit-leg-view) is the Leg-level wiring diagram. The two visualizations compose and don't overlap.\n\nv0.1 is read-only. v0.2 candidates: click-to-add-to-frontier, hover details panel, semantic adjacency (items near related items, not just area-grouped). Queued as LAB-041."
+        },
+        {
+          "id": "chunk-course-tier-spec",
+          "title": "Course tier — object shape and data conventions",
+          "summary": "The Course object's shape, ISO-week ID convention, frontier-not-itinerary call, and changes_to_course as the Debrief→Course coupling point.",
+          "body": "The Course is the top tier of the three-tier data model (Map → Course → Leg). One Course per ISO week.\n\n**ID convention:** `YYYY-WNN` (e.g., `2026-W19`). Derived from the Monday of the week — unambiguous, ISO 8601 compliant, human-readable.\n\n**Shape (v0.1):**\n```\n{\n  id: 'YYYY-WNN',\n  label: string,          // author-named course title\n  frontier: string[],     // item IDs reachable this week\n  p0: string[],           // P0 subset of frontier\n  terrain: string,        // optional free-text description\n  legs: Leg[],            // array of Leg records for this week\n  status: 'planning' | 'active' | 'complete'\n}\n```\n\n**Frontier-not-itinerary:** a Course names what is *reachable* this week, not which leg hits which item. The distinction preserves rogaine selectivity — the racer (worker) chooses the route in real time based on conditions. Per-leg Frame picks from the frontier at turn-start; Debrief feeds back into the course via `changes_to_course`.\n\n**changes_to_course:** the Debrief→Course coupling. Phase 4 adds a `changes_to_course` field on the Leg's debrief sub-record: `{ course_held: 'yes' | 'no' | 'partial', summary: string }`. When the debrief reveals the course needs revision, the author captures the what and why here. UI to mutate the frontier directly from Debrief is deferred (LAB-038).\n\n**Comprehend write-back:** Phase 3 adds an on-demand Comprehend section on the Course view — textarea + log — persisted to `course.comprehend[]`. Keeps the re-immersion record attached to the week, not orphaned in a separate tool."
+        },
+        {
+          "id": "chunk-7-leg-courses-naming",
+          "title": "\"7 leg courses\" — canonical unit name",
+          "summary": "A Course is a 7-leg arc over one ISO week. Naming locked to the book title The 7 Turn Work Week. Short, citable naming chunk.",
+          "body": "The Course is a **7 leg course** — one Full Turn per leg, seven legs per week. The naming is not incidental:\n\n- **Turn** = one work unit (Frame → Comprehend → Sync → Produce → Debrief).\n- **Leg** = one Turn-length segment of a larger course (rogaine vocabulary).\n- **Course** = the 7-leg arc for the ISO week.\n- **7 Turn Work Week** = the book title. The three-tier model (Course → Leg → Phase) embeds the book's central claim in the data architecture.\n\nThis is a naming chunk, not a design spec. When citing the model in chapter or presentation material: \"A week is a 7 leg course. Each leg is one Full Turn. The week's Course names the terrain — what's reachable — before any leg is run.\"\n\nLocked 2026-05-04 on the branch `danversfleury/lab-course-tier`."
+        },
+        {
+          "id": "chunk-frontier-vs-itinerary",
+          "title": "Frontier-not-itinerary — the week-scale design call",
+          "summary": "A Course names what is reachable this week, not what gets done in which leg. Preserves rogaine selectivity at week scale.",
+          "body": "The decisive design call in the rogaine-spine arc: a Course is a **frontier**, not an itinerary.\n\n**Itinerary:** leg 1 does items A+B, leg 2 does C+D, etc. Planned in advance. Violates the rogaine condition — the racer doesn't plan checkpoints in order; they choose dynamically based on terrain and capacity.\n\n**Frontier:** the Course names items that are *reachable* this week (flagged in `course.frontier[]`). Which leg hits which item is a per-leg Frame decision, made at turn-start when the author knows their current capacity and what's changed since the last leg.\n\nThis preserves the rogaine's key quality: the racer retains real selectivity at route-planning time. Cognitive-work translation: the worker can respond to what's actually true today (capacity, blockers, dependencies) rather than executing a plan that was optimized for last Monday's conditions.\n\nThe design call also solves a planning failure mode: the itinerary version creates guilt debt ('I said I'd do C in leg 3 and I didn't'). The frontier version creates feedback ('leg 3 chose C over D because of X — does the frontier need updating?'). Debrief captures the feedback; `changes_to_course` records whether the course held.\n\nQuenton's formulation: 'The Course names the terrain. The racer picks the route.'"
+        },
+        {
+          "id": "chunk-bruner-snap-design-language",
+          "title": "Bruner / Snap Circuits — the lab's iconic+enactive design language",
+          "summary": "The lab pushes toward iconic and enactive representation (Bruner) away from pure symbolic. Grounded in WS004, Kay's diagram construction claim, and the Snap Circuits analogy for AI agent composition.",
+          "body": "Jerome Bruner identified three modes of representation:\n- **Enactive** — knowledge through action and manipulation.\n- **Iconic** — knowledge through image and diagram.\n- **Symbolic** — knowledge through language and notation.\n\nThe lab, as currently built, is heavily symbolic: text fields, JSON, written labels. Quenton's design directive (surfaced in the rogaine-spine arc) is to push hard toward iconic and enactive.\n\nAllan Kay: *\"constructing a diagram is much less difficult than reading one.\"* The corollary for the lab: a zone you can interact with (even just click) teaches the structure faster than a label that describes it.\n\nThe Snap Circuits analogy originates in WS004 ('Beyond the Symbolic: Humanizing AI Tools'): Snap Circuits are the enactive/iconic equivalent of what Claude Projects do symbolically. A child snapping a power source to an amplifier to a speaker *is performing the architecture* — not just reading about it. The Leg view's five-zone circuit board applies this to the turn structure: Frame snaps to Comprehend snaps to Sync snaps to Produce snaps to Debrief. The wires are visible; the signal flow is readable.\n\nThe Hex Map applies the same principle at Course scale: terrain, biomes, fog, glow. You read the week's state by reading the map — you don't consult a status table.\n\nThis design language drives every subsequent visual decision in the lab. When a new view is proposed, the question is: what is the iconic/enactive equivalent of what we're currently expressing symbolically?"
+        },
         {
           "id": "chunk-priority-spec-v0.1",
           "title": "Priority spec — turn-based P0 with hard cap at 3 (v0.1)",
@@ -4564,7 +4632,8 @@
         "LAB-009","LAB-010","LAB-011","LAB-012","LAB-013","LAB-014","LAB-015","LAB-016",
         "LAB-017","LAB-018","LAB-019","LAB-020","LAB-021","LAB-022","LAB-023","LAB-024",
         "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029",
-        "LAB-030","LAB-031","LAB-032","LAB-033"
+        "LAB-030","LAB-031","LAB-032","LAB-033",
+        "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040","LAB-041"
       ],
       "artifacts": [],
       "notes": []
@@ -4879,6 +4948,78 @@
       "area": "trim-bench",
       "brief": "Apply the Bootstrap-a-Workshop play to Trim Bench. Lower priority — Trim is meta-ambient (lives inside other phases) and may not need a full workshop right away.",
       "full": "Trim is selection discipline within phases. It may be sufficient to surface as principles + chunks rather than a full workshop with prototype. Open question to settle when this comes up: does Trim need its own prototype, or is it expressed entirely through how other workshops handle their fields (e.g., Frame's 'Not Doing' column already operationalizes Trim)? Answer probably emerges from running the existing workshops for a few weeks."
+    },
+    "LAB-034": {
+      "id": "LAB-034",
+      "title": "Course Coach agent (poker-coach for legs)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Reads legs[] like poker hand histories. Surfaces patterns across past Frame+Debrief pairs. Suggests better moves for the next leg's Frame.",
+      "full": "The Course Coach reads the current Course's legs[] array — specifically the Frame sub-record (what was planned) and the Debrief sub-record (what happened, course_held, changes_to_course) — and treats them like poker hand histories. Patterns across multiple legs reveal: consistent over-scoping, frontier items that keep getting skipped, capacity mis-reads that recur on the same day-of-week, etc. Output is a suggestion for the next leg's Frame: adjust scope, recalibrate capacity, revise frontier. Whether this is a sub-agent (invoked from the Course view) or a top-level agent (like Quenton or Larry) is a design call deferred to Quenton. Priority is P2 — needs at least 4-5 completed legs before patterns are detectable. Needs legs[] to accumulate depth before it's useful."
+    },
+    "LAB-035": {
+      "id": "LAB-035",
+      "title": "Sync station form",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "The sync sub-record on the leg has a slot but no form. Phase 5 stub renders deferred state. Needs roster picker, course-state alignment ritual, and output capture.",
+      "full": "The Leg data model includes a sync sub-record slot (added in the Phase 1-2 build). Phase 5's Snap Circuit board renders the Sync zone in a deferred / stub state. What's needed: (1) a roster picker — humans and AI agents who need to be aligned before Produce; (2) a course-state alignment ritual — structured check that everyone has the same understanding of the current frontier and P0s; (3) output capture persisted to the leg as {at: timestamp, summary: string, roster: string[]}. The Sync form is conditional (skip for solo turns) and probably lives as a drawer opened from the Sync zone click-through (LAB-037). P2 — Sync is conditional and less urgent than Frame+Debrief forms."
+    },
+    "LAB-036": {
+      "id": "LAB-036",
+      "title": "Frame Approach iconic skin (mode/leaning/AI/done flavor)",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "frame-workshop",
+      "brief": "Replace per-Done Approach text fields with iconic pickers: mode (3 buttons), leaning_on (chips from prior Sources), AI/people (avatars), Done flavor (3 icons).",
+      "full": "Quenton's step 7 from the rogaine-spine build order. The Approach batch in Frame (How I'll work) currently uses free-text fields. The iconic-skin replacement: (1) Mode — 3 buttons (solo / pair / collaborative); (2) Leaning on — chip picker surfacing items from prior Sources and recent Comprehend logs, so the author selects rather than types; (3) AI / people — avatar chips for the specific agents and humans in the turn; (4) Done flavor — 3 icons representing the type of output (artifact / decision / exploration). This is the biggest iconic-language payoff in the lab after Hex Map and Snap Circuit — it makes the Approach selection enactive rather than symbolic. Grounded in Bruner (chunk-bruner-snap-design-language). P1 — higher priority than Sync or click-throughs."
+    },
+    "LAB-037": {
+      "id": "LAB-037",
+      "title": "Leg view click-throughs (zone → form)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Phase 5 ships read-only Snap Circuit zones. Wire each zone to open the underlying form/drawer on click.",
+      "full": "Phase 5 (commit 11c6cd1) hardens click handlers but defers actual click-through wiring. Target mapping: Frame zone → Frame Workshop drawer; Comprehend zone → Course view Comprehend section; Sync zone → Sync form drawer (LAB-035); Produce zone → Produce Bay (if a Produce form exists); Debrief zone → Debrief Booth drawer. The click-through pattern makes the Snap Circuit board interactive — it becomes the navigation surface for the leg, not just a status read. P2 — the board is useful read-only; click-throughs are quality of life."
+    },
+    "LAB-038": {
+      "id": "LAB-038",
+      "title": "Frontier add/remove UI on Debrief",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "debrief-booth",
+      "brief": "Phase 4 records changes_to_course qualitatively. Add UI to actually mutate the Course frontier on save: which items get added or removed for next-leg planning.",
+      "full": "Phase 4 (commit f4a0a06) adds the Debrief rogaine shape including changes_to_course: {course_held: 'yes'|'no'|'partial', summary: string}. This captures the qualitative record of whether the course was revised. What's missing: a UI that lets the author actually mutate course.frontier[] at save time — add items that should be reachable next leg, remove items that are done or deferred. The current flow requires the author to then manually edit the Course planning form to reflect the debrief's conclusions. The writeback UI closes that loop. Design question: does this UI live inside the Debrief form (at save time) or as a follow-on step in the Course view? P2."
+    },
+    "LAB-039": {
+      "id": "LAB-039",
+      "title": "Auto-archive stale undebriefed legs",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Phase 2 documents intentional orphan behavior: prior-day legs that were never debriefed stay in-progress. Add auto-close-on-next-day-open or a stale-legs surfacing UI.",
+      "full": "Phase 2 (commits 2c4c8ce and 49b78c5) explicitly documents the orphan-leg behavior: if a leg was opened on a prior day but never debriefed, it remains in-progress status. The phase 2 fix commit (49b78c5) adds a console warning for orphaned legs. Two resolution paths: (1) auto-archive on next-day-open — when the Course view loads and detects a prior-day leg with no debrief, flag it and offer a quick-close; (2) stale-legs surfacing UI — a 'pending debriefs' section in the Course view or Director's Desk drawer showing orphaned legs with age. Option 1 is lower friction; option 2 surfaces historical data. Suggest option 2 for the author to decide. P2."
+    },
+    "LAB-040": {
+      "id": "LAB-040",
+      "title": "Course planning surface on Director's Desk drawer",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "director-desk",
+      "brief": "Course planning form lives as a top-level toolbar tab. Consider also surfacing course state inside Director's Desk's drawer as a cross-cutting strategic surface.",
+      "full": "The Course planning form and Hex Map currently live as a separate toolbar tab (Course / Map). Director's Desk is the strategic home — where cross-cutting work lives. An open design question: should a condensed version of the current Course state (frontier items, active leg, P0s) also appear in the Director's Desk drawer, so the author doesn't need to switch tabs to orient before a Frame? This would make the Desk a true strategic anchor. Open design call — flag for Quenton. P3 (low urgency; the toolbar tab is working)."
+    },
+    "LAB-041": {
+      "id": "LAB-041",
+      "title": "Hex Map v0.2 (interaction + adjacency)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Hex Map v0.1 is read-only. v0.2: click-to-add-to-frontier, hover details panel, semantic adjacency.",
+      "full": "Hex Map v0.1 (commit c554317, Step 0b of the rogaine-spine arc) is read-only — biome/fog/glow/halo are rendered but not interactive. v0.2 targets: (1) click-to-add-to-frontier — clicking a hex opens a picker of that area's items to add to course.frontier[]; (2) hover details panel — hovering a hex shows item count, P0 count, active leg count, most recent Log entry title; (3) semantic adjacency — items from related areas are placed near each other on the map, not just grouped by area. Adjacency is a design call for Quenton (what makes two areas semantically adjacent in this lab?). P2 — the read-only map is valuable; interaction is quality-of-life."
     }
   }
 }
