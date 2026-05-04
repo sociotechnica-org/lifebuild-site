@@ -422,6 +422,13 @@
   .hex-cell.breathing {
     animation: hex-breath 6s ease-in-out infinite;
   }
+  /* When a breathing hex is clicked, the pulse needs to win the cascade.
+     Same specificity as .breathing alone, so we promote with a 3-class
+     selector. Without this, the pulse-once animation is silently shadowed
+     and active-leg hexes eat clicks (caught by grepzilla phase 1 review). */
+  .hex-cell.pulse-once.breathing {
+    animation: hex-pulse-once 600ms ease-out;
+  }
   /* Motion-sensitivity guardrail — disable ambient breath but keep the
      single-pulse acknowledgment (it's a discrete event, not ambient). */
   @media (prefers-reduced-motion: reduce) {
@@ -8404,7 +8411,9 @@
       }).join('\n');
 
       // Region background + label (region-local coordinates 0..r.w, 0..r.h).
-      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" fill="${tint}" stroke="${tint}" />`;
+      // rx/ry as SVG presentation attributes serve as a fallback for browsers
+      // that don't support rx/ry as CSS properties (Firefox <122, Safari <17).
+      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" rx="8" ry="8" fill="${tint}" stroke="${tint}" />`;
       const labelY = HEX_PAD - 2;
       const label = `<text class="hex-region-label" x="${HEX_PAD}" y="${labelY}">${escapeHTML(r.areaName)}</text>` +
                     `<text class="hex-region-count" x="${(r.w - HEX_PAD).toFixed(2)}" y="${labelY}" text-anchor="end">${r.items.length}</text>`;
