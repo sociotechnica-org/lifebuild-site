@@ -4695,6 +4695,7 @@
      leg hits which item. Frame at each leg picks from the frontier. */
   const COURSE_KEY = 'cognitive-lab-v0.1::courses';
   const COURSE_LEG_COUNT = 7; // matches book title (The 7 Turn Work Week)
+  const LEG_KEY = 'cognitive-lab-v0.1::legs';
 
   function isoWeekId(date) {
     // ISO-8601 week-numbering: weeks start Monday; week 1 contains the first Thursday.
@@ -4759,20 +4760,30 @@
        changes_to_course   → 0..1 delta written back to the Course frontier on debrief
      ID convention: LEG-YYYY-MM-DD-A (date + letter for multi-leg days).
      The leg references the Course it belongs to via course_ref. */
-  const LEG_KEY = 'cognitive-lab-v0.1::legs';
 
   function todayDateOnly(date) {
     const d = date ? new Date(date.getTime()) : new Date();
     return d.toISOString().slice(0, 10);
   }
   function nextLegLetter(courseId, dateStr) {
-    // Returns 'A'/'B'/'C'/... for the next leg created on the given day in the given course.
+    // Returns 'A'/'B'/'C'/... for the next leg created on the given day in the
+    // given course. Reads the dedicated `letter` field rather than parsing it
+    // out of the ID, so the function stays correct if the ID format changes.
     const existing = loadLegs().filter(l =>
       l && l.course_ref === courseId && l.date === dateStr
     );
-    const letters = existing.map(l => (l.id || '').slice(-1));
+    const letters = existing.map(l => l && l.letter).filter(Boolean);
+    const Z = 'Z'.charCodeAt(0);
     let code = 'A'.charCodeAt(0);
-    while (letters.includes(String.fromCharCode(code))) code++;
+    while (letters.includes(String.fromCharCode(code))) {
+      code++;
+      if (code > Z) {
+        // 26 legs on a single day in one course should never happen (cap is 7
+        // per course total). If it does, the data is corrupt; surface it loudly
+        // rather than returning a non-alpha character that breaks downstream IDs.
+        throw new Error('nextLegLetter: more than 26 legs on ' + dateStr + ' in ' + courseId);
+      }
+    }
     return String.fromCharCode(code);
   }
   function legId(courseId, dateStr, letter) {
@@ -4823,6 +4834,7 @@
       leg_number: legNumber,            // 1..COURSE_LEG_COUNT
       status: 'planning',               // planning · in-progress · debriefed · archived
       date: dateStr,
+      letter: letter,                   // dedicated field; nextLegLetter reads it
       frame_card_id: null,
       comprehend: [],                   // [{at: ISO, text: string}]
       sync: null,                       // {at, ...} once captured
