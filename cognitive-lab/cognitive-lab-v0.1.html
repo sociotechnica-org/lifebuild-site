@@ -8838,6 +8838,12 @@
     // mouseout fires on the detached node, leaving a stale tooltip.
     const staleTooltip = document.getElementById('hex-tooltip');
     if (staleTooltip) staleTooltip.hidden = true;
+    // Clear stale chip state. The action chip's DOM is destroyed by any
+    // full re-render; the in-memory ID should follow. (bcInHand is *not*
+    // cleared — it's intentional state that should survive lens switches
+    // so the user can pivot between Build and another lens with their
+    // held piece intact.)
+    bcActionItemId = null;
     const c = getOrInitCourseDraft();
     const frontierSet = new Set(c.frontier || []);
     const workingSet = getActiveLegWorkingSet();
@@ -9339,11 +9345,17 @@
     }
     // Outside-click closer. Closes over the chip element directly so that
     // chip-button clicks (which bubble to document) are correctly identified
-    // as inside the chip — avoids both the never-registered bug and the
-    // double-render-on-button-click bug grepzilla flagged.
+    // as inside the chip. Bail early if some other render path already
+    // cleared bcActionItemId (e.g., a lens switch); avoids the double-render
+    // on lens-switch-while-chip-open that grepzilla's cumulative sweep
+    // caught.
     setTimeout(() => {
       const closer = (e) => {
         if (chip.contains(e.target)) return;
+        if (bcActionItemId === null) {
+          document.removeEventListener('click', closer);
+          return;
+        }
         bcActionItemId = null;
         document.removeEventListener('click', closer);
         renderCourseHexMap();
