@@ -368,11 +368,65 @@
     height: auto;
     display: block;
   }
-  .hex-cell { stroke: #2a2a35; stroke-width: 1; transition: opacity 120ms ease; }
+  /* ── Hex Map v0.2 (Phase 1: biome regions + 4-channel encoding) ──
+     Channels (per Quenton design dialog):
+       Hue        → biome (area accent) — stable identity
+       Luminosity → relevance to current course (4-state ramp)
+       Stroke     → priority (2px ring on P0, 1px on others)
+       Motion     → attention call-out (single pulse on select; ambient
+                    breath on the active leg's working set)
+     Drops the v0.1 fill-vs-outline + teal frontier ring + purple
+     "both" ring — luminosity now carries the frontier signal cleanly,
+     and P0's red ring stacks on any luminosity without fighting. */
+  .hex-cell {
+    stroke: #2a2a35;
+    stroke-width: 1;
+    transition: opacity 200ms ease;
+  }
   .hex-cell:hover { stroke: var(--accent); stroke-width: 1.5; cursor: default; }
-  .hex-cell.p0 { stroke: #c25450; stroke-width: 2; filter: drop-shadow(0 0 3px rgba(194,84,80,0.55)); }
-  .hex-cell.in-frontier { stroke: #5cb09a; stroke-width: 2.5; filter: drop-shadow(0 0 4px rgba(92,176,154,0.6)); }
-  .hex-cell.in-frontier.p0 { stroke: #b890d4; filter: drop-shadow(0 0 5px rgba(184,144,212,0.7)); }
+  /* P0 = priority ring. Second-channeled with stroke-width: 2 (vs 1 for
+     non-P0) so the cue survives any color-vision profile. */
+  .hex-cell.p0 {
+    stroke: #c25450;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 3px rgba(194,84,80,0.55));
+  }
+  /* Active = item is in the active leg's Frame card. Saturation boost +
+     subtle glow so the working set pops without the ambient breath
+     having to start before the user has even glanced at it. */
+  .hex-cell.active {
+    filter: saturate(1.1) drop-shadow(0 0 4px rgba(255,255,255,0.18));
+  }
+  .hex-cell.active.p0 {
+    filter: saturate(1.1) drop-shadow(0 0 4px rgba(194,84,80,0.6));
+  }
+  /* Pulse-on-select: single bump, fades. Acknowledgment, not ambience. */
+  @keyframes hex-pulse-once {
+    0%   { filter: brightness(1.0); }
+    40%  { filter: brightness(1.18); }
+    100% { filter: brightness(1.0); }
+  }
+  .hex-cell.pulse-once { animation: hex-pulse-once 600ms ease-out; }
+  .hex-cell.pulse-once.p0 {
+    /* Preserve P0 drop-shadow during the pulse animation by stacking
+       the brightness filter via a second filter layer on the keyframe. */
+    animation: hex-pulse-once 600ms ease-out;
+  }
+  /* Ambient breath on the active leg's working set. Slow ±5% opacity
+     oscillation so peripheral vision picks up "something's alive over
+     there" without the focused eye seeing motion. */
+  @keyframes hex-breath {
+    0%, 100% { opacity: 1.0; }
+    50%      { opacity: 0.95; }
+  }
+  .hex-cell.breathing {
+    animation: hex-breath 6s ease-in-out infinite;
+  }
+  /* Motion-sensitivity guardrail — disable ambient breath but keep the
+     single-pulse acknowledgment (it's a discrete event, not ambient). */
+  @media (prefers-reduced-motion: reduce) {
+    .hex-cell.breathing { animation: none; }
+  }
   .hex-label {
     font-family: var(--font-px);
     font-size: 7px;
@@ -382,10 +436,38 @@
     pointer-events: none;
     opacity: 0.85;
   }
+  /* Biome region — labeled cluster wrapping each area's hexes. The
+     translucent background tints the cluster with the biome's hue. */
+  .hex-region-bg {
+    rx: 8;
+    ry: 8;
+    stroke-width: 1;
+    fill-opacity: 0.06;
+    stroke-opacity: 0.45;
+  }
+  .hex-region-label {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: var(--accent-dim);
+    dominant-baseline: hanging;
+    pointer-events: none;
+  }
+  .hex-region-count {
+    font-family: var(--font-px);
+    font-size: 9px;
+    fill: #6f7a90;
+    dominant-baseline: hanging;
+    pointer-events: none;
+  }
+  /* Legend now shows the encoding channels rather than swatches per
+     biome — the regions themselves carry the biome legend. */
   .course-hexmap-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px 18px;
+    gap: 10px 18px;
     margin-top: 12px;
     padding-top: 10px;
     border-top: 1px solid var(--panel-bd);
@@ -394,10 +476,21 @@
     color: var(--accent-dim);
   }
   .course-hexmap-legend .lg-item { display: inline-flex; align-items: center; gap: 5px; }
-  .course-hexmap-legend .lg-swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
-  .course-hexmap-legend .lg-ring {
-    width: 12px; height: 12px; border-radius: 50%; border: 2px solid;
+  .course-hexmap-legend .lg-swatch {
     display: inline-block;
+    width: 14px;
+    height: 12px;
+    border-radius: 2px;
+    background: #5e6f8a;
+  }
+  .course-hexmap-legend .lg-swatch.dim   { opacity: 0.18; }
+  .course-hexmap-legend .lg-swatch.avail { opacity: 0.50; }
+  .course-hexmap-legend .lg-swatch.front { opacity: 1.0; }
+  .course-hexmap-legend .lg-swatch.act   { opacity: 1.0; box-shadow: 0 0 4px rgba(255,255,255,0.4); }
+  .course-hexmap-legend .lg-ring {
+    display: inline-block;
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 2px solid;
   }
 
   /* ── Leg view: Snap Circuit board (Phase 5) ──
@@ -8136,10 +8229,10 @@
     panel.innerHTML = html;
   }
 
-  /* ── Hex Map (Course view, read-only v0.1) ──
-     Renders all Map items as flat-top hexes. Fill = area accent. Opacity = status
-     fog. P0 ring = red glow. Frontier ring = bright accent halo. Spatial layout
-     packs by area (no semantic adjacency yet). */
+  /* ── Hex Map v0.2 (Course view) ──
+     Biome regions (cluster per area, labeled, translucent biome-colored
+     background) + 4-channel encoding (hue=biome, luminosity=relevance,
+     stroke=priority, motion=attention). Per Quenton's design dialog. */
   const HEX_ACCENT_FILL = {
     blue:   '#4a7bd4',
     amber:  '#d4a030',
@@ -8152,13 +8245,18 @@
     red:    '#c25450',
     purple: '#9a6fc2'
   };
-  const HEX_STATUS_OPACITY = {
-    'archived':    0.30,
-    'live':        0.55,
-    'backlog':     0.75,
-    'drafted':     0.90,
-    'in-progress': 1.00
-  };
+  // Phase 1 (v0.2) luminosity ramp. Four states designed against ~3:1
+  // contrast steps (perceptually distinct without being shouty).
+  // Logarithmic-ish: each step roughly halves the previous.
+  //   archived (terminal)          → 0.18   (below hue-recognition; reads as terrain)
+  //   available (not in frontier)  → 0.50
+  //   in frontier (in scope)       → 1.00
+  //   active (in current leg)      → 1.00 + .active class for saturation boost
+  function hexLuminosityFor(it, frontierSet) {
+    if (it.status === 'archived') return 0.18;
+    if (frontierSet && frontierSet.has(it.id)) return 1.0;
+    return 0.50;
+  }
 
   function hexPolygonPoints(cx, cy, s) {
     // Flat-top hex centered at (cx, cy) with side length s. Six vertices.
@@ -8173,74 +8271,189 @@
     ].map(p => p[0].toFixed(2) + ',' + p[1].toFixed(2)).join(' ');
   }
 
+  // Returns the set of LAB item IDs that are in the active leg's Frame
+  // card's must[] (the leg's working set). Used by the Hex Map to
+  // apply the .active and .breathing classes on those hexes.
+  function getActiveLegWorkingSet() {
+    const set = new Set();
+    if (typeof findActiveLeg !== 'function') return set;
+    const leg = findActiveLeg();
+    if (!leg) return set;
+    const card = (typeof findFrameCardForLeg === 'function') ? findFrameCardForLeg(leg) : null;
+    if (!card) return set;
+    const must = Array.isArray(card.must) ? card.must : [];
+    must.forEach(r => { if (r && r.id) set.add(r.id); });
+    return set;
+  }
+
   function renderCourseHexMap() {
     const wrap = document.getElementById('course-hexmap');
     if (!wrap) return;
     const c = getOrInitCourseDraft();
     const frontierSet = new Set(c.frontier || []);
+    const workingSet = getActiveLegWorkingSet();
     const items = allItemsArray();
     if (items.length === 0) {
       wrap.innerHTML = '<p class="course-hexmap-title">Map</p><p class="course-hexmap-sub">No items in the lab yet.</p>';
       return;
     }
-    // Sort items: by area (alphabetic for stable layout), then priority, then id.
-    const sorted = items.slice().sort((a, b) => {
-      const ax = (a.areaName || 'zzz').localeCompare(b.areaName || 'zzz');
-      if (ax !== 0) return ax;
-      const pr = priorityRank(a.priority) - priorityRank(b.priority);
-      if (pr !== 0) return pr;
-      return (a.id || '').localeCompare(b.id || '');
+
+    // ── Group items into biome regions (one cluster per area) ──
+    const byArea = new Map();
+    items.forEach(it => {
+      const aId = it.areaId || '__orphan';
+      if (!byArea.has(aId)) byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
+      byArea.get(aId).items.push(it);
+    });
+    // Sort items within each region: P0 first (so the eye lands on
+    // the most-urgent biome resident), then by status rank, then by id.
+    byArea.forEach(r => {
+      r.items.sort((a, b) => {
+        const pa = priorityRank(a.priority) - priorityRank(b.priority);
+        if (pa !== 0) return pa;
+        const sa = statusRank(a.status) - statusRank(b.status);
+        if (sa !== 0) return sa;
+        return (a.id || '').localeCompare(b.id || '');
+      });
+    });
+    // Sort regions: biggest first (so the layout has a stable feel
+    // — the dominant biomes anchor the top-left corner).
+    const regions = Array.from(byArea.values()).sort((a, b) => {
+      if (b.items.length !== a.items.length) return b.items.length - a.items.length;
+      return (a.areaName || '').localeCompare(b.areaName || '');
     });
 
-    // Lay out in a flat-top hex grid. ~8 cols wide. Odd cols offset down.
-    const COLS = 8;
-    const S = 30;                       // hex side length
-    const STEP_X = 1.5 * S;             // horizontal step (col)
-    const STEP_Y = Math.sqrt(3) * S;    // vertical step (row)
-    const OFFSET_Y = STEP_Y / 2;        // odd-col vertical offset
-    const PAD = S + 4;                  // canvas padding
+    // ── Hex + cluster geometry ──
+    const S = 22;                       // hex side length (smaller than v0.1; clusters get denser)
+    const STEP_X = 1.5 * S;             // 33
+    const STEP_Y = Math.sqrt(3) * S;    // ~38
+    const OFFSET_Y = STEP_Y / 2;        // ~19 (odd-col offset)
+    const HEX_PAD = 8;                  // padding inside a region around the hex grid
+    const LABEL_H = 14;                 // height reserved above hexes for the region label
+    const REGION_GAP = 14;              // gap between regions (both axes)
+    const CANVAS_W = 740;               // target width (matches .course-hexmap max-width)
 
-    const cells = sorted.map((it, i) => {
-      const col = i % COLS;
-      const row = Math.floor(i / COLS);
-      const cx = PAD + col * STEP_X;
-      const cy = PAD + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
-      const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-      const fill = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
-      const opacity = HEX_STATUS_OPACITY[it.status] || 0.75;
-      const classes = ['hex-cell'];
-      if (it.priority === 'P0') classes.push('p0');
-      if (frontierSet.has(it.id)) classes.push('in-frontier');
-      const points = hexPolygonPoints(cx, cy, S);
-      const numShort = (it.id || '').replace(/^LAB-/, '');
-      return `<g>
-        <polygon class="${classes.join(' ')}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
-          <title>${escapeHTML(it.id)} · ${escapeHTML(it.title)} · ${escapeHTML(it.priority)} · ${escapeHTML(it.status)} · ${escapeHTML(it.areaName)}</title>
-        </polygon>
-        <text class="hex-label" x="${cx.toFixed(2)}" y="${cy.toFixed(2)}">${escapeHTML(numShort)}</text>
+    function regionDims(r) {
+      const n = r.items.length;
+      const cols = Math.min(3, n);
+      const rows = Math.ceil(n / cols);
+      const w = HEX_PAD * 2 + 2 * S + (cols - 1) * STEP_X;
+      const oddOffset = cols > 1 ? OFFSET_Y : 0;
+      const h = HEX_PAD * 2 + LABEL_H + STEP_Y + (rows - 1) * STEP_Y + oddOffset;
+      return { cols, rows, w, h };
+    }
+    // Pre-compute region dimensions so we can pack them.
+    regions.forEach(r => {
+      const d = regionDims(r);
+      r.cols = d.cols;
+      r.rows = d.rows;
+      r.w    = d.w;
+      r.h    = d.h;
+    });
+
+    // ── Pack regions: greedy left-to-right, wrap to next row when overflow ──
+    let cursorX = 0, cursorY = 0, rowMaxH = 0, totalH = 0, totalW = 0;
+    regions.forEach(r => {
+      if (cursorX + r.w > CANVAS_W && cursorX > 0) {
+        // Wrap to next row.
+        cursorX = 0;
+        cursorY += rowMaxH + REGION_GAP;
+        rowMaxH = 0;
+      }
+      r.x = cursorX;
+      r.y = cursorY;
+      cursorX += r.w + REGION_GAP;
+      if (r.h > rowMaxH) rowMaxH = r.h;
+      if (cursorY + r.h > totalH) totalH = cursorY + r.h;
+      if (r.x + r.w > totalW) totalW = r.x + r.w;
+    });
+    // Canvas dimensions (a bit of padding on the right + bottom).
+    const CANVAS_H = totalH + REGION_GAP;
+    const CANVAS_W_FINAL = Math.max(totalW + REGION_GAP, CANVAS_W);
+
+    // ── Render each region as an SVG group ──
+    const regionGroups = regions.map(r => {
+      const accent = (AREA_VISUALS[r.areaId] && AREA_VISUALS[r.areaId].accent) || 'dark';
+      const tint = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
+
+      const hexes = r.items.map((it, i) => {
+        const col = i % r.cols;
+        const row = Math.floor(i / r.cols);
+        // Local cx/cy within the region (region has its own coordinate origin).
+        const cx = HEX_PAD + S + col * STEP_X;
+        const cy = HEX_PAD + LABEL_H + (STEP_Y / 2) + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
+        const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
+        const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
+        const opacity = hexLuminosityFor(it, frontierSet);
+        const isActive = workingSet.has(it.id);
+        const classes = ['hex-cell'];
+        if (it.priority === 'P0') classes.push('p0');
+        if (isActive) {
+          classes.push('active');
+          // Ambient breath only on the active leg's working set.
+          classes.push('breathing');
+        }
+        const points = hexPolygonPoints(cx, cy, S);
+        const numShort = (it.id || '').replace(/^LAB-/, '');
+        return `<g>
+          <polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
+            <title>${escapeHTML(it.id)} · ${escapeHTML(it.title)} · ${escapeHTML(it.priority)} · ${escapeHTML(it.status)} · ${escapeHTML(it.areaName)}${isActive ? ' · in active leg' : ''}${frontierSet.has(it.id) ? ' · in frontier' : ''}</title>
+          </polygon>
+          <text class="hex-label" x="${cx.toFixed(2)}" y="${cy.toFixed(2)}">${escapeHTML(numShort)}</text>
+        </g>`;
+      }).join('\n');
+
+      // Region background + label (region-local coordinates 0..r.w, 0..r.h).
+      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" fill="${tint}" stroke="${tint}" />`;
+      const labelY = HEX_PAD - 2;
+      const label = `<text class="hex-region-label" x="${HEX_PAD}" y="${labelY}">${escapeHTML(r.areaName)}</text>` +
+                    `<text class="hex-region-count" x="${(r.w - HEX_PAD).toFixed(2)}" y="${labelY}" text-anchor="end">${r.items.length}</text>`;
+
+      return `<g transform="translate(${r.x.toFixed(2)},${r.y.toFixed(2)})">
+        ${bg}
+        ${label}
+        ${hexes}
       </g>`;
-    });
+    }).join('\n');
 
-    const lastRow = Math.floor((sorted.length - 1) / COLS);
-    const width  = PAD * 2 + (COLS - 1) * STEP_X + S;
-    const height = PAD * 2 + lastRow * STEP_Y + OFFSET_Y;
-
+    const inFrontierCount = items.filter(it => frontierSet.has(it.id)).length;
+    const activeCount = workingSet.size;
     wrap.innerHTML = `
-      <p class="course-hexmap-title">Map · ${sorted.length} items · ${frontierSet.size} in this Course's frontier</p>
-      <p class="course-hexmap-sub">Read-only v0.1. Fill = area accent. Opacity = status (archived dim → in-progress bright). Red glow = P0. Teal glow = in this Course's frontier. Hover for details.</p>
-      <svg viewBox="0 0 ${width.toFixed(2)} ${height.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${sorted.length} items as hexes, with ${frontierSet.size} highlighted as the active Course's frontier">
-        ${cells.join('\n')}
+      <p class="course-hexmap-title">Map · ${items.length} items · ${inFrontierCount} in frontier · ${activeCount} active in current leg</p>
+      <p class="course-hexmap-sub">v0.2: regions = areas (biomes). Brightness = relevance (archived dim → in-frontier bright → active brightest). P0 ring = red. The current leg's working items breathe slowly. Hover for details.</p>
+      <svg viewBox="0 0 ${CANVAS_W_FINAL.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map: ${items.length} items grouped by area (biome). ${inFrontierCount} in this Course's frontier. ${activeCount} in the active leg's working set.">
+        ${regionGroups}
       </svg>
       <div class="course-hexmap-legend">
-        <span class="lg-item"><span class="lg-swatch" style="background:#4a7bd4"></span>Frame</span>
-        <span class="lg-item"><span class="lg-swatch" style="background:#d4a030"></span>Pilot Check</span>
-        <span class="lg-item"><span class="lg-swatch" style="background:#a88a5a"></span>Library / Warm</span>
-        <span class="lg-item"><span class="lg-swatch" style="background:#2d8a7e"></span>Teal areas</span>
-        <span class="lg-item"><span class="lg-swatch" style="background:#555"></span>Director's Desk / Dark</span>
+        <span class="lg-item"><span class="lg-swatch dim"></span>archived (terrain)</span>
+        <span class="lg-item"><span class="lg-swatch avail"></span>available</span>
+        <span class="lg-item"><span class="lg-swatch front"></span>in frontier</span>
+        <span class="lg-item"><span class="lg-swatch act"></span>active in current leg (breathes)</span>
         <span class="lg-item"><span class="lg-ring" style="border-color:#c25450"></span>P0</span>
-        <span class="lg-item"><span class="lg-ring" style="border-color:#5cb09a"></span>In frontier</span>
       </div>
     `;
+
+    // Phase 1 motion: single-pulse-on-select. Wired here so the listener
+    // is fresh after each render (innerHTML wipes prior listeners).
+    const svg = wrap.querySelector('svg');
+    if (svg) {
+      svg.addEventListener('click', (e) => {
+        const tgt = e.target;
+        if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
+        // Re-trigger the keyframe by removing + re-adding the class.
+        tgt.classList.remove('pulse-once');
+        // Force reflow so the animation restarts when the class is re-added.
+        void tgt.getBoundingClientRect();
+        tgt.classList.add('pulse-once');
+      });
+      // Clean up the class once the animation finishes so a future click
+      // can fire it again (and so it doesn't stick on the DOM).
+      svg.addEventListener('animationend', (e) => {
+        if (e.target && e.target.classList && e.target.classList.contains('pulse-once')) {
+          e.target.classList.remove('pulse-once');
+        }
+      });
+    }
   }
 
   /* Format helper used by both the Comprehend section and the Leg view's
