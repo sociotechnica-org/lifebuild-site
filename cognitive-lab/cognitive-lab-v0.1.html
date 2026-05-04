@@ -5379,9 +5379,11 @@
     el.innerHTML = parts.join('');
   }
 
-  // Course Header click handler (only the goto-course link is clickable today).
+  // Course Header click handler. Use closest() so a future inner-element
+  // wrap (e.g., <strong> inside the link) doesn't break the dispatch.
   document.addEventListener('click', (e) => {
-    if (e.target && e.target.classList && e.target.classList.contains('ch-link') && e.target.dataset.act === 'goto-course') {
+    const tgt = e.target && e.target.closest ? e.target.closest('[data-act="goto-course"]') : null;
+    if (tgt && tgt.classList && tgt.classList.contains('ch-link')) {
       if (typeof setView === 'function') setView('course');
     }
   });
@@ -7898,6 +7900,20 @@
     `;
   }
 
+  /* Format helper used by both the Comprehend section and the Leg view's
+     Comprehend zone. Defined up here so both call sites pre-date the
+     definition is impossible (function-declaration hoisting works either
+     way; the explicit ordering also documents intent). */
+  function fmtComprehendWhen(iso) {
+    if (!iso) return '·';
+    try {
+      const d = new Date(iso);
+      const date = d.toISOString().slice(0, 10);
+      const time = d.toTimeString().slice(0, 5);
+      return date + ' · ' + time;
+    } catch { return iso; }
+  }
+
   /* ── Leg view: Snap Circuit board (Phase 5) ──
      Renders the active leg as a five-zone circuit board. Each zone reads
      from the corresponding leg sub-record and the linked Frame/Debrief
@@ -7991,12 +8007,15 @@
       '<ul class="leg-comprehend-list">' + items + '</ul>' + more);
   }
   function renderLegZoneSync(leg) {
+    // ≈ (U+2248) renders consistently across platforms — engineering-symbol
+    // glyphs like ⏚ tofu out on Windows. Filter / capacitor evokes the same
+    // signal-shaping role.
     if (!leg.sync) {
-      return legZoneShell('sync', '⏚', 'filter', 'Sync', '', 'deferred',
+      return legZoneShell('sync', '≈', 'filter', 'Sync', '', 'deferred',
         '<div class="leg-zone-empty">Sync station deferred to a later phase. The slot exists; the form does not yet.</div>');
     }
-    const summary = (leg.sync && leg.sync.summary) || JSON.stringify(leg.sync).slice(0, 200);
-    return legZoneShell('sync', '⏚', 'filter', 'Sync', 'lit', 'captured',
+    const summary = (leg.sync && leg.sync.summary) || '(sync data present — no summary)';
+    return legZoneShell('sync', '≈', 'filter', 'Sync', 'lit', 'captured',
       `<div class="leg-zone-line"><span class="lzl-value">${escapeHTML(summary)}</span></div>`);
   }
   function renderLegZoneProduce(leg) {
@@ -8040,8 +8059,11 @@
   }
 
   // Leg-view click handler (jump to Frame Workshop from the empty-state).
+  // Use closest() so wrapping the link's text in a child element later
+  // (e.g., <strong>) doesn't silently break the dispatch.
   document.addEventListener('click', (e) => {
-    if (e.target && e.target.dataset && e.target.dataset.act === 'goto-frame') {
+    const tgt = e.target && e.target.closest ? e.target.closest('[data-act="goto-frame"]') : null;
+    if (tgt) {
       if (typeof setView === 'function') setView('floor');
       if (typeof openDrawer === 'function') openDrawer('frame-workshop');
     }
@@ -8050,16 +8072,8 @@
   /* ── On-demand Comprehend (Phase 3) ──
      Single textarea + Capture button. Appends a timestamped note to the
      active leg's comprehend[]. Renders the most-recent-first log below.
-     If no active leg exists yet, prompts the user to start one via Frame. */
-  function fmtComprehendWhen(iso) {
-    if (!iso) return '·';
-    try {
-      const d = new Date(iso);
-      const date = d.toISOString().slice(0, 10);
-      const time = d.toTimeString().slice(0, 5);
-      return date + ' · ' + time;
-    } catch { return iso; }
-  }
+     If no active leg exists yet, prompts the user to start one via Frame.
+     fmtComprehendWhen is defined above (shared with the Leg view). */
   function renderCourseComprehend() {
     const wrap = document.getElementById('course-comprehend');
     if (!wrap) return;
