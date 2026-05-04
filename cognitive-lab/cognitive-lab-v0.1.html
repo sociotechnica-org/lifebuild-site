@@ -472,6 +472,7 @@
   /* Build canvas (Move 3b): snap-circuit-style grid. Empty cells with a
      center "snap point" dot, labeled rows (A–G) and columns (1–10). */
   .bc-canvas-wrap {
+    position: relative;       /* anchor for the floating action chip (Move 3d) */
     background: var(--panel-bg);
     border: 1px solid var(--panel-bd);
     border-radius: 8px;
@@ -674,7 +675,6 @@
   /* Action chip — floats next to a clicked occupied cell. Two actions
      today: Pick up (returns piece to hand for re-placement) and Remove
      (returns piece to drawer). */
-  .bc-canvas-wrap { position: relative; }
   .bc-action-chip {
     position: absolute;
     z-index: 20;
@@ -9132,20 +9132,9 @@
         renderCourseHexMap();
       });
     }
-    // ── Outside-click closes the action chip ──
-    if (bcActionItemId) {
-      // Wait one tick so the chip-opening click doesn't immediately close it.
-      setTimeout(() => {
-        const closer = (e) => {
-          const chip = document.querySelector('.bc-action-chip');
-          if (chip && chip.contains(e.target)) return;
-          bcActionItemId = null;
-          document.removeEventListener('click', closer);
-          renderCourseHexMap();
-        };
-        document.addEventListener('click', closer);
-      }, 0);
-    }
+    // Outside-click closer is registered inside openBuildActionChip (not
+    // here) — that path doesn't trigger a re-render so the closer would
+    // never bind if registered conditionally on bcActionItemId.
   }
 
   /* Build canvas action chip — shown when a placed piece is clicked
@@ -9197,6 +9186,19 @@
     if (chipRect.right > wrapRect.right - 4) {
       chip.style.left = (cellRect.left - wrapRect.left - chipRect.width - 4) + 'px';
     }
+    // Outside-click closer. Closes over the chip element directly so that
+    // chip-button clicks (which bubble to document) are correctly identified
+    // as inside the chip — avoids both the never-registered bug and the
+    // double-render-on-button-click bug grepzilla flagged.
+    setTimeout(() => {
+      const closer = (e) => {
+        if (chip.contains(e.target)) return;
+        bcActionItemId = null;
+        document.removeEventListener('click', closer);
+        renderCourseHexMap();
+      };
+      document.addEventListener('click', closer);
+    }, 0);
   }
 
   /* By-function lens — restored from v0.2.
