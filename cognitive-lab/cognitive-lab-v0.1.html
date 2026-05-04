@@ -657,6 +657,33 @@
     margin-bottom: 3px;
   }
 
+  /* Phase 1.5: kind labels for mixed-kind comprehend timelines (note ·
+     synthesis · deck). Three colors so the user can scan kinds without
+     reading the label. The label itself is the type word; the color is
+     the iconic channel (per the Bruner / four-channel design language). */
+  .cc-kind {
+    display: inline-block;
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: baseline;
+  }
+  .cc-kind-note      { color: #d4a030; background: rgba(212,160,48,0.10); border: 1px solid rgba(212,160,48,0.35); }
+  .cc-kind-synthesis { color: #5cb09a; background: rgba(92,176,154,0.10); border: 1px solid rgba(92,176,154,0.35); }
+  .cc-kind-deck      { color: #6f9ee0; background: rgba(74,123,212,0.10); border: 1px solid rgba(74,123,212,0.35); }
+  /* Tighten the cc-when line in mixed-kind mode so the kind chip sits on
+     the same row as the timestamp + body for scannability. */
+  .course-comprehend-entry .cc-when { display: inline-block; margin-right: 8px; margin-bottom: 0; }
+  .course-comprehend-entry .cc-body { color: var(--fg); }
+  /* Synthesis entries: emphasize the item id with the px font */
+  .course-comprehend-entry.cc-synthesis .cc-body,
+  .leg-comprehend-list li.cc-synthesis,
+  .leg-comprehend-list li.cc-deck { font-family: var(--font-px); font-size: 11.5px; }
+
   /* ── Lab tile (shared across alt views) ──
      Each tile pulls its area icon + accent color from the floor,
      so an item visually carries the room it lives in. */
@@ -5083,6 +5110,13 @@
     const idx = STATUS_CYCLE.indexOf(cur);
     const next = STATUS_CYCLE[(idx + 1) % STATUS_CYCLE.length];
     setItemStatus(id, next);
+    // Phase 1.5: cycling to live or archived is the synthesis act
+    // ("I now consider this done"). Auto-log to the active leg's
+    // comprehend[]. Cycles to in-progress / drafted / backlog are
+    // workflow noise — not logged.
+    if (next === 'live' || next === 'archived') {
+      logComprehendSynthesis(id, cur, next);
+    }
     return next;
   }
 
@@ -8142,19 +8176,32 @@
       inHTML + mustChips + bonusChips);
   }
   function renderLegZoneComprehend(leg) {
-    const notes = Array.isArray(leg.comprehend) ? leg.comprehend : [];
-    if (notes.length === 0) {
+    const entries = Array.isArray(leg.comprehend) ? leg.comprehend : [];
+    if (entries.length === 0) {
       return legZoneShell('comprehend', '⚡', 'amplifier', 'Comprehend', '', 'idle',
-        '<div class="leg-zone-empty">No notes yet. Capture re-immersion notes from the Course view to amplify what you\'re holding in mind.</div>');
+        '<div class="leg-zone-empty">No comprehension activity yet. Capture a note from the Course view, walk a deck, or cycle an item to live/archived — they all land here.</div>');
     }
-    const recent = notes.slice(-3).reverse();
-    const items = recent.map(n =>
-      `<li><span class="lcl-when">${escapeHTML(fmtComprehendWhen(n && n.at))}</span>${escapeHTML((n && n.text) || '').replace(/\n/g, '<br>')}</li>`
-    ).join('');
-    const more = notes.length > 3
-      ? `<div class="leg-zone-line"><span class="lzl-label">+${notes.length - 3} earlier</span></div>`
+    // Phase 1.5: aggregate counts across kinds for the lit-state subtitle.
+    const kindCounts = entries.reduce((acc, e) => {
+      const k = (e && e.kind) || 'note';
+      acc[k] = (acc[k] || 0) + 1;
+      return acc;
+    }, {});
+    const subtitleParts = [];
+    if (kindCounts.note)      subtitleParts.push(kindCounts.note + ' note' + (kindCounts.note === 1 ? '' : 's'));
+    if (kindCounts.synthesis) subtitleParts.push(kindCounts.synthesis + ' synthesis');
+    if (kindCounts.deck)      subtitleParts.push(kindCounts.deck + ' deck' + (kindCounts.deck === 1 ? '' : 's'));
+    const subtitle = subtitleParts.join(' · ');
+
+    const recent = entries.slice(-3).reverse();
+    const items = recent.map(e => {
+      const p = comprehendEntryParts(e);
+      return `<li class="cc-${p.kind}"><span class="lcl-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span><span class="cc-kind cc-kind-${p.kind}">${escapeHTML(p.label)}</span> ${p.bodyHTML}</li>`;
+    }).join('');
+    const more = entries.length > 3
+      ? `<div class="leg-zone-line"><span class="lzl-label">+${entries.length - 3} earlier</span></div>`
       : '';
-    return legZoneShell('comprehend', '⚡', 'amplifier', 'Comprehend', 'lit', notes.length + ' note' + (notes.length === 1 ? '' : 's'),
+    return legZoneShell('comprehend', '⚡', 'amplifier', 'Comprehend', 'lit', subtitle,
       '<ul class="leg-comprehend-list">' + items + '</ul>' + more);
   }
   function renderLegZoneSync(leg) {
@@ -8220,10 +8267,99 @@
     }
   });
 
-  /* ── On-demand Comprehend (Phase 3) ──
+  /* ── Comprehend Signals (Phase 1.5) ──
+     The Comprehend zone aggregates three kinds of activity, all written to
+     leg.comprehend[]:
+       kind: 'note'       → manual capture from the textarea (Phase 3)
+       kind: 'synthesis'  → status cycle to live/archived ("I now consider
+                            this done") — auto-logged from cycleStatus
+       kind: 'deck'       → opening a known deck file (recap-play act) —
+                            auto-logged from artifact-link clicks
+     Surveillance line: only acts the user *intentionally took* and
+     *would expect to leave a record*. No mouse-tracking, no search-
+     query logging, no item-hover. Director-of-the-lab tone.
+
+     Entry shape (back-compat: missing `kind` → 'note'):
+       { at, kind, text?, source?, item_id?, transition? } */
+
+  // Deck-file matcher. Catches the existing two decks plus future
+  // arc-comprehension decks following the *-deck-vN.M.html convention.
+  const DECK_FILE_RE = /(?:^|\/)(turn-v[\d.]+-map|.*-deck-v[\d.]+|comprehension-deck-v[\d.]+)\.html$/i;
+
+  function appendComprehendEntry(entry) {
+    // Adds a comprehend entry to the active leg. No-op if no active leg
+    // (orphan signals are dropped silently — by design; the leg is the
+    // unit of comprehension and we don't try to back-fill).
+    const leg = findActiveLeg();
+    if (!leg) return null;
+    leg.comprehend = Array.isArray(leg.comprehend) ? leg.comprehend.slice() : [];
+    leg.comprehend.push(Object.assign({ at: new Date().toISOString() }, entry));
+    return upsertLeg(leg);
+  }
+  function logComprehendSynthesis(itemId, prevStatus, nextStatus) {
+    // Called from cycleStatus on transitions to live/archived only.
+    appendComprehendEntry({
+      kind: 'synthesis',
+      item_id: itemId,
+      transition: (prevStatus || '?') + ' → ' + nextStatus
+    });
+    // If the user is on the Course or Leg view when this fires, surface
+    // the new entry immediately. Best-effort: render functions guard.
+    if (typeof activeView !== 'undefined') {
+      if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
+      if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
+    }
+  }
+  function logComprehendDeckOpen(href) {
+    // Called when the user clicks an artifact-link whose href matches a
+    // known deck file. Strips any query string / fragment for cleanliness.
+    const clean = (href || '').split('?')[0].split('#')[0];
+    appendComprehendEntry({
+      kind: 'deck',
+      source: clean
+    });
+    if (typeof activeView !== 'undefined') {
+      if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
+      if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
+    }
+  }
+  // Delegated click handler for any artifact-link in the lab. Fires the
+  // deck-open log only when the href matches the deck file pattern. Does
+  // not preventDefault — the link still opens normally in a new tab.
+  document.addEventListener('click', (e) => {
+    const a = e.target && e.target.closest ? e.target.closest('a.artifact-link') : null;
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (DECK_FILE_RE.test(href)) {
+      logComprehendDeckOpen(href);
+    }
+  });
+
+  // Shared helper for rendering a single comprehend entry's payload (the
+  // kind label + the body). Used by both the Course view's log and the
+  // Leg view's Comprehend zone. Back-compat: an entry with no `kind` (the
+  // pre-Phase-1.5 shape) renders as a 'note' with just the text body.
+  function comprehendEntryParts(entry) {
+    if (!entry) return { kind: 'note', label: 'note', bodyHTML: '' };
+    const k = entry.kind || 'note';
+    if (k === 'synthesis') {
+      const id = escapeHTML(entry.item_id || '?');
+      const tr = escapeHTML(entry.transition || '');
+      return { kind: 'synthesis', label: 'synthesis', bodyHTML: id + (tr ? '  ' + tr : '') };
+    }
+    if (k === 'deck') {
+      const src = escapeHTML(entry.source || '?');
+      return { kind: 'deck', label: 'deck', bodyHTML: src };
+    }
+    // 'note' (default) — text body, newlines preserved
+    const txt = escapeHTML(entry.text || '').replace(/\n/g, '<br>');
+    return { kind: 'note', label: 'note', bodyHTML: txt };
+  }
+
+  /* ── On-demand Comprehend (Phase 3, extended in Phase 1.5) ──
      Single textarea + Capture button. Appends a timestamped note to the
      active leg's comprehend[]. Renders the most-recent-first log below.
-     If no active leg exists yet, prompts the user to start one via Frame.
+     The log now also surfaces auto-logged synthesis + deck entries.
      fmtComprehendWhen is defined above (shared with the Leg view). */
   function renderCourseComprehend() {
     const wrap = document.getElementById('course-comprehend');
@@ -8239,15 +8375,18 @@
     }
     const entries = (leg.comprehend || []).slice().reverse(); // newest first
     const logHTML = entries.length === 0
-      ? '<p class="course-comprehend-empty">No notes yet for ' + escapeHTML(leg.id) + '.</p>'
-      : entries.map(e => `<div class="course-comprehend-entry">
-          <span class="cc-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span>
-          ${escapeHTML((e && e.text) || '').replace(/\n/g, '<br>')}
-        </div>`).join('');
+      ? '<p class="course-comprehend-empty">No comprehension activity yet for ' + escapeHTML(leg.id) + '. Capture a note above, walk a deck, or cycle an item to live/archived.</p>'
+      : entries.map(e => {
+          const p = comprehendEntryParts(e);
+          return `<div class="course-comprehend-entry cc-${p.kind}">
+            <span class="cc-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span>
+            <span class="cc-kind cc-kind-${p.kind}">${escapeHTML(p.label)}</span>
+            <span class="cc-body">${p.bodyHTML}</span>
+          </div>`;
+        }).join('');
     wrap.innerHTML =
       '<p class="course-comprehend-title">Comprehend · ' + escapeHTML(leg.id) + '</p>' +
-      '<p class="course-comprehend-sub">Re-immersion notes for the active leg. ' +
-      'Capture what just changed, what to load before continuing, what surprised you.</p>' +
+      '<p class="course-comprehend-sub">Activity for the active leg. Notes you write, decks you walk, items you cycle to live/archived all land here.</p>' +
       '<textarea id="course-comprehend-input" placeholder="What just changed? What do I need to load? What surprised me?"></textarea>' +
       '<div class="course-comprehend-actions">' +
         '<button type="button" id="course-comprehend-capture" class="ff-btn primary">Capture note</button>' +
