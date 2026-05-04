@@ -671,6 +671,19 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+  /* Drawer status message — surfaced when Apply template returns 0
+     (nothing new to place). Plain dim text, fades out so it doesn't
+     pile up in the DOM. */
+  .bc-drawer-msg {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent);
+    margin: 0 0 8px;
+    padding: 4px 6px;
+    background: rgba(226,160,74,0.08);
+    border-radius: 3px;
+    text-align: center;
+  }
   /* In-hand state (Move 3d): drawer item that's currently being held,
      ready to snap into a cell. Highlighted with accent border + bg. */
   .bc-drawer-item.bc-in-hand {
@@ -9155,9 +9168,10 @@
           <p class="bc-drawer-title">Tool drawer · ${drawerItems.length} items</p>
           <p class="bc-drawer-sub">Pieces grouped by area. Click to take in hand; click again to drop. With one in hand, click a cell to snap it.</p>
           <div class="bc-drawer-actions">
-            <button type="button" class="bc-drawer-action" data-act="apply-template" ${(course.frontier || []).length === 0 ? 'disabled' : ''} title="Snap this Course's frontier items to the board in priority + area order. Skips items already placed.">▦ Apply template</button>
-            <button type="button" class="bc-drawer-action danger" data-act="clear-board" ${placedCount === 0 ? 'disabled' : ''} title="Remove all placements from the board.">✕ Clear board</button>
+            <button type="button" class="bc-drawer-action" data-act="apply-template" ${(course.frontier || []).length === 0 ? 'disabled' : ''} title="Snap this Course's frontier items to the board in priority + area order. Skips items already placed."><span aria-hidden="true">▦</span> Apply template</button>
+            <button type="button" class="bc-drawer-action danger" data-act="clear-board" ${placedCount === 0 ? 'disabled' : ''} title="Remove all placements from the board."><span aria-hidden="true">✕</span> Clear board</button>
           </div>
+          <p class="bc-drawer-msg" id="bc-drawer-msg" hidden></p>
           ${drawerInner}
         </div>
       </div>
@@ -9231,9 +9245,16 @@
           if (act === 'apply-template') {
             const placed = applyBuildTemplate(items);
             if (placed === 0) {
-              // Either frontier is empty, every frontier item is already
-              // placed, or the canvas is full. The button's disabled state
-              // catches empty-frontier; the others fall through silently.
+              // Empty-frontier is caught by the disabled state. The other
+              // zero-cases are: every frontier item is already placed, or
+              // the canvas is full. Surface a brief inline message so the
+              // user gets feedback rather than silence.
+              const msg = drawer.querySelector('#bc-drawer-msg');
+              if (msg) {
+                msg.textContent = 'Nothing new to place — every frontier item is already on the board.';
+                msg.hidden = false;
+                setTimeout(() => { msg.hidden = true; msg.textContent = ''; }, 2400);
+              }
               return;
             }
             bcInHand = null;
