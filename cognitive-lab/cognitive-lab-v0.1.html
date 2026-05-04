@@ -403,11 +403,6 @@
     100% { filter: brightness(1.0); }
   }
   .hex-cell.pulse-once { animation: hex-pulse-once 600ms ease-out; }
-  .hex-cell.pulse-once.p0 {
-    /* Preserve P0 drop-shadow during the pulse animation by stacking
-       the brightness filter via a second filter layer on the keyframe. */
-    animation: hex-pulse-once 600ms ease-out;
-  }
   /* Ambient breath on the active leg's working set. Slow ±5% opacity
      oscillation so peripheral vision picks up "something's alive over
      there" without the focused eye seeing motion. */
@@ -8337,6 +8332,14 @@
     tan:    '#CC79A7',  // Okabe-Ito reddish purple
     warm:   '#F0E442',  // Okabe-Ito yellow
     dark:   '#888888',  // neutral gray (Okabe-Ito uses black; lighter for our dark bg)
+    // Fallbacks for legacy accent keys not currently used by any area.
+    // PALETTE COLLISION RISK: orange + red both map to vermillion (#D55E00),
+    // and tan + purple both map to reddish purple (#CC79A7). If a future area
+    // uses `red` or `purple` as its accent alongside `orange` or `tan`, the
+    // legend will show duplicate colors. Audit area accents before adding new
+    // ones; if a real conflict appears, remap these to a non-Okabe-Ito hue
+    // (or pick one to retire). No conflict in current data (only blue, amber,
+    // green, dark, tan, warm, orange, teal are in use).
     red:    '#D55E00',  // collapse to vermillion
     purple: '#CC79A7'   // collapse to reddish purple
   };
@@ -8522,8 +8525,11 @@
       const stateBits = [];
       if (isActive)    stateBits.push('in active leg');
       if (inFrontier)  stateBits.push('in frontier');
-      stateBits.push(it.priority);
-      stateBits.push(it.status);
+      // priority/status come from controlled JSON today, but escape anyway for
+      // consistency with genus/species — defends against hand-edited JSON
+      // values containing `<` from silently breaking the SVG title node.
+      stateBits.push(escapeHTML(it.priority || ''));
+      stateBits.push(escapeHTML(it.status || ''));
       const stateText = stateBits.length > 0 ? ' · ' + stateBits.join(' · ') : '';
       return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
         <title>${escapeHTML(genus)}: ${escapeHTML(species)}${stateText}</title>
