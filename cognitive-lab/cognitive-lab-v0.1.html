@@ -5732,6 +5732,7 @@
     if (notesEl) notesEl.value = '';
     framePickerPanelOpen = { must: false, stretch: false };
     framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+    framePickerScope = { must: 'frontier', stretch: 'frontier' };
     frameSlotExpanded = { must: new Set() };
     Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
   }
@@ -5740,9 +5741,14 @@
   // For LAB-027 v3, ref objects may carry optional approach fields
   // (mode / leaning_on / ai_people / done_this_turn). Pass them through
   // when present; absent on legacy v2.5 cards (back-compat).
+  // Phase 2: also pass through `off_frontier` so the flag survives a
+  // save/reload cycle. Without this, the chip's off-frontier badge
+  // disappears after every save and Debrief loses the candidate signal
+  // for changes_to_course.frontier_added.
   function coerceFieldValue(field, value) {
     if (Array.isArray(value)) return value.filter(r => r && r.id).map(r => {
       const out = { id: r.id, title: r.title || '' };
+      if (r.off_frontier === true) out.off_frontier = true;
       FF_SLOT_FIELDS.forEach(k => {
         if (typeof r[k] === 'string' && r[k].length > 0) out[k] = r[k];
       });
@@ -5776,6 +5782,13 @@
     if (notesEl) notesEl.value = card.must_notes || '';
     framePickerPanelOpen = { must: false, stretch: false };
     framePickerExpandTier = { must: 'P0', stretch: 'P0' };
+    // Phase 2: also reset scope to 'frontier' on card load. If the previous
+    // session ended with the user toggled to 'all' (e.g., because the prior
+    // card had no course frontier), defaulting back to 'frontier' surfaces
+    // the new card's frontier scope correctly. The auto-flip in
+    // renderFramePicker still kicks in if this card's course also lacks a
+    // frontier — so 'frontier' is the safe default in both cases.
+    framePickerScope = { must: 'frontier', stretch: 'frontier' };
     // Auto-expand any must slot whose ref carries approach data. Empty slots stay collapsed
     // so a fresh card doesn't open four panels at once. Keeps lived data visible after reload.
     frameSlotExpanded = { must: new Set() };
