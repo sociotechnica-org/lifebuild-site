@@ -8541,10 +8541,12 @@
               ? '<span class="comp-snap-empty">No comprehend activity on this leg yet.</span>'
               : `<ul class="comp-snap-recent">${entries.map((e, i) => {
                   const p = comprehendEntryParts(e);
-                  return `<li class="cc-${p.kind}" data-idx="${i}" role="button" tabindex="0">
+                  // Collapsed row shows when + kind chip only — body
+                  // reveals on click (drilldown polish). Avoids the
+                  // double-render-on-expand issue grepzilla flagged.
+                  return `<li class="cc-${p.kind}" data-idx="${i}" role="button" tabindex="0" aria-expanded="false">
                     <span class="comp-snap-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span>
                     <span class="cc-kind cc-kind-${p.kind}">${escapeHTML(p.label)}</span>
-                    ${p.bodyHTML}
                     <div class="comp-snap-body">${p.bodyHTML}</div>
                   </li>`;
                 }).join('')}</ul>`
@@ -8596,13 +8598,16 @@
     }
     // Recent-entry drilldown (polish fold).
     snapshot.querySelectorAll('.comp-snap-recent li').forEach(li => {
-      li.addEventListener('click', () => {
-        li.classList.toggle('expanded');
-      });
+      const toggle = () => {
+        const next = !li.classList.contains('expanded');
+        li.classList.toggle('expanded', next);
+        li.setAttribute('aria-expanded', next ? 'true' : 'false');
+      };
+      li.addEventListener('click', toggle);
       li.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          li.classList.toggle('expanded');
+          toggle();
         }
       });
     });
@@ -8766,11 +8771,14 @@
     const doneBtn = studio.querySelector('[data-act="walk-done"]');
     if (doneBtn) doneBtn.addEventListener('click', () => {
       // Move 2e: log walk completion to leg.comprehend[]. The walk's
-      // active-id state clears after; the entry is durable.
+      // active-id state clears after; the entry is durable. Use the
+      // 1-indexed step position when Done fires (== full step count
+      // today since Done only renders on isLast, but this stays correct
+      // if a future walk adds an early-exit Done).
       const id = getActiveWalkId();
       const walk = id ? WALKS.find(w => w.id === id) : null;
       if (walk) {
-        const stepsCompleted = (walk.steps || []).length;
+        const stepsCompleted = getWalkStep() + 1;
         logComprehendWalkComplete(walk.id, stepsCompleted);
       }
       setActiveWalkId(null);
@@ -9156,6 +9164,14 @@
     } catch { return 'floor'; }
   }
   function saveActiveView(v) {
+    // Skip the write when running inside a Walk Studio iframe (?walk=1).
+    // Iframe and parent share localStorage; without this guard, the
+    // user's tab navigation inside the walk would silently rewrite the
+    // parent's persisted view and cause a surprising view-jump after
+    // the walk closes.
+    try {
+      if (new URLSearchParams(location.search).get('walk') === '1') return;
+    } catch {}
     try { localStorage.setItem(VIEW_KEY, v); } catch {}
   }
 
@@ -9877,6 +9893,11 @@
     } catch { return 'build'; }
   }
   function saveCourseHexLens(v) {
+    // Same walk-mode guard as saveActiveView: don't contaminate the
+    // parent's persisted lens preference from inside a walk iframe.
+    try {
+      if (new URLSearchParams(location.search).get('walk') === '1') return;
+    } catch {}
     try { localStorage.setItem(COURSE_HEX_LENS_KEY, v); } catch {}
   }
   let courseHexLens = loadCourseHexLens();
@@ -11758,11 +11779,13 @@
     document.body.insertBefore(banner, document.body.firstChild);
     // Hide the Comprehend Station area from assistive tech as well as
     // visually — the CSS already opacity-dims it; aria-hidden suppresses
-    // screen-reader announcements of the inert overlay text.
-    document.addEventListener('DOMContentLoaded', () => {
-      const inertArea = document.querySelector('.area[data-area="comprehend-station"]');
-      if (inertArea) inertArea.setAttribute('aria-hidden', 'true');
-    });
+    // screen-reader announcements of the inert overlay text. The script
+    // runs as deferred-inline at the bottom of <body>, so the DOM is
+    // fully parsed by now and the area element is queryable directly
+    // (a DOMContentLoaded wrapper would never fire — that event has
+    // already passed by the time this code executes).
+    const inertArea = document.querySelector('.area[data-area="comprehend-station"]');
+    if (inertArea) inertArea.setAttribute('aria-hidden', 'true');
   })();
 
   hydrateFromServer().then(() => {
