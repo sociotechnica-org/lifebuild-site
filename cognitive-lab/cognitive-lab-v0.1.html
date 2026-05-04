@@ -1608,13 +1608,16 @@
   .cc-kind-note      { color: #d4a030; background: rgba(212,160,48,0.10); border: 1px solid rgba(212,160,48,0.35); }
   .cc-kind-synthesis { color: #5cb09a; background: rgba(92,176,154,0.10); border: 1px solid rgba(92,176,154,0.35); }
   .cc-kind-deck      { color: #6f9ee0; background: rgba(74,123,212,0.10); border: 1px solid rgba(74,123,212,0.35); }
+  .cc-kind-walk      { color: #c897cf; background: rgba(204,121,167,0.10); border: 1px solid rgba(204,121,167,0.35); }
   .course-comprehend-entry .cc-body { color: var(--fg); }
   /* Synthesis + deck entries: px-font emphasis on the body since they're
      ID-shaped or path-shaped, not prose. */
   .course-comprehend-entry.cc-synthesis .cc-body,
   .course-comprehend-entry.cc-deck .cc-body,
+  .course-comprehend-entry.cc-walk .cc-body,
   .leg-comprehend-list li.cc-synthesis,
-  .leg-comprehend-list li.cc-deck { font-family: var(--font-px); font-size: 11.5px; }
+  .leg-comprehend-list li.cc-deck,
+  .leg-comprehend-list li.cc-walk { font-family: var(--font-px); font-size: 11.5px; }
 
   /* ── Lab tile (shared across alt views) ──
      Each tile pulls its area icon + accent color from the floor,
@@ -8729,8 +8732,12 @@
           setWalkStep(0); // start fresh
           if (walk.kind === 'deck' && walk.deck_href && typeof logComprehendDeckOpen === 'function') {
             logComprehendDeckOpen(walk.deck_href);
+          } else if (walk.kind === 'product') {
+            // Move 2e: log walk-start so abandoned walks register as
+            // intent. Completion is logged separately via the Done
+            // button (see doneBtn handler below).
+            logComprehendWalkStart(walk.id);
           }
-          // Move 2e will log walk-start here for product walks.
         }
         renderComprehendStudio(studio);
       });
@@ -8758,10 +8765,41 @@
     });
     const doneBtn = studio.querySelector('[data-act="walk-done"]');
     if (doneBtn) doneBtn.addEventListener('click', () => {
-      // Move 2e will log walk-completion here. For 2d, just close.
+      // Move 2e: log walk completion to leg.comprehend[]. The walk's
+      // active-id state clears after; the entry is durable.
+      const id = getActiveWalkId();
+      const walk = id ? WALKS.find(w => w.id === id) : null;
+      if (walk) {
+        const stepsCompleted = (walk.steps || []).length;
+        logComprehendWalkComplete(walk.id, stepsCompleted);
+      }
       setActiveWalkId(null);
       setWalkStep(0);
       renderComprehendStudio(studio);
+    });
+  }
+
+  /* Walk start + completion logging (Move 2e). Both append to the
+     active leg's comprehend[] as kind:'walk' with a status discriminator
+     ('started' or 'completed'). Per Quenton: progress is session,
+     completion is durable on the leg. Logging the *start* captures
+     intent — abandoned walks show up as evidence the user tried, even
+     if they never reached Done. */
+  function logComprehendWalkStart(walkId) {
+    if (typeof appendComprehendEntry !== 'function') return;
+    appendComprehendEntry({
+      kind: 'walk',
+      walk_id: walkId,
+      status: 'started'
+    });
+  }
+  function logComprehendWalkComplete(walkId, stepsCompleted) {
+    if (typeof appendComprehendEntry !== 'function') return;
+    appendComprehendEntry({
+      kind: 'walk',
+      walk_id: walkId,
+      status: 'completed',
+      steps_completed: typeof stepsCompleted === 'number' ? stepsCompleted : 0
     });
   }
 
@@ -10773,6 +10811,7 @@
     if (kindCounts.note)      subtitleParts.push(kindCounts.note + ' note' + (kindCounts.note === 1 ? '' : 's'));
     if (kindCounts.synthesis) subtitleParts.push(kindCounts.synthesis + ' synthesis');
     if (kindCounts.deck)      subtitleParts.push(kindCounts.deck + ' deck' + (kindCounts.deck === 1 ? '' : 's'));
+    if (kindCounts.walk)      subtitleParts.push(kindCounts.walk + ' walk' + (kindCounts.walk === 1 ? '' : 's'));
     const subtitle = subtitleParts.join(' · ');
 
     const recent = entries.slice(-3).reverse();
@@ -10931,6 +10970,16 @@
     if (k === 'deck') {
       const src = escapeHTML(entry.source || '?');
       return { kind: 'deck', label: 'deck', bodyHTML: src };
+    }
+    if (k === 'walk') {
+      // Move 2e: walk entries carry walk_id + status (started/completed)
+      // and steps_completed when the user reached the Done button.
+      const wid = escapeHTML(entry.walk_id || '?');
+      const status = escapeHTML(entry.status || 'started');
+      const stepsTxt = (typeof entry.steps_completed === 'number')
+        ? '  ' + entry.steps_completed + ' steps'
+        : '';
+      return { kind: 'walk', label: 'walk', bodyHTML: wid + '  ' + status + stepsTxt };
     }
     // 'note' (default) — text body, newlines preserved
     const txt = escapeHTML(entry.text || '').replace(/\n/g, '<br>');
