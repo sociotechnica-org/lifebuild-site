@@ -425,6 +425,27 @@
   @media (prefers-reduced-motion: reduce) {
     .hex-cell.breathing { animation: none; }
   }
+  /* Hex hover tooltip (Move 1): instant HTML tooltip layer. Native SVG
+     <title> tooltips have a ~1 sec delay; this surfaces immediately on
+     mouseenter and follows the cursor. Native <title> stays in the DOM
+     for screen-reader accessibility. */
+  .hex-tooltip {
+    position: fixed;
+    z-index: 100;
+    background: rgba(0,0,0,0.92);
+    color: var(--fg);
+    font-family: var(--font-px);
+    font-size: 11.5px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--panel-bd);
+    pointer-events: none;
+    max-width: 360px;
+    line-height: 1.45;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    white-space: normal;
+  }
+  .hex-tooltip[hidden] { display: none; }
   /* Ring bands — faint concentric circles behind the hex spiral. Help the
      eye see the priority structure (P0 ring, P1 ring, P2 ring) without
      drawing strong borders that compete with the hexes. */
@@ -8600,7 +8621,8 @@
       </div>
     `;
 
-    // Single-pulse-on-select wiring (unchanged from v0.2).
+    // Single-pulse-on-select wiring (unchanged from v0.2) + Move 1 hover
+    // tooltip. Listeners attach fresh after each render (innerHTML wipes them).
     const svg = wrap.querySelector('svg');
     if (svg) {
       svg.addEventListener('click', (e) => {
@@ -8613,6 +8635,46 @@
       svg.addEventListener('animationend', (e) => {
         if (e.target && e.target.classList && e.target.classList.contains('pulse-once')) {
           e.target.classList.remove('pulse-once');
+        }
+      });
+
+      // Move 1: instant HTML tooltip layer. Lazily create a single tooltip
+      // div on the body; reuse across re-renders so we don't leak DOM nodes.
+      let tooltip = document.getElementById('hex-tooltip');
+      if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'hex-tooltip';
+        tooltip.className = 'hex-tooltip';
+        tooltip.hidden = true;
+        document.body.appendChild(tooltip);
+      }
+      svg.addEventListener('mouseover', (e) => {
+        const tgt = e.target;
+        if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
+        const titleEl = tgt.querySelector('title');
+        if (!titleEl) return;
+        // Use textContent (already escapeHTML-safe; <title> only stores text).
+        tooltip.textContent = titleEl.textContent;
+        tooltip.hidden = false;
+      });
+      svg.addEventListener('mousemove', (e) => {
+        if (tooltip.hidden) return;
+        // Position offset from the cursor; nudge above/left when near the
+        // viewport edges so the tooltip stays fully visible.
+        const pad = 14;
+        const tw = tooltip.offsetWidth || 240;
+        const th = tooltip.offsetHeight || 32;
+        let x = e.clientX + pad;
+        let y = e.clientY + pad;
+        if (x + tw > window.innerWidth - 8)  x = e.clientX - tw - pad;
+        if (y + th > window.innerHeight - 8) y = e.clientY - th - pad;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top  = y + 'px';
+      });
+      svg.addEventListener('mouseout', (e) => {
+        const tgt = e.target;
+        if (tgt && tgt.classList && tgt.classList.contains('hex-cell')) {
+          tooltip.hidden = true;
         }
       });
     }
