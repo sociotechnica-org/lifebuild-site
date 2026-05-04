@@ -128,6 +128,215 @@
     margin: 0 0 14px 0;
   }
 
+  /* ── Course view (the 7-leg arc planning surface) ── */
+  .course-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    padding: 16px 18px;
+    max-width: 760px;
+    margin: 0 0 16px;
+  }
+  .course-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--panel-bd);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .course-id {
+    font-family: var(--font-px);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+  }
+  .course-status {
+    font-family: var(--font-px);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    padding: 2px 6px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+  }
+  .course-field { margin-bottom: 14px; }
+  .course-field label {
+    display: block;
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    margin-bottom: 5px;
+  }
+  .course-field .course-hint {
+    font-family: inherit;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10.5px;
+    color: #6f7a90;
+    margin-left: 6px;
+  }
+  .course-field input[type="text"],
+  .course-field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 7px 9px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.45;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .course-field textarea {
+    resize: vertical;
+    min-height: 56px;
+  }
+  .course-field input[type="text"]:focus,
+  .course-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .course-frontier-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 28px;
+    padding: 5px;
+    background: var(--bg);
+    border: 1px dashed var(--panel-bd);
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .course-frontier-chips:empty::before {
+    content: 'No frontier items yet — pick from the lab below.';
+    font-size: 11.5px;
+    color: #6f7a90;
+    font-style: italic;
+    padding: 0 4px;
+  }
+  .course-frontier-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 6px 3px 8px;
+    background: rgba(74,123,212,0.14);
+    border: 1px solid rgba(74,123,212,0.45);
+    border-radius: 12px;
+    font-size: 11.5px;
+    color: var(--fg);
+  }
+  .course-frontier-chip .cfc-id {
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: #6f9ee0;
+    font-weight: bold;
+  }
+  .course-frontier-chip .cfc-x {
+    margin-left: 2px;
+    color: #97a3ba;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .course-frontier-chip .cfc-x:hover { color: #ff7a7a; }
+  .course-frontier-toggle {
+    background: transparent;
+    color: var(--accent-dim);
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+  .course-frontier-toggle:hover { color: var(--fg); }
+  .course-frontier-toggle.open { color: var(--accent); border-color: var(--accent); }
+  .course-frontier-panel {
+    margin-top: 8px;
+    padding: 10px;
+    background: var(--bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .course-frontier-section {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    margin: 10px 0 5px 0;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted var(--panel-bd);
+  }
+  .course-frontier-section:first-child { margin-top: 0; }
+  .course-frontier-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .course-frontier-row:hover { background: rgba(226,160,74,0.06); }
+  .course-frontier-row.selected { background: rgba(74,123,212,0.10); }
+  .course-frontier-row .cfr-pri {
+    font-family: var(--font-px);
+    font-size: 9px;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #fff;
+  }
+  .course-frontier-row .cfr-pri.P0 { background: #c25450; }
+  .course-frontier-row .cfr-pri.P1 { background: #c98a3a; }
+  .course-frontier-row .cfr-pri.P2 { background: #5e6f8a; }
+  .course-frontier-row .cfr-id {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+    min-width: 60px;
+  }
+  .course-frontier-row .cfr-title {
+    flex: 1;
+    color: var(--fg);
+  }
+  .course-frontier-row .cfr-stat {
+    font-size: 10px;
+    color: var(--accent-dim);
+  }
+  .course-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--panel-bd);
+  }
+  .course-meta {
+    margin-top: 10px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+  }
+
   /* ── Lab tile (shared across alt views) ──
      Each tile pulls its area icon + accent color from the floor,
      so an item visually carries the room it lives in. */
@@ -2915,6 +3124,7 @@
   <h1>🧪 COGNITIVE LAB v0.1</h1>
   <div id="view-toggle" role="tablist" aria-label="Lab view">
     <button class="vt-btn active" data-view="floor"     role="tab">Floor</button>
+    <button class="vt-btn"        data-view="course"    role="tab">Course</button>
     <button class="vt-btn"        data-view="priority"  role="tab">Priority</button>
     <button class="vt-btn"        data-view="timeline"  role="tab">Timeline</button>
     <button class="vt-btn"        data-view="by-status" role="tab">By Status</button>
@@ -3050,6 +3260,16 @@
   <h2 class="alt-heading">By-status view</h2>
   <p class="alt-sub">Kanban-style board. Click any card to open it in the floor drawer.</p>
   <div class="bs-board" id="bs-board"></div>
+</div>
+
+<!-- ── Course view ──
+     A Course is a 7-leg arc (one ISO week). Frontier-not-itinerary: the Course
+     names what's *reachable* this week; per-leg Frame picks from the frontier.
+     Step 0a: planning form stub (theme / target_outcome / frontier / bail_conditions). -->
+<div id="course-view" class="alt-view">
+  <h2 class="alt-heading">Course · 7-leg arc</h2>
+  <p class="alt-sub">A week's planned arc. Set the theme, name the target, declare what's reachable, and the bail conditions. Per-leg Frame picks from the frontier.</p>
+  <div id="course-body"></div>
 </div>
 
 <!-- ── Cmd-K palette ── -->
@@ -4349,12 +4569,14 @@
   const SERVER_SAVE_PATHS = {
     'frame-cards':   '/api/save/frame-cards',
     'debrief-cards': '/api/save/debrief-cards',
-    'pilot-checks':  '/api/save/pilot-checks'
+    'pilot-checks':  '/api/save/pilot-checks',
+    'courses':       '/api/save/courses'
   };
   const SERVER_LOAD_PATHS = {
     'frame-cards':   '/exports/frame-cards.json',
     'debrief-cards': '/exports/debrief-cards.json',
-    'pilot-checks':  '/exports/pilot-checks.json'
+    'pilot-checks':  '/exports/pilot-checks.json',
+    'courses':       '/exports/courses.json'
   };
   function postSave(type, arr) {
     const url = SERVER_SAVE_PATHS[type];
@@ -4382,13 +4604,81 @@
     const pairs = [
       ['frame-cards',   FRAME_KEY],
       ['debrief-cards', DEBRIEF_KEY],
-      ['pilot-checks',  PC_KEY]
+      ['pilot-checks',  PC_KEY],
+      ['courses',       COURSE_KEY]
     ];
     await Promise.all(pairs.map(async ([type, key]) => {
       const data = await loadFromServer(type);
       if (data === null) return; // no file yet → keep localStorage as-is
       try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
     }));
+  }
+
+  /* ── Course tier (7-leg arc; ISO-week-stamped) ──
+     A Course is one week's planned arc. Sub-objects:
+       theme            one-line: what this week is *for*
+       target_outcome   what the map looks like different by leg 7
+       frontier         array of LAB item IDs currently in scope
+       bail_conditions  text: when do we abandon this Course?
+       legs[]           leg objects (filled progressively; shape stubbed in step 1)
+       status           planning · in-progress · debriefed · archived
+     ID convention: ISO-week-stamped (COURSE-2026-W18 not -2026-05-03).
+     Frontier-not-itinerary: Course names what's reachable this week, not which
+     leg hits which item. Frame at each leg picks from the frontier. */
+  const COURSE_KEY = 'cognitive-lab-v0.1::courses';
+  const COURSE_LEG_COUNT = 7; // matches book title (The 7 Turn Work Week)
+
+  function isoWeekId(date) {
+    // ISO-8601 week-numbering: weeks start Monday; week 1 contains the first Thursday.
+    const d = date ? new Date(date.getTime()) : new Date();
+    d.setUTCHours(0, 0, 0, 0);
+    const dayNum = d.getUTCDay() || 7; // Sunday → 7
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum); // jump to Thursday of this ISO week
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const weekNum = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    return 'COURSE-' + d.getUTCFullYear() + '-W' + String(weekNum).padStart(2, '0');
+  }
+
+  function loadCourses() {
+    try { return JSON.parse(localStorage.getItem(COURSE_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveCourses(arr) {
+    try { localStorage.setItem(COURSE_KEY, JSON.stringify(arr)); } catch {}
+    postSave('courses', arr);
+  }
+
+  function findCourseById(id) {
+    return loadCourses().find(c => c && c.id === id) || null;
+  }
+  function findActiveCourse() {
+    // The active course is the one stamped to the current ISO week, if any.
+    return findCourseById(isoWeekId());
+  }
+  function newCourseDraft(opts) {
+    // Returns a fresh Course object stamped to the given (or current) week.
+    const id = (opts && opts.id) || isoWeekId(opts && opts.date);
+    const now = new Date().toISOString();
+    return {
+      id: id,
+      theme: '',
+      target_outcome: '',
+      frontier: [],            // array of LAB item IDs in scope this week
+      bail_conditions: '',
+      legs: [],                // shape defined by Leg wrapper (step 1)
+      status: 'planning',      // planning · in-progress · debriefed · archived
+      createdAt: now,
+      updatedAt: now
+    };
+  }
+  function upsertCourse(course) {
+    const arr = loadCourses();
+    const idx = arr.findIndex(c => c && c.id === course.id);
+    course.updatedAt = new Date().toISOString();
+    if (idx >= 0) arr[idx] = course;
+    else arr.push(course);
+    saveCourses(arr);
+    return course;
   }
 
   /* ── Frame Workshop: storage helpers ── */
@@ -4559,8 +4849,9 @@
     if (Array.isArray(value)) return value.length > 0;
     return !!(value && (typeof value === 'string') && value.trim().length > 0);
   }
-  function flashSaved() {
-    const el = document.getElementById('ff-saved');
+  function flashSaved(id) {
+    const el = document.getElementById(id || 'ff-saved');
+    if (!el) return;
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 1800);
   }
@@ -6054,7 +6345,7 @@
      ────────────────────────────────────────────────────────────── */
 
   const VIEW_KEY = STORAGE_KEY + '::active-view';
-  const VIEWS = ['floor', 'priority', 'timeline', 'by-status'];
+  const VIEWS = ['floor', 'course', 'priority', 'timeline', 'by-status'];
   let activeView = 'floor';
 
   function loadActiveView() {
@@ -6117,6 +6408,7 @@
 
     const isAlt = name !== 'floor';
     document.body.classList.toggle('alt-view-active', isAlt);
+    document.getElementById('course-view').classList.toggle('visible', name === 'course');
     document.getElementById('priority-view').classList.toggle('visible', name === 'priority');
     document.getElementById('timeline-view').classList.toggle('visible', name === 'timeline');
     document.getElementById('by-status-view').classList.toggle('visible', name === 'by-status');
@@ -6125,6 +6417,7 @@
   }
 
   function renderActiveAltView() {
+    if (activeView === 'course')     renderCourseView();
     if (activeView === 'priority')   renderPriorityView();
     if (activeView === 'timeline')   renderTimelineView();
     if (activeView === 'by-status')  renderByStatusView();
@@ -6543,6 +6836,160 @@
       <span class="pss-area">${escapeHTML(it.areaName)}</span>
     </div>`;
   }
+
+  /* ── Course view (planning surface for the 7-leg arc) ──
+     Step 0a stub: theme + target_outcome + frontier (multi-pick over LAB items)
+     + bail_conditions. Auto-loads the active week's course (or drafts one).
+     Frontier-not-itinerary: per-leg Frame picks from this list during the week. */
+  let courseFrontierPanelOpen = false;
+  let courseDraft = null; // in-memory edit buffer; flushed on save
+
+  function getOrInitCourseDraft() {
+    if (courseDraft) return courseDraft;
+    const existing = findActiveCourse();
+    courseDraft = existing ? JSON.parse(JSON.stringify(existing)) : newCourseDraft();
+    return courseDraft;
+  }
+
+  function renderCourseView() {
+    const c = getOrInitCourseDraft();
+    const body = document.getElementById('course-body');
+    if (!body) return;
+    const created = c.createdAt ? c.createdAt.slice(0, 10) : '—';
+    const updated = c.updatedAt ? c.updatedAt.slice(0, 10) : '—';
+    const legCount = (c.legs || []).length;
+    body.innerHTML = `
+      <div class="course-card">
+        <div class="course-header">
+          <span class="course-id">${escapeHTML(c.id)}</span>
+          <span class="course-status">${escapeHTML(c.status || 'planning')}</span>
+        </div>
+        <div class="course-field">
+          <label for="course-theme">Theme <span class="course-hint">one line — what this week is for</span></label>
+          <input id="course-theme" type="text" value="${escapeHTML(c.theme || '')}" placeholder="e.g., Land the rogaine spine in the lab" />
+        </div>
+        <div class="course-field">
+          <label for="course-target">Target outcome <span class="course-hint">what the map looks like different by leg 7</span></label>
+          <textarea id="course-target" placeholder="e.g., Course tier shipped, Hex Map v0.1 read-only, on-demand Comprehend prototype dogfooded once">${escapeHTML(c.target_outcome || '')}</textarea>
+        </div>
+        <div class="course-field">
+          <label>Frontier <span class="course-hint">items reachable this week — pick from the lab</span></label>
+          <div id="course-frontier-chips" class="course-frontier-chips"></div>
+          <button type="button" id="course-frontier-toggle" class="course-frontier-toggle${courseFrontierPanelOpen ? ' open' : ''}">${courseFrontierPanelOpen ? 'Close' : 'Browse items'}</button>
+          <div id="course-frontier-panel" class="course-frontier-panel" ${courseFrontierPanelOpen ? '' : 'hidden'}></div>
+        </div>
+        <div class="course-field">
+          <label for="course-bail">Bail conditions <span class="course-hint">when do we abandon this Course?</span></label>
+          <textarea id="course-bail" placeholder="e.g., If Hex Map proves unreadable after one dogfood, fall back to a Kanban-style Course view.">${escapeHTML(c.bail_conditions || '')}</textarea>
+        </div>
+        <div class="course-actions">
+          <button type="button" id="course-save" class="ff-btn primary">Save Course</button>
+          <span class="ff-saved" id="course-saved">✓ saved</span>
+        </div>
+        <div class="course-meta">
+          Legs: ${legCount} of ${COURSE_LEG_COUNT} · Created ${escapeHTML(created)} · Updated ${escapeHTML(updated)}
+        </div>
+      </div>
+    `;
+    renderCourseFrontierChips();
+    if (courseFrontierPanelOpen) renderCourseFrontierPanel();
+  }
+
+  function renderCourseFrontierChips() {
+    const c = getOrInitCourseDraft();
+    const el = document.getElementById('course-frontier-chips');
+    if (!el) return;
+    const items = allItemsArray();
+    const itemById = new Map(items.map(it => [it.id, it]));
+    el.innerHTML = (c.frontier || []).map(id => {
+      const it = itemById.get(id);
+      const title = it ? it.title : '(missing item)';
+      return `<span class="course-frontier-chip">
+        <span class="cfc-id">${escapeHTML(id)}</span>
+        <span class="cfc-title">${escapeHTML(title)}</span>
+        <button type="button" class="cfc-x" data-act="frontier-remove" data-item="${escapeHTML(id)}" aria-label="Remove ${escapeHTML(title)}">×</button>
+      </span>`;
+    }).join('');
+  }
+
+  function renderCourseFrontierPanel() {
+    const c = getOrInitCourseDraft();
+    const panel = document.getElementById('course-frontier-panel');
+    if (!panel) return;
+    const items = allItemsArray();
+    const selected = new Set(c.frontier || []);
+    // Group by priority. Within a priority, sort: in-progress > drafted > backlog > live > archived.
+    const tiers = { 'P0': [], 'P1': [], 'P2': [] };
+    items.forEach(it => { if (tiers[it.priority]) tiers[it.priority].push(it); });
+    Object.keys(tiers).forEach(p => {
+      tiers[p].sort((a, b) => statusRank(a.status) - statusRank(b.status));
+    });
+    let html = '';
+    ['P0', 'P1', 'P2'].forEach(p => {
+      if (tiers[p].length === 0) return;
+      html += `<div class="course-frontier-section">${p} · ${escapeHTML(PRI_LABEL[p] || '')}</div>`;
+      html += tiers[p].map(it => {
+        const sel = selected.has(it.id) ? ' selected' : '';
+        const statLabel = STATUS_LABEL[it.status] || it.status;
+        return `<div class="course-frontier-row${sel}" data-act="frontier-toggle" data-item="${escapeHTML(it.id)}">
+          <span class="cfr-pri ${it.priority}">${it.priority}</span>
+          <span class="cfr-id">${escapeHTML(it.id)}</span>
+          <span class="cfr-title">${escapeHTML(it.title)}</span>
+          <span class="cfr-stat">${escapeHTML(statLabel)}</span>
+        </div>`;
+      }).join('');
+    });
+    if (html === '') html = '<div class="ff-pp-empty">No items in the lab yet.</div>';
+    panel.innerHTML = html;
+  }
+
+  // Delegated handlers for the Course view (inputs + frontier picker + save).
+  document.getElementById('course-view').addEventListener('click', (e) => {
+    const tgt = e.target;
+    if (tgt.id === 'course-frontier-toggle') {
+      courseFrontierPanelOpen = !courseFrontierPanelOpen;
+      const panel = document.getElementById('course-frontier-panel');
+      tgt.classList.toggle('open', courseFrontierPanelOpen);
+      tgt.textContent = courseFrontierPanelOpen ? 'Close' : 'Browse items';
+      if (panel) {
+        panel.hidden = !courseFrontierPanelOpen;
+        if (courseFrontierPanelOpen) renderCourseFrontierPanel();
+      }
+      return;
+    }
+    if (tgt.id === 'course-save') {
+      const c = getOrInitCourseDraft();
+      const themeEl  = document.getElementById('course-theme');
+      const targetEl = document.getElementById('course-target');
+      const bailEl   = document.getElementById('course-bail');
+      c.theme           = themeEl  ? themeEl.value.trim()  : '';
+      c.target_outcome  = targetEl ? targetEl.value.trim() : '';
+      c.bail_conditions = bailEl   ? bailEl.value.trim()   : '';
+      upsertCourse(c);
+      flashSaved('course-saved');
+      return;
+    }
+    const removeBtn = tgt.closest('[data-act="frontier-remove"]');
+    if (removeBtn) {
+      const id = removeBtn.dataset.item;
+      const c = getOrInitCourseDraft();
+      c.frontier = (c.frontier || []).filter(x => x !== id);
+      renderCourseFrontierChips();
+      if (courseFrontierPanelOpen) renderCourseFrontierPanel();
+      return;
+    }
+    const toggleRow = tgt.closest('[data-act="frontier-toggle"]');
+    if (toggleRow) {
+      const id = toggleRow.dataset.item;
+      const c = getOrInitCourseDraft();
+      const set = new Set(c.frontier || []);
+      if (set.has(id)) set.delete(id); else set.add(id);
+      c.frontier = Array.from(set);
+      renderCourseFrontierChips();
+      renderCourseFrontierPanel();
+      return;
+    }
+  });
 
   function renderPriorityView() {
     const items = allItemsArray();

@@ -7,6 +7,7 @@ Behavior:
   POST /api/save/frame-cards      body = JSON array, written to exports/frame-cards.json
   POST /api/save/debrief-cards    body = JSON array, written to exports/debrief-cards.json
   POST /api/save/pilot-checks     body = JSON array, written to exports/pilot-checks.json
+  POST /api/save/courses          body = JSON array, written to exports/courses.json
 
 Notes:
   - .md/.txt are served as text/plain so links open in a tab instead of downloading.
@@ -34,6 +35,7 @@ ALLOWED_TYPES = {
     "frame-cards":   "frame-cards.json",
     "debrief-cards": "debrief-cards.json",
     "pilot-checks":  "pilot-checks.json",
+    "courses":       "courses.json",
 }
 
 DEFAULT_PORT = 4322
