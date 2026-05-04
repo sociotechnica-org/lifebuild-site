@@ -400,6 +400,84 @@
     display: inline-block;
   }
 
+  /* ── Comprehend (on-demand re-immersion notes attached to the active leg) ── */
+  .course-comprehend {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    padding: 14px 16px;
+    max-width: 760px;
+    margin-top: 16px;
+  }
+  .course-comprehend-title {
+    font-family: var(--font-px);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    margin: 0 0 4px;
+  }
+  .course-comprehend-sub {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: #6f7a90;
+    margin: 0 0 12px;
+  }
+  .course-comprehend-empty {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: #6f7a90;
+    font-style: italic;
+    padding: 6px 4px;
+  }
+  .course-comprehend textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 7px 9px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.45;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 56px;
+    box-sizing: border-box;
+  }
+  .course-comprehend textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .course-comprehend-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .course-comprehend-log {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--panel-bd);
+  }
+  .course-comprehend-entry {
+    padding: 6px 8px;
+    border-left: 2px solid var(--panel-bd);
+    margin: 6px 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--fg);
+    background: rgba(255,255,255,0.02);
+  }
+  .course-comprehend-entry .cc-when {
+    display: block;
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    margin-bottom: 3px;
+  }
+
   /* ── Lab tile (shared across alt views) ──
      Each tile pulls its area icon + accent color from the floor,
      so an item visually carries the room it lives in. */
@@ -3398,12 +3476,14 @@
      A Course is a 7-leg arc (one ISO week). Frontier-not-itinerary: the Course
      names what's *reachable* this week; per-leg Frame picks from the frontier.
      Step 0a: planning form (theme / target_outcome / frontier / bail_conditions).
-     Step 0b: Hex Map renders the Map; frontier picks highlight on it. -->
+     Step 0b: Hex Map renders the Map; frontier picks highlight on it.
+     Phase 3: On-demand Comprehend appended to the active leg's comprehend[]. -->
 <div id="course-view" class="alt-view">
   <h2 class="alt-heading">Course · 7-leg arc</h2>
   <p class="alt-sub">A week's planned arc. Set the theme, name the target, declare what's reachable, and the bail conditions. Per-leg Frame picks from the frontier.</p>
   <div id="course-body"></div>
   <div id="course-hexmap" class="course-hexmap"></div>
+  <div id="course-comprehend" class="course-comprehend"></div>
 </div>
 
 <!-- ── Cmd-K palette ── -->
@@ -7255,6 +7335,7 @@
     renderCourseFrontierChips();
     if (courseFrontierPanelOpen) renderCourseFrontierPanel();
     renderCourseHexMap();
+    renderCourseComprehend();
   }
 
   function renderCourseFrontierChips() {
@@ -7412,6 +7493,50 @@
     `;
   }
 
+  /* ── On-demand Comprehend (Phase 3) ──
+     Single textarea + Capture button. Appends a timestamped note to the
+     active leg's comprehend[]. Renders the most-recent-first log below.
+     If no active leg exists yet, prompts the user to start one via Frame. */
+  function fmtComprehendWhen(iso) {
+    if (!iso) return '·';
+    try {
+      const d = new Date(iso);
+      const date = d.toISOString().slice(0, 10);
+      const time = d.toTimeString().slice(0, 5);
+      return date + ' · ' + time;
+    } catch { return iso; }
+  }
+  function renderCourseComprehend() {
+    const wrap = document.getElementById('course-comprehend');
+    if (!wrap) return;
+    const leg = findActiveLeg();
+    if (!leg) {
+      wrap.innerHTML =
+        '<p class="course-comprehend-title">Comprehend</p>' +
+        '<p class="course-comprehend-sub">Re-immersion notes for the active leg. ' +
+        'Capture what just changed, what to load before continuing, what surprised you.</p>' +
+        '<p class="course-comprehend-empty">No active leg yet. Open Frame Workshop and save a card to start a leg, then Comprehend notes attach to it.</p>';
+      return;
+    }
+    const entries = (leg.comprehend || []).slice().reverse(); // newest first
+    const logHTML = entries.length === 0
+      ? '<p class="course-comprehend-empty">No notes yet for ' + escapeHTML(leg.id) + '.</p>'
+      : entries.map(e => `<div class="course-comprehend-entry">
+          <span class="cc-when">${escapeHTML(fmtComprehendWhen(e && e.at))}</span>
+          ${escapeHTML((e && e.text) || '').replace(/\n/g, '<br>')}
+        </div>`).join('');
+    wrap.innerHTML =
+      '<p class="course-comprehend-title">Comprehend · ' + escapeHTML(leg.id) + '</p>' +
+      '<p class="course-comprehend-sub">Re-immersion notes for the active leg. ' +
+      'Capture what just changed, what to load before continuing, what surprised you.</p>' +
+      '<textarea id="course-comprehend-input" placeholder="What just changed? What do I need to load? What surprised me?"></textarea>' +
+      '<div class="course-comprehend-actions">' +
+        '<button type="button" id="course-comprehend-capture" class="ff-btn primary">Capture note</button>' +
+        '<span class="ff-saved" id="course-comprehend-saved">✓ saved</span>' +
+      '</div>' +
+      '<div class="course-comprehend-log">' + logHTML + '</div>';
+  }
+
   // Delegated handlers for the Course view (inputs + frontier picker + save).
   document.getElementById('course-view').addEventListener('click', (e) => {
     const tgt = e.target;
@@ -7436,6 +7561,19 @@
       c.bail_conditions = bailEl   ? bailEl.value.trim()   : '';
       upsertCourse(c);
       flashSaved('course-saved');
+      return;
+    }
+    if (tgt.id === 'course-comprehend-capture') {
+      const ta = document.getElementById('course-comprehend-input');
+      const text = ta ? ta.value.trim() : '';
+      if (!text) return;
+      const leg = findActiveLeg();
+      if (!leg) return; // form is hidden when no active leg, but guard anyway
+      leg.comprehend = Array.isArray(leg.comprehend) ? leg.comprehend.slice() : [];
+      leg.comprehend.push({ at: new Date().toISOString(), text: text });
+      upsertLeg(leg);
+      flashSaved('course-comprehend-saved');
+      renderCourseComprehend();
       return;
     }
     const removeBtn = tgt.closest('[data-act="frontier-remove"]');
