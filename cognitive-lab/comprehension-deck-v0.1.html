@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Comprehension · The Rogaine Spine · 2026-05-04</title>
+<style>
+  :root {
+    --bg:          #1a1a2e;
+    --fg:          #e8e0d4;
+    --panel-bg:    #16213e;
+    --panel-bd:    #2a3a5c;
+    --accent:      #e2a04a;
+    --accent-dim:  #a87832;
+    --success:     #4daa57;
+    --danger:      #c25450;
+    --font-px:     'Courier New', Courier, monospace;
+    --font-sans:   -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+    --frame-c:     #4a7bd4;
+    --comprehend-c:#d4a030;
+    --sync-c:      #2d8a7e;
+    --produce-c:   #e2a04a;
+    --debrief-c:   #4a8a5a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+  body {
+    height: 100vh;
+    width: 100vw;
+  }
+  #deck {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  #deck::-webkit-scrollbar { display: none; }
+  #deck { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .slide {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 56px 72px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+  }
+  .slide-tag {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+  h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--fg);
+    max-width: 920px;
+    margin: 0;
+  }
+  .body {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--fg);
+    max-width: 920px;
+  }
+  .dim { color: #a8a098; }
+  .accent { color: var(--accent); }
+  .px { font-family: var(--font-px); }
+  .small { font-size: 13px; }
+
+  /* progress + counter */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 50;
+    transition: width 200ms ease;
+  }
+  #counter {
+    position: fixed;
+    bottom: 18px;
+    right: 24px;
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    z-index: 50;
+  }
+  #help {
+    position: fixed;
+    bottom: 18px;
+    left: 24px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #6f7a90;
+    z-index: 50;
+  }
+  #help kbd {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--panel-bd);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin: 0 2px;
+  }
+
+  /* — slide-specific layouts — */
+  .cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .cover h1 { font-size: 88px; letter-spacing: -2px; }
+  .cover .sub {
+    font-family: var(--font-px);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 5px;
+  }
+
+  /* split layouts */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .split .col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .split-label {
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin: 0;
+  }
+  .split-label.before { color: #c25450; }
+  .split-label.after  { color: var(--success); }
+
+  /* "card" boxes */
+  .panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 18px 22px;
+  }
+  .panel-row {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    margin: 6px 0;
+  }
+  .panel-row .px { color: var(--accent); font-size: 12px; letter-spacing: 1px; }
+
+  /* ASCII-style stack diagram for the data model */
+  .stack {
+    font-family: var(--font-px);
+    font-size: 16px;
+    line-height: 1.35;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 22px 26px;
+    color: var(--fg);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .stack .h { color: var(--accent); font-weight: bold; }
+  .stack .d { color: #6f7a90; }
+  .stack .v { color: var(--success); }
+
+  /* zone strip (snap circuit homage) */
+  .zones {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .zone {
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 16px 14px;
+    background: var(--panel-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 220px;
+  }
+  .zone .glyph { font-size: 36px; line-height: 1; }
+  .zone .role  { font-family: var(--font-px); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dim); }
+  .zone .name  { font-size: 18px; font-weight: 700; color: var(--fg); }
+  .zone .desc  { font-size: 12.5px; line-height: 1.4; color: #c8c0b4; margin-top: 4px; }
+  .zone[data-z="frame"]      { border-color: rgba(74,123,212,0.6); }
+  .zone[data-z="comprehend"] { border-color: rgba(212,160,48,0.6); }
+  .zone[data-z="sync"]       { border-color: rgba(45,138,126,0.6); }
+  .zone[data-z="produce"]    { border-color: rgba(226,160,74,0.6); }
+  .zone[data-z="debrief"]    { border-color: rgba(74,138,90,0.6); }
+  .zone[data-z="frame"]      .glyph { color: var(--frame-c); }
+  .zone[data-z="comprehend"] .glyph { color: var(--comprehend-c); }
+  .zone[data-z="sync"]       .glyph { color: var(--sync-c); }
+  .zone[data-z="produce"]    .glyph { color: var(--produce-c); }
+  .zone[data-z="debrief"]    .glyph { color: var(--debrief-c); }
+
+  /* hex-band swatch (illustrative, not real hex math) */
+  .hex-band {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 18px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    justify-content: center;
+  }
+  .hex-cell {
+    width: 36px;
+    height: 32px;
+    background: #4a7bd4;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    opacity: 0.55;
+    transition: opacity 200ms;
+  }
+  .hex-cell.amber  { background: #d4a030; }
+  .hex-cell.green  { background: #4a8a5a; }
+  .hex-cell.warm   { background: #a88a5a; }
+  .hex-cell.teal   { background: #2d8a7e; }
+  .hex-cell.dark   { background: #555; }
+  .hex-cell.dim    { opacity: 0.25; }
+  .hex-cell.bright { opacity: 1.0; box-shadow: 0 0 6px rgba(226,160,74,0.6); }
+  .hex-cell.frontier { box-shadow: 0 0 6px rgba(92,176,154,0.85), inset 0 0 0 2px #5cb09a; opacity: 1.0; }
+
+  /* led bar */
+  .led-bar {
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 4px;
+  }
+  .led {
+    width: 22px; height: 9px;
+    border-radius: 1.5px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .led.done    { background: rgba(74,138,90,0.55); border-color: rgba(74,138,90,0.7); }
+  .led.current { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 4px rgba(226,160,74,0.7); }
+
+  /* flow / pipeline */
+  .flow {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .flow-step {
+    flex: 1;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .flow-step .num {
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+  }
+  .flow-step .nm { font-size: 16px; font-weight: 700; }
+  .flow-step .ds { font-size: 12.5px; color: #c8c0b4; line-height: 1.45; }
+  .flow-arrow {
+    align-self: center;
+    color: var(--accent-dim);
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  /* lab item table */
+  .lab-list {
+    display: grid;
+    grid-template-columns: 92px 1fr 80px;
+    gap: 4px 18px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .lab-list .id { font-family: var(--font-px); color: var(--accent); }
+  .lab-list .pri {
+    font-family: var(--font-px); font-size: 11px;
+    color: var(--accent-dim); text-align: right; letter-spacing: 1px;
+  }
+
+  /* tag chips */
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(226,160,74,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(226,160,74,0.4);
+    margin-right: 6px;
+  }
+  .tag.danger { background: rgba(194,84,80,0.12); color: var(--danger); border-color: rgba(194,84,80,0.4); }
+  .tag.success { background: rgba(74,170,87,0.12); color: var(--success); border-color: rgba(74,170,87,0.4); }
+
+  /* "screenshot" sketches */
+  .sketch {
+    background: #0e1326;
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 18px 22px;
+    font-family: var(--font-px);
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--fg);
+  }
+  .sketch .label { color: var(--accent-dim); letter-spacing: 1.5px; font-size: 10px; text-transform: uppercase; }
+
+  /* link button on cover */
+  .open-lab {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 22px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-px);
+    letter-spacing: 2px;
+    font-size: 13px;
+  }
+  .open-lab:hover { background: rgba(226,160,74,0.1); }
+
+  /* utility */
+  ul.tight { margin: 0; padding-left: 22px; line-height: 1.55; }
+  ul.tight li { margin: 6px 0; }
+  .hr { height: 1px; background: var(--panel-bd); margin: 8px 0; border: none; }
+  .quote {
+    font-style: italic;
+    color: #c8c0b4;
+    border-left: 3px solid var(--accent);
+    padding: 6px 16px;
+    margin: 8px 0;
+    line-height: 1.5;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="counter">01 / 16</div>
+<div id="help">
+  <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>Space</kbd> next · <kbd>Esc</kbd> top
+</div>
+
+<div id="deck">
+
+  <!-- 1 — COVER -->
+  <section class="slide cover">
+    <p class="sub">comprehension · 2026-05-04</p>
+    <h1>The Rogaine Spine</h1>
+    <p class="lede" style="text-align:center; max-width: 680px;">
+      What landed in the lab tonight, why it's shaped this way,
+      and how the pieces add up to one moving thing.
+    </p>
+    <a class="open-lab" href="cognitive-lab-v0.1.html">→ open the lab</a>
+  </section>
+
+  <!-- 2 — THE REALIZATION -->
+  <section class="slide">
+    <p class="slide-tag">01 · the realization</p>
+    <h2>Stations were forms.<br>They should be lenses on the same thing.</h2>
+
+    <div class="split">
+      <div class="col">
+        <p class="split-label before">— before</p>
+        <div class="panel">
+          <h3 style="color:#c25450;">Five disconnected forms</h3>
+          <p class="body">Frame, Comprehend, Sync, Produce, Debrief — each had (or would have had) its own form, its own state, its own JSON.</p>
+          <p class="body">Debrief reconstructed Frame from memory. Comprehend had no home. Sync was vapor.</p>
+          <p class="body" style="color:#c25450; font-style:italic;">"Wall of text" loop: more fields, more forms, less coherence.</p>
+        </div>
+      </div>
+      <div class="col">
+        <p class="split-label after">— after</p>
+        <div class="panel">
+          <h3 style="color:var(--success);">One unit, five lenses</h3>
+          <p class="body">There's a <strong>unit of work</strong> flowing through the whole turn. The station isn't the thing — it's a different way of looking at the thing.</p>
+          <p class="body">Frame doesn't <em>file</em> a card. Frame <em>sets the course</em>. Every station downstream renders the same course.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 — THE METAPHOR -->
+  <section class="slide">
+    <p class="slide-tag">02 · the metaphor</p>
+    <h2>Rogaine: an Australian orienteering sport.<br><span class="dim">Time-boxed score-collection on a map you can't clean.</span></h2>
+
+    <div class="grid-2" style="margin-top: 6px;">
+      <div class="panel">
+        <h3>The shape</h3>
+        <ul class="tight body">
+          <li><strong>Hard time budget</strong> · 24h is canonical · 30 min late = DNF</li>
+          <li><strong>Map of valued checkpoints</strong> · 10–100 points each · pick your own route</li>
+          <li><strong>Pre-event planning window</strong> · 2–4 hours with the map · plan under pressure</li>
+          <li><strong>Hash house</strong> · central rest point · refuel, re-orient, decide</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>The lesson</h3>
+        <p class="body"><span class="accent">"The course is set so the winning team visits <em>most but not all</em>."</span></p>
+        <p class="body small">— IRF Rule C2</p>
+        <hr class="hr">
+        <p class="body">The signature failure isn't under-ambition.<br>It's <strong>"just one more control"</strong> — chasing past the bail-out, hitting the late-penalty cliff.</p>
+        <p class="body" style="color:var(--accent);">Elite skill: <strong>demote the plan when the plan is no longer correct.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 — THE UNIT -->
+  <section class="slide">
+    <p class="slide-tag">03 · the unit of play</p>
+    <h2>A turn is a <span class="accent">leg.</span><br>A week is a <span class="accent">7 leg course.</span></h2>
+
+    <p class="lede" style="margin-top: 4px;">
+      Locked to the book title — <em>The 7 Turn Work Week</em> — so the data structure earns its name.
+    </p>
+
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="panel">
+        <p class="px small accent">map</p>
+        <h3>Lifetime backlog</h3>
+        <p class="body">Every LAB item across all areas. Persists.</p>
+      </div>
+      <div class="panel">
+        <p class="px small accent">course</p>
+        <h3>One ISO week</h3>
+        <p class="body">Theme · target outcome · frontier of reachable items · bail conditions · 7 leg slots.</p>
+        <p class="body small dim"><code>COURSE-2026-W18</code></p>
+      </div>
+      <div class="panel">
+        <p class="px small accent">leg</p>
+        <h3>One Full Turn</h3>
+        <p class="body">Wraps Frame · Comprehend · Sync · Produce · Debrief. One slot of the course.</p>
+        <p class="body small dim"><code>LEG-2026-05-04-A</code></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — FRONTIER NOT ITINERARY -->
+  <section class="slide">
+    <p class="slide-tag">04 · the design call</p>
+    <h2>Frontier, not itinerary.</h2>
+
+    <div class="split">
+      <div class="col">
+        <div class="panel">
+          <h3 class="dim">If a Course pre-assigned items to legs…</h3>
+          <ul class="tight body">
+            <li>Determinism. Easy to chart.</li>
+            <li>Loses the "you choose your route" quality.</li>
+            <li>Re-litigated every time the day changes.</li>
+            <li>Becomes a Gantt chart in disguise.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel" style="border-color: var(--accent);">
+          <h3 class="accent">Course names what's <em>reachable</em> this week.</h3>
+          <ul class="tight body">
+            <li>Per-leg Frame picks from the frontier.</li>
+            <li>Surprises and emergence land naturally.</li>
+            <li>"Demote the plan" is a normal move, not a failure.</li>
+            <li>The week has shape; the day has freedom.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="body dim" style="margin-top: 12px;">
+      <strong>Author's framing:</strong> "Chart your course per turn."
+    </p>
+  </section>
+
+  <!-- 6 — THREE TIERS DATA MODEL -->
+  <section class="slide">
+    <p class="slide-tag">05 · the data model</p>
+    <h2>Three tiers. Schema-flat. Frontier-not-itinerary.</h2>
+
+    <div class="stack" style="margin-top: 6px;">
+<span class="h">Map</span>  <span class="d">— lifetime backlog (existing items + areas)</span>
+ └── <span class="h">Course</span>  <span class="d">— a 7-leg arc, ISO-week-stamped (COURSE-2026-W18)</span>
+      ├── <span class="v">theme</span>            <span class="d">one line: what this week is for</span>
+      ├── <span class="v">target_outcome</span>   <span class="d">how the map looks different by leg 7</span>
+      ├── <span class="v">frontier[]</span>       <span class="d">LAB item IDs reachable this week</span>
+      ├── <span class="v">bail_conditions</span>  <span class="d">when do we abandon this Course?</span>
+      ├── <span class="v">legs[]</span>           <span class="d">leg slots, filled progressively</span>
+      └── <span class="v">status</span>           <span class="d">planning · in-progress · debriefed · archived</span>
+
+      <span class="h">Leg</span>  <span class="d">— one Full Turn (LEG-2026-05-04-A)</span>
+       ├── <span class="v">course_ref</span>        <span class="d">parent course id</span>
+       ├── <span class="v">leg_number</span>        <span class="d">1..7</span>
+       ├── <span class="v">frame_card_id</span>     <span class="d">→ existing Frame card schema</span>
+       ├── <span class="v">comprehend[]</span>      <span class="d">timestamped on-demand notes</span>
+       ├── <span class="v">sync</span>              <span class="d">deferred placeholder</span>
+       ├── <span class="v">produce</span>           <span class="d">{ selected[], bonuses[], notes[] }</span>
+       ├── <span class="v">debrief_card_id</span>   <span class="d">→ existing Debrief card schema</span>
+       └── <span class="v">changes_to_course</span> <span class="d">writeback to course.frontier on debrief</span>
+    </div>
+  </section>
+
+  <!-- 7 — TWO VISUALIZATION METAPHORS -->
+  <section class="slide">
+    <p class="slide-tag">06 · two metaphors, two tiers</p>
+    <h2>Different cognitive jobs.<br>Different metaphors.</h2>
+
+    <div class="split">
+      <div class="col">
+        <div class="panel" style="border-color: rgba(74,123,212,0.45);">
+          <p class="px small" style="color:#6f9ee0;">course / map tier</p>
+          <h3>Hex Map · terrain</h3>
+          <p class="body">Items as hexes. Area accent = biome. Status = fog. P0 = red glow. Frontier = teal halo.</p>
+          <p class="body small dim">"Where am I in the bigger picture? What's reachable? What's been explored?"</p>
+          <div class="hex-band" style="margin-top: 10px;">
+            <div class="hex-cell"></div>
+            <div class="hex-cell amber"></div>
+            <div class="hex-cell amber bright"></div>
+            <div class="hex-cell green"></div>
+            <div class="hex-cell warm"></div>
+            <div class="hex-cell"></div>
+            <div class="hex-cell teal frontier"></div>
+            <div class="hex-cell dark dim"></div>
+            <div class="hex-cell amber frontier"></div>
+            <div class="hex-cell"></div>
+            <div class="hex-cell green dim"></div>
+            <div class="hex-cell warm"></div>
+            <div class="hex-cell amber"></div>
+            <div class="hex-cell teal"></div>
+            <div class="hex-cell dark"></div>
+            <div class="hex-cell green frontier"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel" style="border-color: rgba(74,138,90,0.45);">
+          <p class="px small" style="color:#5cb09a;">leg tier</p>
+          <h3>Snap Circuit · wiring</h3>
+          <p class="body">Five components in signal-flow order. Each lights as data lands.</p>
+          <p class="body small dim">"What am I building this leg? Do I have all the components wired right?"</p>
+          <div style="display:flex; flex-direction: column; gap: 4px; margin-top: 10px; font-family: var(--font-px); font-size: 12px;">
+            <div style="display:flex; gap:8px; align-items:center;"><span style="font-size:18px;color:var(--frame-c);">🔋</span><span>Frame · power source</span></div>
+            <div style="text-align:center; color:var(--accent-dim);">▼</div>
+            <div style="display:flex; gap:8px; align-items:center;"><span style="font-size:18px;color:var(--comprehend-c);">⚡</span><span>Comprehend · amplifier</span></div>
+            <div style="text-align:center; color:var(--accent-dim);">▼</div>
+            <div style="display:flex; gap:8px; align-items:center;"><span style="font-size:18px;color:var(--sync-c);">≈</span><span>Sync · filter</span></div>
+            <div style="text-align:center; color:var(--accent-dim);">▼</div>
+            <div style="display:flex; gap:8px; align-items:center;"><span style="font-size:18px;color:var(--produce-c);">〰</span><span>Produce · live signal</span></div>
+            <div style="text-align:center; color:var(--accent-dim);">▼</div>
+            <div style="display:flex; gap:8px; align-items:center;"><span style="font-size:18px;color:var(--debrief-c);">🔊</span><span>Debrief · output stage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 — BRUNER / SNAP CIRCUITS -->
+  <section class="slide">
+    <p class="slide-tag">07 · the design language</p>
+    <h2>Bruner + Kay + Snap Circuits<br><span class="dim" style="font-size:24px;">drives every visual choice from here.</span></h2>
+
+    <div class="grid-3" style="margin-top: 4px;">
+      <div class="panel">
+        <p class="px small accent">enactive</p>
+        <h3>know where you are · manipulate</h3>
+        <p class="body small">Picking, dragging, snapping things into place. Direct, tactile.</p>
+      </div>
+      <div class="panel">
+        <p class="px small accent">iconic</p>
+        <h3>recognize · compare · configure</h3>
+        <p class="body small">Glanceable visual states. Color, position, glow. Read in a beat.</p>
+      </div>
+      <div class="panel">
+        <p class="px small accent">symbolic</p>
+        <h3>long chains of reasoning · abstract</h3>
+        <p class="body small">Where the lab lived (text, JSON). Now: only when no other mode will do.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 16px;">
+      "Constructing a diagram is much less difficult than trying to read one."<br>
+      <span class="small dim">— Alan Kay (per WS004)</span>
+    </div>
+
+    <p class="body" style="margin-top: 4px;">
+      <strong>Aspiration:</strong> the lab should feel like Snap Circuits, not MS-DOS.<br>
+      <span class="dim">Build the board next to the diagram. See the signal flow. Snap, don't type.</span>
+    </p>
+  </section>
+
+  <!-- 9 — COURSE VIEW -->
+  <section class="slide">
+    <p class="slide-tag">08 · what shipped — course view</p>
+    <h2>Course tab. Plan the week, see the map.</h2>
+
+    <div class="split" style="gap: 36px;">
+      <div class="col">
+        <p class="body">A new top-level toolbar tab. One screen for the whole week's setup:</p>
+        <ul class="tight body">
+          <li><strong>Theme</strong> — one line · what this week is for</li>
+          <li><strong>Target outcome</strong> — what looks different by leg 7</li>
+          <li><strong>Frontier picker</strong> — multi-select over all LAB items, P0/P1/P2 grouped</li>
+          <li><strong>Bail conditions</strong> — when we drop the week's plan</li>
+          <li><strong>Hex Map</strong> — frontier picks light up teal as you click</li>
+          <li><strong>On-demand Comprehend</strong> — capture re-immersion notes anytime</li>
+        </ul>
+        <p class="body dim small">Persists to <code>exports/courses.json</code> via the lab server.</p>
+      </div>
+      <div class="col">
+        <div class="sketch">
+          <div class="label">Course · 7-leg arc</div>
+          <div style="margin-top:8px; font-size:14px;">COURSE-2026-W18 · planning</div>
+          <hr class="hr">
+          <div>theme: <span style="color:var(--accent);">land the rogaine spine</span></div>
+          <div>target: <span class="dim">course tier shipped, hex map readable</span></div>
+          <div>frontier: <span class="accent">[ LAB-027 ] [ LAB-032 ] [ LAB-035 ]</span></div>
+          <div>bail: <span class="dim">if hex map proves unreadable</span></div>
+          <hr class="hr">
+          <div class="label" style="margin-top:8px;">Map · 41 items · 3 in frontier</div>
+          <div class="hex-band" style="margin-top:8px;">
+            <div class="hex-cell"></div><div class="hex-cell amber"></div>
+            <div class="hex-cell amber frontier"></div><div class="hex-cell green"></div>
+            <div class="hex-cell warm"></div><div class="hex-cell teal"></div>
+            <div class="hex-cell amber frontier"></div><div class="hex-cell dark dim"></div>
+            <div class="hex-cell green"></div><div class="hex-cell warm"></div>
+            <div class="hex-cell amber frontier"></div><div class="hex-cell"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — COURSE HEADER BAR -->
+  <section class="slide">
+    <p class="slide-tag">09 · what shipped — course header</p>
+    <h2>One glanceable strip. Top of every workshop.</h2>
+
+    <div class="sketch" style="margin-top: 8px;">
+      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; font-family: var(--font-px); font-size: 13px;">
+        <span style="color:var(--accent); font-weight:bold;">LEG-2026-05-04-A</span>
+        <span class="led-bar">
+          <span class="led done"></span>
+          <span class="led done"></span>
+          <span class="led current"></span>
+          <span class="led"></span>
+          <span class="led"></span>
+          <span class="led"></span>
+          <span class="led"></span>
+        </span>
+        <span><span class="dim">MUSTS</span> <strong>2/3</strong></span>
+        <span><span class="dim">BONUS</span> <strong>1</strong></span>
+        <span><span class="dim">MAP</span> <strong>3/41 in scope</strong></span>
+        <span style="margin-left:auto; padding: 2px 8px; border:1px solid var(--panel-bd); border-radius:3px; text-transform:uppercase; letter-spacing:1px; font-size: 10px;">in-progress</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 16px;">
+      <div>
+        <h3 class="accent">What it shows</h3>
+        <ul class="tight body">
+          <li><strong>Leg ID</strong> — which leg is active</li>
+          <li><strong>7-segment LED bar</strong> — book title hook · current lit, prior dim, future ghosted</li>
+          <li><strong>MUSTS x/3</strong> — turns red if you go over cap</li>
+          <li><strong>BONUS x</strong> — Frame card's stretch[]</li>
+          <li><strong>MAP x/y in scope</strong> — frontier vs. total items</li>
+          <li><strong>Status badge</strong> — planning · in-progress · debriefed</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="accent">When it updates</h3>
+        <ul class="tight body">
+          <li>Every time you open a workshop drawer</li>
+          <li>After you save a Frame card (auto-creates leg if needed)</li>
+          <li>After you save a Debrief card (status flips to <span class="success" style="color:var(--success);">debriefed</span>)</li>
+        </ul>
+        <p class="body dim small" style="margin-top:8px;">Empty state when no leg yet: a clickable nudge to open the Course tab.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 — LEG VIEW (SNAP CIRCUIT) -->
+  <section class="slide">
+    <p class="slide-tag">10 · what shipped — leg view</p>
+    <h2>Leg tab. The Snap Circuit board.</h2>
+
+    <p class="body">Five vertically-stacked component cards. Signal flows top to bottom.</p>
+
+    <div class="zones">
+      <div class="zone" data-z="frame">
+        <span class="glyph">🔋</span>
+        <span class="role">power source</span>
+        <span class="name">Frame</span>
+        <span class="desc">Linked Frame card's musts + bonuses as chips.</span>
+      </div>
+      <div class="zone" data-z="comprehend">
+        <span class="glyph">⚡</span>
+        <span class="role">amplifier</span>
+        <span class="name">Comprehend</span>
+        <span class="desc">Newest 3 notes from the leg's comprehend[].</span>
+      </div>
+      <div class="zone" data-z="sync">
+        <span class="glyph">≈</span>
+        <span class="role">filter</span>
+        <span class="name">Sync</span>
+        <span class="desc">Slot present, form deferred (LAB-035).</span>
+      </div>
+      <div class="zone" data-z="produce">
+        <span class="glyph">〰</span>
+        <span class="role">live signal</span>
+        <span class="name">Produce</span>
+        <span class="desc">Selected · bonuses · notes counters.</span>
+      </div>
+      <div class="zone" data-z="debrief">
+        <span class="glyph">🔊</span>
+        <span class="role">output stage</span>
+        <span class="name">Debrief</span>
+        <span class="desc">Course held? · caught · changes_to_course summary.</span>
+      </div>
+    </div>
+
+    <p class="body dim small" style="margin-top: 8px;">
+      Read-only v0.1. Click-throughs into the underlying forms are queued (LAB-037).
+    </p>
+  </section>
+
+  <!-- 12 — DEBRIEF REVISION -->
+  <section class="slide">
+    <p class="slide-tag">11 · what shipped — debrief rogaine shape</p>
+    <h2>Debrief: from 7 free-text probes<br>→ 6 fields that <span class="accent">write themselves</span>.</h2>
+
+    <div class="split">
+      <div class="col">
+        <p class="split-label before">— before</p>
+        <ul class="tight body">
+          <li>Subject · Framed · Actual · Diverged · Sustain · Improve · Capacity</li>
+          <li>Free text everywhere. Reconstructed Frame from memory.</li>
+          <li>"Where they diverged" was the thing that did the most work — and it was the same field as everything else.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <p class="split-label after">— after (rogaine shape)</p>
+        <ul class="tight body">
+          <li><span class="accent">Score</span> · auto-derived from leg.frame · you verify, don't fill</li>
+          <li><span class="accent">Caught</span> · what you actually came home with</li>
+          <li><span class="accent">Course held?</span> · radio: as set / different / wrong from start</li>
+          <li><span class="accent">What changed it</span> · only meaningful if not "as set"</li>
+          <li><span class="accent">Better moves</span> · the slot for the future Course Coach</li>
+          <li><span class="accent">Capacity + next</span> · bridge to next leg</li>
+        </ul>
+      </div>
+    </div>
+    <p class="body dim small" style="margin-top: 8px;">
+      Save also writes back to <code>leg.changes_to_course</code> and bumps status → <span style="color:var(--success);">debriefed</span>. Old cards stay readable (legacy fields retained on view).
+    </p>
+  </section>
+
+  <!-- 13 — THE SPINE IN ACTION -->
+  <section class="slide">
+    <p class="slide-tag">12 · how it all flows</p>
+    <h2>One spine. Five lenses. Pulled through a turn.</h2>
+
+    <div class="flow">
+      <div class="flow-step" style="border-color: rgba(226,160,74,0.5);">
+        <span class="num">01</span>
+        <span class="nm">Plan</span>
+        <span class="ds">Course tab — set theme, target, frontier. Hex map highlights what's in scope.</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step" style="border-color: rgba(74,123,212,0.5);">
+        <span class="num">02</span>
+        <span class="nm">Frame</span>
+        <span class="ds">Open Frame Workshop. Save a card → Leg auto-created → Course Header lights segment 1.</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step" style="border-color: rgba(212,160,48,0.5);">
+        <span class="num">03</span>
+        <span class="nm">Comprehend</span>
+        <span class="ds">Mid-leg, drop notes from Course tab. Lands on leg.comprehend[]. Amplifier lights.</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step" style="border-color: rgba(226,160,74,0.5);">
+        <span class="num">04</span>
+        <span class="nm">Produce</span>
+        <span class="ds">Work the leg. (Ledger UI: deferred — but the slot is real.)</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step" style="border-color: rgba(74,138,90,0.5);">
+        <span class="num">05</span>
+        <span class="nm">Debrief</span>
+        <span class="ds">Save → Score auto · Course held? · changes_to_course writeback · status flips to debriefed.</span>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top: 14px;">
+      <strong>The Leg view</strong> renders all of this as a single circuit board — same data, iconic shape.<br>
+      <strong>The Course Header</strong> rides at the top of every workshop drawer — same data, glanceable strip.
+    </p>
+  </section>
+
+  <!-- 14 — COURSE COACH (FUTURE) -->
+  <section class="slide">
+    <p class="slide-tag">13 · the named future</p>
+    <h2>Course Coach.<br><span class="dim" style="font-size:26px;">Reads legs[] like poker hand histories.</span></h2>
+
+    <div class="grid-2" style="margin-top: 6px;">
+      <div class="panel">
+        <h3>Why it has a slot now</h3>
+        <ul class="tight body">
+          <li>Debrief's <strong>Better moves</strong> field is reserved for it.</li>
+          <li>The Leg wrapper exists so it has something to <em>read</em>.</li>
+          <li>Naming the role keeps the architecture from drifting.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>What it would do</h3>
+        <ul class="tight body">
+          <li>Cross-leg pattern surfacing (the Push that always overruns, the bonus that never gets touched).</li>
+          <li>Suggest moves for the next leg's Frame.</li>
+          <li>Doesn't decide. Suggests. Author still drives.</li>
+        </ul>
+        <p class="body dim small" style="margin-top:8px;">Filed as <strong>LAB-034</strong>. Not built tonight.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 14px;">
+      "Like online poker coaches — review your hands, name better moves, calibrate over weeks."<br>
+      <span class="small dim">— author, design dialog</span>
+    </div>
+  </section>
+
+  <!-- 15 — DEFERRED LAB ITEMS -->
+  <section class="slide">
+    <p class="slide-tag">14 · what's deferred</p>
+    <h2>Eight LAB items spawned for the morning.</h2>
+
+    <div class="lab-list" style="margin-top: 4px;">
+      <span class="id">LAB-034</span><span>Course Coach agent (poker-coach for legs)</span><span class="pri">P2</span>
+      <span class="id">LAB-035</span><span>Sync station + form (the deferred filter zone)</span><span class="pri">P2</span>
+      <span class="id">LAB-036</span><span>Frame Approach iconic skin (mode/leaning/AI/Done flavor as icons)</span><span class="pri">P1</span>
+      <span class="id">LAB-037</span><span>Leg view click-throughs (zone → underlying form)</span><span class="pri">P2</span>
+      <span class="id">LAB-038</span><span>Frontier add/remove UI on Debrief save</span><span class="pri">P2</span>
+      <span class="id">LAB-039</span><span>Auto-archive stale undebriefed legs</span><span class="pri">P2</span>
+      <span class="id">LAB-040</span><span>Course planning surface inside Director's Desk drawer</span><span class="pri">P3</span>
+      <span class="id">LAB-041</span><span>Hex Map v0.2 (interaction + adjacency)</span><span class="pri">P2</span>
+    </div>
+
+    <p class="body dim small" style="margin-top: 16px;">
+      All visible in the lab — Backlog Wall, Director's Desk items list, frontier picker.
+      Larry filed them with brief + full text + suggested priority.
+    </p>
+  </section>
+
+  <!-- 16 — OPEN QUESTIONS / VETTING -->
+  <section class="slide">
+    <p class="slide-tag">15 · open calls · what to vet</p>
+    <h2>Where to push back before merge.</h2>
+
+    <div class="grid-2">
+      <div class="panel" style="border-color: rgba(212,160,48,0.5);">
+        <h3 class="accent">Architecture</h3>
+        <ul class="tight body">
+          <li>Does the leg-as-wrapper feel right, or should Frame have <em>been</em> the leg?</li>
+          <li>Is "frontier-not-itinerary" still the call after a real week?</li>
+          <li>Two visualization metaphors (hex + circuit) — coherent or fragmented?</li>
+        </ul>
+      </div>
+      <div class="panel" style="border-color: rgba(74,138,90,0.5);">
+        <h3 class="accent">Surface</h3>
+        <ul class="tight body">
+          <li>Course Header on Frame/Pilot/Debrief drawers — fits or crowds?</li>
+          <li>Hex Map at 41 items — readable or cluttered?</li>
+          <li>Snap Circuit board — feels like a board, or five disconnected cards?</li>
+          <li>Does any glyph render badly? (Sync's <code>≈</code> is the new one.)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="panel" style="border-color: rgba(74,123,212,0.5);">
+        <h3 class="accent">Edges to poke</h3>
+        <ul class="tight body">
+          <li>Open Leg tab before saving any Frame card — empty-state link works?</li>
+          <li>Edit a pre-rogaine Debrief card — legacy fields preserved?</li>
+          <li>DevTools: confirm <code>POST /api/save/legs</code> + <code>POST /api/save/courses</code> fire.</li>
+        </ul>
+      </div>
+      <div class="panel" style="border-color: rgba(226,160,74,0.5);">
+        <h3 class="accent">Decision</h3>
+        <p class="body">If surfaces 1→5 feel like one spine flowing through different lenses → open the PR.</p>
+        <p class="body">If any seam feels broken → push back on Quenton before merge.</p>
+        <p class="body" style="margin-top: 10px;">
+          <a class="open-lab" style="margin-top:0; padding:8px 14px; font-size: 12px;" href="cognitive-lab-v0.1.html">→ open the lab</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const total = slides.length;
+
+  function currentIndex() {
+    const top = deck.scrollTop;
+    return Math.round(top / window.innerHeight);
+  }
+  function goTo(i) {
+    const idx = Math.max(0, Math.min(total - 1, i));
+    deck.scrollTo({ top: idx * window.innerHeight, behavior: 'smooth' });
+  }
+  function update() {
+    const i = currentIndex();
+    counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    progress.style.width = (((i + 1) / total) * 100) + '%';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const i = currentIndex();
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      goTo(i + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      goTo(i - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(total - 1);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      goTo(0);
+    }
+  });
+
+  deck.addEventListener('scroll', () => {
+    requestAnimationFrame(update);
+  });
+  window.addEventListener('resize', update);
+  update();
+</script>
+
+</body>
+</html>
