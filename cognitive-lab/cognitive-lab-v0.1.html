@@ -469,6 +469,55 @@
     line-height: 1.6;
   }
   .course-build-placeholder strong { color: var(--accent); }
+  /* Build canvas (Move 3b): snap-circuit-style grid. Empty cells with a
+     center "snap point" dot, labeled rows (A–G) and columns (1–10). */
+  .bc-canvas-wrap {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 4px;
+  }
+  .bc-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .bc-cell-bg {
+    fill: rgba(255,255,255,0.02);
+    stroke: rgba(255,255,255,0.10);
+    stroke-width: 0.6;
+    transition: fill 120ms ease, stroke 120ms ease;
+  }
+  .bc-cell:hover .bc-cell-bg {
+    fill: rgba(226,160,74,0.08);
+    stroke: var(--accent-dim);
+    stroke-width: 1.2;
+    cursor: pointer;
+  }
+  .bc-cell-snap {
+    fill: rgba(255,255,255,0.16);
+    pointer-events: none;
+  }
+  .bc-cell:hover .bc-cell-snap {
+    fill: var(--accent);
+  }
+  .bc-grid-label {
+    font-family: var(--font-px);
+    font-size: 10px;
+    font-weight: bold;
+    fill: var(--accent-dim);
+    letter-spacing: 0.5px;
+    pointer-events: none;
+  }
+  .bc-canvas-hint {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: #6f7a90;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .bc-canvas-hint strong { color: var(--accent); }
   /* By-function lens (restored from v0.2): clustered biome regions. */
   .hex-region-bg {
     fill-opacity: 0.06;
@@ -8640,18 +8689,85 @@
     });
   }
 
-  /* Build lens (Move 3a stub).
-     Fills out in Move 3b (empty canvas with grid), 3c (tool drawer),
-     3d (click-to-place + persistence), 3e (template apply). */
+  /* Build lens (Moves 3b → 3e).
+     3b ships the empty snap-circuit grid (rows A–G × cols 1–10 = 70
+     cells). Cells are clickable but inert until the tool drawer (3c)
+     and click-to-place mechanic (3d) land. */
+  const BC_ROWS    = 7;
+  const BC_COLS    = 10;
+  const BC_CELL    = 52;       // pixel size of each grid cell
+  const BC_LABEL_PAD = 24;     // edge padding for row/col labels
+  const BC_ROW_LETTERS = ['A','B','C','D','E','F','G'];
+  function bcCellId(row, col) {
+    // "A1", "B7", etc — snap-circuit board convention.
+    return BC_ROW_LETTERS[row] + (col + 1);
+  }
   function renderCourseLensBuild(slot /*, items, frontierSet, workingSet */) {
+    const w = BC_LABEL_PAD * 2 + BC_COLS * BC_CELL;
+    const h = BC_LABEL_PAD + BC_ROWS * BC_CELL + 8;
+
+    // Column labels across the top
+    const colLabels = [];
+    for (let c = 0; c < BC_COLS; c++) {
+      const x = BC_LABEL_PAD + c * BC_CELL + BC_CELL / 2;
+      const y = BC_LABEL_PAD - 6;
+      colLabels.push(`<text class="bc-grid-label" x="${x}" y="${y}" text-anchor="middle">${c + 1}</text>`);
+    }
+
+    // Row labels down the left
+    const rowLabels = [];
+    for (let r = 0; r < BC_ROWS; r++) {
+      const x = BC_LABEL_PAD - 8;
+      const y = BC_LABEL_PAD + r * BC_CELL + BC_CELL / 2 + 4;
+      rowLabels.push(`<text class="bc-grid-label" x="${x}" y="${y}" text-anchor="end">${BC_ROW_LETTERS[r]}</text>`);
+    }
+
+    // Grid cells (each is a clickable group with bg rect + center snap dot)
+    const cells = [];
+    for (let r = 0; r < BC_ROWS; r++) {
+      for (let c = 0; c < BC_COLS; c++) {
+        const x = BC_LABEL_PAD + c * BC_CELL;
+        const y = BC_LABEL_PAD + r * BC_CELL;
+        const cellId = bcCellId(r, c);
+        cells.push(`<g class="bc-cell" data-row="${r}" data-col="${c}" data-cell="${cellId}" role="gridcell" aria-label="cell ${cellId}, empty">
+          <rect class="bc-cell-bg" x="${x}" y="${y}" width="${BC_CELL}" height="${BC_CELL}" rx="3" ry="3"/>
+          <circle class="bc-cell-snap" cx="${x + BC_CELL / 2}" cy="${y + BC_CELL / 2}" r="3"/>
+        </g>`);
+      }
+    }
+
     slot.innerHTML = `
-      <div class="course-build-placeholder">
-        <p>The <strong>Build canvas</strong> ships across Moves 3b–3e:</p>
-        <p>3b · empty grid (snap-circuit board) → 3c · tool drawer (item palette)<br>
-           3d · click-to-place + persistence → 3e · template apply (current frontier as starting position)</p>
-        <p style="margin-top: 14px;">For now, switch to <strong>By priority</strong> or <strong>By function</strong>.</p>
+      <p class="course-hexmap-sub">Build · empty canvas (snap-circuit board, ${BC_ROWS}×${BC_COLS} = ${BC_ROWS * BC_COLS} cells). Cells are clickable but inert until the tool drawer + click-to-place mechanic land in Moves 3c–3d.</p>
+      <div class="bc-canvas-wrap">
+        <svg class="bc-canvas" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" role="grid" aria-label="Build canvas: ${BC_ROWS}×${BC_COLS} grid, currently empty.">
+          ${colLabels.join('')}
+          ${rowLabels.join('')}
+          ${cells.join('')}
+        </svg>
       </div>
+      <p class="bc-canvas-hint">Coming in 3c–3e: <strong>tool drawer</strong> (item palette) · <strong>click-to-place</strong> · <strong>template apply</strong> (frontier as starting position).</p>
     `;
+
+    // Inert click handler — acknowledges interactions until 3d wires the
+    // real placement mechanic. Click any cell to confirm grid is alive.
+    const svg = slot.querySelector('svg.bc-canvas');
+    if (svg) {
+      svg.addEventListener('click', (e) => {
+        const cell = e.target && e.target.closest ? e.target.closest('.bc-cell') : null;
+        if (!cell) return;
+        // Visual ping: flash the cell border briefly.
+        const bg = cell.querySelector('.bc-cell-bg');
+        if (!bg) return;
+        bg.style.transition = 'none';
+        bg.style.fill   = 'rgba(226,160,74,0.22)';
+        bg.style.stroke = 'var(--accent)';
+        setTimeout(() => {
+          bg.style.transition = '';
+          bg.style.fill   = '';
+          bg.style.stroke = '';
+        }, 180);
+      });
+    }
   }
 
   /* By-function lens — restored from v0.2.
