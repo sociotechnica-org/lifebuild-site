@@ -2524,6 +2524,16 @@
   }
   .course-header-bar .ch-link:hover { color: var(--fg); }
 
+  /* Scope .ff-hint inside the view-mode label so the "legacy" tag renders
+     dimmed/normal-case rather than inheriting the label's bold accent style. */
+  .ws-vb-row .lbl .ff-hint {
+    color: #6f7a90;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 9px;
+  }
+
   /* ── Debrief Workshop: rogaine-shape extras (Phase 4) ──
      Score display is auto-computed read-only summary. Radio group is
      the "Course held?" three-state pick that surfaces the framed-but-
@@ -6448,7 +6458,11 @@
   function dbCardHasContent(card) {
     if (!card) return false;
     if (card.course_held) return true;
-    return DB_FIELDS.some(f => (card[f] || '').toString().trim().length > 0);
+    if (DB_FIELDS.some(f => (card[f] || '').toString().trim().length > 0)) return true;
+    // Also surface legacy data so a user editing an old card and hitting
+    // Cancel without typing still gets the discard prompt — the card has
+    // *content* even if the new form doesn't expose those fields.
+    return DB_FIELDS_LEGACY.some(f => (card[f] || '').toString().trim().length > 0);
   }
   /* Score auto-derive from active leg's Frame card.
      Phase 4 only counts plan-side: Musts (from frame.must) and Bonus (from
@@ -6494,7 +6508,13 @@
   function attachDebriefToLeg(card) {
     if (!card || !card.savedAt) return null;
     const leg = findActiveLeg();
-    if (!leg) return null;
+    if (!leg) {
+      // Orphan Debrief: card is saved (above) but has no leg to write back
+      // to. Acceptable for now; surface a console warning so phase 5+ debug
+      // sessions can spot unexpected orphans without re-tracing the save path.
+      console.warn('[Debrief] No active leg — card saved as orphan:', card.savedAt);
+      return null;
+    }
     leg.debrief_card_id = card.savedAt;
     leg.changes_to_course = {
       at: new Date().toISOString(),
@@ -6514,6 +6534,7 @@
 
   let dbMode = 'resting';
   let dbEditingOriginalIdx = -1;
+  let dbEditingOriginalCard = null; // snapshot of the card at edit-open, for dirty/cancel checks
 
   function setDbMode(mode) {
     dbMode = mode;
@@ -6532,6 +6553,7 @@
 
   function dbEnterEditing(card, idx) {
     dbEditingOriginalIdx = (typeof idx === 'number') ? idx : -1;
+    dbEditingOriginalCard = card ? JSON.parse(JSON.stringify(card)) : null;
     const dateEl = document.getElementById('db-date');
     if (dateEl) dateEl.textContent = todayDateString();
     document.getElementById('db-editing-title').innerHTML =
@@ -6648,7 +6670,11 @@
     const cancelBtn = document.getElementById('db-cancel-btn');
     if (cancelBtn) cancelBtn.addEventListener('click', () => {
       const draft = readDebriefForm();
-      if (dbCardHasContent(draft) && !confirm('Discard this card? Unsaved changes will be lost.')) return;
+      // Treat as "has content" if the live draft has anything OR the original
+      // card had legacy data the form doesn't expose (so an edit-from-legacy
+      // still gets the discard prompt).
+      const hasContent = dbCardHasContent(draft) || dbCardHasContent(dbEditingOriginalCard);
+      if (hasContent && !confirm('Discard this card? Unsaved changes will be lost.')) return;
       dbEnterResting();
     });
 
