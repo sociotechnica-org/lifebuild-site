@@ -4983,7 +4983,7 @@
       "type": "aux / persistent",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
-      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041","LAB-043","LAB-045"],
+      "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041","LAB-043","LAB-045","LAB-047","LAB-048","LAB-049","LAB-050","LAB-051"],
       "sources": [
         { "label": "PROCESS.md (how the agents compose, lab-to-book flow)", "href": "PROCESS.md" },
         { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
@@ -5012,6 +5012,30 @@
         }
       ],
       "chunks": [
+        {
+          "id": "chunk-build-canvas-v0.1",
+          "title": "Build canvas v0.1 — snap-circuit grid, tool drawer, click-to-place, template apply",
+          "summary": "Snap-circuit-style 7×10 grid + tool drawer + click-to-place + template apply. Author owns the placement; lab persists via course.build_positions.",
+          "body": "Move 3 of the v0.4 arc ships the Build canvas as the default lens on the Course view. The canvas is a 7×10 grid (rows A–G × cols 1–10, 70 cells) rendered as an ARIA grid > row > gridcell. Each cell is a snap point.\n\nThe **tool drawer** sits in a 2-col layout beside the grid. Items are grouped by area, sorted by priority within area. A priority allowlist (P0/P1/P2) guards against XSS on hand-edited JSON values.\n\n**Click-to-place flow:** clicking a drawer item puts it in-hand (`bcInHand` state). Clicking a grid cell snaps it. If the cell is already occupied, the pieces swap. An action chip appears on placed pieces with three options: Pick up · Remove · Cancel.\n\n**Persistence:** placements are stored in `course.build_positions` — a dict of `{item_id → {row, col}}`. The board survives page reload and lens switches.\n\n**Template apply** (Move 3e): 'Apply template' button places frontier items in priority + area order, row-major across the grid. 'Clear board' resets to empty. Inline status message surfaces when zero items are placed.\n\n**Cumulative sweep fix:** a double-render on lens-switch-while-chip-open was caught and fixed by clearing `bcActionItemId` at the top of render and bailing early when the chip was stale.\n\nCommits on branch `danversfleury/lab-course-tier`: Moves 3a–3e + cumulative sweep."
+        },
+        {
+          "id": "chunk-snap-circuit-builds-book",
+          "title": "Snap-circuits-with-build-book reframe — give them a board, a parts bin, and a builds book",
+          "summary": "The realization that drove v0.4: snap circuits ship with a build book. Stop generating maps for the user; give them a board, a parts bin, and a builds-book (= release plans / templates).",
+          "body": "The architectural pivot behind Move 3: the author's realization mid-design that the lab should stop generating maps *for* the user and instead give the user the tools to build their own.\n\nSnap Circuits — the physical toy — ships with a **build book**: a catalog of circuits you can assemble. The build book doesn't tell you what your circuit looks like. It shows you canonical circuits (templates) and lets you build your own from the same parts.\n\nTranslated to the lab: the Hex Map (auto-generated from lab data) was showing the user a diagram. The Build canvas gives them a **board** (the 7×10 grid), a **parts bin** (the tool drawer, all items available this Course), and a **builds book** (templates = releases in planning status, e.g. 'Apply template' → frontier items placed in priority order).\n\nAllan Kay's claim — redirected at the user, not just our design choices: *'It's easier to build a diagram than read a diagram.'* The user building their own placement learns the structure. The user reading an auto-generated map consumes it.\n\nThis reframe makes the Build canvas the primary surface (default lens) and repositions the Hex Map lenses (By function / By priority) as read-only re-projections of the same data — reference views, not the authoring surface."
+        },
+        {
+          "id": "chunk-lens-architecture",
+          "title": "Lens architecture — one canvas, three read-only re-projections",
+          "summary": "One canvas, multiple lenses (Build / By function / By priority). User owns one placement; lenses are read-only re-projections. The v0.2 biome view returns as a lens, not the default.",
+          "body": "Move 3a introduces a lens dispatcher on the Course view. Three tabs:\n\n- **Build** (default) — the author-owned snap-circuit grid. Placements persist in `course.build_positions`.\n- **By function** — the v0.2 biome Hex Map (areas as biome-tinted regions, hexes sorted by area). Restored as a reference lens.\n- **By priority** — the v0.3 concentric-rings Hex Map (P0 center → P1 → P2). Reference lens.\n\nThe active lens persists in `courseHexLens` (localStorage) so it survives reload. Lens switches clear any open action chip (`bcActionItemId`) and re-render without state bleed.\n\n`wireHexSVGListeners` was consolidated in this move — prior to 3a it was being called redundantly on every lens switch, causing double event-listener registration. The consolidation is the fix.\n\n**Design principle:** the user owns exactly one placement (the Build canvas). The two Hex Map lenses are read-only re-projections of the same underlying lab data — they don't have their own state. This keeps the authoring surface unambiguous: if you want to rearrange, go to Build."
+        },
+        {
+          "id": "chunk-instant-hex-tooltip",
+          "title": "HTML tooltip layer — instant hover over SVG hex cells",
+          "summary": "HTML tooltip layer over the Hex Map's SVG. aria-label replaces <title> to suppress the duplicate native browser tooltip. Pattern reusable for any future SVG with hex-cell polygons.",
+          "body": "Move 1 fixes the 1-second hover delay on the Hex Map. SVG `<title>` elements are browser-native tooltips — they inherit the OS/browser tooltip delay (typically 500ms–1s), which makes quick hex-scanning feel sluggish.\n\n**The fix:** an HTML tooltip layer (`<div class=\"hex-tooltip\">`) positioned absolutely above the SVG, z-index 450 (above the toolbar). On `mousemove` over a polygon, the tooltip's content and position update immediately via JS; no browser delay.\n\n**`aria-label` replaces `<title>`:** if you keep `<title>` inside the polygon *and* show the HTML tooltip, the browser shows both — a double tooltip. Swapping `<title>` for `aria-label` on each polygon preserves the accessibility label (screen readers read `aria-label`) while suppressing the native browser tooltip.\n\n**Reuse pattern:** any future SVG with polygons that need instant hover identity (hex cells, circuit nodes, map regions) should use this same pattern: aria-label on the polygon, HTML tooltip layer driven by mousemove.\n\nCommits `a5de21f` (tooltip layer, z-index 450, aria-label swap) and followup fix commit on branch `danversfleury/lab-course-tier`."
+        },
         {
           "id": "chunk-hex-map-v03",
           "title": "Hex Map v0.3 — concentric rings, Okabe-Ito palette, map legend, genus:species hover",
@@ -5245,7 +5269,8 @@
         "LAB-025","LAB-026","LAB-027","LAB-028","LAB-029",
         "LAB-030","LAB-031","LAB-032","LAB-033",
         "LAB-034","LAB-035","LAB-036","LAB-037","LAB-038","LAB-039","LAB-040","LAB-041",
-        "LAB-042","LAB-043","LAB-044","LAB-045","LAB-046"
+        "LAB-042","LAB-043","LAB-044","LAB-045","LAB-046",
+        "LAB-047","LAB-048","LAB-049","LAB-050","LAB-051"
       ],
       "artifacts": [],
       "notes": []
@@ -5687,6 +5712,51 @@
       "area": "comprehend-station",
       "brief": "Phase 1.5 deferred: at what density/count does Comprehend register as sufficient? Don't pre-design — that's the Course Coach's job (LAB-034). Captured so it's not forgotten.",
       "full": "Phase 1.5 deliberately deferred the question of sufficiency: when has a leg's Comprehend phase loaded enough context to proceed to Produce? This is not a question Larry or the lab UI should answer alone — it's Course Coach territory (LAB-034). The Course Coach reads leg histories and can detect patterns like 'legs where Comprehend had < 2 entries correlated with mid-leg re-immersion interruptions.' Pre-designing a sufficiency threshold now would be premature — it would encode a guess before the data exists to inform it. Capture the question here so it's not forgotten when LAB-034 becomes active. P3."
+    },
+    "LAB-047": {
+      "id": "LAB-047",
+      "title": "Release as 4th tier (Map → Release → Course → Leg)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Per Quenton's v0.4 design dialog Move 4 — formalize Release as a data object once Move 3 has lived data. Priority and points live on the release-membership, not on items.",
+      "full": "Per Quenton's v0.4 design dialog (Move 4): formalize Release as a fourth tier above Course. The current three-tier model is Map → Course → Leg. Release slots in as Map → Release → Course → Leg.\n\nKey design calls (Quenton):\n- Priority and points live on the **release-membership**, not on the item itself. The same item can be P0 in one release and P2 in another.\n- Templates = releases in `planning` status. The Build canvas's 'Apply template' button is already pointing at this — it applies a release plan to the board.\n- Don't formalize Release as a data object until Move 3 has lived data. Build the canvas first; let the author's placement behavior surface what a release actually is before encoding it.\n\nP2 — blocked on Move 3 lived use."
+    },
+    "LAB-048": {
+      "id": "LAB-048",
+      "title": "Comprehend boot gate (Comprehend before Frame)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "Per Quenton's v0.4 design dialog: the leg cycle reorders to C→F·S·P·D. Comprehend becomes a boot strip that gates Frame entry.",
+      "full": "Per Quenton's v0.4 design dialog: the leg cycle reorders from F·C·S·P·D to **C→F·S·P·D**. Comprehend moves first as a 'boot strip' that gates Frame entry.\n\nWhat the boot strip pulls: last leg's Debrief + frontier delta + recent Comprehend log. The author loads context before committing to a Frame — they know what changed since last leg before they scope the current one.\n\nAuthor decision (2026-05-04): rejected the boot-strip surface treatment for now. Comprehend stays as a home-page area, positioned first — the principle (Comprehend before Frame) is honored by layout positioning, not a hard gate. The C-before-F principle stands; the gate mechanism is deferred.\n\nP2 (later) — the principle is active; the mechanism is the build work."
+    },
+    "LAB-049": {
+      "id": "LAB-049",
+      "title": "Build canvas: drag-and-drop affordance (v0.5+)",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "director-desk",
+      "brief": "v0.4 ships click-to-place per Quenton's design call. If lived use shows DnD would be meaningfully better, this is the upgrade path.",
+      "full": "v0.4 ships click-to-place as the placement interaction. Quenton's design call: don't build drag-and-drop until click-to-place has been dogfooded and we know whether DnD would actually improve the experience. Click-to-place is simpler, works on mobile, and has lower implementation cost.\n\nIf after lived use the author finds that rearranging pieces on the board is frequent and click-to-place (click item → click destination) feels slow, DnD is the upgrade path. Track that signal in Debrief entries.\n\nNot a blocker. P3."
+    },
+    "LAB-050": {
+      "id": "LAB-050",
+      "title": "Build canvas: connect placed pieces (chain edges)",
+      "status": "backlog",
+      "priority": "P2",
+      "area": "director-desk",
+      "brief": "v0.4 deferred edges between connected pieces. Couples to LAB-045 (prereqs[] data model). When LAB-045 lands, surface prereq edges on the Build canvas as drawn lines.",
+      "full": "v0.4 deliberately deferred edges between connected pieces on the Build canvas. The decision: don't draw edges between cells until the prereqs[] data model exists (LAB-045).\n\nWhen LAB-045 lands:\n1. Items have `prereqs: string[]` — IDs of items that must complete before this one can start.\n2. On the Build canvas, if both items in a prereq relationship are placed, draw a line between their cells.\n3. The line should be lightweight — the board should remain readable; edges are secondary information.\n\nThis makes the Build canvas show not just placement but wiring: which pieces connect to which. The snap-circuit metaphor becomes complete — you're not just placing components, you're wiring them.\n\nP2 — blocked on LAB-045 (prereqs[] data model)."
+    },
+    "LAB-051": {
+      "id": "LAB-051",
+      "title": "Map world v0.1 — phase boxes live in the map (long-term)",
+      "status": "backlog",
+      "priority": "P3",
+      "area": "director-desk",
+      "brief": "Author's long-vision: each phase-box eventually lives in 'map world.' Central traversable space; phase-cycler moves through which phase the user is in. Library/research/tools become buildings.",
+      "full": "Author's long-vision for the lab (captured 2026-05-04, not a near-term build item):\n\nEach phase-box (Frame, Comprehend, Sync, Produce, Debrief — outside Recover) eventually lives in 'map world' — a central traversable space. A phase-cycler at the bottom of the screen moves through which phase the user is currently in relative to the map. Moving through phases is literally moving through the map.\n\nLibrary and research tools become buildings in the map world. Resources are rooms you enter, not tabs you click.\n\nThis is a long-vision capture, not a near-term spec. The design questions (what does 'traversable space' mean at a technical level? how does it compose with the existing Hex Map lenses?) are for Quenton when the time comes.\n\nNot v0.4. Not v0.5. Capture for the road map. P3."
     }
   }
 }

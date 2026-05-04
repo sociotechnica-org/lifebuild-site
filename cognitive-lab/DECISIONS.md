@@ -6,6 +6,30 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-04 (late) · Build canvas v0.1 — snap-circuit grid, lens architecture, HTML tooltip; LAB-043/044/046 reclassified
+
+**Decision.** Four framework-level calls shipped in the v0.4 arc (branch `danversfleury/lab-course-tier`, 14 commits since `7437bc4`):
+
+1. **Build canvas v0.1 ships (click-to-place; not drag-and-drop).** The Course view gains a user-authored snap-circuit grid (7×10 cells, ARIA grid). The author places items from the tool drawer onto the grid; positions persist in `course.build_positions`. Template apply and Clear board are first-class actions. Drag-and-drop was explicitly deferred per Quenton's design call — ship click-to-place first, then let dogfood surface whether DnD is worth the cost (LAB-049).
+
+2. **Lens architecture (one canvas, three lenses).** The Course view now has three tabs: Build (default, author-owned canvas) / By function (v0.2 biome Hex Map, restored as a reference lens) / By priority (v0.3 concentric-rings Hex Map). The active lens persists in localStorage. The two Hex Map lenses are read-only re-projections of the underlying lab data; the Build lens is the only authoring surface. `wireHexSVGListeners` was consolidated to fix double-registration on lens switch.
+
+3. **Snap-circuits-with-build-book reframe.** The architectural pivot driving v0.4: snap circuits ship with a build book — a catalog of circuits you can build. The lab should give the user a board, a parts bin, and a builds book (templates = release plans in planning status) rather than generating maps for them. Kay's principle redirected at the user: *"It's easier to build a diagram than read a diagram."* The user building their own placement learns the structure; reading an auto-generated map consumes it.
+
+4. **HTML tooltip pattern (instant hex hover).** SVG `<title>` has a 1-second browser delay. Replaced with an HTML tooltip layer (z-index 450, above toolbar), driven by `mousemove`. `aria-label` replaces `<title>` on each polygon to suppress the duplicate native browser tooltip while preserving accessibility. Pattern is reusable for any future SVG with polygons needing instant hover identity.
+
+**Data hygiene.** LAB-043, LAB-044, and LAB-046 carried invalid `"P3"` priority values in their `priority` fields (the schema enum is P0/P1/P2). All three were promoted to `"P2 (later)"` to match the v0.2 priority spec enum. This was caught during the cumulative sweep and fixed before the session-close commit.
+
+**Reasoning.** The build-canvas pivot resolves the passive/active tension in the prior Hex Map: the map was *generated* from lab data, positioning the author as a reader of a system-produced artifact. The snap-circuit analogy (from Bruner/WS004, already embedded in the Leg view's circuit board) applied at the Course/week scale: give the author components and let them compose. The three-lens architecture preserves the Hex Map's value (it's a good reference view) without making it the default. Build is the primary surface because it's the one the author authors.
+
+Click-to-place over drag-and-drop is a deliberate scope constraint, not a compromise. Quenton's call: dogfood the simpler interaction first. DnD tracked as LAB-049.
+
+**Status.** Active. All four shipped on branch `danversfleury/lab-course-tier`. New deferred items: LAB-047 (Release as 4th tier), LAB-048 (Comprehend boot gate), LAB-049 (DnD v0.5+), LAB-050 (chain edges on Build canvas), LAB-051 (map world long-vision).
+
+**References.** Commits `a5de21f` (HTML tooltip), `d0171b9` (lens dispatcher, Move 3a), `43b1add` (empty snap-circuit grid, Move 3b), plus Move 3c–3e + cumulative sweep commits on branch `danversfleury/lab-course-tier`. `cognitive-lab/cognitive-lab-v0.1.html` (chunks: chunk-build-canvas-v0.1, chunk-snap-circuit-builds-book, chunk-lens-architecture, chunk-instant-hex-tooltip; items LAB-047–LAB-051).
+
+---
+
 ## 2026-05-04 (evening) · Hex Map v0.3 — concentric rings + map-legend palette
 
 **Decision.** Hex Map v0.3 drops the red P0 stroke and replaces stroke-as-priority with spatial position: concentric rings carry priority (P0 center → P1 → P2). The palette moves to Okabe-Ito (color-blind safe). An explicit map legend names each area → color, the way a geographic map names blue = water. Hover reveals genus:species identity (area name + item name); per-hex LAB-### labels are dropped.
