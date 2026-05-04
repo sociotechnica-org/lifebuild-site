@@ -2373,6 +2373,75 @@
   #pc-recent-list .ws-recent-card.cleared { border-left-color: var(--success); }
   #pc-recent-list .ws-recent-card.grounded { border-left-color: var(--danger); }
 
+  /* ── Course Header bar (renders active leg + course at the top of every workshop drawer) ──
+     Single-line glanceable strip. Quenton's "iconic skin" call: leg-number is a
+     7-segment LED bar (book title: The 7 Turn Work Week) — current leg lit,
+     prior dimmed, future ghosted. */
+  .course-header-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    color: var(--accent-dim);
+  }
+  .course-header-bar.empty { font-style: italic; color: #6f7a90; }
+  .course-header-bar .ch-leg-id {
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  .course-header-bar .ch-segments {
+    display: inline-flex;
+    gap: 3px;
+    align-items: center;
+  }
+  .course-header-bar .ch-seg {
+    width: 14px;
+    height: 6px;
+    border-radius: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-sizing: border-box;
+  }
+  .course-header-bar .ch-seg.done    { background: rgba(74,138,90,0.55); border-color: rgba(74,138,90,0.7); }
+  .course-header-bar .ch-seg.current { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 4px rgba(226,160,74,0.6); }
+  .course-header-bar .ch-seg.future  { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.10); }
+  .course-header-bar .ch-counter {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .course-header-bar .ch-counter .ch-label { letter-spacing: 1px; }
+  .course-header-bar .ch-counter .ch-value { color: var(--fg); font-weight: bold; }
+  .course-header-bar .ch-counter.over .ch-value { color: #c25450; }
+  .course-header-bar .ch-status {
+    margin-left: auto;
+    padding: 2px 6px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 9.5px;
+  }
+  .course-header-bar .ch-link {
+    color: var(--accent);
+    text-decoration: underline dotted;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
+  .course-header-bar .ch-link:hover { color: var(--fg); }
+
   /* ── Workshop modes ── */
   .ws-mode { display: none; flex-direction: column; gap: 12px; }
   .ws-mode.active { display: flex; }
@@ -3365,6 +3434,9 @@
   <div id="drawer-body">
     <!-- Workshop view (three modes: resting / editing / viewing) -->
     <div id="workshop-view">
+
+      <!-- Course Header bar — renders the active leg (if any) at the top of every workshop drawer. -->
+      <div id="course-header" class="course-header-bar"></div>
 
       <!-- RESTING — default. Calm, inviting, one CTA + collapsed recent. -->
       <div class="ws-mode active" id="ws-resting">
@@ -4573,6 +4645,7 @@
       drawer.classList.add('workshop');
       wsView.classList.add('visible');
       if (floorHeading) floorHeading.style.display = '';
+      renderCourseHeader();
 
       if (areaId === 'pilot-check-station') {
         frameModes.forEach(el => el.style.display = 'none');
@@ -4854,6 +4927,94 @@
     saveLegs(arr);
     return leg;
   }
+
+  /* ── Frame ↔ Leg bridge ──
+     Frame cards are currently identified by their ISO `savedAt` timestamp
+     (no explicit id field). The Leg uses that timestamp as `frame_card_id`.
+     `findFrameCardForLeg` resolves it; `attachFrameToLeg` is called from the
+     Frame save handler to ensure a leg exists and links the card to it. */
+  function findFrameCardForLeg(leg) {
+    if (!leg || !leg.frame_card_id) return null;
+    return loadFrameCards().find(c => c && c.savedAt === leg.frame_card_id) || null;
+  }
+  function attachFrameToLeg(card) {
+    // Called after a Frame card is saved. Ensures a leg exists for today, in
+    // the current ISO-week's course, and links the card to it. Bumps the
+    // leg from `planning` → `in-progress` if applicable. Returns the leg.
+    if (!card || !card.savedAt) return null;
+    let leg = findActiveLeg();
+    const todayStr = todayDateOnly();
+    // If active leg is from a different day, start a fresh leg for today.
+    if (leg && leg.date !== todayStr) leg = null;
+    if (!leg) leg = newLegDraft({ date: todayStr });
+    leg.frame_card_id = card.savedAt;
+    if (leg.status === 'planning') leg.status = 'in-progress';
+    return upsertLeg(leg);
+  }
+
+  /* ── Course Header (top strip rendered in every workshop drawer) ──
+     Compact line: leg id · 7-segment LED bar · MUSTS x/3 · BONUS x · MAP n/m
+     · status badge. Reads the active leg + linked Frame card + active Course. */
+  function renderCourseHeader() {
+    const el = document.getElementById('course-header');
+    if (!el) return;
+    const leg = findActiveLeg();
+    const courseId = isoWeekId();
+    const course = findCourseById(courseId);
+
+    if (!leg && !course) {
+      el.className = 'course-header-bar empty';
+      el.innerHTML = 'No course or leg yet — open the <button type="button" class="ch-link" data-act="goto-course">Course view</button> to plan the week.';
+      return;
+    }
+
+    // Header chunks. Order: leg id · LED segments · MUSTS · BONUS · MAP · status.
+    const legId    = leg ? leg.id : 'No leg yet';
+    const legNum   = leg ? leg.leg_number : 0;
+    const status   = leg ? leg.status : 'planning';
+    const card     = leg ? findFrameCardForLeg(leg) : null;
+    const mustArr  = card && Array.isArray(card.must) ? card.must
+                   : (card && typeof card.must === 'string' && card.must.trim() ? [{ id: 'free' }] : []);
+    const bonusArr = card && Array.isArray(card.stretch) ? card.stretch
+                   : (card && typeof card.stretch === 'string' && card.stretch.trim() ? [{ id: 'free' }] : []);
+    const mustsCount = mustArr.length;
+    const bonusCount = bonusArr.length;
+    const frontierCount = course && Array.isArray(course.frontier) ? course.frontier.length : 0;
+    const mapTotal = (typeof allItemsArray === 'function') ? allItemsArray().length : 0;
+
+    // 7-segment LED bar. Done = legs strictly before legNum. Current = legNum. Future = the rest.
+    const segments = [];
+    for (let i = 1; i <= COURSE_LEG_COUNT; i++) {
+      let cls = 'ch-seg';
+      if (legNum && i < legNum) cls += ' done';
+      else if (legNum && i === legNum) cls += ' current';
+      else cls += ' future';
+      segments.push('<span class="' + cls + '" title="leg ' + i + ' of ' + COURSE_LEG_COUNT + '"></span>');
+    }
+
+    const mustsClass = mustsCount > 3 ? 'ch-counter over' : 'ch-counter';
+    const parts = [];
+    parts.push('<span class="ch-leg-id">' + escapeHTML(legId) + '</span>');
+    parts.push('<span class="ch-segments" aria-label="leg ' + legNum + ' of ' + COURSE_LEG_COUNT + '">' + segments.join('') + '</span>');
+    parts.push('<span class="' + mustsClass + '"><span class="ch-label">MUSTS</span><span class="ch-value">' + mustsCount + '/3</span></span>');
+    parts.push('<span class="ch-counter"><span class="ch-label">BONUS</span><span class="ch-value">' + bonusCount + '</span></span>');
+    if (course) {
+      parts.push('<span class="ch-counter"><span class="ch-label">MAP</span><span class="ch-value">' + frontierCount + '/' + mapTotal + ' in scope</span></span>');
+    } else {
+      parts.push('<span class="ch-counter"><span class="ch-label">MAP</span><span class="ch-value">no course set</span></span>');
+    }
+    parts.push('<span class="ch-status">' + escapeHTML(status) + '</span>');
+
+    el.className = 'course-header-bar';
+    el.innerHTML = parts.join('');
+  }
+
+  // Course Header click handler (only the goto-course link is clickable today).
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.classList && e.target.classList.contains('ch-link') && e.target.dataset.act === 'goto-course') {
+      if (typeof setView === 'function') setView('course');
+    }
+  });
 
   /* ── Frame Workshop: storage helpers ── */
   const FRAME_KEY = 'cognitive-lab-v0.1::frame-cards';
@@ -6006,14 +6167,24 @@
     const filled = FF_FIELDS.filter(f => fieldIsFilled(card[f])).length;
     if (filled === 0) return;
     const cards = loadFrameCards();
+    let savedCard = card;
     if (editingOriginalIdx >= 0 && cards[editingOriginalIdx]) {
-      // preserve original date if user is editing an existing card
-      card.date = cards[editingOriginalIdx].date || card.date;
+      // preserve original date + savedAt if user is editing an existing card,
+      // so the leg-attach link by savedAt stays stable across edits
+      const orig = cards[editingOriginalIdx];
+      card.date = orig.date || card.date;
+      card.savedAt = orig.savedAt || card.savedAt;
       cards[editingOriginalIdx] = card;
+      savedCard = card;
     } else {
       cards.push(card);
     }
     saveFrameCards(cards);
+    // Phase 2: ensure today's leg exists in the active week's course and link
+    // the just-saved Frame card to it. New cards bump the leg into in-progress;
+    // edits to an already-attached card leave the link unchanged.
+    attachFrameToLeg(savedCard);
+    renderCourseHeader();
     flashSaved();
     setTimeout(() => enterResting(), 600);
   });
