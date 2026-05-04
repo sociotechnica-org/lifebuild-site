@@ -80,7 +80,7 @@ Click-to-place over drag-and-drop is a deliberate scope constraint, not a compro
 
 **Decision.** Comprehend auto-logs three kinds of intentional acts: `note` (manual), `synthesis` (status cycle to live/archived), `deck` (deck-open matched by DECK_FILE_RE). Frame card field activity is explicitly excluded for now.
 
-**Reasoning.** The seam bug the author caught in morning dogfood: the Comprehend zone was showing "idle" while real comprehension activity was happening elsewhere (deck walks, status cycles). The fix required a surveillance line — a principle for which acts merit a log entry. The line drawn: only acts the user *intentionally took* and *would expect to leave a record*. Status cycles and deck-opens clear this bar. Field edits in Frame (Doing / Not Doing / Approach) do not — they're exploratory; the user may type and delete without committing. Logging them would capture intent-noise. One Course of dogfood will reveal whether the signal is sparse enough to warrant expansion (LAB-044, P3).
+**Reasoning.** The seam bug the author caught in morning dogfood: the Comprehend zone was showing "idle" while real comprehension activity was happening elsewhere (deck walks, status cycles). The fix required a surveillance line — a principle for which acts merit a log entry. The line drawn: only acts the user *intentionally took* and *would expect to leave a record*. Status cycles and deck-opens clear this bar. Field edits in Frame (Doing / Not Doing / Approach) do not — they're exploratory; the user may type and delete without committing. Logging them would capture intent-noise. One Course of dogfood will reveal whether the signal is sparse enough to warrant expansion (LAB-044, P2).
 
 **Status.** Active. Surveillance line is a first-class constraint, not a footnote. Expansion criteria deferred to LAB-044.
 
@@ -126,7 +126,7 @@ Click-to-place over drag-and-drop is a deliberate scope constraint, not a compro
 
 ## 2026-05-04 (evening) · Biome regions replace the random Hex Map grid
 
-**Decision.** Hex Map v0.2 clusters hexes into labeled, biome-tinted regions rather than a flat grid. Regions are the legend; the separate swatch row is dropped. Regions sort biggest-first. Semantic adjacency within biomes is deferred (LAB-043, P3).
+**Decision.** Hex Map v0.2 clusters hexes into labeled, biome-tinted regions rather than a flat grid. Regions are the legend; the separate swatch row is dropped. Regions sort biggest-first. Semantic adjacency within biomes is deferred (LAB-043, P2).
 
 **Reasoning.** Morning dogfood surfaced the misread: the v0.1 grid layout looked random — spatial proximity implied relationship, but the grid had no relationship logic. This imposed extraneous load (inferring meaning from position that had none). Biome regions give the map a spatial grammar: you navigate to the turn-phases cluster or the capacity-instruments cluster, not to cell (3,2). Regions-as-legend drops the redundant swatch row — the map tells its own story. Sorting biggest-first makes the dominant cognitive territory (turn phases, 5–6 hexes) visually anchor the layout.
 

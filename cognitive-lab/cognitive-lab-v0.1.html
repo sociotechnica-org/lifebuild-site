@@ -5872,7 +5872,7 @@
     "LAB-009": {
       "id": "LAB-009",
       "title": "Comprehend form",
-      "status": "backlog",
+      "status": "drafted",
       "priority": "P1",
       "area": "comprehend-station",
       "brief": "Load remaining state from agents and prior work.",
@@ -6233,7 +6233,7 @@
       "id": "LAB-049",
       "title": "Build canvas: drag-and-drop affordance (v0.5+)",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "director-desk",
       "brief": "v0.4 ships click-to-place per Quenton's design call. If lived use shows DnD would be meaningfully better, this is the upgrade path.",
       "full": "v0.4 ships click-to-place as the placement interaction. Quenton's design call: don't build drag-and-drop until click-to-place has been dogfooded and we know whether DnD would actually improve the experience. Click-to-place is simpler, works on mobile, and has lower implementation cost.\n\nIf after lived use the author finds that rearranging pieces on the board is frequent and click-to-place (click item → click destination) feels slow, DnD is the upgrade path. Track that signal in Debrief entries.\n\nNot a blocker. P3."
@@ -6251,7 +6251,7 @@
       "id": "LAB-051",
       "title": "Map world v0.1 — phase boxes live in the map (long-term)",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "director-desk",
       "brief": "Author's long-vision: each phase-box eventually lives in 'map world.' Central traversable space; phase-cycler moves through which phase the user is in. Library/research/tools become buildings.",
       "full": "Author's long-vision for the lab (captured 2026-05-04, not a near-term build item):\n\nEach phase-box (Frame, Comprehend, Sync, Produce, Debrief — outside Recover) eventually lives in 'map world' — a central traversable space. A phase-cycler at the bottom of the screen moves through which phase the user is currently in relative to the map. Moving through phases is literally moving through the map.\n\nLibrary and research tools become buildings in the map world. Resources are rooms you enter, not tabs you click.\n\nThis is a long-vision capture, not a near-term spec. The design questions (what does 'traversable space' mean at a technical level? how does it compose with the existing Hex Map lenses?) are for Quenton when the time comes.\n\nNot v0.4. Not v0.5. Capture for the road map. P3."
@@ -6278,7 +6278,7 @@
       "id": "LAB-054",
       "title": "Walk Studio: JSON-loaded WALKS (vs hardcoded const)",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "v0.1 keeps WALKS as a const in lab HTML. Move to cognitive-lab/exports/walks.json with lab-server.py persistence pattern (or static JSON fetch) when 5+ walks exist.",
       "full": "v0.1 stores the WALKS array as a hardcoded const inside the lab HTML. This is acceptable at 1–3 walks — Claude edits the HTML directly when authoring a new walk.\n\nAt 5+ walks, the const becomes unwieldy and the round-trip cost of editing HTML grows. At that point, move WALKS to a standalone JSON file: `cognitive-lab/exports/walks.json`. The lab fetches it on load (or on Walk Studio open) via `fetch('./exports/walks.json')`.\n\nCan follow the same persistence pattern as lab-server.py's other exports — or start as a static file that Claude edits directly, promoting to server-managed later.\n\nP3. The const approach works fine until volume forces the move. Do not build this preemptively."
@@ -6287,7 +6287,7 @@
       "id": "LAB-055",
       "title": "Walk Studio: in-lab walk authoring UI",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "v0.1 has Claude editing the WALKS const in HTML. v0.2 (later): an in-lab form to add/edit/delete walks. Whole feature, warrants its own design pass.",
       "full": "v0.1: walk authoring means Claude edits the WALKS const (or walks.json once LAB-054 lands) directly in the file. This is the right choice at low walk volume — it's transparent and doesn't need a UI.\n\nv0.2 (later): an in-lab form inside Walk Studio for creating and editing walks. Fields: id, title, kind (deck/product), and a step editor (heading, body, target_route per step).\n\nThis is a whole feature — UI design, data persistence, validation — warrants its own design pass with Quenton before building. Don't sketch it until Claude-authored walks become genuinely limiting.\n\nP3. The Claude-authoring pattern works; build the UI only when it's clearly blocking the author from creating walks without technical help."
@@ -6296,7 +6296,7 @@
       "id": "LAB-056",
       "title": "Walk Studio: sandbox-Course mode for state-mutating walks",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "v0.1 warns on step 0 of state-mutating walks. v0.2 could create a temporary throwaway Course on walk-start and discard on close.",
       "full": "v0.1 handles state-mutating walks (walks that create Courses, start Legs, write Comprehend entries) with a step-0 mutation warning: 'This walk will write to your lab state. Open a fresh Course first if you want a sandbox.'\n\nv0.2 option: Walk Studio creates a temporary Course (id: 'WALK-SANDBOX') on walk-start and discards it on walk-close. The walk plays out against throwaway state that doesn't affect the author's real Course history.\n\nThe warning-only approach is acceptable for v0.1 and possibly indefinitely — experienced authors can manage their own state. The sandbox only earns its keep if walks routinely mutate in ways the author regrets.\n\nP3. Warning-only is fine. Build the sandbox only if dogfood surfaces repeated state-mutation regret."
@@ -6305,7 +6305,7 @@
       "id": "LAB-057",
       "title": "Walk Studio: multi-walk sequences",
       "status": "backlog",
-      "priority": "P3",
+      "priority": "P2",
       "area": "comprehend-station",
       "brief": "v0.2: walks that reference other walks (e.g., a 'build the v0.4 from scratch' sequence that chains multiple walks). Needs a walk-graph data model.",
       "full": "v0.1 walks are standalone: each has its own steps, and completing one doesn't automatically start another.\n\nv0.2: a walk can reference a sequence of other walks — e.g., 'Build the v0.4 from scratch' = build-canvas-walk → course-planning-walk → frame-walk, played in order. The author completes each sub-walk, then the sequence auto-advances to the next.\n\nNeeds a walk-graph data model: each walk gets an optional `next_walk_id` field, or a top-level Sequence object that lists an ordered array of walk IDs.\n\nWarrants a design pass before building — the interaction shape (does the sequence show progress across sub-walks? does each sub-walk feel self-contained or stitched?) is not obvious.\n\nP3. Standalone walks are the right starting point. Build sequences when a multi-walk training arc is actually needed."
@@ -8743,7 +8743,11 @@
             '<a href="' + escapeHTML(activeWalk.deck_href) + '" target="_blank" rel="noopener" title="Open this deck in a new tab">↗ open</a>' +
             '<a href="#" data-act="walk-close" title="Close this walk">× close</a>' +
           '</div>' +
-          '<iframe class="comp-studio-iframe" src="' + escapeHTML(activeWalk.deck_href) + '" title="' + escapeHTML(activeWalk.title) + '"></iframe>' +
+          // Sandbox the deck iframe with the same allowlist as the
+          // product walk iframe. Symmetric pattern; closes the
+          // window.top navigation gap if a future deck author tries
+          // anything cute.
+          '<iframe class="comp-studio-iframe" src="' + escapeHTML(activeWalk.deck_href) + '" title="' + escapeHTML(activeWalk.title) + '" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>' +
         '</div>';
     } else {
       // Product walk: split internal pane (narrative + Back/Next on top,
