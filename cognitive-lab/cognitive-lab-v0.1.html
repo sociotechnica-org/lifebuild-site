@@ -431,7 +431,10 @@
      for screen-reader accessibility. */
   .hex-tooltip {
     position: fixed;
-    z-index: 100;
+    /* z-index above #toolbar (200), drawer-overlay (300), drawer (400);
+       below the cmd-K palette (1000). Otherwise the tooltip hides behind
+       the sticky toolbar when hexes near the top of the map are hovered. */
+    z-index: 450;
     background: rgba(0,0,0,0.92);
     color: var(--fg);
     font-family: var(--font-px);
@@ -8558,9 +8561,11 @@
       stateBits.push(escapeHTML(it.priority || ''));
       stateBits.push(escapeHTML(it.status || ''));
       const stateText = stateBits.length > 0 ? ' · ' + stateBits.join(' · ') : '';
-      return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}">
-        <title>${escapeHTML(genus)}: ${escapeHTML(species)}${stateText}</title>
-      </polygon>`;
+      // Move 1: store the tooltip text in aria-label (not <title>) so the
+      // native browser tooltip doesn't fire after 1 sec on top of our
+      // instant HTML tooltip. Screen readers still announce aria-label.
+      const labelText = escapeHTML(genus) + ': ' + escapeHTML(species) + stateText;
+      return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}" role="img" aria-label="${labelText}"></polygon>`;
     });
 
     // ── Ring-band guides (faint dashed circles + ring labels) ──
@@ -8651,10 +8656,13 @@
       svg.addEventListener('mouseover', (e) => {
         const tgt = e.target;
         if (!tgt || !tgt.classList || !tgt.classList.contains('hex-cell')) return;
-        const titleEl = tgt.querySelector('title');
-        if (!titleEl) return;
-        // Use textContent (already escapeHTML-safe; <title> only stores text).
-        tooltip.textContent = titleEl.textContent;
+        // Read from aria-label (was: <title>'s textContent, but that triggered
+        // a duplicate native browser tooltip after 1 sec). aria-label gives
+        // both screen-reader accessibility and our instant tooltip from one
+        // attribute, with no native-browser tooltip layer competing.
+        const label = tgt.getAttribute('aria-label');
+        if (!label) return;
+        tooltip.textContent = label;
         tooltip.hidden = false;
       });
       svg.addEventListener('mousemove', (e) => {
