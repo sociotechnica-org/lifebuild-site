@@ -1054,6 +1054,141 @@
     font-size: 11px;
     padding: 6px 8px;
   }
+
+  /* Product walk — step renderer (Move 2d). When the active walk is
+     kind:'product', the main pane splits internally: narrative panel
+     (top, left-aligned) above the iframe of the lab in ?walk=1 mode. */
+  .comp-walk-step {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+  }
+  .comp-walk-narrative {
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--panel-bd);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+  .comp-walk-step-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .comp-walk-step-header .comp-walk-step-counter { color: var(--accent); font-weight: bold; }
+  .comp-walk-step-title {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fg);
+    margin: 0;
+    line-height: 1.4;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .comp-walk-step-body {
+    font-size: 12.5px;
+    color: var(--fg);
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+  .comp-walk-step-body strong { color: var(--accent); }
+  .comp-walk-step-body code {
+    font-family: var(--font-px);
+    background: rgba(255,255,255,0.06);
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 11.5px;
+  }
+  .comp-walk-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .comp-walk-actions button {
+    background: transparent;
+    border: 1px solid var(--panel-bd);
+    color: var(--fg);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+  .comp-walk-actions button:hover {
+    background: rgba(226,160,74,0.10);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .comp-walk-actions button.primary {
+    background: var(--accent);
+    color: #1a1a2e;
+    border-color: var(--accent);
+    font-weight: bold;
+  }
+  .comp-walk-actions button.primary:hover { background: #e6ad55; color: #1a1a2e; }
+  .comp-walk-actions button[disabled] { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .comp-walk-warning {
+    background: rgba(194,84,80,0.14);
+    border: 1px solid rgba(194,84,80,0.55);
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: #ffb0a8;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .comp-walk-warning strong { color: #ffb0a8; }
+
+  /* Walk-mode banner (Move 2d). When the lab is loaded inside the
+     Walk Studio iframe (?walk=1), this top banner gives the user a
+     wayfinding handle and the Comprehend Station area is hidden from
+     the floor to prevent recursive Walk Studios. */
+  .walk-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 600;
+    background: rgba(226,160,74,0.96);
+    color: #1a1a2e;
+    padding: 5px 14px;
+    font-family: var(--font-px);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-bottom: 1px solid #1a1a2e;
+  }
+  body.walk-mode { padding-top: 26px; }
+  body.walk-mode .area[data-area="comprehend-station"] {
+    opacity: 0.3;
+    pointer-events: none;
+    position: relative;
+  }
+  body.walk-mode .area[data-area="comprehend-station"]::after {
+    content: 'inert in walk mode';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-px);
+    font-size: 9px;
+    color: #1a1a2e;
+    background: rgba(226,160,74,0.55);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
   .comp-studio-main-empty {
     padding: 40px 24px;
     text-align: center;
@@ -8234,6 +8369,42 @@
                      (triggers the step-0 mutation warning) */
   const WALKS = [
     {
+      id: 'walk-build-canvas-v0.1',
+      title: 'Build canvas v0.1',
+      kind: 'product',
+      subtitle: '7 steps · click-to-place tour',
+      preview: 'Hands-on tour of the Build canvas (the snap-circuit board) that shipped in the v0.4 arc. Place items from the drawer onto the grid, swap, remove, apply a template.',
+      target_route: 'view=course&lens=build',
+      mutates: true,
+      steps: [
+        {
+          narrative: '**Welcome to the Build canvas walk.**\n\nThis walk replaces my chat-based test instructions for the v0.4 build canvas. You\'ll click through 6 steps inside the live lab on the right.\n\n**Heads-up:** clicking around in this walk will modify your active Course\'s build_positions. That\'s the point — but if you want a sandbox, open a fresh Course before continuing.\n\nClick **Next** when you\'re ready.',
+          warn: true
+        },
+        {
+          narrative: 'You\'re on the **Course view**, with the **Build** sub-tab selected. Three tabs are available: **▦ Build** (you\'re here) · **⛰ By function** (biome regions) · **◎ By priority** (concentric rings).\n\nThe Build tab is the canvas the user designs themselves. The other two are read-only re-projections of the same data.\n\nIn the right pane, take a beat to look at the layout: empty grid (left), tool drawer (right). Then click **Next**.'
+        },
+        {
+          narrative: '**The grid** is 7 rows × 10 cols (cells **A1**–**G10**). Each cell has a center "snap point" — that\'s where pieces land.\n\n**The drawer** lists all your unplaced LAB items, grouped by area. Each area is one biome (Frame Workshop, Pilot Check, Debrief Booth, etc) with its own color from the Okabe-Ito palette.\n\nAbove the drawer items, two buttons: **▦ Apply template** + **✕ Clear board**.\n\nClick **Next** to start placing.'
+        },
+        {
+          narrative: '**Click any item in the drawer.** It enters "in-hand" state — accent border, accent fill, the item is now ready to place.\n\nNotice the canvas: empty cells now show a subtle accent tint (they\'re drop targets), and the cursor turns to a crosshair on hover.\n\nClick the same item again to drop it (or pick a different one to swap what\'s in hand).\n\nThen click **Next**.'
+        },
+        {
+          narrative: '**With an item in hand, click an empty cell.**\n\nThe piece snaps into place. The cell now shows a colored hex (color = area accent) with the LAB-### number label.\n\nThe item disappears from the drawer (the drawer filters by what\'s already placed). The header shows updated counts: "**N placed · M in drawer**".\n\nClick **Next**.'
+        },
+        {
+          narrative: '**Try the template.** Above the drawer items, click **▦ Apply template**.\n\nThis batch-places the active Course\'s frontier items onto the grid in priority + area order, snapped row-major. It **skips items you\'ve already placed** — your earlier placement is preserved.\n\nIf the frontier is empty, the button is disabled. If everything\'s already placed, you get a brief "Nothing new to place" message.\n\nClick **Next** to learn how to edit placements.'
+        },
+        {
+          narrative: '**Click any placed piece.** A small action chip pops up next to the cell with three options: **⇪ Pick up** · **↩ Remove** · **× Cancel**.\n\n- **Pick up** = removes the piece and puts it in hand. Click an empty cell to re-place. (This is the "move" affordance — drag-and-drop is deferred to v0.5+.)\n- **Remove** = pulls the piece back to the drawer.\n- **Cancel** = closes the chip.\n\nClicking outside the chip also closes it.\n\nClick **Next** to wrap up.'
+        },
+        {
+          narrative: '**You\'ve walked the Build canvas.**\n\nThe key moves: drawer-pick → place → click-to-edit. The grid is yours; the template is a starting position, not a constraint.\n\nWhat\'s deferred to v0.5+: drag-and-drop, sandbox-Course mode for state-mutating walks, multi-walk sequences, walk-authoring UI, interactive verification (auto-advance on correct click).\n\nClick **Done** to mark the walk complete and log it to your active leg\'s comprehend timeline. Or close from the Comprehend Station header to exit without logging.'
+        }
+      ]
+    },
+    {
       id: 'deck-rogaine-spine',
       title: 'The Rogaine Spine',
       kind: 'deck',
@@ -8254,6 +8425,7 @@
   // walk's progress (per Quenton: progress is session, completion is
   // durable on the leg's comprehend log).
   const COMP_ACTIVE_WALK_KEY = 'cognitive-lab-v0.1::comp-active-walk';
+  const COMP_WALK_STEP_KEY   = 'cognitive-lab-v0.1::comp-walk-step';
   function getActiveWalkId() {
     try { return sessionStorage.getItem(COMP_ACTIVE_WALK_KEY); }
     catch { return null; }
@@ -8263,6 +8435,35 @@
       if (id) sessionStorage.setItem(COMP_ACTIVE_WALK_KEY, id);
       else sessionStorage.removeItem(COMP_ACTIVE_WALK_KEY);
     } catch {}
+  }
+  function getWalkStep() {
+    try {
+      const v = parseInt(sessionStorage.getItem(COMP_WALK_STEP_KEY), 10);
+      return Number.isFinite(v) && v >= 0 ? v : 0;
+    } catch { return 0; }
+  }
+  function setWalkStep(n) {
+    try { sessionStorage.setItem(COMP_WALK_STEP_KEY, String(Math.max(0, n | 0))); } catch {}
+  }
+  // Render `**bold**` and `code` chunks in walk narrative as HTML. Plain
+  // markdown subset; nothing fancy. escapeHTML runs first so the input
+  // is safe before we apply the inline transforms.
+  function renderWalkMarkdownInline(text) {
+    let s = escapeHTML(text || '');
+    // **bold**
+    s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // `code`
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // newlines → <br>
+    s = s.replace(/\n/g, '<br>');
+    return s;
+  }
+  // Build the iframe URL for a product walk. Adds `?walk=1` plus the
+  // walk's target_route (if set).
+  function walkIframeSrc(walk) {
+    let qs = 'walk=1';
+    if (walk.target_route) qs += '&' + walk.target_route;
+    return 'cognitive-lab-v0.1.html?' + qs;
   }
 
   // Snapshot collapse state — sessionStorage so a single dogfood
@@ -8449,8 +8650,42 @@
           '<iframe class="comp-studio-iframe" src="' + escapeHTML(activeWalk.deck_href) + '" title="' + escapeHTML(activeWalk.title) + '"></iframe>' +
         '</div>';
     } else {
-      // Product walk (Move 2d) — placeholder until 2d wires the step renderer.
-      mainHTML = '<div class="comp-studio-main-empty">Product walks land in Move 2d.</div>';
+      // Product walk: split internal pane (narrative + Back/Next on top,
+      // iframe of the lab in walk mode below).
+      const steps = Array.isArray(activeWalk.steps) ? activeWalk.steps : [];
+      const stepCount = steps.length;
+      let stepIdx = Math.min(Math.max(getWalkStep(), 0), Math.max(stepCount - 1, 0));
+      const step = steps[stepIdx] || { narrative: '(walk has no steps)' };
+      const isFirst = stepIdx === 0;
+      const isLast  = stepIdx >= stepCount - 1;
+      const stepCounter = stepCount > 0 ? `Step ${stepIdx + 1} of ${stepCount}` : 'Step';
+      const warningHTML = step.warn
+        ? `<div class="comp-walk-warning"><strong>⚠ Mutation warning:</strong> this walk modifies your active Course\'s state. Open a fresh Course before continuing if you want a sandbox.</div>`
+        : '';
+      const narrativeBody = renderWalkMarkdownInline(step.narrative || '');
+      mainHTML =
+        '<div class="comp-studio-iframe-wrap">' +
+          '<div class="comp-studio-iframe-bar">' +
+            '<span class="comp-studio-bar-title">' + escapeHTML(activeWalk.title) + '</span>' +
+            '<a href="#" data-act="walk-close" title="Close this walk">× close</a>' +
+          '</div>' +
+          '<div class="comp-walk-step">' +
+            '<div class="comp-walk-narrative">' +
+              '<div class="comp-walk-step-header">' +
+                '<span class="comp-walk-step-counter">' + escapeHTML(stepCounter) + '</span>' +
+              '</div>' +
+              warningHTML +
+              '<div class="comp-walk-step-body">' + narrativeBody + '</div>' +
+              '<div class="comp-walk-actions">' +
+                '<button type="button" data-act="walk-prev" ' + (isFirst ? 'disabled' : '') + '>← Back</button>' +
+                (isLast
+                  ? '<button type="button" class="primary" data-act="walk-done">Done</button>'
+                  : '<button type="button" class="primary" data-act="walk-next">Next →</button>') +
+              '</div>' +
+            '</div>' +
+            '<iframe class="comp-studio-iframe" src="' + escapeHTML(walkIframeSrc(activeWalk)) + '" title="' + escapeHTML(activeWalk.title) + ' (walk mode)"></iframe>' +
+          '</div>' +
+        '</div>';
     }
 
     studio.innerHTML =
@@ -8474,11 +8709,14 @@
         if (getActiveWalkId() === id) {
           // Re-clicking the active walk closes it.
           setActiveWalkId(null);
+          setWalkStep(0);
         } else {
           setActiveWalkId(id);
+          setWalkStep(0); // start fresh
           if (walk.kind === 'deck' && walk.deck_href && typeof logComprehendDeckOpen === 'function') {
             logComprehendDeckOpen(walk.deck_href);
           }
+          // Move 2e will log walk-start here for product walks.
         }
         renderComprehendStudio(studio);
       });
@@ -8489,9 +8727,28 @@
       closeLink.addEventListener('click', (e) => {
         e.preventDefault();
         setActiveWalkId(null);
+        setWalkStep(0);
         renderComprehendStudio(studio);
       });
     }
+    // Product walk Back / Next / Done.
+    const backBtn = studio.querySelector('[data-act="walk-prev"]');
+    if (backBtn) backBtn.addEventListener('click', () => {
+      setWalkStep(getWalkStep() - 1);
+      renderComprehendStudio(studio);
+    });
+    const nextBtn = studio.querySelector('[data-act="walk-next"]');
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      setWalkStep(getWalkStep() + 1);
+      renderComprehendStudio(studio);
+    });
+    const doneBtn = studio.querySelector('[data-act="walk-done"]');
+    if (doneBtn) doneBtn.addEventListener('click', () => {
+      // Move 2e will log walk-completion here. For 2d, just close.
+      setActiveWalkId(null);
+      setWalkStep(0);
+      renderComprehendStudio(studio);
+    });
   }
 
   // Wire debrief controls (bound once at load)
@@ -8833,6 +9090,14 @@
   let activeView = 'floor';
 
   function loadActiveView() {
+    // Move 2d: when the lab loads inside a Walk Studio iframe, the
+    // walk's target_route can override the user's persisted active
+    // view via the `?view=` query param. URL > localStorage > default.
+    try {
+      const params = new URLSearchParams(location.search);
+      const urlView = params.get('view');
+      if (urlView && VIEWS.includes(urlView)) return urlView;
+    } catch {}
     try {
       const v = localStorage.getItem(VIEW_KEY);
       return VIEWS.includes(v) ? v : 'floor';
@@ -9547,6 +9812,13 @@
   const COURSE_HEX_LENS_KEY = 'cognitive-lab-v0.1::course-hex-lens';
   const COURSE_HEX_LENSES = ['build', 'function', 'priority'];
   function loadCourseHexLens() {
+    // Move 2d: walk target_route can override the persisted lens via
+    // `?lens=` query param. URL > localStorage > default.
+    try {
+      const params = new URLSearchParams(location.search);
+      const urlLens = params.get('lens');
+      if (urlLens && COURSE_HEX_LENSES.includes(urlLens)) return urlLens;
+    } catch {}
     try {
       const v = localStorage.getItem(COURSE_HEX_LENS_KEY);
       return COURSE_HEX_LENSES.includes(v) ? v : 'build';
@@ -11405,6 +11677,24 @@
      Hydrate localStorage from the server's canonical files first (if available),
      then bootstrap the UI. On plain `python -m http.server` the fetches 404 and
      we fall through to the existing localStorage-only behavior. */
+
+  // Move 2d: walk-mode detection. When the lab loads inside a Walk
+  // Studio iframe with `?walk=1`, mark the body and inject a banner
+  // so the user has a wayfinding handle. CSS hides the Comprehend
+  // Station from the floor to prevent recursive Walk Studios.
+  (function applyWalkMode() {
+    let walkFlag = false;
+    try {
+      walkFlag = new URLSearchParams(location.search).get('walk') === '1';
+    } catch {}
+    if (!walkFlag) return;
+    document.body.classList.add('walk-mode');
+    const banner = document.createElement('div');
+    banner.className = 'walk-banner';
+    banner.textContent = '⚑ Walk in progress — close from the Comprehend Station to return to the full lab';
+    document.body.insertBefore(banner, document.body.firstChild);
+  })();
+
   hydrateFromServer().then(() => {
     renderFloorBadges();
     buildAreaVisuals();
