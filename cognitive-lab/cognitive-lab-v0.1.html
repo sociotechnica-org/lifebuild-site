@@ -4631,6 +4631,12 @@
       ],
       "chunks": [
         {
+          "id": "chunk-hex-map-v03",
+          "title": "Hex Map v0.3 — concentric rings, Okabe-Ito palette, map legend, genus:species hover",
+          "summary": "Concentric rings carry priority (P0 center → P1 → P2). Okabe-Ito color-blind-safe palette with an explicit map legend (area → color, like a geographic map). Genus:species hover reveals item identity. Red P0 stroke and per-hex LAB-### labels dropped.",
+          "body": "The author dogfooded Hex Map v0.2 and found the red P0 borders distracting — the stroke was fighting the biome color in the same visual layer. The fix: **spatial position carries priority instead of stroke**. Concentric rings encode the three priority tiers: P0 items occupy the center ring, P1 the next ring out, P2 the outermost. You read priority by how close to center a zone sits, not by what color its border is. The red stroke is gone.\n\nThe palette moves to **Okabe-Ito** — the color-blind-safe eight-color scheme standard in scientific publishing. Rather than asking the reader to infer what each color means from context, v0.3 adds an **explicit map legend**: each area is listed with its color swatch, the way a geographic map lists what blue means (water) or what green means (forest). The map tells its own story; the legend locks it.\n\nHover reveals **genus:species identity** — the area name (genus) and the specific item or sub-record (species). This replaces the old approach of baking LAB-### labels directly into the hex face. The hex face carries only its color signal; the hover reveals what lives there. This frees the hex from label clutter and makes the priority-ring encoding readable without text competing for the same space.\n\nTwo commits: `6c40ddb` (concentric rings + Okabe-Ito palette + map legend + genus:species hover) and `664e479` (fixes: drop dead .pulse-once.p0 rule, escape priority/status, document palette collision)."
+        },
+        {
           "id": "chunk-four-channel-hex-encoding",
           "title": "Four-channel Hex Map encoding — hue, luminosity, stroke, motion",
           "summary": "Hex Map v0.2 assigns each cognitive job its own visual primitive: hue=biome, luminosity=relevance, stroke=priority, motion=attention. Stops overloading hue.",

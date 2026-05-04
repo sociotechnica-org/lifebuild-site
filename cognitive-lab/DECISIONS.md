@@ -6,6 +6,18 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-04 (evening) · Hex Map v0.3 — concentric rings + map-legend palette
+
+**Decision.** Hex Map v0.3 drops the red P0 stroke and replaces stroke-as-priority with spatial position: concentric rings carry priority (P0 center → P1 → P2). The palette moves to Okabe-Ito (color-blind safe). An explicit map legend names each area → color, the way a geographic map names blue = water. Hover reveals genus:species identity (area name + item name); per-hex LAB-### labels are dropped.
+
+**Reasoning.** The author dogfooded v0.2 and found the red borders distracting — the stroke was competing with biome color in the same visual layer, creating the same channel-collision problem v0.2 was designed to fix. Concentric rings resolve this by encoding priority through position (a distinct channel from color and stroke). The Okabe-Ito palette with an explicit legend makes the map readable as a map — the reader doesn't infer color meaning from context; the legend states it. Genus:species hover frees the hex face to carry only its color signal; identity is revealed on demand rather than baked into the face as text clutter.
+
+**Status.** Active. Shipped on branch `danversfleury/lab-course-tier` (commits `6c40ddb` and `664e479`).
+
+**References.** Commits `6c40ddb` (concentric rings + palette + legend + hover) and `664e479` (fixes: drop dead .pulse-once.p0 rule, escape priority/status, document palette collision), `cognitive-lab/cognitive-lab-v0.1.html` (chunk-hex-map-v03).
+
+---
+
 ## 2026-05-04 (evening) · Frontier-first Frame picker with expand
 
 **Decision.** The per-leg Frame picker defaults to the active Course's frontier. Expand to Full lab is the deliberate emergence valve. Off-frontier picks are tagged with `ref.off_frontier=true` and shown with a chip badge. The strict-only and glow-only alternatives were rejected.
