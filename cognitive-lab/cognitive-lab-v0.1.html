@@ -4635,13 +4635,15 @@
     'frame-cards':   '/api/save/frame-cards',
     'debrief-cards': '/api/save/debrief-cards',
     'pilot-checks':  '/api/save/pilot-checks',
-    'courses':       '/api/save/courses'
+    'courses':       '/api/save/courses',
+    'legs':          '/api/save/legs'
   };
   const SERVER_LOAD_PATHS = {
     'frame-cards':   '/exports/frame-cards.json',
     'debrief-cards': '/exports/debrief-cards.json',
     'pilot-checks':  '/exports/pilot-checks.json',
-    'courses':       '/exports/courses.json'
+    'courses':       '/exports/courses.json',
+    'legs':          '/exports/legs.json'
   };
   function postSave(type, arr) {
     const url = SERVER_SAVE_PATHS[type];
@@ -4670,7 +4672,8 @@
       ['frame-cards',   FRAME_KEY],
       ['debrief-cards', DEBRIEF_KEY],
       ['pilot-checks',  PC_KEY],
-      ['courses',       COURSE_KEY]
+      ['courses',       COURSE_KEY],
+      ['legs',          LEG_KEY]
     ];
     await Promise.all(pairs.map(async ([type, key]) => {
       const data = await loadFromServer(type);
@@ -4744,6 +4747,100 @@
     else arr.push(course);
     saveCourses(arr);
     return course;
+  }
+
+  /* ── Leg wrapper (one Full Turn — Frame · Comprehend · Sync · Produce · Debrief) ──
+     A Leg is one slot inside a Course. Sub-records:
+       frame_card_id       → ID of the Frame card (in frame-cards.json) once framed
+       comprehend[]        → 0..n on-demand notes: {at, text}
+       sync                → 0..1 sync state (deferred to a later phase)
+       produce             → running ledger: {selected[], bonuses[], notes[]}
+       debrief_card_id     → ID of Debrief card once debriefed
+       changes_to_course   → 0..1 delta written back to the Course frontier on debrief
+     ID convention: LEG-YYYY-MM-DD-A (date + letter for multi-leg days).
+     The leg references the Course it belongs to via course_ref. */
+  const LEG_KEY = 'cognitive-lab-v0.1::legs';
+
+  function todayDateOnly(date) {
+    const d = date ? new Date(date.getTime()) : new Date();
+    return d.toISOString().slice(0, 10);
+  }
+  function nextLegLetter(courseId, dateStr) {
+    // Returns 'A'/'B'/'C'/... for the next leg created on the given day in the given course.
+    const existing = loadLegs().filter(l =>
+      l && l.course_ref === courseId && l.date === dateStr
+    );
+    const letters = existing.map(l => (l.id || '').slice(-1));
+    let code = 'A'.charCodeAt(0);
+    while (letters.includes(String.fromCharCode(code))) code++;
+    return String.fromCharCode(code);
+  }
+  function legId(courseId, dateStr, letter) {
+    return 'LEG-' + dateStr + '-' + letter;
+  }
+
+  function loadLegs() {
+    try { return JSON.parse(localStorage.getItem(LEG_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveLegs(arr) {
+    try { localStorage.setItem(LEG_KEY, JSON.stringify(arr)); } catch {}
+    postSave('legs', arr);
+  }
+
+  function findLegById(id) {
+    return loadLegs().find(l => l && l.id === id) || null;
+  }
+  function findActiveLeg() {
+    // Active = the most-recently-touched leg in the active course that's not
+    // archived/debriefed. Falls back to the most recent leg overall.
+    const courseId = isoWeekId();
+    const all = loadLegs().filter(l => l && l.course_ref === courseId);
+    if (all.length === 0) return null;
+    const open = all.filter(l => l.status !== 'debriefed' && l.status !== 'archived');
+    const pool = open.length > 0 ? open : all;
+    pool.sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+    return pool[0];
+  }
+  function findLegsForCourse(courseId) {
+    return loadLegs()
+      .filter(l => l && l.course_ref === courseId)
+      .sort((a, b) => (a.createdAt || '').localeCompare(b.createdAt || ''));
+  }
+
+  function newLegDraft(opts) {
+    const o = opts || {};
+    const dateStr = o.date || todayDateOnly();
+    const courseId = o.course_ref || isoWeekId();
+    // Compute next leg_number from existing legs in the same course.
+    const inCourse = findLegsForCourse(courseId);
+    const legNumber = Math.min(inCourse.length + 1, COURSE_LEG_COUNT);
+    const letter = o.letter || nextLegLetter(courseId, dateStr);
+    const now = new Date().toISOString();
+    return {
+      id: legId(courseId, dateStr, letter),
+      course_ref: courseId,
+      leg_number: legNumber,            // 1..COURSE_LEG_COUNT
+      status: 'planning',               // planning · in-progress · debriefed · archived
+      date: dateStr,
+      frame_card_id: null,
+      comprehend: [],                   // [{at: ISO, text: string}]
+      sync: null,                       // {at, ...} once captured
+      produce: { selected: [], bonuses: [], notes: [] },
+      debrief_card_id: null,
+      changes_to_course: null,          // {at, frontier_added: [...], frontier_removed: [...], notes}
+      createdAt: now,
+      updatedAt: now
+    };
+  }
+  function upsertLeg(leg) {
+    const arr = loadLegs();
+    const idx = arr.findIndex(l => l && l.id === leg.id);
+    leg.updatedAt = new Date().toISOString();
+    if (idx >= 0) arr[idx] = leg;
+    else arr.push(leg);
+    saveLegs(arr);
+    return leg;
   }
 
   /* ── Frame Workshop: storage helpers ── */
