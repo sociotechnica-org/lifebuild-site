@@ -648,13 +648,15 @@
     color: var(--fg);
     background: rgba(255,255,255,0.02);
   }
+  /* Phase 1.5: timestamp + kind chip + body all sit inline on one row
+     for scannability across mixed-kind entries. */
   .course-comprehend-entry .cc-when {
-    display: block;
+    display: inline-block;
     font-family: var(--font-px);
     font-size: 9.5px;
     letter-spacing: 1px;
     color: var(--accent-dim);
-    margin-bottom: 3px;
+    margin-right: 8px;
   }
 
   /* Phase 1.5: kind labels for mixed-kind comprehend timelines (note ·
@@ -675,12 +677,11 @@
   .cc-kind-note      { color: #d4a030; background: rgba(212,160,48,0.10); border: 1px solid rgba(212,160,48,0.35); }
   .cc-kind-synthesis { color: #5cb09a; background: rgba(92,176,154,0.10); border: 1px solid rgba(92,176,154,0.35); }
   .cc-kind-deck      { color: #6f9ee0; background: rgba(74,123,212,0.10); border: 1px solid rgba(74,123,212,0.35); }
-  /* Tighten the cc-when line in mixed-kind mode so the kind chip sits on
-     the same row as the timestamp + body for scannability. */
-  .course-comprehend-entry .cc-when { display: inline-block; margin-right: 8px; margin-bottom: 0; }
   .course-comprehend-entry .cc-body { color: var(--fg); }
-  /* Synthesis entries: emphasize the item id with the px font */
+  /* Synthesis + deck entries: px-font emphasis on the body since they're
+     ID-shaped or path-shaped, not prose. */
   .course-comprehend-entry.cc-synthesis .cc-body,
+  .course-comprehend-entry.cc-deck .cc-body,
   .leg-comprehend-list li.cc-synthesis,
   .leg-comprehend-list li.cc-deck { font-family: var(--font-px); font-size: 11.5px; }
 
@@ -8290,10 +8291,13 @@
     // Adds a comprehend entry to the active leg. No-op if no active leg
     // (orphan signals are dropped silently — by design; the leg is the
     // unit of comprehension and we don't try to back-fill).
+    // Note: `at` is always authoritative — any `at` on the caller's entry
+    // is overwritten with `new Date().toISOString()`. Callers should not
+    // pass `at`; if you need backdating, use upsertLeg directly.
     const leg = findActiveLeg();
     if (!leg) return null;
     leg.comprehend = Array.isArray(leg.comprehend) ? leg.comprehend.slice() : [];
-    leg.comprehend.push(Object.assign({ at: new Date().toISOString() }, entry));
+    leg.comprehend.push(Object.assign({}, entry, { at: new Date().toISOString() }));
     return upsertLeg(leg);
   }
   function logComprehendSynthesis(itemId, prevStatus, nextStatus) {
@@ -8305,10 +8309,8 @@
     });
     // If the user is on the Course or Leg view when this fires, surface
     // the new entry immediately. Best-effort: render functions guard.
-    if (typeof activeView !== 'undefined') {
-      if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
-      if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
-    }
+    if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
+    if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
   }
   function logComprehendDeckOpen(href) {
     // Called when the user clicks an artifact-link whose href matches a
@@ -8318,10 +8320,8 @@
       kind: 'deck',
       source: clean
     });
-    if (typeof activeView !== 'undefined') {
-      if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
-      if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
-    }
+    if (activeView === 'course' && typeof renderCourseComprehend === 'function') renderCourseComprehend();
+    if (activeView === 'leg'    && typeof renderLegView          === 'function') renderLegView();
   }
   // Delegated click handler for any artifact-link in the lab. Fires the
   // deck-open log only when the href matches the deck file pattern. Does
