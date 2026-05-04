@@ -4941,6 +4941,14 @@
     // Called after a Frame card is saved. Ensures a leg exists for today, in
     // the current ISO-week's course, and links the card to it. Bumps the
     // leg from `planning` → `in-progress` if applicable. Returns the leg.
+    //
+    // INTENTIONAL ORPHAN BEHAVIOR: if the active leg is from a previous day
+    // and was never debriefed, this function starts a fresh leg for today and
+    // leaves the prior leg as `in-progress` in the data. That stale leg stays
+    // findable via findLegsForCourse but is not the active leg going forward.
+    // Phase 4 (Debrief) is responsible for closing stale legs (auto-archive
+    // on next-day open, or surface them in a "stale legs" list). Until then,
+    // multi-day, never-debriefed legs accumulate as a known data state.
     if (!card || !card.savedAt) return null;
     let leg = findActiveLeg();
     const todayStr = todayDateOnly();
@@ -4970,7 +4978,11 @@
 
     // Header chunks. Order: leg id · LED segments · MUSTS · BONUS · MAP · status.
     const legId    = leg ? leg.id : 'No leg yet';
-    const legNum   = leg ? leg.leg_number : 0;
+    // Clamp to 0 so corrupt records (legs with missing/negative leg_number)
+    // render the LED bar as fully ghosted rather than walking the loop oddly.
+    const legNum   = leg && typeof leg.leg_number === 'number' && leg.leg_number > 0
+                       ? Math.min(leg.leg_number, COURSE_LEG_COUNT)
+                       : 0;
     const status   = leg ? leg.status : 'planning';
     const card     = leg ? findFrameCardForLeg(leg) : null;
     const mustArr  = card && Array.isArray(card.must) ? card.must
@@ -4980,6 +4992,12 @@
     const mustsCount = mustArr.length;
     const bonusCount = bonusArr.length;
     const frontierCount = course && Array.isArray(course.frontier) ? course.frontier.length : 0;
+    // allItemsArray is defined later in the script; this typeof guard is
+    // load-order protection. renderCourseHeader is only called after init
+    // (via openDrawer / ff-save / setView), so the function is in scope at
+    // call time. Keep the guard so any earlier caller silently degrades to 0
+    // rather than throwing — flagged by grepzilla2 phase-2 review as the
+    // intentional shape.
     const mapTotal = (typeof allItemsArray === 'function') ? allItemsArray().length : 0;
 
     // 7-segment LED bar. Done = legs strictly before legNum. Current = legNum. Future = the rest.
@@ -6167,7 +6185,6 @@
     const filled = FF_FIELDS.filter(f => fieldIsFilled(card[f])).length;
     if (filled === 0) return;
     const cards = loadFrameCards();
-    let savedCard = card;
     if (editingOriginalIdx >= 0 && cards[editingOriginalIdx]) {
       // preserve original date + savedAt if user is editing an existing card,
       // so the leg-attach link by savedAt stays stable across edits
@@ -6175,7 +6192,6 @@
       card.date = orig.date || card.date;
       card.savedAt = orig.savedAt || card.savedAt;
       cards[editingOriginalIdx] = card;
-      savedCard = card;
     } else {
       cards.push(card);
     }
@@ -6183,7 +6199,7 @@
     // Phase 2: ensure today's leg exists in the active week's course and link
     // the just-saved Frame card to it. New cards bump the leg into in-progress;
     // edits to an already-attached card leave the link unchanged.
-    attachFrameToLeg(savedCard);
+    attachFrameToLeg(card);
     renderCourseHeader();
     flashSaved();
     setTimeout(() => enterResting(), 600);
