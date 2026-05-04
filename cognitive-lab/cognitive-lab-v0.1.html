@@ -921,6 +921,166 @@
     line-height: 1.5;
   }
   .comp-snap-recent .comp-snap-body { display: none; }
+  /* Walk Studio (Move 2c): sidebar + main split for decks + walks. */
+  .comp-studio {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .comp-studio-header {
+    padding: 8px 14px;
+    background: rgba(74,123,212,0.06);
+    border-bottom: 1px solid var(--panel-bd);
+    font-family: var(--font-px);
+    font-size: 10.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6f9ee0;
+  }
+  .comp-studio-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    min-height: 360px;
+  }
+  @media (max-width: 720px) {
+    .comp-studio-layout { grid-template-columns: 1fr; }
+  }
+  .comp-studio-sidebar {
+    border-right: 1px solid var(--panel-bd);
+    padding: 10px 8px;
+    background: rgba(0,0,0,0.18);
+    overflow-y: auto;
+    max-height: 540px;
+  }
+  .comp-studio-section-label {
+    font-family: var(--font-px);
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    padding: 4px 6px 6px;
+    margin-top: 4px;
+  }
+  .comp-studio-section-label:first-child { margin-top: 0; }
+  .comp-studio-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--fg);
+    padding: 7px 9px;
+    border-radius: 4px;
+    margin: 2px 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.35;
+    position: relative;
+  }
+  .comp-studio-item:hover {
+    background: rgba(74,123,212,0.10);
+    border-color: rgba(74,123,212,0.45);
+  }
+  .comp-studio-item.active {
+    background: rgba(74,123,212,0.18);
+    border-color: #6f9ee0;
+  }
+  .comp-studio-item-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+  .comp-studio-item-glyph {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: #6f9ee0;
+  }
+  .comp-studio-item.kind-product .comp-studio-item-glyph { color: #d4a030; }
+  .comp-studio-item-sub {
+    font-family: var(--font-px);
+    font-size: 9.5px;
+    color: var(--accent-dim);
+    margin-top: 1px;
+  }
+  /* Polish (Move 2e fold): on hover, the first step or deck blurb pops
+     out beside the sidebar item. Scoped tooltip element. */
+  .comp-studio-item-preview {
+    position: absolute;
+    left: calc(100% + 6px);
+    top: 0;
+    z-index: 30;
+    background: rgba(0,0,0,0.94);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    padding: 8px 10px;
+    width: 240px;
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--fg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    display: none;
+    pointer-events: none;
+  }
+  .comp-studio-item:hover .comp-studio-item-preview { display: block; }
+  .comp-studio-main {
+    padding: 0;
+    background: var(--bg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .comp-studio-main-empty {
+    padding: 40px 24px;
+    text-align: center;
+    color: #6f7a90;
+    font-family: var(--font-px);
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .comp-studio-main-empty strong { color: var(--accent); }
+  .comp-studio-iframe-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  }
+  .comp-studio-iframe-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    background: rgba(0,0,0,0.30);
+    border-bottom: 1px solid var(--panel-bd);
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+  }
+  .comp-studio-iframe-bar .comp-studio-bar-title { color: var(--fg); flex: 1; }
+  .comp-studio-iframe-bar a {
+    color: var(--accent-dim);
+    text-decoration: none;
+    border: 1px solid var(--panel-bd);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 9.5px;
+  }
+  .comp-studio-iframe-bar a:hover { color: var(--accent); border-color: var(--accent); }
+  .comp-studio-iframe {
+    flex: 1;
+    width: 100%;
+    border: none;
+    min-height: 360px;
+    background: #000;
+  }
 
   /* Hex hover tooltip (Move 1): instant HTML tooltip layer. Native SVG
      <title> tooltips have a ~1 sec delay; this surfaces immediately on
@@ -8038,6 +8198,52 @@
     return new Date(iso).toISOString().slice(0, 10);
   }
 
+  /* Walk Studio (Moves 2c-2e). Hardcoded WALKS for v0.1 — migrate to
+     JSON when there are 5+ walks. Each entry has:
+       id           unique identifier
+       title        sidebar label
+       kind         'deck' or 'product' (Move 2d adds product walks)
+       subtitle?    short blurb under the title
+       preview?     hover-tooltip text (Move 2e polish fold)
+       deck_href?   for kind:'deck' — iframe src (relative path)
+       target_route? for kind:'product' — hash route to boot the lab
+                     iframe into for the walk's first step
+       steps?       for kind:'product' — array of {narrative, target_selector?}
+       mutates?     for kind:'product' — true if the walk modifies state
+                     (triggers the step-0 mutation warning) */
+  const WALKS = [
+    {
+      id: 'deck-rogaine-spine',
+      title: 'The Rogaine Spine',
+      kind: 'deck',
+      subtitle: '16 slides · v0.4 build arc',
+      preview: 'Comprehension deck for the rogaine-spine arc. Walk through what shipped, why it was shaped this way, and how the pieces add up to one moving thing.',
+      deck_href: 'comprehension-deck-v0.1.html'
+    },
+    {
+      id: 'deck-turn-v0.1-map',
+      title: 'Turn v0.1 Map',
+      kind: 'deck',
+      subtitle: '21 slides · 4 acts · beginner-facing',
+      preview: 'The original turn-architecture deck. Frame · Comprehend · Sync · Produce · Debrief · Recover, with the three meta-disciplines (Trim · Heartbeat · Transition).',
+      deck_href: 'turn-v0.1-map.html'
+    }
+  ];
+  // Active walk + step state. Session-scoped so a refresh resets the
+  // walk's progress (per Quenton: progress is session, completion is
+  // durable on the leg's comprehend log).
+  const COMP_ACTIVE_WALK_KEY = 'cognitive-lab-v0.1::comp-active-walk';
+  function getActiveWalkId() {
+    try { return sessionStorage.getItem(COMP_ACTIVE_WALK_KEY); }
+    catch { return null; }
+  }
+  function setActiveWalkId(id) {
+    try {
+      if (id) sessionStorage.setItem(COMP_ACTIVE_WALK_KEY, id);
+      else sessionStorage.removeItem(COMP_ACTIVE_WALK_KEY);
+    } catch {}
+  }
+
   // Snapshot collapse state — sessionStorage so a single dogfood
   // session preserves the user's preference but a new browser session
   // starts fresh (snapshot expanded by default — that's the orient case).
@@ -8167,8 +8373,104 @@
       });
     });
 
-    // 2c-2e fill in the studio. Empty for now.
-    studio.innerHTML = '';
+    // ── Walk Studio (Move 2c) ──
+    renderComprehendStudio(studio);
+  }
+
+  function renderComprehendStudio(studio) {
+    const activeId = getActiveWalkId();
+    const activeWalk = WALKS.find(w => w.id === activeId) || null;
+    const decks = WALKS.filter(w => w.kind === 'deck');
+    const products = WALKS.filter(w => w.kind === 'product');
+
+    function itemHTML(walk) {
+      const isActive = activeWalk && activeWalk.id === walk.id;
+      const glyph = walk.kind === 'deck' ? '◆' : '▦';
+      const previewHTML = walk.preview
+        ? `<div class="comp-studio-item-preview">${escapeHTML(walk.preview)}</div>`
+        : '';
+      return `<button type="button"
+        class="comp-studio-item kind-${walk.kind}${isActive ? ' active' : ''}"
+        data-walk="${escapeHTML(walk.id)}"
+        title="${escapeHTML(walk.title)}">
+        <span class="comp-studio-item-title">
+          <span class="comp-studio-item-glyph" aria-hidden="true">${glyph}</span>
+          ${escapeHTML(walk.title)}
+        </span>
+        ${walk.subtitle ? `<span class="comp-studio-item-sub">${escapeHTML(walk.subtitle)}</span>` : ''}
+        ${previewHTML}
+      </button>`;
+    }
+
+    const sidebarHTML =
+      `<div class="comp-studio-section-label">Decks (${decks.length})</div>` +
+      (decks.length === 0 ? '<div class="comp-snap-empty">No decks yet.</div>' : decks.map(itemHTML).join('')) +
+      (products.length > 0
+        ? `<div class="comp-studio-section-label">Product walks (${products.length})</div>${products.map(itemHTML).join('')}`
+        : '');
+
+    let mainHTML;
+    if (!activeWalk) {
+      mainHTML =
+        '<div class="comp-studio-main-empty">' +
+          'Pick a <strong>deck</strong> or <strong>walk</strong> from the sidebar to load it here.<br>' +
+          '<span style="opacity:0.7;">Decks open in an embedded reader · product walks layer narrative + a live lab iframe.</span>' +
+        '</div>';
+    } else if (activeWalk.kind === 'deck') {
+      // Deck: iframe loads it directly. Bar shows title + close + open-in-tab.
+      mainHTML =
+        '<div class="comp-studio-iframe-wrap">' +
+          '<div class="comp-studio-iframe-bar">' +
+            '<span class="comp-studio-bar-title">' + escapeHTML(activeWalk.title) + '</span>' +
+            '<a href="' + escapeHTML(activeWalk.deck_href) + '" target="_blank" rel="noopener" title="Open this deck in a new tab">↗ open</a>' +
+            '<a href="#" data-act="walk-close" title="Close this walk">× close</a>' +
+          '</div>' +
+          '<iframe class="comp-studio-iframe" src="' + escapeHTML(activeWalk.deck_href) + '" title="' + escapeHTML(activeWalk.title) + '"></iframe>' +
+        '</div>';
+    } else {
+      // Product walk (Move 2d) — placeholder until 2d wires the step renderer.
+      mainHTML = '<div class="comp-studio-main-empty">Product walks land in Move 2d.</div>';
+    }
+
+    studio.innerHTML =
+      '<div class="comp-studio">' +
+        '<div class="comp-studio-header">Walk Studio · ' + WALKS.length + ' available</div>' +
+        '<div class="comp-studio-layout">' +
+          '<div class="comp-studio-sidebar">' + sidebarHTML + '</div>' +
+          '<div class="comp-studio-main">' + mainHTML + '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Sidebar click → activate walk. Calls logComprehendDeckOpen for
+    // decks since iframe-loading doesn't fire the document-level
+    // anchor-click handler that DECK_FILE_RE listens for.
+    studio.querySelectorAll('.comp-studio-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.walk;
+        if (!id) return;
+        const walk = WALKS.find(w => w.id === id);
+        if (!walk) return;
+        if (getActiveWalkId() === id) {
+          // Re-clicking the active walk closes it.
+          setActiveWalkId(null);
+        } else {
+          setActiveWalkId(id);
+          if (walk.kind === 'deck' && walk.deck_href && typeof logComprehendDeckOpen === 'function') {
+            logComprehendDeckOpen(walk.deck_href);
+          }
+        }
+        renderComprehendStudio(studio);
+      });
+    });
+    // Close button in iframe bar.
+    const closeLink = studio.querySelector('[data-act="walk-close"]');
+    if (closeLink) {
+      closeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        setActiveWalkId(null);
+        renderComprehendStudio(studio);
+      });
+    }
   }
 
   // Wire debrief controls (bound once at load)
