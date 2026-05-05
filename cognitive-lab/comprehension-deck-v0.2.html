@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Comprehension · After the Spine · 2026-05-04 (continued)</title>
+<style>
+  :root {
+    --bg:          #1a1a2e;
+    --fg:          #e8e0d4;
+    --panel-bg:    #16213e;
+    --panel-bd:    #2a3a5c;
+    --accent:      #e2a04a;
+    --accent-dim:  #a87832;
+    --success:     #4daa57;
+    --danger:      #c25450;
+    --font-px:     'Courier New', Courier, monospace;
+    --font-sans:   -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+    --frame-c:     #4a7bd4;
+    --comprehend-c:#d4a030;
+    --sync-c:      #2d8a7e;
+    --produce-c:   #e2a04a;
+    --debrief-c:   #4a8a5a;
+    --walk-c:      #c897cf;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+  body {
+    height: 100vh;
+    width: 100vw;
+  }
+  #deck {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  #deck::-webkit-scrollbar { display: none; }
+  #deck { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .slide {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 56px 72px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+  }
+  .slide-tag {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+  h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--fg);
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--fg);
+    max-width: 920px;
+    margin: 0;
+  }
+  .body {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--fg);
+    max-width: 920px;
+  }
+  .dim { color: #a8a098; }
+  .accent { color: var(--accent); }
+  .px { font-family: var(--font-px); }
+  .small { font-size: 13px; }
+
+  /* progress + counter */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 50;
+    transition: width 200ms ease;
+  }
+  #counter {
+    position: fixed;
+    bottom: 18px;
+    right: 24px;
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    z-index: 50;
+  }
+  #help {
+    position: fixed;
+    bottom: 18px;
+    left: 24px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #6f7a90;
+    z-index: 50;
+  }
+  #help kbd {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--panel-bd);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin: 0 2px;
+  }
+
+  .cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .cover h1 { font-size: 76px; letter-spacing: -2px; max-width: 1100px; }
+  .cover .sub {
+    font-family: var(--font-px);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 5px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .split .col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .split-label {
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin: 0;
+  }
+  .split-label.before { color: #c25450; }
+  .split-label.after  { color: var(--success); }
+
+  .panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 18px 22px;
+  }
+
+  .stack {
+    font-family: var(--font-px);
+    font-size: 16px;
+    line-height: 1.35;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    padding: 22px 26px;
+    color: var(--fg);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .stack .h { color: var(--accent); font-weight: bold; }
+  .stack .d { color: #6f7a90; }
+  .stack .v { color: var(--success); }
+  .stack .c { color: var(--comprehend-c); }
+  .stack .w { color: var(--walk-c); }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  ul.tight { margin: 0; padding-left: 22px; line-height: 1.55; }
+  ul.tight li { margin: 6px 0; }
+  .hr { height: 1px; background: var(--panel-bd); margin: 8px 0; border: none; }
+  .quote {
+    font-style: italic;
+    color: #c8c0b4;
+    border-left: 3px solid var(--accent);
+    padding: 6px 16px;
+    margin: 8px 0;
+    line-height: 1.5;
+  }
+
+  .open-lab {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 22px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-px);
+    letter-spacing: 2px;
+    font-size: 13px;
+  }
+  .open-lab:hover { background: rgba(226,160,74,0.1); }
+
+  /* Hex band illustration (for Hex Map evolution slide) */
+  .hex-band {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 14px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    justify-content: center;
+  }
+  .hex-cell {
+    width: 32px;
+    height: 28px;
+    background: #4a7bd4;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    opacity: 0.55;
+  }
+  .hex-cell.amber { background: #E69F00; }
+  .hex-cell.green { background: #009E73; }
+  .hex-cell.warm  { background: #F0E442; }
+  .hex-cell.teal  { background: #56B4E9; }
+  .hex-cell.tan   { background: #CC79A7; }
+  .hex-cell.orange { background: #D55E00; }
+  .hex-cell.dark  { background: #888888; opacity: 0.30; }
+  .hex-cell.dim   { opacity: 0.18; }
+  .hex-cell.bright { opacity: 1.0; box-shadow: 0 0 6px rgba(255,255,255,0.4); }
+
+  /* Snap-circuit board sketch */
+  .grid-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+    padding: 14px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+  }
+  .grid-cell {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .grid-cell::after {
+    content: '';
+    width: 4px; height: 4px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+  }
+  .grid-cell.placed::after { display: none; }
+  .grid-cell.placed {
+    background: var(--frame-c);
+    border-color: rgba(0,0,0,0.4);
+  }
+  .grid-cell.placed.amber { background: #E69F00; }
+  .grid-cell.placed.green { background: #009E73; }
+  .grid-cell.placed.teal  { background: #56B4E9; }
+  .grid-cell.placed.tan   { background: #CC79A7; }
+
+  /* Walk-studio sketch */
+  .studio-sketch {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .studio-side {
+    background: rgba(0,0,0,0.18);
+    padding: 10px;
+    border-right: 1px solid var(--panel-bd);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .studio-item {
+    padding: 6px 8px;
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--fg);
+    border: 1px solid transparent;
+    border-radius: 3px;
+  }
+  .studio-item.active {
+    border-color: #6f9ee0;
+    background: rgba(74,123,212,0.18);
+    color: #6f9ee0;
+  }
+  .studio-item.product.active { border-color: var(--accent); background: rgba(226,160,74,0.18); color: var(--accent); }
+  .studio-main {
+    background: var(--bg);
+    padding: 10px;
+    min-height: 140px;
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Comprehend kind chip swatches */
+  .kind-chip {
+    display: inline-block;
+    font-family: var(--font-px);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin: 0 4px;
+  }
+  .kind-chip.note      { color: #d4a030; background: rgba(212,160,48,0.10); border: 1px solid rgba(212,160,48,0.35); }
+  .kind-chip.synthesis { color: #5cb09a; background: rgba(92,176,154,0.10); border: 1px solid rgba(92,176,154,0.35); }
+  .kind-chip.deck      { color: #6f9ee0; background: rgba(74,123,212,0.10); border: 1px solid rgba(74,123,212,0.35); }
+  .kind-chip.walk      { color: var(--walk-c); background: rgba(204,121,167,0.10); border: 1px solid rgba(204,121,167,0.35); }
+
+  .lab-list {
+    display: grid;
+    grid-template-columns: 92px 1fr 80px;
+    gap: 4px 18px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .lab-list .id { font-family: var(--font-px); color: var(--accent); }
+  .lab-list .pri { font-family: var(--font-px); font-size: 11px; color: var(--accent-dim); text-align: right; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="counter">01 / 18</div>
+<div id="help">
+  <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>Space</kbd> next · <kbd>Esc</kbd> top
+</div>
+
+<div id="deck">
+
+  <!-- 1 — COVER -->
+  <section class="slide cover">
+    <p class="sub">comprehension · 2026-05-04 (continued)</p>
+    <h1>After the Spine</h1>
+    <p class="lede" style="text-align:center; max-width: 760px;">
+      Five days of iteration past the rogaine spine.<br>
+      How the map became a canvas, and how the lab learned to teach itself.
+    </p>
+    <a class="open-lab" href="cognitive-lab-v0.1.html">→ open the lab</a>
+    <p class="small dim" style="margin-top: 10px;">picks up where <span class="px accent">comprehension-deck-v0.1</span> left off</p>
+  </section>
+
+  <!-- 2 — RECAP -->
+  <section class="slide">
+    <p class="slide-tag">01 · where we left off</p>
+    <h2>The rogaine spine, in one breath.</h2>
+
+    <div class="split" style="margin-top: 4px;">
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">The architecture (v0.1 deck)</h3>
+          <ul class="tight body">
+            <li><strong>Map → Course → Leg</strong> — a lifetime backlog, a 7-leg week, one Full Turn.</li>
+            <li><strong>Frontier-not-itinerary</strong> — Course names what's reachable; per-leg Frame picks.</li>
+            <li><strong>Two metaphors</strong> — Hex Map for terrain (Course/Map), Snap Circuit for wiring (Leg).</li>
+            <li><strong>Bruner / Snap Circuits</strong> — push toward iconic + enactive; "constructing a diagram is much less difficult than reading one."</li>
+            <li><strong>Course Coach</strong> — claimed slot for a future agent that reads <span class="px">legs[]</span> like poker hand histories.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">What had shipped</h3>
+          <ul class="tight body">
+            <li>Course tier (<span class="px">COURSE-2026-W18</span>) + planning form</li>
+            <li>Leg wrapper (<span class="px">LEG-2026-05-04-A</span>)</li>
+            <li>Course Header bar in every workshop drawer</li>
+            <li>On-demand Comprehend (textarea + log)</li>
+            <li>Debrief revision (rogaine shape: Score / Caught / Course held? / Better moves)</li>
+            <li>Snap Circuit Leg view (5 zones, vertical signal flow)</li>
+            <li>Hex Map v0.1 — flat grid, read-only</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 — DOGFOOD FINDINGS -->
+  <section class="slide">
+    <p class="slide-tag">02 · first dogfood</p>
+    <h2>Three things you said when you opened it.</h2>
+
+    <div class="grid-3" style="margin-top: 6px;">
+      <div class="panel" style="border-color: rgba(194,84,80,0.5);">
+        <p class="px small" style="color:#c25450;">finding 1</p>
+        <h3>Picker shows the whole lab</h3>
+        <p class="body small">Frame's must/bonus picker wasn't scoped to the Course's frontier. The architecture said "pick from the frontier"; the picker didn't know the frontier existed.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(212,160,48,0.5);">
+        <p class="px small" style="color:#d4a030;">finding 2</p>
+        <h3>Comprehend zone says "idle"</h3>
+        <p class="body small">Walking the morning's deck + cycling items to live were real comprehension acts. None of it registered. The form was the only signal source.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(74,123,212,0.5);">
+        <p class="px small" style="color:#6f9ee0;">finding 3</p>
+        <h3>The map looks random</h3>
+        <p class="body small">Items as flat hexes sorted by area+priority. No bundling. Frontier highlight got lost in the P0 red glow.</p>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top: 14px;">
+      The first two were seam fixes. The third was the start of a much bigger reframe.
+    </p>
+  </section>
+
+  <!-- 4 — HEX MAP V0.2 -->
+  <section class="slide">
+    <p class="slide-tag">03 · hex map v0.2 — biome regions + 4 channels</p>
+    <h2>Stop overloading hue. Use four channels.</h2>
+
+    <div class="split">
+      <div class="col">
+        <div class="panel">
+          <h3>The encoding</h3>
+          <ul class="tight body">
+            <li><strong>Hue</strong> = biome (area accent) — stable identity</li>
+            <li><strong>Luminosity</strong> = relevance — 4-state ramp (archived dim → in-frontier bright)</li>
+            <li><strong>Stroke</strong> = priority (P0 ring at 2px, second-channeled for color-blind)</li>
+            <li><strong>Motion</strong> = attention — single pulse on click + slow ambient breath on the active leg's working set</li>
+          </ul>
+          <hr class="hr">
+          <p class="body small dim">Items grouped into labeled biome regions. Honors <span class="px">prefers-reduced-motion</span>.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="hex-band">
+          <div class="hex-cell"></div><div class="hex-cell amber"></div><div class="hex-cell amber bright"></div><div class="hex-cell green"></div>
+          <div class="hex-cell warm"></div><div class="hex-cell"></div><div class="hex-cell teal"></div><div class="hex-cell dark dim"></div>
+          <div class="hex-cell amber bright"></div><div class="hex-cell"></div><div class="hex-cell green dim"></div><div class="hex-cell warm"></div>
+          <div class="hex-cell amber"></div><div class="hex-cell teal bright"></div><div class="hex-cell dark"></div><div class="hex-cell green bright"></div>
+        </div>
+        <p class="body small dim" style="text-align:center;">Same items, four signals, no fight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — HEX MAP V0.3 -->
+  <section class="slide">
+    <p class="slide-tag">04 · hex map v0.3 — concentric rings + okabe-ito</p>
+    <h2>Priority becomes spatial.<br><span class="dim" style="font-size:24px;">Not a ring around each hex — a ring of hexes.</span></h2>
+
+    <div class="split">
+      <div class="col">
+        <p class="body">P0 anchors the center. P1 expands outward. P2 outermost. Ring position carries priority — the red P0 ring drops entirely.</p>
+        <div class="panel">
+          <h3 class="accent">Color-blind palette</h3>
+          <p class="body small">Okabe-Ito 8-color qualitative scheme. Each existing area accent maps to one Okabe-Ito hue. Distinguishable to all common color-vision profiles.</p>
+        </div>
+        <div class="panel">
+          <h3 class="accent">Genus:species hover</h3>
+          <p class="body small">Hover any hex → instant tooltip (HTML, not 1-sec native delay): <em>"Frame Workshop: chapter draft"</em>. <span class="px">aria-label</span> replaces <span class="px">&lt;title&gt;</span> to suppress the duplicate native tooltip.</p>
+        </div>
+        <div class="panel">
+          <h3 class="accent">Map legend</h3>
+          <p class="body small">Below the SVG: each area + its color + count. The regions ARE the legend. Like a real map.</p>
+        </div>
+      </div>
+      <div class="col" style="display: flex; align-items: center; justify-content: center;">
+        <div class="hex-band" style="max-width: 380px;">
+          <!-- Concentric-ring sketch, radial -->
+          <div class="hex-cell amber bright" style="background:#E69F00;"></div>
+          <div class="hex-cell" style="background:#0072B2; opacity:1;"></div>
+          <div class="hex-cell green bright" style="background:#009E73;"></div>
+          <div class="hex-cell amber" style="opacity:0.5;"></div>
+          <div class="hex-cell teal" style="opacity:0.5;"></div>
+          <div class="hex-cell" style="background:#0072B2; opacity:0.5;"></div>
+          <div class="hex-cell green" style="opacity:0.5;"></div>
+          <div class="hex-cell warm" style="opacity:0.5;"></div>
+          <div class="hex-cell tan" style="opacity:0.5;"></div>
+          <div class="hex-cell orange" style="opacity:0.5;"></div>
+          <div class="hex-cell amber dim"></div>
+          <div class="hex-cell teal dim"></div>
+          <div class="hex-cell green dim"></div>
+          <div class="hex-cell warm dim"></div>
+          <div class="hex-cell tan dim"></div>
+          <div class="hex-cell orange dim"></div>
+          <div class="hex-cell" style="background:#0072B2; opacity:0.18;"></div>
+          <div class="hex-cell amber dim"></div>
+          <div class="hex-cell green dim"></div>
+          <div class="hex-cell teal dim"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 — THE PIVOT -->
+  <section class="slide">
+    <p class="slide-tag">05 · the realization</p>
+    <h2>Snap Circuits ship with a build book.<br><span class="dim" style="font-size:26px;">We were giving you the box without instructions.</span></h2>
+
+    <div class="quote" style="margin-top: 18px; font-size: 19px;">
+      "The colors and brightness work quite well. But this giant map is too obtuse. Let's go back to the snap circuit analogy. You don't get a bag full of snap circuits and then wished good luck. You get a book with builds in it. Our first mistake is giving the user positive space rather than negative space. Our second mistake is not giving them a template."<br>
+      <span class="small dim">— author, mid-arc</span>
+    </div>
+
+    <p class="lede" style="margin-top: 14px;">
+      The next move wasn't a better map. It was an empty board, a parts bin, and a build book.
+    </p>
+    <p class="body dim small" style="margin-top: 6px;">
+      Kay's principle, redirected: "It's easier to build a diagram than read a diagram." Was for our design choices. Now it's for the user's.
+    </p>
+  </section>
+
+  <!-- 7 — BUILD CANVAS -->
+  <section class="slide">
+    <p class="slide-tag">06 · build canvas v0.1</p>
+    <h2>An empty board.<br>A drawer of parts.<br>Click to place.</h2>
+
+    <div class="split" style="gap: 36px;">
+      <div class="col">
+        <div class="grid-board" style="max-width: 420px;">
+          <div class="grid-cell"></div><div class="grid-cell placed"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell placed amber"></div><div class="grid-cell"></div>
+
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell placed green"></div><div class="grid-cell"></div><div class="grid-cell placed"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell placed teal"></div>
+
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell placed amber"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell placed tan"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+        <p class="body small dim" style="text-align:center; margin-top: 8px;">7×10 grid. Snap-circuit style.</p>
+      </div>
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">The mechanic</h3>
+          <ul class="tight body">
+            <li><strong>Drawer pick</strong> — click an item, takes it "in hand"</li>
+            <li><strong>Cell click</strong> — snaps it into place</li>
+            <li><strong>Placed-piece click</strong> — action chip (Pick up · Remove · Cancel)</li>
+            <li><strong>Apply template</strong> — frontier batch-places in priority order, skipping anything you've already placed</li>
+            <li><strong>Persists</strong> on <span class="px">course.build_positions</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 class="accent">Deferred to v0.5+</h3>
+          <p class="body small">Drag-and-drop. Connections (edges between placed pieces). Sandbox-Course mode. In-lab walk authoring UI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 — LENS DISPATCHER -->
+  <section class="slide">
+    <p class="slide-tag">07 · three lenses, one canvas</p>
+    <h2>Same data. Three projections. Switch freely.</h2>
+
+    <div class="grid-3" style="margin-top: 6px;">
+      <div class="panel" style="border-color: rgba(226,160,74,0.6);">
+        <p class="px small accent">▦ Build · default</p>
+        <h3>User-authored</h3>
+        <p class="body small">Empty grid + tool drawer. You place pieces. The lab persists your placement.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(212,160,48,0.6);">
+        <p class="px small" style="color:#d4a030;">⛰ By function</p>
+        <h3>Biome regions</h3>
+        <p class="body small">v0.2 layout restored as a lens. Items grouped into labeled clusters by area. The genus view.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(92,176,154,0.6);">
+        <p class="px small" style="color:#5cb09a;">◎ By priority</p>
+        <h3>Concentric rings</h3>
+        <p class="body small">v0.3 layout restored as a lens. P0 center → P1 → P2 outermost. The urgency view.</p>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top: 14px;">
+      You own one canvas. The other lenses are read-only re-projections. Switch back to Build → your placement is intact.
+    </p>
+  </section>
+
+  <!-- 9 — COMPREHEND SIGNALS -->
+  <section class="slide">
+    <p class="slide-tag">08 · comprehend signals (Phase 1.5)</p>
+    <h2>Four kinds of comprehension.<br>Three auto-logged.</h2>
+
+    <div class="split" style="gap: 36px;">
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">What auto-logs</h3>
+          <ul class="tight body">
+            <li><span class="kind-chip note">note</span> manual capture (already shipped)</li>
+            <li><span class="kind-chip synthesis">synthesis</span> status cycle to <span class="px">live</span> or <span class="px">archived</span></li>
+            <li><span class="kind-chip deck">deck</span> opening a deck file (matched by <span class="px">DECK_FILE_RE</span>)</li>
+            <li><span class="kind-chip walk">walk</span> walk start + completion <span class="dim small">(later in this deck)</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 class="accent">The surveillance line</h3>
+          <p class="body small">Only acts the user <em>intentionally took</em> and <em>would expect to leave a record</em>. No mouse-tracking, no search-query log, no item-hover. The lab's tone is "you're the director."</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">Where it surfaces</h3>
+          <ul class="tight body">
+            <li><strong>Course view</strong> · log below the Hex Map</li>
+            <li><strong>Leg view</strong> · Comprehend zone subtitle ("2 notes · 1 synthesis · 3 decks · 1 walk")</li>
+            <li><strong>Comprehend Station</strong> · "Where you are" snapshot, last 3 acts <span class="dim small">(later in this deck)</span></li>
+          </ul>
+        </div>
+        <div class="quote">
+          <em>"If the user would be surprised to see it in a log, don't log it."</em><br>
+          <span class="small dim">— Quenton, Phase 1.5 design dialog</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — FRONTIER WIRING -->
+  <section class="slide">
+    <p class="slide-tag">09 · frontier wiring</p>
+    <h2>Frame picker now reads the Course.</h2>
+
+    <div class="split">
+      <div class="col">
+        <p class="split-label before">— before</p>
+        <div class="panel" style="border-color: rgba(194,84,80,0.4);">
+          <p class="body">Frame's picker showed every LAB item. The architecture said "pick from the frontier." The picker didn't know the frontier existed. The Hex Map and the Frame card disagreed silently.</p>
+        </div>
+      </div>
+      <div class="col">
+        <p class="split-label after">— after</p>
+        <div class="panel" style="border-color: rgba(74,170,87,0.4);">
+          <p class="body">Picker scopes to the active Course's frontier by default. Toggle to "Full lab" for the deliberate exception. Off-frontier picks tag the chip with a <span class="px accent">↗</span> badge.</p>
+          <hr class="hr">
+          <p class="body small">Sets up Debrief later: when a leg ends, the off-frontier picks pre-fill <span class="px">changes_to_course.frontier_added</span>. The frontier evolves through deviation, not just declaration.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="body dim small" style="margin-top: 6px;">Empty-frontier auto-flips to "Full lab" with a one-line nudge to set the frontier in the Course view.</p>
+  </section>
+
+  <!-- 11 — COMPREHEND = ORIENTATION -->
+  <section class="slide">
+    <p class="slide-tag">10 · the framing that opened move 2</p>
+    <h2>Comprehend is about <span class="accent">orientation.</span></h2>
+
+    <p class="lede" style="margin-top: 8px;">
+      Re-immersion (returning to context after time away). Deck re-reading (re-immersion at scale). Feature walks (orientation to a new capability).
+    </p>
+    <p class="body" style="max-width: 920px;">
+      Same cognitive act, three timescales. <strong>Tell me where I am, and how to act here.</strong>
+    </p>
+
+    <div class="quote" style="margin-top: 14px;">
+      <em>"Comprehend is really about orientation, which as you can imagine is important in a game like this."</em><br>
+      <span class="small dim">— author, Move 2 framing</span>
+    </div>
+
+    <p class="body" style="margin-top: 14px;">
+      That framing did three things at once: it gave Comprehend Station a job, it earned C-before-F on the floor, and it opened the door to walks-in-the-lab.
+    </p>
+  </section>
+
+  <!-- 12 — C BEFORE F -->
+  <section class="slide">
+    <p class="slide-tag">11 · the floor reorder</p>
+    <h2>Comprehend leads now.</h2>
+
+    <div class="stack" style="margin-top: 6px;">
+<span class="d">band 2 — phase cycle</span>
+
+<span class="d">before:</span>  <span class="h">Frame</span> → <span class="c">Comprehend</span> → Sync → Produce → Debrief → Recover
+
+<span class="d">after :</span>  <span class="c">Comprehend</span> → <span class="h">Frame</span> → Sync → Produce → Debrief → Recover
+                <span class="d">orient first.</span>     <span class="d">then scope.</span>
+    </div>
+
+    <p class="body" style="margin-top: 14px;">
+      Comprehend Station is now a workshop (<span class="px">workshop: true</span>). Promoted from a placeholder area to the lab's first move every turn.
+    </p>
+
+    <p class="body small dim" style="margin-top: 6px;">
+      Larry flagged the documents that still describe F-first ordering — <span class="px">turn-v0.1-phases-and-leverage.md</span>, <span class="px">frame-research-and-practice.md</span>, the deck. Authorial reconciliation queued for tomorrow.
+    </p>
+  </section>
+
+  <!-- 13 — COMPREHEND STATION WORKSHOP -->
+  <section class="slide">
+    <p class="slide-tag">12 · the workshop, top half</p>
+    <h2>"Where you are" — orient in three seconds.</h2>
+
+    <div class="split" style="gap: 36px;">
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">Four items, no padding</h3>
+          <ul class="tight body">
+            <li><strong>Active leg</strong> + Course (id, theme, status)</li>
+            <li><strong>Last touched</strong> — relative time ("3h ago", "2d ago")</li>
+            <li><strong>Last 3 acts</strong> — newest-first, kind-chipped, click-to-expand</li>
+            <li><strong>Last debrief</strong> — caught text. Skipped if none (no "no debrief yet" noise)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel" style="border-color: rgba(212,160,48,0.45);">
+          <p class="px small" style="color:#d4a030;">snapshot · LEG-2026-05-04-A</p>
+          <p class="body small">leg 1 of 7 · <span class="px">in-progress</span></p>
+          <p class="body small">3h ago last touched</p>
+          <hr class="hr">
+          <p class="body small dim" style="margin-bottom: 4px;">last 3 acts</p>
+          <p class="body small"><span class="kind-chip walk">walk</span> walk-build-canvas-v0.1 · completed</p>
+          <p class="body small"><span class="kind-chip synthesis">synthesis</span> LAB-031 · backlog → live</p>
+          <p class="body small"><span class="kind-chip deck">deck</span> comprehension-deck-v0.1.html</p>
+        </div>
+        <p class="body small dim" style="text-align: center;">
+          Collapsible. Drilldown polish: click a recent entry → body expands inline.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 — WALK STUDIO -->
+  <section class="slide">
+    <p class="slide-tag">13 · the workshop, bottom half</p>
+    <h2>Walk Studio.<br><span class="dim" style="font-size:24px;">A sidebar of decks + walks. A main area that loads them.</span></h2>
+
+    <div class="studio-sketch" style="margin-top: 10px;">
+      <div class="studio-side">
+        <p class="px small dim" style="margin: 4px 6px;">DECKS · 2</p>
+        <div class="studio-item">◆ The Rogaine Spine</div>
+        <div class="studio-item">◆ Turn v0.1 Map</div>
+        <p class="px small dim" style="margin: 8px 6px 4px;">PRODUCT WALKS · 1</p>
+        <div class="studio-item product active">▦ Build canvas v0.1</div>
+      </div>
+      <div class="studio-main">
+        [iframe loads the lab in walk mode]
+      </div>
+    </div>
+
+    <p class="body" style="margin-top: 12px;">
+      Decks open in an embedded reader. Product walks layer narrative (left pane) over the live lab (right pane, iframe).
+    </p>
+    <p class="body small dim">
+      Single schema with <span class="px">kind: 'deck' | 'product'</span> discriminator. Hover any sidebar item → preview tooltip. Hardcoded WALKS const for v0.1; migrate to JSON when there are 5+ walks.
+    </p>
+  </section>
+
+  <!-- 15 — IFRAME WALK MODE -->
+  <section class="slide">
+    <p class="slide-tag">14 · the recursion defense</p>
+    <h2>The lab inside the lab.<br><span class="dim" style="font-size:22px;">Without a Comprehend Station inside the Comprehend Station inside…</span></h2>
+
+    <div class="split">
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">When ?walk=1 is set</h3>
+          <ul class="tight body">
+            <li>Banner injects across the top: <em>"⚑ Walk in progress — close from the Comprehend Station to return to the full lab"</em></li>
+            <li>Comprehend Station on the floor goes inert (opacity 0.3, pointer-events: none, aria-hidden)</li>
+            <li><span class="px">saveActiveView</span> + <span class="px">saveCourseHexLens</span> skip writes — iframe nav doesn't bleed to the parent's persisted prefs</li>
+            <li>Iframe carries <span class="px">sandbox="allow-scripts allow-same-origin allow-forms"</span> — closes <span class="px">window.top</span> nav while preserving localStorage</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel">
+          <h3 class="accent">target_route</h3>
+          <p class="body small">Walks can boot the iframe directly into the right view + lens via URL query params:</p>
+          <p class="px small accent" style="margin-top: 6px;">target_route: 'view=course&amp;lens=build'</p>
+          <p class="body small dim" style="margin-top: 8px;">Saves a wasted "click Course" first step. Allowlist sanitizes the string before injection.</p>
+        </div>
+        <div class="panel">
+          <h3 class="accent">State-mutation warning</h3>
+          <p class="body small">Step 0 of any product walk that mutates state warns: <em>"This walk will modify your active Course. Open a fresh Course first if you want a sandbox."</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 — THE META LOOP -->
+  <section class="slide">
+    <p class="slide-tag">15 · the meta-loop</p>
+    <h2>The lab teaches itself.</h2>
+
+    <div class="stack" style="font-size: 14px; margin-top: 4px;">
+<span class="d">old loop:</span>
+  Claude ships a feature → writes <span class="d">"open this URL, click here, then there"</span> in chat
+  → user switches contexts to test → instructions decay → can't replay
+
+<span class="d">new loop:</span>
+  Claude ships a feature → authors a <span class="w">walk</span> into <span class="px">WALKS</span>
+  → user opens Comprehend Station → Walk Studio shows the new walk
+  → click → step renderer + iframe in walk mode
+  → walks the feature with narrative on the left, live lab on the right
+  → Done → <span class="w">walk</span> entry logged to <span class="px">leg.comprehend[]</span>
+  → next time the user opens Comprehend Station, the walk shows in
+    "Where you are" as durable orientation history
+    </div>
+
+    <p class="body" style="margin-top: 16px; font-style: italic; color: var(--accent);">
+      You are watching this loop happen right now. This deck + the Comprehend Station tour walk are the proof.
+    </p>
+  </section>
+
+  <!-- 17 — DEFERRED -->
+  <section class="slide">
+    <p class="slide-tag">16 · what's deferred</p>
+    <h2>Six items spawned for the v0.5+ pile.</h2>
+
+    <div class="lab-list" style="margin-top: 6px;">
+      <span class="id">LAB-052</span><span>Walk Studio: interactive walks (auto-advance on correct click)</span><span class="pri">P2</span>
+      <span class="id">LAB-053</span><span>Walk Studio: persistent walk progress (resume across sessions)</span><span class="pri">P2</span>
+      <span class="id">LAB-054</span><span>Walk Studio: JSON-loaded WALKS (vs hardcoded constant)</span><span class="pri">P2</span>
+      <span class="id">LAB-055</span><span>Walk Studio: in-lab walk authoring UI</span><span class="pri">P2</span>
+      <span class="id">LAB-056</span><span>Walk Studio: sandbox-Course mode for state-mutating walks</span><span class="pri">P2</span>
+      <span class="id">LAB-057</span><span>Walk Studio: multi-walk sequences</span><span class="pri">P2</span>
+    </div>
+
+    <p class="body" style="margin-top: 16px;">
+      All visible in the lab today (Backlog Wall, Director's Desk items list, frontier picker).
+    </p>
+    <p class="body small dim">
+      Plus the earlier-arc deferrals: LAB-034 (Course Coach), LAB-045 (prereqs[] data model + chain edges), LAB-049 (drag-and-drop), LAB-050 (chain edges on Build canvas), LAB-051 (Map World long-vision).
+    </p>
+  </section>
+
+  <!-- 18 — FOR TOMORROW -->
+  <section class="slide">
+    <p class="slide-tag">17 · for tomorrow</p>
+    <h2>Three things waiting for your eyes.</h2>
+
+    <div class="grid-3">
+      <div class="panel" style="border-color: rgba(226,160,74,0.5);">
+        <h3 class="accent">Doc reconciliation</h3>
+        <p class="body small">Larry flagged 4 docs still describing the old F-first phase order. The leverage argument in <span class="px">turn-v0.1-phases-and-leverage.md</span> needs an editorial pass — it was written before C-before-F was named.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(194,84,80,0.5);">
+        <h3 class="accent">P0 inflation</h3>
+        <p class="body small">8 P0s in backlog vs hard cap of 3. LAB-035 (in-app priority editor) is the structural fix; until then, manual review during Frame on the next leg.</p>
+      </div>
+      <div class="panel" style="border-color: rgba(74,123,212,0.5);">
+        <h3 class="accent">At-risk items</h3>
+        <p class="body small">LAB-001 + LAB-002 (Frame form v1 + chapter outline) <span class="px">in-progress</span> for 4 days, no movement. Larry's drift play would suggest a re-Frame to break apart.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 — CLOSING -->
+  <section class="slide cover">
+    <p class="sub">end of deck · 2026-05-04 close</p>
+    <h1 style="font-size: 60px;">Now go walk it.</h1>
+    <p class="lede" style="text-align:center; max-width: 760px;">
+      Open the lab. Click <strong>Comprehend Station</strong> on the floor.<br>
+      Pick the <span class="px accent">Comprehend Station tour</span> walk in the Walk Studio.<br>
+      Watch the meta-loop close on itself.
+    </p>
+    <a class="open-lab" href="cognitive-lab-v0.1.html">→ open the lab</a>
+  </section>
+
+</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const total = slides.length;
+
+  function currentIndex() {
+    return Math.round(deck.scrollTop / window.innerHeight);
+  }
+  function goTo(i) {
+    const idx = Math.max(0, Math.min(total - 1, i));
+    deck.scrollTo({ top: idx * window.innerHeight, behavior: 'smooth' });
+  }
+  function update() {
+    const i = currentIndex();
+    counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    progress.style.width = (((i + 1) / total) * 100) + '%';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const i = currentIndex();
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      goTo(i + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      goTo(i - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(total - 1);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      goTo(0);
+    }
+  });
+
+  deck.addEventListener('scroll', () => requestAnimationFrame(update));
+  window.addEventListener('resize', update);
+  update();
+</script>
+
+</body>
+</html>

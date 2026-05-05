@@ -5782,7 +5782,8 @@
       "items": [],
       "artifacts": [
         { "label": "turn-v0.1-map.html (the v0.2 turn map · 4 acts · 21 slides · beginner-facing)", "href": "turn-v0.1-map.html" },
-        { "label": "comprehension-deck-v0.1.html (the rogaine spine · 16 slides · Comprehend phase artifact for the 2026-05-04 build arc)", "href": "comprehension-deck-v0.1.html" }
+        { "label": "comprehension-deck-v0.1.html (the rogaine spine · 16 slides · Comprehend phase artifact for the 2026-05-04 build arc)", "href": "comprehension-deck-v0.1.html" },
+        { "label": "comprehension-deck-v0.2.html (after the spine · 19 slides · what shipped between v0.1 deck and end of 2026-05-04)", "href": "comprehension-deck-v0.2.html" }
       ],
       "experiments": [
         {
@@ -5791,6 +5792,13 @@
           "date": "2026-05-04 (early morning)",
           "observation": "After the overnight build run shipped Course tier + Hex Map + Leg wrapper + Course Header + on-demand Comprehend + Debrief revision + Snap Circuit Leg view, the author wanted a re-immersion pass before vetting. Asked for a highly visual deck walking through the new surfaces and the rationale. Built comprehension-deck-v0.1.html — 16 vertical scroll-snap slides, color-matched to the lab, with the Hex Map and Snap Circuit visuals echoed inside the deck.",
           "impact": "Comprehend station now has a concrete artifact-shape: a deck that re-renders an arc the way it was built. Filed under Deck Theater so future big arcs can drop their own comprehension decks here. The pattern itself becomes a play: ship the work, then ship the deck that walks the work."
+        },
+        {
+          "id": "exp-deck-2026-05-04-comprehension-deck-v0.2",
+          "title": "Comprehension deck v0.2 + Comprehend Station tour (the meta-loop dogfood)",
+          "date": "2026-05-04 (end of day)",
+          "observation": "By end of 2026-05-04 the lab had moved well past the v0.1 deck: Hex Map v0.2 (biome regions + 4 channels) → v0.3 (concentric rings + Okabe-Ito), Build canvas v0.1 (snap-circuit board, click-to-place, three-lens dispatcher), Comprehend Signals (leg.comprehend[]), Frontier wiring, the C-before-F floor reorder, and Comprehend Station + Walk Studio themselves. The author wanted the same re-immersion play as v0.1 — but this time the artifact would be consumed in the very tool it documents. Built comprehension-deck-v0.2.html (19 slides) and a paired product walk ('Comprehend Station tour') so tomorrow morning's dogfood is: open Comprehend Station → walk the deck → walk the product. The lab teaches itself.",
+          "impact": "First closed-loop dogfood: re-immersion artifact and the surface that surfaces it ship in the same breath. Validates Comprehend Station as the right home for both decks and product walks. Pattern is now a recipe: ship the arc → ship the deck → ship the walk → file all three on the area that owns them."
         }
       ],
       "notes": []
@@ -8491,12 +8499,63 @@
       ]
     },
     {
+      id: 'walk-comprehend-station-v0.1',
+      title: 'Comprehend Station tour',
+      kind: 'product',
+      subtitle: '11 steps · the meta-loop',
+      preview: 'Tour of the Comprehend Station itself — snapshot, drilldown, deck loading, walk loading. The walk that walks the surface that surfaces walks. (Read-only — no state mutated.)',
+      target_route: 'view=floor',
+      steps: [
+        {
+          narrative: '**Welcome to the Comprehend Station tour.**\n\nThis walk is the meta-loop on purpose: you\'re using Comprehend Station to learn about Comprehend Station. The right pane is a live lab booted to the **Floor view**.\n\n**No state will be modified** — every step is read-only. Click around freely.\n\nClick **Next** to begin.'
+        },
+        {
+          narrative: '**The Floor.**\n\nLook at the right pane. The middle band shows the leg phases left-to-right: **Comprehend** · Frame · Sync · Produce · Debrief · Recover.\n\n**Comprehend is first** (C-before-F floor reorder, shipped today). The reasoning: orientation precedes commitment. You can\'t pick a Frame intelligently without first re-immersing in where you are.\n\nClick **Next**.'
+        },
+        {
+          narrative: '**Click the Comprehend area** in the right pane (the 🛠️ tile labeled "Comprehend · orient first"). The Comprehend Station drawer will open.\n\nThis is the workshop you\'re standing in right now (but rendered inside its own iframe inside itself — that\'s the recursion you noticed).\n\nClick **Next** once the drawer is open.'
+        },
+        {
+          narrative: '**The "Where you are" snapshot.**\n\nTop of the drawer. Four rows:\n\n- **Active leg** — leg id, leg number, status\n- **Course** — course id + theme (the rogaine route)\n- **Last 3 acts** — most recent comprehend entries on this leg, newest first\n- **Last debrief** — when you last closed a turn\n\nThis is the orient-before-commit panel. You read it; you don\'t edit it. (Click the ⌃ to collapse if you want — preference is session-scoped.)\n\nClick **Next**.'
+        },
+        {
+          narrative: '**Drilldown.**\n\nIn the snapshot, the **Last 3 acts** rows are clickable. Try it: click any entry. The body expands to show full content (note text, deck href, walk title, etc).\n\nThis is the polish fold from Move 2e — collapsed-by-default keeps the panel scannable; expand-on-click gives you the depth when you need it.\n\nClick **Next**.'
+        },
+        {
+          narrative: '**Walk Studio (lower half of the drawer).**\n\nSidebar (left): all available walks, grouped by kind:\n\n- 📚 **Decks** — slide-based comprehension artifacts (you\'re looking at one of these RIGHT NOW)\n- ▷ **Product walks** — guided tours of live lab surfaces (this walk is one)\n\nMain (right): the active walk\'s content, or a "Pick something" empty state.\n\nClick **Next**.'
+        },
+        {
+          narrative: '**Decks.**\n\nIn the sidebar, you should see at least three decks listed:\n\n- **The Rogaine Spine** (v0.1, 16 slides — the morning of 2026-05-04)\n- **After the Spine** (v0.2, 19 slides — end of 2026-05-04, the deck for tomorrow morning\'s re-immersion)\n- **Turn v0.1 Map** (the beginner-facing turn architecture)\n\nClicking a deck loads it into the right pane in an iframe (sandboxed: `allow-scripts allow-same-origin allow-forms`). The bar above the iframe has an **↗ open** link to pop the deck out into a full tab.\n\nDon\'t click one yet — let\'s finish the tour first. Click **Next**.'
+        },
+        {
+          narrative: '**Product walks.**\n\nDifferent shape from decks. A product walk is a sidebar-narrated tour where:\n\n- The **right pane is a live, interactive lab iframe** (booted with `?walk=1` so it doesn\'t contaminate your real localStorage)\n- The **left pane is the step list** — you read the narrative, do the action in the iframe, then click **Next**\n- A **target_route** boots the iframe directly to the relevant view (this walk\'s target_route is `view=floor`)\n\nClick **Next**.'
+        },
+        {
+          narrative: '**The mutation warning.**\n\nWalks that modify state (like the Build canvas tour) declare `mutates: true` and start with a heads-up step you have to acknowledge. The warning includes a "use a fresh Course as a sandbox" suggestion.\n\nThis Comprehend Station tour does NOT mutate — that\'s why you didn\'t see a warning at step 0.\n\nClick **Next**.'
+        },
+        {
+          narrative: '**The recursion defense.**\n\nThe walk-mode iframe (`?walk=1`) does two things to keep the parent lab uncontaminated:\n\n1. **`saveActiveView` and lens-write skip** — your tab navigation inside the walk iframe doesn\'t rewrite the parent\'s persisted view\n2. **localStorage isolation** — same origin, but the writes that would leak back are gated\n\nIf you opened the Comprehend Station tour FROM INSIDE itself (this very walk) the recursion would still work — but you\'d be three iframes deep and your computer would be sad. We don\'t recommend it.\n\nClick **Next**.'
+        },
+        {
+          narrative: '**The meta-loop, named.**\n\nYou are using a tool to learn about the tool. Tomorrow morning you\'ll re-watch the v0.2 deck (re-immersion on yesterday\'s shipping). Then you\'ll walk this tour (re-immersion on the surface itself). Then you\'ll go build.\n\nWhen you click **Done**, the walk gets logged to your active leg\'s `comprehend[]` timeline (kind: `walk`, walk id + title). Tomorrow\'s snapshot will show today\'s comprehend acts.\n\nThe lab teaches itself. That\'s the closed loop.\n\nClick **Done** to log + exit. Or close from the Comprehend Station header to exit without logging.'
+        }
+      ]
+    },
+    {
       id: 'deck-rogaine-spine',
       title: 'The Rogaine Spine',
       kind: 'deck',
       subtitle: '16 slides · v0.4 build arc',
       preview: 'Comprehension deck for the rogaine-spine arc. Walk through what shipped, why it was shaped this way, and how the pieces add up to one moving thing.',
       deck_href: 'comprehension-deck-v0.1.html'
+    },
+    {
+      id: 'deck-comprehension-v0.2',
+      title: 'After the Spine',
+      kind: 'deck',
+      subtitle: '19 slides · end of 2026-05-04',
+      preview: 'What shipped between the v0.1 deck (early morning) and end of day: Hex Map v0.2 → v0.3, Build canvas v0.1, lens dispatcher, Comprehend Signals, Frontier wiring, the C-before-F floor reorder, Comprehend Station + Walk Studio, the meta-loop.',
+      deck_href: 'comprehension-deck-v0.2.html'
     },
     {
       id: 'deck-turn-v0.1-map',
