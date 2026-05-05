@@ -12,6 +12,7 @@
   :root {
     --bg:          #1a1a2e;
     --fg:          #e8e0d4;
+    --fg-dim:      #6f7a90;
     --panel-bg:    #16213e;
     --panel-bd:    #2a3a5c;
     --accent:      #e2a04a;
@@ -10479,11 +10480,11 @@
           <p class="bc-drawer-sub">Search, sort, and click an item to take it in hand. Click a cell to snap it.</p>
           <div class="bc-drawer-controls">
             <input type="search" class="bc-drawer-search" id="bc-drawer-search" placeholder="Search id / title / area…" value="${escapeHTML(bcDrawerSearch || '')}" aria-label="Search drawer items"/>
-            <div class="bc-drawer-sort" role="radiogroup" aria-label="Sort drawer">
+            <div class="bc-drawer-sort" role="group" aria-label="Sort drawer">
               <span class="bc-drawer-sort-label">Sort:</span>
-              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'area'     ? ' active' : ''}" data-act="sort" data-sort="area"     role="radio" aria-checked="${bcDrawerSort === 'area'}">Area</button>
-              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'priority' ? ' active' : ''}" data-act="sort" data-sort="priority" role="radio" aria-checked="${bcDrawerSort === 'priority'}">Priority</button>
-              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'status'   ? ' active' : ''}" data-act="sort" data-sort="status"   role="radio" aria-checked="${bcDrawerSort === 'status'}">Status</button>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'area'     ? ' active' : ''}" data-act="sort" data-sort="area"     aria-pressed="${bcDrawerSort === 'area'}">Area</button>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'priority' ? ' active' : ''}" data-act="sort" data-sort="priority" aria-pressed="${bcDrawerSort === 'priority'}">Priority</button>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'status'   ? ' active' : ''}" data-act="sort" data-sort="status"   aria-pressed="${bcDrawerSort === 'status'}">Status</button>
             </div>
           </div>
           <div class="bc-drawer-actions">
