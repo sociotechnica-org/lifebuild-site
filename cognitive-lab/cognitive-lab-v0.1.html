@@ -12,6 +12,7 @@
   :root {
     --bg:          #1a1a2e;
     --fg:          #e8e0d4;
+    --fg-dim:      #6f7a90;
     --panel-bg:    #16213e;
     --panel-bd:    #2a3a5c;
     --accent:      #e2a04a;
@@ -204,123 +205,20 @@
     outline: none;
     border-color: var(--accent);
   }
-  .course-frontier-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    min-height: 28px;
-    padding: 5px;
-    background: var(--bg);
-    border: 1px dashed var(--panel-bd);
-    border-radius: 4px;
-    margin-bottom: 6px;
-  }
-  .course-frontier-chips:empty::before {
-    content: 'No frontier items yet — pick from the lab below.';
-    font-size: 11.5px;
-    color: #6f7a90;
-    font-style: italic;
-    padding: 0 4px;
-  }
-  .course-frontier-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 6px 3px 8px;
-    background: rgba(74,123,212,0.14);
-    border: 1px solid rgba(74,123,212,0.45);
-    border-radius: 12px;
-    font-size: 11.5px;
-    color: var(--fg);
-  }
-  .course-frontier-chip .cfc-id {
+  /* Slice 3: course-canvas-hint sits below the form fields and points the
+     user to the canvas as the scope-declaration surface. */
+  .course-canvas-hint {
     font-family: var(--font-px);
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    color: #6f9ee0;
-    font-weight: bold;
-  }
-  .course-frontier-chip .cfc-x {
-    margin-left: 2px;
-    color: #97a3ba;
-    font-size: 14px;
-    line-height: 1;
-    padding: 0 2px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  .course-frontier-chip .cfc-x:hover { color: #ff7a7a; }
-  .course-frontier-toggle {
-    background: transparent;
+    font-size: 10.5px;
     color: var(--accent-dim);
-    border: 1px solid var(--panel-bd);
-    border-radius: 3px;
-    padding: 4px 8px;
-    font-family: var(--font-px);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
+    margin: 8px 0 0;
+    padding: 6px 8px;
+    background: rgba(226,160,74,0.04);
+    border-left: 2px solid var(--accent-dim);
+    line-height: 1.5;
   }
-  .course-frontier-toggle:hover { color: var(--fg); }
-  .course-frontier-toggle.open { color: var(--accent); border-color: var(--accent); }
-  .course-frontier-panel {
-    margin-top: 8px;
-    padding: 10px;
-    background: var(--bg);
-    border: 1px solid var(--panel-bd);
-    border-radius: 4px;
-    max-height: 320px;
-    overflow-y: auto;
-  }
-  .course-frontier-section {
-    font-family: var(--font-px);
-    font-size: 9.5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent-dim);
-    margin: 10px 0 5px 0;
-    padding-bottom: 3px;
-    border-bottom: 1px dotted var(--panel-bd);
-  }
-  .course-frontier-section:first-child { margin-top: 0; }
-  .course-frontier-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 6px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-  }
-  .course-frontier-row:hover { background: rgba(226,160,74,0.06); }
-  .course-frontier-row.selected { background: rgba(74,123,212,0.10); }
-  .course-frontier-row .cfr-pri {
-    font-family: var(--font-px);
-    font-size: 9px;
-    font-weight: bold;
-    padding: 1px 4px;
-    border-radius: 2px;
-    color: #fff;
-  }
-  .course-frontier-row .cfr-pri.P0 { background: #c25450; }
-  .course-frontier-row .cfr-pri.P1 { background: #c98a3a; }
-  .course-frontier-row .cfr-pri.P2 { background: #5e6f8a; }
-  .course-frontier-row .cfr-id {
-    font-family: var(--font-px);
-    font-size: 10px;
-    color: var(--accent-dim);
-    min-width: 60px;
-  }
-  .course-frontier-row .cfr-title {
-    flex: 1;
-    color: var(--fg);
-  }
-  .course-frontier-row .cfr-stat {
-    font-size: 10px;
-    color: var(--accent-dim);
+  .course-card-finalize {
+    margin-top: 14px;
   }
   .course-actions {
     display: flex;
@@ -335,6 +233,30 @@
     font-family: var(--font-px);
     font-size: 10px;
     color: var(--accent-dim);
+  }
+  /* Slice 6: Save-Course ceremony surfaces. "Active since" appears once the
+     Course transitions planning → in-progress; the error span surfaces
+     missing-field validation inline with the Save button. */
+  .course-active-since {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(226,160,74,0.08);
+    border: 1px solid rgba(226,160,74,0.40);
+    border-radius: 3px;
+    padding: 3px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .course-save-error {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: #e0786e;
+    background: rgba(224,120,110,0.10);
+    border: 1px solid rgba(224,120,110,0.40);
+    border-radius: 3px;
+    padding: 3px 8px;
   }
 
   /* ── Course hex map (the Map / Course visualization, read-only v0.1) ──
@@ -503,6 +425,19 @@
   .bc-cell:hover .bc-cell-snap {
     fill: var(--accent);
   }
+  /* Slice 1: staging row 0 reads visually distinct from the working board.
+     Warmer base tint matches the accent so "staged" reads as adjacent-but-
+     separate from the snap-circuit grid below. */
+  .bc-cell-staging .bc-cell-bg {
+    fill: rgba(226,160,74,0.05);
+    stroke: rgba(226,160,74,0.20);
+    stroke-dasharray: 2 3;
+  }
+  .bc-cell-staging:hover .bc-cell-bg {
+    fill: rgba(226,160,74,0.10);
+    stroke: var(--accent);
+    stroke-dasharray: none;
+  }
   .bc-grid-label {
     font-family: var(--font-px);
     font-size: 10px;
@@ -633,13 +568,44 @@
     font-size: 11px;
     padding: 8px 6px;
   }
-  /* Drawer action buttons (Move 3e): Apply template + Clear board.
-     Live in the drawer header below the title. */
+  /* Drawer action buttons: Apply template (now a 3-tier group: P0 / +P1 / All)
+     + Clear board. Slice 5 split the apply gesture into priority tiers; the
+     template stages items into row 0 only — the user promotes to A–G manually. */
   .bc-drawer-actions {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     margin-bottom: 8px;
     flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .bc-template-group {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    min-width: 160px;
+  }
+  .bc-template-group .bc-drawer-action {
+    flex: 1;
+    min-width: 0;
+    border-radius: 0;
+    border-right-width: 0;
+  }
+  .bc-template-group .bc-drawer-action:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .bc-template-group .bc-drawer-action:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-right-width: 1px;
+  }
+  .bc-drawer-action.subtle {
+    color: #6f7a90;
+    background: rgba(255,255,255,0.02);
+  }
+  .bc-drawer-action.subtle:hover {
+    color: var(--fg);
+    background: rgba(255,255,255,0.05);
   }
   .bc-drawer-action {
     flex: 1;
@@ -684,6 +650,65 @@
     border-radius: 3px;
     text-align: center;
   }
+  /* Slice 2: drawer controls — search input + sort radios sit above the
+     action buttons. Search filters by id/title/area substring; sort flips
+     the grouping (Area / Priority / Status). Both states are module-level
+     and reset on reload — low cost, fresh canvas every session. */
+  .bc-drawer-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .bc-drawer-search {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--fg);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    padding: 6px 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .bc-drawer-search:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.06);
+  }
+  .bc-drawer-search::placeholder { color: #6f7a90; }
+  .bc-drawer-sort {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-px);
+    font-size: 10px;
+  }
+  .bc-drawer-sort-label { color: #6f7a90; margin-right: 2px; }
+  .bc-drawer-sort-btn {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--fg-dim);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--panel-bd);
+    border-radius: 3px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: color 120ms ease, background 120ms ease, border-color 120ms ease;
+  }
+  .bc-drawer-sort-btn:hover { color: var(--fg); }
+  .bc-drawer-sort-btn.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(226,160,74,0.10);
+  }
+  /* Priority swatches in the drawer when sort=priority. */
+  .bc-drawer-area-pri.P0 { background: #c25450 !important; }
+  .bc-drawer-area-pri.P1 { background: #c98a3a !important; }
+  .bc-drawer-area-pri.P2 { background: #5e6f8a !important; }
+  /* Status swatches when sort=status — neutral muted dot since the status
+     category headings already carry the semantics. */
+  .bc-drawer-area-status { background: rgba(255,255,255,0.20) !important; }
   /* In-hand state (Move 3d): drawer item that's currently being held,
      ready to snap into a cell. Highlighted with accent border + bg. */
   .bc-drawer-item.bc-in-hand {
@@ -3120,16 +3145,19 @@
     max-width: 100%;
   }
   .ff-chip:hover { background: rgba(74,123,212,0.22); }
-  /* Phase 2: off-frontier picks render with a warm accent and a small ↗
-     badge, distinguishing them visually from on-frontier chips without
-     breaking the picker layout. */
-  .ff-chip.off-frontier {
+  /* Off-board picks render with a warm accent and a small ↗ badge,
+     distinguishing them visually from on-board chips without breaking
+     the picker layout. (Renamed from off-frontier in the Course-view
+     rewrite — same UX, new vocabulary: a pick is "off-board" when the
+     item isn't currently placed on the active Course's snap-circuit
+     board, i.e. it's a mid-leg deviation from the planned course.) */
+  .ff-chip.off-board {
     background: rgba(226,160,74,0.12);
     border-color: rgba(226,160,74,0.45);
   }
-  .ff-chip.off-frontier:hover { background: rgba(226,160,74,0.22); }
-  .ff-chip.off-frontier .ff-chip-id { color: #e2a04a; }
-  .ff-chip .ff-chip-off-frontier {
+  .ff-chip.off-board:hover { background: rgba(226,160,74,0.22); }
+  .ff-chip.off-board .ff-chip-id { color: #e2a04a; }
+  .ff-chip .ff-chip-off-board {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -4759,16 +4787,17 @@
 </div>
 
 <!-- ── Course view ──
-     A Course is a 7-leg arc (one ISO week). Frontier-not-itinerary: the Course
-     names what's *reachable* this week; per-leg Frame picks from the frontier.
-     Step 0a: planning form (theme / target_outcome / frontier / bail_conditions).
-     Step 0b: Hex Map renders the Map; frontier picks highlight on it.
+     A Course is a 7-leg arc (one ISO week). Course-as-canvas: declare scope
+     by placing pieces on the snap-circuit board. Theme + target above the
+     canvas; bail conditions below (you can't honestly name bail until the
+     course is laid out). Per-leg Frame picks from whatever's on the board.
      Phase 3: On-demand Comprehend appended to the active leg's comprehend[]. -->
 <div id="course-view" class="alt-view">
   <h2 class="alt-heading">Course · 7-leg arc</h2>
-  <p class="alt-sub">A week's planned arc. Set the theme, name the target, declare what's reachable, and the bail conditions. Per-leg Frame picks from the frontier.</p>
+  <p class="alt-sub">A week's planned arc. Set the theme, name the target, place the pieces on the board, and name the bail conditions. Per-leg Frame picks from the course.</p>
   <div id="course-body"></div>
   <div id="course-hexmap" class="course-hexmap"></div>
+  <div id="course-finalize"></div>
   <div id="course-comprehend" class="course-comprehend"></div>
 </div>
 
@@ -6140,12 +6169,12 @@
     },
     "LAB-038": {
       "id": "LAB-038",
-      "title": "Frontier add/remove UI on Debrief",
+      "title": "Board add/remove UI on Debrief",
       "status": "backlog",
       "priority": "P2",
       "area": "debrief-booth",
-      "brief": "Phase 4 records changes_to_course qualitatively. Add UI to actually mutate the Course frontier on save: which items get added or removed for next-leg planning.",
-      "full": "Phase 4 (commit f4a0a06) adds the Debrief rogaine shape including changes_to_course: {course_held: 'yes'|'no'|'partial', summary: string}. This captures the qualitative record of whether the course was revised. What's missing: a UI that lets the author actually mutate course.frontier[] at save time — add items that should be reachable next leg, remove items that are done or deferred. The current flow requires the author to then manually edit the Course planning form to reflect the debrief's conclusions. The writeback UI closes that loop. Design question: does this UI live inside the Debrief form (at save time) or as a follow-on step in the Course view? P2."
+      "brief": "Phase 4 records changes_to_course qualitatively. Add UI to actually mutate the Course board on save: which pieces get added to or removed from next-leg's snap-circuit board.",
+      "full": "Phase 4 (commit f4a0a06) adds the Debrief rogaine shape including changes_to_course: {course_held: 'yes'|'no'|'partial', summary: string}. This captures the qualitative record of whether the course was revised. What's missing: a UI that lets the author actually mutate course.build_positions at save time — add pieces that should be reachable next leg (typically by promoting off-board picks or staging items), remove pieces that are done or deferred. The current flow requires the author to manually edit the Course view to reflect the debrief's conclusions. The writeback UI closes that loop. Design question: does this UI live inside the Debrief form (at save time) or as a follow-on step in the Course view? P2. (Renamed from frontier add/remove during the Course-view rewrite — the underlying field is now build_positions, but the semantic is the same.)"
     },
     "LAB-039": {
       "id": "LAB-039",
@@ -6176,12 +6205,12 @@
     },
     "LAB-042": {
       "id": "LAB-042",
-      "title": "Off-frontier picks → Debrief frontier-added pre-fill",
+      "title": "Off-board picks → Debrief pieces-added pre-fill",
       "status": "backlog",
       "priority": "P2",
       "area": "debrief-booth",
-      "brief": "Phase 2 captures ref.off_frontier=true on off-frontier picks. Debrief save handler should pre-fill changes_to_course.frontier_added from those flags so the user just confirms.",
-      "full": "Phase 2 of the rogaine-spine arc wires the Frame picker to default to the Course frontier and tags any off-frontier pick with ref.off_frontier=true plus a chip badge. The next step in the feedback loop: at Debrief time, the save handler reads the current leg's Frame picks, finds any flagged off_frontier=true, and pre-fills changes_to_course.frontier_added with those items. The user sees: 'You picked [item] off-frontier this leg — add to Course frontier?' and confirms or dismisses. This closes the Course-planning feedback loop without requiring manual cross-referencing between Frame and Debrief. P2 — the tag is in place; the pre-fill is a quality-of-life step after Debrief workshop ships (LAB-032)."
+      "brief": "The picker captures ref.off_board=true on off-board picks. Debrief save handler should pre-fill changes_to_course.pieces_added from those flags so the user just confirms.",
+      "full": "The Frame picker defaults to the active Course's scope and tags any off-board pick with ref.off_board=true plus a chip badge. The next step in the feedback loop: at Debrief time, the save handler reads the current leg's Frame picks, finds any flagged off_board=true, and pre-fills changes_to_course.pieces_added with those items. The user sees: 'You picked [item] off-board this leg — place it on next-leg's board?' and confirms or dismisses. This closes the Course-planning feedback loop without requiring manual cross-referencing between Frame and Debrief. P2 — the tag is in place; the pre-fill is a quality-of-life step after Debrief workshop ships (LAB-032). (Renamed from frontier_added during the Course-view rewrite — same semantics, new vocabulary.)"
     },
     "LAB-043": {
       "id": "LAB-043",
@@ -6725,7 +6754,7 @@
       sync: null,                       // {at, ...} once captured
       produce: { selected: [], bonuses: [], notes: [] },
       debrief_card_id: null,
-      changes_to_course: null,          // {at, frontier_added: [...], frontier_removed: [...], notes}
+      changes_to_course: null,          // {at, pieces_added: [...], pieces_removed: [...], notes}
       createdAt: now,
       updatedAt: now
     };
@@ -6803,7 +6832,13 @@
                    : (card && typeof card.stretch === 'string' && card.stretch.trim() ? [{ id: 'free' }] : []);
     const mustsCount = mustArr.length;
     const bonusCount = bonusArr.length;
-    const frontierCount = course && Array.isArray(course.frontier) ? course.frontier.length : 0;
+    // Slice 1: scope count = pieces placed/staged on the canvas + any
+    // unmigrated frontier overflow (shouldn't normally exist, but the
+    // fallback keeps the count truthful if migration hasn't fully drained).
+    const positionsForCount = (course && course.build_positions) || {};
+    const placedOrStaged = Object.keys(positionsForCount).length;
+    const overflowFrontier = course && Array.isArray(course.frontier) ? course.frontier.length : 0;
+    const scopeCount = placedOrStaged + overflowFrontier;
     // allItemsArray is defined later in the script; this typeof guard is
     // load-order protection. renderCourseHeader is only called after init
     // (via openDrawer / ff-save / setView), so the function is in scope at
@@ -6829,7 +6864,7 @@
     parts.push('<span class="' + mustsClass + '"><span class="ch-label">MUSTS</span><span class="ch-value">' + mustsCount + '/3</span></span>');
     parts.push('<span class="ch-counter"><span class="ch-label">BONUS</span><span class="ch-value">' + bonusCount + '</span></span>');
     if (course) {
-      parts.push('<span class="ch-counter"><span class="ch-label">MAP</span><span class="ch-value">' + frontierCount + '/' + mapTotal + ' in scope</span></span>');
+      parts.push('<span class="ch-counter"><span class="ch-label">MAP</span><span class="ch-value">' + scopeCount + '/' + mapTotal + ' in scope</span></span>');
     } else {
       parts.push('<span class="ch-counter"><span class="ch-label">MAP</span><span class="ch-value">no course set</span></span>');
     }
@@ -6881,12 +6916,14 @@
   let framePickerPanelOpen = { must: false, stretch: false };
   // Which priority tier the picker is currently showing (P0 default, expandable to P1, P2).
   let framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-  // Phase 2 (Frontier Wiring): default the picker scope to the active Course's
-  // frontier. Per the rogaine-spine architecture, per-leg Frame picks *from* the
-  // frontier. The user can expand to the full lab via the toggle, in which case
-  // off-frontier picks get marked on the ref so Debrief can later surface them
-  // as candidate changes_to_course.frontier_added.
-  let framePickerScope = { must: 'frontier', stretch: 'frontier' };
+  // Default the picker scope to the active Course's scope (i.e. the items
+  // placed on the snap-circuit board for this week). Per the rogaine-spine
+  // architecture, per-leg Frame picks *from* the course. The user can expand
+  // to the full lab via the toggle, in which case off-board picks get marked
+  // on the ref so Debrief can later surface them as candidate
+  // changes_to_course.pieces_added. (Variable values renamed 'frontier' →
+  // 'course' in the Course-view rewrite; semantics unchanged for Slice 0.)
+  let framePickerScope = { must: 'course', stretch: 'course' };
   // Whether the free-text fallback is active per field.
   let framePickerTextMode = { must: false, stretch: false };
   // Which Done-means slot indices have their per-slot Approach unfold open (LAB-027 v3).
@@ -6942,7 +6979,7 @@
     if (notesEl) notesEl.value = '';
     framePickerPanelOpen = { must: false, stretch: false };
     framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-    framePickerScope = { must: 'frontier', stretch: 'frontier' };
+    framePickerScope = { must: 'course', stretch: 'course' };
     frameSlotExpanded = { must: new Set() };
     Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
   }
@@ -6951,14 +6988,16 @@
   // For LAB-027 v3, ref objects may carry optional approach fields
   // (mode / leaning_on / ai_people / done_this_turn). Pass them through
   // when present; absent on legacy v2.5 cards (back-compat).
-  // Phase 2: also pass through `off_frontier` so the flag survives a
-  // save/reload cycle. Without this, the chip's off-frontier badge
-  // disappears after every save and Debrief loses the candidate signal
-  // for changes_to_course.frontier_added.
+  // Pass through `off_board` so the flag survives a save/reload cycle.
+  // Without this, the chip's off-board badge disappears after every save
+  // and Debrief loses the candidate signal for changes_to_course.pieces_added.
+  // Backward-compat: legacy cards persisted `off_frontier` (pre-rename);
+  // coalesce on read so existing cards keep their badges, and re-emit
+  // forward as `off_board` so the next save normalizes the field.
   function coerceFieldValue(field, value) {
     if (Array.isArray(value)) return value.filter(r => r && r.id).map(r => {
       const out = { id: r.id, title: r.title || '' };
-      if (r.off_frontier === true) out.off_frontier = true;
+      if (r.off_board === true || r.off_frontier === true) out.off_board = true;
       FF_SLOT_FIELDS.forEach(k => {
         if (typeof r[k] === 'string' && r[k].length > 0) out[k] = r[k];
       });
@@ -6992,13 +7031,13 @@
     if (notesEl) notesEl.value = card.must_notes || '';
     framePickerPanelOpen = { must: false, stretch: false };
     framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-    // Phase 2: also reset scope to 'frontier' on card load. If the previous
-    // session ended with the user toggled to 'all' (e.g., because the prior
-    // card had no course frontier), defaulting back to 'frontier' surfaces
-    // the new card's frontier scope correctly. The auto-flip in
-    // renderFramePicker still kicks in if this card's course also lacks a
-    // frontier — so 'frontier' is the safe default in both cases.
-    framePickerScope = { must: 'frontier', stretch: 'frontier' };
+    // Reset scope to 'course' on card load. If the previous session ended
+    // with the user toggled to 'all' (e.g., because the prior card had no
+    // course set), defaulting back to 'course' surfaces the new card's
+    // course scope correctly. The auto-flip in renderFramePicker still
+    // kicks in if this card's course is also empty — so 'course' is the
+    // safe default in both cases.
+    framePickerScope = { must: 'course', stretch: 'course' };
     // Auto-expand any must slot whose ref carries approach data. Empty slots stay collapsed
     // so a fresh card doesn't open four panels at once. Keeps lived data visible after reload.
     frameSlotExpanded = { must: new Set() };
@@ -7661,38 +7700,43 @@
         distinction encoded by status badge — no new tier).
         See more: expands to include P1, then P2.  ── */
 
-  // Returns the active course's frontier as a Set for fast membership checks.
-  // Empty Set if no active course or no frontier — caller should treat that as
-  // "no frontier set" and degrade to the full-lab scope.
-  function getActiveFrontierSet() {
+  // Returns the active Course's scope set as a Set for fast membership checks.
+  // Empty Set if no active course or empty scope — caller should treat that as
+  // "no course set" and degrade to the full-lab scope. Slice 1: the scope is
+  // derived from build_positions (every placed or staged piece is in scope).
+  // Falls back to the legacy `frontier` field for unmigrated overflow so no
+  // course-planning intent is lost during migration.
+  function getActiveCourseScopeSet() {
     const c = (typeof findActiveCourse === 'function') ? findActiveCourse() : null;
-    if (!c || !Array.isArray(c.frontier)) return new Set();
-    return new Set(c.frontier);
+    if (!c) return new Set();
+    const fromPositions = c.build_positions ? Object.keys(c.build_positions) : [];
+    const fromFrontier = Array.isArray(c.frontier) ? c.frontier : [];
+    return new Set([...fromPositions, ...fromFrontier]);
   }
 
   function getFramePickerCandidates(tier, scope) {
     // Reuse allItemsArray() so picker matches the Priority view's source of truth.
-    // Phase 2: when scope === 'frontier', intersect with the active course's
-    // frontier. Default scope is 'frontier' (the rogaine discipline); the
-    // picker UI exposes a toggle to expand to 'all' (the full lab).
+    // When scope === 'course', intersect with the active Course's scope set.
+    // Default scope is 'course' (the rogaine discipline); the picker UI exposes
+    // a toggle to expand to 'all' (the full lab).
     const items = (typeof allItemsArray === 'function') ? allItemsArray() : [];
     const wantedTiers = tier === 'P0' ? ['P0']
                       : tier === 'P1' ? ['P0','P1']
                       : ['P0','P1','P2'];
-    const useScope = scope || 'frontier';
+    const useScope = scope || 'course';
     let filtered = items
       .filter(it => wantedTiers.includes(it.priority))
       .filter(it => it.status !== 'live' && it.status !== 'archived');
-    if (useScope === 'frontier') {
-      const frontier = getActiveFrontierSet();
-      // If frontier is empty (no course set or empty frontier), the caller is
+    if (useScope === 'course') {
+      const courseScope = getActiveCourseScopeSet();
+      // If course scope is empty (no course set or empty scope), the caller is
       // expected to have flipped to 'all' already. As a safety net, return all
       // candidates rather than an empty list — this prevents an unfillable picker
       // when the user hasn't planned a course yet.
-      if (frontier.size === 0) {
-        // fall through with no frontier filter
+      if (courseScope.size === 0) {
+        // fall through with no course filter
       } else {
-        filtered = filtered.filter(it => frontier.has(it.id));
+        filtered = filtered.filter(it => courseScope.has(it.id));
       }
     }
     return filtered.sort((a, b) => {
@@ -7726,14 +7770,15 @@
     chipsEl.innerHTML = selected.map((ref, i) => {
       const id = escapeHTML(ref.id || '');
       const title = escapeHTML(ref.title || '');
-      // Phase 2: off-frontier picks render with a small "↗" badge so the
-      // user sees mid-leg deviations from the planned course at a glance.
-      // Debrief later surfaces these as candidate changes_to_course.
-      const offFrontier = !!ref.off_frontier;
-      const offBadge = offFrontier
-        ? '<span class="ff-chip-off-frontier" title="Off-frontier pick — surfaces in Debrief as a candidate course-frontier change.">↗</span>'
+      // Off-board picks render with a small "↗" badge so the user sees
+      // mid-leg deviations from the planned course at a glance. Debrief
+      // later surfaces these as candidate changes_to_course.pieces_added.
+      // Coalesce off_board || off_frontier so legacy cards keep their badges.
+      const offBoard = !!(ref.off_board || ref.off_frontier);
+      const offBadge = offBoard
+        ? '<span class="ff-chip-off-board" title="Off-board pick — surfaces in Debrief as a candidate addition to next-leg\'s board.">↗</span>'
         : '';
-      const chipHTML = `<span class="ff-chip${offFrontier ? ' off-frontier' : ''}" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
+      const chipHTML = `<span class="ff-chip${offBoard ? ' off-board' : ''}" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
         <span class="ff-chip-id">${id}</span>
         <span class="ff-chip-title">${title}</span>${offBadge}${
           slotsEnabled
@@ -7805,16 +7850,15 @@
 
     // Render the panel contents.
     const tier = framePickerExpandTier[field] || 'P0';
-    // Phase 2: resolve scope. If frontier is empty and the user hasn't already
+    // Resolve scope. If course scope is empty and the user hasn't already
     // flipped to 'all' explicitly, auto-flip and surface a hint instead of an
-    // empty picker. This is the "no course set" / "course has no frontier yet"
-    // safety net.
-    const frontierSet = getActiveFrontierSet();
-    const frontierEmpty = frontierSet.size === 0;
-    if (frontierEmpty && framePickerScope[field] === 'frontier') {
+    // empty picker. This is the "no course set" safety net.
+    const courseScopeSet = getActiveCourseScopeSet();
+    const courseEmpty = courseScopeSet.size === 0;
+    if (courseEmpty && framePickerScope[field] === 'course') {
       framePickerScope[field] = 'all';
     }
-    const scope = framePickerScope[field] || 'frontier';
+    const scope = framePickerScope[field] || 'course';
     const candidates = getFramePickerCandidates(tier, scope);
     const selectedIds = new Set(selected.map(r => r.id));
 
@@ -7823,15 +7867,15 @@
     candidates.forEach(it => { if (groups[it.priority]) groups[it.priority].push(it); });
 
     // Scope toggle — shows the count in the active scope, lets the user flip.
-    // When frontier is empty, the toggle is disabled and labeled accordingly.
-    const frontierLabel = frontierEmpty
-      ? 'No frontier set'
-      : 'Frontier (' + frontierSet.size + ')';
+    // When course scope is empty, the toggle is disabled and labeled accordingly.
+    const courseLabel = courseEmpty
+      ? 'No course set'
+      : 'Course (' + courseScopeSet.size + ')';
     let html = '';
     html += `<div class="ff-pp-scope-bar">
-      <button type="button" class="ff-pp-scope${scope === 'frontier' ? ' active' : ''}${frontierEmpty ? ' disabled' : ''}" data-act="ff-scope" data-field="${field}" data-scope="frontier"${frontierEmpty ? ' disabled' : ''}>${escapeHTML(frontierLabel)}</button>
+      <button type="button" class="ff-pp-scope${scope === 'course' ? ' active' : ''}${courseEmpty ? ' disabled' : ''}" data-act="ff-scope" data-field="${field}" data-scope="course"${courseEmpty ? ' disabled' : ''}>${escapeHTML(courseLabel)}</button>
       <button type="button" class="ff-pp-scope${scope === 'all' ? ' active' : ''}" data-act="ff-scope" data-field="${field}" data-scope="all">Full lab</button>
-      ${frontierEmpty ? '<span class="ff-pp-scope-hint">No course frontier yet — set one in the Course view to scope this picker.</span>' : ''}
+      ${courseEmpty ? '<span class="ff-pp-scope-hint">No course set yet — open the Course view to set one and scope this picker.</span>' : ''}
     </div>`;
 
     ['P0','P1','P2'].forEach(p => {
@@ -7861,8 +7905,8 @@
     // we just appended; check after the loop above produced no row content.
     const hasRows = candidates.length > 0;
     if (!hasRows) {
-      html += scope === 'frontier'
-        ? '<div class="ff-pp-empty">No frontier items in this tier. Try expanding to P1/P2 or switching to Full lab.</div>'
+      html += scope === 'course'
+        ? '<div class="ff-pp-empty">No course items in this tier. Try expanding to P1/P2 or switching to Full lab.</div>'
         : '<div class="ff-pp-empty">Nothing in this tier. Try expanding to P1 or P2.</div>';
     }
 
@@ -7904,11 +7948,11 @@
       renderFramePicker(field);
       return;
     }
-    // Phase 2: scope toggle (Frontier / Full lab) inside the picker panel.
+    // Scope toggle (Course / Full lab) inside the picker panel.
     const scopeBtn = tgt.closest('[data-act="ff-scope"]');
     if (scopeBtn && !scopeBtn.disabled && !scopeBtn.classList.contains('disabled')) {
       const field = scopeBtn.dataset.field;
-      const next  = scopeBtn.dataset.scope; // 'frontier' | 'all'
+      const next  = scopeBtn.dataset.scope; // 'course' | 'all'
       if (field && next && framePickerScope[field] !== next) {
         framePickerScope[field] = next;
         renderFramePicker(field);
@@ -7925,13 +7969,13 @@
       const cap  = FF_PICKER_CAPS[field] || 0;
       const cur = framePickerState[field] || [];
       const existsAt = cur.findIndex(r => r.id === id);
-      // Phase 2: tag the new ref with off_frontier=true if the item isn't in
-      // the active course's frontier. Frontier-membership is checked at the
-      // moment of pick so the flag reflects the course state at that time.
-      const frontier = getActiveFrontierSet();
-      const isOffFrontier = frontier.size > 0 && !frontier.has(id);
+      // Tag the new ref with off_board=true if the item isn't in the active
+      // Course's scope. Course-membership is checked at the moment of pick so
+      // the flag reflects the course state at that time.
+      const courseScope = getActiveCourseScopeSet();
+      const isOffBoard = courseScope.size > 0 && !courseScope.has(id);
       if (mode === 'single') {
-        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title, off_frontier: isOffFrontier }];
+        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title, off_board: isOffBoard }];
         if (field === 'must') {
           frameSlotExpanded.must = (existsAt >= 0) ? new Set() : new Set([0]);
         }
@@ -7945,7 +7989,7 @@
           // At cap: silently no-op. The row is rendered .at-cap so the user already sees why.
           return;
         } else {
-          cur.push({ id, title, off_frontier: isOffFrontier });
+          cur.push({ id, title, off_board: isOffBoard });
           // Auto-expand the just-picked must slot so the user can fill its Approach
           // immediately without an extra click. Stretch slots stay non-unfoldable.
           if (field === 'must') frameSlotExpanded.must.add(cur.length - 1);
@@ -9799,17 +9843,57 @@
   }
 
   /* ── Course view (planning surface for the 7-leg arc) ──
-     Step 0a stub: theme + target_outcome + frontier (multi-pick over LAB items)
-     + bail_conditions. Auto-loads the active week's course (or drafts one).
-     Frontier-not-itinerary: per-leg Frame picks from this list during the week. */
-  let courseFrontierPanelOpen = false;
+     Form fields: theme + target_outcome above the canvas; bail_conditions
+     below it (you can't honestly name bail until you've laid out the course).
+     The Build canvas itself replaces the old frontier picker — placement
+     IS scope declaration. Auto-loads the active week's course (or drafts
+     one). Per-leg Frame picks from whatever's on the canvas. */
   let courseDraft = null; // in-memory edit buffer; flushed on save
 
   function getOrInitCourseDraft() {
     if (courseDraft) return courseDraft;
     const existing = findActiveCourse();
     courseDraft = existing ? JSON.parse(JSON.stringify(existing)) : newCourseDraft();
+    // Slice 1 migration: legacy courses have items in `frontier` but no
+    // build_positions for them. Stage those items into row 0 so the user
+    // sees their planned scope on the new canvas. Idempotent: skips items
+    // already placed; bails when staging row is full (overflow stays in
+    // frontier, which getActiveCourseScopeSet() still reads as fallback).
+    migrateFrontierToStaging(courseDraft);
     return courseDraft;
+  }
+
+  // Migration helper. Mutates the course in place and persists if anything
+  // changed. Safe to call repeatedly — no-op once frontier is empty or
+  // staging row is full.
+  function migrateFrontierToStaging(course) {
+    if (!course || !Array.isArray(course.frontier) || course.frontier.length === 0) return;
+    course.build_positions = course.build_positions || {};
+    const placedIds = new Set(Object.keys(course.build_positions));
+    const stagingOccupied = new Set();
+    Object.values(course.build_positions).forEach(p => {
+      if (p && p.row === BC_STAGING_ROW) stagingOccupied.add(p.col);
+    });
+    const stagedThisRun = [];
+    for (const id of course.frontier) {
+      if (placedIds.has(id)) continue; // already on the canvas somewhere
+      let placedHere = false;
+      for (let col = 0; col < BC_COLS; col++) {
+        if (!stagingOccupied.has(col)) {
+          course.build_positions[id] = { row: BC_STAGING_ROW, col };
+          stagingOccupied.add(col);
+          stagedThisRun.push(id);
+          placedHere = true;
+          break;
+        }
+      }
+      if (!placedHere) break; // staging row full — leave the rest in frontier
+    }
+    if (stagedThisRun.length > 0) {
+      const stagedSet = new Set(stagedThisRun);
+      course.frontier = course.frontier.filter(id => !stagedSet.has(id));
+      upsertCourse(course);
+    }
   }
 
   function renderCourseView() {
@@ -9833,77 +9917,44 @@
           <label for="course-target">Target outcome <span class="course-hint">what the map looks like different by leg 7</span></label>
           <textarea id="course-target" placeholder="e.g., Course tier shipped, Hex Map v0.1 read-only, on-demand Comprehend prototype dogfooded once">${escapeHTML(c.target_outcome || '')}</textarea>
         </div>
-        <div class="course-field">
-          <label>Frontier <span class="course-hint">items reachable this week — pick from the lab</span></label>
-          <div id="course-frontier-chips" class="course-frontier-chips"></div>
-          <button type="button" id="course-frontier-toggle" class="course-frontier-toggle${courseFrontierPanelOpen ? ' open' : ''}">${courseFrontierPanelOpen ? 'Close' : 'Browse items'}</button>
-          <div id="course-frontier-panel" class="course-frontier-panel" ${courseFrontierPanelOpen ? '' : 'hidden'}></div>
-        </div>
+        <p class="course-canvas-hint">Lay out the course on the canvas below. Search the drawer, take items in hand, snap them onto the staging row (S) or the working board (A–G). Placement = scope.</p>
+      </div>
+    `;
+    renderCourseHexMap();
+    renderCourseFinalize(c, created, updated, legCount);
+    renderCourseComprehend();
+  }
+
+  // The bail-conditions field + Save Course button render below the canvas:
+  // bail can't be honestly named until the course is laid out, and Save is
+  // ceremonial commitment to playing the course as drawn. Slice 6: first
+  // Save with a complete form transitions the course from 'planning' to
+  // 'in-progress' (the active week's game). Subsequent saves just update.
+  function renderCourseFinalize(c, created, updated, legCount) {
+    const wrap = document.getElementById('course-finalize');
+    if (!wrap) return;
+    const isActive = c.status && c.status !== 'planning';
+    const saveLabel = isActive ? 'Update Course' : 'Activate Course';
+    const activeStrip = isActive && c.activated_at
+      ? `<span class="course-active-since">Active since ${escapeHTML(c.activated_at.slice(0, 10))}</span>`
+      : '';
+    wrap.innerHTML = `
+      <div class="course-card course-card-finalize">
         <div class="course-field">
           <label for="course-bail">Bail conditions <span class="course-hint">when do we abandon this Course?</span></label>
           <textarea id="course-bail" placeholder="e.g., If Hex Map proves unreadable after one dogfood, fall back to a Kanban-style Course view.">${escapeHTML(c.bail_conditions || '')}</textarea>
         </div>
         <div class="course-actions">
-          <button type="button" id="course-save" class="ff-btn primary">Save Course</button>
+          <button type="button" id="course-save" class="ff-btn primary">${escapeHTML(saveLabel)}</button>
           <span class="ff-saved" id="course-saved">✓ saved</span>
+          <span class="course-save-error" id="course-save-error" hidden></span>
+          ${activeStrip}
         </div>
         <div class="course-meta">
           Legs: ${legCount} of ${COURSE_LEG_COUNT} · Created ${escapeHTML(created)} · Updated ${escapeHTML(updated)}
         </div>
       </div>
     `;
-    renderCourseFrontierChips();
-    if (courseFrontierPanelOpen) renderCourseFrontierPanel();
-    renderCourseHexMap();
-    renderCourseComprehend();
-  }
-
-  function renderCourseFrontierChips() {
-    const c = getOrInitCourseDraft();
-    const el = document.getElementById('course-frontier-chips');
-    if (!el) return;
-    const items = allItemsArray();
-    const itemById = new Map(items.map(it => [it.id, it]));
-    el.innerHTML = (c.frontier || []).map(id => {
-      const it = itemById.get(id);
-      const title = it ? it.title : '(missing item)';
-      return `<span class="course-frontier-chip">
-        <span class="cfc-id">${escapeHTML(id)}</span>
-        <span class="cfc-title">${escapeHTML(title)}</span>
-        <button type="button" class="cfc-x" data-act="frontier-remove" data-item="${escapeHTML(id)}" aria-label="Remove ${escapeHTML(title)}">×</button>
-      </span>`;
-    }).join('');
-  }
-
-  function renderCourseFrontierPanel() {
-    const c = getOrInitCourseDraft();
-    const panel = document.getElementById('course-frontier-panel');
-    if (!panel) return;
-    const items = allItemsArray();
-    const selected = new Set(c.frontier || []);
-    // Group by priority. Within a priority, sort: in-progress > drafted > backlog > live > archived.
-    const tiers = { 'P0': [], 'P1': [], 'P2': [] };
-    items.forEach(it => { if (tiers[it.priority]) tiers[it.priority].push(it); });
-    Object.keys(tiers).forEach(p => {
-      tiers[p].sort((a, b) => statusRank(a.status) - statusRank(b.status));
-    });
-    let html = '';
-    ['P0', 'P1', 'P2'].forEach(p => {
-      if (tiers[p].length === 0) return;
-      html += `<div class="course-frontier-section">${p} · ${escapeHTML(PRI_LABEL[p] || '')}</div>`;
-      html += tiers[p].map(it => {
-        const sel = selected.has(it.id) ? ' selected' : '';
-        const statLabel = STATUS_LABEL[it.status] || it.status;
-        return `<div class="course-frontier-row${sel}" data-act="frontier-toggle" data-item="${escapeHTML(it.id)}">
-          <span class="cfr-pri ${it.priority}">${it.priority}</span>
-          <span class="cfr-id">${escapeHTML(it.id)}</span>
-          <span class="cfr-title">${escapeHTML(it.title)}</span>
-          <span class="cfr-stat">${escapeHTML(statLabel)}</span>
-        </div>`;
-      }).join('');
-    });
-    if (html === '') html = '<div class="ff-pp-empty">No items in the lab yet.</div>';
-    panel.innerHTML = html;
   }
 
   /* ── Hex Map v0.3 (Course view) ──
@@ -9936,19 +9987,6 @@
     red:    '#D55E00',  // collapse to vermillion
     purple: '#CC79A7'   // collapse to reddish purple
   };
-  // Phase 1 (v0.2) luminosity ramp. Four states designed against ~3:1
-  // contrast steps (perceptually distinct without being shouty).
-  // Logarithmic-ish: each step roughly halves the previous.
-  //   archived (terminal)          → 0.18   (below hue-recognition; reads as terrain)
-  //   available (not in frontier)  → 0.50
-  //   in frontier (in scope)       → 1.00
-  //   active (in current leg)      → 1.00 + .active class for saturation boost
-  function hexLuminosityFor(it, frontierSet) {
-    if (it.status === 'archived') return 0.18;
-    if (frontierSet && frontierSet.has(it.id)) return 1.0;
-    return 0.50;
-  }
-
   function hexPolygonPoints(cx, cy, s) {
     // Flat-top hex centered at (cx, cy) with side length s. Six vertices.
     const h = (Math.sqrt(3) / 2) * s;
@@ -10013,90 +10051,47 @@
     return { x, y };
   }
 
-  /* Course view lens dispatcher (Move 3a).
-     Three lenses on the same course/items data — Build (default; user-
-     placed canvas, fills out across Moves 3b-3e), By function (v0.2
-     biome view restored), By priority (v0.3 concentric rings). User
-     placement persists across lens switches; lenses are projections,
-     not workspaces. */
-  const COURSE_HEX_LENS_KEY = 'cognitive-lab-v0.1::course-hex-lens';
-  const COURSE_HEX_LENSES = ['build', 'function', 'priority'];
-  function loadCourseHexLens() {
-    // Move 2d: walk target_route can override the persisted lens via
-    // `?lens=` query param. URL > localStorage > default.
-    try {
-      const params = new URLSearchParams(location.search);
-      const urlLens = params.get('lens');
-      if (urlLens && COURSE_HEX_LENSES.includes(urlLens)) return urlLens;
-    } catch {}
-    try {
-      const v = localStorage.getItem(COURSE_HEX_LENS_KEY);
-      return COURSE_HEX_LENSES.includes(v) ? v : 'build';
-    } catch { return 'build'; }
-  }
-  function saveCourseHexLens(v) {
-    // Same walk-mode guard as saveActiveView: don't contaminate the
-    // parent's persisted lens preference from inside a walk iframe.
-    try {
-      if (new URLSearchParams(location.search).get('walk') === '1') return;
-    } catch {}
-    try { localStorage.setItem(COURSE_HEX_LENS_KEY, v); } catch {}
-  }
-  let courseHexLens = loadCourseHexLens();
+  /* Course view canvas dispatcher (Slice 4: lens triplet retired).
+     The Build canvas is the only view of the Course now — the user owns
+     placement; "By function" and "By priority" died with the rewrite. The
+     biome view's job migrates to Map-scale ambient terrain (a different
+     surface, not the Course view). Logged in §9 of the Course-rewrite
+     follow-up list. */
 
   function renderCourseHexMap() {
     const wrap = document.getElementById('course-hexmap');
     if (!wrap) return;
-    // Hide any visible hex tooltip — lens switches replace the SVG so no
+    // Hide any visible hex tooltip — re-renders replace the SVG so no
     // mouseout fires on the detached node, leaving a stale tooltip.
     const staleTooltip = document.getElementById('hex-tooltip');
     if (staleTooltip) staleTooltip.hidden = true;
     // Clear stale chip state. The action chip's DOM is destroyed by any
-    // full re-render; the in-memory ID should follow. (bcInHand is *not*
-    // cleared — it's intentional state that should survive lens switches
-    // so the user can pivot between Build and another lens with their
-    // held piece intact.)
+    // full re-render; the in-memory ID should follow.
     bcActionItemId = null;
     const c = getOrInitCourseDraft();
-    const frontierSet = new Set(c.frontier || []);
     const workingSet = getActiveLegWorkingSet();
     const items = allItemsArray();
-    const inFrontierCount = items.filter(it => frontierSet.has(it.id)).length;
     const activeCount = workingSet.size;
-    // Outer chrome — header + tabs + content slot. Tabs are stable across
-    // lens switches; only the content slot's innerHTML changes.
+    // Header counts split build_positions into placed (rows 1–7) vs staged (row 0).
+    const positions = c.build_positions || {};
+    let placedCount = 0;
+    let stagedCount = 0;
+    Object.values(positions).forEach(p => {
+      if (!p) return;
+      if (p.row === BC_STAGING_ROW) stagedCount++;
+      else placedCount++;
+    });
+    const drawerCount = items.length - (placedCount + stagedCount);
     wrap.innerHTML = `
-      <p class="course-hexmap-title">Map · ${items.length} items · ${inFrontierCount} in frontier · ${activeCount} active in current leg</p>
-      <div class="course-hexmap-tabs" role="tablist" aria-label="Course map lens">
-        <button class="ch-tab${courseHexLens === 'build'    ? ' active' : ''}" data-lens="build"    role="tab">▦ Build</button>
-        <button class="ch-tab${courseHexLens === 'function' ? ' active' : ''}" data-lens="function" role="tab">⛰ By function</button>
-        <button class="ch-tab${courseHexLens === 'priority' ? ' active' : ''}" data-lens="priority" role="tab">◎ By priority</button>
-      </div>
+      <p class="course-hexmap-title">Course · ${placedCount} placed · ${stagedCount} staged · ${drawerCount} in drawer · ${activeCount} active in current leg</p>
       <div id="course-hexmap-content"></div>
     `;
-    // Tab click delegation.
-    wrap.querySelectorAll('.ch-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lens = btn.dataset.lens;
-        if (lens && COURSE_HEX_LENSES.includes(lens) && lens !== courseHexLens) {
-          courseHexLens = lens;
-          saveCourseHexLens(lens);
-          renderCourseHexMap();
-        }
-      });
-    });
-    // Dispatch to lens.
     const slot = document.getElementById('course-hexmap-content');
     if (!items.length) {
       slot.innerHTML = '<p class="course-hexmap-sub">No items in the lab yet.</p>';
       return;
     }
-    if (courseHexLens === 'priority')      renderCourseLensByPriority(slot, items, frontierSet, workingSet);
-    else if (courseHexLens === 'function') renderCourseLensByFunction(slot, items, frontierSet, workingSet);
-    else                                    renderCourseLensBuild(slot, items, frontierSet, workingSet);
-    // Wire shared SVG listeners (click + tooltip) on whatever SVG ended up
-    // in the slot. Lenses without an SVG (Build placeholder today) skip.
-    wireHexSVGListeners(slot);
+    renderCourseLensBuild(slot, items);
   }
 
   /* Shared listener wiring used by every lens that renders an SVG with
@@ -10153,22 +10148,30 @@
     });
   }
 
-  /* Build lens (Moves 3b → 3e).
-     3b ships the empty snap-circuit grid (rows A–G × cols 1–10 = 70
-     cells). 3c adds the tool drawer. 3d wires click-to-place +
-     persistence + the placed-piece render + action chip. */
-  const BC_ROWS    = 7;
+  /* Build lens (Moves 3b → 3e + Slice 1 staging row).
+     The grid is 8 rows × 10 cols. Row 0 is the STAGING row (S) — items in
+     the Course's scope but not yet placed on the working board. Rows 1–7
+     are the labeled working board (A–G). The visual + click semantics are
+     unified: every chip has a {row, col} coord whether it's staged or
+     placed, so click-to-place / pickup / swap all work the same way. */
+  const BC_STAGING_ROW = 0;
+  const BC_ROWS    = 8;        // row 0 = staging, rows 1–7 = working board A–G
   const BC_COLS    = 10;
   const BC_CELL    = 52;       // pixel size of each grid cell
   const BC_LABEL_PAD = 24;     // edge padding for row/col labels
-  const BC_ROW_LETTERS = ['A','B','C','D','E','F','G'];
+  const BC_ROW_LETTERS = ['S','A','B','C','D','E','F','G'];
   function bcCellId(row, col) {
-    // "A1", "B7", etc — snap-circuit board convention.
+    // "S1", "A1", "B7", etc — snap-circuit board convention. Staging cells
+    // get the "S" prefix; working board cells get A–G.
     return BC_ROW_LETTERS[row] + (col + 1);
   }
+  function isStagingRow(row) { return row === BC_STAGING_ROW; }
   // Move 3d module-level state. Persisted state lives on course.build_positions.
   let bcInHand = null;        // string item_id when an item is "in hand", else null
   let bcActionItemId = null;  // item_id whose action chip is currently open
+  // Slice 2 drawer-control state — neither persisted (low-cost fresh on reload).
+  let bcDrawerSort   = 'area';   // 'area' | 'priority' | 'status'
+  let bcDrawerSearch = '';       // case-insensitive substring filter
 
   function getBuildPositions(course) {
     return (course && course.build_positions) || {};
@@ -10204,22 +10207,28 @@
   }
   /* Move 3e template apply: takes the active course's frontier,
      resolves to actual items, sorts by priority then area, and snaps
-     them into the canvas in row-major order starting at (0,0). Skips
-     items already placed (preserves user's existing layout). Returns
-     the count placed. Per Quenton: starting position, not constraint —
-     every piece is individually editable after via the action chip. */
-  function applyBuildTemplate(items) {
+     items into the staging row in priority+area order. Skips items
+     already placed (preserves user's existing layout). Returns the
+     count placed. Per Quenton: starting position, not constraint —
+     every piece is individually editable after via the action chip.
+
+     Slice 5: source is now a priority tier (P0 / P0+P1 / all) rather
+     than the deprecated course.frontier. Templates land in STAGING ROW 0,
+     not the working board — preserves the "owning the merge" gesture
+     (the template proposes; the user promotes to A–G). */
+  function applyBuildTemplate(items, tierKey) {
     const c = getOrInitCourseDraft();
     const positions = (c.build_positions = c.build_positions || {});
-    const frontier = Array.isArray(c.frontier) ? c.frontier : [];
     const placedSet = new Set(Object.keys(positions));
-    const itemsById = new Map();
-    (items || []).forEach(it => itemsById.set(it.id, it));
-    // Frontier items in priority+area order. Drops items already placed
-    // and items that don't resolve (frontier id with no matching item).
-    const candidates = frontier
-      .map(id => itemsById.get(id))
-      .filter(it => it && !placedSet.has(it.id))
+    const wantedTiers = tierKey === 'all' ? ['P0','P1','P2']
+                      : tierKey === 'P0+P1' ? ['P0','P1']
+                      : ['P0'];
+    // Active items only; exclude live/archived (they don't belong on a
+    // future-week course). Sort priority → area → id for stable layout.
+    const candidates = (items || [])
+      .filter(it => it && wantedTiers.includes(it.priority))
+      .filter(it => it.status !== 'live' && it.status !== 'archived')
+      .filter(it => !placedSet.has(it.id))
       .sort((a, b) => {
         const pa = priorityRank(a.priority) - priorityRank(b.priority);
         if (pa !== 0) return pa;
@@ -10227,28 +10236,24 @@
         if (ax !== 0) return ax;
         return (a.id || '').localeCompare(b.id || '');
       });
-    // Find the first empty cell in row-major order; place each candidate
-    // there. If the canvas fills (>= BC_ROWS * BC_COLS placements), stop.
-    const occupiedCells = new Set();
+    // Stage in row 0 only. Find empty staging columns left-to-right.
+    const stagingOccupied = new Set();
     Object.values(positions).forEach(p => {
-      if (p && typeof p.row === 'number') occupiedCells.add(p.row + ',' + p.col);
+      if (p && p.row === BC_STAGING_ROW) stagingOccupied.add(p.col);
     });
     let placedCount = 0;
-    let cursor = 0;
     for (const it of candidates) {
-      // Walk row-major from `cursor` until we find an empty cell.
-      while (cursor < BC_ROWS * BC_COLS) {
-        const row = Math.floor(cursor / BC_COLS);
-        const col = cursor % BC_COLS;
-        cursor++;
-        if (!occupiedCells.has(row + ',' + col)) {
-          positions[it.id] = { row, col };
-          occupiedCells.add(row + ',' + col);
+      let snapped = false;
+      for (let col = 0; col < BC_COLS; col++) {
+        if (!stagingOccupied.has(col)) {
+          positions[it.id] = { row: BC_STAGING_ROW, col };
+          stagingOccupied.add(col);
           placedCount++;
+          snapped = true;
           break;
         }
       }
-      if (cursor >= BC_ROWS * BC_COLS) break;
+      if (!snapped) break; // staging row full — stop; user can promote pieces to free slots
     }
     if (placedCount > 0) upsertCourse(c);
     return placedCount;
@@ -10282,9 +10287,13 @@
     // Grid cells, wrapped in role="row" groups so the ARIA grid pattern
     // is complete (grid > row > gridcell). Cells with placements render
     // a small filled hex inside (color = area accent) + the LAB-### label.
+    // Row 0 is the staging row — visually distinct (warmer tint, dashed
+    // baseline) but mechanically identical (click/swap/pickup all work).
     const cells = [];
     for (let r = 0; r < BC_ROWS; r++) {
-      cells.push(`<g role="row" aria-label="Row ${BC_ROW_LETTERS[r]}">`);
+      const rowKind = isStagingRow(r) ? 'staging' : 'board';
+      const rowAriaLabel = isStagingRow(r) ? 'Staging row' : `Row ${BC_ROW_LETTERS[r]}`;
+      cells.push(`<g role="row" aria-label="${rowAriaLabel}">`);
       for (let c = 0; c < BC_COLS; c++) {
         const x = BC_LABEL_PAD + c * BC_CELL;
         const y = BC_LABEL_PAD + r * BC_CELL;
@@ -10294,9 +10303,11 @@
         const isOccupied = !!occupiedItem;
         const cellClasses = ['bc-cell'];
         if (isOccupied) cellClasses.push('bc-cell-occupied');
+        if (rowKind === 'staging') cellClasses.push('bc-cell-staging');
+        const cellNoun = rowKind === 'staging' ? 'staging slot' : 'cell';
         const ariaLabel = isOccupied
-          ? `cell ${cellId}: ${(occupiedItem.areaName || '')}: ${(occupiedItem.title || '')}`
-          : `cell ${cellId}, empty`;
+          ? `${cellNoun} ${cellId}: ${(occupiedItem.areaName || '')}: ${(occupiedItem.title || '')}`
+          : `${cellNoun} ${cellId}, empty`;
         let inner = `<rect class="bc-cell-bg" x="${x}" y="${y}" width="${BC_CELL}" height="${BC_CELL}" rx="3" ry="3"/>`;
         if (!isOccupied) {
           inner += `<circle class="bc-cell-snap" cx="${x + BC_CELL / 2}" cy="${y + BC_CELL / 2}" r="3"/>`;
@@ -10317,84 +10328,178 @@
       cells.push(`</g>`);
     }
 
-    // ── Drawer: items grouped by area (biome) ──
-    // Move 3d filters by course.build_positions — items already placed
-    // don't appear in the drawer.
+    // ── Drawer: items grouped by sort mode, with search filter ──
+    // The drawer always excludes items already on the canvas (placed or staged).
+    // Sort modes (Slice 2): 'area' (default — biome grouping), 'priority' (P0/P1/P2),
+    // 'status' (in-progress / drafted / backlog).
     const placedSet = new Set(Object.keys(positions));
-    const drawerItems = (items || []).filter(it => !placedSet.has(it.id));
-    const byArea = new Map();
-    drawerItems.forEach(it => {
-      const aId = it.areaId || '__orphan';
-      if (!byArea.has(aId)) {
-        byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
-      }
-      byArea.get(aId).items.push(it);
-    });
-    byArea.forEach(g => {
-      g.items.sort((a, b) => {
-        const pa = priorityRank(a.priority) - priorityRank(b.priority);
-        if (pa !== 0) return pa;
-        const sa = statusRank(a.status) - statusRank(b.status);
-        if (sa !== 0) return sa;
-        return (a.id || '').localeCompare(b.id || '');
-      });
-    });
-    const sortedAreas = Array.from(byArea.values())
-      .sort((a, b) => (a.areaName || '').localeCompare(b.areaName || ''));
+    const allDrawerItems = (items || []).filter(it => !placedSet.has(it.id));
+    const totalDrawerCount = allDrawerItems.length;
+    const searchTerm = (bcDrawerSearch || '').trim().toLowerCase();
+    const drawerItems = searchTerm
+      ? allDrawerItems.filter(it => {
+          const id = (it.id || '').toLowerCase();
+          const title = (it.title || '').toLowerCase();
+          const area = (it.areaName || '').toLowerCase();
+          return id.includes(searchTerm) || title.includes(searchTerm) || area.includes(searchTerm);
+        })
+      : allDrawerItems;
 
-    const drawerInner = sortedAreas.length === 0
-      ? '<div class="bc-drawer-empty">All items placed.</div>'
-      : sortedAreas.map(g => {
+    // Renders one drawer item button. Pulled out so all sort modes share it.
+    const renderDrawerItem = (it) => {
+      const idShort = (it.id || '').replace(/^LAB-/, '');
+      // Allowlist priority before injecting into class/text. Schema is
+      // P0/P1/P2; anything else falls back to P2 so the class attribute
+      // can't be poisoned by a hand-edited JSON value.
+      const pri = ['P0','P1','P2'].includes(it.priority) ? it.priority : 'P2';
+      return `<button type="button" class="bc-drawer-item" data-item="${escapeHTML(it.id)}" title="${escapeHTML(it.areaName || '')}: ${escapeHTML(it.title || '')}">
+        <span class="bc-drawer-item-id">${escapeHTML(idShort)}</span>
+        <span class="bc-drawer-item-title">${escapeHTML(it.title || '(no title)')}</span>
+        <span class="bc-drawer-item-pri ${pri}">${pri}</span>
+      </button>`;
+    };
+
+    // Group + render. Each mode produces an array of {label, swatch, items[]}
+    // groups with internal sort already applied; render is uniform.
+    let drawerGroups = [];
+    if (bcDrawerSort === 'priority') {
+      const byPri = { P0: [], P1: [], P2: [] };
+      drawerItems.forEach(it => {
+        const pri = ['P0','P1','P2'].includes(it.priority) ? it.priority : 'P2';
+        byPri[pri].push(it);
+      });
+      ['P0','P1','P2'].forEach(p => {
+        if (byPri[p].length === 0) return;
+        byPri[p].sort((a, b) => {
+          const sa = statusRank(a.status) - statusRank(b.status);
+          if (sa !== 0) return sa;
+          return (a.id || '').localeCompare(b.id || '');
+        });
+        drawerGroups.push({
+          label: p + ' · ' + (PRI_LABEL[p] || ''),
+          swatchClass: 'bc-drawer-area-pri ' + p,
+          items: byPri[p]
+        });
+      });
+    } else if (bcDrawerSort === 'status') {
+      const byStatus = new Map();
+      drawerItems.forEach(it => {
+        const s = it.status || 'backlog';
+        if (!byStatus.has(s)) byStatus.set(s, []);
+        byStatus.get(s).push(it);
+      });
+      const orderedStatuses = Array.from(byStatus.keys()).sort((a, b) => statusRank(a) - statusRank(b));
+      orderedStatuses.forEach(s => {
+        const arr = byStatus.get(s);
+        arr.sort((a, b) => {
+          const pa = priorityRank(a.priority) - priorityRank(b.priority);
+          if (pa !== 0) return pa;
+          return (a.id || '').localeCompare(b.id || '');
+        });
+        drawerGroups.push({
+          label: STATUS_LABEL[s] || s,
+          swatchClass: 'bc-drawer-area-status s-' + s,
+          items: arr
+        });
+      });
+    } else {
+      // 'area' (default) — biome grouping, the legacy shape.
+      const byArea = new Map();
+      drawerItems.forEach(it => {
+        const aId = it.areaId || '__orphan';
+        if (!byArea.has(aId)) {
+          byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
+        }
+        byArea.get(aId).items.push(it);
+      });
+      byArea.forEach(g => {
+        g.items.sort((a, b) => {
+          const pa = priorityRank(a.priority) - priorityRank(b.priority);
+          if (pa !== 0) return pa;
+          const sa = statusRank(a.status) - statusRank(b.status);
+          if (sa !== 0) return sa;
+          return (a.id || '').localeCompare(b.id || '');
+        });
+      });
+      drawerGroups = Array.from(byArea.values())
+        .sort((a, b) => (a.areaName || '').localeCompare(b.areaName || ''))
+        .map(g => {
           const accent = (AREA_VISUALS[g.areaId] && AREA_VISUALS[g.areaId].accent) || 'dark';
           const color = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
-          const itemsHTML = g.items.map(it => {
-            const idShort = (it.id || '').replace(/^LAB-/, '');
-            // Allowlist priority before injecting into class/text. Schema
-            // is P0/P1/P2; anything else falls back to P2 so the class
-            // attribute can't be poisoned by a hand-edited JSON value.
-            const pri = ['P0','P1','P2'].includes(it.priority) ? it.priority : 'P2';
-            return `<button type="button" class="bc-drawer-item" data-item="${escapeHTML(it.id)}" title="${escapeHTML(it.areaName || '')}: ${escapeHTML(it.title || '')}">
-              <span class="bc-drawer-item-id">${escapeHTML(idShort)}</span>
-              <span class="bc-drawer-item-title">${escapeHTML(it.title || '(no title)')}</span>
-              <span class="bc-drawer-item-pri ${pri}">${pri}</span>
-            </button>`;
-          }).join('');
+          return {
+            label: g.areaName,
+            swatchInline: 'background:' + color,
+            items: g.items
+          };
+        });
+    }
+
+    const emptyMessage = totalDrawerCount === 0
+      ? 'All items placed.'
+      : 'No items match "' + escapeHTML(searchTerm) + '". Clear the search to see all ' + totalDrawerCount + '.';
+    const drawerInner = drawerGroups.length === 0
+      ? '<div class="bc-drawer-empty">' + emptyMessage + '</div>'
+      : drawerGroups.map(g => {
+          const swatchAttrs = g.swatchInline
+            ? `class="bc-drawer-area-swatch" style="${g.swatchInline}"`
+            : `class="bc-drawer-area-swatch ${g.swatchClass || ''}"`;
           return `<div class="bc-drawer-area">
             <div class="bc-drawer-area-name">
-              <span class="bc-drawer-area-swatch" style="background:${color}"></span>
-              ${escapeHTML(g.areaName)}
+              <span ${swatchAttrs}></span>
+              ${escapeHTML(g.label)}
               <span class="bc-drawer-area-count">${g.items.length}</span>
             </div>
-            ${itemsHTML}
+            ${g.items.map(renderDrawerItem).join('')}
           </div>`;
         }).join('');
 
-    const placedCount = Object.keys(positions).length;
+    // Split placement counts: staging row 0 = "staged", rows 1–7 = "placed
+    // on the working board". Both live in build_positions; the row distinguishes.
+    let stagedCount = 0;
+    let placedCount = 0;
+    Object.values(positions).forEach(p => {
+      if (!p) return;
+      if (p.row === BC_STAGING_ROW) stagedCount++;
+      else placedCount++;
+    });
     const inHandHint = bcInHand
       ? `<strong>${escapeHTML((itemsById.get(bcInHand) && itemsById.get(bcInHand).title) || bcInHand)}</strong> in hand — click an empty cell to snap it. Click the same item in the drawer to drop it.`
       : `Click an item in the drawer to take it in hand, then click a cell to place it. Click a placed piece for actions (pick up · remove).`;
     slot.innerHTML = `
-      <p class="course-hexmap-sub">Build · ${placedCount} placed · ${drawerItems.length} in drawer. ${inHandHint}</p>
+      <p class="course-hexmap-sub">Build · ${placedCount} placed · ${stagedCount} staged · ${drawerItems.length} in drawer. ${inHandHint}</p>
       <div class="bc-build-layout">
         <div class="bc-canvas-wrap">
-          <svg class="bc-canvas${bcInHand ? ' bc-in-hand' : ''}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" role="grid" aria-label="Build canvas: ${BC_ROWS}×${BC_COLS} grid, ${placedCount} placed.">
+          <svg class="bc-canvas${bcInHand ? ' bc-in-hand' : ''}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" role="grid" aria-label="Build canvas: 1 staging row + 7×${BC_COLS} working board, ${placedCount} placed, ${stagedCount} staged.">
             ${colLabels.join('')}
             ${rowLabels.join('')}
             ${cells.join('')}
           </svg>
         </div>
         <div class="bc-drawer" aria-label="Item drawer">
-          <p class="bc-drawer-title">Tool drawer · ${drawerItems.length} items</p>
-          <p class="bc-drawer-sub">Pieces grouped by area. Click to take in hand; click again to drop. With one in hand, click a cell to snap it.</p>
+          <p class="bc-drawer-title">Tool drawer · ${drawerItems.length}${searchTerm && drawerItems.length !== totalDrawerCount ? ' / ' + totalDrawerCount : ''} items</p>
+          <p class="bc-drawer-sub">Search, sort, and click an item to take it in hand. Click a cell to snap it.</p>
+          <div class="bc-drawer-controls">
+            <input type="search" class="bc-drawer-search" id="bc-drawer-search" placeholder="Search id / title / area…" value="${escapeHTML(bcDrawerSearch || '')}" aria-label="Search drawer items"/>
+            <div class="bc-drawer-sort" role="group" aria-label="Sort drawer">
+              <span class="bc-drawer-sort-label">Sort:</span>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'area'     ? ' active' : ''}" data-act="sort" data-sort="area"     aria-pressed="${bcDrawerSort === 'area'}">Area</button>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'priority' ? ' active' : ''}" data-act="sort" data-sort="priority" aria-pressed="${bcDrawerSort === 'priority'}">Priority</button>
+              <button type="button" class="bc-drawer-sort-btn${bcDrawerSort === 'status'   ? ' active' : ''}" data-act="sort" data-sort="status"   aria-pressed="${bcDrawerSort === 'status'}">Status</button>
+            </div>
+          </div>
           <div class="bc-drawer-actions">
-            <button type="button" class="bc-drawer-action" data-act="apply-template" ${(course.frontier || []).length === 0 ? 'disabled' : ''} title="Snap this Course's frontier items to the board in priority + area order. Skips items already placed."><span aria-hidden="true">▦</span> Apply template</button>
-            <button type="button" class="bc-drawer-action danger" data-act="clear-board" ${placedCount === 0 ? 'disabled' : ''} title="Remove all placements from the board."><span aria-hidden="true">✕</span> Clear board</button>
+            <div class="bc-template-group" role="group" aria-label="Apply priority template">
+              <button type="button" class="bc-drawer-action" data-act="apply-template" data-tier="P0"    title="Stage all P0 items (this week's release). Skips items already on the canvas."><span aria-hidden="true">▦</span> Apply P0</button>
+              <button type="button" class="bc-drawer-action subtle" data-act="apply-template" data-tier="P0+P1" title="Stage P0 + P1 items.">+P1</button>
+              <button type="button" class="bc-drawer-action subtle" data-act="apply-template" data-tier="all"   title="Stage P0 + P1 + P2 items.">All</button>
+            </div>
+            <button type="button" class="bc-drawer-action danger" data-act="clear-board" ${placedCount + stagedCount === 0 ? 'disabled' : ''} title="Remove all placements from the board and staging."><span aria-hidden="true">✕</span> Clear board</button>
           </div>
           <p class="bc-drawer-msg" id="bc-drawer-msg" hidden></p>
           ${drawerInner}
         </div>
       </div>
-      <p class="bc-canvas-hint">Apply template = frontier in priority order, snapped row-major. Clear board = remove all placements. Per-piece edits via the action chip on a placed cell.</p>
+      <p class="bc-canvas-hint">Working board (rows A–G). Staging row (S) above — items in scope, not yet placed. Click an item to take it in hand, click a cell to snap it.</p>
     `;
 
     // Re-apply in-hand visual on the drawer item (rendered after the
@@ -10452,27 +10557,38 @@
         renderCourseHexMap();
       });
     }
-    // ── Drawer click handler: take/drop in hand + template actions ──
+    // ── Drawer click handler: sort buttons, take/drop in hand, template actions ──
     const drawer = slot.querySelector('.bc-drawer');
     if (drawer) {
       drawer.addEventListener('click', (e) => {
+        // Sort radio button — module state, no persistence.
+        const sortBtn = e.target && e.target.closest ? e.target.closest('[data-act="sort"]') : null;
+        if (sortBtn) {
+          const next = sortBtn.dataset.sort;
+          if (next && next !== bcDrawerSort) {
+            bcDrawerSort = next;
+            renderCourseHexMap();
+          }
+          return;
+        }
         // Template actions take precedence over item picks (their selectors
         // don't overlap, but checking the action button first is clearer).
         const actBtn = e.target && e.target.closest ? e.target.closest('.bc-drawer-action') : null;
         if (actBtn) {
           const act = actBtn.dataset.act;
           if (act === 'apply-template') {
-            const placed = applyBuildTemplate(items);
+            const tier = actBtn.dataset.tier || 'P0';
+            const placed = applyBuildTemplate(items, tier);
             if (placed === 0) {
-              // Empty-frontier is caught by the disabled state. The other
-              // zero-cases are: every frontier item is already placed, or
-              // the canvas is full. Surface a brief inline message so the
-              // user gets feedback rather than silence.
+              // Zero-cases: the tier has no eligible items, every match is
+              // already on the canvas, or the staging row is full. Surface
+              // a brief inline message so the user gets feedback rather
+              // than silence.
               const msg = drawer.querySelector('#bc-drawer-msg');
               if (msg) {
-                msg.textContent = 'Nothing new to place — every frontier item is already on the board.';
+                msg.textContent = 'Nothing new to stage — every ' + tier + ' item is already on the canvas (or staging is full).';
                 msg.hidden = false;
-                setTimeout(() => { msg.hidden = true; msg.textContent = ''; }, 2400);
+                setTimeout(() => { msg.hidden = true; msg.textContent = ''; }, 2800);
               }
               return;
             }
@@ -10501,6 +10617,22 @@
         bcActionItemId = null;
         renderCourseHexMap();
       });
+      // Search input — debounced via 'input' event. Re-render the drawer on
+      // every keystroke; the canvas SVG is unaffected so this is cheap.
+      const searchInput = slot.querySelector('#bc-drawer-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          bcDrawerSearch = (e.target.value || '');
+          renderCourseHexMap();
+          // Restore focus + cursor position after the re-render replaces the input.
+          const fresh = document.getElementById('bc-drawer-search');
+          if (fresh) {
+            fresh.focus();
+            const len = fresh.value.length;
+            try { fresh.setSelectionRange(len, len); } catch (_) {}
+          }
+        });
+      }
     }
     // Outside-click closer is registered inside openBuildActionChip (not
     // here) — that path doesn't trigger a re-render so the closer would
@@ -10577,296 +10709,11 @@
     }, 0);
   }
 
-  /* By-function lens — restored from v0.2.
-     Items grouped into labeled biome regions (one cluster per area).
-     Within a cluster, P0 first, then status rank. Across clusters,
-     biggest-first so dominant biomes anchor the top-left. */
-  function renderCourseLensByFunction(slot, items, frontierSet, workingSet) {
-    const byArea = new Map();
-    items.forEach(it => {
-      const aId = it.areaId || '__orphan';
-      if (!byArea.has(aId)) byArea.set(aId, { areaId: aId, areaName: it.areaName || aId, items: [] });
-      byArea.get(aId).items.push(it);
-    });
-    byArea.forEach(r => {
-      r.items.sort((a, b) => {
-        const pa = priorityRank(a.priority) - priorityRank(b.priority);
-        if (pa !== 0) return pa;
-        const sa = statusRank(a.status) - statusRank(b.status);
-        if (sa !== 0) return sa;
-        return (a.id || '').localeCompare(b.id || '');
-      });
-    });
-    const regions = Array.from(byArea.values()).sort((a, b) => {
-      if (b.items.length !== a.items.length) return b.items.length - a.items.length;
-      return (a.areaName || '').localeCompare(b.areaName || '');
-    });
-    const S = 20;
-    const STEP_X = 1.5 * S;
-    const STEP_Y = Math.sqrt(3) * S;
-    const OFFSET_Y = STEP_Y / 2;
-    const HEX_PAD = 8;
-    const LABEL_H = 14;
-    const REGION_GAP = 12;
-    const CANVAS_W = 740;
-    regions.forEach(r => {
-      const n = r.items.length;
-      const cols = Math.min(3, n);
-      const rows = Math.ceil(n / cols);
-      r.cols = cols;
-      r.rows = rows;
-      r.w = HEX_PAD * 2 + 2 * S + (cols - 1) * STEP_X;
-      const oddOffset = cols > 1 ? OFFSET_Y : 0;
-      r.h = HEX_PAD * 2 + LABEL_H + STEP_Y + (rows - 1) * STEP_Y + oddOffset;
-    });
-    let cursorX = 0, cursorY = 0, rowMaxH = 0, totalH = 0, totalW = 0;
-    regions.forEach(r => {
-      if (cursorX + r.w > CANVAS_W && cursorX > 0) {
-        cursorX = 0;
-        cursorY += rowMaxH + REGION_GAP;
-        rowMaxH = 0;
-      }
-      r.x = cursorX;
-      r.y = cursorY;
-      cursorX += r.w + REGION_GAP;
-      if (r.h > rowMaxH) rowMaxH = r.h;
-      if (cursorY + r.h > totalH) totalH = cursorY + r.h;
-      if (r.x + r.w > totalW) totalW = r.x + r.w;
-    });
-    const finalW = Math.max(totalW + REGION_GAP, CANVAS_W);
-    const finalH = totalH + REGION_GAP;
-    const regionGroups = regions.map(r => {
-      const accent = (AREA_VISUALS[r.areaId] && AREA_VISUALS[r.areaId].accent) || 'dark';
-      const tint = HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark;
-      const hexes = r.items.map((it, i) => {
-        const col = i % r.cols;
-        const row = Math.floor(i / r.cols);
-        const cx = HEX_PAD + S + col * STEP_X;
-        const cy = HEX_PAD + LABEL_H + (STEP_Y / 2) + row * STEP_Y + (col % 2 ? OFFSET_Y : 0);
-        const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-        const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
-        const opacity = hexLuminosityFor(it, frontierSet);
-        const isActive = workingSet.has(it.id);
-        const classes = ['hex-cell'];
-        if (isActive) {
-          classes.push('active');
-          classes.push('breathing');
-        }
-        const points = hexPolygonPoints(cx, cy, S);
-        const genus = it.areaName || '(orphan)';
-        const species = it.title || '(no title)';
-        const inFrontier = frontierSet.has(it.id);
-        const stateBits = [];
-        if (isActive)    stateBits.push('in active leg');
-        if (inFrontier)  stateBits.push('in frontier');
-        stateBits.push(escapeHTML(it.priority || ''));
-        stateBits.push(escapeHTML(it.status || ''));
-        const labelText = escapeHTML(genus) + ': ' + escapeHTML(species) + ' · ' + stateBits.join(' · ');
-        return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}" role="img" aria-label="${labelText}"></polygon>`;
-      }).join('\n');
-      const bg = `<rect class="hex-region-bg" x="0" y="0" width="${r.w}" height="${r.h}" rx="8" ry="8" fill="${tint}" stroke="${tint}" />`;
-      const labelY = HEX_PAD - 2;
-      const label = `<text class="hex-region-label" x="${HEX_PAD}" y="${labelY}">${escapeHTML(r.areaName)}</text>` +
-                    `<text class="hex-region-count" x="${(r.w - HEX_PAD).toFixed(2)}" y="${labelY}" text-anchor="end">${r.items.length}</text>`;
-      return `<g transform="translate(${r.x.toFixed(2)},${r.y.toFixed(2)})">${bg}${label}${hexes}</g>`;
-    }).join('\n');
-    // Area legend (same as priority lens — same data, same encoding).
-    const areaSet = new Map();
-    items.forEach(it => {
-      const k = it.areaId || '__orphan';
-      if (!areaSet.has(k)) {
-        const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-        areaSet.set(k, {
-          name: it.areaName || k,
-          color: HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark,
-          count: 0
-        });
-      }
-      areaSet.get(k).count++;
-    });
-    const areasForLegend = Array.from(areaSet.values()).sort((a, b) => a.name.localeCompare(b.name));
-    const legendHTML = areasForLegend.map(a =>
-      `<span class="lg-item"><span class="lg-swatch" style="background:${a.color}"></span>${escapeHTML(a.name)}<span style="color:var(--accent-dim);margin-left:2px;">·${a.count}</span></span>`
-    ).join('');
-    slot.innerHTML = `
-      <p class="course-hexmap-sub">By function · items grouped into biome regions (one cluster per area). Same encoding as Priority lens; different layout.</p>
-      <svg viewBox="0 0 ${finalW.toFixed(2)} ${finalH.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map by function: ${items.length} items grouped into ${regions.length} biome regions.">
-        ${regionGroups}
-      </svg>
-      <div class="course-hexmap-legend">${legendHTML}</div>
-      <div class="course-hexmap-key">
-        <span class="lg-item"><span class="lg-swatch dim"></span>archived</span>
-        <span class="lg-item"><span class="lg-swatch avail"></span>available</span>
-        <span class="lg-item"><span class="lg-swatch front"></span>in frontier</span>
-        <span class="lg-item"><span class="lg-swatch act"></span>active (breathes)</span>
-      </div>
-    `;
-  }
-
-  /* By-priority lens — concentric rings (v0.3 layout).
-     Body lifted from the prior renderCourseHexMap; now a sibling lens. */
-  function renderCourseLensByPriority(slot, items, frontierSet, workingSet) {
-    // ── Sort items into priority tiers, then by area within each tier ──
-    // Within a tier, same-area items pack adjacently in the spiral.
-    // Within an area+tier, status-rank (in-progress first) so the most-
-    // active items land closer to the center of their tier band.
-    const tierOrder = { P0: 0, P1: 1, P2: 2 };
-    const sorted = items.slice().sort((a, b) => {
-      const ta = tierOrder[a.priority] !== undefined ? tierOrder[a.priority] : 3;
-      const tb = tierOrder[b.priority] !== undefined ? tierOrder[b.priority] : 3;
-      if (ta !== tb) return ta - tb;
-      // Within tier: cluster by area.
-      const ax = (a.areaName || '').localeCompare(b.areaName || '');
-      if (ax !== 0) return ax;
-      const sa = statusRank(a.status) - statusRank(b.status);
-      if (sa !== 0) return sa;
-      return (a.id || '').localeCompare(b.id || '');
-    });
-
-    // ── Compute the per-tier ring boundaries ──
-    // Total cumulative hex positions through ring N = 1 + 3N(N+1).
-    // We need enough rings to fit all items.
-    function ringCapacity(maxRing) {
-      return 1 + 3 * maxRing * (maxRing + 1);
-    }
-    let needRings = 0;
-    while (ringCapacity(needRings) < items.length) needRings++;
-    // For each tier, find the ring range it occupies.
-    const tierCounts = { P0: 0, P1: 0, P2: 0 };
-    sorted.forEach(it => {
-      const k = it.priority in tierCounts ? it.priority : 'P2';
-      tierCounts[k]++;
-    });
-    // Boundary rings: which ring contains the LAST hex of P0, P1, P2.
-    // Computed by walking item count cumulatively against ring capacity.
-    function ringOfPosition(pos) {
-      // Returns the ring number that contains the position-th hex in spiral order.
-      let r = 0;
-      while (ringCapacity(r) <= pos) r++;
-      return r;
-    }
-    const lastP0Pos = tierCounts.P0 - 1;
-    const lastP1Pos = tierCounts.P0 + tierCounts.P1 - 1;
-    const lastP2Pos = tierCounts.P0 + tierCounts.P1 + tierCounts.P2 - 1;
-    const p0LastRing = lastP0Pos >= 0 ? ringOfPosition(lastP0Pos) : -1;
-    const p1LastRing = lastP1Pos >= 0 ? ringOfPosition(lastP1Pos) : p0LastRing;
-    const p2LastRing = lastP2Pos >= 0 ? ringOfPosition(lastP2Pos) : p1LastRing;
-
-    // ── Hex geometry ──
-    const S = 26;                       // hex side length
-    const STEP_X = 1.5 * S;             // ~39 (flat-top horizontal step)
-    const STEP_Y = Math.sqrt(3) * S;    // ~45 (flat-top vertical step)
-    const PAD = S + 8;                  // canvas edge padding
-    // Canvas radius: ring N reaches ~N * STEP_X horizontally, ~N * STEP_Y vertically.
-    const radiusX = needRings * STEP_X + S;
-    const radiusY = needRings * STEP_Y + S;
-    const CANVAS_W = radiusX * 2 + PAD * 2;
-    const CANVAS_H = radiusY * 2 + PAD * 2;
-    const CENTER_X = CANVAS_W / 2;
-    const CENTER_Y = CANVAS_H / 2;
-
-    // ── Walk the spiral, assigning each item to a hex coordinate ──
-    const positions = [];
-    const gen = hexSpiral(needRings);
-    for (let i = 0; i < items.length; i++) {
-      const next = gen.next().value;
-      if (!next) break;
-      positions.push(next);
-    }
-
-    // ── Render each hex ──
-    const cells = sorted.map((it, i) => {
-      const pos = positions[i];
-      if (!pos) return '';
-      const px = hexAxialToPixel(pos.q, pos.r, S);
-      const cx = CENTER_X + px.x;
-      const cy = CENTER_Y + px.y;
-      const itemAccent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-      const fill = HEX_ACCENT_FILL[itemAccent] || HEX_ACCENT_FILL.dark;
-      const opacity = hexLuminosityFor(it, frontierSet);
-      const isActive = workingSet.has(it.id);
-      const classes = ['hex-cell'];
-      if (isActive) {
-        classes.push('active');
-        // Ambient breath only on the active leg's working set.
-        classes.push('breathing');
-      }
-      const points = hexPolygonPoints(cx, cy, S);
-      // Genus:species hover format per author's design call.
-      const genus = it.areaName || '(orphan)';
-      const species = it.title || '(no title)';
-      const inFrontier = frontierSet.has(it.id);
-      const stateBits = [];
-      if (isActive)    stateBits.push('in active leg');
-      if (inFrontier)  stateBits.push('in frontier');
-      // priority/status come from controlled JSON today, but escape anyway for
-      // consistency with genus/species — defends against hand-edited JSON
-      // values containing `<` from silently breaking the SVG title node.
-      stateBits.push(escapeHTML(it.priority || ''));
-      stateBits.push(escapeHTML(it.status || ''));
-      const stateText = stateBits.length > 0 ? ' · ' + stateBits.join(' · ') : '';
-      // Move 1: store the tooltip text in aria-label (not <title>) so the
-      // native browser tooltip doesn't fire after 1 sec on top of our
-      // instant HTML tooltip. Screen readers still announce aria-label.
-      const labelText = escapeHTML(genus) + ': ' + escapeHTML(species) + stateText;
-      return `<polygon class="${classes.join(' ')}" data-item="${escapeHTML(it.id)}" points="${points}" fill="${fill}" fill-opacity="${opacity}" role="img" aria-label="${labelText}"></polygon>`;
-    });
-
-    // ── Ring-band guides (faint dashed circles + ring labels) ──
-    // Drawn behind the hexes so they don't compete. Only drawn for tier
-    // boundaries (P0 outer edge, P1 outer edge), not every ring.
-    const bandRadius = (ringNum) => ringNum * STEP_X + S * 0.5;
-    const bands = [];
-    if (p0LastRing >= 0 && tierCounts.P0 > 0) {
-      const r0 = bandRadius(p0LastRing);
-      bands.push(`<circle class="hex-ring-band" cx="${CENTER_X}" cy="${CENTER_Y}" r="${r0.toFixed(2)}" />`);
-      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r0 - 6).toFixed(2)}">P0 · ${tierCounts.P0}</text>`);
-    }
-    if (p1LastRing > p0LastRing && tierCounts.P1 > 0) {
-      const r1 = bandRadius(p1LastRing);
-      bands.push(`<circle class="hex-ring-band" cx="${CENTER_X}" cy="${CENTER_Y}" r="${r1.toFixed(2)}" />`);
-      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r1 - 6).toFixed(2)}">P1 · ${tierCounts.P1}</text>`);
-    }
-    if (p2LastRing > p1LastRing && tierCounts.P2 > 0) {
-      const r2 = bandRadius(p2LastRing);
-      bands.push(`<text class="hex-ring-label" x="${CENTER_X}" y="${(CENTER_Y - r2 - 6).toFixed(2)}">P2 · ${tierCounts.P2}</text>`);
-    }
-
-    // ── Build the area legend (genus → color) ──
-    // Show one chip per unique area present in the lab, sorted by name.
-    const areaSet = new Map();
-    items.forEach(it => {
-      const k = it.areaId || '__orphan';
-      if (!areaSet.has(k)) {
-        const accent = (AREA_VISUALS[it.areaId] && AREA_VISUALS[it.areaId].accent) || 'dark';
-        areaSet.set(k, {
-          name: it.areaName || k,
-          color: HEX_ACCENT_FILL[accent] || HEX_ACCENT_FILL.dark,
-          count: 0
-        });
-      }
-      areaSet.get(k).count++;
-    });
-    const areasForLegend = Array.from(areaSet.values()).sort((a, b) => a.name.localeCompare(b.name));
-    const legendHTML = areasForLegend.map(a =>
-      `<span class="lg-item"><span class="lg-swatch" style="background:${a.color}"></span>${escapeHTML(a.name)}<span style="color:var(--accent-dim);margin-left:2px;">·${a.count}</span></span>`
-    ).join('');
-
-    slot.innerHTML = `
-      <p class="course-hexmap-sub">By priority · concentric rings (P0 center → P1 → P2). Color = area. Brightness = relevance.</p>
-      <svg viewBox="0 0 ${CANVAS_W.toFixed(2)} ${CANVAS_H.toFixed(2)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Lab map by priority: ${items.length} items in concentric rings (P0 center, P1 mid, P2 outer). Color carries area.">
-        ${bands.join('\n')}
-        ${cells.join('\n')}
-      </svg>
-      <div class="course-hexmap-legend">${legendHTML}</div>
-      <div class="course-hexmap-key">
-        <span class="lg-item"><span class="lg-swatch dim"></span>archived</span>
-        <span class="lg-item"><span class="lg-swatch avail"></span>available</span>
-        <span class="lg-item"><span class="lg-swatch front"></span>in frontier</span>
-        <span class="lg-item"><span class="lg-swatch act"></span>active (breathes)</span>
-      </div>
-    `;
-  }
+  /* Slice 4: lens triplet retired. The Build canvas is the single Course view.
+     renderCourseLensByFunction (biome regions) and renderCourseLensByPriority
+     (concentric rings) both deleted; the cognitive job they served at Course-
+     scale is covered by drawer sort modes (Slice 2). The biome-as-terrain
+     visualization may return at Map-scale, per §9 follow-ups. */
 
   /* Format helper used by both the Comprehend section and the Leg view's
      Comprehend zone. Defined up here so both call sites pre-date the
@@ -11188,30 +11035,77 @@
       '<div class="course-comprehend-log">' + logHTML + '</div>';
   }
 
-  // Delegated handlers for the Course view (inputs + frontier picker + save).
+  // Delegated handlers for the Course view (form inputs + save + comprehend
+  // capture). The frontier-picker handlers were retired with Slice 3 — scope
+  // is now declared by placing pieces on the Build canvas, not by toggling
+  // a chip list.
   document.getElementById('course-view').addEventListener('click', (e) => {
     const tgt = e.target;
-    if (tgt.id === 'course-frontier-toggle') {
-      courseFrontierPanelOpen = !courseFrontierPanelOpen;
-      const panel = document.getElementById('course-frontier-panel');
-      tgt.classList.toggle('open', courseFrontierPanelOpen);
-      tgt.textContent = courseFrontierPanelOpen ? 'Close' : 'Browse items';
-      if (panel) {
-        panel.hidden = !courseFrontierPanelOpen;
-        if (courseFrontierPanelOpen) renderCourseFrontierPanel();
-      }
-      return;
-    }
     if (tgt.id === 'course-save') {
       const c = getOrInitCourseDraft();
       const themeEl  = document.getElementById('course-theme');
       const targetEl = document.getElementById('course-target');
       const bailEl   = document.getElementById('course-bail');
+      const errEl    = document.getElementById('course-save-error');
       c.theme           = themeEl  ? themeEl.value.trim()  : '';
       c.target_outcome  = targetEl ? targetEl.value.trim() : '';
       c.bail_conditions = bailEl   ? bailEl.value.trim()   : '';
+      // Slice 6 ceremony: activation requires all three fields. After
+      // activation, edits relax (you can update the course mid-week
+      // without re-justifying every field; just keep at least the theme
+      // present as a sanity check).
+      const isActivating = (c.status || 'planning') === 'planning';
+      const missing = [];
+      if (!c.theme)           missing.push('theme');
+      if (isActivating && !c.target_outcome) missing.push('target outcome');
+      if (isActivating && !c.bail_conditions) missing.push('bail conditions');
+      if (missing.length > 0) {
+        if (errEl) {
+          errEl.textContent = 'Fill in: ' + missing.join(', ') + '.';
+          errEl.hidden = false;
+          setTimeout(() => { if (errEl) { errEl.hidden = true; errEl.textContent = ''; } }, 3500);
+        }
+        return;
+      }
+      if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+      // First save with a complete form: transition planning → in-progress.
+      // The Course is now the game being played for the 7-leg arc.
+      let activatedNow = false;
+      if (isActivating) {
+        c.status = 'in-progress';
+        c.activated_at = new Date().toISOString();
+        activatedNow = true;
+      }
       upsertCourse(c);
+      // On activation, log a comprehend note on the active leg if there
+      // is one. (No leg yet on a freshly activated course is normal —
+      // the first Frame of the week creates leg A. The note is durable
+      // when there's somewhere durable to put it; otherwise the status
+      // transition itself is the receipt.)
+      if (activatedNow) {
+        const placedNow = c.build_positions ? Object.values(c.build_positions).filter(p => p && p.row !== BC_STAGING_ROW).length : 0;
+        const stagedNow = c.build_positions ? Object.values(c.build_positions).filter(p => p && p.row === BC_STAGING_ROW).length : 0;
+        if (typeof appendComprehendEntry === 'function') {
+          appendComprehendEntry({
+            kind: 'course-activated',
+            course_id: c.id,
+            theme: c.theme,
+            placed: placedNow,
+            staged: stagedNow
+          });
+        }
+      }
       flashSaved('course-saved');
+      // Re-render the finalize strip to flip the button label + show
+      // the "Active since" caption after activation.
+      const created = c.createdAt ? c.createdAt.slice(0, 10) : '—';
+      const updated = c.updatedAt ? c.updatedAt.slice(0, 10) : '—';
+      const legCount = (c.legs || []).length;
+      renderCourseFinalize(c, created, updated, legCount);
+      // Header status pill (planning/in-progress) lives in renderCourseView's
+      // top section; refresh it too so the status pill updates immediately.
+      const headerStatus = document.querySelector('#course-body .course-status');
+      if (headerStatus) headerStatus.textContent = c.status || 'planning';
       return;
     }
     if (tgt.id === 'course-comprehend-capture') {
@@ -11225,28 +11119,6 @@
       upsertLeg(leg);
       flashSaved('course-comprehend-saved');
       renderCourseComprehend();
-      return;
-    }
-    const removeBtn = tgt.closest('[data-act="frontier-remove"]');
-    if (removeBtn) {
-      const id = removeBtn.dataset.item;
-      const c = getOrInitCourseDraft();
-      c.frontier = (c.frontier || []).filter(x => x !== id);
-      renderCourseFrontierChips();
-      if (courseFrontierPanelOpen) renderCourseFrontierPanel();
-      renderCourseHexMap();
-      return;
-    }
-    const toggleRow = tgt.closest('[data-act="frontier-toggle"]');
-    if (toggleRow) {
-      const id = toggleRow.dataset.item;
-      const c = getOrInitCourseDraft();
-      const set = new Set(c.frontier || []);
-      if (set.has(id)) set.delete(id); else set.add(id);
-      c.frontier = Array.from(set);
-      renderCourseFrontierChips();
-      renderCourseFrontierPanel();
-      renderCourseHexMap();
       return;
     }
   });
