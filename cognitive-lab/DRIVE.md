@@ -1,18 +1,19 @@
 # Drive filing — cognitive lab holding pens
 
 `file-to-drive.py` is the agent-callable CLI for filing documents into the
-lab's four Drive folders. It exists because the Claude.ai Drive MCP can
+lab's Drive folders. It exists because the Claude.ai Drive MCP can
 create files at root but cannot write into specific folders, which breaks
 the holding-pen pattern.
 
 Folder targets (already created in Drive):
 
-| `--area`    | Drive folder        |
-| ----------- | ------------------- |
-| `research`  | Research Repository |
-| `journal`   | Daily Journal       |
-| `explainer` | Explainer Theater   |
-| `strategy`  | Strategy & Plans    |
+| `--area`        | Drive folder        |
+| --------------- | ------------------- |
+| `research`      | Research Repository |
+| `journal`       | Daily Journal       |
+| `explainer`     | Explainer Theater   |
+| `strategy`      | Strategy & Plans    |
+| `director-desk` | Director's Desk (pending-room — staged for a future Band-1 surface) |
 
 ## Setup (one-time, ~5 min)
 
