@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
 file-to-drive.py — agent-callable CLI for filing documents into the
-Cognitive Lab's four Drive holding-pen folders, and updating their
+Cognitive Lab's Drive holding-pen folders, and updating their
 manifests so the lab can render them.
+
+Areas: research / journal / explainer / strategy (the four Band-1
+holding pens) plus director-desk (pending-room: a Drive folder for
+operational/team-management content staged for the Director's Desk
+surface, which doesn't yet have a Band-1 home or filingGuide).
 
 Behavior:
   python3 file-to-drive.py --area research|journal|explainer
@@ -73,10 +78,11 @@ CREDENTIALS_PATH = CONFIG_DIR / "credentials.json"
 TOKEN_PATH = CONFIG_DIR / "token.json"
 
 AREA_FOLDERS = {
-    "research":  "1PniRQqXbOGSPom17VW2a20dDosSVOLR1",
-    "journal":   "1xtdbKRy1SG42wVegT_uM94MY-LB8IJZW",
-    "explainer": "1_uPvHyY0yAgCZnMyD9bdwyTIBM_Ox7EO",
-    "strategy":  "1YNuePt3ccfIxpZRipwmqnRZcQ5-I83jx",
+    "research":      "1PniRQqXbOGSPom17VW2a20dDosSVOLR1",
+    "journal":       "1xtdbKRy1SG42wVegT_uM94MY-LB8IJZW",
+    "explainer":     "1_uPvHyY0yAgCZnMyD9bdwyTIBM_Ox7EO",
+    "strategy":      "1YNuePt3ccfIxpZRipwmqnRZcQ5-I83jx",
+    "director-desk": "19GlR6pg6hZRTCnhgIz2BEgaOBZxyj7mn",
 }
 
 # format → (upload mime type, convert to Google native type)
