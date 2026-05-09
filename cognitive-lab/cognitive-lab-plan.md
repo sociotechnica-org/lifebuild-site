@@ -153,10 +153,10 @@ Plus:
 │                 └──────────┘          └──────────┘             │
 │                                                                │
 │   ┌──────────────┐    ┌──────────────────┐                    │
-│   │ PILOT CHECKS │    │ TRANSITION HALL  │  ┌─────────────┐  │
-│   └──────────────┘    │ + TRIM BENCH     │  │  BACKLOG    │  │
-│                       └──────────────────┘  │   WALL      │  │
-│                                              └─────────────┘  │
+│   │ PILOT CHECKS │    │ TRANSITION HALL  │                    │
+│   └──────────────┘    │ + TRIM BENCH     │                    │
+│                       └──────────────────┘                    │
+│                                                                │
 │   ┌─────────────┐   ┌──────────────┐    ┌─────────────────┐ │
 │ │ RESEARCH    │ │ DAILY JOURNAL │ │ EXPLAINER  │ │ STRATEGY  │ │
 │ │ REPOSITORY  │ │ (scratchpad,  │ │ THEATER    │ │ & PLANS   │ │
