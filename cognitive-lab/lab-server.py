@@ -16,6 +16,14 @@ Notes:
   - Allowlist on the save type — no arbitrary paths.
   - Bind to 127.0.0.1 only. Local dev tool, not production.
 
+  - **Drive mirror (optional).** After each successful local atomic
+    write, the saved JSON is mirrored to a single Google Doc per card
+    type in the `Cognitive Lab / Workshop Cards / ` Drive folder. The
+    local file remains canonical for fast read; Drive is a durable
+    backup. If the google-api-python-client deps aren't available
+    (i.e., the venv with file-to-drive.py's deps isn't active), the
+    mirror is silently skipped — local saves still succeed.
+
 Usage:
   python3 cognitive-lab/lab-server.py [PORT]
   PORT defaults to 4322.
@@ -23,9 +31,13 @@ Usage:
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import os
 import sys
+import tempfile
+import threading
+from datetime import datetime, timezone
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
@@ -42,6 +54,191 @@ ALLOWED_TYPES = {
 
 DEFAULT_PORT = 4322
 MAX_BODY_BYTES = 5 * 1024 * 1024  # 5 MB; lab data is small
+
+# ── Drive mirror config ──────────────────────────────────────────────
+WORKSHOP_CARDS_FOLDER_ID = "1kt9Fxxuwb-MK9bnHdmrcpi8JDWSOSd1w"
+WORKSHOP_CARDS_MANIFEST = EXPORTS_DIR / "workshop-cards-manifest.json"
+WORKSHOP_CARDS_TITLE_FMT = "{save_type}.json"
+
+# Try to load file-to-drive.py for the OAuth + Drive helpers. If the
+# deps aren't available (e.g., the venv with google-api-python-client
+# isn't active), mirror is disabled — local saves still work fine.
+_DRIVE_MIRROR_LOCK = threading.Lock()
+_drive_mirror_enabled = False
+_drive_mirror_creds_present = False
+_drive_mirror_disabled_reason = None  # set if a session-level error should block writes
+_ftd = None
+_drive_service = None
+
+def _try_init_drive_mirror():
+    """Best-effort init of the Drive mirror. Silent on failure."""
+    global _drive_mirror_enabled, _drive_mirror_creds_present, _ftd, _drive_service
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "file_to_drive", str(ROOT / "file-to-drive.py")
+        )
+        ftd = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(ftd)
+        from googleapiclient.discovery import build  # noqa: F401
+        # Don't actually authenticate yet — just verify deps load. Auth happens
+        # on first mirror call.
+        _ftd = ftd
+        _drive_mirror_enabled = True
+        # Probe whether OAuth creds exist so we can report accurately at boot
+        # without triggering an interactive auth flow.
+        _drive_mirror_creds_present = ftd.CREDENTIALS_PATH.exists()
+    except Exception as e:  # noqa: BLE001
+        # Could be missing google-api-python-client, missing creds file,
+        # or anything else. Disable mirror; local saves still work.
+        sys.stderr.write(
+            f"[lab-server] Drive mirror disabled ({type(e).__name__}); "
+            "local saves only.\n"
+        )
+
+def _build_drive_service():
+    """Build (or reuse) a Drive service. Returns None on auth failure."""
+    global _drive_service
+    if _drive_service is not None:
+        return _drive_service
+    try:
+        from googleapiclient.discovery import build
+        creds = _ftd.get_credentials()
+        _drive_service = build("drive", "v3", credentials=creds, cache_discovery=False)
+        return _drive_service
+    except Exception as e:  # noqa: BLE001
+        sys.stderr.write(f"[lab-server] Drive auth failed: {e}\n")
+        return None
+
+class WorkshopManifestUnreadable(Exception):
+    """Raised when the workshop-cards manifest exists but can't be parsed.
+    Distinct from "manifest missing" (which is normal on first run)."""
+
+def _read_workshop_manifest() -> dict:
+    """Workshop-cards manifest is a flat dict: {save_type: {driveId, ...}, ...}.
+
+    Returns {} only when the manifest file does not exist (first-run / fresh
+    machine). If the file exists but can't be parsed, raises
+    WorkshopManifestUnreadable — the caller decides how to recover. Silently
+    falling back to {} would strand existing Drive docs and start a fresh
+    duplicate lineage."""
+    if not WORKSHOP_CARDS_MANIFEST.exists():
+        return {}
+    try:
+        data = json.loads(WORKSHOP_CARDS_MANIFEST.read_text())
+    except (json.JSONDecodeError, OSError) as e:
+        raise WorkshopManifestUnreadable(
+            f"manifest at {WORKSHOP_CARDS_MANIFEST} exists but is not parseable: {e}"
+        ) from e
+    if not isinstance(data, dict):
+        raise WorkshopManifestUnreadable(
+            f"manifest at {WORKSHOP_CARDS_MANIFEST} is not a JSON object"
+        )
+    return data
+
+def _write_workshop_manifest_atomic(manifest: dict) -> None:
+    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    fd, tmpname = tempfile.mkstemp(
+        prefix="workshop-cards-manifest.", suffix=".json", dir=str(EXPORTS_DIR)
+    )
+    try:
+        with os.fdopen(fd, "w") as f:
+            json.dump(manifest, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        os.replace(tmpname, str(WORKSHOP_CARDS_MANIFEST))
+    except Exception:
+        if os.path.exists(tmpname):
+            os.unlink(tmpname)
+        raise
+
+def _mirror_to_drive(save_type: str, content_text: str) -> None:
+    """Best-effort mirror of a workshop-card save to Drive.
+
+    Single Drive doc per save_type. First save creates the doc; later
+    saves overwrite content via files().update(). Drive's revision
+    history captures the change history. Failures log to stderr but
+    don't break the local save.
+
+    Runs on a background thread (caller in do_POST starts it daemon-style),
+    so the POST response isn't blocked by Drive latency.
+    """
+    global _drive_mirror_disabled_reason
+    if not _drive_mirror_enabled:
+        return
+    if _drive_mirror_disabled_reason is not None:
+        # A prior call hit a session-killing error (e.g., unreadable manifest).
+        # Refuse to create docs that would orphan existing ones.
+        sys.stderr.write(
+            f"[lab-server] mirror skipped ({save_type}): {_drive_mirror_disabled_reason}\n"
+        )
+        return
+    with _DRIVE_MIRROR_LOCK:
+        try:
+            service = _build_drive_service()
+            if service is None:
+                return
+
+            from googleapiclient.http import MediaFileUpload
+
+            try:
+                manifest = _read_workshop_manifest()
+            except WorkshopManifestUnreadable as e:
+                # Disable mirror for this session — refuse to create new docs
+                # that would silently strand whatever Drive docs the manifest
+                # used to point at. User must investigate manually.
+                _drive_mirror_disabled_reason = str(e)
+                sys.stderr.write(
+                    f"[lab-server] mirror DISABLED for this session: {e}. "
+                    "Restart after fixing the manifest, or delete it to "
+                    "force fresh-doc creation.\n"
+                )
+                return
+            entry = manifest.get(save_type)
+
+            # Write content to a temp file for MediaFileUpload.
+            with tempfile.NamedTemporaryFile(
+                "w", suffix=".json", delete=False, encoding="utf-8"
+            ) as f:
+                f.write(content_text)
+                tmppath = f.name
+
+            try:
+                if entry and entry.get("driveId"):
+                    # Update existing doc — overwrites content; Drive keeps version history.
+                    media = MediaFileUpload(tmppath, mimetype="text/plain", resumable=False)
+                    response = service.files().update(
+                        fileId=entry["driveId"],
+                        media_body=media,
+                        fields="id, webViewLink",
+                    ).execute()
+                else:
+                    # Create new Drive doc for this save_type.
+                    title = WORKSHOP_CARDS_TITLE_FMT.format(save_type=save_type)
+                    metadata = {
+                        "name": title,
+                        "parents": [WORKSHOP_CARDS_FOLDER_ID],
+                    }
+                    media = MediaFileUpload(tmppath, mimetype="text/plain", resumable=False)
+                    response = service.files().create(
+                        body=metadata, media_body=media,
+                        fields="id, webViewLink",
+                    ).execute()
+
+                manifest[save_type] = {
+                    "driveId":  response["id"],
+                    "driveUrl": response.get("webViewLink") or
+                                f"https://drive.google.com/file/d/{response['id']}/view",
+                    "format":   "txt",
+                    "filedAt":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                }
+                _write_workshop_manifest_atomic(manifest)
+            finally:
+                if os.path.exists(tmppath):
+                    os.unlink(tmppath)
+
+        except Exception as e:  # noqa: BLE001
+            sys.stderr.write(
+                f"[lab-server] Drive mirror for {save_type} failed: {e}\n"
+            )
 
 
 class LabRequestHandler(SimpleHTTPRequestHandler):
@@ -108,13 +305,27 @@ class LabRequestHandler(SimpleHTTPRequestHandler):
             EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
             target = EXPORTS_DIR / ALLOWED_TYPES[save_type]
             tmp = target.with_suffix(target.suffix + ".tmp")
+            content_text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
             with open(tmp, "w", encoding="utf-8") as f:
-                json.dump(payload, f, ensure_ascii=False, indent=2)
-                f.write("\n")
+                f.write(content_text)
             os.replace(tmp, target)
         except OSError as e:
             self._json_error(500, f"write failed: {e}")
             return
+
+        # Mirror to Drive on a background thread so Drive latency doesn't
+        # delay the POST response. Mirror is best-effort; failures log to
+        # stderr but don't affect the local save. Gate thread spawn on
+        # both "deps loaded" AND "no session-killing error has been seen
+        # already" — without this, every save after a manifest-corruption
+        # event would spawn a worker that immediately logs "skipped" and
+        # exits, polluting stderr.
+        if _drive_mirror_enabled and _drive_mirror_disabled_reason is None:
+            threading.Thread(
+                target=_mirror_to_drive,
+                args=(save_type, content_text),
+                daemon=True,
+            ).start()
 
         self._json_ok({
             "ok": True,
@@ -155,11 +366,22 @@ def main(argv):
 
     EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Best-effort init of Drive mirror. Silent on failure (logs once to stderr).
+    _try_init_drive_mirror()
+
     addr = ("127.0.0.1", port)
     httpd = HTTPServer(addr, LabRequestHandler)
     url = f"http://{addr[0]}:{addr[1]}/cognitive-lab-v0.1.html"
     print(f"[lab-server] serving {ROOT}")
     print(f"[lab-server] exports → {EXPORTS_DIR}")
+    if _drive_mirror_enabled:
+        if _drive_mirror_creds_present:
+            print(f"[lab-server] drive mirror → /Cognitive Lab/Workshop Cards/")
+        else:
+            print(
+                f"[lab-server] drive mirror → enabled (auth on first save; "
+                f"creds at {_ftd.CREDENTIALS_PATH} not yet present)"
+            )
     print(f"[lab-server] open    → {url}")
     try:
         httpd.serve_forever()

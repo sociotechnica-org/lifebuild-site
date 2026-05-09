@@ -132,6 +132,113 @@ outside the repo. Never check them in.
 
 ## Scope
 
-This CLI is the **write path** only. Reads / search / browse happen in
-Drive's own UI. The lab itself stays a static HTML viewer that imports
-exports as needed.
+`file-to-drive.py` is the **generic write path** for filing whole
+documents into one of the holding-pen folders. Reads / search /
+browse happen in Drive's own UI. The lab itself stays a static HTML
+viewer that imports exports as needed.
+
+For the Daily Journal's three shelves (Scratchpad, Decision Log,
+Editions), `file-to-drive.py` handles Editions but Scratchpad and
+Decision Log have their own append-style CLIs — see below.
+
+---
+
+# Journal entry-add CLIs
+
+The Daily Journal's Scratchpad and Decision Log shelves are
+Drive-canonical, with one dated md file per day per shelf. Two small
+CLIs append entries to today's docs (creating the dated doc on first
+use of the day):
+
+## scratchpad-add.py
+
+```bash
+python3 cognitive-lab/scratchpad-add.py \
+  "Three rooms of the lab need filing — could be agentic." \
+  --tags lab-cleanup,filing
+```
+
+Behavior:
+- Looks up today's scratchpad doc in `journal-manifest.json`
+  (matched on `shelf="scratchpad"` + today's local date).
+- If found: fetches current content via Drive API, appends the new
+  entry with timestamp + tags, uploads via `--update-id` semantics.
+  Drive keeps the per-edit revision history.
+- If not: creates a new dated md doc (`<date> — scratchpad`),
+  populates with the entry as first content, appends a manifest
+  entry with `shelf="scratchpad"`.
+
+Prints the Drive URL on stdout. Subsequent same-day calls return the
+same URL (same doc, appended).
+
+## decision-log-add.py
+
+```bash
+python3 cognitive-lab/decision-log-add.py \
+  "Backlog Wall retired; status views replace it." \
+  --why "Item-area anchoring + toolbar views provide same coverage with less surface." \
+  --by "Dan + Claude (PR #134 design)" \
+  --link "https://github.com/sociotechnica-org/lifebuild-site/pull/134" \
+  --tags architecture
+```
+
+Same behavior as `scratchpad-add.py`, but writes to the decision-log
+shelf with structured fields (Why / By / Links). `--link` is
+repeatable.
+
+## Manifest schema — `shelf` discriminator
+
+Journal manifest entries gain a `shelf` field with values
+`"edition" | "scratchpad" | "decisionLog"`. Lab UI filters by `shelf`
+to render each tab. Pre-existing entries without `shelf` are legacy
+(filed before this convention) and should be treated as `"edition"`
+or backfilled as needed.
+
+---
+
+# Workshop card cloud mirror
+
+`lab-server.py` mirrors workshop-card saves (frame-cards / debrief-cards
+/ pilot-checks / courses / legs) to a single Drive doc per card type
+in `/Cognitive Lab/Workshop Cards/`. The local file remains canonical
+for fast read; Drive is a durable backup with version history.
+
+## Behavior
+
+- After each successful local atomic write, the same JSON content is
+  uploaded to Drive (or used to update the existing Drive doc, via
+  `files().update()`).
+- First save of a card type creates the Drive doc; subsequent saves
+  overwrite content and Drive's revision history captures the change.
+- The mapping `save_type → driveId` is tracked at
+  `cognitive-lab/exports/workshop-cards-manifest.json` (gitignored).
+- Mirror is **best-effort and fail-silent**: if google deps aren't
+  installed (i.e., the venv isn't active when launching
+  `lab-server.py`), or auth fails, the mirror is skipped and a warning
+  goes to stderr. Local saves always succeed.
+
+## Activation
+
+Run `lab-server.py` from the venv that has the Drive deps installed:
+
+```bash
+source cognitive-lab/.venv/bin/activate
+python3 cognitive-lab/lab-server.py
+```
+
+On startup you'll see:
+
+```
+[lab-server] drive mirror → /Cognitive Lab/Workshop Cards/
+```
+
+If you don't see that line, the mirror is disabled (fall back to
+local-only). Common cause: launched without the venv. Fix: activate
+the venv and restart.
+
+## Format
+
+`text/plain` with the raw JSON content. Drive shows it readably; the
+local JSON file remains the canonical-format source. Switching to
+`gdoc` auto-conversion was avoided because round-trip would lose JSON
+shape on each update.
