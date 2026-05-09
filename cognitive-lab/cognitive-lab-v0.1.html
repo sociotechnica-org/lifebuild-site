@@ -9350,12 +9350,25 @@
     strategy:       'Plans & Source Material',
   };
 
-  // Fetch a manifest from cognitive-lab/exports/<area>-manifest.json.
+  // Map lab area.id → manifest slug used by file-to-drive.py and the
+  // exports/<slug>-manifest.json file. The lab keeps legacy area IDs
+  // (library / archive / deck-theater) per LAB-060's display-vs-
+  // identifier split; the script's --area flags are the new short
+  // names. This mapping bridges them.
+  const AREA_TO_MANIFEST_SLUG = {
+    library:        'research',
+    archive:        'journal',
+    'deck-theater': 'explainer',
+    strategy:       'strategy',
+  };
+
+  // Fetch a manifest from cognitive-lab/exports/<slug>-manifest.json.
   // Returns [] if the file is missing or unreachable (e.g., file://
   // protocol with no lab-server.py running).
   async function loadAreaManifest(areaId) {
+    const slug = AREA_TO_MANIFEST_SLUG[areaId] || areaId;
     try {
-      const r = await fetch(`exports/${areaId}-manifest.json`, { cache: 'no-store' });
+      const r = await fetch(`exports/${slug}-manifest.json`, { cache: 'no-store' });
       if (!r.ok) return [];
       const data = await r.json();
       return Array.isArray(data) ? data : [];
@@ -9432,10 +9445,11 @@
     const entries = sortManifestByDateDesc(await loadAreaManifest(area.id));
 
     const srcList = document.getElementById('sources-list');
+    const slug = AREA_TO_MANIFEST_SLUG[area.id] || area.id;
     if (entries.length === 0) {
       srcList.innerHTML = `
         <div class="manifest-section-label">${shelfName}</div>
-        <div class="manifest-empty">No entries yet. File one with <code>file-to-drive.py --area ${area.id}</code>.</div>`;
+        <div class="manifest-empty">No entries yet. File one with <code>file-to-drive.py --area ${slug}</code>.</div>`;
     } else {
       srcList.innerHTML = `
         <div class="manifest-section-label">${shelfName} (${entries.length})</div>
