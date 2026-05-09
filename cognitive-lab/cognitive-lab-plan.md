@@ -45,17 +45,23 @@ Side wings:
 - **The Transition Hallway** — meta-discipline for boundaries
 - **The Trim Bench** — meta-discipline for selection
 
-Back of the lab:
+Back of the lab (Band 1 — four areas):
 
-- **The Library** — research base (Sweller, Hobfoll, Sonnentag, Hockey, Leroy,
-  Klein, Gawande, IM SAFE, naval watchstanding, etc.) — readable index, not
-  linked papers
-- **The Archive** — lab notes (date-stamped), decisions log, recently shipped
-- **The Backlog Wall** — prioritized items, P0 / P1 / P2
+- **Research Repository** (formerly The Library) — research & findings.
+  External research (Sweller, Hobfoll, Sonnentag, Hockey, Leroy, Klein,
+  Gawande, IM SAFE, naval watchstanding, etc.) plus our own internal
+  findings. Reports flow in via the Drive manifest.
+- **The Daily Journal** (formerly The Archive) — scratchpad, decision log,
+  date-organized editions. The lab's historical record. Three shelves;
+  editions auto-skip empty days.
+- **Explainer Theater** (formerly Deck Theater) — writeups, decks, demos.
+  Material we made to explain something to a person.
+- **Strategy & Plans** — plans, roadmaps, architecture. Raw source material
+  for the living libraries (Alexandria for product; corporate library for
+  business). The room exists so this stuff doesn't get lost.
 
-The Deck Theater (a small offshoot):
-
-- The v0.2 presentation embedded or linked.
+The retired Backlog Wall is no longer a Band-1 area — its job moved to the
+toolbar's By Status and Priority views.
 
 ### Art style for v0.1 (before agentplay code arrives)
 
@@ -147,21 +153,26 @@ Plus:
 │                 └──────────┘          └──────────┘             │
 │                                                                │
 │   ┌──────────────┐    ┌──────────────────┐                    │
-│   │ PILOT CHECKS │    │ TRANSITION HALL  │  ┌─────────────┐  │
-│   └──────────────┘    │ + TRIM BENCH     │  │  BACKLOG    │  │
-│                       └──────────────────┘  │   WALL      │  │
-│                                              └─────────────┘  │
+│   │ PILOT CHECKS │    │ TRANSITION HALL  │                    │
+│   └──────────────┘    │ + TRIM BENCH     │                    │
+│                       └──────────────────┘                    │
+│                                                                │
 │   ┌─────────────┐   ┌──────────────┐    ┌─────────────────┐ │
-│   │  LIBRARY    │   │   ARCHIVE    │    │  DECK THEATER   │ │
-│   │ (research)  │   │ (lab notes)  │    │ (presentation)  │ │
-│   └─────────────┘   └──────────────┘    └─────────────────┘ │
+│ │ RESEARCH    │ │ DAILY JOURNAL │ │ EXPLAINER  │ │ STRATEGY  │ │
+│ │ REPOSITORY  │ │ (scratchpad,  │ │ THEATER    │ │ & PLANS   │ │
+│ │ (research   │ │  decisions,   │ │ (writeups, │ │ (plans,   │ │
+│ │  & findings)│ │  editions)    │ │  decks,    │ │  roadmaps,│ │
+│ │             │ │               │ │  demos)    │ │  arch)    │ │
+│ └─────────────┘ └───────────────┘ └────────────┘ └───────────┘ │
 └───────────────────────────────────────────────────────────────┘
 ```
 
 Phases on the main floor in cycle order (the Turn). Gauge in the center,
 Recovery loops back. Pilot Checks adjacent to Push (where they fire most).
-Transition + Trim as a meta corridor. Backlog Wall is the priority list.
-Library + Archive + Deck Theater along the back.
+Transition + Trim as a meta corridor. Band 1 (the back row) is the four
+holding-pen areas: Research Repository · Daily Journal · Explainer Theater
+· Strategy & Plans. The toolbar's By Status / Priority views replace the
+retired Backlog Wall as the global priority/status surfaces.
 
 ---
 
@@ -176,9 +187,10 @@ Library + Archive + Deck Theater along the back.
    file) — slightly more complex but actually usable as a tool.
 3. **Where does the Gauge appear?** Currently center-stage. Could be a
    persistent sidebar/HUD instead (always visible regardless of room).
-4. **Backlog Wall: separate area or integrated into each room?** Both have
-   merits — separate gives you a global priority view; integrated keeps work
-   close to its phase context.
+4. **~~Backlog Wall: separate area or integrated into each room?~~** Resolved:
+   the Backlog Wall area was retired. Its job moved to the toolbar's By Status
+   and Priority views, which already provided global priority + status surfaces.
+   Items are now anchored to their declared `area` field.
 5. **agentplay code reuse — what's actually available?** Determines how big
    the v0.1 → v0.2 jump is. If avatars are easy to import, v0.1 might already
    include them.

@@ -204,13 +204,14 @@ a click target. Click → drawer.
 
 ### Back / aux
 
-#### `library` — The Library (research)
-- Type: archive / research
+#### `library` — Research Repository (research & findings)
+- Type: archive / research & findings
 - Color: warm beige `#a88a5a` (bookshelf)
-- Description: "The research base we're borrowing from. Not papers, just the territories."
-- Items: research references list (read-only)
-- Artifacts: list below
+- Description: "The evidence base our decisions get made on. External research and our own internal findings — the truth as we best understand it, plus the receipts."
+- Items: research references list (read-only) + filed reports
+- Artifacts: list below; live entries flow in via the Drive manifest (`exports/research-manifest.json`)
 - Decoration: large bookshelf
+- Filing guide: see `filingGuide` block on the area in `cognitive-lab-v0.1.html`
 
   **Research references for v0.1:**
   - Sweller — Cognitive Load Theory (intrinsic / extraneous / germane)
@@ -236,12 +237,14 @@ a click target. Click → drawer.
   - McEwen — Allostatic Load
   - Kaplan — Attention Restoration Theory
 
-#### `archive` — The Archive
-- Type: archive / lab notes
+#### `archive` — The Daily Journal
+- Type: archive / journal
 - Color: warm beige `#a88a5a`
-- Description: "Lab notes, decisions log, recently shipped."
-- Items: see content
-- Decoration: filing cabinet / boxes
+- Description: "The lab's scratchpad and historical record. Loose notes captured throughout the day, decisions aggregated from anywhere they're made, and a date-organized newspaper of what each day produced."
+- Three shelves: scratchpad (loose, current, preserved), decisionLog (aggregated decisions), editions (dated newspapers; auto-skip empty days)
+- Items: editions flow in via the Drive manifest (`exports/journal-manifest.json`); legacy lab-notes / decisions / shipped lists below preserved as pre-newspaper history
+- Decoration: newspaper + coffee + journal triptych (`☕ 📰 📓`)
+- Filing guide: see `filingGuide` block on the area in `cognitive-lab-v0.1.html`
 
   **Lab notes:**
   - 2026-04-30 — Wildcat Frame example (today, evening session)
@@ -264,20 +267,24 @@ a click target. Click → drawer.
   - Cognitive lab plan (cognitive-lab-plan.md)
   - Capacity check-in PoC (capacity-checkin.html — exists in user's other workspace; daily-use discipline ongoing)
 
-#### `backlog-wall` — Backlog Wall
-- Type: aux / priority
-- Color: orange accent `#e2a04a`
-- Description: "All items, sortable by priority. P0 (this period), P1 (soon), P2 (later)."
-- Items: full list (see Items section below)
-- Decoration: corkboard / pinned notes
+#### `strategy` — Strategy & Plans
+- Type: aux / strategy
+- Color: blue accent
+- Description: "Raw source material for our living libraries — the product roadmap (Alexandria) and the future corporate business plan. Strategy and planning content that needs a home before — or until — the atomic libraries process it."
+- Items: roadmaps, plans, lab architecture, frameworks; flow in via the Drive manifest (`exports/strategy-manifest.json`)
+- Decoration: compass + map + chess piece triptych (`🧭 🗺️ ♟️`)
+- Filing guide: see `filingGuide` block on the area in `cognitive-lab-v0.1.html`
 
-#### `deck-theater` — Deck Theater
-- Type: aux / artifact
+#### `deck-theater` — Explainer Theater
+- Type: aux / explainer
 - Color: teal `#2d8a7e`
-- Description: "The v0.2 presentation. Four acts, 21 slides. Beginner-facing."
-- Items: link to deck
-- Artifacts: `.context/turn-v0.1-map.html`
+- Description: "Material we made — or co-made — to explain something to a person. Walkthroughs, 2-pagers, investor decks, onboarding docs."
+- Items: explainers flow in via the Drive manifest (`exports/explainer-manifest.json`)
+- Artifacts: `.context/turn-v0.1-map.html` and other lab decks
 - Decoration: small theater / screen / projector
+- Filing guide: see `filingGuide` block on the area in `cognitive-lab-v0.1.html`
+
+> **Note on the retired Backlog Wall.** Earlier versions of the lab carried a fifth Band-1 area, `backlog-wall`, holding the canonical full LAB-XXX list. It was retired in favor of the toolbar's By Status and Priority views, which already provide global priority + status surfaces. Items are now anchored to their declared `area` field; the retired area is no longer needed.
 
 ---
 
