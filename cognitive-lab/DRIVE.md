@@ -193,3 +193,52 @@ Journal manifest entries gain a `shelf` field with values
 to render each tab. Pre-existing entries without `shelf` are legacy
 (filed before this convention) and should be treated as `"edition"`
 or backfilled as needed.
+
+---
+
+# Workshop card cloud mirror
+
+`lab-server.py` mirrors workshop-card saves (frame-cards / debrief-cards
+/ pilot-checks / courses / legs) to a single Drive doc per card type
+in `/Cognitive Lab/Workshop Cards/`. The local file remains canonical
+for fast read; Drive is a durable backup with version history.
+
+## Behavior
+
+- After each successful local atomic write, the same JSON content is
+  uploaded to Drive (or used to update the existing Drive doc, via
+  `files().update()`).
+- First save of a card type creates the Drive doc; subsequent saves
+  overwrite content and Drive's revision history captures the change.
+- The mapping `save_type → driveId` is tracked at
+  `cognitive-lab/exports/workshop-cards-manifest.json` (gitignored).
+- Mirror is **best-effort and fail-silent**: if google deps aren't
+  installed (i.e., the venv isn't active when launching
+  `lab-server.py`), or auth fails, the mirror is skipped and a warning
+  goes to stderr. Local saves always succeed.
+
+## Activation
+
+Run `lab-server.py` from the venv that has the Drive deps installed:
+
+```bash
+source cognitive-lab/.venv/bin/activate
+python3 cognitive-lab/lab-server.py
+```
+
+On startup you'll see:
+
+```
+[lab-server] drive mirror → /Cognitive Lab/Workshop Cards/
+```
+
+If you don't see that line, the mirror is disabled (fall back to
+local-only). Common cause: launched without the venv. Fix: activate
+the venv and restart.
+
+## Format
+
+`text/plain` with the raw JSON content. Drive shows it readably; the
+local JSON file remains the canonical-format source. Switching to
+`gdoc` auto-conversion was avoided because round-trip would lose JSON
+shape on each update.

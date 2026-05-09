@@ -4615,6 +4615,108 @@
   }
   .archive-text { font-size: 12px; color: var(--fg); line-height: 1.5; margin-top: 2px; }
 
+  /* ── Manifest-driven Band-1 holding-pen drawer ── */
+  .manifest-section-label {
+    font-family: var(--font-px);
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin: 12px 0 6px 0;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--panel-bd);
+  }
+  .manifest-section-label:first-child { margin-top: 0; }
+  .manifest-row {
+    display: block;
+    text-decoration: none;
+    color: var(--fg);
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--panel-bd);
+    transition: background 0.12s;
+  }
+  .manifest-row:last-child { border-bottom: 0; }
+  .manifest-row:hover { background: rgba(94, 207, 192, 0.06); color: var(--fg); }
+  .manifest-row-head {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .manifest-date {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+    flex-shrink: 0;
+  }
+  .manifest-fmt {
+    font-family: var(--font-px);
+    font-size: 9px;
+    color: var(--accent-dim);
+    text-transform: lowercase;
+    flex-shrink: 0;
+  }
+  .manifest-title {
+    flex: 1;
+    color: var(--fg);
+    font-weight: 500;
+  }
+  .manifest-arrow {
+    color: var(--accent-dim);
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  .manifest-row:hover .manifest-arrow { color: var(--accent); opacity: 1; }
+  .manifest-summary {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--accent-dim);
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .manifest-tags {
+    margin-top: 4px;
+    font-size: 10px;
+  }
+  .manifest-tag {
+    display: inline-block;
+    margin-right: 6px;
+    color: var(--accent-dim);
+    font-family: var(--font-px);
+  }
+  .manifest-empty {
+    color: #888;
+    font-size: 12px;
+    font-style: italic;
+    padding: 8px 6px;
+  }
+  .manifest-empty code {
+    font-family: var(--font-px);
+    font-size: 11px;
+    color: var(--accent-dim);
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  details.legacy-notes {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--panel-bd);
+  }
+  details.legacy-notes summary {
+    font-family: var(--font-px);
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  details.legacy-notes summary:hover { color: var(--accent); }
+
   /* ── Scrollbar style ── */
   #drawer-body::-webkit-scrollbar { width: 4px; }
   #drawer-body::-webkit-scrollbar-thumb { background: var(--panel-bd); border-radius: 2px; }
@@ -9235,10 +9337,193 @@
   })();
 
   /* ── Area view ── */
+  // Band-1 holding pens are information-storage areas (Drive-canonical,
+  // manifest-driven). Their drawer is a different shape from the Band-2
+  // workshop drawers (Items / Chapter / Experiments). showAreaView
+  // dispatches to the right renderer.
+  const BAND1_HOLDING_PENS = ['library', 'archive', 'deck-theater', 'strategy'];
+
+  // Display labels for the manifest-driven shelf, per area.
+  const HOLDING_PEN_SHELF_NAMES = {
+    library:        'Reports',
+    'deck-theater': 'Explainers',
+    strategy:       'Plans & Source Material',
+  };
+
+  // Fetch a manifest from cognitive-lab/exports/<area>-manifest.json.
+  // Returns [] if the file is missing or unreachable (e.g., file://
+  // protocol with no lab-server.py running).
+  async function loadAreaManifest(areaId) {
+    try {
+      const r = await fetch(`exports/${areaId}-manifest.json`, { cache: 'no-store' });
+      if (!r.ok) return [];
+      const data = await r.json();
+      return Array.isArray(data) ? data : [];
+    } catch (_e) {
+      return [];
+    }
+  }
+
+  // Render a single manifest row (date · format · title · summary · tags).
+  function renderManifestRow(entry) {
+    const safeTitle = (entry.title || '(untitled)').replace(/</g, '&lt;');
+    const safeSummary = (entry.summary || '').replace(/</g, '&lt;');
+    const tags = (entry.tags || []).map(t => `<span class="manifest-tag">#${t}</span>`).join(' ');
+    const fmt = entry.format ? `<span class="manifest-fmt">[${entry.format}]</span>` : '';
+    const date = entry.date || '';
+    const url = entry.driveUrl || (entry.driveId ? `https://drive.google.com/file/d/${entry.driveId}/view` : '#');
+    return `
+      <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
+        <div class="manifest-row-head">
+          <span class="manifest-date">${date}</span>
+          ${fmt}
+          <span class="manifest-title">${safeTitle}</span>
+          <span class="manifest-arrow">↗</span>
+        </div>
+        ${safeSummary ? `<div class="manifest-summary">${safeSummary}</div>` : ''}
+        ${tags ? `<div class="manifest-tags">${tags}</div>` : ''}
+      </a>`;
+  }
+
+  // Sort entries by date (string YYYY-MM-DD) descending. Falls back to title.
+  function sortManifestByDateDesc(entries) {
+    return [...entries].sort((a, b) => {
+      const da = a.date || '';
+      const db = b.date || '';
+      if (da !== db) return db.localeCompare(da);
+      return (a.title || '').localeCompare(b.title || '');
+    });
+  }
+
+  // Hide the workshop-only shelf tiles for Band-1 drawers.
+  function setWorkshopShelvesVisible(visible) {
+    ['items', 'experiments', 'chapter'].forEach(name => {
+      const tile = document.querySelector(`.shelf-tile[data-shelf="${name}"]`);
+      if (tile) tile.style.display = visible ? '' : 'none';
+    });
+  }
+
   function showAreaView(area) {
     areaView.classList.remove('hidden');
     ddView.classList.remove('visible');
 
+    if (area.id === 'archive') {
+      setWorkshopShelvesVisible(false);
+      showJournalDrawer(area);
+      return;
+    }
+    if (BAND1_HOLDING_PENS.includes(area.id)) {
+      setWorkshopShelvesVisible(false);
+      showHoldingPenDrawer(area);
+      return;
+    }
+    setWorkshopShelvesVisible(true);
+    showWorkshopDrawer(area);
+  }
+
+  // Generic Band-1 holding-pen drawer: single manifest-driven shelf.
+  // Used by Research Repository, Explainer Theater, Strategy & Plans.
+  // The Daily Journal has its own drawer (three shelves).
+  async function showHoldingPenDrawer(area) {
+    const infoTip = document.getElementById('drawer-info');
+    if (infoTip) infoTip.setAttribute('data-tip', area.description || '');
+
+    const shelfName = HOLDING_PEN_SHELF_NAMES[area.id] || 'Sources';
+    const entries = sortManifestByDateDesc(await loadAreaManifest(area.id));
+
+    const srcList = document.getElementById('sources-list');
+    if (entries.length === 0) {
+      srcList.innerHTML = `
+        <div class="manifest-section-label">${shelfName}</div>
+        <div class="manifest-empty">No entries yet. File one with <code>file-to-drive.py --area ${area.id}</code>.</div>`;
+    } else {
+      srcList.innerHTML = `
+        <div class="manifest-section-label">${shelfName} (${entries.length})</div>
+        ${entries.map(renderManifestRow).join('')}`;
+    }
+
+    setActiveShelf('sources');
+    updateShelfTile('sources', entries.length);
+    updateShelfTile('items', 0);
+    updateShelfTile('experiments', 0);
+    updateShelfTile('chapter', 0);
+
+    const gapsBadge = document.getElementById('shelf-items-gaps');
+    if (gapsBadge) gapsBadge.classList.remove('show');
+  }
+
+  // The Daily Journal drawer: three shelves (Scratchpad, Decision Log,
+  // Editions) read from journal-manifest.json filtered by `shelf`. Plus
+  // a collapsible "Pre-Newspaper Notes" toggle for legacy labNotes /
+  // decisions / shipped fields preserved in the area JSON.
+  async function showJournalDrawer(area) {
+    const infoTip = document.getElementById('drawer-info');
+    if (infoTip) infoTip.setAttribute('data-tip', area.description || '');
+
+    const all = await loadAreaManifest(area.id);
+    const scratchpad  = sortManifestByDateDesc(all.filter(e => e.shelf === 'scratchpad'));
+    const decisionLog = sortManifestByDateDesc(all.filter(e => e.shelf === 'decisionLog'));
+    const editions    = sortManifestByDateDesc(all.filter(e => !e.shelf || e.shelf === 'edition'));
+
+    const renderShelf = (label, list, hint) => {
+      if (list.length === 0) {
+        return `
+          <div class="manifest-section-label">${label}</div>
+          <div class="manifest-empty">${hint}</div>`;
+      }
+      return `
+        <div class="manifest-section-label">${label} (${list.length})</div>
+        ${list.map(renderManifestRow).join('')}`;
+    };
+
+    // Pre-Newspaper Notes (legacy fields preserved as historical record).
+    let legacyHTML = '';
+    const hasLegacy = (area.labNotes && area.labNotes.length) ||
+                      (area.decisions && area.decisions.length) ||
+                      (area.shipped && area.shipped.length);
+    if (hasLegacy) {
+      legacyHTML += `<details class="legacy-notes"><summary>Pre-Newspaper Notes</summary>`;
+      if (area.labNotes && area.labNotes.length) {
+        legacyHTML += '<div class="drawer-section-label" style="margin-top:8px;">Lab notes (archive)</div>';
+        legacyHTML += area.labNotes.map(n =>
+          `<div class="archive-entry"><div class="archive-date">${n.date}</div><div class="archive-text">${n.text}</div></div>`
+        ).join('');
+      }
+      if (area.decisions && area.decisions.length) {
+        legacyHTML += '<div class="drawer-section-label" style="margin-top:8px;">Decisions log</div>';
+        legacyHTML += area.decisions.map(n =>
+          `<div class="archive-entry"><div class="archive-date">${n.date}</div><div class="archive-text">${n.text}</div></div>`
+        ).join('');
+      }
+      if (area.shipped && area.shipped.length) {
+        legacyHTML += '<div class="drawer-section-label" style="margin-top:8px;">Shipped</div>';
+        legacyHTML += area.shipped.map(s => `<div class="src-item">${s}</div>`).join('');
+      }
+      legacyHTML += `</details>`;
+    }
+
+    const srcList = document.getElementById('sources-list');
+    srcList.innerHTML =
+      renderShelf('Scratchpad',   scratchpad,  'No entries yet. Use <code>scratchpad-add.py</code> to capture a thought.') +
+      renderShelf('Decision Log', decisionLog, 'No decisions logged yet. Use <code>decision-log-add.py</code>.') +
+      renderShelf('Editions',     editions,    'No editions yet. End-of-day publish creates one.') +
+      legacyHTML;
+
+    setActiveShelf('sources');
+    updateShelfTile('sources', scratchpad.length + decisionLog.length + editions.length);
+    updateShelfTile('items', 0);
+    updateShelfTile('experiments', 0);
+    updateShelfTile('chapter', 0);
+
+    const gapsBadge = document.getElementById('shelf-items-gaps');
+    if (gapsBadge) gapsBadge.classList.remove('show');
+  }
+
+  // Band-2 phase-workshop drawer (Frame, Comprehend, Sync, Push, Debrief,
+  // Recover, Director's Desk, Pilot Check Station, etc.). Items / Chapter
+  // / Experiments / Sources shelves. Unchanged from prior behavior; only
+  // the dispatch point changed.
+  function showWorkshopDrawer(area) {
     // Description → moved to (i) tooltip in drawer header
     const infoTip = document.getElementById('drawer-info');
     if (infoTip) infoTip.setAttribute('data-tip', area.description || '');
