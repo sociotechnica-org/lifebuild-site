@@ -132,6 +132,64 @@ outside the repo. Never check them in.
 
 ## Scope
 
-This CLI is the **write path** only. Reads / search / browse happen in
-Drive's own UI. The lab itself stays a static HTML viewer that imports
-exports as needed.
+`file-to-drive.py` is the **generic write path** for filing whole
+documents into one of the holding-pen folders. Reads / search /
+browse happen in Drive's own UI. The lab itself stays a static HTML
+viewer that imports exports as needed.
+
+For the Daily Journal's three shelves (Scratchpad, Decision Log,
+Editions), `file-to-drive.py` handles Editions but Scratchpad and
+Decision Log have their own append-style CLIs — see below.
+
+---
+
+# Journal entry-add CLIs
+
+The Daily Journal's Scratchpad and Decision Log shelves are
+Drive-canonical, with one dated md file per day per shelf. Two small
+CLIs append entries to today's docs (creating the dated doc on first
+use of the day):
+
+## scratchpad-add.py
+
+```bash
+python3 cognitive-lab/scratchpad-add.py \
+  "Three rooms of the lab need filing — could be agentic." \
+  --tags lab-cleanup,filing
+```
+
+Behavior:
+- Looks up today's scratchpad doc in `journal-manifest.json`
+  (matched on `shelf="scratchpad"` + today's local date).
+- If found: fetches current content via Drive API, appends the new
+  entry with timestamp + tags, uploads via `--update-id` semantics.
+  Drive keeps the per-edit revision history.
+- If not: creates a new dated md doc (`<date> — scratchpad`),
+  populates with the entry as first content, appends a manifest
+  entry with `shelf="scratchpad"`.
+
+Prints the Drive URL on stdout. Subsequent same-day calls return the
+same URL (same doc, appended).
+
+## decision-log-add.py
+
+```bash
+python3 cognitive-lab/decision-log-add.py \
+  "Backlog Wall retired; status views replace it." \
+  --why "Item-area anchoring + toolbar views provide same coverage with less surface." \
+  --by "Dan + Claude (PR #134 design)" \
+  --link "https://github.com/sociotechnica-org/lifebuild-site/pull/134" \
+  --tags architecture
+```
+
+Same behavior as `scratchpad-add.py`, but writes to the decision-log
+shelf with structured fields (Why / By / Links). `--link` is
+repeatable.
+
+## Manifest schema — `shelf` discriminator
+
+Journal manifest entries gain a `shelf` field with values
+`"edition" | "scratchpad" | "decisionLog"`. Lab UI filters by `shelf`
+to render each tab. Pre-existing entries without `shelf` are legacy
+(filed before this convention) and should be treated as `"edition"`
+or backfilled as needed.
