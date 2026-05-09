@@ -315,8 +315,12 @@ class LabRequestHandler(SimpleHTTPRequestHandler):
 
         # Mirror to Drive on a background thread so Drive latency doesn't
         # delay the POST response. Mirror is best-effort; failures log to
-        # stderr but don't affect the local save.
-        if _drive_mirror_enabled:
+        # stderr but don't affect the local save. Gate thread spawn on
+        # both "deps loaded" AND "no session-killing error has been seen
+        # already" — without this, every save after a manifest-corruption
+        # event would spawn a worker that immediately logs "skipped" and
+        # exits, polluting stderr.
+        if _drive_mirror_enabled and _drive_mirror_disabled_reason is None:
             threading.Thread(
                 target=_mirror_to_drive,
                 args=(save_type, content_text),

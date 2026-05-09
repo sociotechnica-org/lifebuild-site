@@ -9394,6 +9394,17 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  // URL guard — escHtml prevents attribute breakout but doesn't reject
+  // dangerous schemes. A hand-edited manifest with a `javascript:` entry
+  // would render as a clickable link that runs script. Whitelist to
+  // http(s) and same-origin relative paths. Anything else falls back to '#'.
+  function safeUrl(s) {
+    if (!s) return '#';
+    const trimmed = String(s).trim();
+    if (/^(https?:\/\/|\/|#)/i.test(trimmed)) return escHtml(trimmed);
+    return '#';
+  }
+
   // Render a single manifest row (date · format · title · summary · tags).
   function renderManifestRow(entry) {
     const title = escHtml(entry.title || '(untitled)');
@@ -9404,7 +9415,7 @@
       .map(t => `<span class="manifest-tag">#${escHtml(t)}</span>`)
       .join(' ');
     const url = entry.driveUrl
-      ? escHtml(entry.driveUrl)
+      ? safeUrl(entry.driveUrl)
       : (entry.driveId ? `https://drive.google.com/file/d/${escHtml(entry.driveId)}/view` : '#');
     return `
       <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
