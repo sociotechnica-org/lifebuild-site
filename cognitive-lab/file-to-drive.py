@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 file-to-drive.py — agent-callable CLI for filing documents into the
-Cognitive Lab's three Drive holding-pen folders, and updating their
+Cognitive Lab's four Drive holding-pen folders, and updating their
 manifests so the lab can render them.
 
 Behavior:
@@ -281,7 +281,7 @@ def main() -> None:
 
     is_update = bool(args.update_id)
     if not is_update and not args.title:
-        die("--title is required when creating (omit --update-id requires --title)")
+        die("--title is required when creating a new file (use --update-id to update an existing file without renaming)")
 
     cf = Path(args.content_file)
     if not cf.exists() or not cf.is_file():

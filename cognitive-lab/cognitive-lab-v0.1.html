@@ -4661,7 +4661,7 @@
     </div>
     <div class="area area-visual area-gestalt" data-area="archive" data-accent="warm">
       <div class="area-scene scene-archive">📰</div>
-      <div class="area-label">The Daily Journal<span class="lbl-sub">scratchpad, decisions, daily edition</span></div>
+      <div class="area-label">The Daily Journal<span class="lbl-sub">scratchpad, decisions, editions</span></div>
       <div class="badge-row" id="badges-archive"></div>
     </div>
     <div class="area area-visual area-gestalt" data-area="deck-theater" data-accent="teal">
@@ -5218,7 +5218,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
-      "items": ["LAB-001","LAB-002","LAB-026","LAB-027","LAB-028","LAB-036"],
+      "items": ["LAB-001","LAB-002","LAB-019","LAB-026","LAB-027","LAB-028","LAB-036"],
       "sources": [
         { "label": "frame-research-and-practice.md (the chunk skeleton)", "href": "frame-research-and-practice.md" },
         { "label": "turn-v0.1-phases-and-leverage.md (Frame section)", "href": "turn-v0.1-phases-and-leverage.md" },
@@ -5913,9 +5913,6 @@
       },
       "items": [],
       "artifacts": [
-        { "label": "playbook-0-deck.html (Playbook 0 + the Junk Drawer · 20 slides · 2026-05-07 · alexandria v2 playbook spine + v1 corpus hold)", "href": "playbook-0-deck.html" },
-        { "label": "playbook-0.md (the Playbook 0 source · 7 chapters · ~39 jobs · Reason+Exit only · plain English)", "href": "playbook-0.md" },
-        { "label": "junk-drawer-INDEX.md (v1 corpus index · 5 agents · 32 plays · 8 loops · cross-walked to Playbook 0 chapters · review-only, no files moved yet)", "href": "junk-drawer-INDEX.md" },
         { "label": "turn-v0.1-map.html (the v0.2 turn map · 4 acts · 21 slides · beginner-facing)", "href": "turn-v0.1-map.html" },
         { "label": "comprehension-deck-v0.1.html (the rogaine spine · 16 slides · Comprehend phase artifact for the 2026-05-04 build arc)", "href": "comprehension-deck-v0.1.html" },
         { "label": "comprehension-deck-v0.2.html (after the spine · 19 slides · what shipped between v0.1 deck and end of 2026-05-04)", "href": "comprehension-deck-v0.2.html" }
@@ -5926,14 +5923,7 @@
           "title": "Comprehension deck for the rogaine spine arc",
           "date": "2026-05-04 (early morning)",
           "observation": "After the overnight build run shipped Course tier + Hex Map + Leg wrapper + Course Header + on-demand Comprehend + Debrief revision + Snap Circuit Leg view, the author wanted a re-immersion pass before vetting. Asked for a highly visual deck walking through the new surfaces and the rationale. Built comprehension-deck-v0.1.html — 16 vertical scroll-snap slides, color-matched to the lab, with the Hex Map and Snap Circuit visuals echoed inside the deck.",
-          "impact": "Comprehend station now has a concrete artifact-shape: a deck that re-renders an arc the way it was built. Filed under Deck Theater so future big arcs can drop their own comprehension decks here. The pattern itself becomes a play: ship the work, then ship the deck that walks the work."
-        },
-        {
-          "id": "exp-deck-2026-05-07-playbook-0-junk-drawer",
-          "title": "Playbook 0 + the Junk Drawer (alexandria v2 spine, cross-repo)",
-          "date": "2026-05-07",
-          "observation": "Alexandria (separate repo, irvine workspace) needed a project plan to retire its background-agent runtime model. The author caught Claude's first-cut sequencing inversion: 'most important plays are Conan & Sam — back-of-house. Raven sits on top of a functioning library.' Re-cut to back-of-house first. Then asked for a Playbook 0 in plain English (Reason + Exit per job, no schema, no logic) plus an organized hold for the v1 corpus. While the author was out, Claude shipped: (1) playbook-0.md — 7 chapters across back-of-house / front-of-house / evolution sections, ~39 jobs; (2) junk-drawer-INDEX.md — 5 v1 agents, 32 plays, 8 loops, raven jobs, schema artifacts, all cross-walked to Playbook 0 chapters; (3) playbook-0-deck.html — 20-slide explainer matching the comprehension-deck design language (dark navy bg, amber accent, scroll-snap, slide tags, panel/split/grid/stack/jobs layouts). All three filed under Deck Theater; deck registered in Walk Studio.",
-          "impact": "Validates the orient-deck pattern across repos: a separate project's review artifact lives in the cognitive lab's Orient Station, since this is where the author keeps presentation-ready re-immersion material. Establishes precedent for cross-repo decks under Deck Theater. Source markdown also available as raw artifacts for direct browsing."
+          "impact": "Comprehend station now has a concrete artifact-shape: a deck that re-renders an arc the way it was built. Filed under Explainer Theater so future big arcs can drop their own comprehension decks here. The pattern itself becomes a play: ship the work, then ship the deck that walks the work."
         },
         {
           "id": "exp-deck-2026-05-04-comprehension-deck-v0.2",
@@ -8749,30 +8739,6 @@
           narrative: '**The meta-loop, named.**\n\nYou are using a tool to learn about the tool. Tomorrow morning you\'ll re-watch the v0.2 deck (re-immersion on yesterday\'s shipping). Then you\'ll walk this tour (re-immersion on the surface itself). Then you\'ll go build.\n\nWhen you click **Done**, the walk gets logged to your active leg\'s `comprehend[]` timeline (kind: `walk`, walk id + title). Tomorrow\'s snapshot will show today\'s comprehend acts.\n\nThe lab teaches itself. That\'s the closed loop.\n\nClick **Done** to log + exit. Or close from the Comprehend Station header to exit without logging.'
         }
       ]
-    },
-    {
-      id: 'deck-playbook-0',
-      title: 'Playbook 0 + the Junk Drawer',
-      kind: 'deck',
-      subtitle: '20 slides · 2026-05-07 · alexandria arc',
-      preview: 'Latest and greatest. The plain-English spine of the Alexandria v2 playbook (7 chapters, ~39 jobs, Reason + Exit only) plus the organized junk-drawer hold for the v1 corpus (5 agents · 32 plays · 8 loops, all cross-walked to the new chapters). Cross-repo arc: source artifacts live in the irvine workspace; this deck is the explainer.',
-      deck_href: 'playbook-0-deck.html'
-    },
-    {
-      id: 'doc-playbook-0-source',
-      title: 'Playbook 0 — source document',
-      kind: 'deck',
-      subtitle: 'long-form · 7 chapters · ~39 jobs',
-      preview: 'The Playbook 0 source document. Plain-English Reason + Exit per job, organized into Back of House (Intake & Sense-Making · Construction · Tending · Service), Front of House (Onboarding · Conversation), and Evolution. The deck above is the explainer; this is the artifact itself, ready to mark up.',
-      deck_href: 'doc-viewer.html?file=playbook-0.md'
-    },
-    {
-      id: 'doc-junk-drawer-index',
-      title: 'Junk Drawer — v1 corpus index',
-      kind: 'deck',
-      subtitle: 'long-form · 5 agents · 32 plays · 8 loops',
-      preview: 'The v1 corpus index. Every documented job from the five Alexandria agents (Raven · Conan · Sam · Solomon · Bridget), the 32 canonical plays, the 8 Loop cards, Raven\'s three /library jobs, and the schema artifacts — all cross-walked to Playbook 0 chapters. Review-only; no files moved yet.',
-      deck_href: 'doc-viewer.html?file=junk-drawer-INDEX.md'
     },
     {
       id: 'deck-rogaine-spine',
