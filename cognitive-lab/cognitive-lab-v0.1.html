@@ -9355,6 +9355,12 @@
   // (library / archive / deck-theater) per LAB-060's display-vs-
   // identifier split; the script's --area flags are the new short
   // names. This mapping bridges them.
+  //
+  // Note: director-desk is intentionally omitted — it has no Band-1
+  // holding-pen home yet (pending-room). file-to-drive.py supports
+  // --area director-desk and a Drive folder exists, but the lab
+  // routes director-desk to showWorkshopDrawer (its prior behavior)
+  // until the surface gets designed.
   const AREA_TO_MANIFEST_SLUG = {
     library:        'research',
     archive:        'journal',
@@ -9377,24 +9383,39 @@
     }
   }
 
+  // HTML escape — used uniformly for all manifest field interpolations.
+  // Manifest entries come from local CLI inputs (not untrusted sources)
+  // so the threat model is low, but inconsistent escaping is still a
+  // footgun (e.g., a `"` in driveUrl could break out of an href attribute,
+  // a `<` in format could produce malformed HTML).
+  function escHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
   // Render a single manifest row (date · format · title · summary · tags).
   function renderManifestRow(entry) {
-    const safeTitle = (entry.title || '(untitled)').replace(/</g, '&lt;');
-    const safeSummary = (entry.summary || '').replace(/</g, '&lt;');
-    const tags = (entry.tags || []).map(t => `<span class="manifest-tag">#${t}</span>`).join(' ');
-    const fmt = entry.format ? `<span class="manifest-fmt">[${entry.format}]</span>` : '';
-    const date = entry.date || '';
-    const url = entry.driveUrl || (entry.driveId ? `https://drive.google.com/file/d/${entry.driveId}/view` : '#');
+    const title = escHtml(entry.title || '(untitled)');
+    const summary = escHtml(entry.summary || '');
+    const date = escHtml(entry.date || '');
+    const fmt = entry.format ? `<span class="manifest-fmt">[${escHtml(entry.format)}]</span>` : '';
+    const tagsHTML = (entry.tags || [])
+      .map(t => `<span class="manifest-tag">#${escHtml(t)}</span>`)
+      .join(' ');
+    const url = entry.driveUrl
+      ? escHtml(entry.driveUrl)
+      : (entry.driveId ? `https://drive.google.com/file/d/${escHtml(entry.driveId)}/view` : '#');
     return `
       <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
         <div class="manifest-row-head">
           <span class="manifest-date">${date}</span>
           ${fmt}
-          <span class="manifest-title">${safeTitle}</span>
+          <span class="manifest-title">${title}</span>
           <span class="manifest-arrow">↗</span>
         </div>
-        ${safeSummary ? `<div class="manifest-summary">${safeSummary}</div>` : ''}
-        ${tags ? `<div class="manifest-tags">${tags}</div>` : ''}
+        ${summary ? `<div class="manifest-summary">${summary}</div>` : ''}
+        ${tagsHTML ? `<div class="manifest-tags">${tagsHTML}</div>` : ''}
       </a>`;
   }
 

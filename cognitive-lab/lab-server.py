@@ -65,12 +65,14 @@ WORKSHOP_CARDS_TITLE_FMT = "{save_type}.json"
 # isn't active), mirror is disabled — local saves still work fine.
 _DRIVE_MIRROR_LOCK = threading.Lock()
 _drive_mirror_enabled = False
+_drive_mirror_creds_present = False
+_drive_mirror_disabled_reason = None  # set if a session-level error should block writes
 _ftd = None
 _drive_service = None
 
 def _try_init_drive_mirror():
     """Best-effort init of the Drive mirror. Silent on failure."""
-    global _drive_mirror_enabled, _ftd, _drive_service
+    global _drive_mirror_enabled, _drive_mirror_creds_present, _ftd, _drive_service
     try:
         spec = importlib.util.spec_from_file_location(
             "file_to_drive", str(ROOT / "file-to-drive.py")
@@ -82,6 +84,9 @@ def _try_init_drive_mirror():
         # on first mirror call.
         _ftd = ftd
         _drive_mirror_enabled = True
+        # Probe whether OAuth creds exist so we can report accurately at boot
+        # without triggering an interactive auth flow.
+        _drive_mirror_creds_present = ftd.CREDENTIALS_PATH.exists()
     except Exception as e:  # noqa: BLE001
         # Could be missing google-api-python-client, missing creds file,
         # or anything else. Disable mirror; local saves still work.
@@ -104,15 +109,31 @@ def _build_drive_service():
         sys.stderr.write(f"[lab-server] Drive auth failed: {e}\n")
         return None
 
+class WorkshopManifestUnreadable(Exception):
+    """Raised when the workshop-cards manifest exists but can't be parsed.
+    Distinct from "manifest missing" (which is normal on first run)."""
+
 def _read_workshop_manifest() -> dict:
-    """Workshop-cards manifest is a flat dict: {save_type: {driveId, ...}, ...}."""
+    """Workshop-cards manifest is a flat dict: {save_type: {driveId, ...}, ...}.
+
+    Returns {} only when the manifest file does not exist (first-run / fresh
+    machine). If the file exists but can't be parsed, raises
+    WorkshopManifestUnreadable — the caller decides how to recover. Silently
+    falling back to {} would strand existing Drive docs and start a fresh
+    duplicate lineage."""
     if not WORKSHOP_CARDS_MANIFEST.exists():
         return {}
     try:
         data = json.loads(WORKSHOP_CARDS_MANIFEST.read_text())
-        return data if isinstance(data, dict) else {}
-    except (json.JSONDecodeError, OSError):
-        return {}
+    except (json.JSONDecodeError, OSError) as e:
+        raise WorkshopManifestUnreadable(
+            f"manifest at {WORKSHOP_CARDS_MANIFEST} exists but is not parseable: {e}"
+        ) from e
+    if not isinstance(data, dict):
+        raise WorkshopManifestUnreadable(
+            f"manifest at {WORKSHOP_CARDS_MANIFEST} is not a JSON object"
+        )
+    return data
 
 def _write_workshop_manifest_atomic(manifest: dict) -> None:
     EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -136,8 +157,19 @@ def _mirror_to_drive(save_type: str, content_text: str) -> None:
     saves overwrite content via files().update(). Drive's revision
     history captures the change history. Failures log to stderr but
     don't break the local save.
+
+    Runs on a background thread (caller in do_POST starts it daemon-style),
+    so the POST response isn't blocked by Drive latency.
     """
+    global _drive_mirror_disabled_reason
     if not _drive_mirror_enabled:
+        return
+    if _drive_mirror_disabled_reason is not None:
+        # A prior call hit a session-killing error (e.g., unreadable manifest).
+        # Refuse to create docs that would orphan existing ones.
+        sys.stderr.write(
+            f"[lab-server] mirror skipped ({save_type}): {_drive_mirror_disabled_reason}\n"
+        )
         return
     with _DRIVE_MIRROR_LOCK:
         try:
@@ -147,7 +179,19 @@ def _mirror_to_drive(save_type: str, content_text: str) -> None:
 
             from googleapiclient.http import MediaFileUpload
 
-            manifest = _read_workshop_manifest()
+            try:
+                manifest = _read_workshop_manifest()
+            except WorkshopManifestUnreadable as e:
+                # Disable mirror for this session — refuse to create new docs
+                # that would silently strand whatever Drive docs the manifest
+                # used to point at. User must investigate manually.
+                _drive_mirror_disabled_reason = str(e)
+                sys.stderr.write(
+                    f"[lab-server] mirror DISABLED for this session: {e}. "
+                    "Restart after fixing the manifest, or delete it to "
+                    "force fresh-doc creation.\n"
+                )
+                return
             entry = manifest.get(save_type)
 
             # Write content to a temp file for MediaFileUpload.
@@ -269,8 +313,15 @@ class LabRequestHandler(SimpleHTTPRequestHandler):
             self._json_error(500, f"write failed: {e}")
             return
 
-        # Mirror to Drive (best effort; failures logged but don't break the save).
-        _mirror_to_drive(save_type, content_text)
+        # Mirror to Drive on a background thread so Drive latency doesn't
+        # delay the POST response. Mirror is best-effort; failures log to
+        # stderr but don't affect the local save.
+        if _drive_mirror_enabled:
+            threading.Thread(
+                target=_mirror_to_drive,
+                args=(save_type, content_text),
+                daemon=True,
+            ).start()
 
         self._json_ok({
             "ok": True,
@@ -320,7 +371,13 @@ def main(argv):
     print(f"[lab-server] serving {ROOT}")
     print(f"[lab-server] exports → {EXPORTS_DIR}")
     if _drive_mirror_enabled:
-        print(f"[lab-server] drive mirror → /Cognitive Lab/Workshop Cards/")
+        if _drive_mirror_creds_present:
+            print(f"[lab-server] drive mirror → /Cognitive Lab/Workshop Cards/")
+        else:
+            print(
+                f"[lab-server] drive mirror → enabled (auth on first save; "
+                f"creds at {_ftd.CREDENTIALS_PATH} not yet present)"
+            )
     print(f"[lab-server] open    → {url}")
     try:
         httpd.serve_forever()
