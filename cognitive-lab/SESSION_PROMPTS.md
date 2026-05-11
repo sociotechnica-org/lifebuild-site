@@ -2,7 +2,7 @@
 
 How to start (and close) a session in the cognitive lab. Sibling to `PROCESS.md` (how the lab works) and `DECISIONS.md` (what's been decided).
 
-Last meaningful update: 2026-05-02. Update this file when:
+Last meaningful update: 2026-05-11 (Heartbeat retirement, Gauge area deleted, day-band architecture). Update this file when:
 
 - The state-of-play summary in the long form goes stale
 - The current "urgent priority" example shifts

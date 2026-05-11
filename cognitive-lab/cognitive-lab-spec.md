@@ -75,6 +75,14 @@ spatial / game-y vibe without the canvas complexity.
 
 ## Layout (20 cols × 14 rows on a tile grid)
 
+> **Note (as of 2026-05-11):** the layout below describes the *original* v0.1 build spec. The current floor is post-PR3:
+> - Band 1: storage rooms — Library · Daily Journal · Deck Theater · Strategy & Plans
+> - Band 2 (new **day-band**): Pilot Check Station · (baseline rule) · Recovery Room — both `kind: ritual`
+> - Band 3 (turn cycle, five tiles, C-before-F): Comprehend · Frame · Sync · Produce · Debrief — all `kind: phase`
+> - Band 4 (meta row): Transition Hallway · Trim Bench · Director's Desk — all `kind: meta`
+>
+> The Gauge area and the Backlog Wall were retired (see `archive/heartbeat-retirement-2026-05-11.md` and Lab v0.5 entries in `DECISIONS.md`). The original layout diagram below is preserved as build history.
+
 The lab has four bands top-to-bottom:
 
 ```

@@ -36,24 +36,24 @@ Then open `http://localhost:8765/cognitive-lab-v0.1.html`.
 
 The lab is a top-down, click-to-explore floor plan with four bands:
 
-**Band 1 — Reference / aux** (gestalt visuals, hover for label):
+**Band 1 — Reference / aux** (Band-1 holding pens, gestalt visuals, hover for label):
 
 - The Library (research)
 - The Archive (lab notes, decisions, shipped)
 - Deck Theater (the v0.2 presentation)
-- Backlog Wall (priority list)
+- Strategy & Plans
 
-**Band 2 — Phase cycle** (six rooms left-to-right):
+**Band 2 — Day-band** (the bookended day; two rituals with a baseline rule between them):
 
-- Frame · Comprehend · Sync · Produce (formerly Push) · Debrief · Recover
+- Pilot Check Station · Recovery Room
 
-**Band 3 — Meta-disciplines:**
+**Band 3 — Turn cycle** (five phases left-to-right, C-before-F):
 
-- Transition Hallway · Trim Bench
+- Comprehend · Frame · Sync · Produce · Debrief
 
-**Band 4 — Bottom (instruments + Director):**
+**Band 4 — Bottom (meta row):**
 
-- Pilot Check Station · Director's Desk
+- Transition Hallway · Trim Bench · Director's Desk
 
 Click any area opens a side drawer (drawer expands to 66vw if the area has `workshop: true`). Drawers contain:
 
