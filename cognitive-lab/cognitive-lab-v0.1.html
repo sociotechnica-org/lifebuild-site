@@ -2890,6 +2890,15 @@
     opacity: 0.85;
   }
 
+  /* Day-band: Pilot Check left, baseline rule middle, Recovery right */
+  .band-day { align-items: center; }
+  .band-rule {
+    flex: 1;
+    border-top: 1px solid var(--panel-bd);
+    align-self: center;
+    opacity: 0.4;
+  }
+
   /* Phase cycle band: arrows align with mid-row icons */
   .band-phase { align-items: center; }
   .band-phase .arrow { font-size: 18px; }
@@ -3956,6 +3965,81 @@
 
   /* Recent recovery list (reuses ws-recent-card style) */
   #rec-recent-list .ws-recent-card { border-left-color: var(--success); }
+
+  /* ── Open-turns section (Step 3 of Recovery) ── */
+  .rec-open-turns-section {
+    margin-top: 12px;
+  }
+  .rec-open-turn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    background: rgba(42,58,92,0.35);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .rec-open-turn-id {
+    font-family: var(--font-px);
+    font-size: 9px;
+    color: var(--accent-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .rec-open-turn-title {
+    font-size: 12px;
+    color: var(--fg);
+  }
+  .rec-open-turn-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .rec-turn-action-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--fg-dim);
+    cursor: pointer;
+    padding: 3px 7px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+  }
+  .rec-turn-action-label:has(input:checked) {
+    background: rgba(226,160,74,0.12);
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+  .rec-turn-action-label input[type="radio"] {
+    display: none;
+  }
+  .rec-open-turn-note {
+    font-size: 11px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    color: var(--fg);
+    padding: 4px 7px;
+    width: 100%;
+    resize: none;
+    font-family: inherit;
+    margin-top: 2px;
+  }
+  .rec-open-turn-note:focus { outline: none; border-color: var(--accent-dim); }
+  .rec-open-turns-empty {
+    font-size: 11px;
+    color: var(--fg-dim);
+    font-style: italic;
+    padding: 6px 0;
+  }
 
   /* ── Course Header bar (renders active leg + course at the top of every workshop drawer) ──
      Single-line glanceable strip. Quenton's "iconic skin" call: leg-number is a
@@ -5047,9 +5131,25 @@
     </div>
   </div>
 
-  <!-- Band 2: Phase cycle (single visual each).
+  <!-- Band 2: Day-band — bookended day (Pilot Check opens · Recovery closes) -->
+  <div class="band band-day">
+    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber">
+      <div class="area-scene">✈️</div>
+      <div class="area-label">Pilot Check<span class="lbl-sub">ritual · open</span></div>
+      <div class="badge-row" id="badges-pilot-check-station"></div>
+    </div>
+    <div class="band-rule"></div>
+    <div class="area area-visual" data-area="recovery-room" data-accent="green">
+      <div class="area-scene">🌿</div>
+      <div class="area-label">Recover<span class="lbl-sub">ritual · close</span></div>
+      <div class="badge-row" id="badges-recovery-room"></div>
+    </div>
+  </div>
+
+  <!-- Band 3: Turn cycle (single visual each).
        Move 2a (v0.4 build): Comprehend leads. Per the C-before-F call —
-       you can't scope what you haven't read in. Frame follows. -->
+       you can't scope what you haven't read in. Frame follows.
+       Recovery moved to day-band; cycle ends at Debrief. -->
   <div class="band band-phase">
     <div class="area area-visual" data-area="comprehend-station" data-accent="amber">
       <div class="area-scene">🛠️</div>
@@ -5080,15 +5180,9 @@
       <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-debrief-booth"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="recovery-room" data-accent="green">
-      <div class="area-scene">🌿</div>
-      <div class="area-label">Recover<span class="lbl-sub">insertable</span></div>
-      <div class="badge-row" id="badges-recovery-room"></div>
-    </div>
   </div>
 
-  <!-- Band 3: Meta-disciplines -->
+  <!-- Band 4: Meta — Transition · Trim · Director's Desk -->
   <div class="band">
     <div class="area area-visual" data-area="transition-hallway" data-accent="tan">
       <div class="area-scene">🚪</div>
@@ -5099,15 +5193,6 @@
       <div class="area-scene">✂️</div>
       <div class="area-label">Trim<span class="lbl-sub">meta</span></div>
       <div class="badge-row" id="badges-trim-bench"></div>
-    </div>
-  </div>
-
-  <!-- Band 4: Instruments + Director (bottom) -->
-  <div class="band">
-    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber">
-      <div class="area-scene">✈️</div>
-      <div class="area-label">Pilot Check<span class="lbl-sub">multi-signal</span></div>
-      <div class="badge-row" id="badges-pilot-check-station"></div>
     </div>
     <div class="area area-visual" data-area="director-desk" data-accent="dark">
       <div class="area-scene">🧑‍💻</div>
@@ -5505,6 +5590,15 @@
             <textarea id="rec-plan-text" class="rec-plan-textarea" placeholder="What you'll actually do. Inline scheduling welcome — 'stretch now, meditate at bedtime, gym in the morning.'"></textarea>
           </div>
 
+          <!-- Open turns at lock -->
+          <div class="workshop-section rec-open-turns-section">
+            <div class="workshop-section-label">Open turns at lock</div>
+            <div class="rec-help">
+              Any turn still open at end of day. Pick an action for each you want to record — carry, drop, or defer. Rows with no action selected are not saved.
+            </div>
+            <div id="rec-open-turns-list"></div>
+          </div>
+
           <div class="rec-nav">
             <button class="ff-btn" id="rec-back-3">← Back</button>
             <div>
@@ -5724,6 +5818,7 @@
       "id": "frame-workshop",
       "name": "Frame Workshop",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
@@ -5837,6 +5932,7 @@
       "id": "comprehend-station",
       "name": "Comprehend Station",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "amber",
       "workshop": true,
       "description": "Where the lab orients you. Re-immerse on prior legs, walk decks, take guided product walks of new features. The phase that loads remaining state from agents and prior work — first step in the cycle (C-before-F).",
@@ -5876,6 +5972,7 @@
       "id": "sync-floor",
       "name": "Sync Floor",
       "type": "phase / conditional",
+      "kind": "phase",
       "accent": "amber",
       "description": "Where Sync practice and chapter live. The phase that aligns humans and agents and confirms zones.",
       "items": ["LAB-011","LAB-012"],
@@ -5888,6 +5985,7 @@
       "id": "push-bay",
       "name": "Produce Bay",
       "type": "phase / conditional",
+      "kind": "phase",
       "accent": "amber",
       "description": "Where the Produce phase (formerly Push) practice and chapter live. Decision work, hardest first, with bingo-fuel stop signal.",
       "items": ["LAB-013","LAB-014"],
@@ -5901,6 +5999,7 @@
       "id": "debrief-booth",
       "name": "Debrief Booth",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "blue",
       "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
@@ -5943,7 +6042,8 @@
     {
       "id": "recovery-room",
       "name": "Recovery Room",
-      "type": "phase / insertable",
+      "type": "ritual / end-of-day",
+      "kind": "ritual",
       "accent": "green",
       "workshop": true,
       "description": "Where Recover practice and chapter live. Three-screen flow: measure the need (depth & locus), shape the recovery (mechanism), plan it. Mechanisms: Detach, Relax, Master, Control. Sleep is the floor.",
@@ -5958,6 +6058,7 @@
       "id": "director-desk",
       "name": "Director's Desk",
       "type": "aux / persistent",
+      "kind": "meta",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
       "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041","LAB-043","LAB-045","LAB-047","LAB-048","LAB-049","LAB-050","LAB-051"],
@@ -6111,6 +6212,7 @@
       "id": "pilot-check-station",
       "name": "Pilot Check Station",
       "type": "rule-out / pre-flight",
+      "kind": "ritual",
       "accent": "amber",
       "workshop": true,
       "description": "Three-dimension capacity rule-out — cognitive (king), emotional, physical. 0–3 on any dimension = grounded. Output dispatches a targeted Recovery prescription. Like aviation IM SAFE: not measuring fitness, ruling out hazards.",
@@ -6163,6 +6265,7 @@
       "id": "transition-hallway",
       "name": "Transition Hallway",
       "type": "meta-discipline",
+      "kind": "meta",
       "accent": "tan",
       "description": "Every phase boundary is taxed (Leroy 2009 attention residue). Close · reset · open. Practice surface for the boundary move. Same shape across micro / meso / macro / super-macro scales.",
       "items": ["LAB-005","LAB-006","LAB-031"],
@@ -6188,6 +6291,7 @@
       "id": "trim-bench",
       "name": "Trim Bench",
       "type": "meta-discipline",
+      "kind": "meta",
       "accent": "tan",
       "description": "Selection discipline within each phase. Lower priority once Frame is doing its job.",
       "items": ["LAB-017","LAB-018","LAB-033"],
@@ -8172,6 +8276,62 @@
     });
   }
 
+  // ── Open-turns rendering ──
+  // Collects legs not yet debriefed/archived and renders a chip-row per turn.
+  // Each row: turn id, turn title (from Frame card's "in" field), and three
+  // radio actions (carry / drop / defer) plus an optional note input.
+  function recRenderOpenTurns() {
+    const container = document.getElementById('rec-open-turns-list');
+    if (!container) return;
+
+    const openLegs = loadLegs().filter(l =>
+      l && l.status !== 'debriefed' && l.status !== 'archived'
+    );
+
+    if (openLegs.length === 0) {
+      container.innerHTML = '<div class="rec-open-turns-empty">No open turns to park.</div>';
+      return;
+    }
+
+    container.innerHTML = openLegs.map(leg => {
+      // Resolve title from Frame card "in" field, fall back to "Untitled"
+      let title = 'Untitled';
+      if (leg.frame_card_id) {
+        const card = (loadFrameCards() || []).find(c => c && c.savedAt === leg.frame_card_id);
+        if (card && card.in) {
+          const raw = card.in;
+          title = (typeof raw === 'string' ? raw : JSON.stringify(raw)).split('\n')[0].slice(0, 80) || 'Untitled';
+        }
+      }
+      const escapedId = escapeHTML(leg.id);
+      const escapedTitle = escapeHTML(title);
+      return `<div class="rec-open-turn-row" data-turn-id="${escapedId}">
+        <div class="rec-open-turn-id">${escapedId}</div>
+        <div class="rec-open-turn-title">${escapedTitle}</div>
+        <div class="rec-open-turn-actions">
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="carry"> Carry</label>
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="drop"> Drop</label>
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="defer"> Defer</label>
+        </div>
+        <input type="text" class="rec-open-turn-note" placeholder="Optional note — e.g. 'carry into tomorrow's Frame' or 'blocked until Tuesday'" maxlength="200">
+      </div>`;
+    }).join('');
+  }
+
+  // Reads the open-turns UI and returns only rows where the author picked an action.
+  function recCollectOpenTurns() {
+    const rows = document.querySelectorAll('#rec-open-turns-list .rec-open-turn-row');
+    const result = [];
+    rows.forEach(row => {
+      const turnId = row.getAttribute('data-turn-id');
+      const checked = row.querySelector('input[type="radio"]:checked');
+      if (!checked) return; // no action selected — skip
+      const note = (row.querySelector('.rec-open-turn-note') || {}).value || '';
+      result.push({ turnId, action: checked.value, note: note.trim() });
+    });
+    return result;
+  }
+
   function recShowStep(n) {
     recState.step = n;
     document.querySelectorAll('#ws-recovery-content .rec-step').forEach(el => {
@@ -8183,7 +8343,7 @@
       el.classList.toggle('done', s < n);
     });
     if (n === 2) recRenderMechCards();
-    if (n === 3) { recSyncSizeButtons(); recRenderActivityChips(); }
+    if (n === 3) { recSyncSizeButtons(); recRenderActivityChips(); recRenderOpenTurns(); }
   }
 
   function recRenderRecent() {
@@ -8290,6 +8450,9 @@
       planEl && planEl.focus();
       return;
     }
+    // Collect open-turn parking decisions (only rows with an action selected).
+    const openTurns = recCollectOpenTurns();
+
     const entry = {
       id: genId(),
       date: todayDateString(),
@@ -8314,7 +8477,9 @@
       mechSuppressedMastery: recState.mechSuppressedMastery,
       zeroMech: recState.zeroMech,
       size: recState.size,
-      plan: recState.plan
+      plan: recState.plan,
+      // open-turn parking: only rows where author picked an action
+      openTurns: openTurns
     };
     const recs = loadRecoveries();
     recs.push(entry);
@@ -8335,12 +8500,24 @@
       const anchorRef = entry.anchorSource
         ? `anchored to ${entry.anchorSource.time} Pilot Check`
         : 'no Pilot Check today — anchored at 5';
+      // Build open-turn parking summary if any turns were actioned.
+      let turnParkingSuffix = '';
+      if (entry.openTurns && entry.openTurns.length > 0) {
+        const carries = entry.openTurns.filter(t => t.action === 'carry').length;
+        const drops   = entry.openTurns.filter(t => t.action === 'drop').length;
+        const defers  = entry.openTurns.filter(t => t.action === 'defer').length;
+        const parts = [];
+        if (carries) parts.push(carries + ' carry');
+        if (defers)  parts.push(defers  + ' defer');
+        if (drops)   parts.push(drops   + ' drop');
+        turnParkingSuffix = ` + ${entry.openTurns.length} turn${entry.openTurns.length === 1 ? '' : 's'} parked (${parts.join(', ')})`;
+      }
       exps.unshift({
         id: genId(),
         title: `Recovery ${todayDateString()} — ${entry.size} · ${mechSummary}`,
         date: todayDateString(),
         observation: `Now → cog ${entry.cog} · emo ${entry.emo} · phy ${entry.phy} (from ${entry.anchorCog}/${entry.anchorEmo}/${entry.anchorPhy}; ${anchorRef}). Withdrawal: cog ${entry.diffCog} · emo ${entry.diffEmo} · phy ${entry.diffPhy} → tier ${entry.tier}, locus ${entry.locus}. Day-shape: ${entry.shapes.join(', ') || '—'}.${entry.note ? ' Note: ' + entry.note : ''}`,
-        impact: `Plan: ${planSnip}${entry.plan.length > 90 ? '…' : ''}`
+        impact: `Plan: ${planSnip}${entry.plan.length > 90 ? '…' : ''}${turnParkingSuffix}`
       });
       setExperiments('recovery-room', exps);
       renderExperiments('recovery-room');
@@ -10819,11 +10996,6 @@
       { kind: 'form',     label: 'Debrief form' },
       { kind: 'chapter',  label: 'Debrief chapter' },
       { kind: 'practice', label: 'Debrief practice' },
-    ],
-    'recovery-room': [
-      { kind: 'form',     label: 'Recover form' },
-      { kind: 'chapter',  label: 'Recover chapter' },
-      { kind: 'practice', label: 'Recover practice' },
     ],
   };
 
