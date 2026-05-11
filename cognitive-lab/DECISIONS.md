@@ -6,6 +6,18 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-11 · Heartbeat retired; Gauge area deleted; second central image becomes "the bookended day"
+
+**Decision.** The Gauge as a free-standing area and the heartbeat as the framework's second central image are both retired. Capacity management is reframed as an *outside loop* — Pilot Check opens the day, Recovery closes it, the turn cycle runs in the protected middle — rather than as an *inside beat* pulsing between every phase. The framework's two central images are now the cache-game (how the day's game is designed) and the bookended day (how the day is held).
+
+**Reasoning.** Continuous-read capacity instrumentation isn't shippable in the 8-week window; bookended discrete checks (morning Pilot Check + evening Recovery) are sufficient. Keeping the heartbeat as a load-bearing image while the underlying instrument is retired would create vocabulary debt. Cleaner to retire both and re-name the second central image around what's actually implemented.
+
+**Status.** Active. Hourly capacity feedback is parked as a future possibility; if it lands, the heartbeat may return as a name for that specific pattern.
+
+**References.** PR (this branch). `cognitive-lab/archive/heartbeat-retirement-2026-05-11.md` for the archived content. Quenton's design memo lives in the conversation history (Claude session 2026-05-11).
+
+---
+
 ## 2026-05-04 (later) · Move 2 (Comprehension Station arc) — orientation workshop, Walk Studio, C-before-F, iframe pattern, LAB-009 status
 
 **Decision.** Five sub-phases shipped in the Move 2 arc (branch `danversfleury/lab-course-tier`, 11 commits since the v0.4 session-close):

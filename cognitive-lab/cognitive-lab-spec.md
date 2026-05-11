@@ -164,7 +164,7 @@ a click target. Click → drawer.
 - Type: gauge / telemetry
 - Color: dark `#2d3142` with orange accent
 - Description: "The capacity instrument. Read at every boundary. Gates the day's mode."
-- Items: LAB-020, LAB-021
+- Items: (none — area retired, see archive/heartbeat-retirement-2026-05-11.md)
 - Artifacts:
   - existing capacity-checkin PoC (note: not in this folder yet — exists in user's other workspace)
   - `.context/turn-v0.1-map.html` (deck slide 11 + slide 17, multi-signal model)
@@ -334,8 +334,6 @@ a click target. Click → drawer.
   Selection heuristics. Fast-no protocols. (Lower priority once Frame works.)
 - **LAB-018** Trim chapter — `backlog` — trim-bench
 - **LAB-019** Run 1 week of formal Frame and capture lab notes — `backlog` — frame-workshop / archive
-- **LAB-020** Per-turn gauge entries (vs only per-day) — `backlog` — the-gauge
-- **LAB-021** Capacity check-in v0.2 (turn-aware data model) — `backlog` — the-gauge
 
 ### P2 — later
 

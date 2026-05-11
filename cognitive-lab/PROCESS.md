@@ -89,15 +89,11 @@ Originated from Jess's adventure-caching race story. Frame is the *game-design* 
 
 Three end-states: collected enough → finish line; tired/hurt with what you got → head home early; time runs out → buzzer. These map to End's three triggers (Done means delivered, capacity floor, bingo time).
 
-### The heartbeat
+### The bookended day
 
-The give-and-take rhythm of capacity check ↔ restoration. The Gauge reads, the result dispatches: cleared (continue) or grounded (insert recovery, re-read). This rhythm runs continuously throughout the day, between every phase.
+The day has two fixed posts: a Pilot Check at the start and a Recovery ritual at the end. Between them the turn cycle runs as many times as capacity allows. The bookends aren't optional and they aren't symmetric — the morning check rules out the dimensions that would make the day unsafe to begin; the evening recovery closes the loops the day opened so they don't bleed into tomorrow. Everything in between (Comprehend → Frame → Sync → Produce → Debrief, with Transition and Trim available throughout) inherits its license to run from the morning check and its right to end from the evening recovery.
 
-Without the heartbeat, the framework is just phases without honoring capacity. With it, every boundary is gated by capacity and every grounded reading dispatches targeted recovery.
-
-The Pilot Check is the explicit pre-flight version of the heartbeat (rule-out across cognitive / emotional / physical, dispatching recovery hours per red dimension). The Gauge is the continuous instrument the heartbeat runs on.
-
-**Together:** The cache-game is *how the day's game is designed* (Frame's metaphor). The heartbeat is *how the day's rhythm cycles* (the Gauge↔Recovery meta-rhythm). They compose; neither alone is the whole framework.
+**Together:** The cache-game is *how the day's game is designed* (Frame's metaphor). The bookended day is *how the day is held* — opened deliberately, closed deliberately, with the cycle living in the protected middle.
 
 ---
 
