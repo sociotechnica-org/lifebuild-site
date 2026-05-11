@@ -160,15 +160,8 @@ a click target. Click → drawer.
 
 ### Center / always-visible
 
-#### `the-gauge` — The Gauge
-- Type: gauge / telemetry
-- Color: dark `#2d3142` with orange accent
-- Description: "The capacity instrument. Read at every boundary. Gates the day's mode."
-- Items: (none — area retired, see archive/heartbeat-retirement-2026-05-11.md)
-- Artifacts:
-  - existing capacity-checkin PoC (note: not in this folder yet — exists in user's other workspace)
-  - `.context/turn-v0.1-map.html` (deck slide 11 + slide 17, multi-signal model)
-- Decoration: monitor / dashboard motif
+#### `the-gauge` — The Gauge (retired 2026-05-11)
+- Status: **area retired**; capacity-read role absorbed into Pilot Check (morning) and Recovery Room (evening). See `archive/heartbeat-retirement-2026-05-11.md` for the deleted area JSON, items, and design rationale.
 
 #### `director-desk` — Director's Desk (you)
 - Type: aux / persistent

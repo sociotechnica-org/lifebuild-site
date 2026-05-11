@@ -255,7 +255,7 @@ Click-to-place over drag-and-drop is a deliberate scope constraint, not a compro
 
 **Reasoning.** Earlier the cache-game was treated as Frame-only. The heartbeat insight (capacity check → restoration plan, in continuous cycle) named the meta-rhythm that makes every phase work. Both images compose: cache-game designs the day; heartbeat keeps you alive playing it.
 
-**Status.** Active. To propagate into chapter material as the framework's central images.
+**Status.** **Superseded 2026-05-11** — the heartbeat metaphor was retired in favor of "the bookended day" as the framework's second central image. See the 2026-05-11 entry at the top of this file.
 
 **References.** Captured in `cognitive-lab/PROCESS.md`. Cache-game origin: Jess's adventure-caching race story.
 
@@ -267,9 +267,9 @@ Click-to-place over drag-and-drop is a deliberate scope constraint, not a compro
 
 **Reasoning.** The PoC has features the Pilot Check doesn't (morning-after test, withdrawal/replenishment bank, color verdict, history). The Pilot Check has features the PoC doesn't (three-dimension breakdown, rule-out threshold, targeted prescription). Each is half-built. Together they're the complete instrument. The author named the convergence; coexistence as separate tools would be the duplication trap.
 
-**Status.** Architecture decided; merger queued as **LAB-025** (Make the Gauge a workshop, embed capacity check-in). Work is post-current-period.
+**Status.** **Superseded 2026-05-11** — the Gauge area was retired entirely; the merger path described here is the path *not* taken. Pilot Check absorbed the capacity-read role; the standalone capacity check-in instrument was retired with the Gauge. LAB-025 (the merger queue item) was deleted in the heartbeat-retirement PR. See the 2026-05-11 entry at the top of this file.
 
-**References.** `cognitive-lab/cognitive-lab-v0.1.html` (item LAB-025), `larry-moleman/PLAYS.md` (Merge-Duplicate-Tools play).
+**References.** Originally tracked as LAB-025 (now deleted). `larry-moleman/PLAYS.md` (Merge-Duplicate-Tools play).
 
 ---
 
