@@ -9835,7 +9835,7 @@
           narrative: '**Welcome to the Comprehend Station tour.**\n\nThis walk is the meta-loop on purpose: you\'re using Comprehend Station to learn about Comprehend Station. The right pane is a live lab booted to the **Floor view**.\n\n**No state will be modified** — every step is read-only. Click around freely.\n\nClick **Next** to begin.'
         },
         {
-          narrative: '**The Floor.**\n\nLook at the right pane. The middle band shows the leg phases left-to-right: **Comprehend** · Frame · Sync · Produce · Debrief · Recover.\n\n**Comprehend is first** (C-before-F floor reorder, shipped today). The reasoning: orientation precedes commitment. You can\'t pick a Frame intelligently without first re-immersing in where you are.\n\nClick **Next**.'
+          narrative: '**The Floor.**\n\nLook at the right pane. The turn-cycle band shows the five turn phases left-to-right: **Comprehend** · Frame · Sync · Produce · Debrief.\n\n**Comprehend is first** (C-before-F floor reorder). The reasoning: orientation precedes commitment. You can\'t pick a Frame intelligently without first re-immersing in where you are.\n\nThe band *above* the turn cycle is the day-band: **Pilot Check** opens the day, **Recovery** closes it. Recovery is a ritual, not a phase.\n\nClick **Next**.'
         },
         {
           narrative: '**Click the Comprehend area** in the right pane (the 🛠️ tile labeled "Comprehend · orient first"). The Comprehend Station drawer will open.\n\nThis is the workshop you\'re standing in right now (but rendered inside its own iframe inside itself — that\'s the recursion you noticed).\n\nClick **Next** once the drawer is open.'
@@ -9887,7 +9887,7 @@
       title: 'Turn v0.1 Map',
       kind: 'deck',
       subtitle: '21 slides · 4 acts · beginner-facing',
-      preview: 'The original turn-architecture deck. Frame · Comprehend · Sync · Produce · Debrief · Recover, with the two meta-disciplines (Trim · Transition).',
+      preview: 'The original turn-architecture deck. Five-phase turn cycle (Frame · Comprehend · Sync · Produce · Debrief) plus the day-band rituals (Pilot Check · Recovery) and meta-disciplines (Trim · Transition).',
       deck_href: 'turn-v0.1-map.html'
     }
   ];
@@ -10968,7 +10968,9 @@
                 + auto-detected from unresolved LAB-### refs).
      ────────────────────────────────────────────────────────────── */
 
-  // Each phase area declares the canonical slots it expects.
+  // Each turn-cycle phase area declares the canonical slots it expects.
+  // Ritual and meta areas have no declared slots (they're not on the
+  // form / chapter / practice scaffold).
   // A slot is "fulfilled" if the area has any item whose title
   // contains the slot kind word (case-insensitive, word boundary).
   const PHASE_SLOTS = {
