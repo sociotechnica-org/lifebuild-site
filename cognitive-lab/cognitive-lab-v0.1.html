@@ -3918,7 +3918,12 @@
     margin-top: 16px;
     gap: 8px;
   }
-  .rec-nav .ff-saved { margin-left: 0; }
+  .rec-nav .ff-saved {
+    margin-left: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .rec-nav .ff-saved.show { opacity: 1; }
 
   .rec-footer-legend {
     display: grid;
