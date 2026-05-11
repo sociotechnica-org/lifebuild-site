@@ -3688,6 +3688,270 @@
   #pc-recent-list .ws-recent-card.cleared { border-left-color: var(--success); }
   #pc-recent-list .ws-recent-card.grounded { border-left-color: var(--danger); }
 
+  /* ── Recovery Room Workshop ── three-screen flow: measure / shape / plan */
+  .rec-stepper {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .rec-stepper-item {
+    flex: 1;
+    padding: 6px 8px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    color: var(--faint);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .rec-stepper-item .rec-stepper-num { display: block; font-size: 14px; color: var(--accent-dim); }
+  .rec-stepper-item.active { background: rgba(77,170,87,0.10); border-color: var(--success); color: var(--fg); }
+  .rec-stepper-item.active .rec-stepper-num { color: var(--success); }
+  .rec-stepper-item.done { color: var(--accent-dim); }
+  .rec-stepper-item.done .rec-stepper-num::before { content: "✓ "; }
+
+  .rec-step { display: none; }
+  .rec-step.active { display: block; }
+
+  .rec-help {
+    font-size: 12px;
+    color: var(--accent-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.18);
+    border-left: 2px solid var(--success);
+    border-radius: 4px;
+  }
+  .rec-help strong { color: var(--fg); }
+
+  .rec-anchor {
+    font-size: 10.5px;
+    color: var(--faint);
+    font-style: italic;
+    padding: 2px 2px 0;
+    line-height: 1.4;
+  }
+  .rec-anchor.yoked { color: var(--accent-dim); font-style: normal; }
+  .rec-anchor .rec-anchor-delta {
+    font-family: var(--font-px);
+    font-style: normal;
+    margin-left: 6px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 9.5px;
+    letter-spacing: 0.5px;
+  }
+  .rec-anchor .rec-anchor-delta.down { background: rgba(196,77,77,0.18); color: var(--danger); }
+  .rec-anchor .rec-anchor-delta.flat { background: rgba(0,0,0,0.30); color: var(--faint); }
+  .rec-anchor .rec-anchor-delta.up   { background: rgba(77,170,87,0.18); color: var(--success); }
+
+  .rec-tier-readout {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--accent-dim);
+  }
+  .rec-tier-readout strong { color: var(--fg); }
+  .rec-tier-readout .rec-tier-tag {
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(77,170,87,0.12);
+    color: var(--success);
+    border: 1px solid var(--success);
+  }
+  .rec-tier-readout .rec-tier-tag.light  { background: rgba(77,170,87,0.10); color: var(--success); border-color: var(--success); }
+  .rec-tier-readout .rec-tier-tag.medium { background: rgba(212,175,55,0.10); color: var(--warning); border-color: var(--warning); }
+  .rec-tier-readout .rec-tier-tag.large  { background: rgba(196,77,77,0.10); color: var(--danger); border-color: var(--danger); }
+  .rec-tier-readout .rec-tier-tag.heavy  { background: rgba(196,77,77,0.18); color: var(--danger); border-color: var(--danger); font-weight: bold; }
+
+  .rec-chip-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 10px;
+  }
+  .rec-chip {
+    padding: 6px 12px;
+    border: 1px solid var(--panel-bd);
+    background: rgba(0,0,0,0.18);
+    color: var(--accent-dim);
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    transition: background 0.1s, border-color 0.1s, color 0.1s;
+  }
+  .rec-chip:hover { color: var(--fg); border-color: var(--accent-dim); }
+  .rec-chip.selected {
+    background: rgba(77,170,87,0.18);
+    border-color: var(--success);
+    color: var(--fg);
+  }
+  .rec-chip.disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .rec-note-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .rec-note-input:focus { outline: none; border-color: var(--accent-dim); }
+
+  .rec-mech-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .rec-mech-card {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--success);
+    background: rgba(77,170,87,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rec-mech-card .rec-mech-name {
+    font-family: var(--font-px);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--success);
+    font-weight: bold;
+  }
+  .rec-mech-card .rec-mech-why {
+    font-size: 12px;
+    color: var(--fg);
+    line-height: 1.5;
+  }
+  .rec-mech-card .rec-mech-rule {
+    font-size: 11px;
+    color: var(--accent-dim);
+    font-style: italic;
+  }
+  .rec-mech-card.warn {
+    border-color: var(--warning);
+    background: rgba(212,175,55,0.10);
+  }
+  .rec-mech-card.warn .rec-mech-name { color: var(--warning); }
+
+  .rec-empty-msg {
+    padding: 14px;
+    color: var(--accent-dim);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+    background: rgba(0,0,0,0.18);
+    border: 1px dashed var(--panel-bd);
+    border-radius: 6px;
+  }
+
+  .rec-size-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .rec-size-btn {
+    flex: 1;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid var(--panel-bd);
+    color: var(--accent-dim);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.1s, border-color 0.1s, color 0.1s;
+  }
+  .rec-size-btn:hover { color: var(--fg); }
+  .rec-size-btn.selected {
+    background: rgba(77,170,87,0.18);
+    border-color: var(--success);
+    color: var(--success);
+  }
+
+  .rec-section-label {
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin: 14px 0 6px;
+  }
+
+  .rec-plan-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 90px;
+    padding: 10px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  .rec-plan-textarea:focus { outline: none; border-color: var(--accent-dim); }
+
+  .rec-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    gap: 8px;
+  }
+  .rec-nav .ff-saved { margin-left: 0; }
+
+  .rec-footer-legend {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 18px;
+    padding: 10px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    font-size: 10.5px;
+    line-height: 1.4;
+  }
+  .rec-footer-legend .rec-leg-item { display: flex; flex-direction: column; gap: 2px; }
+  .rec-footer-legend .rec-leg-name {
+    font-family: var(--font-px);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--success);
+    font-weight: bold;
+  }
+  .rec-footer-legend .rec-leg-desc { color: var(--accent-dim); }
+
+  @media (max-width: 640px) {
+    .rec-footer-legend { grid-template-columns: repeat(2, 1fr); }
+    .rec-size-row { flex-wrap: wrap; }
+    .rec-size-btn { min-width: calc(50% - 3px); }
+  }
+
+  /* Recent recovery list (reuses ws-recent-card style) */
+  #rec-recent-list .ws-recent-card { border-left-color: var(--success); }
+
   /* ── Course Header bar (renders active leg + course at the top of every workshop drawer) ──
      Single-line glanceable strip. Quenton's "iconic skin" call: leg-number is a
      7-segment LED bar (book title: The 7 Turn Work Week) — current leg lit,
@@ -5122,6 +5386,149 @@
         </div>
       </div>
 
+      <!-- RECOVERY ROOM — three-screen flow: measure / shape / plan. Always-visible mechanism legend footer. -->
+      <div id="ws-recovery-content" style="display:none">
+
+        <!-- Stepper -->
+        <div class="rec-stepper" id="rec-stepper">
+          <div class="rec-stepper-item active" data-step="1"><span class="rec-stepper-num">1</span>Measure the need</div>
+          <div class="rec-stepper-item" data-step="2"><span class="rec-stepper-num">2</span>Shape the recovery</div>
+          <div class="rec-stepper-item" data-step="3"><span class="rec-stepper-num">3</span>Plan it</div>
+        </div>
+
+        <!-- STEP 1 — Depth & locus of need -->
+        <div class="rec-step active" id="rec-step-1">
+          <div class="workshop-section">
+            <div class="workshop-section-label">
+              Step 1 · Where are you now?
+              <span class="ws-date" id="rec-date"></span>
+            </div>
+            <div class="rec-help">
+              Sliders are preset to your latest Pilot Check. Move each to where you are <strong>now</strong>. We compute today's withdrawal as the diff.
+            </div>
+
+            <div class="pc-form">
+              <div class="pc-slider-row">
+                <div class="pc-slider-head">
+                  <label class="pc-label">Cognitive <span class="ff-hint">sleep, focus, decision energy</span></label>
+                  <span class="pc-val" id="rec-cog-val">5</span>
+                </div>
+                <input type="range" id="rec-cog" class="pc-slider" min="1" max="10" step="1" value="5">
+                <div class="pc-scale"><span>1 · depleted</span><span>10 · sharp</span></div>
+                <div class="rec-anchor" id="rec-cog-anchor">No Pilot Check today — starting at 5.</div>
+              </div>
+
+              <div class="pc-slider-row">
+                <div class="pc-slider-head">
+                  <label class="pc-label">Emotional <span class="ff-hint">overwrought, grief, rage, pre-occupied?</span></label>
+                  <span class="pc-val" id="rec-emo-val">5</span>
+                </div>
+                <input type="range" id="rec-emo" class="pc-slider" min="1" max="10" step="1" value="5">
+                <div class="pc-scale"><span>1 · overwrought</span><span>10 · centered</span></div>
+                <div class="rec-anchor" id="rec-emo-anchor">No Pilot Check today — starting at 5.</div>
+              </div>
+
+              <div class="pc-slider-row">
+                <div class="pc-slider-head">
+                  <label class="pc-label">Physical <span class="ff-hint">sick, intoxicated, hungry, in pain?</span></label>
+                  <span class="pc-val" id="rec-phy-val">5</span>
+                </div>
+                <input type="range" id="rec-phy" class="pc-slider" min="1" max="10" step="1" value="5">
+                <div class="pc-scale"><span>1 · sick / exhausted</span><span>10 · strong</span></div>
+                <div class="rec-anchor" id="rec-phy-anchor">No Pilot Check today — starting at 5.</div>
+              </div>
+            </div>
+
+            <div class="rec-tier-readout" id="rec-tier-readout">
+              <span><strong>Withdrawal:</strong> <span id="rec-diffs">cog 0 · emo 0 · phy 0</span></span>
+              <span>Locus: <strong id="rec-locus">—</strong> · size: <span class="rec-tier-tag light" id="rec-tier-tag">light</span></span>
+            </div>
+          </div>
+
+          <div class="rec-nav">
+            <button class="ff-btn" id="rec-reset-1">Reset to anchor</button>
+            <button class="ff-btn primary" id="rec-next-1">Next: shape →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 — Shape of recovery -->
+        <div class="rec-step" id="rec-step-2">
+          <div class="workshop-section">
+            <div class="workshop-section-label">Step 2 · Shape of the day</div>
+            <div class="rec-help">
+              Pick 1–2 chips that describe today. The tool maps them to recovery mechanisms.
+            </div>
+
+            <div class="rec-chip-row" id="rec-shape-chips">
+              <button class="rec-chip" data-shape="hard-thinking">Hard thinking</button>
+              <button class="rec-chip" data-shape="emotional-grind">Emotional grind</button>
+              <button class="rec-chip" data-shape="boring">Boring / under-stimulated</button>
+              <button class="rec-chip" data-shape="reactive">Reactive / no autonomy</button>
+              <button class="rec-chip" data-shape="wound-up">High arousal / wound up</button>
+              <button class="rec-chip" data-shape="physical">Physical grind</button>
+            </div>
+
+            <input type="text" class="rec-note-input" id="rec-shape-note" placeholder="Optional one-liner — e.g., 'the 3hr review meeting'" maxlength="200">
+
+            <div class="rec-section-label">Recommended mechanisms</div>
+            <div id="rec-mech-cards" class="rec-mech-cards">
+              <div class="rec-empty-msg">Pick a chip above (or click Next on a light day to skip to plan).</div>
+            </div>
+          </div>
+
+          <div class="rec-nav">
+            <button class="ff-btn" id="rec-back-2">← Back</button>
+            <button class="ff-btn primary" id="rec-next-2">Next: plan →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — Plan -->
+        <div class="rec-step" id="rec-step-3">
+          <div class="workshop-section">
+            <div class="workshop-section-label">Step 3 · The plan</div>
+            <div class="rec-help">
+              Pick a size. Click chips to seed the plan. Edit freely below. Then lock it in.
+            </div>
+
+            <div class="rec-section-label">Size</div>
+            <div class="rec-size-row" id="rec-size-row">
+              <button class="rec-size-btn" data-size="light">Light</button>
+              <button class="rec-size-btn" data-size="medium">Medium</button>
+              <button class="rec-size-btn" data-size="large">Large</button>
+              <button class="rec-size-btn" data-size="heavy">Heavy</button>
+            </div>
+
+            <div class="rec-section-label">Activity ideas <span class="ff-hint" style="font-weight:normal;text-transform:none;letter-spacing:0;color:var(--faint);">— click to add to plan</span></div>
+            <div class="rec-chip-row" id="rec-activity-chips"></div>
+
+            <div class="rec-section-label">Plan</div>
+            <textarea id="rec-plan-text" class="rec-plan-textarea" placeholder="What you'll actually do. Inline scheduling welcome — 'stretch now, meditate at bedtime, gym in the morning.'"></textarea>
+          </div>
+
+          <div class="rec-nav">
+            <button class="ff-btn" id="rec-back-3">← Back</button>
+            <div>
+              <button class="ff-btn primary" id="rec-lock">Lock plan</button>
+              <span class="ff-saved" id="rec-saved">✓ locked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Always-visible mechanism legend -->
+        <div class="rec-footer-legend">
+          <div class="rec-leg-item"><span class="rec-leg-name">Detach</span><span class="rec-leg-desc">Switch off — no work, no rumination.</span></div>
+          <div class="rec-leg-item"><span class="rec-leg-name">Relax</span><span class="rec-leg-desc">Low-arousal — parasympathetic down-shift.</span></div>
+          <div class="rec-leg-item"><span class="rec-leg-name">Mastery</span><span class="rec-leg-desc">A different hard thing — rebuilds when under-used.</span></div>
+          <div class="rec-leg-item"><span class="rec-leg-name">Control</span><span class="rec-leg-desc">Do something you don't owe anyone.</span></div>
+        </div>
+
+        <!-- Recent recoveries -->
+        <div class="workshop-section">
+          <div class="workshop-section-label" id="rec-recent-label">Today's Recoveries <span id="rec-recent-count"></span></div>
+          <div id="rec-recent-list" class="ws-recent-list"></div>
+        </div>
+      </div>
+
       <!-- DEBRIEF — sibling block, three internal modes (resting/editing/viewing). Mirrors Frame Workshop pattern but scoped to db- IDs. -->
       <div id="ws-debrief-content" style="display:none">
 
@@ -5538,7 +5945,8 @@
       "name": "Recovery Room",
       "type": "phase / insertable",
       "accent": "green",
-      "description": "Where Recover practice and chapter live. Pick a mode: Detach, Relax, Master, Choose. Includes Sleep as special insertion.",
+      "workshop": true,
+      "description": "Where Recover practice and chapter live. Three-screen flow: measure the need (depth & locus), shape the recovery (mechanism), plan it. Mechanisms: Detach, Relax, Master, Control. Sleep is the floor.",
       "items": ["LAB-015","LAB-016"],
       "artifacts": [
         { "label": "turn-v0.1-phases-and-leverage.md (Recover section)", "href": "turn-v0.1-phases-and-leverage.md" },
@@ -6725,6 +7133,7 @@
     const pilotContent = document.getElementById('ws-pilot-content');
     const debriefContent = document.getElementById('ws-debrief-content');
     const comprehendContent = document.getElementById('ws-comprehend-content');
+    const recoveryContent = document.getElementById('ws-recovery-content');
     if (area.workshop) {
       drawer.classList.add('workshop');
       wsView.classList.add('visible');
@@ -6736,24 +7145,35 @@
         if (pilotContent) pilotContent.style.display = 'block';
         if (debriefContent) debriefContent.style.display = 'none';
         if (comprehendContent) comprehendContent.style.display = 'none';
+        if (recoveryContent) recoveryContent.style.display = 'none';
         initPilotCheckWorkshop();
       } else if (areaId === 'debrief-booth') {
         frameModes.forEach(el => el.style.display = 'none');
         if (pilotContent) pilotContent.style.display = 'none';
         if (debriefContent) debriefContent.style.display = 'block';
         if (comprehendContent) comprehendContent.style.display = 'none';
+        if (recoveryContent) recoveryContent.style.display = 'none';
         initDebriefWorkshop();
       } else if (areaId === 'comprehend-station') {
         frameModes.forEach(el => el.style.display = 'none');
         if (pilotContent) pilotContent.style.display = 'none';
         if (debriefContent) debriefContent.style.display = 'none';
         if (comprehendContent) comprehendContent.style.display = 'block';
+        if (recoveryContent) recoveryContent.style.display = 'none';
         initComprehendWorkshop();
+      } else if (areaId === 'recovery-room') {
+        frameModes.forEach(el => el.style.display = 'none');
+        if (pilotContent) pilotContent.style.display = 'none';
+        if (debriefContent) debriefContent.style.display = 'none';
+        if (comprehendContent) comprehendContent.style.display = 'none';
+        if (recoveryContent) recoveryContent.style.display = 'block';
+        initRecoveryWorkshop();
       } else {
         frameModes.forEach(el => el.style.display = '');
         if (comprehendContent) comprehendContent.style.display = 'none';
         if (pilotContent) pilotContent.style.display = 'none';
         if (debriefContent) debriefContent.style.display = 'none';
+        if (recoveryContent) recoveryContent.style.display = 'none';
         if (areaId === 'frame-workshop') initFrameWorkshop();
       }
     } else {
@@ -6764,6 +7184,7 @@
       if (pilotContent) pilotContent.style.display = 'none';
       if (debriefContent) debriefContent.style.display = 'none';
       if (comprehendContent) comprehendContent.style.display = 'none';
+      if (recoveryContent) recoveryContent.style.display = 'none';
     }
 
     showAreaView(area);
@@ -6802,6 +7223,7 @@
     'frame-cards':   '/api/save/frame-cards',
     'debrief-cards': '/api/save/debrief-cards',
     'pilot-checks':  '/api/save/pilot-checks',
+    'recoveries':    '/api/save/recoveries',
     'courses':       '/api/save/courses',
     'legs':          '/api/save/legs'
   };
@@ -6809,6 +7231,7 @@
     'frame-cards':   '/exports/frame-cards.json',
     'debrief-cards': '/exports/debrief-cards.json',
     'pilot-checks':  '/exports/pilot-checks.json',
+    'recoveries':    '/exports/recoveries.json',
     'courses':       '/exports/courses.json',
     'legs':          '/exports/legs.json'
   };
@@ -6839,6 +7262,7 @@
       ['frame-cards',   FRAME_KEY],
       ['debrief-cards', DEBRIEF_KEY],
       ['pilot-checks',  PC_KEY],
+      ['recoveries',    REC_KEY],
       ['courses',       COURSE_KEY],
       ['legs',          LEG_KEY]
     ];
@@ -7504,6 +7928,503 @@
       renderExperiments('pilot-check-station');
       updateShelfTile('experiments', exps.length);
     }
+  });
+
+  /* ── Recovery Room Workshop ── three-screen flow: measure / shape / plan */
+  const REC_KEY = 'cognitive-lab-v0.1::recoveries';
+
+  function loadRecoveries() {
+    try { return JSON.parse(localStorage.getItem(REC_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveRecoveries(arr) {
+    try { localStorage.setItem(REC_KEY, JSON.stringify(arr)); } catch {}
+    postSave('recoveries', arr);
+  }
+
+  // In-flight state for the current 3-screen flow. Cleared on lock or area re-open.
+  let recState = null;
+
+  function recBlankState() {
+    return {
+      step: 1,
+      // Anchor reads (from latest PC, or 5 if none)
+      anchorCog: 5, anchorEmo: 5, anchorPhy: 5,
+      anchorSource: null,   // { id, time } if yoked to a Pilot Check, else null
+      // Current reads (where the user is now — what the sliders show)
+      cog: 5, emo: 5, phy: 5,
+      // Derived withdrawal (anchor − current, clamped to ≥ 0)
+      diffCog: 0, diffEmo: 0, diffPhy: 0,
+      tier: 'light',
+      locus: '—',
+      shapes: [],           // selected chips, max 2
+      note: '',
+      mechs: [],            // [{name, why, rule, warn?}]
+      mechSuppressedMastery: false,
+      zeroMech: false,
+      size: 'light',
+      plan: ''
+    };
+  }
+
+  // Withdrawal-based tier. Operates on the diffs (anchor − current), clamped to ≥ 0.
+  function recComputeTier(dCog, dEmo, dPhy) {
+    const m = Math.max(dCog, dEmo, dPhy);
+    const sum = dCog + dEmo + dPhy;
+    if (m >= 9 || sum >= 18) return 'heavy';
+    if (m >= 7) return 'large';
+    if (m >= 4) return 'medium';
+    return 'light';
+  }
+
+  function recComputeLocus(dCog, dEmo, dPhy) {
+    const max = Math.max(dCog, dEmo, dPhy);
+    if (max === 0) return '—';
+    const dom = [];
+    if (dCog === max) dom.push('cognitive');
+    if (dEmo === max) dom.push('emotional');
+    if (dPhy === max) dom.push('physical');
+    if (dom.length > 1) return 'mixed';
+    return dom[0];
+  }
+
+  // Find the latest pilot check from today (if any). Returns the entry or null.
+  function recLatestPilotCheckToday() {
+    const checks = loadPilotChecks();
+    if (!checks || !checks.length) return null;
+    const today = new Date().toISOString().slice(0, 10);
+    const todays = checks.filter(c => (c.date || '').slice(0, 10) === today);
+    if (!todays.length) return null;
+    // Pilot checks are appended chronologically; the last is the latest.
+    return todays[todays.length - 1];
+  }
+
+  function recApplyAnchor() {
+    const latest = recLatestPilotCheckToday();
+    const cogAnchorEl = document.getElementById('rec-cog-anchor');
+    const emoAnchorEl = document.getElementById('rec-emo-anchor');
+    const phyAnchorEl = document.getElementById('rec-phy-anchor');
+    if (latest) {
+      recState.anchorCog = latest.cog;
+      recState.anchorEmo = latest.emo;
+      recState.anchorPhy = latest.phy;
+      recState.anchorSource = { id: latest.id, time: (latest.date || '').slice(11) || latest.date };
+      const t = recState.anchorSource.time;
+      [cogAnchorEl, emoAnchorEl, phyAnchorEl].forEach(el => el && el.classList.add('yoked'));
+      if (cogAnchorEl) cogAnchorEl.innerHTML = `Started at <strong>${latest.cog}</strong> · ${escapeHTML(t)} Pilot Check`;
+      if (emoAnchorEl) emoAnchorEl.innerHTML = `Started at <strong>${latest.emo}</strong> · ${escapeHTML(t)} Pilot Check`;
+      if (phyAnchorEl) phyAnchorEl.innerHTML = `Started at <strong>${latest.phy}</strong> · ${escapeHTML(t)} Pilot Check`;
+    } else {
+      recState.anchorCog = 5;
+      recState.anchorEmo = 5;
+      recState.anchorPhy = 5;
+      recState.anchorSource = null;
+      [cogAnchorEl, emoAnchorEl, phyAnchorEl].forEach(el => {
+        if (!el) return;
+        el.classList.remove('yoked');
+        el.textContent = 'No Pilot Check today — starting at 5.';
+      });
+    }
+    // Seed slider positions at the anchor.
+    document.getElementById('rec-cog').value = recState.anchorCog;
+    document.getElementById('rec-emo').value = recState.anchorEmo;
+    document.getElementById('rec-phy').value = recState.anchorPhy;
+  }
+
+  function recRenderAnchorDeltas() {
+    // Append a small delta tag to the anchor line that reflects current diff direction.
+    const pairs = [
+      ['rec-cog-anchor', recState.anchorCog, recState.cog],
+      ['rec-emo-anchor', recState.anchorEmo, recState.emo],
+      ['rec-phy-anchor', recState.anchorPhy, recState.phy]
+    ];
+    pairs.forEach(([elId, anchor, current]) => {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const old = el.querySelector('.rec-anchor-delta');
+      if (old) old.remove();
+      const delta = anchor - current; // positive = withdrawal, negative = gain
+      const tag = document.createElement('span');
+      tag.className = 'rec-anchor-delta';
+      if (delta > 0)      { tag.classList.add('down'); tag.textContent = `−${delta} withdrawn`; }
+      else if (delta < 0) { tag.classList.add('up');   tag.textContent = `+${-delta} gained`; }
+      else                { tag.classList.add('flat'); tag.textContent = `±0`; }
+      el.appendChild(tag);
+    });
+  }
+
+  // Chip → mechanism weight map (rules of thumb from the research report).
+  // Each chip lists primary mechanism(s) with weights summed across selected chips.
+  const REC_SHAPE_MAP = {
+    'hard-thinking':   [{ mech: 'Detach',  w: 2, why: 'Cognitive overload — switch off (Sonnentag & Fritz).' }],
+    'emotional-grind': [{ mech: 'Detach',  w: 2, why: 'Emotional exhaustion clears overnight via detachment.' },
+                        { mech: 'Relax',   w: 1, why: 'Pair with low-arousal to settle the system.' }],
+    'wound-up':        [{ mech: 'Relax',   w: 2, why: 'Sympathetic-NS activation — low-arousal targets it.' }],
+    'boring':          [{ mech: 'Mastery', w: 2, why: 'Under-use depletion — a hard new thing rebuilds.' }],
+    'reactive':        [{ mech: 'Control', w: 2, why: 'Daytime autonomy was low — recover control first.' }],
+    'physical':        [{ mech: 'Relax',   w: 2, why: 'Physiological relaxation — let the body unspool.' }]
+  };
+
+  const REC_MECH_RULES = {
+    'Detach':  'Rule of thumb: no work talk, no work-checking. The system clears only when you let it.',
+    'Relax':   'Rule of thumb: low arousal beats fun. Bath, breath, music — not stimulation.',
+    'Mastery': 'Rule of thumb: a different hard thing. Skip when depleted — mastery on empty backfires.',
+    'Control': 'Rule of thumb: do something you owe no one. The point is choosing, not the activity.'
+  };
+
+  function recRecommendMechanisms(shapes, tier) {
+    if (!shapes || shapes.length === 0) {
+      // Zero-mechanism case if tier is light. Otherwise still no recommendation but warn user.
+      return { mechs: [], zeroMech: tier === 'light', suppressedMastery: false };
+    }
+    // Sum weights across selected chips.
+    const totals = {};
+    shapes.forEach(s => {
+      (REC_SHAPE_MAP[s] || []).forEach(entry => {
+        if (!totals[entry.mech]) totals[entry.mech] = { mech: entry.mech, w: 0, whys: [] };
+        totals[entry.mech].w += entry.w;
+        totals[entry.mech].whys.push(entry.why);
+      });
+    });
+
+    // Suppress Mastery if depth is large or heavy.
+    let suppressedMastery = false;
+    if ((tier === 'large' || tier === 'heavy') && totals['Mastery']) {
+      suppressedMastery = true;
+      delete totals['Mastery'];
+    }
+
+    const sorted = Object.values(totals).sort((a, b) => b.w - a.w);
+    // Cap at 2 mechanisms. If one chip and it lands cleanly on one mech, return one.
+    const top = sorted.slice(0, 2);
+
+    const mechs = top.map(t => ({
+      name: t.mech,
+      why:  t.whys[0],  // first-source why (concise); could join but stays clean
+      rule: REC_MECH_RULES[t.mech] || ''
+    }));
+
+    return { mechs, zeroMech: false, suppressedMastery };
+  }
+
+  // Activity pool — keyed by mechanism + locus. Chips merged and de-duped at render time.
+  const REC_ACTIVITY_POOL = {
+    // mechanism-keyed picks
+    'Detach':  ['no-work-talk dinner', 'novel', 'walk without phone', 'screen-off hour'],
+    'Relax':   ['bath', 'breath work', 'music', 'gentle stretch'],
+    'Mastery': ['hard new hobby thing', 'learn a hard chord', 'kata practice'],
+    'Control': ['do something you don\'t owe anyone', 'pick-your-own meal', 'a project just for you'],
+    // locus-keyed picks
+    'cognitive': ['meditate', 'nap', 'gentle walk-with-detachment'],
+    'emotional': ['run', 'lift', 'talk to someone', 'write it out', 'walk'],
+    'physical':  ['stretch', 'ibuprofen', 'hot tub', 'massage chair', 'gentle walk']
+  };
+
+  function recBuildActivityChips() {
+    const chips = [];
+    const seen = new Set();
+    const add = (a) => { if (a && !seen.has(a)) { seen.add(a); chips.push(a); } };
+    // mechanism picks first, then locus picks
+    (recState.mechs || []).forEach(m => {
+      (REC_ACTIVITY_POOL[m.name] || []).forEach(add);
+    });
+    if (recState.locus && recState.locus !== '—' && recState.locus !== 'mixed') {
+      (REC_ACTIVITY_POOL[recState.locus] || []).forEach(add);
+    } else if (recState.locus === 'mixed') {
+      ['cognitive','emotional','physical'].forEach(l => (REC_ACTIVITY_POOL[l] || []).forEach(add));
+    }
+    // Hard cap to keep it scannable (5–8).
+    return chips.slice(0, 8);
+  }
+
+  function recUpdateStep1Live() {
+    const c = parseInt(document.getElementById('rec-cog').value, 10);
+    const e = parseInt(document.getElementById('rec-emo').value, 10);
+    const p = parseInt(document.getElementById('rec-phy').value, 10);
+    recState.cog = c; recState.emo = e; recState.phy = p;
+    document.getElementById('rec-cog-val').textContent = c;
+    document.getElementById('rec-emo-val').textContent = e;
+    document.getElementById('rec-phy-val').textContent = p;
+    // Color the value the same way Pilot Check does — 1–3 red, 4–6 yellow, 7+ green.
+    [['rec-cog-val', c], ['rec-emo-val', e], ['rec-phy-val', p]].forEach(([id, v]) => {
+      const el = document.getElementById(id);
+      el.classList.remove('red','yellow');
+      if (v <= 3) el.classList.add('red');
+      else if (v <= 6) el.classList.add('yellow');
+    });
+    // Withdrawal = anchor − current, clamped to ≥ 0 (feeling better than anchor = no withdrawal).
+    const dCog = Math.max(0, recState.anchorCog - c);
+    const dEmo = Math.max(0, recState.anchorEmo - e);
+    const dPhy = Math.max(0, recState.anchorPhy - p);
+    recState.diffCog = dCog; recState.diffEmo = dEmo; recState.diffPhy = dPhy;
+    const tier  = recComputeTier(dCog, dEmo, dPhy);
+    const locus = recComputeLocus(dCog, dEmo, dPhy);
+    recState.tier = tier;
+    recState.locus = locus;
+    recState.size = tier; // size default mirrors tier until user changes it in step 3
+    document.getElementById('rec-diffs').textContent = `cog ${dCog} · emo ${dEmo} · phy ${dPhy}`;
+    document.getElementById('rec-locus').textContent = locus;
+    const tag = document.getElementById('rec-tier-tag');
+    tag.textContent = tier;
+    tag.classList.remove('light','medium','large','heavy');
+    tag.classList.add(tier);
+    recRenderAnchorDeltas();
+  }
+
+  function recResetStep1() {
+    // Reset sliders back to anchor — not 0. The anchor is the "starting" position.
+    document.getElementById('rec-cog').value = recState.anchorCog;
+    document.getElementById('rec-emo').value = recState.anchorEmo;
+    document.getElementById('rec-phy').value = recState.anchorPhy;
+    recUpdateStep1Live();
+  }
+
+  function recRenderMechCards() {
+    const host = document.getElementById('rec-mech-cards');
+    const { mechs, zeroMech, suppressedMastery } = recRecommendMechanisms(recState.shapes, recState.tier);
+    recState.mechs = mechs;
+    recState.zeroMech = zeroMech;
+    recState.mechSuppressedMastery = suppressedMastery;
+
+    if (zeroMech) {
+      host.innerHTML = `<div class="rec-empty-msg">Today was light. <strong>Sleep is the plan.</strong> No mechanism needed — head to step 3 and write it down.</div>`;
+      return;
+    }
+    if (mechs.length === 0) {
+      host.innerHTML = `<div class="rec-empty-msg">Pick a chip above to get a recommendation.</div>`;
+      return;
+    }
+    let warnHTML = '';
+    if (suppressedMastery) {
+      warnHTML = `<div class="rec-mech-card warn">
+        <div class="rec-mech-name">Mastery — suppressed</div>
+        <div class="rec-mech-why">Today's depth is ${escapeHTML(recState.tier)}. Mastery on a depleted day backfires (Bakker / Stenfors). Choose another mechanism.</div>
+      </div>`;
+    }
+    host.innerHTML = warnHTML + mechs.map(m => `
+      <div class="rec-mech-card">
+        <div class="rec-mech-name">${escapeHTML(m.name)}</div>
+        <div class="rec-mech-why">${escapeHTML(m.why)}</div>
+        <div class="rec-mech-rule">${escapeHTML(m.rule)}</div>
+      </div>
+    `).join('');
+  }
+
+  function recSyncShapeChips() {
+    document.querySelectorAll('#rec-shape-chips .rec-chip').forEach(chip => {
+      const s = chip.getAttribute('data-shape');
+      chip.classList.toggle('selected', recState.shapes.includes(s));
+      // Disable un-selected chips when at cap (2) so the cap is visible.
+      const atCap = recState.shapes.length >= 2 && !recState.shapes.includes(s);
+      chip.classList.toggle('disabled', atCap);
+    });
+  }
+
+  function recRenderActivityChips() {
+    const host = document.getElementById('rec-activity-chips');
+    const chips = recBuildActivityChips();
+    if (chips.length === 0) {
+      host.innerHTML = '<div class="rec-empty-msg" style="flex:1;">No activity seeds — your plan textarea is yours to fill below.</div>';
+      return;
+    }
+    host.innerHTML = chips.map(a => `<button class="rec-chip" data-activity="${escapeHTML(a)}">${escapeHTML(a)}</button>`).join('');
+    host.querySelectorAll('.rec-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const txt = btn.getAttribute('data-activity');
+        const ta = document.getElementById('rec-plan-text');
+        const existing = ta.value.trim();
+        ta.value = existing ? existing + '\n' + txt : txt;
+        ta.focus();
+        recState.plan = ta.value;
+      });
+    });
+  }
+
+  function recSyncSizeButtons() {
+    document.querySelectorAll('#rec-size-row .rec-size-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.getAttribute('data-size') === recState.size);
+    });
+  }
+
+  function recShowStep(n) {
+    recState.step = n;
+    document.querySelectorAll('#ws-recovery-content .rec-step').forEach(el => {
+      el.classList.toggle('active', el.id === 'rec-step-' + n);
+    });
+    document.querySelectorAll('#rec-stepper .rec-stepper-item').forEach(el => {
+      const s = parseInt(el.getAttribute('data-step'), 10);
+      el.classList.toggle('active', s === n);
+      el.classList.toggle('done', s < n);
+    });
+    if (n === 2) recRenderMechCards();
+    if (n === 3) { recSyncSizeButtons(); recRenderActivityChips(); }
+  }
+
+  function recRenderRecent() {
+    const recs = loadRecoveries();
+    const list = document.getElementById('rec-recent-list');
+    const countEl = document.getElementById('rec-recent-count');
+    const labelEl = document.getElementById('rec-recent-label');
+
+    const today = new Date().toISOString().slice(0, 10);
+    const todays = recs.filter(r => (r.date || '').slice(0, 10) === today);
+
+    if (recs.length === 0) {
+      countEl.textContent = '';
+      if (labelEl) labelEl.firstChild.textContent = "Today's Recoveries ";
+      list.innerHTML = '<div class="ws-recent-empty">No recoveries yet. Run the flow above.</div>';
+      return;
+    }
+    countEl.textContent = todays.length > 0 ? '(' + todays.length + ')' : '';
+    if (labelEl) labelEl.firstChild.textContent = todays.length > 0 ? "Today's Recoveries " : 'Recent Recoveries ';
+
+    const reverse = recs.slice().reverse();
+    list.innerHTML = reverse.map(r => {
+      const time = (r.date || '').slice(11) || (r.date || '');
+      const mechs = (r.mechs && r.mechs.length) ? r.mechs.map(m => m.name).join(' + ') : (r.zeroMech ? 'Sleep' : '—');
+      const planSnip = (r.plan || '').split('\n')[0].slice(0, 70);
+      // Back-compat: older entries (pre-yoking) won't have diff* fields.
+      const hasDiffs = (typeof r.diffCog === 'number');
+      const diffSnip = hasDiffs ? `−${r.diffCog}/${r.diffEmo}/${r.diffPhy} · ` : '';
+      const summary = `${diffSnip}${escapeHTML(r.size || 'light')} · ${escapeHTML(mechs)}${planSnip ? ' — ' + escapeHTML(planSnip) : ''}`;
+      return `<div class="ws-recent-card">
+        <div class="rc-date">${escapeHTML(time)}</div>
+        <div class="rc-must">${summary}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function initRecoveryWorkshop() {
+    recState = recBlankState();
+    document.getElementById('rec-date').textContent = todayDateString();
+    document.getElementById('rec-shape-note').value = '';
+    document.getElementById('rec-plan-text').value = '';
+    recApplyAnchor();      // seeds anchor values + slider positions + anchor text
+    recUpdateStep1Live();  // computes diffs (all 0 at start since slider == anchor)
+    recSyncShapeChips();
+    recShowStep(1);
+    recRenderRecent();
+  }
+
+  // Wire controls (one-time bind on script load — DOM is in the page).
+  ['rec-cog','rec-emo','rec-phy'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', recUpdateStep1Live);
+  });
+  const recReset1 = document.getElementById('rec-reset-1');
+  if (recReset1) recReset1.addEventListener('click', recResetStep1);
+  const recNext1 = document.getElementById('rec-next-1');
+  if (recNext1) recNext1.addEventListener('click', () => recShowStep(2));
+  const recBack2 = document.getElementById('rec-back-2');
+  if (recBack2) recBack2.addEventListener('click', () => recShowStep(1));
+  const recNext2 = document.getElementById('rec-next-2');
+  if (recNext2) recNext2.addEventListener('click', () => {
+    // Capture note before leaving step 2
+    const noteEl = document.getElementById('rec-shape-note');
+    if (noteEl) recState.note = noteEl.value.trim();
+    recShowStep(3);
+  });
+  const recBack3 = document.getElementById('rec-back-3');
+  if (recBack3) recBack3.addEventListener('click', () => recShowStep(2));
+
+  document.querySelectorAll('#rec-shape-chips .rec-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (!recState) return;
+      const s = chip.getAttribute('data-shape');
+      const idx = recState.shapes.indexOf(s);
+      if (idx >= 0) {
+        recState.shapes.splice(idx, 1);
+      } else if (recState.shapes.length < 2) {
+        recState.shapes.push(s);
+      } // else: at cap, ignored
+      recSyncShapeChips();
+      recRenderMechCards();
+    });
+  });
+
+  document.querySelectorAll('#rec-size-row .rec-size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!recState) return;
+      recState.size = btn.getAttribute('data-size');
+      recSyncSizeButtons();
+    });
+  });
+
+  const recPlanText = document.getElementById('rec-plan-text');
+  if (recPlanText) recPlanText.addEventListener('input', () => {
+    if (recState) recState.plan = recPlanText.value;
+  });
+
+  const recLock = document.getElementById('rec-lock');
+  if (recLock) recLock.addEventListener('click', () => {
+    if (!recState) return;
+    const planEl = document.getElementById('rec-plan-text');
+    recState.plan = planEl ? planEl.value.trim() : '';
+    if (!recState.plan) {
+      planEl && planEl.focus();
+      return;
+    }
+    const entry = {
+      id: genId(),
+      date: todayDateString(),
+      // anchor reads (latest pilot check or 5 default)
+      anchorCog: recState.anchorCog,
+      anchorEmo: recState.anchorEmo,
+      anchorPhy: recState.anchorPhy,
+      anchorSource: recState.anchorSource, // {id, time} or null
+      // current reads (where the user said they are)
+      cog: recState.cog,
+      emo: recState.emo,
+      phy: recState.phy,
+      // computed withdrawal (anchor − current, clamped ≥ 0)
+      diffCog: recState.diffCog,
+      diffEmo: recState.diffEmo,
+      diffPhy: recState.diffPhy,
+      tier: recState.tier,
+      locus: recState.locus,
+      shapes: recState.shapes.slice(),
+      note: recState.note,
+      mechs: recState.mechs.slice(),
+      mechSuppressedMastery: recState.mechSuppressedMastery,
+      zeroMech: recState.zeroMech,
+      size: recState.size,
+      plan: recState.plan
+    };
+    const recs = loadRecoveries();
+    recs.push(entry);
+    saveRecoveries(recs);
+
+    const flashEl = document.getElementById('rec-saved');
+    if (flashEl) {
+      flashEl.classList.add('show');
+      setTimeout(() => flashEl.classList.remove('show'), 1800);
+    }
+
+    // Also log to the recovery-room Log as an experiment, mirroring Pilot Check pattern.
+    if (currentAreaId === 'recovery-room') {
+      const exps = getExperiments('recovery-room');
+      const mechSummary = entry.zeroMech ? 'Sleep'
+        : (entry.mechs.length ? entry.mechs.map(m => m.name).join(' + ') : 'no mechanism');
+      const planSnip = entry.plan.split('\n')[0].slice(0, 90);
+      const anchorRef = entry.anchorSource
+        ? `anchored to ${entry.anchorSource.time} Pilot Check`
+        : 'no Pilot Check today — anchored at 5';
+      exps.unshift({
+        id: genId(),
+        title: `Recovery ${todayDateString()} — ${entry.size} · ${mechSummary}`,
+        date: todayDateString(),
+        observation: `Now → cog ${entry.cog} · emo ${entry.emo} · phy ${entry.phy} (from ${entry.anchorCog}/${entry.anchorEmo}/${entry.anchorPhy}; ${anchorRef}). Withdrawal: cog ${entry.diffCog} · emo ${entry.diffEmo} · phy ${entry.diffPhy} → tier ${entry.tier}, locus ${entry.locus}. Day-shape: ${entry.shapes.join(', ') || '—'}.${entry.note ? ' Note: ' + entry.note : ''}`,
+        impact: `Plan: ${planSnip}${entry.plan.length > 90 ? '…' : ''}`
+      });
+      setExperiments('recovery-room', exps);
+      renderExperiments('recovery-room');
+      updateShelfTile('experiments', exps.length);
+    }
+
+    // Reset for next flow but stay on step 3 briefly so the flash is visible.
+    setTimeout(() => {
+      initRecoveryWorkshop();
+    }, 600);
   });
 
   /* ── Workshop mode state machine ── */
@@ -9735,6 +10656,7 @@
     merged._frameCards = loadFrameCards();
     merged._pilotChecks = loadPilotChecks();
     merged._debriefCards = loadDebriefCards();
+    merged._recoveries = loadRecoveries();
     merged._chunks = shadow.chunks || {};
     merged._experiments = shadow.experiments || {};
     merged._exported = new Date().toISOString();
@@ -9785,6 +10707,10 @@
         // Restore Debrief Cards if present
         if (Array.isArray(data._debriefCards)) {
           saveDebriefCards(data._debriefCards);
+        }
+        // Restore Recoveries if present
+        if (Array.isArray(data._recoveries)) {
+          saveRecoveries(data._recoveries);
         }
         if (currentAreaId) {
           const area = baseline.areas.find(a => a.id === currentAreaId);

@@ -7,6 +7,7 @@ Behavior:
   POST /api/save/frame-cards      body = JSON array, written to exports/frame-cards.json
   POST /api/save/debrief-cards    body = JSON array, written to exports/debrief-cards.json
   POST /api/save/pilot-checks     body = JSON array, written to exports/pilot-checks.json
+  POST /api/save/recoveries       body = JSON array, written to exports/recoveries.json
   POST /api/save/courses          body = JSON array, written to exports/courses.json
   POST /api/save/legs             body = JSON array, written to exports/legs.json
 
@@ -48,6 +49,7 @@ ALLOWED_TYPES = {
     "frame-cards":   "frame-cards.json",
     "debrief-cards": "debrief-cards.json",
     "pilot-checks":  "pilot-checks.json",
+    "recoveries":    "recoveries.json",
     "courses":       "courses.json",
     "legs":          "legs.json",
 }
