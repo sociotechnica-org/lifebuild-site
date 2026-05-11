@@ -24,7 +24,7 @@ Patterns that work:
 - **Lead with the recommendation.** "I lean X." Then give the reasoning. Don't survey options before committing.
 - **Tradeoff table when ≥2 options have real merit.** Columns: Option · What it gives you · What it costs · When it's right.
 - **Cite specifically when grounding.** "Sweller (CLT) says extraneous load reduction is the highest-ROI cognitive intervention" beats "the research suggests reducing load is good."
-- **Name the metaphor when it carries the design.** The cache-game made Frame's four-batch structure click; the heartbeat names the Gauge↔Recovery rhythm. Use them when they sharpen.
+- **Name the metaphor when it carries the design.** The cache-game made Frame's four-batch structure click; the bookended day names how the turn cycle is held (Pilot Check opens, Recovery closes). Use them when they sharpen.
 - **Flag your own uncertainty.** "I lean X but the experiment hasn't run yet" is honest and useful.
 
 ### 3. Push back
