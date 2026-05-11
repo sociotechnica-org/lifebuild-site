@@ -7,7 +7,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
   {
-    ignores: ['dist/**', '.astro/**', 'node_modules/**'],
+    ignores: ['dist/**', '.astro/**', 'node_modules/**', '**/.venv/**'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

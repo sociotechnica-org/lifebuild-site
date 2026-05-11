@@ -1,0 +1,30 @@
+[
+  {
+    "id": "journal-edition-2026-05-04",
+    "date": "2026-05-04",
+    "shelf": "edition",
+    "title": "2026-05-04 — Edition",
+    "driveUrl": null,
+    "driveId": null,
+    "format": "md",
+    "summary": "Two Explainer Theater experiment entries: comprehension-deck-v0.1 (rogaine spine re-immersion, early morning) and comprehension-deck-v0.2 + Comprehend Station tour (meta-loop dogfood, end of day). Both from deck-theater.experiments[] in the pre-migration JSON.",
+    "tags": ["explainer", "comprehension-deck", "meta-loop", "rogaine-arc"],
+    "filedAt": "2026-05-11T00:00:00Z",
+    "pendingDriveWrite": true,
+    "pendingNote": "Drive write pending — venv unavailable at filing time. Run: python3 cognitive-lab/file-to-drive.py --area journal --title \"2026-05-04 — Edition\" --content-file /tmp/edition-2026-05-04.md --format md --date 2026-05-04 --summary \"Comprehension deck v0.1 and v0.2 experiment entries from the rogaine arc.\" --tags explainer,comprehension-deck,meta-loop,rogaine-arc"
+  },
+  {
+    "id": "journal-edition-2026-04-30",
+    "date": "2026-04-30",
+    "shelf": "edition",
+    "title": "2026-04-30 — Edition",
+    "driveUrl": null,
+    "driveId": null,
+    "format": "md",
+    "summary": "Two lab notes (Wildcat Frame example; morning gauge worked/recovery turnaround) and five shipped artifacts (v0.2 deck, phases-and-leverage doc, hacks-today doc, cognitive lab plan, capacity-checkin PoC). All from archive.labNotes[] and archive.shipped[] in the pre-migration JSON.",
+    "tags": ["founding-session", "wildcat", "shipped", "gauge"],
+    "filedAt": "2026-05-11T00:00:00Z",
+    "pendingDriveWrite": true,
+    "pendingNote": "Drive write pending — venv unavailable at filing time. Run: python3 cognitive-lab/file-to-drive.py --area journal --title \"2026-04-30 — Edition\" --content-file /tmp/edition-2026-04-30.md --format md --date 2026-04-30 --summary \"Founding-session lab notes + 5 shipped artifacts.\" --tags founding-session,wildcat,shipped,gauge"
+  }
+]

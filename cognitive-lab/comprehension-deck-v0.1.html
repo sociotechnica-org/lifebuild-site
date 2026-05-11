@@ -397,6 +397,25 @@
   }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  @page { size: 13.33in 7.5in; margin: 0; }
+  @media print {
+    html, body, #deck {
+      overflow: visible !important;
+      height: auto !important;
+      width: auto !important;
+    }
+    body { background: var(--bg); }
+    #deck { scroll-snap-type: none !important; }
+    .slide {
+      height: 7.5in !important;
+      width: 13.33in !important;
+      page-break-after: always;
+      break-after: page;
+      scroll-snap-align: unset !important;
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+  }
 </style>
 </head>
 <body>

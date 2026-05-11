@@ -1,0 +1,90 @@
+[
+  {
+    "id": "strategy-cognitive-lab-plan-v2",
+    "date": "2026-05-01",
+    "title": "cognitive-lab-plan-v2.md",
+    "driveUrl": "https://drive.google.com/file/d/1w6jV0ZqVWCPqOesbfj2OpHbVlaVN7u-9/view?usp=drivesdk",
+    "driveId": "1w6jV0ZqVWCPqOesbfj2OpHbVlaVN7u-9",
+    "format": "md",
+    "summary": "Updated lab project plan written after the spatial-knowledge-UI literature review. Drops v0.2/v0.3 ideas the evidence flags as graveyards; reorders the roadmap around patterns the research supports. Companion to the v0.1-era cognitive-lab-plan.md.",
+    "tags": ["plan", "roadmap", "lab-architecture"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-cognitive-lab-plan",
+    "date": "2026-04-28",
+    "title": "cognitive-lab-plan.md",
+    "driveUrl": "https://drive.google.com/file/d/1yCM6Z7605zSgRTKyXReZOdeG8-C3RJl9/view?usp=drivesdk",
+    "driveId": "1yCM6Z7605zSgRTKyXReZOdeG8-C3RJl9",
+    "format": "md",
+    "summary": "Original v0.1-era lab project plan: spatial click-to-explore HTML artifact doubling as the lab plan and the hub for cognitive-load management work. Superseded by cognitive-lab-plan-v2.md but preserved as the v0.1-era artifact.",
+    "tags": ["plan", "roadmap", "lab-architecture", "legacy"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-cognitive-lab-spec",
+    "date": "2026-04-28",
+    "title": "cognitive-lab-spec.md",
+    "driveUrl": "https://drive.google.com/file/d/1H4ObEAb-Pf3ETz4vUfsiVMcEUeE5PJL1/view?usp=drivesdk",
+    "driveId": "1H4ObEAb-Pf3ETz4vUfsiVMcEUeE5PJL1",
+    "format": "md",
+    "summary": "Build spec for cognitive-lab-v0.1.html: pixel-art floor plan, click-to-open drawers, local storage shadow, JSON export. Visual style, panel structure, item taxonomy. The buildable spec underneath the plan.",
+    "tags": ["spec", "lab-architecture", "build"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-frame-research-and-practice",
+    "date": "2026-05-02",
+    "title": "frame-research-and-practice.md",
+    "driveUrl": "https://drive.google.com/file/d/1SaKz7cYTrZrS0bMJicBtWUdqg2J_7eut/view?usp=drivesdk",
+    "driveId": "1SaKz7cYTrZrS0bMJicBtWUdqg2J_7eut",
+    "format": "md",
+    "summary": "Chunky blocks for the Frame chapter — skeleton for Zelda to weave from. Covers the seven-field form, the research behind each field, the mechanism each field operationalizes, when to use it, a worked example, failure modes, and v0.2 open questions.",
+    "tags": ["framework", "frame-phase", "chapter-source", "7turn"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-turn-phases-and-leverage",
+    "date": "2026-04-30",
+    "title": "turn-v0.1-phases-and-leverage.md",
+    "driveUrl": "https://drive.google.com/file/d/1JtDNd6OnpfwSq4sJvFIbiUyb6KkLq6aq/view?usp=drivesdk",
+    "driveId": "1JtDNd6OnpfwSq4sJvFIbiUyb6KkLq6aq",
+    "format": "md",
+    "summary": "Phase-by-phase operating manual for the 7-turn cycle. What each phase does, the cognitive science behind it, the edges we have so far, and which phase deserves the most love first. Companion to turn-v0.1-map.md.",
+    "tags": ["framework", "7turn", "operating-manual", "phases"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-turn-hacks-today",
+    "date": "2026-04-30",
+    "title": "turn-v0.1-hacks-today.md",
+    "driveUrl": "https://drive.google.com/file/d/1pD8tiiiZ3jWxRHr-GyYqQaEeb-xNO3G6/view?usp=drivesdk",
+    "driveId": "1pD8tiiiZ3jWxRHr-GyYqQaEeb-xNO3G6",
+    "format": "md",
+    "summary": "Hack guide for running the 7-turn framework today, before Alexandria/Substrate/Cockpit/Ledger/Playbook exist as live systems. Satisficing-mode primitive tools: files, folders, git, AI windows, voice memos, the capacity check-in PoC, calendar.",
+    "tags": ["framework", "7turn", "operating-manual", "hacks"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-turn-map",
+    "date": "2026-04-30",
+    "title": "turn-v0.1-map.md",
+    "driveUrl": "https://drive.google.com/file/d/1Qo_NlCJVZ1nfhtUjuu6l6WhM1zPutkx3/view?usp=drivesdk",
+    "driveId": "1Qo_NlCJVZ1nfhtUjuu6l6WhM1zPutkx3",
+    "format": "md",
+    "summary": "The turn map source — ASCII diagram + commentary on the 7-turn cycle (Frame · Comprehend · Sync · Push · Debrief · Recover · Transition). Working map of the cognitive-load framework underlying The 7 Turn Work Week. Playground, not the answer.",
+    "tags": ["framework", "7turn", "map", "source"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "strategy-process",
+    "date": "2026-05-08",
+    "title": "PROCESS.md",
+    "driveUrl": "https://drive.google.com/file/d/1CItcSychGshO_trE9legIrwhgfUoSb1U/view?usp=drivesdk",
+    "driveId": "1CItcSychGshO_trE9legIrwhgfUoSb1U",
+    "format": "md",
+    "summary": "How the lab works as a living system: the six roles (Director + Quenton/Larry/Zelda/ghostwriter/grepzilla2), how the agents compose, how the lab feeds the book, and the rhythm that holds it all together. The lab's operating doc.",
+    "tags": ["process", "roles", "operating-doc"],
+    "filedAt": "2026-05-11T00:00:00Z"
+  }
+]
