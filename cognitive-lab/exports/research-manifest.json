@@ -1,0 +1,37 @@
+[
+  {
+    "id": "research-core-sources-reading-list",
+    "date": "2026-05-11",
+    "title": "Core Sources — reading list (22 refs)",
+    "driveUrl": "https://drive.google.com/file/d/1KVpCD4eiOCbyjEgDAdDXmarAL10wzz20/view?usp=drivesdk",
+    "driveId": "1KVpCD4eiOCbyjEgDAdDXmarAL10wzz20",
+    "format": "md",
+    "summary": "22 references from library.refs[] formatted as a clean reading list with author, year, and one-line gloss. Covers cognitive load, attention, capacity/recovery, aviation, military/industrial, and goal-setting traditions. Source of truth for the lab's evidence base.",
+    "tags": [
+      "core-sources",
+      "reading-list",
+      "cognitive",
+      "aviation",
+      "industrial"
+    ],
+    "filedAt": "2026-05-11T00:00:00Z"
+  },
+  {
+    "id": "research-recovery-experiences-sonnentag",
+    "date": "2026-05-11",
+    "title": "Recovery Experiences (Sonnentag & Fritz) — when/dosage/combos",
+    "driveUrl": "https://drive.google.com/file/d/1CxAErSeAxgwtCoNnFTfVnkcGGTVK8ERe/view?usp=drivesdk",
+    "driveId": "1CxAErSeAxgwtCoNnFTfVnkcGGTVK8ERe",
+    "format": "md",
+    "summary": "Practitioner-facing research report on the four Recovery Experiences (Detachment, Relaxation, Mastery, Control): when to deploy each, pairing patterns (D+R reduces strain; M+C builds engagement), dosage/diminishing returns, combo additivity, individual differences, recovery debt across chained days, and sleep's role as floor-reset distinct from the four. Feeds LAB-015 (Recover practice) and LAB-016 (Recover chapter).",
+    "tags": [
+      "recovery",
+      "sonnentag",
+      "research",
+      "recovery-room",
+      "LAB-015",
+      "LAB-016"
+    ],
+    "filedAt": "2026-05-11T15:31:05Z"
+  }
+]

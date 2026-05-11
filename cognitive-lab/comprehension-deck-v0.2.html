@@ -365,6 +365,25 @@
   }
   .lab-list .id { font-family: var(--font-px); color: var(--accent); }
   .lab-list .pri { font-family: var(--font-px); font-size: 11px; color: var(--accent-dim); text-align: right; letter-spacing: 1px; }
+
+  @page { size: 13.33in 7.5in; margin: 0; }
+  @media print {
+    html, body, #deck {
+      overflow: visible !important;
+      height: auto !important;
+      width: auto !important;
+    }
+    body { background: var(--bg); }
+    #deck { scroll-snap-type: none !important; }
+    .slide {
+      height: 7.5in !important;
+      width: 13.33in !important;
+      page-break-after: always;
+      break-after: page;
+      scroll-snap-align: unset !important;
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+  }
 </style>
 </head>
 <body>
