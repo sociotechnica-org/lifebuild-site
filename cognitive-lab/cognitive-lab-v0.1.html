@@ -2890,6 +2890,15 @@
     opacity: 0.85;
   }
 
+  /* Day-band: Pilot Check left, baseline rule middle, Recovery right */
+  .band-day { align-items: center; }
+  .band-rule {
+    flex: 1;
+    border-top: 1px solid var(--panel-bd);
+    align-self: center;
+    opacity: 0.4;
+  }
+
   /* Phase cycle band: arrows align with mid-row icons */
   .band-phase { align-items: center; }
   .band-phase .arrow { font-size: 18px; }
@@ -3956,6 +3965,81 @@
 
   /* Recent recovery list (reuses ws-recent-card style) */
   #rec-recent-list .ws-recent-card { border-left-color: var(--success); }
+
+  /* ── Open-turns section (Step 3 of Recovery) ── */
+  .rec-open-turns-section {
+    margin-top: 12px;
+  }
+  .rec-open-turn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    background: rgba(42,58,92,0.35);
+    border: 1px solid var(--panel-bd);
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .rec-open-turn-id {
+    font-family: var(--font-px);
+    font-size: 9px;
+    color: var(--accent-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .rec-open-turn-title {
+    font-size: 12px;
+    color: var(--fg);
+  }
+  .rec-open-turn-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .rec-turn-action-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-px);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--fg-dim);
+    cursor: pointer;
+    padding: 3px 7px;
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+  }
+  .rec-turn-action-label:has(input:checked) {
+    background: rgba(226,160,74,0.12);
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+  .rec-turn-action-label input[type="radio"] {
+    display: none;
+  }
+  .rec-open-turn-note {
+    font-size: 11px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-bd);
+    border-radius: 4px;
+    color: var(--fg);
+    padding: 4px 7px;
+    width: 100%;
+    resize: none;
+    font-family: inherit;
+    margin-top: 2px;
+  }
+  .rec-open-turn-note:focus { outline: none; border-color: var(--accent-dim); }
+  .rec-open-turns-empty {
+    font-size: 11px;
+    color: var(--fg-dim);
+    font-style: italic;
+    padding: 6px 0;
+  }
 
   /* ── Course Header bar (renders active leg + course at the top of every workshop drawer) ──
      Single-line glanceable strip. Quenton's "iconic skin" call: leg-number is a
@@ -5047,9 +5131,25 @@
     </div>
   </div>
 
-  <!-- Band 2: Phase cycle (single visual each).
+  <!-- Band 2: Day-band — bookended day (Pilot Check opens · Recovery closes) -->
+  <div class="band band-day">
+    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber">
+      <div class="area-scene">✈️</div>
+      <div class="area-label">Pilot Check<span class="lbl-sub">ritual · open</span></div>
+      <div class="badge-row" id="badges-pilot-check-station"></div>
+    </div>
+    <div class="band-rule"></div>
+    <div class="area area-visual" data-area="recovery-room" data-accent="green">
+      <div class="area-scene">🌿</div>
+      <div class="area-label">Recover<span class="lbl-sub">ritual · close</span></div>
+      <div class="badge-row" id="badges-recovery-room"></div>
+    </div>
+  </div>
+
+  <!-- Band 3: Turn cycle (single visual each).
        Move 2a (v0.4 build): Comprehend leads. Per the C-before-F call —
-       you can't scope what you haven't read in. Frame follows. -->
+       you can't scope what you haven't read in. Frame follows.
+       Recovery moved to day-band; cycle ends at Debrief. -->
   <div class="band band-phase">
     <div class="area area-visual" data-area="comprehend-station" data-accent="amber">
       <div class="area-scene">🛠️</div>
@@ -5080,15 +5180,9 @@
       <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-debrief-booth"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="recovery-room" data-accent="green">
-      <div class="area-scene">🌿</div>
-      <div class="area-label">Recover<span class="lbl-sub">insertable</span></div>
-      <div class="badge-row" id="badges-recovery-room"></div>
-    </div>
   </div>
 
-  <!-- Band 3: Meta-disciplines -->
+  <!-- Band 4: Meta — Transition · Trim · Director's Desk -->
   <div class="band">
     <div class="area area-visual" data-area="transition-hallway" data-accent="tan">
       <div class="area-scene">🚪</div>
@@ -5099,20 +5193,6 @@
       <div class="area-scene">✂️</div>
       <div class="area-label">Trim<span class="lbl-sub">meta</span></div>
       <div class="badge-row" id="badges-trim-bench"></div>
-    </div>
-  </div>
-
-  <!-- Band 4: Instruments + Director (bottom) -->
-  <div class="band">
-    <div class="area area-visual" data-area="the-gauge" data-accent="dark">
-      <div class="area-scene">🎛️</div>
-      <div class="area-label">The Gauge<span class="lbl-sub">capacity</span></div>
-      <div class="badge-row" id="badges-the-gauge"></div>
-    </div>
-    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber">
-      <div class="area-scene">✈️</div>
-      <div class="area-label">Pilot Check<span class="lbl-sub">multi-signal</span></div>
-      <div class="badge-row" id="badges-pilot-check-station"></div>
     </div>
     <div class="area area-visual" data-area="director-desk" data-accent="dark">
       <div class="area-scene">🧑‍💻</div>
@@ -5481,6 +5561,15 @@
             <textarea id="rec-plan-text" class="rec-plan-textarea" placeholder="What you'll actually do. Inline scheduling welcome — 'stretch now, meditate at bedtime, gym in the morning.'"></textarea>
           </div>
 
+          <!-- Open turns at lock -->
+          <div class="workshop-section rec-open-turns-section">
+            <div class="workshop-section-label">Open turns at lock</div>
+            <div class="rec-help">
+              Any turn still open at end of day. Pick an action for each you want to record — carry, drop, or defer. Rows with no action selected are not saved.
+            </div>
+            <div id="rec-open-turns-list"></div>
+          </div>
+
           <div class="rec-nav">
             <button class="ff-btn" id="rec-back-3">← Back</button>
             <div>
@@ -5700,6 +5789,7 @@
       "id": "frame-workshop",
       "name": "Frame Workshop",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
@@ -5813,6 +5903,7 @@
       "id": "comprehend-station",
       "name": "Comprehend Station",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "amber",
       "workshop": true,
       "description": "Where the lab orients you. Re-immerse on prior legs, walk decks, take guided product walks of new features. The phase that loads remaining state from agents and prior work — first step in the cycle (C-before-F).",
@@ -5852,6 +5943,7 @@
       "id": "sync-floor",
       "name": "Sync Floor",
       "type": "phase / conditional",
+      "kind": "phase",
       "accent": "amber",
       "description": "Where Sync practice and chapter live. The phase that aligns humans and agents and confirms zones.",
       "items": ["LAB-011","LAB-012"],
@@ -5864,6 +5956,7 @@
       "id": "push-bay",
       "name": "Produce Bay",
       "type": "phase / conditional",
+      "kind": "phase",
       "accent": "amber",
       "description": "Where the Produce phase (formerly Push) practice and chapter live. Decision work, hardest first, with bingo-fuel stop signal.",
       "items": ["LAB-013","LAB-014"],
@@ -5877,6 +5970,7 @@
       "id": "debrief-booth",
       "name": "Debrief Booth",
       "type": "phase / required",
+      "kind": "phase",
       "accent": "blue",
       "workshop": true,
       "description": "Where Debrief practice and chapter live. Closes the cycle, captures, sets up the next gauge read. Currently the urgent priority — its absence is the gap that creates session-end integration debt.",
@@ -5919,7 +6013,8 @@
     {
       "id": "recovery-room",
       "name": "Recovery Room",
-      "type": "phase / insertable",
+      "type": "ritual / end-of-day",
+      "kind": "ritual",
       "accent": "green",
       "workshop": true,
       "description": "Where Recover practice and chapter live. Three-screen flow: measure the need (depth & locus), shape the recovery (mechanism), plan it. Mechanisms: Detach, Relax, Master, Control. Sleep is the floor.",
@@ -5931,56 +6026,10 @@
       "notes": []
     },
     {
-      "id": "the-gauge",
-      "name": "The Gauge",
-      "type": "gauge / telemetry",
-      "accent": "dark",
-      "description": "The capacity instrument. Read at every boundary. Gates the day's mode. The continuous read-and-dispatch cycle (capacity ↔ restoration) is the framework's heartbeat.",
-      "items": ["LAB-020","LAB-021","LAB-025","LAB-030"],
-      "sources": [
-        { "label": "Capacity Check-In (the live instrument)", "href": "capacity-checkin.html" },
-        { "label": "turn-v0.1-map.html (slides 11 + 17, multi-signal model)", "href": "turn-v0.1-map.html" },
-        { "label": "PROCESS.md (heartbeat as one of two central images)", "href": "PROCESS.md" }
-      ],
-      "experiments": [
-        {
-          "id": "exp-gauge-2026-05-02-heartbeat-named",
-          "title": "Heartbeat named as second central image",
-          "date": "2026-05-02 (afternoon)",
-          "observation": "The give-and-take of capacity check ↔ restoration plan was named as the framework's meta-rhythm. Not just a phase — the rhythm that makes every phase work. Capacity reading dispatches: cleared (continue) or grounded (insert recovery, re-read). The cycle runs continuously, between every phase, across days.",
-          "impact": "Now treated as one of two central images for the framework, alongside the cache-game (Frame's organizing metaphor). The cache-game designs the day; the heartbeat keeps you alive playing it. Captured as a chunk on this area; queued for integration into the deck (LAB-030)."
-        },
-        {
-          "id": "exp-gauge-2026-05-02-merger-architecture",
-          "title": "Capacity check-in + Pilot Check converge into unified Gauge",
-          "date": "2026-05-02 (morning)",
-          "observation": "The capacity check-in PoC and the Pilot Check Station are different views of the same instrument. Each is half-built; together they're the complete instrument. The PoC has felt-sense + bank metaphor + morning-after; the Pilot Check has three-dimension rule-out + targeted prescription. Naming them as separate areas was creating duplication.",
-          "impact": "Architecture decided: merger queued as LAB-025 (Make the Gauge a workshop, embed capacity check-in). Pilot Check Station may dissolve into a use-pattern of the Gauge after the merger."
-        }
-      ],
-      "chunks": [
-        {
-          "id": "chunk-hash-house-gauge-pilot-check",
-          "title": "Hash house = Pilot Check visit (refuel, re-orient, decide)",
-          "summary": "The lab's heartbeat IS the hash house. Pilot Check = hash-house visit: refuel, re-orient, decide whether to continue. A tightening of an existing instrument, not a new one.",
-          "body": "In rogaining, the **hash house** is the central base camp. Racers return there to refuel, check time, re-orient, and decide whether to continue the current route or revise. Elite racers treat each hash-house visit as a decision point, not just a rest stop: they assess their capacity against remaining time and course, then commit or pivot.\n\nThe lab's Pilot Check is the hash house visit. The parallels are direct:\n\n- **Refuel** → capacity read (Cognitive / Emotional / Physical sliders).\n- **Re-orient** → Gauge dispatch (cleared or grounded) + diagnosis of which dimension is red.\n- **Decide whether to continue** → Full Turn vs. Partial Turn vs. Recovery insertion.\n\nThis framing tightens an instrument that already exists — it doesn't add a new one. The Gauge is the continuous instrument (between every phase); the Pilot Check is the explicit pre-leg hash-house visit (before a Full Turn starts).\n\nPractical implication: the Pilot Check form can be framed to the author as 'you're at the hash house — what's your read?' rather than 'complete this checklist.' The framing change may improve compliance on sessions where the operator is inclined to skip the check. The hash-house visit is non-optional in rogaining; that normative weight transfers.\n\nThe Debrief's 'Capacity + next' field closes the loop: post-leg gauge read = leaving the hash house for the next leg.\n\nCross-ref: chunk-gauge-heartbeat (The Gauge) — the heartbeat is the continuous rhythm; the hash house is the explicit check-in point within that rhythm."
-        },
-        {
-          "id": "chunk-gauge-heartbeat",
-          "title": "The heartbeat — capacity ↔ restoration as meta-rhythm",
-          "summary": "The continuous Gauge-read-and-dispatch cycle is the framework's beating rhythm. Without it, the framework is just phases without honoring capacity.",
-          "body": "The framework has two central images. The cache-game (Jess's contribution) names how the day's game gets designed — Frame as the game-design moment. The heartbeat names how the day's rhythm cycles.\n\nThe heartbeat: capacity check → action plan → capacity check → action plan. The Gauge reads, the result dispatches: cleared (continue with the planned phase) or grounded (insert recovery, re-read). The cycle runs continuously throughout the day, between every phase, across days.\n\nWith the heartbeat, every phase boundary is gated by capacity and every grounded reading dispatches a targeted recovery. Without it, the cycle just runs through phases regardless of state — and the framework collapses into ritual.\n\nThe Pilot Check is the explicit pre-flight version of the heartbeat (rule-out across cognitive / emotional / physical, dispatching recovery hours per red dimension). The Gauge is the continuous instrument the heartbeat runs on.\n\nThe two images compose. The cache-game is *how the day's game is designed.* The heartbeat is *how the day's rhythm cycles.* Neither alone is the framework; together they make the practice live."
-        }
-      ],
-      "notes": [
-        "The capacity check-in is the felt-sense layer of the Gauge. It's been doing real recovery-planning work and is the seed the Gauge grows from.",
-        "2026-04-30 — The morning gauge worked (recovery turnaround)."
-      ]
-    },
-    {
       "id": "director-desk",
       "name": "Director's Desk",
       "type": "aux / persistent",
+      "kind": "meta",
       "accent": "dark",
       "description": "Your seat. Where the Frame card sits today, where lab notes get written. Also the home for cross-cutting lab work — agent composition, process docs, session integration.",
       "items": ["LAB-022","LAB-023","LAB-024","LAB-029","LAB-034","LAB-035","LAB-037","LAB-039","LAB-040","LAB-041","LAB-043","LAB-045","LAB-047","LAB-048","LAB-049","LAB-050","LAB-051"],
@@ -6134,15 +6183,23 @@
       "id": "pilot-check-station",
       "name": "Pilot Check Station",
       "type": "rule-out / pre-flight",
+      "kind": "ritual",
       "accent": "amber",
       "workshop": true,
       "description": "Three-dimension capacity rule-out — cognitive (king), emotional, physical. 0–3 on any dimension = grounded. Output dispatches a targeted Recovery prescription. Like aviation IM SAFE: not measuring fitness, ruling out hazards.",
       "items": ["LAB-007","LAB-008"],
       "sources": [
         { "label": "turn-v0.1-map.html (deck slides 17–18 — multi-signal model)", "href": "turn-v0.1-map.html" },
-        { "label": "Book 1 capacity chapter — emotional / mental / physical (linked when chapter file lands in lab)", "href": "#" }
+        { "label": "Book 1 capacity chapter — emotional / mental / physical (linked when chapter file lands in lab)", "href": "#" },
+        { "label": "Capacity Check-In (felt-sense seed for the Pilot Check ritual)", "href": "capacity-checkin.html" }
       ],
       "chunks": [
+        {
+          "id": "chunk-hash-house-pilot-check",
+          "title": "Hash house = Pilot Check visit (refuel, re-orient, decide)",
+          "summary": "Pilot Check = hash-house visit at the start of the day: refuel, re-orient, decide whether to continue. The morning bookend of the bookended day.",
+          "body": "In rogaining, the **hash house** is the central base camp. Racers return to refuel, check time, re-orient, and decide whether to continue the current route or revise. Elite racers treat each visit as a decision point, not a rest stop: assess capacity against remaining time and course, then commit or pivot.\n\nThe morning Pilot Check is the hash-house visit that opens the day. The parallels are direct:\n\n- **Refuel** → capacity read (Cognitive / Emotional / Physical sliders).\n- **Re-orient** → dispatch verdict (cleared or grounded) + diagnosis of which dimension is red.\n- **Decide whether to continue** → Full Turn vs. Partial Turn vs. Recovery day.\n\nThe framing carries a normative weight the checklist framing doesn't: the hash-house visit is non-optional in rogaining. Skipping it doesn't make you faster; it makes you lost. The evening Recovery is the other bookend — closing the loops the day opened so they don't bleed into tomorrow. Together they hold the day: Pilot Check opens it deliberately, Recovery closes it deliberately, the turn cycle runs in the protected middle."
+        },
         {
           "id": "chunk-pilot-rule-out",
           "title": "Rule-out, not measurement",
@@ -6171,12 +6228,15 @@
           "impact": "Reframed Pilot Check architecture: three-dimension rule-out, sliders 1–10 per dimension, threshold ≤3 = red. Output dispatches a winged prescription: 1 hour workday recovery per red dimension. Drift / attention pull split off as a different tool (Push-phase monitoring, not pre-flight). Pilot Check operationally connects Book 1's capacity chapter (emotional/mental/physical) to Book 2's pre-flight ritual."
         }
       ],
-      "notes": []
+      "notes": [
+        "2026-04-30 — The morning Pilot Check worked (recovery turnaround)."
+      ]
     },
     {
       "id": "transition-hallway",
       "name": "Transition Hallway",
       "type": "meta-discipline",
+      "kind": "meta",
       "accent": "tan",
       "description": "Every phase boundary is taxed (Leroy 2009 attention residue). Close · reset · open. Practice surface for the boundary move. Same shape across micro / meso / macro / super-macro scales.",
       "items": ["LAB-005","LAB-006","LAB-031"],
@@ -6202,6 +6262,7 @@
       "id": "trim-bench",
       "name": "Trim Bench",
       "type": "meta-discipline",
+      "kind": "meta",
       "accent": "tan",
       "description": "Selection discipline within each phase. Lower priority once Frame is doing its job.",
       "items": ["LAB-017","LAB-018","LAB-033"],
@@ -6509,7 +6570,7 @@
       "priority": "P0",
       "area": "debrief-booth",
       "brief": "Why measurement closes the cycle. After-action-review patterns. Reflection theory.",
-      "full": "Why measurement closes the cycle. After-action-review patterns from military and aviation. Reflection theory (Dewey, Schon). How Debrief feeds the Gauge for the next turn."
+      "full": "Why measurement closes the cycle. After-action-review patterns from military and aviation. Reflection theory (Dewey, Schon). How Debrief grades the turn against its Frame card and queues the next leg."
     },
     "LAB-005": {
       "id": "LAB-005",
@@ -6544,8 +6605,8 @@
       "status": "backlog",
       "priority": "P0",
       "area": "pilot-check-station",
-      "brief": "Why the Gauge alone isn't enough. The three signals. Aviation precedent (IM SAFE + duty-time + cross-check).",
-      "full": "Why the Gauge alone isn't enough (single-signal systems fail under load). The three signals (felt, behavioral, temporal). Aviation precedent: IM SAFE checklist, duty-time rules, cross-checking instruments. The ironies of automation: you need more context when monitoring automated systems (Bainbridge)."
+      "brief": "Why the morning Pilot Check is the rule-out, not the fitness scan. The three signals (felt / behavioral / temporal). Aviation precedent (IM SAFE + duty-time + cross-check).",
+      "full": "Why the Pilot Check is rule-out, not measurement (single-signal capacity reads fail under load; the three-dimension multi-signal model is what keeps you honest at the morning bookend). The three signals (felt, behavioral, temporal). Aviation precedent: IM SAFE checklist, duty-time rules, cross-checking instruments. The ironies of automation: you need more context when monitoring automated systems (Bainbridge)."
     },
     "LAB-009": {
       "id": "LAB-009",
@@ -6646,24 +6707,6 @@
       "brief": "One week of disciplined Frame runs feeding into the Archive.",
       "full": "Run one full week of formal Frame practice. Capture lab notes for each turn. Feed findings into the Archive and the Frame form v1 revision cycle."
     },
-    "LAB-020": {
-      "id": "LAB-020",
-      "title": "Per-turn gauge entries (vs only per-day)",
-      "status": "backlog",
-      "priority": "P1",
-      "area": "the-gauge",
-      "brief": "Upgrade the gauge to record a reading at the start of each turn, not just daily.",
-      "full": "Upgrade the gauge to record a reading at the start of each turn, not just once per day. This feeds the multi-signal model and enables intra-day capacity tracking."
-    },
-    "LAB-021": {
-      "id": "LAB-021",
-      "title": "Capacity check-in v0.2 (turn-aware data model)",
-      "status": "backlog",
-      "priority": "P1",
-      "area": "the-gauge",
-      "brief": "Rebuild the check-in PoC with a turn-aware data model.",
-      "full": "Rebuild the capacity check-in PoC with a turn-aware data model. Each record tagged with turn ID, time-of-day, and which phase triggered the check-in. Enables correlation analysis between gauge readings and turn outcomes."
-    },
     "LAB-022": {
       "id": "LAB-022",
       "title": "Cowork integration (morning prompt opens Frame card)",
@@ -6690,15 +6733,6 @@
       "area": "director-desk",
       "brief": "Both Directors present in the lab simultaneously with shared state.",
       "full": "Multiplayer mode: both Directors (Danvers + Jess) present in the lab simultaneously. Shared gauge state, shared items, separate Frame cards. Real-time updates via WebSocket or polling."
-    },
-    "LAB-025": {
-      "id": "LAB-025",
-      "title": "Make the Gauge a workshop (embed capacity check-in)",
-      "status": "backlog",
-      "priority": "P1",
-      "area": "the-gauge",
-      "brief": "Promote the Gauge from a regular area to a workshop, with the capacity check-in PoC embedded as the instrument view.",
-      "full": "Same workshop pattern as Frame. Top half of drawer = the live instrument (capacity check-in PoC, embedded as iframe or directly merged), bottom half = the floor view (items, artifacts, notes, recent gauge readings as cards). Eventually adds the multi-signal layers (behavioral, temporal) on top of the felt-sense PoC. Architecturally, makes the PoC's daily ritual a first-class part of the lab rather than a side artifact."
     },
     "LAB-026": {
       "id": "LAB-026",
@@ -6735,15 +6769,6 @@
       "area": "director-desk",
       "brief": "An AI agent generates the title for Log entries from observation + impact. Manual override stays available.",
       "full": "When a Log entry is saved (or after observation/impact are filled), an AI agent suggests a 4–8 word label that captures the entry's gist. User accepts, edits, or replaces. Belongs to the broader 'magical workshop' direction where AI teammates contribute structured content. Touches every workshop area, not just Frame. Requires an LLM call (Claude API) — server endpoint or client-side proxy. Lower-tier model (Haiku) sufficient for titling. Lives in director-desk because the capability spans the whole lab, not one area."
-    },
-    "LAB-030": {
-      "id": "LAB-030",
-      "title": "Integrate the heartbeat into the deck",
-      "status": "backlog",
-      "priority": "P1",
-      "area": "the-gauge",
-      "brief": "Update deck slides to surface the heartbeat as the framework's second central image alongside the cache-game.",
-      "full": "The framework now has two named central images. The cache-game is well-represented in the deck (Frame batches with subtitles tied to the metaphor). The heartbeat (capacity ↔ restoration as continuous meta-rhythm) is not yet in the deck. Update slides 11 and 17–18 (Gauge and multi-signal model) to name the heartbeat explicitly. Possibly add a slide that pairs the two images. Coordinates with chunk-gauge-heartbeat in the-gauge area."
     },
     "LAB-031": {
       "id": "LAB-031",
@@ -8108,6 +8133,62 @@
     });
   }
 
+  // ── Open-turns rendering ──
+  // Collects legs not yet debriefed/archived and renders a chip-row per turn.
+  // Each row: turn id, turn title (from Frame card's "in" field), and three
+  // radio actions (carry / drop / defer) plus an optional note input.
+  function recRenderOpenTurns() {
+    const container = document.getElementById('rec-open-turns-list');
+    if (!container) return;
+
+    const openLegs = loadLegs().filter(l =>
+      l && l.status !== 'debriefed' && l.status !== 'archived'
+    );
+
+    if (openLegs.length === 0) {
+      container.innerHTML = '<div class="rec-open-turns-empty">No open turns to park.</div>';
+      return;
+    }
+
+    container.innerHTML = openLegs.map(leg => {
+      // Resolve title from Frame card "in" field, fall back to "Untitled"
+      let title = 'Untitled';
+      if (leg.frame_card_id) {
+        const card = (loadFrameCards() || []).find(c => c && c.savedAt === leg.frame_card_id);
+        if (card && card.in) {
+          const raw = card.in;
+          title = (typeof raw === 'string' ? raw : JSON.stringify(raw)).split('\n')[0].slice(0, 80) || 'Untitled';
+        }
+      }
+      const escapedId = escapeHTML(leg.id);
+      const escapedTitle = escapeHTML(title);
+      return `<div class="rec-open-turn-row" data-turn-id="${escapedId}">
+        <div class="rec-open-turn-id">${escapedId}</div>
+        <div class="rec-open-turn-title">${escapedTitle}</div>
+        <div class="rec-open-turn-actions">
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="carry"> Carry</label>
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="drop"> Drop</label>
+          <label class="rec-turn-action-label"><input type="radio" name="rec-turn-action-${escapedId}" value="defer"> Defer</label>
+        </div>
+        <input type="text" class="rec-open-turn-note" placeholder="Optional note — e.g. 'carry into tomorrow's Frame' or 'blocked until Tuesday'" maxlength="200">
+      </div>`;
+    }).join('');
+  }
+
+  // Reads the open-turns UI and returns only rows where the author picked an action.
+  function recCollectOpenTurns() {
+    const rows = document.querySelectorAll('#rec-open-turns-list .rec-open-turn-row');
+    const result = [];
+    rows.forEach(row => {
+      const turnId = row.getAttribute('data-turn-id');
+      const checked = row.querySelector('input[type="radio"]:checked');
+      if (!checked) return; // no action selected — skip
+      const note = (row.querySelector('.rec-open-turn-note') || {}).value || '';
+      result.push({ turnId, action: checked.value, note: note.trim() });
+    });
+    return result;
+  }
+
   function recShowStep(n) {
     recState.step = n;
     document.querySelectorAll('#ws-recovery-content .rec-step').forEach(el => {
@@ -8119,7 +8200,7 @@
       el.classList.toggle('done', s < n);
     });
     if (n === 2) recRenderMechCards();
-    if (n === 3) { recSyncSizeButtons(); recRenderActivityChips(); }
+    if (n === 3) { recSyncSizeButtons(); recRenderActivityChips(); recRenderOpenTurns(); }
   }
 
   function recRenderRecent() {
@@ -8226,6 +8307,9 @@
       planEl && planEl.focus();
       return;
     }
+    // Collect open-turn parking decisions (only rows with an action selected).
+    const openTurns = recCollectOpenTurns();
+
     const entry = {
       id: genId(),
       date: todayDateString(),
@@ -8250,7 +8334,9 @@
       mechSuppressedMastery: recState.mechSuppressedMastery,
       zeroMech: recState.zeroMech,
       size: recState.size,
-      plan: recState.plan
+      plan: recState.plan,
+      // open-turn parking: only rows where author picked an action
+      openTurns: openTurns
     };
     const recs = loadRecoveries();
     recs.push(entry);
@@ -8271,12 +8357,24 @@
       const anchorRef = entry.anchorSource
         ? `anchored to ${entry.anchorSource.time} Pilot Check`
         : 'no Pilot Check today — anchored at 5';
+      // Build open-turn parking summary if any turns were actioned.
+      let turnParkingSuffix = '';
+      if (entry.openTurns && entry.openTurns.length > 0) {
+        const carries = entry.openTurns.filter(t => t.action === 'carry').length;
+        const drops   = entry.openTurns.filter(t => t.action === 'drop').length;
+        const defers  = entry.openTurns.filter(t => t.action === 'defer').length;
+        const parts = [];
+        if (carries) parts.push(carries + ' carry');
+        if (defers)  parts.push(defers  + ' defer');
+        if (drops)   parts.push(drops   + ' drop');
+        turnParkingSuffix = ` + ${entry.openTurns.length} turn${entry.openTurns.length === 1 ? '' : 's'} parked (${parts.join(', ')})`;
+      }
       exps.unshift({
         id: genId(),
         title: `Recovery ${todayDateString()} — ${entry.size} · ${mechSummary}`,
         date: todayDateString(),
         observation: `Now → cog ${entry.cog} · emo ${entry.emo} · phy ${entry.phy} (from ${entry.anchorCog}/${entry.anchorEmo}/${entry.anchorPhy}; ${anchorRef}). Withdrawal: cog ${entry.diffCog} · emo ${entry.diffEmo} · phy ${entry.diffPhy} → tier ${entry.tier}, locus ${entry.locus}. Day-shape: ${entry.shapes.join(', ') || '—'}.${entry.note ? ' Note: ' + entry.note : ''}`,
-        impact: `Plan: ${planSnip}${entry.plan.length > 90 ? '…' : ''}`
+        impact: `Plan: ${planSnip}${entry.plan.length > 90 ? '…' : ''}${turnParkingSuffix}`
       });
       setExperiments('recovery-room', exps);
       renderExperiments('recovery-room');
@@ -9214,7 +9312,7 @@
           narrative: '**Welcome to the Comprehend Station tour.**\n\nThis walk is the meta-loop on purpose: you\'re using Comprehend Station to learn about Comprehend Station. The right pane is a live lab booted to the **Floor view**.\n\n**No state will be modified** — every step is read-only. Click around freely.\n\nClick **Next** to begin.'
         },
         {
-          narrative: '**The Floor.**\n\nLook at the right pane. The middle band shows the leg phases left-to-right: **Comprehend** · Frame · Sync · Produce · Debrief · Recover.\n\n**Comprehend is first** (C-before-F floor reorder, shipped today). The reasoning: orientation precedes commitment. You can\'t pick a Frame intelligently without first re-immersing in where you are.\n\nClick **Next**.'
+          narrative: '**The Floor.**\n\nLook at the right pane. The turn-cycle band shows the five turn phases left-to-right: **Comprehend** · Frame · Sync · Produce · Debrief.\n\n**Comprehend is first** (C-before-F floor reorder). The reasoning: orientation precedes commitment. You can\'t pick a Frame intelligently without first re-immersing in where you are.\n\nThe band *above* the turn cycle is the day-band: **Pilot Check** opens the day, **Recovery** closes it. Recovery is a ritual, not a phase.\n\nClick **Next**.'
         },
         {
           narrative: '**Click the Comprehend area** in the right pane (the 🛠️ tile labeled "Comprehend · orient first"). The Comprehend Station drawer will open.\n\nThis is the workshop you\'re standing in right now (but rendered inside its own iframe inside itself — that\'s the recursion you noticed).\n\nClick **Next** once the drawer is open.'
@@ -9266,7 +9364,7 @@
       title: 'Turn v0.1 Map',
       kind: 'deck',
       subtitle: '21 slides · 4 acts · beginner-facing',
-      preview: 'The original turn-architecture deck. Frame · Comprehend · Sync · Produce · Debrief · Recover, with the three meta-disciplines (Trim · Heartbeat · Transition).',
+      preview: 'The original turn-architecture deck. Five-phase turn cycle (Frame · Comprehend · Sync · Produce · Debrief) plus the day-band rituals (Pilot Check · Recovery) and meta-disciplines (Trim · Transition).',
       deck_href: 'turn-v0.1-map.html'
     }
   ];
@@ -10347,7 +10445,9 @@
                 + auto-detected from unresolved LAB-### refs).
      ────────────────────────────────────────────────────────────── */
 
-  // Each phase area declares the canonical slots it expects.
+  // Each turn-cycle phase area declares the canonical slots it expects.
+  // Ritual and meta areas have no declared slots (they're not on the
+  // form / chapter / practice scaffold).
   // A slot is "fulfilled" if the area has any item whose title
   // contains the slot kind word (case-insensitive, word boundary).
   const PHASE_SLOTS = {
@@ -10375,11 +10475,6 @@
       { kind: 'form',     label: 'Debrief form' },
       { kind: 'chapter',  label: 'Debrief chapter' },
       { kind: 'practice', label: 'Debrief practice' },
-    ],
-    'recovery-room': [
-      { kind: 'form',     label: 'Recover form' },
-      { kind: 'chapter',  label: 'Recover chapter' },
-      { kind: 'practice', label: 'Recover practice' },
     ],
   };
 

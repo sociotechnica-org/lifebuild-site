@@ -36,24 +36,24 @@ Then open `http://localhost:8765/cognitive-lab-v0.1.html`.
 
 The lab is a top-down, click-to-explore floor plan with four bands:
 
-**Band 1 — Reference / aux** (gestalt visuals, hover for label):
+**Band 1 — Reference / aux** (Band-1 holding pens, gestalt visuals, hover for label):
 
 - The Library (research)
 - The Archive (lab notes, decisions, shipped)
 - Deck Theater (the v0.2 presentation)
-- Backlog Wall (priority list)
+- Strategy & Plans
 
-**Band 2 — Phase cycle** (six rooms left-to-right):
+**Band 2 — Day-band** (the bookended day; two rituals with a baseline rule between them):
 
-- Frame · Comprehend · Sync · Produce (formerly Push) · Debrief · Recover
+- Pilot Check Station · Recovery Room
 
-**Band 3 — Meta-disciplines:**
+**Band 3 — Turn cycle** (five phases left-to-right, C-before-F):
 
-- Transition Hallway · Trim Bench
+- Comprehend · Frame · Sync · Produce · Debrief
 
-**Band 4 — Bottom (instruments + Director):**
+**Band 4 — Bottom (meta row):**
 
-- The Gauge · Pilot Check Station · Director's Desk
+- Transition Hallway · Trim Bench · Director's Desk
 
 Click any area opens a side drawer (drawer expands to 66vw if the area has `workshop: true`). Drawers contain:
 
@@ -87,15 +87,15 @@ Originated from Jess's adventure-caching race story. Maps to Frame's four-batch 
 
 Three end-states: collected enough → finish line; tired/hurt/done with what you got → head home early; time runs out → buzzer.
 
-### The heartbeat
+### The bookended day
 
-The give-and-take rhythm of capacity check ↔ restoration. The Gauge reads, the result dispatches: cleared (continue) or grounded (insert recovery, re-read). This rhythm runs continuously, between phases, across days. Without the heartbeat, the framework is just phases without honoring capacity. With it, every boundary is gated and every grounded reading dispatches targeted recovery.
+The day has two fixed posts: a Pilot Check at the start and a Recovery ritual at the end. Between them the turn cycle runs as many times as capacity allows. The bookends aren't optional and they aren't symmetric — the morning check rules out the dimensions that would make the day unsafe to begin; the evening recovery closes the loops the day opened so they don't bleed into tomorrow. Everything in between (Comprehend → Frame → Sync → Produce → Debrief, with Transition and Trim available throughout) inherits its license to run from the morning check and its right to end from the evening recovery.
 
-The Pilot Check is the explicit pre-flight version of the heartbeat (rule-out across cognitive / emotional / physical, dispatching recovery hours per red dimension). The Gauge is the continuous instrument the heartbeat runs on.
+**Together:** The cache-game is _how the day's game is designed_ (Frame's metaphor). The bookended day is _how the day is held_ — opened deliberately, closed deliberately, with the cycle living in the protected middle.
 
 ## The framework in one paragraph
 
-Knowledge work used to come in batches (mornings = email, afternoons = meetings). AI made it continuous — agents work 24/7, output is functionally infinite. Continuous-flow work breaks the people doing it because the management interface (calendars, project software, willpower) was built for batched work. The Turn is a structured cycle for AI-native work: six phases, three categories (required / conditional / insertable), gated by a continuously-read capacity gauge, paced by deliberate recovery. The framework borrows from cognitive load research, occupational health psychology, and industries that have long operated continuously (aviation, naval, manufacturing, medicine, sport).
+Knowledge work used to come in batches (mornings = email, afternoons = meetings). AI made it continuous — agents work 24/7, output is functionally infinite. Continuous-flow work breaks the people doing it because the management interface (calendars, project software, willpower) was built for batched work. The Turn is a structured cycle for AI-native work: six phases, three categories (required / conditional / insertable), gated by a morning Pilot Check and a closing Recovery ritual, paced by deliberate recovery. The framework borrows from cognitive load research, occupational health psychology, and industries that have long operated continuously (aviation, naval, manufacturing, medicine, sport).
 
 ## When you don't have the context
 

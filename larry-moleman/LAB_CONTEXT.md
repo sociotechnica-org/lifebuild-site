@@ -82,7 +82,8 @@ Find the area's `"experiments": [` and prepend the new entry. Newest-first order
 
 1. Add to the `items` dictionary at the bottom.
 2. Add the LAB-XXX id to the relevant area's `"items": [...]` array.
-3. Add the LAB-XXX id to Backlog Wall's `"items": [...]` array.
+
+(There is no separate Backlog Wall — the toolbar's Priority view is the cross-area backlog. Items appear there automatically by their `priority` field.)
 
 ### Updating an item's status
 
@@ -100,23 +101,24 @@ Find the area's `"chunks": [` and prepend the new chunk, or update an existing o
 
 ## Areas in the lab (for routing)
 
-| Area ID               | Name                | Workshop? |
-| --------------------- | ------------------- | --------- |
-| `frame-workshop`      | Frame Workshop      | yes       |
-| `comprehend-station`  | Comprehend Station  | no        |
-| `sync-floor`          | Sync Floor          | no        |
-| `push-bay`            | Produce Bay         | no        |
-| `debrief-booth`       | Debrief Booth       | no        |
-| `recovery-room`       | Recovery Room       | no        |
-| `the-gauge`           | The Gauge           | no        |
-| `pilot-check-station` | Pilot Check Station | yes       |
-| `transition-hallway`  | Transition Hallway  | no        |
-| `trim-bench`          | Trim Bench          | no        |
-| `library`             | The Library         | no        |
-| `archive`             | The Archive         | no        |
-| `backlog-wall`        | Backlog Wall        | no        |
-| `deck-theater`        | Deck Theater        | no        |
-| `director-desk`       | Director's Desk     | no        |
+| Area ID               | Name                | Kind        | Workshop? |
+| --------------------- | ------------------- | ----------- | --------- |
+| `pilot-check-station` | Pilot Check Station | ritual      | yes       |
+| `recovery-room`       | Recovery Room       | ritual      | yes       |
+| `comprehend-station`  | Comprehend Station  | phase       | yes       |
+| `frame-workshop`      | Frame Workshop      | phase       | yes       |
+| `sync-floor`          | Sync Floor          | phase       | no        |
+| `push-bay`            | Produce Bay         | phase       | no        |
+| `debrief-booth`       | Debrief Booth       | phase       | yes       |
+| `transition-hallway`  | Transition Hallway  | meta        | no        |
+| `trim-bench`          | Trim Bench          | meta        | no        |
+| `director-desk`       | Director's Desk     | meta        | no        |
+| `library`             | The Library         | holding-pen | no        |
+| `archive`             | The Archive         | holding-pen | no        |
+| `deck-theater`        | Deck Theater        | holding-pen | no        |
+| `strategy`            | Strategy & Plans    | holding-pen | no        |
+
+(The Gauge and Backlog Wall were retired; their content is archived in `cognitive-lab/archive/`.)
 
 This list will grow as more areas become workshops and as new areas are added.
 

@@ -75,6 +75,14 @@ spatial / game-y vibe without the canvas complexity.
 
 ## Layout (20 cols × 14 rows on a tile grid)
 
+> **Note (as of 2026-05-11):** the layout below describes the *original* v0.1 build spec. The current floor is post-PR3:
+> - Band 1: storage rooms — Library · Daily Journal · Deck Theater · Strategy & Plans
+> - Band 2 (new **day-band**): Pilot Check Station · (baseline rule) · Recovery Room — both `kind: ritual`
+> - Band 3 (turn cycle, five tiles, C-before-F): Comprehend · Frame · Sync · Produce · Debrief — all `kind: phase`
+> - Band 4 (meta row): Transition Hallway · Trim Bench · Director's Desk — all `kind: meta`
+>
+> The Gauge area and the Backlog Wall were retired (see `archive/heartbeat-retirement-2026-05-11.md` and Lab v0.5 entries in `DECISIONS.md`). The original layout diagram below is preserved as build history.
+
 The lab has four bands top-to-bottom:
 
 ```
@@ -160,15 +168,8 @@ a click target. Click → drawer.
 
 ### Center / always-visible
 
-#### `the-gauge` — The Gauge
-- Type: gauge / telemetry
-- Color: dark `#2d3142` with orange accent
-- Description: "The capacity instrument. Read at every boundary. Gates the day's mode."
-- Items: LAB-020, LAB-021
-- Artifacts:
-  - existing capacity-checkin PoC (note: not in this folder yet — exists in user's other workspace)
-  - `.context/turn-v0.1-map.html` (deck slide 11 + slide 17, multi-signal model)
-- Decoration: monitor / dashboard motif
+#### `the-gauge` — The Gauge (retired 2026-05-11)
+- Status: **area retired**; capacity-read role absorbed into Pilot Check (morning) and Recovery Room (evening). See `archive/heartbeat-retirement-2026-05-11.md` for the deleted area JSON, items, and design rationale.
 
 #### `director-desk` — Director's Desk (you)
 - Type: aux / persistent
@@ -334,8 +335,6 @@ a click target. Click → drawer.
   Selection heuristics. Fast-no protocols. (Lower priority once Frame works.)
 - **LAB-018** Trim chapter — `backlog` — trim-bench
 - **LAB-019** Run 1 week of formal Frame and capture lab notes — `backlog` — frame-workshop / archive
-- **LAB-020** Per-turn gauge entries (vs only per-day) — `backlog` — the-gauge
-- **LAB-021** Capacity check-in v0.2 (turn-aware data model) — `backlog` — the-gauge
 
 ### P2 — later
 
