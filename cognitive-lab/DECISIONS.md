@@ -6,6 +6,18 @@ Entries are reverse-chronological (newest first). Each has: date, decision, reas
 
 ---
 
+## 2026-05-11 · Frame form rollback — picker / Bonus / per-card Approach ripped from rendered form
+
+**Decision.** The Outcome-batch picker (Done means as typed-ref multi-select with cap), Bonus field, per-slot Approach unfold, free-text fallback, Course/Full-lab scope toggle, and day-level "How I'll work — overall" scaffold are removed from the rendered Frame form. The form returns to plain textareas across all four batches. The Outcome batch now pairs **Done means** with **What ruins this** (its both/and twin); the Safety batch keeps only **When to stop**. Batch subtitles rewritten across all four. Saved-card schema is preserved silently — legacy `must`-as-array, `stretch`, `must_notes`, and per-slot ref fields stay in localStorage; old chips still route to the lab item via the viewing-mode click handler, but the picker form is no longer rendered.
+
+**Reasoning.** Selection over generation is the right *long-run* shape for Frame (per LAB-027's argument: pick from the lab plan rather than re-type the goal). But it depends on a populated, well-maintained lab whose items are concrete enough to pick from. In current conditions the lab is being authored in parallel with the framework — items churn, titles drift, priorities reshuffle. Picking from a moving lab adds cognitive load instead of removing it. The per-card Approach unfold was treated as ceremony rather than a thinking prompt; empty unfolds were the dominant pattern. The fix isn't "make the picker better" — it's "earn the picker back when daily Frame is running reliably without it." Pairing "Done means" with "What ruins this" in the same batch surfaces the both/and trap structurally, which the spread-across-batches layout obscured.
+
+**Status.** Active. Shipped on branch `danvers/frame-rollback-outcome-ruin`. Restoration trigger captured in LAB-058: (1) daily Frame runs steadily for ≥ 2 weeks on the textarea form, and (2) the rogaine loop (off-board picks → Debrief pre-fill) is identifiable as the actual constraint on weekly planning quality. Until both are true, the picker stays out.
+
+**References.** Branch `danvers/frame-rollback-outcome-ruin`. `cognitive-lab/cognitive-lab-v0.1.html` (form markup ~5249–5301, FF_FIELDS / FF_LABELS ~7574–7579, form helpers ~7587–7625, viewing-mode renderer ~8323–8348, rollback comment block where renderFramePicker + handlers used to live ~8724–8732). Backlog: LAB-058 (this rollback's archeology + restoration trigger). Related items: LAB-027 (Frame v0.2 — plan-pointing + per-card Approach, *queued for status revisit by Larry*), LAB-036 (Frame Approach iconic skin, *queued for status revisit*), LAB-042 (Off-board picks → Debrief pre-fill, *queued for status revisit*).
+
+---
+
 ## 2026-05-04 (later) · Move 2 (Comprehension Station arc) — orientation workshop, Walk Studio, C-before-F, iframe pattern, LAB-009 status
 
 **Decision.** Five sub-phases shipped in the Move 2 arc (branch `danversfleury/lab-course-tier`, 11 commits since the v0.4 session-close):
