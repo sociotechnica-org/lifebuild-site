@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COGNITIVE LAB v0.1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   /* ── Reset ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,13 +27,18 @@
     --tile-a:      #4a3a2a;
     --tile-b:      #5a4a3a;
     --wall:        #2a2a3a;
-    --font-px:     'Courier New', Courier, monospace;
+    /* Alexandria typography.
+       --font-px is the historical name for the "UI" font (formerly pixel/Courier).
+       It now points to Inter — body and UI text everywhere.
+       --font-display is reserved for elegant serif moments (title, hero headings). */
+    --font-px:      'Inter', system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
   }
 
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-px);
     font-size: 13px;
     min-height: 100vh;
     overflow-x: hidden;
@@ -49,11 +57,10 @@
     border-bottom: 2px solid var(--panel-bd);
   }
   #toolbar h1 {
-    font-family: var(--font-px);
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
     color: var(--accent);
     flex: 1;
   }
@@ -114,11 +121,10 @@
   }
   .alt-view.visible { display: block; }
   .alt-heading {
-    font-family: var(--font-px);
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
     color: var(--accent);
     margin: 0 0 4px 0;
   }
@@ -2890,8 +2896,14 @@
     opacity: 0.85;
   }
 
-  /* Day-band: Pilot Check left, baseline rule middle, Recovery right */
-  .band-day { align-items: center; }
+  /* Day-band: Pilot Check (morning) left, Today's Frame middle, Recovery (evening) right. */
+  .band-day {
+    align-items: stretch;
+    gap: 8px;
+  }
+  .band-day > .area { flex: 1.5; min-width: 0; }
+  .band-day > #today-frame-strip { flex: 3; min-width: 0; }
+  /* Legacy band-rule (kept for older layouts that may reference it) */
   .band-rule {
     flex: 1;
     border-top: 1px solid var(--panel-bd);
@@ -2899,9 +2911,404 @@
     opacity: 0.4;
   }
 
+  /* ── Today's Frame Strip ──
+     Pinned heart-of-day surface. Compact, calm, always visible by default.
+     Collapsible. Eventually hosts a visual frame-on-a-map. */
+  .band-today-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: linear-gradient(180deg, rgba(74,123,212,0.10), rgba(74,123,212,0.04));
+    border: 2px solid rgba(74,123,212,0.45);
+    border-radius: 8px;
+    padding: 6px 12px;
+    gap: 4px;
+    box-shadow: 0 0 12px rgba(74,123,212,0.12) inset;
+  }
+  /* Empty state: collapse the framing visually. No big box around nothing. */
+  .band-today-frame.is-empty {
+    background: transparent;
+    border: 1px dashed rgba(74,123,212,0.35);
+    box-shadow: none;
+    padding: 4px 12px;
+  }
+  /* Honor [hidden] within the strip — beats my own display rules below. */
+  .band-today-frame [hidden] { display: none !important; }
+
+  .band-today-frame .tfs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .band-today-frame .tfs-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: var(--font-px);
+    color: var(--fg);
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  .band-today-frame .tfs-glyph { font-size: 14px; line-height: 1; }
+  .band-today-frame .tfs-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+  }
+  .band-today-frame .tfs-date {
+    font-size: 11px;
+    color: var(--accent-dim);
+    letter-spacing: 0.02em;
+  }
+  .band-today-frame .tfs-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .band-today-frame .tfs-open-btn,
+  .band-today-frame .tfs-empty-cta {
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .band-today-frame .tfs-open-btn:hover,
+  .band-today-frame .tfs-empty-cta:hover {
+    background: var(--accent);
+    color: #1a1a1a;
+  }
+  .band-today-frame .tfs-collapse-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--accent-dim);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1;
+  }
+  .band-today-frame .tfs-collapse-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .band-today-frame.collapsed .tfs-chev { transform: rotate(-90deg); }
+  .band-today-frame.collapsed .tfs-body { display: none; }
+  .band-today-frame .tfs-chev { transition: transform 0.15s; display: inline-block; }
+
+  .band-today-frame .tfs-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 2px;
+  }
+  .band-today-frame .tfs-empty {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 2px 4px;
+    color: var(--fg-dim);
+    font-size: 12px;
+    font-style: italic;
+    flex-wrap: wrap;
+  }
+  .band-today-frame .tfs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .band-today-frame .tfs-row {
+    display: grid;
+    gap: 10px;
+  }
+  .band-today-frame .tfs-row-scope { grid-template-columns: 1fr 1fr; }
+  .band-today-frame .tfs-row-outcome,
+  .band-today-frame .tfs-row-bonus,
+  .band-today-frame .tfs-row-stop { grid-template-columns: 1fr; }
+  .band-today-frame .tfs-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .band-today-frame .tfs-cell-label {
+    font-family: var(--font-px);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-dim);
+  }
+  .band-today-frame .tfs-cell-value {
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  .band-today-frame .tfs-cell-value:empty::after {
+    content: "—";
+    color: var(--fg-dim);
+    opacity: 0.6;
+  }
+  .band-today-frame .tfs-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .band-today-frame .tfs-chips:empty::after {
+    content: "—";
+    color: var(--fg-dim);
+    opacity: 0.6;
+    font-size: 13px;
+  }
+  .band-today-frame .tfs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background: rgba(74,123,212,0.18);
+    border: 1px solid rgba(74,123,212,0.45);
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--fg);
+  }
+  .band-today-frame .tfs-chips-sub .tfs-chip {
+    background: rgba(212,160,74,0.15);
+    border-color: rgba(212,160,74,0.40);
+    font-size: 11px;
+  }
+
+  @media (max-width: 720px) {
+    .band-today-frame .tfs-row-scope { grid-template-columns: 1fr; }
+    .band-day { flex-direction: column; }
+    .band-day > .area, .band-day > #today-frame-strip { flex: none; }
+  }
+
   /* Phase cycle band: arrows align with mid-row icons */
   .band-phase { align-items: center; }
   .band-phase .arrow { font-size: 18px; }
+
+  /* ── Stone-tile framework ──
+     Activated by data-tile-art="<name>" data-tile-art-frame="raw" on a tile.
+     The art image becomes the tile face; the panel border + background drop away;
+     a stone-tone radial backdrop fills the letterbox; the click is a slow stone-button
+     press (delayed openDrawer, descriptor surfaces on hover, art dims on press). */
+  .area-visual[data-tile-art] .area-scene {
+    font-size: 0;                /* hide emoji fallback (kept in DOM for icon lookup) */
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  .area-visual[data-tile-art] .tile-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.55));
+    transition: filter 0.25s ease, opacity 0.45s ease;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Raw frame — no colored accent border, no panel background. The art IS the tile face. */
+  .area-visual[data-tile-art-frame="raw"] {
+    background: transparent;
+    border-color: transparent;
+    /* Heavy slow press transition — feels like stone lowering, no bounce. */
+    transition:
+      transform 520ms cubic-bezier(0.55, 0.02, 0.45, 1),
+      box-shadow 520ms cubic-bezier(0.55, 0.02, 0.45, 1),
+      border-color 240ms ease;
+    will-change: transform;
+  }
+  .area-visual[data-tile-art-frame="raw"]:hover {
+    border-color: rgba(170, 220, 255, 0.35);
+    box-shadow: 0 0 12px rgba(170, 220, 255, 0.15);
+  }
+  /* Stone-tone radial backdrop — fills the letterbox so the tile feels like one solid block. */
+  .area-visual[data-tile-art-frame="raw"] .area-scene {
+    background: radial-gradient(ellipse at 50% 50%, #6b5b48 0%, #4a3d30 60%, #2e2620 100%);
+    border-radius: 6px;
+  }
+  .area-visual[data-tile-art-frame="raw"] .tile-art {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  /* Dormant ↔ Active cross-fade.
+     Dormant visible at rest; activated overlays at opacity 0.
+     Hover → cross-fade to activated (circuits go live). */
+  .area-visual[data-tile-art-frame="raw"] .tile-art-active { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"]:hover .tile-art-dormant { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"]:hover .tile-art-active { opacity: 1; }
+  /* Drawer-open: hold the activated art visible even when mouse leaves. */
+  .area-visual[data-tile-art-frame="raw"].active .tile-art-dormant { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"].active .tile-art-active { opacity: 1; }
+
+  /* Pressed: art dims so "depresses + dims" reads as one beat — circuits go quiet
+     under the buried tile, signaling "locked in." */
+  .area-visual[data-tile-art-frame="raw"] .tile-art-active {
+    transition: opacity 0.45s ease, filter 380ms ease-out;
+  }
+  .area-visual[data-tile-art-frame="raw"].active .tile-art-active {
+    filter: brightness(0.55) saturate(0.75);
+  }
+
+  /* Pressed state — tile recedes, locks in; inset shadow signals depth lost. */
+  .area-visual[data-tile-art-frame="raw"].active {
+    transform: translateY(2px) scale(0.985);
+    box-shadow:
+      inset 0 5px 14px rgba(0,0,0,0.6),
+      inset 0 -1px 3px rgba(0,0,0,0.3),
+      0 0 0 1px rgba(0,0,0,0.15) !important;
+  }
+
+  /* Descriptor — calm museum-plate styling.
+     Appears on hover, disappears on press (.active). Cormorant serif, muted gold. */
+  .area-visual[data-tile-art-frame="raw"] .area-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-size: 17px;
+    color: #c9b07a;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.65);
+    z-index: 3;
+    transition: opacity 220ms ease-out;
+  }
+  .area-visual[data-tile-art-frame="raw"]:hover .area-label { opacity: 1; }
+  .area-visual[data-tile-art-frame="raw"].active .area-label { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"] .area-label .lbl-sub {
+    opacity: 0.85;
+    color: #a89270;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.65);
+    margin-top: 1px;
+  }
+
+  /* Variant A — half-height interstitial.
+     Activated art full brightness; on hover, dim band fills bottom 38% with descriptor. */
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="half"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 38%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.65) 15%,
+      rgba(0,0,0,0.94) 45%,
+      rgba(0,0,0,0.97) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 0 0 6px 6px;
+    opacity: 0;
+    transition: opacity 220ms ease-out;
+  }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="half"]:hover::after { opacity: 1; }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="half"].active::after { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="half"] .area-label {
+    position: absolute;
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 6px;
+    height: auto;
+    background: transparent;
+    justify-content: flex-end;
+    padding-bottom: 2px;
+    text-align: center;
+  }
+
+  /* Variant B — focused halo. Soft radial pool of dimming behind descriptor only. */
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="halo"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 70% 30% at center 82%,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.55) 35%,
+      rgba(0,0,0,0.12) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 220ms ease-out;
+  }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="halo"]:hover::after { opacity: 1; }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="halo"].active::after { opacity: 0; }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="halo"]:hover .tile-art-active {
+    filter: brightness(0.82) saturate(0.95);
+  }
+  .area-visual[data-tile-art-frame="raw"][data-tile-active-variant="halo"] .area-label {
+    position: absolute;
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 10px;
+    height: auto;
+    background: transparent;
+    justify-content: flex-end;
+    text-align: center;
+  }
+
+  /* ── Cockpit-mode drawer adjustments ──
+     Past frames / past debriefs hide under a <details> until clicked, so cockpit rooms
+     stay quiet by default (today inline, history one click away). */
+  #drawer.cockpit-active .ws-recent-past,
+  #drawer.cockpit-active .db-recent-past {
+    margin-top: 8px;
+    border-top: 1px dashed var(--panel-bd);
+    padding-top: 6px;
+  }
+  #drawer.cockpit-active .ws-recent-past > summary,
+  #drawer.cockpit-active .db-recent-past > summary {
+    cursor: pointer;
+    font-family: var(--font-px);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--accent-dim);
+    padding: 4px 0;
+    list-style: none;
+  }
+  #drawer.cockpit-active .ws-recent-past > summary:hover,
+  #drawer.cockpit-active .db-recent-past > summary:hover {
+    color: var(--accent);
+  }
+  #drawer.cockpit-active .ws-recent-past[open] > summary,
+  #drawer.cockpit-active .db-recent-past[open] > summary {
+    margin-bottom: 6px;
+  }
+  #drawer.cockpit-active .ws-recent-past > summary::-webkit-details-marker,
+  #drawer.cockpit-active .db-recent-past > summary::-webkit-details-marker { display: none; }
+  #drawer.cockpit-active .ws-recent-past > summary::before,
+  #drawer.cockpit-active .db-recent-past > summary::before {
+    content: "▸ ";
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  #drawer.cockpit-active .ws-recent-past[open] > summary::before,
+  #drawer.cockpit-active .db-recent-past[open] > summary::before {
+    content: "▾ ";
+  }
 
   /* ── Badge row ── */
   .badge-row {
@@ -5109,8 +5516,8 @@
 
   <!-- Band 1: Reference / aux (gestalt visuals) -->
   <div class="band">
-    <div class="area area-visual area-gestalt" data-area="library" data-accent="warm">
-      <div class="area-scene scene-research">🔬</div>
+    <div class="area area-visual area-gestalt" data-area="library" data-accent="warm" data-tile-art="microscope-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
+      <div class="area-scene scene-research">🔬<img class="tile-art tile-art-dormant" src="assets/microscope-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/microscope-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Research Repository<span class="lbl-sub">research &amp; findings</span></div>
       <div class="badge-row" id="badges-library"></div>
     </div>
@@ -5133,14 +5540,64 @@
 
   <!-- Band 2: Day-band — bookended day (Pilot Check opens · Recovery closes) -->
   <div class="band band-day">
-    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber">
-      <div class="area-scene">✈️</div>
+    <div class="area area-visual" data-area="pilot-check-station" data-accent="amber" data-cockpit-mode="true" data-tile-art="pilot-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
+      <div class="area-scene">✈️<img class="tile-art tile-art-dormant" src="assets/pilot-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/pilot-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Pilot Check<span class="lbl-sub">ritual · open</span></div>
       <div class="badge-row" id="badges-pilot-check-station"></div>
     </div>
-    <div class="band-rule"></div>
-    <div class="area area-visual" data-area="recovery-room" data-accent="green">
-      <div class="area-scene">🌿</div>
+    <!-- Today's Frame display — pinned, lives between the morning bracket (Pilot Check)
+         and the evening bracket (Recover). Renders today's saved Frame card compactly. -->
+    <section id="today-frame-strip" class="band-today-frame" aria-label="Today's Frame">
+      <header class="tfs-header">
+        <div class="tfs-title">
+          <span class="tfs-glyph">🖼️</span>
+          <span class="tfs-label">Today's Frame</span>
+          <span class="tfs-date" id="tfs-date"></span>
+        </div>
+        <div class="tfs-actions">
+          <button class="tfs-open-btn" id="tfs-open-frame" type="button" title="Open Frame Workshop">Open workshop</button>
+          <button class="tfs-collapse-btn" id="tfs-collapse" type="button" aria-expanded="true" aria-controls="tfs-body" title="Collapse"><span class="tfs-chev">▾</span></button>
+        </div>
+      </header>
+      <div class="tfs-body" id="tfs-body">
+        <div class="tfs-empty" id="tfs-empty">
+          <span class="tfs-empty-text">No Frame for today yet.</span>
+          <button class="tfs-empty-cta" id="tfs-empty-cta" type="button">Set the day's Frame →</button>
+        </div>
+        <div class="tfs-card" id="tfs-card" hidden>
+          <div class="tfs-row tfs-row-scope">
+            <div class="tfs-cell">
+              <div class="tfs-cell-label">Doing</div>
+              <div class="tfs-cell-value" id="tfs-doing"></div>
+            </div>
+            <div class="tfs-cell">
+              <div class="tfs-cell-label">Not Doing</div>
+              <div class="tfs-cell-value" id="tfs-not-doing"></div>
+            </div>
+          </div>
+          <div class="tfs-row tfs-row-outcome">
+            <div class="tfs-cell tfs-cell-full">
+              <div class="tfs-cell-label">Done means</div>
+              <div class="tfs-cell-value tfs-chips" id="tfs-must"></div>
+            </div>
+          </div>
+          <div class="tfs-row tfs-row-bonus" id="tfs-row-bonus">
+            <div class="tfs-cell tfs-cell-full">
+              <div class="tfs-cell-label">Bonus</div>
+              <div class="tfs-cell-value tfs-chips tfs-chips-sub" id="tfs-stretch"></div>
+            </div>
+          </div>
+          <div class="tfs-row tfs-row-stop" id="tfs-row-stop">
+            <div class="tfs-cell tfs-cell-full">
+              <div class="tfs-cell-label">When to stop</div>
+              <div class="tfs-cell-value" id="tfs-end"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="area area-visual" data-area="recovery-room" data-accent="green" data-cockpit-mode="true" data-tile-art="recover-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
+      <div class="area-scene">🌿<img class="tile-art tile-art-dormant" src="assets/recover-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/recover-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Recover<span class="lbl-sub">ritual · close</span></div>
       <div class="badge-row" id="badges-recovery-room"></div>
     </div>
@@ -5151,13 +5608,13 @@
        you can't scope what you haven't read in. Frame follows.
        Recovery moved to day-band; cycle ends at Debrief. -->
   <div class="band band-phase">
-    <div class="area area-visual" data-area="comprehend-station" data-accent="amber">
+    <div class="area area-visual" data-area="comprehend-station" data-accent="amber" data-cockpit-mode="true">
       <div class="area-scene">🛠️</div>
       <div class="area-label">Comprehend<span class="lbl-sub">orient first</span></div>
       <div class="badge-row" id="badges-comprehend-station"></div>
     </div>
     <div class="arrow">→</div>
-    <div class="area area-visual" data-area="frame-workshop" data-accent="blue">
+    <div class="area area-visual" data-area="frame-workshop" data-accent="blue" data-cockpit-mode="true">
       <div class="area-scene">🖼️</div>
       <div class="area-label">Frame<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-frame-workshop"></div>
@@ -5175,7 +5632,7 @@
       <div class="badge-row" id="badges-push-bay"></div>
     </div>
     <div class="arrow">→</div>
-    <div class="area area-visual" data-area="debrief-booth" data-accent="blue">
+    <div class="area area-visual" data-area="debrief-booth" data-accent="blue" data-cockpit-mode="true">
       <div class="area-scene">📋</div>
       <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-debrief-booth"></div>
@@ -7202,6 +7659,13 @@
     titleEl.textContent = area.name;
     typeEl.textContent  = area.type;
 
+    // Cockpit mode: rooms that have crossed bench → cockpit get a tighter render
+    // (today-only recent lists; past collapsed under <details>). Toggle BEFORE
+    // workshop init so the first renderRecent/dbRenderRecent call picks it up.
+    const preFloorEl = document.querySelector(`[data-area="${areaId}"]`);
+    const isCockpit = !!(preFloorEl && preFloorEl.getAttribute('data-cockpit-mode') === 'true');
+    drawer.classList.toggle('cockpit-active', isCockpit);
+
     // Workshop mode: wider drawer + the right prototype form
     const wsView = document.getElementById('workshop-view');
     const floorHeading = document.querySelector('#area-view .floor-heading');
@@ -7284,6 +7748,7 @@
     overlay.classList.remove('open');
     drawer.classList.remove('open');
     drawer.classList.remove('workshop');
+    drawer.classList.remove('cockpit-active');
     document.getElementById('workshop-view').classList.remove('visible');
     document.querySelectorAll('.area').forEach(el => el.classList.remove('active'));
     currentAreaId = null;
@@ -7658,6 +8123,106 @@
   function saveFrameCards(arr) {
     try { localStorage.setItem(FRAME_KEY, JSON.stringify(arr)); } catch {}
     postSave('frame-cards', arr);
+    try { renderTodayFrameStrip(); } catch {}
+  }
+
+  /* ── Today's Frame Strip ──
+     Pinned heart-of-day display between the morning bracket (Pilot Check) and the
+     evening bracket (Recover). Shows today's most recent Frame card compactly.
+     Fields: Doing · Not Doing · Done means · Bonus · When to stop. `miss` and
+     `approach` are deliberately excluded — read at frame-time, not glanced all day. */
+  const TFS_COLLAPSED_KEY = 'cognitive-lab-v0.1::today-frame-strip-collapsed';
+
+  function tfsFormatHumanDate() {
+    const d = new Date();
+    return d.toLocaleDateString(undefined, { weekday:'long', month:'short', day:'numeric' });
+  }
+
+  function tfsRenderRefs(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) return '';
+    return arr.map(r => {
+      const id = (r && r.id) ? String(r.id) : '';
+      const title = (r && r.title) ? String(r.title) : '';
+      const text = id && title ? id + ' · ' + title : (id || title || '');
+      return `<span class="tfs-chip">${escapeHTML(text)}</span>`;
+    }).join('');
+  }
+
+  function tfsRenderField(val) {
+    if (Array.isArray(val)) return tfsRenderRefs(val);
+    const s = (val == null ? '' : String(val)).trim();
+    if (!s) return '';
+    return escapeHTML(s);
+  }
+
+  function renderTodayFrameStrip() {
+    const strip = document.getElementById('today-frame-strip');
+    if (!strip) return;
+    const dateEl = document.getElementById('tfs-date');
+    const emptyEl = document.getElementById('tfs-empty');
+    const cardEl = document.getElementById('tfs-card');
+    if (!dateEl || !emptyEl || !cardEl) return;
+
+    dateEl.textContent = tfsFormatHumanDate();
+
+    const cards = loadFrameCards();
+    const today = new Date().toISOString().slice(0,10);
+    const todays = cards.filter(c => (c.date || '').slice(0,10) === today);
+    if (todays.length === 0) {
+      emptyEl.hidden = false;
+      cardEl.hidden = true;
+      strip.classList.add('is-empty');
+      return;
+    }
+    const card = todays[todays.length - 1];
+    emptyEl.hidden = true;
+    cardEl.hidden = false;
+    strip.classList.remove('is-empty');
+
+    document.getElementById('tfs-doing').innerHTML     = tfsRenderField(card.in);
+    document.getElementById('tfs-not-doing').innerHTML = tfsRenderField(card.out);
+    document.getElementById('tfs-must').innerHTML      = tfsRenderField(card.must);
+    document.getElementById('tfs-stretch').innerHTML   = tfsRenderField(card.stretch);
+    document.getElementById('tfs-end').innerHTML       = tfsRenderField(card.end);
+
+    const bonusRow = document.getElementById('tfs-row-bonus');
+    const bonusEmpty = !card.stretch || (Array.isArray(card.stretch) && card.stretch.length === 0) || (typeof card.stretch === 'string' && !card.stretch.trim());
+    if (bonusRow) bonusRow.style.display = bonusEmpty ? 'none' : '';
+
+    const stopRow = document.getElementById('tfs-row-stop');
+    const stopEmpty = !card.end || (typeof card.end === 'string' && !card.end.trim());
+    if (stopRow) stopRow.style.display = stopEmpty ? 'none' : '';
+  }
+
+  function tfsApplyCollapsedState() {
+    const strip = document.getElementById('today-frame-strip');
+    const btn = document.getElementById('tfs-collapse');
+    if (!strip || !btn) return;
+    let collapsed = false;
+    try { collapsed = localStorage.getItem(TFS_COLLAPSED_KEY) === '1'; } catch {}
+    strip.classList.toggle('collapsed', collapsed);
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.title = collapsed ? 'Expand' : 'Collapse';
+  }
+
+  function initTodayFrameStrip() {
+    const strip = document.getElementById('today-frame-strip');
+    if (!strip) return;
+    tfsApplyCollapsedState();
+    renderTodayFrameStrip();
+
+    const collapseBtn = document.getElementById('tfs-collapse');
+    if (collapseBtn) {
+      collapseBtn.addEventListener('click', () => {
+        const collapsed = !strip.classList.contains('collapsed');
+        try { localStorage.setItem(TFS_COLLAPSED_KEY, collapsed ? '1' : '0'); } catch {}
+        tfsApplyCollapsedState();
+      });
+    }
+    const openBtn = document.getElementById('tfs-open-frame');
+    if (openBtn) openBtn.addEventListener('click', () => openDrawer('frame-workshop'));
+    const emptyCta = document.getElementById('tfs-empty-cta');
+    if (emptyCta) emptyCta.addEventListener('click', () => openDrawer('frame-workshop'));
   }
   function todayDateString() {
     const d = new Date();
@@ -8568,8 +9133,7 @@
       labelEl.firstChild.textContent = todayCount > 0 ? 'Today’s Framing ' : 'Recent Framing ';
     }
 
-    // Render groups
-    list.innerHTML = order.map(key => {
+    const renderGroup = key => {
       const g = groups[key];
       const items = g.cards.slice().reverse().map(({card, idx}) => {
         const time = (card.date || '').slice(11) || '·';
@@ -8591,7 +9155,23 @@
         <div class="${labelClass}">${escapeHTML(g.label)}</div>
         ${items}
       </div>`;
-    }).join('');
+    };
+
+    // Cockpit mode: today inline; collapse all past groups into a single <details>.
+    const drawerEl = document.getElementById('drawer');
+    const cockpit = drawerEl && drawerEl.classList.contains('cockpit-active');
+    if (cockpit) {
+      const todayHTML = groups.today ? renderGroup('today') : '';
+      const pastKeys = order.filter(k => k !== 'today');
+      const pastCount = pastKeys.reduce((n, k) => n + groups[k].cards.length, 0);
+      const pastHTML = pastKeys.map(renderGroup).join('');
+      const pastBlock = pastCount > 0
+        ? `<details class="ws-recent-past"><summary>Past frames (${pastCount})</summary>${pastHTML}</details>`
+        : '';
+      list.innerHTML = (todayHTML || '<div class="ws-recent-empty" style="color:#888;font-size:12px;font-style:italic;padding:6px 0;">No Frame today yet — start one above.</div>') + pastBlock;
+    } else {
+      list.innerHTML = order.map(renderGroup).join('');
+    }
   }
 
   /* ── Floor shelf (items / artifacts / notes tiles) ── */
@@ -9256,12 +9836,11 @@
       labelEl.firstChild.textContent = todayCount > 0 ? "Today's Debriefs " : 'Recent Debriefs ';
     }
 
-    list.innerHTML = order.map(key => {
+    const renderGroup = key => {
       const g = groups[key];
       const items = g.cards.slice().reverse().map(({card, idx}) => {
         const time = (card.date || '').slice(11) || '·';
-        // Phase 4: prefer the new "caught" field; fall back to legacy "subject"
-        // for older cards. Either way, truncate to 110 chars.
+        // Phase 4: prefer the new "caught" field; fall back to legacy "subject" for older cards.
         const headline = (card.caught || card.subject || '').slice(0, 110);
         return `<div class="ws-recent-card" data-idx="${idx}">
           <div class="rc-date">${escapeHTML(time)}</div>
@@ -9273,7 +9852,22 @@
         <div class="${labelClass}">${escapeHTML(g.label)}</div>
         ${items}
       </div>`;
-    }).join('');
+    };
+
+    const drawerEl = document.getElementById('drawer');
+    const cockpit = drawerEl && drawerEl.classList.contains('cockpit-active');
+    if (cockpit) {
+      const todayHTML = groups.today ? renderGroup('today') : '';
+      const pastKeys = order.filter(k => k !== 'today');
+      const pastCount = pastKeys.reduce((n, k) => n + groups[k].cards.length, 0);
+      const pastHTML = pastKeys.map(renderGroup).join('');
+      const pastBlock = pastCount > 0
+        ? `<details class="db-recent-past"><summary>Past debriefs (${pastCount})</summary>${pastHTML}</details>`
+        : '';
+      list.innerHTML = (todayHTML || '<div class="ws-recent-empty" style="color:#888;font-size:12px;font-style:italic;padding:6px 0;">No Debrief today yet — start one above.</div>') + pastBlock;
+    } else {
+      list.innerHTML = order.map(renderGroup).join('');
+    }
   }
 
   function initDebriefWorkshop() { dbEnterResting(); }
@@ -10257,7 +10851,10 @@
         gapsBadge.classList.remove('show');
       }
     }
-    if (gapCount > 0) setActiveShelf('items');
+    // Auto-expand the To Do shelf when there are gaps/ghosts — but only for bench rooms.
+    // Cockpit rooms stay collapsed; the gap badge is enough signal.
+    const cockpitDrawer = drawer.classList.contains('cockpit-active');
+    if (gapCount > 0 && !cockpitDrawer) setActiveShelf('items');
 
     // Item card click → drilldown; status badge click → cycle
     itemsList.querySelectorAll('.item-card').forEach(card => {
@@ -10323,9 +10920,21 @@
   overlay.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-  /* ── Floor area clicks ── */
+  /* ── Floor area clicks ──
+     Stone-button tiles (data-tile-pulse="off") get a head-start press: .active goes on
+     immediately so the depression begins, and the drawer opens ~220ms later. The tray
+     slides in as the stone is settling into its socket. Plain tiles keep instant open. */
   document.querySelectorAll('.area[data-area]').forEach(el => {
-    el.addEventListener('click', () => openDrawer(el.getAttribute('data-area')));
+    el.addEventListener('click', () => {
+      const areaId = el.getAttribute('data-area');
+      if (el.getAttribute('data-tile-pulse') === 'off') {
+        document.querySelectorAll('.area').forEach(a => a.classList.remove('active'));
+        el.classList.add('active');
+        setTimeout(() => openDrawer(areaId), 220);
+      } else {
+        openDrawer(areaId);
+      }
+    });
   });
 
   /* ── URL hash routing ── */
@@ -12909,6 +13518,7 @@
     buildSearchIndex();
     wireGapsHandlers();
     setView(loadActiveView());
+    initTodayFrameStrip();
   });
 
 })();
