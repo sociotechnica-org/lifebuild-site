@@ -39,7 +39,7 @@ Orient by reading:
   daily/weekly rhythm)
 - quenton-quince/PLAYS.md and PRINCIPLES.md (your playbook + heuristics)
 - The Log tile (experiments array) of frame-workshop, pilot-check-station,
-  debrief-booth, the-gauge, transition-hallway in
+  debrief-booth, transition-hallway in
   cognitive-lab/cognitive-lab-v0.1.html
 
 State of play (update this section as the framework evolves):
@@ -51,11 +51,9 @@ State of play (update this section as the framework evolves):
   grounded). LAB-007 (form refinement) and LAB-008 (chapter) still
   in-progress.
 - Two central images: cache-game (Frame's organizing metaphor) and
-  heartbeat (Gauge↔Recovery rhythm).
-- Capacity check-in PoC and Pilot Check converge into a unified Gauge
-  instrument. Two related backlog items: LAB-025 (Make the Gauge a
-  workshop, embed capacity check-in) and LAB-021 (Capacity check-in
-  v0.2, turn-aware data model). Both P1.
+  bookended day (Pilot Check opens the day, Recovery closes it).
+- The Gauge area was retired 2026-05-11; Pilot Check Station is the
+  pre-flight instrument. LAB-020/021/025/030 archived with the Gauge.
 - Quenton (you) and Larry Moleman are project-resident agents (PR #123).
 - grepzilla2 covers cognitive-lab/ now (PR #126); use for markdown-heavy
   PRs that Devin skips.

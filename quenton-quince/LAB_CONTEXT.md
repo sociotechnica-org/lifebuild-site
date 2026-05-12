@@ -53,7 +53,7 @@ The lab is a top-down, click-to-explore floor plan with four bands:
 
 **Band 4 — Bottom (instruments + Director):**
 
-- The Gauge · Pilot Check Station · Director's Desk
+- Pilot Check Station · Director's Desk
 
 Click any area opens a side drawer (drawer expands to 66vw if the area has `workshop: true`). Drawers contain:
 
@@ -95,7 +95,7 @@ The day has two fixed posts: a Pilot Check at the start and a Recovery ritual at
 
 ## The framework in one paragraph
 
-Knowledge work used to come in batches (mornings = email, afternoons = meetings). AI made it continuous — agents work 24/7, output is functionally infinite. Continuous-flow work breaks the people doing it because the management interface (calendars, project software, willpower) was built for batched work. The Turn is a structured cycle for AI-native work: six phases, three categories (required / conditional / insertable), gated by a continuously-read capacity gauge, paced by deliberate recovery. The framework borrows from cognitive load research, occupational health psychology, and industries that have long operated continuously (aviation, naval, manufacturing, medicine, sport).
+Knowledge work used to come in batches (mornings = email, afternoons = meetings). AI made it continuous — agents work 24/7, output is functionally infinite. Continuous-flow work breaks the people doing it because the management interface (calendars, project software, willpower) was built for batched work. The Turn is a structured cycle for AI-native work: six phases, three categories (required / conditional / insertable), gated by a morning Pilot Check and a closing Recovery ritual, paced by deliberate recovery. The framework borrows from cognitive load research, occupational health psychology, and industries that have long operated continuously (aviation, naval, manufacturing, medicine, sport).
 
 ## When you don't have the context
 
