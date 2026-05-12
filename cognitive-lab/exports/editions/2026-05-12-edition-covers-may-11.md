@@ -1,6 +1,6 @@
 # The Cognitive Lab Daily
 
-**Monday, May 11, 2026 · Issue 1**
+**Tuesday, May 12, 2026 · Issue 1 · Covering May 11 activity**
 
 ---
 
@@ -10,7 +10,7 @@
 
 ---
 
-Two independent threads ran in parallel today and both landed on main before close. Thread one was a planned lab restructure, months in the making, that retired the framework's second central image and rebuilt the day's architecture around two bookending rituals. Thread two was a separate rollback of Frame's Outcome picker — simpler, faster, and a genuine improvement. Neither waited for the other. Six PRs merged.
+Two independent threads ran in parallel yesterday and both landed on main before close. Thread one was a planned lab restructure, months in the making, that retired the framework's second central image and rebuilt the day's architecture around two bookending rituals. Thread two was a separate rollback of Frame's Outcome picker — simpler, faster, and a genuine improvement. Neither waited for the other. Six PRs merged.
 
 ---
 

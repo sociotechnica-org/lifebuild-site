@@ -1,14 +1,14 @@
 [
   {
-    "id": "journal-edition-2026-05-11",
-    "date": "2026-05-11",
+    "id": "journal-edition-2026-05-12",
+    "date": "2026-05-12",
     "shelf": "edition",
-    "title": "The Cognitive Lab Daily — May 11, 2026",
-    "path": "cognitive-lab/exports/editions/2026-05-11-lab-restructure-daily.md",
+    "title": "The Cognitive Lab Daily — May 12 (covers May 11)",
+    "path": "cognitive-lab/exports/editions/2026-05-12-edition-covers-may-11.md",
     "format": "md",
-    "summary": "Six PRs merged across two parallel threads: (1) lab restructure — Heartbeat retirement, bookended-day framing, Recovery Room workshop, four-band floor, kind taxonomy, open-turn parking; (2) Frame rollback — picker/Bonus/per-card Approach removed, Done means paired with What ruins this. PR stacking misadventure recovered via PR #143. First full daily newspaper edition.",
+    "summary": "Issue 1, published May 12 covering May 11 activity. Six PRs merged across two parallel threads: (1) lab restructure — Heartbeat retirement, bookended-day framing, Recovery Room workshop, four-band floor, kind taxonomy, open-turn parking; (2) Frame rollback — picker/Bonus/per-card Approach removed, Done means paired with What ruins this. PR stacking misadventure recovered via PR #143. First full daily newspaper edition.",
     "tags": ["heartbeat-retirement", "bookended-day", "recovery-room", "frame-rollback", "lab-restructure", "four-band-floor"],
-    "filedAt": "2026-05-11T00:00:00Z"
+    "filedAt": "2026-05-12T00:00:00Z"
   },
   {
     "id": "journal-edition-2026-05-04",
