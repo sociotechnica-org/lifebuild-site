@@ -91,15 +91,15 @@ PRs #139, #140, and #141 were stacked. Each was meant to merge into main, but ea
 | DECISIONS entries added | 3 (Heartbeat retirement, Four-band floor, Frame rollback) |
 | DECISIONS entries marked Superseded | 2 (Two central images, Gauge merger) |
 | New chunks added | 3 (chunk-pilot-yoked-to-recovery, chunk-recovery-bookended-day, chunk-hash-house-pilot-check relocated) |
-| Log entries added today | 9 (across 7 areas) |
+| Log entries added (May 11 EOD, landed May 12) | 7 (across 6 areas) |
 
 ---
 
 ## LOOKING AHEAD
 
-Tomorrow morning: Quenton's lab-restructure walk in Comprehend Station. The Walk Studio product walk for the new floor layout is being drafted in parallel — it will replace any walk steps that still reference the retired six-phase layout or the Gauge. The Walk Studio's first authored walk predates today's restructure; some step descriptions are stale. The sweep is queued.
+May 12 morning: Quenton's lab-restructure walk in Comprehend Station. The Walk Studio product walk for the new floor layout was drafted in parallel — it replaces any walk steps that still reference the retired six-phase layout or the Gauge. The Walk Studio's first authored walk predates the May 11 restructure; some step descriptions are stale. The sweep is queued.
 
-First thing tomorrow: open the lab, check the new four-band floor, run a Pilot Check, confirm the Recovery Room's anchor-setting path works end-to-end. The bookended day is live in architecture; it needs its first full run.
+First thing May 12: open the lab, check the new four-band floor, run a Pilot Check, confirm the Recovery Room's anchor-setting path works end-to-end. The bookended day is live in architecture; it needs its first full run.
 
 ---
 
