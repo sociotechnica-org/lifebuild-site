@@ -5516,6 +5516,7 @@
 
   <!-- Band 1: Reference / aux (gestalt visuals) -->
   <div class="band">
+    <!-- Library: stone tile for visual weight, not cockpit (band-1 bench; full list auto-expands). -->
     <div class="area area-visual area-gestalt" data-area="library" data-accent="warm" data-tile-art="microscope-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
       <div class="area-scene scene-research">🔬<img class="tile-art tile-art-dormant" src="assets/microscope-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/microscope-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Research Repository<span class="lbl-sub">research &amp; findings</span></div>
@@ -5550,7 +5551,7 @@
     <section id="today-frame-strip" class="band-today-frame" aria-label="Today's Frame">
       <header class="tfs-header">
         <div class="tfs-title">
-          <span class="tfs-glyph">🖼️</span>
+          <span class="tfs-glyph" aria-hidden="true">🖼️</span>
           <span class="tfs-label">Today's Frame</span>
           <span class="tfs-date" id="tfs-date"></span>
         </div>
@@ -8123,7 +8124,7 @@
   function saveFrameCards(arr) {
     try { localStorage.setItem(FRAME_KEY, JSON.stringify(arr)); } catch {}
     postSave('frame-cards', arr);
-    try { renderTodayFrameStrip(); } catch {}
+    try { renderTodayFrameStrip(); } catch (e) { console.warn('[TFS] renderTodayFrameStrip failed:', e); }
   }
 
   /* ── Today's Frame Strip ──
@@ -10923,15 +10924,23 @@
   /* ── Floor area clicks ──
      Stone-button tiles (data-tile-pulse="off") get a head-start press: .active goes on
      immediately so the depression begins, and the drawer opens ~220ms later. The tray
-     slides in as the stone is settling into its socket. Plain tiles keep instant open. */
+     slides in as the stone is settling into its socket. Plain tiles keep instant open.
+     Guarded with a single timer so rapid clicks across stone tiles can't open two
+     drawers in a row — the latest click wins. */
+  let stonePressTimer = null;
   document.querySelectorAll('.area[data-area]').forEach(el => {
     el.addEventListener('click', () => {
       const areaId = el.getAttribute('data-area');
       if (el.getAttribute('data-tile-pulse') === 'off') {
+        if (stonePressTimer) clearTimeout(stonePressTimer);
         document.querySelectorAll('.area').forEach(a => a.classList.remove('active'));
         el.classList.add('active');
-        setTimeout(() => openDrawer(areaId), 220);
+        stonePressTimer = setTimeout(() => {
+          stonePressTimer = null;
+          openDrawer(areaId);
+        }, 220);
       } else {
+        if (stonePressTimer) { clearTimeout(stonePressTimer); stonePressTimer = null; }
         openDrawer(areaId);
       }
     });
