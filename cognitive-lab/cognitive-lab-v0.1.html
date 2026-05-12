@@ -5802,6 +5802,13 @@
       ],
       "experiments": [
         {
+          "id": "exp-frame-2026-05-11-rollback",
+          "title": "Frame form rolled back to plain textareas",
+          "date": "2026-05-11",
+          "observation": "Picker (Done means as typed-ref multi-select), Bonus picker, per-card Approach unfold, free-text fallback, Course/Full-lab scope toggle, and day-level How I'll work scaffold all removed from the rendered form. Outcome batch now pairs Done means with What ruins this (its both/and twin). Safety batch keeps only When to stop. Saved-card schema preserved in localStorage but no longer rendered. Shipped on branch danvers/frame-rollback-outcome-ruin (PR #142). DECISIONS entry filed. LAB-058 created as the restoration trigger.",
+          "impact": "Form returns to four plain-textarea batches. Pairing Done means with What ruins this in the same batch surfaces the both/and trap structurally — a genuine improvement, not a regression. Restoration gate set: both (1) daily Frame steady ≥ 2 weeks on the textarea form and (2) rogaine loop identifiable as the actual constraint on weekly planning quality. Status revisit queued for LAB-027, LAB-036, LAB-042."
+        },
+        {
           "id": "exp-frame-2026-05-01-v02-shipped",
           "title": "Frame form v0.2 ships — v0.1 retired",
           "date": "2026-05-01 (late afternoon)",
@@ -6023,6 +6030,30 @@
         { "label": "turn-v0.1-phases-and-leverage.md (Recover section)", "href": "turn-v0.1-phases-and-leverage.md" },
         { "label": "turn-v0.1-map.html (deck slide 15)", "href": "turn-v0.1-map.html" }
       ],
+      "experiments": [
+        {
+          "id": "exp-recovery-2026-05-11-workshop-shipped",
+          "title": "Recovery Room workshop shipped (PR #138)",
+          "date": "2026-05-11",
+          "observation": "Three-screen Recovery workshop landed on main via PR #138 (Recovery Room: 3-part workshop yoked to Pilot Check). Step 1 measures the need — sliders pre-set to latest Pilot Check reading, withdrawal computed as anchor − current. Step 2 shapes the recovery — chip-based day-shape selector maps to Sonnentag & Fritz mechanisms (Detach / Relax / Master / Control); activity-chip pool keyed by mechanism × locus. Step 3 plans it, including a new 'Open turns at lock' section with carry / drop / defer vocabulary for parking open turns. Lock persists to localStorage and mirrors to Drive via the new /api/save/recoveries server route. PR #141 added Recovery to the day-band floor (alongside Pilot Check) and removed it from PHASE_SLOTS (turn-cycle row). type flipped to 'ritual / end-of-day'.",
+          "impact": "Recovery Room is now a functioning workshop. The bookended-day image is architecturally real: Pilot Check opens the day; Recovery Room closes it. The carry / drop / defer framing gives open-turn parking a named vocabulary. /api/save/recoveries adds Recovery to the Drive-mirror infrastructure alongside Frames and Pilot Checks."
+        },
+        {
+          "id": "exp-recovery-2026-05-11-bookended-day",
+          "title": "Bookended day named as second central image",
+          "date": "2026-05-11",
+          "observation": "PR #139 (Heartbeat retirement) retired the heartbeat as a central image and replaced it with the bookended day. The heartbeat was the Gauge↔Recovery rhythm — but the Gauge is gone. The bookended day names the same structural insight without depending on the Gauge: Pilot Check opens the day (rule-out, cleared to start); Recovery Room closes it (measure withdrawal, shape restoration plan). The day is bookended by two rituals that share a common reference point (this morning's Pilot Check reading is the anchor for tonight's withdrawal calculation).",
+          "impact": "PROCESS.md and quenton-quince/LAB_CONTEXT.md rewritten around the bookended-day framing. Two 2026-05-02 DECISIONS entries marked Superseded. cognitive-lab-spec.md's Gauge block collapsed to a one-line retirement note. The bookended-day image replaces the heartbeat in the framework's two-central-images slot."
+        }
+      ],
+      "chunks": [
+        {
+          "id": "chunk-recovery-bookended-day",
+          "title": "The bookended day — Recovery as the closing ritual",
+          "summary": "Recovery Room is the closing bracket of the bookended day. Pilot Check opens it; Recovery Room closes it. The two rituals share one reference point: this morning's three-dimension reading.",
+          "body": "The framework's second central image (replacing the heartbeat, 2026-05-11): the bookended day.\n\nThe cache-game names how the day's game gets designed (Frame's metaphor). The bookended day names how the day's rhythm starts and stops:\n\n- **Open:** Pilot Check. Three-dimension rule-out (cognitive / emotional / physical). Verdict: cleared or grounded. If cleared, the day starts.\n- **Close:** Recovery Room. Three sliders pre-set to this morning's Pilot Check reading (the anchor). Current reading taken. Withdrawal = anchor − current, clamped ≥ 0. Mechanism selected per locus (head / heart / body). Recovery plan built. Open turns parked (carry / drop / defer).\n\nThe two rituals are mechanically yoked: one's output is the other's input. The morning reading doesn't disappear after the Pilot Check — it persists as the Recovery Room's anchor point. This is what makes the day bookended rather than merely bounded.\n\n**Why this image replaced the heartbeat:** The heartbeat metaphor required the Gauge as a continuous instrument — the Gauge reads at every phase boundary, the heartbeat is that read-and-dispatch cycle. The Gauge was retired (PR #139, 2026-05-11) because it was Gauge-centric in a way that didn't match practice: the practice is two discrete rituals (Pilot Check + Recovery), not a continuous telemetry loop. The bookended day is a simpler, more accurate description of what the practice actually does.\n\n**Practical implication for chapter material:** the bookended-day framing composes naturally with the cache-game. If the cache-game asks 'how do you design a day worth playing?' the bookended day asks 'how do you open and close it reliably?' Both together describe a day with a shape."
+        }
+      ],
       "notes": []
     },
     {
@@ -6038,6 +6069,13 @@
         { "label": "DECISIONS.md (synthesized decisions log)", "href": "DECISIONS.md" }
       ],
       "experiments": [
+        {
+          "id": "exp-director-2026-05-11-eod-state",
+          "title": "End-of-day integration — 2026-05-11 (six PRs, two threads)",
+          "date": "2026-05-11",
+          "observation": "Six PRs merged on main today across two parallel threads. Thread 1 (lab restructure): PR #138 Recovery Room workshop; PR #139 Heartbeat retirement + bookended-day reframe; PR #140 Pilot Check consolidation; PR #141 day-band floor + kind taxonomy + open-turn parking. Thread 2 (Frame rollback, independent): PR #142 picker/Bonus/per-card Approach removed, plain textareas restored, Done means paired with What ruins this. PR #143 was a consolidation landing — PRs #139/#140/#141 were stacked and each merged into its stacked-base branch rather than main, so their content didn't reach main on initial merge. PR #143 took the PR3 branch (cumulative content) direct to main, resolving conflicts vs PR #142. Items affected: LAB-058 created (Frame rollback restoration trigger). LAB-020, LAB-021, LAB-025, LAB-030 archived (Gauge-related, all in cognitive-lab/archive/heartbeat-retirement-2026-05-11.md — file created by PR #139 as the Gauge's retirement record). LAB-008 and LAB-004 briefs rewritten. Status revisits queued for LAB-027, LAB-036, LAB-042 (per DECISIONS entry).",
+          "impact": "Session-Integration play run at day close. Log entries added to: frame-workshop, pilot-check-station, recovery-room, transition-hallway, trim-bench, director-desk (six areas). New chunk on pilot-check-station (yoking pattern). Bookended-day chunk on recovery-room. LAB-008 and LAB-004 briefs updated. PR #144 morning sweep added the bookended-day product walk to Comprehend Station and filed the first daily newspaper. PR #145 morning sweep ships the Log entries / chunks / brief upgrades plus a fix for local-path edition links."
+        },
         {
           "id": "exp-director-2026-05-04-eod-state",
           "title": "End-of-day state — 2026-05-04 (close)",
@@ -6195,6 +6233,12 @@
       ],
       "chunks": [
         {
+          "id": "chunk-pilot-yoked-to-recovery",
+          "title": "The bookended day — Pilot Check as morning anchor",
+          "summary": "The morning Pilot Check reading is the anchor for the end-of-day Recovery Room. The day is bookended: Pilot Check opens it, Recovery Room closes it, both using the same three-dimension baseline.",
+          "body": "The yoking pattern, named 2026-05-11: the Recovery Room workshop pre-sets its sliders to the latest Pilot Check reading and computes withdrawal as anchor − current (clamped to ≥ 0). A reading that was 7/6/8 this morning becomes the benchmark against which tonight's 5/4/7 is compared. Withdrawal = 2+2+1 = 5 units across three dimensions — a concrete measurement, not a vibe.\n\nThis creates the bookended day as an architectural reality, not just a metaphor:\n\n- **Morning:** Pilot Check runs the rule-out. Three dimensions read, verdict dispatched (cleared / grounded). If cleared: the day starts.\n- **Evening:** Recovery Room uses the morning reading as anchor. Withdrawal computed. Mechanism selected per locus. Recovery plan built.\n\nThe two rituals share a common reference point. The Pilot Check isn't just a morning gate — it's the input that makes the Recovery plan honest. Without the morning reading, the evening measurement has no baseline; the author is estimating withdrawal from memory rather than delta.\n\nThis is the bookended-day image replacing the heartbeat as the framework's second central image (DECISIONS 2026-05-11). The heartbeat required the Gauge as continuous instrument — which is gone. The bookended day requires only two practice moments (open + close) and one shared reference (the three-dimension reading). Simpler, more durable.\n\nDesign implication: the Pilot Check should always ask the author to save the reading before continuing, because the Recovery Room depends on it. A lost morning reading degrades the evening withdrawal calculation to a guess."
+        },
+        {
           "id": "chunk-hash-house-pilot-check",
           "title": "Hash house = Pilot Check visit (refuel, re-orient, decide)",
           "summary": "Pilot Check = hash-house visit at the start of the day: refuel, re-orient, decide whether to continue. The morning bookend of the bookended day.",
@@ -6220,6 +6264,13 @@
         }
       ],
       "experiments": [
+        {
+          "id": "exp-pilot-2026-05-11-yoked-to-recovery",
+          "title": "Pilot Check yoked to Recovery Room as morning anchor",
+          "date": "2026-05-11",
+          "observation": "Recovery Room workshop (PR #138) pre-sets its sliders to the latest Pilot Check reading and computes withdrawal as anchor − current. This makes the morning Pilot Check the structural reference point for end-of-day recovery planning — the two rituals are now mechanically connected, not just conceptually related. Pilot Check consolidation pass (PR #140) also salvaged: chunk-hash-house-pilot-check relocated from the retired Gauge area, the 'morning Pilot Check worked' note rescued, and capacity-checkin.html added as a source. LAB-008 brief rewritten to lead with rule-out-vs-measurement and the three-signal model rather than the old 'Gauge alone isn't enough' framing.",
+          "impact": "Pilot Check is now the anchor for both ends of the day. The bookended-day image (Pilot Check opens, Recovery closes) becomes architecturally real. LAB-008 brief now matches the chapter scope — rule-out first, three signals, aviation precedent."
+        },
         {
           "id": "exp-pilot-2026-05-02-rule-out",
           "title": "Pilot Check is rule-out, not measurement",
@@ -6248,6 +6299,13 @@
       ],
       "experiments": [
         {
+          "id": "exp-transition-2026-05-11-kind-meta",
+          "title": "kind: meta added — bottom row, day-band restructure",
+          "date": "2026-05-11",
+          "observation": "PR #141 added a kind taxonomy field to all non-Band-1 areas. Transition Hallway received kind: 'meta'. The four-band floor restructure placed Transition in the meta row (bottom row) alongside Trim Bench and Director's Desk. This distinguishes the meta disciplines (areas that support the turn cycle but are not phases themselves) from ritual areas (Pilot Check, Recovery) and phase areas (Frame, Comprehend, Sync, Produce, Debrief).",
+          "impact": "Transition Hallway's position in the lab is now structurally accurate: it's a meta-discipline, not a phase. The bottom-row placement makes this legible at a glance. No change to the LAB items or chunks — positional only."
+        },
+        {
           "id": "exp-transition-2026-05-02-research-compiled",
           "title": "Transition research compiled, three-beat protocol named",
           "date": "2026-05-02 (afternoon)",
@@ -6268,6 +6326,15 @@
       "items": ["LAB-017","LAB-018","LAB-033"],
       "artifacts": [
         { "label": "turn-v0.1-map.html (deck slide 20)", "href": "turn-v0.1-map.html" }
+      ],
+      "experiments": [
+        {
+          "id": "exp-trim-2026-05-11-kind-meta",
+          "title": "kind: meta added — bottom row, day-band restructure",
+          "date": "2026-05-11",
+          "observation": "PR #141 added a kind taxonomy field to all non-Band-1 areas. Trim Bench received kind: 'meta'. Placed in the meta row (bottom row) alongside Transition Hallway and Director's Desk. Same structural reasoning as Transition: Trim is a meta-discipline that supports turn quality, not a turn phase.",
+          "impact": "Positional accuracy improved. Trim Bench's bottom-row position distinguishes it from phase and ritual areas. No change to LAB items or chunks."
+        }
       ],
       "notes": []
     },
@@ -6569,8 +6636,8 @@
       "status": "backlog",
       "priority": "P0",
       "area": "debrief-booth",
-      "brief": "Why measurement closes the cycle. After-action-review patterns. Reflection theory.",
-      "full": "Why measurement closes the cycle. After-action-review patterns from military and aviation. Reflection theory (Dewey, Schon). How Debrief grades the turn against its Frame card and queues the next leg."
+      "brief": "Why measurement closes the cycle. After-action-review patterns. Reflection theory. How Debrief grades the turn against its Frame card.",
+      "full": "Why measurement closes the cycle. After-action-review patterns from military and aviation. Reflection theory (Dewey, Schon). How Debrief grades the turn against its Frame card: the Frame sets the conditions; Debrief asks whether those conditions were met and what changes for the next leg. The Debrief → Course feedback loop (changes_to_course, frontier updates). How Debrief stages the next turn's P0s. The rogaine analogy: debrief is the post-leg hash-house conversation — what worked, what to adjust before the next leg."
     },
     "LAB-005": {
       "id": "LAB-005",
@@ -6605,8 +6672,8 @@
       "status": "backlog",
       "priority": "P0",
       "area": "pilot-check-station",
-      "brief": "Why the morning Pilot Check is the rule-out, not the fitness scan. The three signals (felt / behavioral / temporal). Aviation precedent (IM SAFE + duty-time + cross-check).",
-      "full": "Why the Pilot Check is rule-out, not measurement (single-signal capacity reads fail under load; the three-dimension multi-signal model is what keeps you honest at the morning bookend). The three signals (felt, behavioral, temporal). Aviation precedent: IM SAFE checklist, duty-time rules, cross-checking instruments. The ironies of automation: you need more context when monitoring automated systems (Bainbridge)."
+      "brief": "Rule-out vs measurement (IM SAFE, not a fitness scan). Three-signal model: felt / behavioral / temporal. Aviation precedent. Why Pilot Check is the morning half of the bookended day.",
+      "full": "Rule-out vs. measurement: why the check asks 'is anything deep-red enough to ground me?' not 'am I peak?' The IM SAFE precedent (aviation kill-switch checklist, not a performance score). The three-signal model: felt sense (reliable when low, unreliable mid-task in compensatory mode), behavioral (observable, continuous, practice-dependent), temporal (clock-based, always reliable, doesn't adapt to today's actual capacity). Hockey 1997: compensatory effort suppresses the felt-sense signal exactly when you need it most. Aviation uses multiple instruments for the same reason: IM SAFE (felt), duty-time limits (temporal), crew cross-check (behavioral). The Pilot Check as the morning half of the bookended day: its reading is the anchor for Recovery Room's withdrawal calculation at day's end. Chapter material: three dimensions (cognitive / emotional / physical), threshold ≤3 = grounded, targeted recovery prescription per red dimension."
     },
     "LAB-009": {
       "id": "LAB-009",
@@ -9950,9 +10017,19 @@
     const tagsHTML = (entry.tags || [])
       .map(t => `<span class="manifest-tag">#${escHtml(t)}</span>`)
       .join(' ');
-    const url = entry.driveUrl
-      ? safeUrl(entry.driveUrl)
-      : (entry.driveId ? `https://drive.google.com/file/d/${escHtml(entry.driveId)}/view` : '#');
+    // Prefer Drive URL → Drive id → local path → no link. Local-path editions
+    // resolve relative to the lab HTML (served from cognitive-lab/), so paths
+    // stored as "cognitive-lab/exports/..." get the cognitive-lab/ prefix
+    // stripped for the served URL.
+    let url = '#';
+    if (entry.driveUrl) {
+      url = safeUrl(entry.driveUrl);
+    } else if (entry.driveId) {
+      url = `https://drive.google.com/file/d/${escHtml(entry.driveId)}/view`;
+    } else if (entry.path) {
+      const rel = entry.path.replace(/^cognitive-lab\//, '');
+      url = escHtml(rel);
+    }
     return `
       <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
         <div class="manifest-row-head">

@@ -1,6 +1,6 @@
 # The Cognitive Lab Daily
 
-**Monday, May 11, 2026 · Issue 1**
+**Tuesday, May 12, 2026 · Issue 1 · Covering May 11 activity**
 
 ---
 
@@ -10,7 +10,7 @@
 
 ---
 
-Two independent threads ran in parallel today and both landed on main before close. Thread one was a planned lab restructure, months in the making, that retired the framework's second central image and rebuilt the day's architecture around two bookending rituals. Thread two was a separate rollback of Frame's Outcome picker — simpler, faster, and a genuine improvement. Neither waited for the other. Six PRs merged.
+Two independent threads ran in parallel yesterday and both landed on main before close. Thread one was a planned lab restructure, months in the making, that retired the framework's second central image and rebuilt the day's architecture around two bookending rituals. Thread two was a separate rollback of Frame's Outcome picker — simpler, faster, and a genuine improvement. Neither waited for the other. Six PRs merged.
 
 ---
 
@@ -91,15 +91,15 @@ PRs #139, #140, and #141 were stacked. Each was meant to merge into main, but ea
 | DECISIONS entries added | 3 (Heartbeat retirement, Four-band floor, Frame rollback) |
 | DECISIONS entries marked Superseded | 2 (Two central images, Gauge merger) |
 | New chunks added | 3 (chunk-pilot-yoked-to-recovery, chunk-recovery-bookended-day, chunk-hash-house-pilot-check relocated) |
-| Log entries added today | 9 (across 7 areas) |
+| Log entries added (May 11 EOD, landed May 12) | 7 (across 6 areas) |
 
 ---
 
 ## LOOKING AHEAD
 
-Tomorrow morning: Quenton's lab-restructure walk in Comprehend Station. The Walk Studio product walk for the new floor layout is being drafted in parallel — it will replace any walk steps that still reference the retired six-phase layout or the Gauge. The Walk Studio's first authored walk predates today's restructure; some step descriptions are stale. The sweep is queued.
+May 12 morning: Quenton's lab-restructure walk in Comprehend Station. The Walk Studio product walk for the new floor layout was drafted in parallel — it replaces any walk steps that still reference the retired six-phase layout or the Gauge. The Walk Studio's first authored walk predates the May 11 restructure; some step descriptions are stale. The sweep is queued.
 
-First thing tomorrow: open the lab, check the new four-band floor, run a Pilot Check, confirm the Recovery Room's anchor-setting path works end-to-end. The bookended day is live in architecture; it needs its first full run.
+First thing May 12: open the lab, check the new four-band floor, run a Pilot Check, confirm the Recovery Room's anchor-setting path works end-to-end. The bookended day is live in architecture; it needs its first full run.
 
 ---
 
