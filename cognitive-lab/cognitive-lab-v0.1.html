@@ -5330,40 +5330,15 @@
           <div class="frame-batch">
             <div class="frame-batch-header">
               <div class="frame-batch-title">Outcome</div>
-              <div class="frame-batch-subtitle">Set the scoring. The high-value catches and the bonuses.</div>
+              <div class="frame-batch-subtitle">Name what success is — and what would wreck it.</div>
             </div>
             <div>
-              <label>Done means <span class="ff-hint">up to three from the lab — the floor for this turn</span></label>
-              <div class="ff-picker" data-field="must" data-mode="multi" data-cap="3">
-                <div class="ff-picker-chips" id="ff-must-chips"></div>
-                <div class="ff-picker-cap" id="ff-must-cap"></div>
-                <div class="ff-picker-controls">
-                  <button type="button" class="ff-picker-toggle" id="ff-must-toggle">Browse items</button>
-                  <button type="button" class="ff-picker-text-toggle" id="ff-must-text-toggle">Use free text instead</button>
-                </div>
-                <div class="ff-picker-panel" id="ff-must-panel" hidden></div>
-                <div class="ff-picker-text" id="ff-must-text-wrap" hidden>
-                  <textarea id="ff-must-text" placeholder="Free-text fallback. (Use the picker above when you can — the lab keeps better track of typed refs.)"></textarea>
-                </div>
-              </div>
-              <div class="ff-must-notes-wrap">
-                <label class="ff-sublabel" for="ff-must-notes">Notes <span class="ff-hint">optional · caveats, conditions, anything that connects the picks</span></label>
-                <textarea id="ff-must-notes" class="ff-must-notes" placeholder="Optional. Anything that ties the picks together or qualifies the floor."></textarea>
-              </div>
+              <label>Done means</label>
+              <textarea id="ff-must" placeholder="What counts as the floor for this turn. Be concrete — what gets delivered, decided, or moved."></textarea>
             </div>
             <div>
-              <label>Bonus <span class="ff-hint">if time and capacity allow · pick one or more</span></label>
-              <div class="ff-picker" data-field="stretch" data-mode="multi">
-                <div class="ff-picker-chips" id="ff-stretch-chips"></div>
-                <div class="ff-picker-controls">
-                  <button type="button" class="ff-picker-toggle" id="ff-stretch-toggle">Browse items</button>
-                  <button type="button" class="ff-picker-text-toggle" id="ff-stretch-text-toggle">Use free text instead</button>
-                </div>
-                <div class="ff-picker-panel" id="ff-stretch-panel" hidden></div>
-                <div class="ff-picker-text" id="ff-stretch-text-wrap" hidden>
-                  <textarea id="ff-stretch-text" placeholder="Free-text fallback for bonuses you'd take if time allows."></textarea>
-                </div>
-              </div>
+              <label>What ruins this</label>
+              <textarea id="ff-miss" placeholder="If this ends badly, what went wrong? Strong answers name a both/and trap (research with no tool — OR — tool with no notes)."></textarea>
             </div>
           </div>
 
@@ -5371,11 +5346,11 @@
           <div class="frame-batch">
             <div class="frame-batch-header">
               <div class="frame-batch-title">Approach</div>
-              <div class="frame-batch-subtitle">Set the plan. How you'll play. Per-card specifics live under each Done-means chip above.</div>
+              <div class="frame-batch-subtitle">Set the plan. How you'll play it.</div>
             </div>
             <div>
-              <label>How I'll work — overall <span class="ff-hint">optional · cross-card mode, posture, the day's overall stance</span></label>
-              <textarea id="ff-approach" placeholder="Optional. Day-level mode or posture (e.g., pair-prog with Opus all day). Per-card specifics — mode, leaning on, who's involved, done this turn — live under each Done-means chip."></textarea>
+              <label>How I'll work</label>
+              <textarea id="ff-approach" placeholder="Mode, posture, who's involved. Pair with Opus / solo synth / delegate to ghostwriter / etc."></textarea>
             </div>
           </div>
 
@@ -5383,11 +5358,7 @@
           <div class="frame-batch">
             <div class="frame-batch-header">
               <div class="frame-batch-title">Safety</div>
-              <div class="frame-batch-subtitle">Set the endgame. The three ways the day can end.</div>
-            </div>
-            <div>
-              <label>What ruins this</label>
-              <textarea id="ff-miss" placeholder="If this ends badly, what went wrong? Strong answers name a both/and trap (research with no tool — OR — tool with no notes)."></textarea>
+              <div class="frame-batch-subtitle">Name the endgame. When the day ends.</div>
             </div>
             <div>
               <label>When to stop <span class="ff-hint">three ways the day ends</span></label>
@@ -5822,7 +5793,7 @@
       "accent": "blue",
       "workshop": true,
       "description": "Where the Frame practice and chapter live. The phase that decides what the turn is for.",
-      "items": ["LAB-001","LAB-002","LAB-019","LAB-026","LAB-027","LAB-028","LAB-036"],
+      "items": ["LAB-001","LAB-002","LAB-019","LAB-026","LAB-027","LAB-028","LAB-036","LAB-058"],
       "sources": [
         { "label": "frame-research-and-practice.md (the chunk skeleton)", "href": "frame-research-and-practice.md" },
         { "label": "turn-v0.1-phases-and-leverage.md (Frame section)", "href": "turn-v0.1-phases-and-leverage.md" },
@@ -7041,6 +7012,15 @@
       "area": "comprehend-station",
       "brief": "v0.2: walks that reference other walks (e.g., a 'build the v0.4 from scratch' sequence that chains multiple walks). Needs a walk-graph data model.",
       "full": "v0.1 walks are standalone: each has its own steps, and completing one doesn't automatically start another.\n\nv0.2: a walk can reference a sequence of other walks — e.g., 'Build the v0.4 from scratch' = build-canvas-walk → course-planning-walk → frame-walk, played in order. The author completes each sub-walk, then the sequence auto-advances to the next.\n\nNeeds a walk-graph data model: each walk gets an optional `next_walk_id` field, or a top-level Sequence object that lists an ordered array of walk IDs.\n\nWarrants a design pass before building — the interaction shape (does the sequence show progress across sub-walks? does each sub-walk feel self-contained or stitched?) is not obvious.\n\nP3. Standalone walks are the right starting point. Build sequences when a multi-walk training arc is actually needed."
+    },
+    "LAB-058": {
+      "id": "LAB-058",
+      "title": "Frame form picker + Bonus + per-card Approach — rolled back 2026-05-11",
+      "status": "backlog",
+      "priority": "P1",
+      "area": "frame-workshop",
+      "brief": "The Outcome-batch picker (Done means as typed-ref multi-select with cap), Bonus field, per-slot Approach unfold, free-text fallback, and Course/Full-lab scope toggle were ripped from the rendered form on 2026-05-11. Restore only when (a) the daily Frame is being run reliably with the simple textarea form, and (b) the rogaine feedback loop (off-board picks → Debrief pre-fill) becomes the actual constraint on weekly planning quality. Capture the five-part record here so the future picker-upper has the full archeology.",
+      "full": "**What got built (and is now removed from the rendered form):**\n\n- Done means as a typed-ref multi-select picker (LAB-027 v2.5), capped at 3 picks, scoped to the active Course by default with a Full-lab toggle.\n- Bonus as a typed-ref multi-select picker (uncapped), same scope toggle.\n- Per-card Approach unfold beneath each Done-means chip (LAB-027 v3): four fields — Mode / Leaning on / AI · people / Done this turn — meant to make each shielded goal carry its own context. Aligned with Wickens MRT (mode per task) and Risko & Gilbert (offloading depends on task shape).\n- Free-text fallback per picker field.\n- 'How I'll work — overall' textarea as the day-level Approach (cross-card mode/posture).\n- 'What ruins this' lived in the Safety batch alongside 'When to stop'.\n- Off-board pick tagging (`ref.off_board=true`) so Debrief (LAB-042) could later pre-fill `changes_to_course.pieces_added`.\n\n**Why rolled back (2026-05-11):** The picker is selection over generation, which is the right *long-run* shape — but it depends on a populated, well-maintained lab whose items are concrete enough to pick from. In current conditions the lab is being authored in parallel with the framework: items churn, titles drift, priorities reshuffle. Picking from a moving lab adds cognitive load instead of removing it, and the per-card Approach unfold was treated as ceremony rather than a thinking prompt — empty unfolds were the dominant pattern. Quenton + author agreed the right move is to revert to plain textareas in Outcome / Approach / Safety, and earn the picker back when daily Frame is running reliably without it. The Outcome batch pairs 'Done means' with 'What ruins this' (its both/and twin) — the Safety batch keeps only 'When to stop'.\n\n**Restoration trigger:** Both must be true. (1) Daily Frame runs steadily for ≥ 2 weeks on the simple form with the author choosing to run it rather than skip — i.e. the textarea form is not the bottleneck. (2) The rogaine loop (off-board picks → Debrief pre-fill → next-leg board changes) is identifiable as the actual constraint on weekly planning quality — e.g. the author can name specific moments where having typed refs would have changed a Debrief decision. Without (2), the picker is solving a problem the author doesn't yet feel.\n\n**Commit + line pointers (pre-rollback baseline, for archeology):** Commit `4f049c3` (Lab: retire Heartbeat metaphor + Gauge area) was HEAD before this rollback branch. Pre-rollback line ranges in `cognitive-lab/cognitive-lab-v0.1.html`: form markup 5249–5316 (Outcome batch with picker + notes + Bonus, Approach with day-level + per-card scaffold, Safety with 'What ruins this' + 'When to stop'); picker state vars + FF_SLOT_* + shiftExpandedDown 7596–7651; FF_PICKER_FIELDS + FF_PICKER_CAPS + FF_LABELS 7573–7581; coerceFieldValue 7683–7693; loadIntoFrameForm picker path 7695–7734; readFrameForm picker path 7736–7756; renderFramePicker 8936–9107; click handler (ws-editing) 9110–9227; per-slot input handler 9232–9243; viewing-mode per-slot Approach renderer ~8483–8492 + must_notes inline ~8517–8519. CSS for the picker/chip/notes/slot system at ~3360–3460 in the same file. Predecessor backlog items: LAB-027 (Frame v0.2 — plan-pointing + per-card Approach), LAB-036 (Frame Approach iconic skin), LAB-042 (Off-board picks → Debrief pre-fill). When restoring, also revisit those three.\n\n**Future-picker-upper caveats:** (a) The saved-card schema still accepts the old shape — `must` as array of `{id, title, mode?, leaning_on?, ai_people?, done_this_turn?, off_board?}` refs, plus `stretch` array and `must_notes` string. New cards write `must` as plain string. Restoration needs migration logic (or graceful coexistence). (b) The Course's `build_positions` + `frontier` are still the source of truth for scope; `getActiveCourseScopeSet` is still in the file (used elsewhere). (c) `openItemFromFrameRef` is still wired so legacy chips in the viewing-mode body still route to the lab item — preserve this path on restore. (d) The per-card Approach unfold's empty-by-default behavior was the felt failure mode; if restoring, consider making it auto-collapse-when-empty or replacing it with a single per-chip note line. (e) The iconic-skin reframe (LAB-036) was meant to make Approach enactive rather than text-input — that may be the right shape, not the textarea-per-slot one we built. Don't restore the per-slot textareas verbatim; redesign with Quenton first."
     }
   }
 }
@@ -7596,14 +7576,13 @@
 
   /* ── Frame Workshop: storage helpers ── */
   const FRAME_KEY = 'cognitive-lab-v0.1::frame-cards';
-  const FF_FIELDS = ['in','out','must','stretch','approach','miss','end'];
-  // Fields that are typed-ref pickers (LAB-027 v2). Stored as either:
-  //   - array of {id, title} refs (picker mode), or
-  //   - non-empty string (free-text fallback / legacy back-compat).
-  // Done means is multi with a hard cap of 3 (mirrors the priority spec — LAB-027 v2.5).
-  const FF_PICKER_FIELDS = { must: 'multi', stretch: 'multi' };
-  const FF_PICKER_CAPS   = { must: 3 }; // omitted = uncapped
-  const FF_LABELS = { must:'Done means', stretch:'Bonus', in:'Doing', out:'Not Doing', approach:'How I\'ll work', miss:'What ruins this', end:'When to stop' };
+  // Rolled back to plain-textarea form (rollback 2026-05-11, LAB-058).
+  // The picker / Bonus / per-slot Approach infrastructure was removed from
+  // the rendered form path. Saved-card schema for legacy fields (stretch,
+  // must as array, must_notes, per-slot ref fields) is preserved silently —
+  // old cards' picker data stays in localStorage but is no longer rendered.
+  const FF_FIELDS = ['in','out','must','miss','approach','end'];
+  const FF_LABELS = { must:'Done means', in:'Doing', out:'Not Doing', approach:'How I\'ll work', miss:'What ruins this', end:'When to stop' };
 
   function loadFrameCards() {
     try { return JSON.parse(localStorage.getItem(FRAME_KEY) || '[]'); }
@@ -7618,165 +7597,43 @@
     return d.toISOString().slice(0,10) + ' ' + d.toTimeString().slice(0,5);
   }
 
-  // In-memory picker state for the field currently being edited.
-  // Reset every time we enter edit mode. Mirrors the saved card's must/stretch.
-  // Each ref carries optional per-slot approach fields (LAB-027 v3, must field only):
-  //   { id, title, mode?, leaning_on?, ai_people?, done_this_turn? }
-  let framePickerState = { must: [], stretch: [] };
-  // Whether the picker panel is expanded for each field. Independent of state.
-  let framePickerPanelOpen = { must: false, stretch: false };
-  // Which priority tier the picker is currently showing (P0 default, expandable to P1, P2).
-  let framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-  // Default the picker scope to the active Course's scope (i.e. the items
-  // placed on the snap-circuit board for this week). Per the rogaine-spine
-  // architecture, per-leg Frame picks *from* the course. The user can expand
-  // to the full lab via the toggle, in which case off-board picks get marked
-  // on the ref so Debrief can later surface them as candidate
-  // changes_to_course.pieces_added. (Variable values renamed 'frontier' →
-  // 'course' in the Course-view rewrite; semantics unchanged for Slice 0.)
-  let framePickerScope = { must: 'course', stretch: 'course' };
-  // Whether the free-text fallback is active per field.
-  let framePickerTextMode = { must: false, stretch: false };
-  // Which Done-means slot indices have their per-slot Approach unfold open (LAB-027 v3).
-  // Set of indices into framePickerState.must. Stretch never unfolds (out of scope per design call).
-  let frameSlotExpanded = { must: new Set() };
-
-  // Fields supported on the per-slot Approach unfold. Order matters — render order.
-  const FF_SLOT_FIELDS = ['mode', 'leaning_on', 'ai_people', 'done_this_turn'];
-  const FF_SLOT_LABELS = {
-    mode:           'Mode',
-    leaning_on:     'Leaning on',
-    ai_people:      'AI / people',
-    done_this_turn: 'Done this turn'
-  };
-  const FF_SLOT_HINTS = {
-    mode:           'how I\'ll work it · pair / delegate / write / synth / review',
-    leaning_on:     'files, prior outputs, sources',
-    ai_people:      'who\'s involved · agents, collaborators, or solo',
-    done_this_turn: 'completion · milestone · effort'
-  };
-  const FF_SLOT_PLACEHOLDERS = {
-    mode:           'pair / delegate / write / synth / review',
-    leaning_on:     'docs, prior outputs, the v2.5 chip code',
-    ai_people:      'opus 4.7 / solo / @jess for review',
-    done_this_turn: 'completion: ship the form. milestone: section 3 past structural-holds. effort: one full Push on chapter draft.'
-  };
-
-  // After a chip at `removedIdx` is dropped from the must array, return a new Set with
-  // the removed index gone and any later indexes shifted down by 1. Keeps the expanded
-  // state paired with chips when the array reindexes.
-  function shiftExpandedDown(set, removedIdx) {
-    const out = new Set();
-    set.forEach(i => {
-      if (i < removedIdx) out.add(i);
-      else if (i > removedIdx) out.add(i - 1);
-    });
-    return out;
-  }
+  // Frame form is a flat set of textareas (post-rollback, 2026-05-11, LAB-058).
+  // Picker / Bonus / per-slot Approach infrastructure removed from the rendered
+  // form path; legacy saved-card schema (must as array, stretch, must_notes,
+  // per-slot ref fields) is preserved silently in localStorage but not rendered.
 
   function clearFrameForm() {
     FF_FIELDS.forEach(f => {
-      if (FF_PICKER_FIELDS[f]) {
-        framePickerState[f] = [];
-        framePickerTextMode[f] = false;
-        const ta = document.getElementById('ff-' + f + '-text');
-        if (ta) ta.value = '';
-      } else {
-        const el = document.getElementById('ff-' + f);
-        if (el) el.value = '';
-      }
+      const el = document.getElementById('ff-' + f);
+      if (el) el.value = '';
     });
-    const notesEl = document.getElementById('ff-must-notes');
-    if (notesEl) notesEl.value = '';
-    framePickerPanelOpen = { must: false, stretch: false };
-    framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-    framePickerScope = { must: 'course', stretch: 'course' };
-    frameSlotExpanded = { must: new Set() };
-    Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
-  }
-
-  // Coerce stored value into an array of refs; legacy strings stay strings.
-  // For LAB-027 v3, ref objects may carry optional approach fields
-  // (mode / leaning_on / ai_people / done_this_turn). Pass them through
-  // when present; absent on legacy v2.5 cards (back-compat).
-  // Pass through `off_board` so the flag survives a save/reload cycle.
-  // Without this, the chip's off-board badge disappears after every save
-  // and Debrief loses the candidate signal for changes_to_course.pieces_added.
-  // Backward-compat: legacy cards persisted `off_frontier` (pre-rename);
-  // coalesce on read so existing cards keep their badges, and re-emit
-  // forward as `off_board` so the next save normalizes the field.
-  function coerceFieldValue(field, value) {
-    if (Array.isArray(value)) return value.filter(r => r && r.id).map(r => {
-      const out = { id: r.id, title: r.title || '' };
-      if (r.off_board === true || r.off_frontier === true) out.off_board = true;
-      FF_SLOT_FIELDS.forEach(k => {
-        if (typeof r[k] === 'string' && r[k].length > 0) out[k] = r[k];
-      });
-      return out;
-    });
-    return value || '';
   }
 
   function loadIntoFrameForm(card) {
     FF_FIELDS.forEach(f => {
-      if (FF_PICKER_FIELDS[f]) {
-        const v = coerceFieldValue(f, card[f]);
-        if (Array.isArray(v)) {
-          framePickerState[f] = v;
-          framePickerTextMode[f] = false;
-          const ta = document.getElementById('ff-' + f + '-text');
-          if (ta) ta.value = '';
-        } else {
-          // Legacy string. Show in free-text fallback so existing cards round-trip safely.
-          framePickerState[f] = [];
-          framePickerTextMode[f] = !!v;
-          const ta = document.getElementById('ff-' + f + '-text');
-          if (ta) ta.value = v || '';
-        }
+      const el = document.getElementById('ff-' + f);
+      if (!el) return;
+      const v = card[f];
+      // Legacy `must` may be an array of typed refs from the picker era.
+      // Coerce to a readable string so the user can keep editing without data
+      // loss; saving will overwrite the array form with the textarea value.
+      if (Array.isArray(v)) {
+        el.value = v
+          .filter(r => r && r.id)
+          .map(r => r.id + (r.title ? ' · ' + r.title : ''))
+          .join('\n');
       } else {
-        const el = document.getElementById('ff-' + f);
-        if (el) el.value = card[f] || '';
+        el.value = v || '';
       }
     });
-    const notesEl = document.getElementById('ff-must-notes');
-    if (notesEl) notesEl.value = card.must_notes || '';
-    framePickerPanelOpen = { must: false, stretch: false };
-    framePickerExpandTier = { must: 'P0', stretch: 'P0' };
-    // Reset scope to 'course' on card load. If the previous session ended
-    // with the user toggled to 'all' (e.g., because the prior card had no
-    // course set), defaulting back to 'course' surfaces the new card's
-    // course scope correctly. The auto-flip in renderFramePicker still
-    // kicks in if this card's course is also empty — so 'course' is the
-    // safe default in both cases.
-    framePickerScope = { must: 'course', stretch: 'course' };
-    // Auto-expand any must slot whose ref carries approach data. Empty slots stay collapsed
-    // so a fresh card doesn't open four panels at once. Keeps lived data visible after reload.
-    frameSlotExpanded = { must: new Set() };
-    (framePickerState.must || []).forEach((r, i) => {
-      if (FF_SLOT_FIELDS.some(k => r && r[k])) frameSlotExpanded.must.add(i);
-    });
-    Object.keys(FF_PICKER_FIELDS).forEach(f => renderFramePicker(f));
   }
 
   function readFrameForm() {
     const card = { savedAt: new Date().toISOString(), date: todayDateString() };
     FF_FIELDS.forEach(f => {
-      if (FF_PICKER_FIELDS[f]) {
-        if (framePickerTextMode[f]) {
-          // Free-text fallback active. Persist as string.
-          const ta = document.getElementById('ff-' + f + '-text');
-          card[f] = ta ? ta.value.trim() : '';
-        } else {
-          // Picker mode. Persist as ref array (may be empty).
-          card[f] = framePickerState[f].slice();
-        }
-      } else {
-        card[f] = document.getElementById('ff-' + f).value.trim();
-      }
+      const el = document.getElementById('ff-' + f);
+      card[f] = el ? el.value.trim() : '';
     });
-    const notesEl = document.getElementById('ff-must-notes');
-    const notesVal = notesEl ? notesEl.value.trim() : '';
-    if (notesVal) card.must_notes = notesVal;
     return card;
   }
 
@@ -8557,8 +8414,7 @@
     if (card) loadIntoFrameForm(card); else clearFrameForm();
     setWsMode('editing');
     setTimeout(() => {
-      // ff-must is now a picker shell; focus the Doing textarea so the user can type immediately,
-      // and let them tab into the picker when they want to set Done means.
+      // Focus the first field (Doing) so the user can type immediately.
       const first = document.getElementById('ff-in');
       if (first) first.focus();
     }, 50);
@@ -8576,44 +8432,20 @@
         const v = card[f];
         let valHTML;
         if (Array.isArray(v)) {
-          // Typed-ref array → render as chips. For must (LAB-027 v3), also render
-          // the per-slot Approach beneath each chip if any approach data was saved.
-          const renderApproachBlock = (ref) => {
-            const lines = FF_SLOT_FIELDS
-              .filter(k => typeof ref[k] === 'string' && ref[k].trim().length > 0)
-              .map(k => `<div class="vb-ap-line">
-                <span class="vb-ap-lbl">${escapeHTML(FF_SLOT_LABELS[k])}</span>
-                <span class="vb-ap-val">${escapeHTML(ref[k])}</span>
-              </div>`)
-              .join('');
-            return lines ? `<div class="ws-vb-slot-approach">${lines}</div>` : '';
-          };
-          if (f === 'must') {
-            valHTML = '<div class="ff-picker-chips" style="flex-direction:column;align-items:stretch;">' + v.map(ref => {
-              const id = escapeHTML(ref.id || '');
-              const title = escapeHTML(ref.title || '');
-              const chip = `<span class="ff-chip" data-act="open-ref" data-item="${id}">
-                <span class="ff-chip-id">${id}</span>
-                <span class="ff-chip-title">${title}</span>
-              </span>`;
-              return `<div class="ws-vb-slot">${chip}${renderApproachBlock(ref)}</div>`;
-            }).join('') + '</div>';
-          } else {
-            valHTML = '<div class="ff-picker-chips">' + v.map(ref => {
-              const id = escapeHTML(ref.id || '');
-              const title = escapeHTML(ref.title || '');
-              return `<span class="ff-chip" data-act="open-ref" data-item="${id}">
-                <span class="ff-chip-id">${id}</span>
-                <span class="ff-chip-title">${title}</span>
-              </span>`;
-            }).join('') + '</div>';
-          }
+          // Legacy typed-ref array from the picker era (LAB-027). The picker
+          // form is gone (rollback 2026-05-11, LAB-058) but legacy data may
+          // still be on saved cards. Render as read-only chips so the author
+          // can still click through to the referenced lab item.
+          valHTML = '<div class="ff-picker-chips">' + v.map(ref => {
+            const id = escapeHTML(ref.id || '');
+            const title = escapeHTML(ref.title || '');
+            return `<span class="ff-chip" data-act="open-ref" data-item="${id}">
+              <span class="ff-chip-id">${id}</span>
+              <span class="ff-chip-title">${title}</span>
+            </span>`;
+          }).join('') + '</div>';
         } else {
-          valHTML = escapeHTML(v);
-        }
-        // Append must_notes inline beneath the chips for the must row.
-        if (f === 'must' && card.must_notes) {
-          valHTML += `<div class="ws-vb-notes">${escapeHTML(card.must_notes)}</div>`;
+          valHTML = escapeHTML(v).replace(/\n/g, '<br>');
         }
         return `<div class="ws-vb-row"><div class="lbl">${FF_LABELS[f]}</div><div class="val">${valHTML}</div></div>`;
       })
@@ -8995,350 +8827,15 @@
     return new Set([...fromPositions, ...fromFrontier]);
   }
 
-  function getFramePickerCandidates(tier, scope) {
-    // Reuse allItemsArray() so picker matches the Priority view's source of truth.
-    // When scope === 'course', intersect with the active Course's scope set.
-    // Default scope is 'course' (the rogaine discipline); the picker UI exposes
-    // a toggle to expand to 'all' (the full lab).
-    const items = (typeof allItemsArray === 'function') ? allItemsArray() : [];
-    const wantedTiers = tier === 'P0' ? ['P0']
-                      : tier === 'P1' ? ['P0','P1']
-                      : ['P0','P1','P2'];
-    const useScope = scope || 'course';
-    let filtered = items
-      .filter(it => wantedTiers.includes(it.priority))
-      .filter(it => it.status !== 'live' && it.status !== 'archived');
-    if (useScope === 'course') {
-      const courseScope = getActiveCourseScopeSet();
-      // If course scope is empty (no course set or empty scope), the caller is
-      // expected to have flipped to 'all' already. As a safety net, return all
-      // candidates rather than an empty list — this prevents an unfillable picker
-      // when the user hasn't planned a course yet.
-      if (courseScope.size === 0) {
-        // fall through with no course filter
-      } else {
-        filtered = filtered.filter(it => courseScope.has(it.id));
-      }
-    }
-    return filtered.sort((a, b) => {
-      // Priority first.
-      const pa = priorityRank(a.priority), pb = priorityRank(b.priority);
-      if (pa !== pb) return pa - pb;
-      // Within priority: in-progress, drafted, backlog (statusRank gives 0,1,2 — perfect).
-      const sa = statusRank(a.status), sb = statusRank(b.status);
-      if (sa !== sb) return sa - sb;
-      return a.id.localeCompare(b.id);
-    });
-  }
-
-  function renderFramePicker(field) {
-    const mode = FF_PICKER_FIELDS[field]; // 'single' | 'multi'
-    const cap  = FF_PICKER_CAPS[field] || 0; // 0 = uncapped
-    const chipsEl = document.getElementById('ff-' + field + '-chips');
-    const capEl   = document.getElementById('ff-' + field + '-cap');
-    const panelEl = document.getElementById('ff-' + field + '-panel');
-    const toggleBtn = document.getElementById('ff-' + field + '-toggle');
-    const textWrap = document.getElementById('ff-' + field + '-text-wrap');
-    const textToggle = document.getElementById('ff-' + field + '-text-toggle');
-    if (!chipsEl || !panelEl || !toggleBtn) return;
-
-    // Render chip list of selected refs. For the must field (LAB-027 v3), each chip is
-    // wrapped in a slot that also renders an inline Approach unfold beneath it.
-    const selected = framePickerState[field] || [];
-    const slotsEnabled = (field === 'must');
-    const expandedSet = (slotsEnabled && frameSlotExpanded.must) ? frameSlotExpanded.must : new Set();
-
-    chipsEl.innerHTML = selected.map((ref, i) => {
-      const id = escapeHTML(ref.id || '');
-      const title = escapeHTML(ref.title || '');
-      // Off-board picks render with a small "↗" badge so the user sees
-      // mid-leg deviations from the planned course at a glance. Debrief
-      // later surfaces these as candidate changes_to_course.pieces_added.
-      // Coalesce off_board || off_frontier so legacy cards keep their badges.
-      const offBoard = !!(ref.off_board || ref.off_frontier);
-      const offBadge = offBoard
-        ? '<span class="ff-chip-off-board" title="Off-board pick — surfaces in Debrief as a candidate addition to next-leg\'s board.">↗</span>'
-        : '';
-      const chipHTML = `<span class="ff-chip${offBoard ? ' off-board' : ''}" data-act="ff-chip" data-field="${field}" data-item="${id}" data-slot-idx="${i}">
-        <span class="ff-chip-id">${id}</span>
-        <span class="ff-chip-title">${title}</span>${offBadge}${
-          slotsEnabled
-            ? `<span class="ff-slot-toggle" aria-hidden="true">${expandedSet.has(i) ? '▾' : '▸'}</span>`
-            : ''
-        }
-        <button type="button" class="ff-chip-x" data-act="ff-chip-remove" data-field="${field}" data-item="${id}" title="Remove">×</button>
-      </span>`;
-      if (!slotsEnabled) return chipHTML;
-      const isOpen = expandedSet.has(i);
-      const unfoldHTML = `<div class="ff-slot-approach" data-slot-idx="${i}"${isOpen ? '' : ' hidden'}>
-        ${FF_SLOT_FIELDS.map(k => {
-          const val = escapeHTML(ref[k] || '');
-          const isLong = (k === 'leaning_on' || k === 'done_this_turn');
-          const inputHTML = isLong
-            ? `<textarea data-act="ff-slot-input" data-slot-idx="${i}" data-slot-key="${k}" placeholder="${escapeHTML(FF_SLOT_PLACEHOLDERS[k])}">${val}</textarea>`
-            : `<input type="text" data-act="ff-slot-input" data-slot-idx="${i}" data-slot-key="${k}" value="${val}" placeholder="${escapeHTML(FF_SLOT_PLACEHOLDERS[k])}">`;
-          return `<div class="ff-slot-field">
-            <label>${escapeHTML(FF_SLOT_LABELS[k])} <span class="ff-hint">${escapeHTML(FF_SLOT_HINTS[k])}</span></label>
-            ${inputHTML}
-          </div>`;
-        }).join('')}
-      </div>`;
-      return `<div class="ff-slot${isOpen ? ' expanded' : ''}" data-slot-idx="${i}">
-        ${chipHTML}
-        ${unfoldHTML}
-      </div>`;
-    }).join('');
-
-    // Cap counter line (only when this field has a cap).
-    const atCap = cap > 0 && selected.length >= cap;
-    if (capEl) {
-      if (cap > 0) {
-        capEl.hidden = false;
-        capEl.classList.toggle('full', atCap);
-        capEl.textContent = atCap
-          ? `${selected.length} of ${cap} · picker full — remove a chip to pick another`
-          : `${selected.length} of ${cap} picked`;
-      } else {
-        capEl.hidden = true;
-        capEl.textContent = '';
-      }
-    }
-
-    // Free-text fallback visibility.
-    const inText = !!framePickerTextMode[field];
-    if (textWrap) textWrap.hidden = !inText;
-    if (textToggle) textToggle.textContent = inText ? 'Use the picker instead' : 'Use free text instead';
-
-    // Picker panel visibility — hidden when in text mode.
-    const open = !!framePickerPanelOpen[field] && !inText;
-    panelEl.hidden = !open;
-    toggleBtn.classList.toggle('open', open);
-    // At-cap state on the Browse button: greyed but still clickable so the panel can be
-    // opened to remove via the row's "selected" highlight (clicking a selected row deselects).
-    toggleBtn.classList.toggle('at-cap', atCap && !open);
-    toggleBtn.textContent = open ? 'Close' : (atCap ? 'Browse items (full)' : 'Browse items');
-    if (inText) {
-      toggleBtn.disabled = true;
-      toggleBtn.style.opacity = '0.4';
-      toggleBtn.style.cursor = 'not-allowed';
-    } else {
-      toggleBtn.disabled = false;
-      toggleBtn.style.opacity = '';
-      toggleBtn.style.cursor = '';
-    }
-
-    if (!open) return;
-
-    // Render the panel contents.
-    const tier = framePickerExpandTier[field] || 'P0';
-    // Resolve scope. If course scope is empty and the user hasn't already
-    // flipped to 'all' explicitly, auto-flip and surface a hint instead of an
-    // empty picker. This is the "no course set" safety net.
-    const courseScopeSet = getActiveCourseScopeSet();
-    const courseEmpty = courseScopeSet.size === 0;
-    if (courseEmpty && framePickerScope[field] === 'course') {
-      framePickerScope[field] = 'all';
-    }
-    const scope = framePickerScope[field] || 'course';
-    const candidates = getFramePickerCandidates(tier, scope);
-    const selectedIds = new Set(selected.map(r => r.id));
-
-    // Group by priority for visual separation.
-    const groups = { P0: [], P1: [], P2: [] };
-    candidates.forEach(it => { if (groups[it.priority]) groups[it.priority].push(it); });
-
-    // Scope toggle — shows the count in the active scope, lets the user flip.
-    // When course scope is empty, the toggle is disabled and labeled accordingly.
-    const courseLabel = courseEmpty
-      ? 'No course set'
-      : 'Course (' + courseScopeSet.size + ')';
-    let html = '';
-    html += `<div class="ff-pp-scope-bar">
-      <button type="button" class="ff-pp-scope${scope === 'course' ? ' active' : ''}${courseEmpty ? ' disabled' : ''}" data-act="ff-scope" data-field="${field}" data-scope="course"${courseEmpty ? ' disabled' : ''}>${escapeHTML(courseLabel)}</button>
-      <button type="button" class="ff-pp-scope${scope === 'all' ? ' active' : ''}" data-act="ff-scope" data-field="${field}" data-scope="all">Full lab</button>
-      ${courseEmpty ? '<span class="ff-pp-scope-hint">No course set yet — open the Course view to set one and scope this picker.</span>' : ''}
-    </div>`;
-
-    ['P0','P1','P2'].forEach(p => {
-      if (groups[p].length === 0) return;
-      if (tier === 'P0' && p !== 'P0') return;
-      if (tier === 'P1' && p === 'P2') return;
-      html += `<div class="ff-pp-section-label">${p} · ${escapeHTML(PRI_LABEL[p] || '')}</div>`;
-      html += groups[p].map(it => {
-        const isSel = selectedIds.has(it.id);
-        const sel = isSel ? ' selected' : '';
-        // At cap: rows for unselected items become non-clickable visually. Selected rows stay
-        // clickable so the user can deselect to free a slot.
-        const dim = (atCap && !isSel) ? ' at-cap' : '';
-        const statLabel = STATUS_LABEL[it.status] || it.status;
-        return `<div class="ff-pp-row${sel}${dim}" data-act="ff-pick" data-field="${field}" data-item="${escapeHTML(it.id)}" data-title="${escapeHTML(it.title)}">
-          <span class="ff-pp-pri ${it.priority}">${it.priority}</span>
-          <div class="ff-pp-body">
-            <span class="ff-pp-id">${escapeHTML(it.id)}</span>
-            <span class="ff-pp-title">${escapeHTML(it.title)}</span>
-          </div>
-          <span class="ff-pp-stat" data-s="${it.status}">${escapeHTML(statLabel)}</span>
-        </div>`;
-      }).join('');
-    });
-
-    // The candidate-list emptiness check needs to ignore the scope-bar HTML
-    // we just appended; check after the loop above produced no row content.
-    const hasRows = candidates.length > 0;
-    if (!hasRows) {
-      html += scope === 'course'
-        ? '<div class="ff-pp-empty">No course items in this tier. Try expanding to P1/P2 or switching to Full lab.</div>'
-        : '<div class="ff-pp-empty">Nothing in this tier. Try expanding to P1 or P2.</div>';
-    }
-
-    // See-more affordance.
-    if (tier === 'P0') {
-      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P1">See P1 too</button>`;
-    } else if (tier === 'P1') {
-      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P2">See P2 too</button>`;
-      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P0" style="margin-left:6px;">Back to P0 only</button>`;
-    } else {
-      html += `<button type="button" class="ff-pp-expand" data-act="ff-expand-tier" data-field="${field}" data-tier="P0">Back to P0 only</button>`;
-    }
-
-    panelEl.innerHTML = html;
-  }
-
-  // Delegated event handler for the Frame edit form (picker controls + chips).
-  document.getElementById('ws-editing').addEventListener('click', (e) => {
-    const tgt = e.target;
-    // Toggle picker panel
-    if (tgt.id === 'ff-must-toggle' || tgt.id === 'ff-stretch-toggle') {
-      const field = tgt.id === 'ff-must-toggle' ? 'must' : 'stretch';
-      framePickerPanelOpen[field] = !framePickerPanelOpen[field];
-      renderFramePicker(field);
-      return;
-    }
-    // Toggle free-text fallback
-    if (tgt.id === 'ff-must-text-toggle' || tgt.id === 'ff-stretch-text-toggle') {
-      const field = tgt.id === 'ff-must-text-toggle' ? 'must' : 'stretch';
-      framePickerTextMode[field] = !framePickerTextMode[field];
-      // When switching to text mode: keep any existing selections cleared from active state
-      // (state remains in array form under-the-hood but readFrameForm uses textMode flag to decide).
-      // When switching back to picker: clear text input so it doesn't ghost-save.
-      if (!framePickerTextMode[field]) {
-        const ta = document.getElementById('ff-' + field + '-text');
-        if (ta) ta.value = '';
-      }
-      framePickerPanelOpen[field] = false;
-      renderFramePicker(field);
-      return;
-    }
-    // Scope toggle (Course / Full lab) inside the picker panel.
-    const scopeBtn = tgt.closest('[data-act="ff-scope"]');
-    if (scopeBtn && !scopeBtn.disabled && !scopeBtn.classList.contains('disabled')) {
-      const field = scopeBtn.dataset.field;
-      const next  = scopeBtn.dataset.scope; // 'course' | 'all'
-      if (field && next && framePickerScope[field] !== next) {
-        framePickerScope[field] = next;
-        renderFramePicker(field);
-      }
-      return;
-    }
-    // Pick / unpick an item in the panel
-    const pickRow = tgt.closest('[data-act="ff-pick"]');
-    if (pickRow) {
-      const field = pickRow.dataset.field;
-      const id = pickRow.dataset.item;
-      const title = pickRow.dataset.title;
-      const mode = FF_PICKER_FIELDS[field];
-      const cap  = FF_PICKER_CAPS[field] || 0;
-      const cur = framePickerState[field] || [];
-      const existsAt = cur.findIndex(r => r.id === id);
-      // Tag the new ref with off_board=true if the item isn't in the active
-      // Course's scope. Course-membership is checked at the moment of pick so
-      // the flag reflects the course state at that time.
-      const courseScope = getActiveCourseScopeSet();
-      const isOffBoard = courseScope.size > 0 && !courseScope.has(id);
-      if (mode === 'single') {
-        framePickerState[field] = (existsAt >= 0) ? [] : [{ id, title, off_board: isOffBoard }];
-        if (field === 'must') {
-          frameSlotExpanded.must = (existsAt >= 0) ? new Set() : new Set([0]);
-        }
-      } else {
-        if (existsAt >= 0) {
-          // Always allow deselect — drop the chip and the corresponding expanded index,
-          // shifting later indexes down so the unfold state stays paired with chips.
-          cur.splice(existsAt, 1);
-          if (field === 'must') frameSlotExpanded.must = shiftExpandedDown(frameSlotExpanded.must, existsAt);
-        } else if (cap > 0 && cur.length >= cap) {
-          // At cap: silently no-op. The row is rendered .at-cap so the user already sees why.
-          return;
-        } else {
-          cur.push({ id, title, off_board: isOffBoard });
-          // Auto-expand the just-picked must slot so the user can fill its Approach
-          // immediately without an extra click. Stretch slots stay non-unfoldable.
-          if (field === 'must') frameSlotExpanded.must.add(cur.length - 1);
-        }
-        framePickerState[field] = cur;
-      }
-      renderFramePicker(field);
-      return;
-    }
-    // Expand tier (see more)
-    const expandBtn = tgt.closest('[data-act="ff-expand-tier"]');
-    if (expandBtn) {
-      const field = expandBtn.dataset.field;
-      const tier  = expandBtn.dataset.tier;
-      framePickerExpandTier[field] = tier;
-      renderFramePicker(field);
-      return;
-    }
-    // Remove a chip (the × button)
-    const removeBtn = tgt.closest('[data-act="ff-chip-remove"]');
-    if (removeBtn) {
-      e.stopPropagation();
-      const field = removeBtn.dataset.field;
-      const id = removeBtn.dataset.item;
-      const cur = framePickerState[field] || [];
-      const removedAt = cur.findIndex(r => r.id === id);
-      framePickerState[field] = cur.filter(r => r.id !== id);
-      if (field === 'must' && removedAt >= 0) {
-        frameSlotExpanded.must = shiftExpandedDown(frameSlotExpanded.must, removedAt);
-      }
-      renderFramePicker(field);
-      return;
-    }
-    // Click chip body (not the ×) → for must field, toggle the per-slot Approach unfold.
-    // For other fields (stretch), continue to open the item in the floor drawer.
-    const chip = tgt.closest('[data-act="ff-chip"]');
-    if (chip) {
-      const field = chip.dataset.field;
-      if (field === 'must') {
-        const idx = parseInt(chip.dataset.slotIdx, 10);
-        if (!Number.isNaN(idx)) {
-          if (frameSlotExpanded.must.has(idx)) frameSlotExpanded.must.delete(idx);
-          else frameSlotExpanded.must.add(idx);
-          renderFramePicker('must');
-        }
-        return;
-      }
-      const id = chip.dataset.item;
-      openItemFromFrameRef(id);
-      return;
-    }
-  });
-
-  // Per-slot Approach inputs: write to framePickerState.must[i][key] on every input.
-  // No re-render — that would steal focus mid-typing. The state is the source of truth
-  // when readFrameForm runs at save-time.
-  document.getElementById('ws-editing').addEventListener('input', (e) => {
-    const input = e.target.closest('[data-act="ff-slot-input"]');
-    if (!input) return;
-    const idx = parseInt(input.dataset.slotIdx, 10);
-    const key = input.dataset.slotKey;
-    if (Number.isNaN(idx) || !FF_SLOT_FIELDS.includes(key)) return;
-    const ref = (framePickerState.must || [])[idx];
-    if (!ref) return;
-    const val = input.value;
-    if (val && val.length > 0) ref[key] = val;
-    else delete ref[key];
-  });
+  // Frame picker / candidates / per-slot Approach rendering removed in the
+  // 2026-05-11 rollback (LAB-058). Form is now plain textareas; legacy
+  // saved-card schema is preserved silently in localStorage but not rendered.
+  // Picker handlers (panel toggle, scope toggle, pick/unpick, expand tier,
+  // chip-remove, per-slot input) and the helpers they called
+  // (getFramePickerCandidates, renderFramePicker, shiftExpandedDown,
+  // framePickerState / framePickerScope / FF_SLOT_*) are all gone. The
+  // viewing-mode click handler below is kept so a saved card with legacy
+  // typed-ref chips still routes to the lab item via openItemFromFrameRef.
 
   // Delegated handler for chips inside the viewing-mode body.
   document.getElementById('ws-viewing-body').addEventListener('click', (e) => {
@@ -9371,19 +8868,9 @@
 
   document.getElementById('ws-cancel-btn').addEventListener('click', () => {
     const hasContent = FF_FIELDS.some(f => {
-      if (FF_PICKER_FIELDS[f]) {
-        if (framePickerTextMode[f]) {
-          const ta = document.getElementById('ff-' + f + '-text');
-          return !!(ta && ta.value.trim());
-        }
-        return framePickerState[f].length > 0;
-      }
       const el = document.getElementById('ff-' + f);
       return !!(el && el.value.trim());
-    }) || (() => {
-      const n = document.getElementById('ff-must-notes');
-      return !!(n && n.value.trim());
-    })();
+    });
     if (hasContent && !confirm('Discard this card? Unsaved changes will be lost.')) return;
     enterResting();
   });
@@ -9439,23 +8926,13 @@
 
   document.getElementById('ff-clear').addEventListener('click', () => {
     const hasAny = FF_FIELDS.some(f => {
-      if (FF_PICKER_FIELDS[f]) {
-        if (framePickerTextMode[f]) {
-          const ta = document.getElementById('ff-' + f + '-text');
-          return !!(ta && ta.value.trim());
-        }
-        return framePickerState[f].length > 0;
-      }
       const el = document.getElementById('ff-' + f);
       return !!(el && el.value.trim());
-    }) || (() => {
-      const n = document.getElementById('ff-must-notes');
-      return !!(n && n.value.trim());
-    })();
+    });
     if (hasAny && !confirm('Clear all fields?')) return;
     clearFrameForm();
     setTimeout(() => {
-      const first = document.querySelector('#ff-must-toggle');
+      const first = document.getElementById('ff-in');
       if (first) first.focus();
     }, 30);
   });
