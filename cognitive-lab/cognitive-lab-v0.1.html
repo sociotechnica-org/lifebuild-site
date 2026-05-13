@@ -5724,8 +5724,8 @@
       <div class="area-label">Research Repository<span class="lbl-sub">research &amp; findings</span></div>
       <div class="badge-row" id="badges-library"></div>
     </div>
-    <div class="area area-visual area-gestalt" data-area="archive" data-accent="warm">
-      <div class="area-scene scene-archive">📰</div>
+    <div class="area area-visual area-gestalt" data-area="archive" data-accent="warm" data-tile-art="journal-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off" style="--art-aspect: 1.503;">
+      <div class="area-scene scene-archive">📰<img class="tile-art tile-art-dormant" src="assets/journal-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/journal-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">The Daily Journal<span class="lbl-sub">scratchpad, decisions, editions</span></div>
       <div class="badge-row" id="badges-archive"></div>
     </div>
@@ -5734,8 +5734,8 @@
       <div class="area-label">Explainer Theater<span class="lbl-sub">writeups, decks &amp; demos</span></div>
       <div class="badge-row" id="badges-deck-theater"></div>
     </div>
-    <div class="area area-visual area-gestalt" data-area="strategy" data-accent="blue">
-      <div class="area-scene scene-strategy">🗺️</div>
+    <div class="area area-visual area-gestalt" data-area="strategy" data-accent="blue" data-tile-art="strategy-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
+      <div class="area-scene scene-strategy">🗺️<img class="tile-art tile-art-dormant" src="assets/strategy-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/strategy-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Strategy &amp; Plans<span class="lbl-sub">plans, roadmaps, architecture</span></div>
       <div class="badge-row" id="badges-strategy"></div>
     </div>
@@ -6274,7 +6274,8 @@
           </div>
         </div>
 
-        <!-- DB-EDITING — rogaine shape (Phase 4): Score · Caught · Course held? · Better moves · Capacity + next -->
+        <!-- DB-EDITING — rogaine shape: Score · Caught · Course held? · Better moves.
+             Capacity gauge / "what's next" moved to the Recover workshop. -->
         <div class="ws-mode" id="db-editing">
           <div class="ws-mode-header">
             <button class="ws-back-btn" id="db-cancel-btn">← Cancel</button>
@@ -6325,16 +6326,6 @@
               </div>
               <div>
                 <textarea id="db-better-moves" placeholder="What would the next-leg version of yourself do differently?"></textarea>
-              </div>
-            </div>
-
-            <div class="frame-batch">
-              <div class="frame-batch-header">
-                <div class="frame-batch-title">Capacity + next</div>
-                <div class="frame-batch-subtitle">Gauge read · what's queued for the next leg.</div>
-              </div>
-              <div>
-                <textarea id="db-capacity" placeholder="Gauge read at end of debrief. Cleared / grounded? What's the next phase, or does recovery insert? What's queued for the next leg?"></textarea>
               </div>
             </div>
 
@@ -6731,6 +6722,20 @@
       ],
       "experiments": [
         {
+          "id": "exp-director-2026-05-12-data-loss-stale-server",
+          "title": "Stale server incident — exports lost to wiped workspace",
+          "date": "2026-05-12",
+          "observation": "A lab-server.py process from the archived lahore workspace (PID 76394) had stayed alive on :4322. Today's morning Frame save and Walk Studio walk save landed in lahore/cognitive-lab/exports/ instead of kyoto. When lahore was wiped, those exports went with it. Drive mirror was off (deps not loaded). Stale process killed; fresh kyoto-rooted server started on :4322 (PID 62699, still running at session close). Three robustness fixes proposed and parked: (1) UI server-identity badge showing which workspace root is live; (2) git-backed save journal so exports survive workspace wipes; (3) ndjson append-only journal as a second durability layer. Danvers is sleeping on all three — no decision taken tonight.",
+          "impact": "No durable lab data lost (this session's Log entries and chunks are filed here and are git-backed). The operational data that was lost was the morning Frame card and Walk Studio completion record — recoverable by feel, not by file. Decision on robustness fixes parked for morning; see Quenton's presentation at cognitive-lab/presentations/2026-05-13-morning.md for design context."
+        },
+        {
+          "id": "exp-director-2026-05-12-eod-state",
+          "title": "End-of-day integration — 2026-05-12 (four PRs, two threads)",
+          "date": "2026-05-12",
+          "observation": "Four PRs merged today. Morning thread (structural + sweep): PR #144 shipped the first daily newspaper edition covering May 11 activity + the bookended-day Walk Studio walk. PR #145 fixed a local-path link in the newspaper, retitled the May 12 edition reference, and landed the Session-Integration log entries and brief upgrades from May 11. Afternoon-into-night thread (aesthetic): PR #146 shipped the stone-tile visual system — Cormorant Garamond display font, Inter body font, etched-stone hover cross-fades (520ms stone-press click), cockpit mode for operational rooms, Today's Frame Strip pinned to the day-band's middle column. PR #147 (landed 00:15 UTC May 13) completed the Hellenofuturistic rebrand: Alexandria warm-amber palette, travertine smart-wall body bed, bridge tile on Transition Hallway with bioluminescent breath animation, bg-lab.html sandbox for future palette/tile experiments. Data-loss incident also filed this session (see exp-director-2026-05-12-data-loss-stale-server).",
+          "impact": "Lab is now visually coherent as a museum-grade instrument — Quenton's phrase. The day-band reads as a literal bookended-day: Frame Strip pinned between Pilot Check and Recovery. Transition Hallway has an activated visual surface (bridge tile) for the first time. Debrief Workshop bootstrap (LAB-032) remains the P0 URGENT structural next move — Quenton's morning presentation at cognitive-lab/presentations/2026-05-13-morning.md opens there."
+        },
+        {
           "id": "exp-director-2026-05-11-eod-state",
           "title": "End-of-day integration — 2026-05-11 (six PRs, two threads)",
           "date": "2026-05-11",
@@ -6959,6 +6964,13 @@
         { "label": "Gollwitzer 1999 — Implementation Intentions (the open beat)", "href": "#" }
       ],
       "experiments": [
+        {
+          "id": "exp-transition-2026-05-12-bridge-tile",
+          "title": "Bridge tile ships — bioluminescent breath on Transition",
+          "date": "2026-05-12",
+          "observation": "PR #147 (Hellenofuturistic rebrand) gave Transition Hallway its first distinct visual surface: the Alexandria bridge tile with a slow bioluminescent breath animation. The tile references the rebrand's fresco/artifact language — Transition as a threshold between states, not a phase with a form. The bridge tile is stone-art, not cockpit-mode; Transition explicitly annotated as not-yet-cockpit in the HTML (workshop bootstrap deferred per LAB-031). Quenton's morning presentation notes that the bridge tile activated Transition's surface in time for the rebrand — and explicitly advises against designing a Transition Workshop now, before Debrief runs.",
+          "impact": "Transition Hallway is now visually present in the lab without having a workshop behind it. The surface exists; the form doesn't. Quenton's call (2026-05-13 morning presentation): let Transition surface itself through Debrief's 'what to sustain / improve' field before bootstrapping a standalone workshop. LAB-031 status unchanged — still backlog, P1."
+        },
         {
           "id": "exp-transition-2026-05-11-kind-meta",
           "title": "kind: meta added — bottom row, day-band restructure",
@@ -9790,11 +9802,13 @@
 
   /* ── Debrief Workshop ── */
   const DEBRIEF_KEY = 'cognitive-lab-v0.1::debrief-cards';
-  // Phase 4 input fields (rogaine shape). DOM ids: db-caught, db-changed-it,
-  // db-better-moves, db-capacity. course_held is a radio group; not in this list.
-  const DB_FIELDS = ['caught','changed_it','better_moves','capacity'];
+  // Rogaine shape input fields. DOM ids: db-caught, db-changed-it, db-better-moves.
+  // course_held is a radio group; not in this list. Capacity gauge / "what's next"
+  // was moved out of Debrief into the Recover workshop.
+  const DB_FIELDS = ['caught','changed_it','better_moves'];
   // Legacy fields kept readable in view-mode for back-compat with older cards.
-  const DB_FIELDS_LEGACY = ['subject','framed','actual','diverged','sustain','improve'];
+  // capacity sits here so cards saved before the move still show their gauge read.
+  const DB_FIELDS_LEGACY = ['subject','framed','actual','diverged','sustain','improve','capacity'];
   const DB_LABELS = {
     // Phase 4 labels
     caught:        'Caught',
