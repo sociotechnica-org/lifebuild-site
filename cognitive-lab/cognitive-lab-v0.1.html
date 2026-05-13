@@ -2955,12 +2955,15 @@
     opacity: 0.85;
   }
 
-  /* Day-band: Pilot Check (morning) left, Today's Frame middle, Recovery (evening) right. */
+  /* Day-band: Pilot Check (morning) left, Today's Frame middle, Recovery (evening) right.
+     Center-aligned so the flanking stone tiles don't stretch to Today's Frame's
+     content height — they sit at their natural artwork aspect (forced via
+     aspect-ratio below), with the (typically taller) plate driving the row. */
   .band-day {
-    align-items: stretch;
+    align-items: center;
     gap: 8px;
   }
-  .band-day > .area { flex: 1.5; min-width: 0; }
+  .band-day > .area { flex: 1.5; min-width: 0; aspect-ratio: 1.833; }
   .band-day > #today-frame-strip { flex: 3; min-width: 0; }
   /* Legacy band-rule (kept for older layouts that may reference it) */
   .band-rule {
@@ -3212,52 +3215,71 @@
     .band-day > .area, .band-day > #today-frame-strip { flex: none; }
   }
 
-  /* ── Phase rail (Band 3) ──
-     Discs on an engraved bar. Position conveys order; the lit disc tells
-     you what phase you're in. Replaces the rectangular emoji-tile pattern
-     with a passive MTG-style track. Each .area-phase keeps the .area /
-     .area-visual class (so click-to-open-drawer, badges, cockpit-mode all
-     still work) but its visual treatment is heavily overridden below. */
-  .band-phase {
-    align-items: center;
-    gap: 0;
+  /* ── Phase rail (bottom gutter subnav) ──
+     Persistent across all lab views (floor + alt-views). Sits fixed at the
+     bottom of the viewport. Discs are the passive "where in the turn am I"
+     indicator; the lit disc tells you which phase's drawer is open.
+     Eventually the active phase will drive what the main screen shows. */
+  .phase-rail {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    /* Same dark-stone material as the toolbar lintel — the rail is the
+       bottom counterpart to the top chrome. */
+    background: hsla(var(--bed-hue), calc(var(--bed-sat) * 1%), calc((var(--bed-light) - 12) * 1%), 0.94);
+    backdrop-filter: blur(2px);
+    border-top: 1px solid rgba(255, 230, 200, 0.12);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.45);
+    padding: 12px 16px 12px;
   }
-  /* Strip the rectangular tile chrome — no border, no panel bg, no min-height.
-     The disc is the visible element; the area-label sits below it as a caption. */
-  .band-phase .area-phase {
+  .phase-rail-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  /* Push lab content up so the fixed rail doesn't cover the bottom of any view. */
+  body { padding-bottom: 96px; }
+
+  /* Phase tile — disc + caption stack. No rectangular tile chrome; the disc
+     is the visible element. (Phase tiles no longer carry .area-visual since
+     they're outside the band grid — styled directly here.) */
+  .area-phase {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
     background: transparent;
     border: none;
-    box-shadow: none;
-    padding: 0;
-    min-height: 0;
-    flex: 0 1 auto;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 6px;
-    overflow: visible;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    min-width: 0;
+    transition: transform 0.18s;
   }
-  .band-phase .area-phase:hover {
-    border: none;
-    box-shadow: none;
-  }
-  /* .area-scene becomes the disc container; emoji-fallback font-size is reset. */
-  .band-phase .area-phase .area-scene {
+  .area-phase:hover { border: none; box-shadow: none; }
+  .area-phase .area-scene {
     flex: 0 0 auto;
     font-size: 0;
-    filter: none;
-    transition: transform 0.25s;
+    line-height: 1;
+    user-select: none;
   }
-  .band-phase .area-phase:hover .area-scene { transform: none; }
 
-  /* The disc — engraved chip seated on the rail. Same warm-bronze gradient
-     and gold-bordered material as the Today's Frame plate, so the day's
-     interactive elements share a visual lineage. */
-  .band-phase .phase-disc {
+  /* The disc — engraved chip on the bottom rail. Same warm-bronze material
+     as the Today's Frame plate so the day's interactive elements share a
+     visual lineage. */
+  .phase-disc {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 54px;
-    height: 54px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: radial-gradient(
       circle at 30% 30%,
@@ -3278,15 +3300,15 @@
   }
   /* The glyph — single-codepoint primary symbol, forced text-style rendering
      so platforms with color emoji fonts don't substitute their picto. */
-  .band-phase .phase-glyph {
+  .phase-glyph {
     font-family: var(--font-display), 'Apple Symbols', 'Segoe UI Symbol', serif;
     font-variant-emoji: text;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
   }
-  /* Hover — disc lifts slightly and brightens. Pre-active affordance. */
-  .band-phase .area-phase:hover .phase-disc {
+  /* Hover — disc lifts slightly and brightens. */
+  .area-phase:hover .phase-disc {
     transform: translateY(-1px);
     border-color: rgba(232, 184, 109, 0.55);
     color: var(--accent-glow);
@@ -3296,10 +3318,9 @@
       0 3px 6px rgba(0, 0, 0, 0.45),
       0 0 8px rgba(232, 184, 109, 0.25);
   }
-  /* Active (drawer-open) — gold glow on the disc. This is the "you are
-     in phase X" indicator. Lights up when the drawer for that phase is
-     open and reads at a glance even on a busy screen. */
-  .band-phase .area-phase.active .phase-disc {
+  /* Active (drawer-open) — gold glow on the disc. The "you are in phase X"
+     indicator. Reads at a glance even on a busy screen. */
+  .area-phase.active .phase-disc {
     border-color: var(--accent-glow);
     color: var(--accent-glow);
     background: radial-gradient(
@@ -3313,16 +3334,15 @@
       0 0 10px rgba(232, 184, 109, 0.45),
       0 0 22px rgba(232, 184, 109, 0.22);
   }
-  /* Suppress the base .area.active rectangular glow on phase tiles —
-     the disc carries the signal now, not the (invisible) tile border. */
-  .band-phase .area-phase.active {
+  .area-phase.active {
     border-color: transparent !important;
     box-shadow: none !important;
   }
 
-  /* Caption — phase name + sub-label sit below the disc as a static caption,
-     not the hover-overlay treatment used elsewhere. */
-  .band-phase .area-phase .area-label {
+  /* Caption — phase name only in the gutter form (no sub-label, to keep the
+     rail slim). lbl-sub kept in DOM for screen readers + future use, hidden
+     visually. */
+  .area-phase .area-label {
     position: static;
     inset: auto;
     background: none;
@@ -3330,36 +3350,48 @@
     opacity: 1;
     pointer-events: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: none;
     color: var(--fg);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
-    gap: 1px;
+    line-height: 1.1;
   }
-  .band-phase .area-phase.active .area-label { color: var(--accent-glow); }
-  .band-phase .area-phase .area-label .lbl-sub {
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-style: italic;
-    letter-spacing: 0.04em;
-    color: var(--fg-dim);
-    text-transform: none;
-    margin-top: 0;
+  .area-phase.active .area-label { color: var(--accent-glow); }
+  .area-phase .area-label .lbl-sub {
+    /* Slim rail — hide the sub-label visually. */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
   }
-  /* Badges live on top-right of the disc, not the (collapsed) tile rect. */
-  .band-phase .area-phase .badge-row {
-    top: -4px;
-    right: calc(50% - 36px);
+  /* Badges sit above the disc — small status dots for the phase. */
+  .area-phase .badge-row {
+    position: absolute;
+    top: -2px;
+    right: calc(50% - 28px);
+    margin: 0;
+    z-index: 2;
+  }
+  .area-phase .badge-row .dot {
+    font-size: 7px;
+    padding: 1px 4px;
   }
 
   /* Connector between discs — thin engraved line, gold-tinted at the ends. */
-  .band-phase .phase-connector {
+  .phase-rail .phase-connector {
     flex: 1 1 auto;
-    align-self: flex-start;
-    margin-top: 27px;
+    align-self: center;
+    margin-top: -10px;
+    margin-left: 8px;
+    margin-right: 8px;
     height: 1px;
     min-width: 12px;
     background: linear-gradient(
@@ -5901,9 +5933,6 @@
 <!-- ── Lab Floor ── -->
 <div id="lab-floor" class="floor-bg">
 
-  <!-- Top wall -->
-  <div class="wall-strip"></div>
-
   <!-- Band 1: Reference / aux (gestalt visuals) -->
   <div class="band">
     <!-- Library: stone tile for visual weight, not cockpit (band-1 bench; full list auto-expands). -->
@@ -5998,67 +6027,6 @@
     </div>
   </div>
 
-  <!-- Band 3: Turn cycle — phase rail with primary-glyph discs.
-       Each phase is a single-codepoint glyph from a Hellenistic/alchemical
-       day-arc: sun rises (Comprehend) → square (Frame) → linked rings (Sync)
-       → hammer + pick (Produce) → crescent moon (Debrief). Position on the
-       rail conveys order; the lit disc tells you what phase you're in.
-       Replaces the emoji-on-tile pattern with a passive MTG-style indicator. -->
-  <div class="band band-phase">
-    <div class="area area-visual area-phase" data-area="comprehend-station" data-accent="amber" data-cockpit-mode="true">
-      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2609;&#xFE0E;</span></span></div>
-      <div class="area-label">Comprehend<span class="lbl-sub">orient first</span></div>
-      <div class="badge-row" id="badges-comprehend-station"></div>
-    </div>
-    <div class="phase-connector" aria-hidden="true"></div>
-    <div class="area area-visual area-phase" data-area="frame-workshop" data-accent="blue" data-cockpit-mode="true">
-      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x25A1;&#xFE0E;</span></span></div>
-      <div class="area-label">Frame<span class="lbl-sub">required</span></div>
-      <div class="badge-row" id="badges-frame-workshop"></div>
-    </div>
-    <div class="phase-connector" aria-hidden="true"></div>
-    <div class="area area-visual area-phase" data-area="sync-floor" data-accent="amber">
-      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x26AD;&#xFE0E;</span></span></div>
-      <div class="area-label">Sync<span class="lbl-sub">conditional</span></div>
-      <div class="badge-row" id="badges-sync-floor"></div>
-    </div>
-    <div class="phase-connector" aria-hidden="true"></div>
-    <div class="area area-visual area-phase" data-area="push-bay" data-accent="amber">
-      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2692;&#xFE0E;</span></span></div>
-      <div class="area-label">Produce<span class="lbl-sub">conditional</span></div>
-      <div class="badge-row" id="badges-push-bay"></div>
-    </div>
-    <div class="phase-connector" aria-hidden="true"></div>
-    <div class="area area-visual area-phase" data-area="debrief-booth" data-accent="blue" data-cockpit-mode="true">
-      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x263D;&#xFE0E;</span></span></div>
-      <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
-      <div class="badge-row" id="badges-debrief-booth"></div>
-    </div>
-  </div>
-
-  <!-- Band 4: Meta — Transition · Trim · Director's Desk -->
-  <div class="band">
-    <!-- Transition Hallway: stone tile (Alexandria bridge fresco — see cognitive-lab/assets/CREDITS.md). Not yet cockpit-mode; workshop bootstrap is deferred. -->
-    <div class="area area-visual" data-area="transition-hallway" data-accent="tan" data-tile-art="bridge-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
-      <div class="area-scene">🚪<img class="tile-art tile-art-dormant" src="assets/bridge-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/bridge-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
-      <div class="area-label">Transition<span class="lbl-sub">meta</span></div>
-      <div class="badge-row" id="badges-transition-hallway"></div>
-    </div>
-    <div class="area area-visual" data-area="trim-bench" data-accent="tan">
-      <div class="area-scene">✂️</div>
-      <div class="area-label">Trim<span class="lbl-sub">meta</span></div>
-      <div class="badge-row" id="badges-trim-bench"></div>
-    </div>
-    <div class="area area-visual" data-area="director-desk" data-accent="dark">
-      <div class="area-scene">🧑‍💻</div>
-      <div class="area-label">Director's Desk<span class="lbl-sub">you</span></div>
-      <div class="badge-row" id="badges-director-desk"></div>
-    </div>
-  </div>
-
-  <!-- Bottom wall -->
-  <div class="wall-strip"></div>
-
 </div><!-- /#lab-floor -->
 
 <!-- ── Alternate views (PoC: same items, different lenses) ── -->
@@ -6106,6 +6074,47 @@
   <div id="course-finalize"></div>
   <div id="course-comprehend" class="course-comprehend"></div>
 </div>
+
+<!-- ── Phase rail (bottom gutter) ──
+     Turn cycle as a sticky bottom subnav: Comprehend → Frame → Sync → Produce
+     → Debrief. Lives outside #lab-floor so it persists across all alt-views
+     (Course, Priority, Timeline, By-status, Leg). The lit disc is the passive
+     "where in the turn am I" indicator. Eventually the active phase will
+     drive what the main screen shows; for now click-to-open-drawer behavior
+     is preserved (same .area click handlers as before). -->
+<nav id="phase-rail" class="phase-rail" aria-label="Turn phase rail">
+  <div class="phase-rail-inner">
+    <div class="area area-phase" data-area="comprehend-station" data-accent="amber" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2609;&#xFE0E;</span></span></div>
+      <div class="area-label">Comprehend<span class="lbl-sub">orient first</span></div>
+      <div class="badge-row" id="badges-comprehend-station"></div>
+    </div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-phase" data-area="frame-workshop" data-accent="blue" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x25A1;&#xFE0E;</span></span></div>
+      <div class="area-label">Frame<span class="lbl-sub">required</span></div>
+      <div class="badge-row" id="badges-frame-workshop"></div>
+    </div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-phase" data-area="sync-floor" data-accent="amber">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x26AD;&#xFE0E;</span></span></div>
+      <div class="area-label">Sync<span class="lbl-sub">conditional</span></div>
+      <div class="badge-row" id="badges-sync-floor"></div>
+    </div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-phase" data-area="push-bay" data-accent="amber">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2692;&#xFE0E;</span></span></div>
+      <div class="area-label">Produce<span class="lbl-sub">conditional</span></div>
+      <div class="badge-row" id="badges-push-bay"></div>
+    </div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-phase" data-area="debrief-booth" data-accent="blue" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x263D;&#xFE0E;</span></span></div>
+      <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
+      <div class="badge-row" id="badges-debrief-booth"></div>
+    </div>
+  </div>
+</nav>
 
 <!-- ── Cmd-K palette ── -->
 <div id="cmdk-overlay" role="dialog" aria-modal="true" aria-labelledby="cmdk-input">
@@ -11566,7 +11575,7 @@
   let AREA_VISUALS = {};
   function buildAreaVisuals() {
     const map = {};
-    document.querySelectorAll('#lab-floor .area[data-area]').forEach(el => {
+    document.querySelectorAll('#lab-floor .area[data-area], #phase-rail .area[data-area]').forEach(el => {
       const id = el.dataset.area;
       const accent = el.dataset.accent || 'dark';
       const sceneEl = el.querySelector('.area-scene');
