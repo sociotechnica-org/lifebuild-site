@@ -2,7 +2,8 @@
   {
     "id": "strategy-cognitive-lab-plan-v2",
     "date": "2026-05-01",
-    "title": "cognitive-lab-plan-v2.md",
+    "slot": "v2",
+    "title": "Lab plan reordered around the evidence",
     "driveUrl": "https://drive.google.com/file/d/1w6jV0ZqVWCPqOesbfj2OpHbVlaVN7u-9/view?usp=drivesdk",
     "driveId": "1w6jV0ZqVWCPqOesbfj2OpHbVlaVN7u-9",
     "format": "md",
@@ -13,7 +14,8 @@
   {
     "id": "strategy-cognitive-lab-plan",
     "date": "2026-04-28",
-    "title": "cognitive-lab-plan.md",
+    "slot": "v1",
+    "title": "First lab plan, spatial click-to-explore",
     "driveUrl": "https://drive.google.com/file/d/1yCM6Z7605zSgRTKyXReZOdeG8-C3RJl9/view?usp=drivesdk",
     "driveId": "1yCM6Z7605zSgRTKyXReZOdeG8-C3RJl9",
     "format": "md",
@@ -24,7 +26,8 @@
   {
     "id": "strategy-cognitive-lab-spec",
     "date": "2026-04-28",
-    "title": "cognitive-lab-spec.md",
+    "slot": "spec",
+    "title": "Build spec for the v0.1 floor plan",
     "driveUrl": "https://drive.google.com/file/d/1H4ObEAb-Pf3ETz4vUfsiVMcEUeE5PJL1/view?usp=drivesdk",
     "driveId": "1H4ObEAb-Pf3ETz4vUfsiVMcEUeE5PJL1",
     "format": "md",
@@ -35,7 +38,8 @@
   {
     "id": "strategy-frame-research-and-practice",
     "date": "2026-05-02",
-    "title": "frame-research-and-practice.md",
+    "slot": "Frame",
+    "title": "Seven-field Frame, with research and worked example",
     "driveUrl": "https://drive.google.com/file/d/1SaKz7cYTrZrS0bMJicBtWUdqg2J_7eut/view?usp=drivesdk",
     "driveId": "1SaKz7cYTrZrS0bMJicBtWUdqg2J_7eut",
     "format": "md",
@@ -46,7 +50,8 @@
   {
     "id": "strategy-turn-phases-and-leverage",
     "date": "2026-04-30",
-    "title": "turn-v0.1-phases-and-leverage.md",
+    "slot": "Turn v0.1",
+    "title": "Phase-by-phase operating manual for the cycle",
     "driveUrl": "https://drive.google.com/file/d/1JtDNd6OnpfwSq4sJvFIbiUyb6KkLq6aq/view?usp=drivesdk",
     "driveId": "1JtDNd6OnpfwSq4sJvFIbiUyb6KkLq6aq",
     "format": "md",
@@ -57,7 +62,8 @@
   {
     "id": "strategy-turn-hacks-today",
     "date": "2026-04-30",
-    "title": "turn-v0.1-hacks-today.md",
+    "slot": "Turn v0.1",
+    "title": "Run the framework with today's primitive tools",
     "driveUrl": "https://drive.google.com/file/d/1pD8tiiiZ3jWxRHr-GyYqQaEeb-xNO3G6/view?usp=drivesdk",
     "driveId": "1pD8tiiiZ3jWxRHr-GyYqQaEeb-xNO3G6",
     "format": "md",
@@ -68,7 +74,8 @@
   {
     "id": "strategy-turn-map",
     "date": "2026-04-30",
-    "title": "turn-v0.1-map.md",
+    "slot": "Turn v0.1",
+    "title": "Turn map source — ASCII diagram and commentary",
     "driveUrl": "https://drive.google.com/file/d/1Qo_NlCJVZ1nfhtUjuu6l6WhM1zPutkx3/view?usp=drivesdk",
     "driveId": "1Qo_NlCJVZ1nfhtUjuu6l6WhM1zPutkx3",
     "format": "md",
@@ -79,7 +86,8 @@
   {
     "id": "strategy-process",
     "date": "2026-05-08",
-    "title": "PROCESS.md",
+    "slot": "Process",
+    "title": "How the lab works as a living system",
     "driveUrl": "https://drive.google.com/file/d/1CItcSychGshO_trE9legIrwhgfUoSb1U/view?usp=drivesdk",
     "driveId": "1CItcSychGshO_trE9legIrwhgfUoSb1U",
     "format": "md",

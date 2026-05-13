@@ -2,7 +2,8 @@
   {
     "id": "research-core-sources-reading-list",
     "date": "2026-05-11",
-    "title": "Core Sources — reading list (22 refs)",
+    "slot": "Library",
+    "title": "Reading list of 22 core sources",
     "driveUrl": "https://drive.google.com/file/d/1KVpCD4eiOCbyjEgDAdDXmarAL10wzz20/view?usp=drivesdk",
     "driveId": "1KVpCD4eiOCbyjEgDAdDXmarAL10wzz20",
     "format": "md",
@@ -19,7 +20,8 @@
   {
     "id": "research-recovery-experiences-sonnentag",
     "date": "2026-05-11",
-    "title": "Recovery Experiences (Sonnentag & Fritz) — when/dosage/combos",
+    "slot": "Sonnentag",
+    "title": "Recovery experiences — when, dosage, combos",
     "driveUrl": "https://drive.google.com/file/d/1CxAErSeAxgwtCoNnFTfVnkcGGTVK8ERe/view?usp=drivesdk",
     "driveId": "1CxAErSeAxgwtCoNnFTfVnkcGGTVK8ERe",
     "format": "md",

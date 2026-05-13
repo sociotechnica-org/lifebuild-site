@@ -5829,11 +5829,14 @@
     color: var(--accent-dim);
     flex-shrink: 0;
   }
-  .manifest-fmt {
+  /* Middle slot in a manifest row — variable per area (issue # for
+     Editions, author for Research, version for Strategy, kind for
+     Explainer). Same pixel typography as the date so the row reads as
+     three small tokens leading into the takeaway title. */
+  .manifest-slot {
     font-family: var(--font-px);
-    font-size: 9px;
+    font-size: 10px;
     color: var(--accent-dim);
-    text-transform: lowercase;
     flex-shrink: 0;
   }
   .manifest-title {
@@ -5847,23 +5850,6 @@
     opacity: 0.5;
   }
   .manifest-row:hover .manifest-arrow { color: var(--accent); opacity: 1; }
-  .manifest-summary {
-    margin-top: 4px;
-    font-size: 11px;
-    color: var(--accent-dim);
-    line-height: 1.4;
-    font-style: italic;
-  }
-  .manifest-tags {
-    margin-top: 4px;
-    font-size: 10px;
-  }
-  .manifest-tag {
-    display: inline-block;
-    margin-right: 6px;
-    color: var(--accent-dim);
-    font-family: var(--font-px);
-  }
   .manifest-empty {
     color: #888;
     font-size: 12px;
@@ -5904,6 +5890,18 @@
     #drawer-overlay, #drawer { display: block; position: static; transform: none; }
     #toolbar { position: static; }
   }
+
+  /* ── Today's Frame Strip — dim toggle ──
+     Click the plate to drop the engraved content's opacity to a "just
+     barely visible" ghost. The recess and plate stay solid so the
+     day-band keeps its silhouette and rhythm. Click again to restore.
+     Clicks on .tfs-actions and the empty-state CTA are ignored by the
+     handler so existing controls (open workshop, collapse) keep working. */
+  .band-today-frame .tfs-plate { cursor: pointer; }
+  .band-today-frame .tfs-header,
+  .band-today-frame .tfs-body { transition: opacity 0.45s ease; }
+  .band-today-frame.tfs-dimmed .tfs-header,
+  .band-today-frame.tfs-dimmed .tfs-body { opacity: 0.10; }
 </style>
 </head>
 <body>
@@ -11019,15 +11017,16 @@
     return '#';
   }
 
-  // Render a single manifest row (date · format · title · summary · tags).
+  // Render a single manifest row: date · middle-slot · takeaway · arrow.
+  // The middle slot is variable per area (issue # for Editions, author for
+  // Research, version for Strategy, kind for Explainer). It's stored on the
+  // entry as `slot`. Tags, summary, format, and series are intentionally
+  // *not* rendered — they live in the manifest as searchable metadata but
+  // the shelf row stays one line of takeaway.
   function renderManifestRow(entry) {
     const title = escHtml(entry.title || '(untitled)');
-    const summary = escHtml(entry.summary || '');
     const date = escHtml(entry.date || '');
-    const fmt = entry.format ? `<span class="manifest-fmt">[${escHtml(entry.format)}]</span>` : '';
-    const tagsHTML = (entry.tags || [])
-      .map(t => `<span class="manifest-tag">#${escHtml(t)}</span>`)
-      .join(' ');
+    const slot = entry.slot ? `<span class="manifest-slot">${escHtml(entry.slot)}</span>` : '';
     // Prefer Drive URL → Drive id → local path → no link. Local-path editions
     // resolve relative to the lab HTML (served from cognitive-lab/), so paths
     // stored as "cognitive-lab/exports/..." get the cognitive-lab/ prefix
@@ -11045,12 +11044,10 @@
       <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
         <div class="manifest-row-head">
           <span class="manifest-date">${date}</span>
-          ${fmt}
+          ${slot}
           <span class="manifest-title">${title}</span>
-          <span class="manifest-arrow">↗</span>
+          <span class="manifest-arrow" aria-hidden="true">↗</span>
         </div>
-        ${summary ? `<div class="manifest-summary">${summary}</div>` : ''}
-        ${tagsHTML ? `<div class="manifest-tags">${tagsHTML}</div>` : ''}
       </a>`;
   }
 
@@ -13947,6 +13944,24 @@
   });
 
 })();
+</script>
+<script>
+  /* Today's Frame Strip — dim toggle.
+     Click the plate to toggle .tfs-dimmed (opacity 0.10 on the engraved
+     content). Click again to restore. Clicks inside .tfs-actions and on
+     the empty-state CTA are ignored so existing controls keep working.
+     No persistence: dim state is session-only and resets on reload. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var strip = document.getElementById('today-frame-strip');
+    if (!strip) return;
+    var plate = strip.querySelector('.tfs-plate');
+    if (!plate) return;
+    plate.addEventListener('click', function (e) {
+      if (e.target.closest('.tfs-actions')) return;
+      if (e.target.closest('.tfs-empty-cta')) return;
+      strip.classList.toggle('tfs-dimmed');
+    });
+  });
 </script>
 </body>
 </html>
