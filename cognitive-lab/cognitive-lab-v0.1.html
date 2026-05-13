@@ -5836,6 +5836,16 @@
     text-transform: lowercase;
     flex-shrink: 0;
   }
+  /* Middle slot in a manifest row — variable per area (issue # for
+     Editions, author for Research, version for Strategy, kind for
+     Explainer). Same pixel typography as the date so the row reads as
+     three small tokens leading into the takeaway title. */
+  .manifest-slot {
+    font-family: var(--font-px);
+    font-size: 10px;
+    color: var(--accent-dim);
+    flex-shrink: 0;
+  }
   .manifest-title {
     flex: 1;
     color: var(--fg);
@@ -11019,15 +11029,16 @@
     return '#';
   }
 
-  // Render a single manifest row (date · format · title · summary · tags).
+  // Render a single manifest row: date · middle-slot · takeaway · arrow.
+  // The middle slot is variable per area (issue # for Editions, author for
+  // Research, version for Strategy, kind for Explainer). It's stored on the
+  // entry as `slot`. Tags, summary, format, and series are intentionally
+  // *not* rendered — they live in the manifest as searchable metadata but
+  // the shelf row stays one line of takeaway.
   function renderManifestRow(entry) {
     const title = escHtml(entry.title || '(untitled)');
-    const summary = escHtml(entry.summary || '');
     const date = escHtml(entry.date || '');
-    const fmt = entry.format ? `<span class="manifest-fmt">[${escHtml(entry.format)}]</span>` : '';
-    const tagsHTML = (entry.tags || [])
-      .map(t => `<span class="manifest-tag">#${escHtml(t)}</span>`)
-      .join(' ');
+    const slot = entry.slot ? `<span class="manifest-slot">${escHtml(entry.slot)}</span>` : '';
     // Prefer Drive URL → Drive id → local path → no link. Local-path editions
     // resolve relative to the lab HTML (served from cognitive-lab/), so paths
     // stored as "cognitive-lab/exports/..." get the cognitive-lab/ prefix
@@ -11045,12 +11056,10 @@
       <a class="manifest-row" href="${url}" target="_blank" rel="noopener">
         <div class="manifest-row-head">
           <span class="manifest-date">${date}</span>
-          ${fmt}
+          ${slot}
           <span class="manifest-title">${title}</span>
           <span class="manifest-arrow">↗</span>
         </div>
-        ${summary ? `<div class="manifest-summary">${summary}</div>` : ''}
-        ${tagsHTML ? `<div class="manifest-tags">${tagsHTML}</div>` : ''}
       </a>`;
   }
 
