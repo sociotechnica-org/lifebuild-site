@@ -5890,6 +5890,18 @@
     #drawer-overlay, #drawer { display: block; position: static; transform: none; }
     #toolbar { position: static; }
   }
+
+  /* ── Today's Frame Strip — dim toggle ──
+     Click the plate to drop the engraved content's opacity to a "just
+     barely visible" ghost. The recess and plate stay solid so the
+     day-band keeps its silhouette and rhythm. Click again to restore.
+     Clicks on .tfs-actions and the empty-state CTA are ignored by the
+     handler so existing controls (open workshop, collapse) keep working. */
+  .band-today-frame .tfs-plate { cursor: pointer; }
+  .band-today-frame .tfs-header,
+  .band-today-frame .tfs-body { transition: opacity 0.45s ease; }
+  .band-today-frame.tfs-dimmed .tfs-header,
+  .band-today-frame.tfs-dimmed .tfs-body { opacity: 0.10; }
 </style>
 </head>
 <body>
@@ -13932,6 +13944,24 @@
   });
 
 })();
+</script>
+<script>
+  /* Today's Frame Strip — dim toggle.
+     Click the plate to toggle .tfs-dimmed (opacity 0.10 on the engraved
+     content). Click again to restore. Clicks inside .tfs-actions and on
+     the empty-state CTA are ignored so existing controls keep working.
+     No persistence: dim state is session-only and resets on reload. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var strip = document.getElementById('today-frame-strip');
+    if (!strip) return;
+    var plate = strip.querySelector('.tfs-plate');
+    if (!plate) return;
+    plate.addEventListener('click', function (e) {
+      if (e.target.closest('.tfs-actions')) return;
+      if (e.target.closest('.tfs-empty-cta')) return;
+      strip.classList.toggle('tfs-dimmed');
+    });
+  });
 </script>
 </body>
 </html>

@@ -33,3 +33,6 @@ pnpm-debug.log*
 yarn.lock
 pnpm-lock.yaml
 .claude/
+
+# cognitive-lab throwaway prototypes (Frame Strip flip/dim, etc.)
+cognitive-lab/experiments/
