@@ -20,6 +20,14 @@ Source notes for art used in the cognitive lab. New entries: append, don't reord
 - **Use:** Recovery Room tile (Band 2) stone-tile dormant + activated variants. Previewed in `bg-lab.html`.
 - **License:** Author-owned; no third-party rights.
 
+## theater-stone.png · theater-stone-active.png
+
+- **Source:** AI-generated (Gemini, by the author).
+- **Use:** Explainer Theater tile (Band 1) stone-tile dormant + activated variants in `cognitive-lab/cognitive-lab-v0.1.html`. Replaces the 🎬 emoji placeholder. Image is a classical Hellenic theater scene — robed orators and chorus arrayed around a central glowing-cyan altar/stage with circuit-pattern floor — reads as the room where writeups, decks, and demos get performed.
+- **Aspect:** 1380×752 → aspect ratio 1.835, matches the default `--art-aspect: 1.833`. No per-tile override needed.
+- **Modifications:** `theater-stone-active.png` is the source image with PIL brightness +18%, saturation +35%, contrast +8% applied — same recipe used for the other active variants.
+- **License:** Author-owned; no third-party rights.
+
 ## journal-stone.png · journal-stone-active.png
 
 - **Source:** AI-generated (by the author). Original file: `stack-library.png`.
