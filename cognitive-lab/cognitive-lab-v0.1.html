@@ -3216,16 +3216,13 @@
   }
 
   /* ── Phase rail (bottom gutter subnav) ──
-     Persistent across all lab views (floor + alt-views). Sits fixed at the
-     bottom of the viewport. Discs are the passive "where in the turn am I"
-     indicator; the lit disc tells you which phase's drawer is open.
-     Eventually the active phase will drive what the main screen shows. */
+     Persistent across all lab views (floor + alt-views). Sits in normal
+     document flow right after the active content section so there's no
+     empty stone-bed gap between content and the rail. Discs are the
+     passive "where in the turn am I" indicator; the lit disc tells you
+     which phase's drawer is open. Eventually the active phase will drive
+     what the main screen shows. */
   .phase-rail {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 150;
     /* Same dark-stone material as the toolbar lintel — the rail is the
        bottom counterpart to the top chrome. */
     background: hsla(var(--bed-hue), calc(var(--bed-sat) * 1%), calc((var(--bed-light) - 12) * 1%), 0.94);
@@ -3233,6 +3230,7 @@
     border-top: 1px solid rgba(255, 230, 200, 0.12);
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.45);
     padding: 12px 16px 12px;
+    margin-top: 8px;
   }
   .phase-rail-inner {
     display: flex;
@@ -3242,8 +3240,6 @@
     max-width: 1400px;
     margin: 0 auto;
   }
-  /* Push lab content up so the fixed rail doesn't cover the bottom of any view. */
-  body { padding-bottom: 96px; }
 
   /* Phase tile — disc + caption stack. No rectangular tile chrome; the disc
      is the visible element. (Phase tiles no longer carry .area-visual since
