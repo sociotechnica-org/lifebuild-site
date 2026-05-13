@@ -2970,174 +2970,197 @@
     opacity: 0.4;
   }
 
-  /* ── Today's Frame Strip — Chiseled centerpiece ──
-     Carved into the wall between the morning bracket (Pilot Check) and the
-     evening bracket (Recover). Reads as a recessed engraved plate: darker
-     than the surrounding stone with a deep top-edge shadow (light from
-     above), a subtle bottom-edge highlight, and a hairline-engraved rim.
-     The live frame is the focal content of the day-band when set. */
+  /* ── Today's Frame Strip — museum plaque seated in a stone recess ──
+     Two layers:
+       1. .band-today-frame is the recess chiseled into the wall — deep
+          inset shadow, no content of its own.
+       2. .tfs-plate is the engraved slab seated inside the recess —
+          warm-dark bronze gradient with a thin gold border, drop shadow
+          into the niche, and a top-edge catch-light. All text engraved
+          on the plate in Cormorant Garamond (single font for unity).
+     The header is centered (title + date stacked, museum-plaque style)
+     with a hairline ornament rule beneath. Action buttons live in the
+     plate's top-right corner so they don't fight the centered typography. */
   .band-today-frame {
     display: flex;
-    flex-direction: column;
     align-items: stretch;
     position: relative;
+    /* The recess itself is darker than the surrounding stone bed. */
     background:
       linear-gradient(180deg,
-        rgba(38, 30, 24, 0.55) 0%,
-        rgba(48, 40, 32, 0.40) 100%);
-    border: 1px solid rgba(255, 230, 200, 0.08);
+        rgba(18, 12, 8, 0.55) 0%,
+        rgba(24, 18, 12, 0.45) 100%);
+    border: 1px solid rgba(255, 230, 200, 0.06);
     border-radius: 6px;
-    padding: 10px 16px 12px;
-    gap: 6px;
+    /* Recess padding: the plate inside has its own padding; this is the
+       inner gap between the recess wall and the seated plate. */
+    padding: 7px;
     box-shadow:
       /* Deep top-edge shadow — chiseled depression, light from above */
-      inset 0 4px 8px rgba(0, 0, 0, 0.50),
-      inset 0 2px 3px rgba(0, 0, 0, 0.35),
+      inset 0 5px 10px rgba(0, 0, 0, 0.55),
+      inset 0 2px 4px rgba(0, 0, 0, 0.40),
       /* Subtle warm rim highlight along the bottom — reflected light */
-      inset 0 -1px 0 rgba(255, 230, 200, 0.05),
+      inset 0 -1px 0 rgba(255, 230, 200, 0.04),
       /* Outer hairline highlight on top — caught light on the upper rim */
-      0 1px 0 rgba(255, 230, 200, 0.04);
-  }
-  /* Empty state: the plate stays carved, just no content. Dashed engraving
-     replaces the rim. No blank-box-around-nothing feel. */
-  .band-today-frame.is-empty {
-    background:
-      linear-gradient(180deg,
-        rgba(38, 30, 24, 0.35) 0%,
-        rgba(48, 40, 32, 0.20) 100%);
-    border: 1px dashed rgba(255, 230, 200, 0.12);
-    box-shadow:
-      inset 0 3px 6px rgba(0, 0, 0, 0.35),
-      inset 0 -1px 0 rgba(255, 230, 200, 0.03);
-    padding: 8px 14px;
+      0 1px 0 rgba(255, 230, 200, 0.05);
   }
   /* Honor [hidden] within the strip — beats my own display rules below. */
   .band-today-frame [hidden] { display: none !important; }
 
-  .band-today-frame .tfs-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .band-today-frame .tfs-title {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    font-family: var(--font-px);
-    color: var(--fg);
+  /* The plate — a warm bronze slab seated in the recess. */
+  .tfs-plate {
+    flex: 1;
+    position: relative;
     min-width: 0;
-    flex-wrap: wrap;
+    padding: 14px 24px 14px;
+    background:
+      linear-gradient(180deg,
+        rgba(58, 44, 28, 0.70) 0%,
+        rgba(44, 32, 20, 0.60) 100%);
+    border: 1px solid rgba(212, 160, 82, 0.22);
+    border-top-color: rgba(212, 160, 82, 0.32);
+    border-bottom-color: rgba(0, 0, 0, 0.45);
+    border-radius: 3px;
+    box-shadow:
+      /* Plate seated in recess — drop shadow into the niche */
+      0 2px 5px rgba(0, 0, 0, 0.45),
+      /* Top-rim catch-light on the plate face */
+      inset 0 1px 0 rgba(255, 230, 200, 0.10);
   }
-  .band-today-frame .tfs-glyph {
-    font-size: 14px;
-    line-height: 1;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
+  /* Empty state: same plate, just slightly less prominent. */
+  .band-today-frame.is-empty .tfs-plate {
+    background:
+      linear-gradient(180deg,
+        rgba(58, 44, 28, 0.50) 0%,
+        rgba(44, 32, 20, 0.40) 100%);
+    border-color: rgba(212, 160, 82, 0.15);
+    border-top-color: rgba(212, 160, 82, 0.22);
   }
-  /* Engraved gold title — reads as carved into the stone plate. */
-  .band-today-frame .tfs-label {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-shadow:
-      0 1px 0 rgba(0, 0, 0, 0.7),
-      0 0 2px rgba(0, 0, 0, 0.4);
-  }
-  .band-today-frame .tfs-date {
-    font-size: 11px;
-    color: var(--accent-dim);
-    letter-spacing: 0.04em;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  }
-  .band-today-frame .tfs-actions {
+
+  /* Actions — small controls floating in the plate's top-right corner.
+     Kept off the title axis so the centered header reads as a real plaque. */
+  .tfs-plate .tfs-actions {
+    position: absolute;
+    top: 8px;
+    right: 10px;
     display: flex;
-    gap: 6px;
+    gap: 4px;
     align-items: center;
+    z-index: 2;
   }
-  .band-today-frame .tfs-open-btn,
+  .tfs-plate .tfs-open-btn,
   .band-today-frame .tfs-empty-cta {
-    font-family: var(--font-px);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    padding: 4px 10px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
     background: transparent;
     color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 4px;
+    border: 1px solid rgba(212, 160, 82, 0.40);
+    border-radius: 3px;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
-  .band-today-frame .tfs-open-btn:hover,
+  .tfs-plate .tfs-open-btn:hover,
   .band-today-frame .tfs-empty-cta:hover {
-    background: var(--accent);
-    color: #1a1a1a;
+    background: rgba(212, 160, 82, 0.18);
   }
-  .band-today-frame .tfs-collapse-btn {
+  .tfs-plate .tfs-collapse-btn {
     background: transparent;
     border: 1px solid transparent;
     color: var(--accent-dim);
     cursor: pointer;
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 3px;
     font-size: 12px;
     line-height: 1;
   }
-  .band-today-frame .tfs-collapse-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .tfs-plate .tfs-collapse-btn:hover { color: var(--accent); border-color: rgba(212, 160, 82, 0.40); }
   .band-today-frame.collapsed .tfs-chev { transform: rotate(-90deg); }
   .band-today-frame.collapsed .tfs-body { display: none; }
-  .band-today-frame .tfs-chev { transition: transform 0.15s; display: inline-block; }
+  .tfs-plate .tfs-chev { transition: transform 0.15s; display: inline-block; }
 
-  .band-today-frame .tfs-body {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 2px;
+  /* Centered museum-plaque header: title + date stacked, with a hairline
+     ornament rule below to separate from the body. */
+  .tfs-plate .tfs-header {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(212, 160, 82, 0.18);
+    /* Leave horizontal breathing room for the corner actions. */
+    padding-left: 110px;
+    padding-right: 110px;
   }
-  .band-today-frame .tfs-empty {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 2px 4px;
-    color: var(--fg-dim);
+  .tfs-plate .tfs-label {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1.15;
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.7),
+      0 0 2px rgba(0, 0, 0, 0.4);
+  }
+  .tfs-plate .tfs-date {
+    font-family: var(--font-display);
     font-size: 12px;
     font-style: italic;
-    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+    color: var(--accent-dim);
+    margin-top: 2px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   }
-  .band-today-frame .tfs-card {
+
+  .tfs-plate .tfs-body {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
-  .band-today-frame .tfs-row {
-    display: grid;
+  .tfs-plate .tfs-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
+    padding: 4px 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--fg-dim);
+    text-align: center;
   }
-  .band-today-frame .tfs-row-scope { grid-template-columns: 1fr 1fr; }
-  .band-today-frame .tfs-row-outcome,
-  .band-today-frame .tfs-row-bonus,
-  .band-today-frame .tfs-row-stop { grid-template-columns: 1fr; }
-  .band-today-frame .tfs-cell {
+  .tfs-plate .tfs-card {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    min-width: 0;
+    gap: 8px;
   }
-  /* Engraved field labels — subtle, lowercase, faint engraving on the plate. */
-  .band-today-frame .tfs-cell-label {
-    font-family: var(--font-px);
-    font-size: 10px;
+  .tfs-plate .tfs-row {
+    display: grid;
+    gap: 12px;
+  }
+  .tfs-plate .tfs-row-scope { grid-template-columns: 1fr 1fr; }
+  .tfs-plate .tfs-row-outcome,
+  .tfs-plate .tfs-row-bonus,
+  .tfs-plate .tfs-row-stop { grid-template-columns: 1fr; }
+  .tfs-plate .tfs-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    text-align: center;
+  }
+  /* Engraved field labels — uppercase Cormorant, letter-spaced for plaque feel. */
+  .tfs-plate .tfs-cell-label {
+    font-family: var(--font-display);
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--accent-dim);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-    opacity: 0.85;
   }
-  /* Field values — the focal content. Slightly larger, cream-on-stone. */
-  .band-today-frame .tfs-cell-value {
+  /* Field values — focal content. Cormorant, cream-on-bronze. */
+  .tfs-plate .tfs-cell-value {
     font-family: var(--font-display);
     font-size: 15px;
     color: var(--fg);
@@ -3145,41 +3168,46 @@
     word-wrap: break-word;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
   }
-  .band-today-frame .tfs-cell-value:empty::after {
+  .tfs-plate .tfs-cell-value:empty::after {
     content: "—";
     color: var(--fg-dim);
     opacity: 0.6;
   }
-  .band-today-frame .tfs-chips {
+  .tfs-plate .tfs-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    justify-content: center;
   }
-  .band-today-frame .tfs-chips:empty::after {
+  .tfs-plate .tfs-chips:empty::after {
     content: "—";
     color: var(--fg-dim);
     opacity: 0.6;
     font-size: 13px;
   }
-  .band-today-frame .tfs-chip {
+  .tfs-plate .tfs-chip {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 3px 8px;
-    background: rgba(212, 160, 82, 0.12);
-    border: 1px solid rgba(212, 160, 82, 0.35);
-    border-radius: 12px;
-    font-size: 12px;
+    padding: 2px 8px;
+    background: rgba(212, 160, 82, 0.10);
+    border: 1px solid rgba(212, 160, 82, 0.30);
+    border-radius: 2px;
+    font-family: var(--font-display);
+    font-size: 13px;
     color: var(--fg);
   }
-  .band-today-frame .tfs-chips-sub .tfs-chip {
-    background: rgba(212,160,82,0.15);
-    border-color: rgba(212,160,82,0.40);
-    font-size: 11px;
+  .tfs-plate .tfs-chips-sub .tfs-chip {
+    background: rgba(212, 160, 82, 0.06);
+    border-color: rgba(212, 160, 82, 0.20);
+    font-size: 12px;
+    color: var(--fg-dim);
   }
 
   @media (max-width: 720px) {
-    .band-today-frame .tfs-row-scope { grid-template-columns: 1fr; }
+    .tfs-plate .tfs-row-scope { grid-template-columns: 1fr; }
+    .tfs-plate .tfs-header { padding-left: 16px; padding-right: 16px; }
+    .tfs-plate .tfs-actions { position: static; justify-content: center; margin-top: 8px; }
     .band-day { flex-direction: column; }
     .band-day > .area, .band-day > #today-frame-strip { flex: none; }
   }
@@ -5758,22 +5786,25 @@
     <!-- Today's Frame display — pinned, lives between the morning bracket (Pilot Check)
          and the evening bracket (Recover). Renders today's saved Frame card compactly. -->
     <section id="today-frame-strip" class="band-today-frame" aria-label="Today's Frame">
-      <header class="tfs-header">
-        <div class="tfs-title">
-          <span class="tfs-glyph" aria-hidden="true">🖼️</span>
-          <span class="tfs-label">Today's Frame</span>
-          <span class="tfs-date" id="tfs-date"></span>
-        </div>
+      <!-- The recess (.band-today-frame) is chiseled into the wall; the plate
+           is a separate engraved slab seated inside it. Museum-plaque layout:
+           centered title + date, single serif font (Cormorant Garamond), hairline
+           ornament rule beneath the header. Action buttons float in the plate's
+           top-right corner so they don't fight the centered title typography. -->
+      <div class="tfs-plate">
         <div class="tfs-actions">
           <button class="tfs-open-btn" id="tfs-open-frame" type="button" title="Open Frame Workshop">Open workshop</button>
           <button class="tfs-collapse-btn" id="tfs-collapse" type="button" aria-expanded="true" aria-controls="tfs-body" title="Collapse"><span class="tfs-chev">▾</span></button>
         </div>
-      </header>
-      <div class="tfs-body" id="tfs-body">
-        <div class="tfs-empty" id="tfs-empty">
-          <span class="tfs-empty-text">No Frame for today yet.</span>
-          <button class="tfs-empty-cta" id="tfs-empty-cta" type="button">Set the day's Frame →</button>
-        </div>
+        <header class="tfs-header">
+          <h2 class="tfs-label">Today's Frame</h2>
+          <div class="tfs-date" id="tfs-date"></div>
+        </header>
+        <div class="tfs-body" id="tfs-body">
+          <div class="tfs-empty" id="tfs-empty">
+            <span class="tfs-empty-text">No Frame for today yet.</span>
+            <button class="tfs-empty-cta" id="tfs-empty-cta" type="button">Set the day's Frame →</button>
+          </div>
         <div class="tfs-card" id="tfs-card" hidden>
           <div class="tfs-row tfs-row-scope">
             <div class="tfs-cell">
@@ -5804,7 +5835,8 @@
             </div>
           </div>
         </div>
-      </div>
+        </div><!-- /.tfs-body -->
+      </div><!-- /.tfs-plate -->
     </section>
     <div class="area area-visual" data-area="recovery-room" data-accent="green" data-cockpit-mode="true" data-tile-art="recover-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
       <div class="area-scene">🌿<img class="tile-art tile-art-dormant" src="assets/recover-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/recover-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
