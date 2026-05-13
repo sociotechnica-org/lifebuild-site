@@ -20,7 +20,7 @@
   :root {
     --bg:          transparent;                    /* body uses the smart-wall bed */
     --fg:          #e8e0d4;                        /* warm cream — unchanged */
-    --fg-dim:      #a89d8a;                        /* muted taupe (was cool blue-grey) */
+    --fg-dim:      #7a6e5e;                        /* warm taupe — darkened from #a89d8a for AA contrast on travertine bed */
     --panel-bg:    rgba(60, 50, 42, 0.88);         /* warm dark surface (was navy) */
     --panel-bd:    rgba(255, 230, 200, 0.14);      /* subtle warm hairline (was navy border) */
     --accent:      #d4a052;                        /* Alexandria amber (was bright orange) */
@@ -33,9 +33,6 @@
     --tile-a:      #4a3a2a;                        /* unused after stripe-bg retired */
     --tile-b:      #5a4a3a;                        /* unused after stripe-bg retired */
     --wall:        rgba(60, 50, 42, 0.55);         /* wall strips — warm dark */
-    --surface:     rgba(60, 50, 42, 0.88);         /* semantic alias for warm-dark surfaces */
-    --hairline:    rgba(255, 230, 200, 0.14);      /* semantic alias for warm hairlines */
-
     /* ── Smart-wall bed (dark travertine — chosen via bg-lab.html) ── */
     --bed-hue:        28;
     --bed-sat:        14;
@@ -5825,7 +5822,7 @@
 
   <!-- Band 4: Meta — Transition · Trim · Director's Desk -->
   <div class="band">
-    <!-- Transition Hallway: stone tile (Alexandria bridge fresco — see cognitive-lab/assets/CREDITS.md). Not yet cockpit-mode; workshop bootstrap is backlog (LAB-074). -->
+    <!-- Transition Hallway: stone tile (Alexandria bridge fresco — see cognitive-lab/assets/CREDITS.md). Not yet cockpit-mode; workshop bootstrap is deferred. -->
     <div class="area area-visual" data-area="transition-hallway" data-accent="tan" data-tile-art="bridge-stone" data-tile-art-frame="raw" data-tile-active-variant="half" data-tile-pulse="off">
       <div class="area-scene">🚪<img class="tile-art tile-art-dormant" src="assets/bridge-stone.png" alt="" aria-hidden="true" draggable="false"/><img class="tile-art tile-art-active" src="assets/bridge-stone-active.png" alt="" aria-hidden="true" draggable="false"/></div>
       <div class="area-label">Transition<span class="lbl-sub">meta</span></div>
