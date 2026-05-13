@@ -3220,6 +3220,14 @@
      is chiseled into the bed behind the artifact to mount it. The painted
      stone edges in the art read as the bezel seating into the socket. */
   .area-visual[data-tile-art-frame="raw"] {
+    /* size containment so cqw/cqh inside resolve to this tile's box.
+       Lets the socket pseudo-element size itself from the contained
+       artifact rect rather than the full tile rect. */
+    container-type: size;
+    /* All current stone artworks share aspect 1.833 (1408×768 bridge,
+       1024×558 microscope/pilot/recover). Override per-tile if a
+       future artifact uses a different aspect. */
+    --art-aspect: 1.833;
     background: transparent;
     border-color: transparent;
     overflow: visible;  /* let drop-shadow extend past the tile bounds */
@@ -3228,11 +3236,20 @@
       border-color 240ms ease;
     will-change: transform;
   }
-  /* Recessed socket — chiseled-out rectangle in the bed behind the artifact. */
+  /* Recessed socket — chiseled-out rectangle sized to the contained
+     artifact rect (not the full tile). Picks the smaller of (tile height)
+     or (tile width / aspect) for height; aspect-ratio gives the width.
+     The artifact below is scaled to ~94%, so the socket reads as a thin
+     flange around the stone instead of a giant frame. */
   .area-visual[data-tile-art-frame="raw"]::before {
     content: "";
     position: absolute;
-    inset: 6% 4%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: min(100cqh, calc(100cqw / var(--art-aspect)));
+    aspect-ratio: var(--art-aspect);
+    max-width: 100cqw;
     border-radius: 4px;
     background: rgba(0, 0, 0, calc(var(--socket-depth) * 0.22));
     box-shadow:
@@ -3262,6 +3279,11 @@
   .area-visual[data-tile-art-frame="raw"] .tile-art {
     object-fit: contain;
     object-position: center center;
+    /* Shrink the artifact uniformly inside its contain-rect so the socket
+       (which is sized to 100% of the contain-rect via cqw/cqh math above)
+       shows a ~6% flange around the stone — the visual "lock-in" lip. */
+    transform: scale(0.94);
+    transform-origin: center center;
     filter:
       drop-shadow(0 2px 1px rgba(0,0,0,0.55))
       drop-shadow(0 6px 8px rgba(0,0,0,0.45));
