@@ -3413,7 +3413,14 @@
     top: auto;
     left: 0;
     right: 0;
-    bottom: 0;
+    /* Anchor the label band to the bottom of the SOCKET, not the tile.
+       When the tile is taller than the socket (e.g. day-band Pilot/Recover
+       where the row height is driven by Today's Frame Strip), the socket is
+       centered with a vertical gap above and below. Without this offset the
+       label sits at bottom: 0 of the tile, floating below the artwork. The
+       calc resolves to 0 when socket fills tile height (Band 1 stones) and
+       to (tileH - socketH)/2 when it doesn't (Band 2 day-band tiles). */
+    bottom: calc((100cqh - min(100cqh, 100cqw / var(--art-aspect))) / 2);
     height: auto;
     padding: 22px 12px 10px;
     justify-content: flex-end;
