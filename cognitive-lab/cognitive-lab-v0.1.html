@@ -3212,9 +3212,162 @@
     .band-day > .area, .band-day > #today-frame-strip { flex: none; }
   }
 
-  /* Phase cycle band: arrows align with mid-row icons */
-  .band-phase { align-items: center; }
-  .band-phase .arrow { font-size: 18px; }
+  /* ── Phase rail (Band 3) ──
+     Discs on an engraved bar. Position conveys order; the lit disc tells
+     you what phase you're in. Replaces the rectangular emoji-tile pattern
+     with a passive MTG-style track. Each .area-phase keeps the .area /
+     .area-visual class (so click-to-open-drawer, badges, cockpit-mode all
+     still work) but its visual treatment is heavily overridden below. */
+  .band-phase {
+    align-items: center;
+    gap: 0;
+  }
+  /* Strip the rectangular tile chrome — no border, no panel bg, no min-height.
+     The disc is the visible element; the area-label sits below it as a caption. */
+  .band-phase .area-phase {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-height: 0;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    overflow: visible;
+  }
+  .band-phase .area-phase:hover {
+    border: none;
+    box-shadow: none;
+  }
+  /* .area-scene becomes the disc container; emoji-fallback font-size is reset. */
+  .band-phase .area-phase .area-scene {
+    flex: 0 0 auto;
+    font-size: 0;
+    filter: none;
+    transition: transform 0.25s;
+  }
+  .band-phase .area-phase:hover .area-scene { transform: none; }
+
+  /* The disc — engraved chip seated on the rail. Same warm-bronze gradient
+     and gold-bordered material as the Today's Frame plate, so the day's
+     interactive elements share a visual lineage. */
+  .band-phase .phase-disc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(232, 184, 109, 0.18) 0%,
+      rgba(40, 28, 16, 0.55) 70%);
+    border: 1px solid rgba(212, 160, 82, 0.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 230, 200, 0.18),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.40),
+      0 2px 4px rgba(0, 0, 0, 0.45);
+    color: var(--accent);
+    transition:
+      box-shadow 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      background 0.25s ease,
+      transform 0.25s ease;
+  }
+  /* The glyph — single-codepoint primary symbol, forced text-style rendering
+     so platforms with color emoji fonts don't substitute their picto. */
+  .band-phase .phase-glyph {
+    font-family: var(--font-display), 'Apple Symbols', 'Segoe UI Symbol', serif;
+    font-variant-emoji: text;
+    font-size: 24px;
+    line-height: 1;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  }
+  /* Hover — disc lifts slightly and brightens. Pre-active affordance. */
+  .band-phase .area-phase:hover .phase-disc {
+    transform: translateY(-1px);
+    border-color: rgba(232, 184, 109, 0.55);
+    color: var(--accent-glow);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 230, 200, 0.22),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.40),
+      0 3px 6px rgba(0, 0, 0, 0.45),
+      0 0 8px rgba(232, 184, 109, 0.25);
+  }
+  /* Active (drawer-open) — gold glow on the disc. This is the "you are
+     in phase X" indicator. Lights up when the drawer for that phase is
+     open and reads at a glance even on a busy screen. */
+  .band-phase .area-phase.active .phase-disc {
+    border-color: var(--accent-glow);
+    color: var(--accent-glow);
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(232, 184, 109, 0.40) 0%,
+      rgba(80, 56, 28, 0.65) 70%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 230, 200, 0.30),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.45),
+      0 2px 4px rgba(0, 0, 0, 0.45),
+      0 0 10px rgba(232, 184, 109, 0.45),
+      0 0 22px rgba(232, 184, 109, 0.22);
+  }
+  /* Suppress the base .area.active rectangular glow on phase tiles —
+     the disc carries the signal now, not the (invisible) tile border. */
+  .band-phase .area-phase.active {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Caption — phase name + sub-label sit below the disc as a static caption,
+     not the hover-overlay treatment used elsewhere. */
+  .band-phase .area-phase .area-label {
+    position: static;
+    inset: auto;
+    background: none;
+    border-radius: 0;
+    opacity: 1;
+    pointer-events: none;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--fg);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+    gap: 1px;
+  }
+  .band-phase .area-phase.active .area-label { color: var(--accent-glow); }
+  .band-phase .area-phase .area-label .lbl-sub {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    text-transform: none;
+    margin-top: 0;
+  }
+  /* Badges live on top-right of the disc, not the (collapsed) tile rect. */
+  .band-phase .area-phase .badge-row {
+    top: -4px;
+    right: calc(50% - 36px);
+  }
+
+  /* Connector between discs — thin engraved line, gold-tinted at the ends. */
+  .band-phase .phase-connector {
+    flex: 1 1 auto;
+    align-self: flex-start;
+    margin-top: 27px;
+    height: 1px;
+    min-width: 12px;
+    background: linear-gradient(
+      to right,
+      rgba(212, 160, 82, 0.05) 0%,
+      rgba(212, 160, 82, 0.40) 50%,
+      rgba(212, 160, 82, 0.05) 100%);
+  }
 
   /* ── Stone-tile framework ──
      Activated by data-tile-art="<name>" data-tile-art-frame="raw" on a tile.
@@ -5845,37 +5998,39 @@
     </div>
   </div>
 
-  <!-- Band 3: Turn cycle (single visual each).
-       Move 2a (v0.4 build): Comprehend leads. Per the C-before-F call —
-       you can't scope what you haven't read in. Frame follows.
-       Recovery moved to day-band; cycle ends at Debrief. -->
+  <!-- Band 3: Turn cycle — phase rail with primary-glyph discs.
+       Each phase is a single-codepoint glyph from a Hellenistic/alchemical
+       day-arc: sun rises (Comprehend) → square (Frame) → linked rings (Sync)
+       → hammer + pick (Produce) → crescent moon (Debrief). Position on the
+       rail conveys order; the lit disc tells you what phase you're in.
+       Replaces the emoji-on-tile pattern with a passive MTG-style indicator. -->
   <div class="band band-phase">
-    <div class="area area-visual" data-area="comprehend-station" data-accent="amber" data-cockpit-mode="true">
-      <div class="area-scene">🛠️</div>
+    <div class="area area-visual area-phase" data-area="comprehend-station" data-accent="amber" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2609;&#xFE0E;</span></span></div>
       <div class="area-label">Comprehend<span class="lbl-sub">orient first</span></div>
       <div class="badge-row" id="badges-comprehend-station"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="frame-workshop" data-accent="blue" data-cockpit-mode="true">
-      <div class="area-scene">🖼️</div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-visual area-phase" data-area="frame-workshop" data-accent="blue" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x25A1;&#xFE0E;</span></span></div>
       <div class="area-label">Frame<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-frame-workshop"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="sync-floor" data-accent="amber">
-      <div class="area-scene">🤝</div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-visual area-phase" data-area="sync-floor" data-accent="amber">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x26AD;&#xFE0E;</span></span></div>
       <div class="area-label">Sync<span class="lbl-sub">conditional</span></div>
       <div class="badge-row" id="badges-sync-floor"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="push-bay" data-accent="amber">
-      <div class="area-scene">🏭</div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-visual area-phase" data-area="push-bay" data-accent="amber">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x2692;&#xFE0E;</span></span></div>
       <div class="area-label">Produce<span class="lbl-sub">conditional</span></div>
       <div class="badge-row" id="badges-push-bay"></div>
     </div>
-    <div class="arrow">→</div>
-    <div class="area area-visual" data-area="debrief-booth" data-accent="blue" data-cockpit-mode="true">
-      <div class="area-scene">📋</div>
+    <div class="phase-connector" aria-hidden="true"></div>
+    <div class="area area-visual area-phase" data-area="debrief-booth" data-accent="blue" data-cockpit-mode="true">
+      <div class="area-scene"><span class="phase-disc"><span class="phase-glyph">&#x263D;&#xFE0E;</span></span></div>
       <div class="area-label">Debrief<span class="lbl-sub">required</span></div>
       <div class="badge-row" id="badges-debrief-booth"></div>
     </div>
