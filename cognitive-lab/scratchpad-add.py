@@ -90,7 +90,7 @@ def render_doc_header(date: str) -> str:
     return f"# Scratchpad — {date}\n"
 
 
-def upsert_today_entry(text: str, tags: list[str]) -> str:
+def upsert_today_entry(text: str, tags: list[str], slot: str = "") -> str:
     creds = ftd.get_credentials()
     service = build("drive", "v3", credentials=creds, cache_discovery=False)
 
@@ -151,6 +151,8 @@ def upsert_today_entry(text: str, tags: list[str]) -> str:
         "tags":     tags,
         "filedAt":  utc_iso(),
     }
+    if slot:
+        new_entry["slot"] = slot
     entries = ftd.read_manifest(JOURNAL_AREA)
     entries.append(new_entry)
     ftd.write_manifest_atomic(JOURNAL_AREA, entries)
@@ -164,6 +166,11 @@ def main() -> None:
     )
     p.add_argument("text", help="The scratchpad entry text.")
     p.add_argument("--tags", default="", help="Comma-separated tags.")
+    p.add_argument(
+        "--slot", default="",
+        help="Middle-column token rendered on the lab shelf row. "
+             "Only set on the day the doc is created (first append).",
+    )
     args = p.parse_args()
 
     text = args.text.strip()
@@ -173,7 +180,7 @@ def main() -> None:
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
 
     try:
-        url = upsert_today_entry(text, tags)
+        url = upsert_today_entry(text, tags, args.slot)
     except HttpError as e:
         ftd.die(f"Drive API error: {e}")
     except Exception as e:  # noqa: BLE001

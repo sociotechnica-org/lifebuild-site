@@ -97,7 +97,8 @@ def render_doc_header(date: str) -> str:
 
 
 def upsert_today_entry(decision: str, why: str, by: str,
-                       links: list[str], tags: list[str]) -> str:
+                       links: list[str], tags: list[str],
+                       slot: str = "") -> str:
     creds = ftd.get_credentials()
     service = build("drive", "v3", credentials=creds, cache_discovery=False)
 
@@ -157,6 +158,8 @@ def upsert_today_entry(decision: str, why: str, by: str,
         "tags":     tags,
         "filedAt":  utc_iso(),
     }
+    if slot:
+        new_entry["slot"] = slot
     entries = ftd.read_manifest(JOURNAL_AREA)
     entries.append(new_entry)
     ftd.write_manifest_atomic(JOURNAL_AREA, entries)
@@ -176,6 +179,11 @@ def main() -> None:
         help="Related URL. Repeatable.",
     )
     p.add_argument("--tags", default="", help="Comma-separated tags.")
+    p.add_argument(
+        "--slot", default="",
+        help="Middle-column token rendered on the lab shelf row. "
+             "Only set on the day the doc is created (first append).",
+    )
     args = p.parse_args()
 
     decision = args.decision.strip()
@@ -186,7 +194,7 @@ def main() -> None:
 
     try:
         url = upsert_today_entry(decision, args.why.strip(), args.by.strip(),
-                                 args.link, tags)
+                                 args.link, tags, args.slot)
     except HttpError as e:
         ftd.die(f"Drive API error: {e}")
     except Exception as e:  # noqa: BLE001

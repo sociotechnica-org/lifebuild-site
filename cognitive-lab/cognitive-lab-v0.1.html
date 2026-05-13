@@ -5829,13 +5829,6 @@
     color: var(--accent-dim);
     flex-shrink: 0;
   }
-  .manifest-fmt {
-    font-family: var(--font-px);
-    font-size: 9px;
-    color: var(--accent-dim);
-    text-transform: lowercase;
-    flex-shrink: 0;
-  }
   /* Middle slot in a manifest row — variable per area (issue # for
      Editions, author for Research, version for Strategy, kind for
      Explainer). Same pixel typography as the date so the row reads as
@@ -5857,23 +5850,6 @@
     opacity: 0.5;
   }
   .manifest-row:hover .manifest-arrow { color: var(--accent); opacity: 1; }
-  .manifest-summary {
-    margin-top: 4px;
-    font-size: 11px;
-    color: var(--accent-dim);
-    line-height: 1.4;
-    font-style: italic;
-  }
-  .manifest-tags {
-    margin-top: 4px;
-    font-size: 10px;
-  }
-  .manifest-tag {
-    display: inline-block;
-    margin-right: 6px;
-    color: var(--accent-dim);
-    font-family: var(--font-px);
-  }
   .manifest-empty {
     color: #888;
     font-size: 12px;
@@ -11058,7 +11034,7 @@
           <span class="manifest-date">${date}</span>
           ${slot}
           <span class="manifest-title">${title}</span>
-          <span class="manifest-arrow">↗</span>
+          <span class="manifest-arrow" aria-hidden="true">↗</span>
         </div>
       </a>`;
   }

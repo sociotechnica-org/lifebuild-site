@@ -275,6 +275,17 @@ def main() -> None:
         help="Comma-separated tags. Used by lab grouping/filtering.",
     )
     p.add_argument(
+        "--slot", default="",
+        help="Middle-column token rendered on the lab shelf row. "
+             "Issue number for journal editions, author for research, "
+             "version for strategy, deck/kind for explainer. Short.",
+    )
+    p.add_argument(
+        "--series", default="",
+        help="Series/masthead string. Stored on the entry but not rendered "
+             "on the shelf row. Mostly for journal editions.",
+    )
+    p.add_argument(
         "--update-id", default=None,
         help="Drive file ID. If set, overwrite content of this file in place "
              "(instead of creating new). Drive keeps version history.",
@@ -319,6 +330,7 @@ def main() -> None:
     entry = {
         "date":     date,
         "title":    args.title or "",  # may be empty on update without rename
+        "slot":     args.slot,
         "driveUrl": url,
         "driveId":  file_id,
         "format":   args.fmt,
@@ -326,10 +338,14 @@ def main() -> None:
         "tags":     tags,
         "filedAt":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
-    # Drop the title from the merge if blank-on-update so we don't blank
-    # out the existing entry's title.
+    if args.series:
+        entry["series"] = args.series
+    # Drop fields the caller didn't set on update so we don't blank
+    # out the existing entry's values.
     if is_update and not args.title:
         entry.pop("title", None)
+    if is_update and not args.slot:
+        entry.pop("slot", None)
 
     try:
         path = upsert_manifest_entry(args.area, entry, is_update=is_update)
