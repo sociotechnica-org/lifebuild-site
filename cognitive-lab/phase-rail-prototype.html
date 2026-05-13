@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase rail · prototype comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --fg:          #e8e0d4;
+    --fg-dim:      #8a7e6e;
+    --accent:      #d4a052;
+    --accent-dim:  #b8863a;
+    --accent-glow: #e8b86d;
+    --font-px:      'Inter', system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --bed-hue:        28;
+    --bed-sat:        14;
+    --bed-light:      32;
+  }
+
+  body {
+    font-family: var(--font-px);
+    color: var(--fg);
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%),
+      hsl(28, 14%, 26%);
+    min-height: 100vh;
+    padding: 40px 32px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    color: var(--fg-dim);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+
+  /* ── Rail container ── */
+  .rail-block {
+    margin-bottom: 48px;
+  }
+  .rail-heading {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .rail-note {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--fg-dim);
+    margin-bottom: 16px;
+  }
+
+  /* The rail itself — chiseled brass-engraved bar inside a stone recess. */
+  .rail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    padding: 22px 32px;
+    background:
+      linear-gradient(180deg,
+        rgba(58, 44, 28, 0.70) 0%,
+        rgba(44, 32, 20, 0.60) 100%);
+    border: 1px solid rgba(212, 160, 82, 0.22);
+    border-top-color: rgba(212, 160, 82, 0.32);
+    border-bottom-color: rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    box-shadow:
+      inset 0 2px 6px rgba(0, 0, 0, 0.45),
+      0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Phase cell */
+  .phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    opacity: 0.45;
+    transition: opacity 0.25s, transform 0.25s;
+    cursor: pointer;
+  }
+  .phase:hover { opacity: 0.75; }
+  .phase.active { opacity: 1; }
+  .phase.active .disc { transform: translateY(-1px); }
+
+  /* The disc — engraved chip seated on the rail. */
+  .disc {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at 30% 30%,
+        rgba(232, 184, 109, 0.18) 0%,
+        rgba(40, 28, 16, 0.55) 70%);
+    border: 1px solid rgba(212, 160, 82, 0.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 230, 200, 0.18),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.40),
+      0 2px 4px rgba(0, 0, 0, 0.45);
+    color: var(--accent);
+    transition: box-shadow 0.25s, border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .phase.active .disc {
+    border-color: var(--accent-glow);
+    color: var(--accent-glow);
+    background:
+      radial-gradient(circle at 30% 30%,
+        rgba(232, 184, 109, 0.40) 0%,
+        rgba(80, 56, 28, 0.65) 70%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 230, 200, 0.30),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.45),
+      0 2px 4px rgba(0, 0, 0, 0.45),
+      0 0 10px rgba(232, 184, 109, 0.45),
+      0 0 22px rgba(232, 184, 109, 0.22);
+  }
+
+  /* Numeral inside disc — Cormorant Garamond, serif weight. */
+  .disc .numeral {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  }
+  /* Glyph inside disc — single-codepoint primary symbol, text variant forced. */
+  .disc .glyph {
+    font-family: var(--font-display), 'Apple Symbols', 'Segoe UI Symbol', serif;
+    font-variant-emoji: text;
+    font-size: 24px;
+    line-height: 1;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Phase name */
+  .phase-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+  }
+  .phase.active .phase-name { color: var(--accent-glow); }
+
+  /* Phase sub-label */
+  .phase-sub {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Connector between phases — a thin engraved line, not an arrow. */
+  .connector {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    margin-top: 26px;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(212, 160, 82, 0.05) 0%,
+      rgba(212, 160, 82, 0.40) 50%,
+      rgba(212, 160, 82, 0.05) 100%);
+  }
+
+  /* ── Footer note ── */
+  .compare-note {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--fg-dim);
+    text-align: center;
+    margin-top: 24px;
+    padding: 16px;
+    border-top: 1px solid rgba(212, 160, 82, 0.15);
+  }
+  .compare-note kbd {
+    font-family: var(--font-px);
+    font-style: normal;
+    background: rgba(212, 160, 82, 0.18);
+    border: 1px solid rgba(212, 160, 82, 0.35);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 11px;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<h1>Phase rail · prototype comparison</h1>
+<p class="subtitle">Two takes on the Comprehend → Frame → Sync → Produce → Debrief turn. Click any phase to make it the active one and see how the rail reads as the day moves.</p>
+
+<!-- ── Variant A: Roman numerals ── -->
+<section class="rail-block">
+  <h2 class="rail-heading">Variant A · Roman numerals</h2>
+  <p class="rail-note">Position is meaning. The numeral is empty signal — the label carries the semantic load. Closest to MTG's phase track.</p>
+  <div class="rail" id="rail-numerals">
+    <div class="phase active" data-phase="comprehend">
+      <div class="disc"><span class="numeral">I</span></div>
+      <div class="phase-name">Comprehend</div>
+      <div class="phase-sub">orient first</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="frame">
+      <div class="disc"><span class="numeral">II</span></div>
+      <div class="phase-name">Frame</div>
+      <div class="phase-sub">required</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="sync">
+      <div class="disc"><span class="numeral">III</span></div>
+      <div class="phase-name">Sync</div>
+      <div class="phase-sub">conditional</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="produce">
+      <div class="disc"><span class="numeral">IV</span></div>
+      <div class="phase-name">Produce</div>
+      <div class="phase-sub">conditional</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="debrief">
+      <div class="disc"><span class="numeral">V</span></div>
+      <div class="phase-name">Debrief</div>
+      <div class="phase-sub">required</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Variant B: Hellenistic/alchemical glyphs ── -->
+<section class="rail-block">
+  <h2 class="rail-heading">Variant B · Primary glyphs</h2>
+  <p class="rail-note">A day-arc told in symbols: sun rises (orient) → square (declare) → linked rings (exchange) → hammer (forge) → crescent moon (reflect). Each glyph is single-codepoint, text-rendered, ancient.</p>
+  <div class="rail" id="rail-glyphs">
+    <div class="phase active" data-phase="comprehend">
+      <div class="disc"><span class="glyph">☉&#xFE0E;</span></div>
+      <div class="phase-name">Comprehend</div>
+      <div class="phase-sub">orient first</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="frame">
+      <div class="disc"><span class="glyph">□&#xFE0E;</span></div>
+      <div class="phase-name">Frame</div>
+      <div class="phase-sub">required</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="sync">
+      <div class="disc"><span class="glyph">⚭&#xFE0E;</span></div>
+      <div class="phase-name">Sync</div>
+      <div class="phase-sub">conditional</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="produce">
+      <div class="disc"><span class="glyph">⚒&#xFE0E;</span></div>
+      <div class="phase-name">Produce</div>
+      <div class="phase-sub">conditional</div>
+    </div>
+    <div class="connector"></div>
+    <div class="phase" data-phase="debrief">
+      <div class="disc"><span class="glyph">☽&#xFE0E;</span></div>
+      <div class="phase-name">Debrief</div>
+      <div class="phase-sub">required</div>
+    </div>
+  </div>
+</section>
+
+<p class="compare-note">
+  Click any phase to advance the active marker. Try the rotation: <kbd>I</kbd> → <kbd>II</kbd> → <kbd>III</kbd> → <kbd>IV</kbd> → <kbd>V</kbd>.
+  Watch which rail tells you faster, at a glance, which phase you're in.
+</p>
+
+<script>
+  // Click any phase to make it active. Lets you see how the rail reads with
+  // each phase lit — the "where in the turn am I?" cue.
+  document.querySelectorAll('.rail').forEach(rail => {
+    rail.addEventListener('click', e => {
+      const phase = e.target.closest('.phase');
+      if (!phase) return;
+      rail.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+      phase.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
